@@ -1,0 +1,44 @@
+﻿<metadata>
+
+  <attr path="/api/package[@name='com.urbanairship']" name="managedName">UrbanAirship</attr>
+  <attr path="/api/package[@name='com.urbanairship.actions']" name="managedName">UrbanAirship.Actions</attr>
+  <attr path="/api/package[@name='com.urbanairship.actions.tags']" name="managedName">UrbanAirship.Actions.Tags</attr> 
+  <attr path="/api/package[@name='com.urbanairship.amazon']" name="managedName">UrbanAirship.Amazon</attr>
+  <attr path="/api/package[@name='com.urbanairship.analytics']" name="managedName">UrbanAirship.Analytics</attr>
+  <attr path="/api/package[@name='com.urbanairship.google']" name="managedName">UrbanAirship.Google</attr>
+  <attr path="/api/package[@name='com.urbanairship.http']" name="managedName">UrbanAirship.HTTP</attr>
+  <attr path="/api/package[@name='com.urbanairship.js']" name="managedName">UrbanAirship.JavaScript</attr>
+  <attr path="/api/package[@name='com.urbanairship.json']" name="managedName">UrbanAirship.JSON</attr>
+  <attr path="/api/package[@name='com.urbanairship.location']" name="managedName">UrbanAirship.Location</attr>
+  <attr path="/api/package[@name='com.urbanairship.preference']" name="managedName">UrbanAirship.Preference</attr>
+  <attr path="/api/package[@name='com.urbanairship.push']" name="managedName">UrbanAirship.Push</attr>
+  <attr path="/api/package[@name='com.urbanairship.push.iam']" name="managedName">UrbanAirship.Push.InApp</attr>
+  <attr path="/api/package[@name='com.urbanairship.push.iam.view']" name="managedName">UrbanAirship.Push.InApp.View</attr>
+  <attr path="/api/package[@name='com.urbanairship.push.notifications']" name="managedName">UrbanAirship.Push.Notifications</attr>
+  <attr path="/api/package[@name='com.urbanairship.richpush']" name="managedName">UrbanAirship.RichPush</attr>
+  <attr path="/api/package[@name='com.urbanairship.widget']" name="managedName">UrbanAirship.Widget</attr>
+  <attr path="/api/package[@name='com.urbanairship.util']" name="managedName">UrbanAirship.Util</attr>
+
+  <!--- Non public parent classes -->
+  <attr path="/api/package[@name='com.urbanairship.preference']/class[@name='UACheckBoxPreference']" name="visibility">public</attr>
+  <attr path="/api/package[@name='com.urbanairship.preference']/class[@name='QuietTimePickerPreference']" name="visibility">public</attr>
+  <attr path="/api/package[@name='com.urbanairship.location']/class[@name='PendingLocationResult']" name="visibility">public</attr>
+
+  <!-- Fixes the override issues -->
+  <remove-node path="/api/package[@name='com.urbanairship.preference']/class[@name='QuietTimeEndPreference']/method[@name='getSummary']" />
+  <remove-node path="/api/package[@name='com.urbanairship.preference']/class[@name='QuietTimeStartPreference']/method[@name='getSummary']" />
+
+  <!-- Fixes issues with IComparable -->
+  <remove-node path="/api/package[@name='com.urbanairship.preference']/class[@name='QuietTimePickerPreference']" />
+  <remove-node path="/api/package[@name='com.urbanairship.preference']/class[@name='UACheckBoxPreference']" />
+  <remove-node path="/api/package[@name='com.urbanairship']/interface[@name='PendingResult.ResultCallback']" />
+
+  <!-- Fix intent service --> 
+  <attr path="/api/package[@name='com.urbanairship']/class[@name='BaseIntentService' and @extends='android.app.IntentService']" name="extends">mono.android.app.IntentService</attr>
+  <attr path="/api/package[@name='com.urbanairship.analytics']/class[@name='EventService' and @extends='android.app.IntentService']" name="extends">mono.android.app.IntentService</attr>
+
+  <!-- Fix name conflict with BaseIntentService.Delegate and System.Delegate --> 
+  <attr path="/api/package[@name='com.urbanairship']/class[@name='BaseIntentService.Delegate']" name="managedName">BaseIntentServiceDelegate</attr>
+
+</metadata>
+	
