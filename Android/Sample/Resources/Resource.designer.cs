@@ -324,13 +324,10 @@ namespace Sample
 			public const int Icon = 2130837546;
 			
 			// aapt resource value: 0x7f02002b
-			public const int monoandroidsplash = 2130837547;
+			public const int ua_iam_background = 2130837547;
 			
 			// aapt resource value: 0x7f02002c
-			public const int ua_iam_background = 2130837548;
-			
-			// aapt resource value: 0x7f02002d
-			public const int ua_ic_close = 2130837549;
+			public const int ua_ic_close = 2130837548;
 			
 			static Drawable()
 			{
@@ -450,71 +447,71 @@ namespace Sample
 		public partial class String
 		{
 			
-			// aapt resource value: 0x7f050038
-			public const int app_name = 2131034168;
+			// aapt resource value: 0x7f050039
+			public const int app_name = 2131034169;
 			
-			// aapt resource value: 0x7f050001
-			public const int auth_google_play_services_client_facebook_display_name = 2131034113;
+			// aapt resource value: 0x7f050003
+			public const int auth_google_play_services_client_facebook_display_name = 2131034115;
 			
-			// aapt resource value: 0x7f050000
-			public const int auth_google_play_services_client_google_display_name = 2131034112;
+			// aapt resource value: 0x7f050002
+			public const int auth_google_play_services_client_google_display_name = 2131034114;
 			
-			// aapt resource value: 0x7f050004
-			public const int common_android_wear_notification_needs_update_text = 2131034116;
+			// aapt resource value: 0x7f050006
+			public const int common_android_wear_notification_needs_update_text = 2131034118;
+			
+			// aapt resource value: 0x7f050013
+			public const int common_android_wear_update_text = 2131034131;
 			
 			// aapt resource value: 0x7f050011
-			public const int common_android_wear_update_text = 2131034129;
-			
-			// aapt resource value: 0x7f05000f
-			public const int common_android_wear_update_title = 2131034127;
+			public const int common_android_wear_update_title = 2131034129;
 			
 			// aapt resource value: 0x7f05001f
 			public const int common_google_play_services_api_unavailable_text = 2131034143;
 			
+			// aapt resource value: 0x7f05000f
+			public const int common_google_play_services_enable_button = 2131034127;
+			
+			// aapt resource value: 0x7f05000e
+			public const int common_google_play_services_enable_text = 2131034126;
+			
 			// aapt resource value: 0x7f05000d
-			public const int common_google_play_services_enable_button = 2131034125;
-			
-			// aapt resource value: 0x7f05000c
-			public const int common_google_play_services_enable_text = 2131034124;
-			
-			// aapt resource value: 0x7f05000b
-			public const int common_google_play_services_enable_title = 2131034123;
-			
-			// aapt resource value: 0x7f050006
-			public const int common_google_play_services_error_notification_requested_by_msg = 2131034118;
-			
-			// aapt resource value: 0x7f05000a
-			public const int common_google_play_services_install_button = 2131034122;
+			public const int common_google_play_services_enable_title = 2131034125;
 			
 			// aapt resource value: 0x7f050008
-			public const int common_google_play_services_install_text_phone = 2131034120;
+			public const int common_google_play_services_error_notification_requested_by_msg = 2131034120;
+			
+			// aapt resource value: 0x7f05000c
+			public const int common_google_play_services_install_button = 2131034124;
+			
+			// aapt resource value: 0x7f05000a
+			public const int common_google_play_services_install_text_phone = 2131034122;
+			
+			// aapt resource value: 0x7f05000b
+			public const int common_google_play_services_install_text_tablet = 2131034123;
 			
 			// aapt resource value: 0x7f050009
-			public const int common_google_play_services_install_text_tablet = 2131034121;
+			public const int common_google_play_services_install_title = 2131034121;
+			
+			// aapt resource value: 0x7f050019
+			public const int common_google_play_services_invalid_account_text = 2131034137;
+			
+			// aapt resource value: 0x7f050018
+			public const int common_google_play_services_invalid_account_title = 2131034136;
 			
 			// aapt resource value: 0x7f050007
-			public const int common_google_play_services_install_title = 2131034119;
+			public const int common_google_play_services_needs_enabling_title = 2131034119;
 			
 			// aapt resource value: 0x7f050017
-			public const int common_google_play_services_invalid_account_text = 2131034135;
+			public const int common_google_play_services_network_error_text = 2131034135;
 			
 			// aapt resource value: 0x7f050016
-			public const int common_google_play_services_invalid_account_title = 2131034134;
+			public const int common_google_play_services_network_error_title = 2131034134;
 			
 			// aapt resource value: 0x7f050005
-			public const int common_google_play_services_needs_enabling_title = 2131034117;
+			public const int common_google_play_services_notification_needs_update_title = 2131034117;
 			
-			// aapt resource value: 0x7f050015
-			public const int common_google_play_services_network_error_text = 2131034133;
-			
-			// aapt resource value: 0x7f050014
-			public const int common_google_play_services_network_error_title = 2131034132;
-			
-			// aapt resource value: 0x7f050003
-			public const int common_google_play_services_notification_needs_update_title = 2131034115;
-			
-			// aapt resource value: 0x7f050002
-			public const int common_google_play_services_notification_ticker = 2131034114;
+			// aapt resource value: 0x7f050004
+			public const int common_google_play_services_notification_ticker = 2131034116;
 			
 			// aapt resource value: 0x7f050021
 			public const int common_google_play_services_sign_in_failed_text = 2131034145;
@@ -522,44 +519,47 @@ namespace Sample
 			// aapt resource value: 0x7f050020
 			public const int common_google_play_services_sign_in_failed_title = 2131034144;
 			
-			// aapt resource value: 0x7f050018
-			public const int common_google_play_services_unknown_issue = 2131034136;
-			
 			// aapt resource value: 0x7f05001a
-			public const int common_google_play_services_unsupported_text = 2131034138;
+			public const int common_google_play_services_unknown_issue = 2131034138;
 			
-			// aapt resource value: 0x7f050019
-			public const int common_google_play_services_unsupported_title = 2131034137;
+			// aapt resource value: 0x7f05001c
+			public const int common_google_play_services_unsupported_text = 2131034140;
 			
 			// aapt resource value: 0x7f05001b
-			public const int common_google_play_services_update_button = 2131034139;
+			public const int common_google_play_services_unsupported_title = 2131034139;
 			
-			// aapt resource value: 0x7f050010
-			public const int common_google_play_services_update_text = 2131034128;
-			
-			// aapt resource value: 0x7f05000e
-			public const int common_google_play_services_update_title = 2131034126;
-			
-			// aapt resource value: 0x7f050013
-			public const int common_google_play_services_updating_text = 2131034131;
+			// aapt resource value: 0x7f05001d
+			public const int common_google_play_services_update_button = 2131034141;
 			
 			// aapt resource value: 0x7f050012
-			public const int common_google_play_services_updating_title = 2131034130;
+			public const int common_google_play_services_update_text = 2131034130;
+			
+			// aapt resource value: 0x7f050010
+			public const int common_google_play_services_update_title = 2131034128;
+			
+			// aapt resource value: 0x7f050015
+			public const int common_google_play_services_updating_text = 2131034133;
+			
+			// aapt resource value: 0x7f050014
+			public const int common_google_play_services_updating_title = 2131034132;
 			
 			// aapt resource value: 0x7f05001e
 			public const int common_open_on_phone = 2131034142;
 			
-			// aapt resource value: 0x7f05001c
-			public const int common_signin_button_text = 2131034140;
+			// aapt resource value: 0x7f050000
+			public const int common_signin_button_text = 2131034112;
 			
-			// aapt resource value: 0x7f05001d
-			public const int common_signin_button_text_long = 2131034141;
+			// aapt resource value: 0x7f050001
+			public const int common_signin_button_text_long = 2131034113;
 			
-			// aapt resource value: 0x7f050037
-			public const int hello = 2131034167;
+			// aapt resource value: 0x7f050038
+			public const int hello = 2131034168;
 			
 			// aapt resource value: 0x7f050034
-			public const int ua_channel_notification_ticker = 2131034164;
+			public const int ua_channel_copy_toast = 2131034164;
+			
+			// aapt resource value: 0x7f050035
+			public const int ua_channel_notification_ticker = 2131034165;
 			
 			// aapt resource value: 0x7f050022
 			public const int ua_notification_button_accept = 2131034146;
@@ -567,8 +567,8 @@ namespace Sample
 			// aapt resource value: 0x7f050023
 			public const int ua_notification_button_buy_now = 2131034147;
 			
-			// aapt resource value: 0x7f050035
-			public const int ua_notification_button_copy = 2131034165;
+			// aapt resource value: 0x7f050036
+			public const int ua_notification_button_copy = 2131034166;
 			
 			// aapt resource value: 0x7f050024
 			public const int ua_notification_button_decline = 2131034148;
@@ -603,8 +603,8 @@ namespace Sample
 			// aapt resource value: 0x7f05002e
 			public const int ua_notification_button_remind = 2131034158;
 			
-			// aapt resource value: 0x7f050036
-			public const int ua_notification_button_save = 2131034166;
+			// aapt resource value: 0x7f050037
+			public const int ua_notification_button_save = 2131034167;
 			
 			// aapt resource value: 0x7f05002f
 			public const int ua_notification_button_share = 2131034159;
@@ -660,9 +660,6 @@ namespace Sample
 			
 			// aapt resource value: 0x7f09000f
 			public const int LandingPageStyle = 2131296271;
-			
-			// aapt resource value: 0x7f090010
-			public const int Mono_Android_Theme_Splash = 2131296272;
 			
 			// aapt resource value: 0x7f090008
 			public const int Widget_UrbanAirship_InAppMessage_Banner = 2131296264;
