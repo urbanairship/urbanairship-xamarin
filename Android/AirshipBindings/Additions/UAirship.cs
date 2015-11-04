@@ -1,6 +1,7 @@
 ﻿using System;
 using Android.App;
 using Android.Runtime;
+using Android.OS;
 
 [assembly: Permission(Name = "@PACKAGE_NAME@.permission.UA_DATA", ProtectionLevel=Android.Content.PM.Protection.Signature)]
 [assembly: UsesPermission(Name = "@PACKAGE_NAME@.permission.UA_DATA")]
@@ -37,12 +38,14 @@ namespace UrbanAirship
 		internal class AirshipReadyCallback : Java.Lang.Object, IOnReadyCallback
 		{
 			Action<UAirship> callback;
-			public AirshipReadyCallback(Action<UAirship> callback) {
+			public AirshipReadyCallback(Action<UAirship> callback)
+			{
 				this.callback = callback;
 			}
 
 			public void OnAirshipReady (UAirship airship) {
-				if (callback != null) {
+				if (callback != null)
+				{
 					callback.Invoke (airship);
 				}
 			}
