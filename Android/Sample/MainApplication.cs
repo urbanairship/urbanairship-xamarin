@@ -22,9 +22,10 @@ namespace Sample
 		{
 			base.OnCreate();
 
-			UAirship.TakeOff(this);
-			UAirship.Shared().PushManager.UserNotificationsEnabled = true;
-			UAirship.Shared ().PushManager.Tags = new String[]{ "android-xamarin" };
+			UAirship.TakeOff(this, (UAirship airship) => {
+				airship.PushManager.UserNotificationsEnabled = true;
+				airship.PushManager.Tags = new String[]{ "android-xamarin" };
+			});
 		}
 	}
 }
