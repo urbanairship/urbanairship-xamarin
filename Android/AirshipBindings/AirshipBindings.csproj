@@ -50,6 +50,9 @@
     <Reference Include="Xamarin.GooglePlayServices.Gcm">
       <HintPath>..\..\packages\Xamarin.GooglePlayServices.Gcm.27.0.0.0\lib\MonoAndroid41\Xamarin.GooglePlayServices.Gcm.dll</HintPath>
     </Reference>
+    <Reference Include="Xamarin.Android.Support.v7.CardView">
+      <HintPath>..\..\packages\Xamarin.Android.Support.v7.CardView.23.0.1.3\lib\MonoAndroid403\Xamarin.Android.Support.v7.CardView.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -69,6 +72,7 @@
     <Compile Include="Additions\CoreReceiver.cs" />
     <Compile Include="Additions\GCMPushReceiver.cs" />
     <Compile Include="Additions\ADMPushReceiver.cs" />
+    <Compile Include="Additions\ActionRunRequest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Additions\AboutAdditions.txt" />
