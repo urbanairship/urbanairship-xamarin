@@ -14,24 +14,23 @@ namespace UrbanAirship.Actions
 		{
 			Run (new ActionCompletionCallback (callback), looper);
 		}
-	}
 
-	internal class ActionCompletionCallback : Java.Lang.Object, IActionCompletionCallback
-	{
-		Action<ActionArguments, ActionResult> callback;
-		public ActionCompletionCallback(Action<ActionArguments, ActionResult> callback)
+		internal class ActionCompletionCallback : Java.Lang.Object, IActionCompletionCallback
 		{
-			this.callback = callback;
-		}
-
-		public void OnFinish (ActionArguments arguments, ActionResult result)
-		{
-			if (callback != null)
+			Action<ActionArguments, ActionResult> callback;
+			public ActionCompletionCallback(Action<ActionArguments, ActionResult> callback)
 			{
-				callback.Invoke (arguments, result);
+				this.callback = callback;
+			}
+
+			public void OnFinish (ActionArguments arguments, ActionResult result)
+			{
+				if (callback != null)
+				{
+					callback.Invoke (arguments, result);
+				}
 			}
 		}
 	}
-	
 }
 
