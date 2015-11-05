@@ -7,6 +7,7 @@
   <attr path="/api/package[@name='com.urbanairship.analytics']" name="managedName">UrbanAirship.Analytics</attr>
   <attr path="/api/package[@name='com.urbanairship.google']" name="managedName">UrbanAirship.Google</attr>
   <attr path="/api/package[@name='com.urbanairship.json']" name="managedName">UrbanAirship.Json</attr>
+  <attr path="/api/package[@name='com.urbanairship.js']" name="managedName">UrbanAirship.Js</attr>
   <attr path="/api/package[@name='com.urbanairship.location']" name="managedName">UrbanAirship.Location</attr>
   <attr path="/api/package[@name='com.urbanairship.preference']" name="managedName">UrbanAirship.Preference</attr>
   <attr path="/api/package[@name='com.urbanairship.push']" name="managedName">UrbanAirship.Push</attr>
@@ -18,7 +19,7 @@
 
   <remove-node path="/api/package[@name='com.urbanairship.http']" />
   <remove-node path="/api/package[@name='com.urbanairship.util']" />
-  <remove-node path="/api/package[@name='com.urbanairship.js']" />
+
   <!--- Non public parent classes -->
   <attr path="/api/package[@name='com.urbanairship.preference']/class[@name='UACheckBoxPreference']" name="visibility">public</attr>
   <attr path="/api/package[@name='com.urbanairship.preference']/class[@name='QuietTimePickerPreference']" name="visibility">public</attr>
@@ -35,7 +36,6 @@
 
   <!-- Fix name conflict with BaseIntentService.Delegate and System.Delegate --> 
   <attr path="/api/package[@name='com.urbanairship']/class[@name='BaseIntentService.Delegate']" name="managedName">BaseIntentServiceDelegate</attr>
-
 
 </metadata>
 	
