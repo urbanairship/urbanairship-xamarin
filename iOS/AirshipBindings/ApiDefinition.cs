@@ -313,11 +313,6 @@ namespace UrbanAirship {
 	[BaseType (typeof(NSObject))]
 	interface UAUser
 	{
-		// +(UAUser * _Nonnull)defaultUser __attribute__((deprecated("As of version 6.0.0. Use [UAirship inboxUser] instead.")));
-		[Static]
-		[Export ("defaultUser")]
-		UAUser DefaultUser { get; }
-
 		// @property (readonly, getter = isCreated, nonatomic) BOOL created;
 		[Export ("created")]
 		bool Created { [Bind ("isCreated")] get; }
@@ -333,10 +328,6 @@ namespace UrbanAirship {
 		// @property (readonly, copy, nonatomic) NSString * _Nullable url;
 		[NullAllowed, Export ("url")]
 		string Url { get; }
-
-		// @property (readonly, assign, nonatomic) UIBackgroundTaskIdentifier userUpdateBackgroundTask __attribute__((deprecated("As of version 6.1.4")));
-		[Export ("userUpdateBackgroundTask")]
-		nuint UserUpdateBackgroundTask { get; }
 	}
 
 	// @protocol UAInboxDelegate <NSObject>
@@ -362,11 +353,6 @@ namespace UrbanAirship {
 	[BaseType (typeof(NSObject))]
 	interface UAInbox
 	{
-		// +(instancetype _Null_unspecified)shared __attribute__((deprecated("As of version 6.0.0. Use [UAirship inbox] instead.")));
-		[Static]
-		[Export ("shared")]
-		UAInbox Shared ();
-
 		// @property (nonatomic, strong) UAInboxMessageList * _Nonnull messageList;
 		[Export ("messageList", ArgumentSemantic.Strong)]
 		UAInboxMessageList MessageList { get; set; }
@@ -903,11 +889,6 @@ namespace UrbanAirship {
 	[BaseType (typeof(NSObject))]
 	interface UAPush : UAChannelRegistrarDelegate
 	{
-		// +(instancetype _Null_unspecified)shared __attribute__((deprecated("As of version 6.0.0. Use [UAirship push] instead.")));
-		[Static]
-		[Export ("shared")]
-		UAPush Shared ();
-
 		// @property (assign, nonatomic) BOOL backgroundPushNotificationsEnabled;
 		[Export ("backgroundPushNotificationsEnabled")]
 		bool BackgroundPushNotificationsEnabled { get; set; }
@@ -943,10 +924,6 @@ namespace UrbanAirship {
 		// @property (readonly, copy, nonatomic) NSString * _Nullable channelID;
 		[NullAllowed, Export ("channelID")]
 		string ChannelID { get; }
-
-		// @property (assign, nonatomic) UIRemoteNotificationType notificationTypes __attribute__((deprecated("As of version 5.0")));
-		[Export ("notificationTypes", ArgumentSemantic.Assign)]
-		UIRemoteNotificationType NotificationTypes { get; set; }
 
 		// @property (assign, nonatomic) UIUserNotificationType userNotificationTypes;
 		[Export ("userNotificationTypes", ArgumentSemantic.Assign)]
@@ -1007,10 +984,6 @@ namespace UrbanAirship {
 		// @property (copy, nonatomic) NSArray<NSString *> * _Nonnull tags;
 		[Export ("tags", ArgumentSemantic.Copy)]
 		string[] Tags { get; set; }
-
-		// @property (assign, nonatomic) BOOL deviceTagsEnabled __attribute__((deprecated("As of version 6.1.0.")));
-		[Export ("deviceTagsEnabled")]
-		bool DeviceTagsEnabled { get; set; }
 
 		// @property (getter = isChannelTagRegistrationEnabled, assign, nonatomic) BOOL channelTagRegistrationEnabled;
 		[Export ("channelTagRegistrationEnabled")]
@@ -1369,10 +1342,6 @@ namespace UrbanAirship {
 		[Export ("didPerformWithArguments:withResult:")]
 		void DidPerformWithArguments (UAActionArguments arguments, UAActionResult result);
 
-		// -(void)performWithArguments:(UAActionArguments * _Nonnull)arguments actionName:(NSString * _Nonnull)name completionHandler:(UAActionCompletionHandler _Nonnull)completionHandler __attribute__((deprecated("As of version 6.0.0. Use performWithArguments:completionHandler: instead. The name of the action is now accessible through the arguments metadata.")));
-		[Export ("performWithArguments:actionName:completionHandler:")]
-		void PerformWithArguments (UAActionArguments arguments, string name, UAActionCompletionHandler completionHandler);
-
 		// -(void)performWithArguments:(UAActionArguments * _Nonnull)arguments completionHandler:(UAActionCompletionHandler _Nonnull)completionHandler;
 		[Export ("performWithArguments:completionHandler:")]
 		void PerformWithArguments (UAActionArguments arguments, UAActionCompletionHandler completionHandler);
@@ -1485,11 +1454,6 @@ namespace UrbanAirship {
 	[BaseType (typeof(NSObject))]
 	interface UAActionRegistry
 	{
-		// +(instancetype _Null_unspecified)shared __attribute__((deprecated("As of version 6.0.0. Use [UAirship shared].actionRegistry instead.")));
-		[Static]
-		[Export ("shared")]
-		UAActionRegistry Shared ();
-
 		// @property (readonly, nonatomic) NSSet<NSMutableDictionary *> * _Nonnull registeredEntries;
 		[Export ("registeredEntries")]
 		NSSet<NSMutableDictionary> RegisteredEntries { get; }
@@ -1965,14 +1929,12 @@ namespace UrbanAirship {
 		// -(CLLocationDistance)standardLocationDistanceFilter;
 		// -(void)setStandardLocationDistanceFilter:(CLLocationDistance)distanceFilter;
 		[Export ("standardLocationDistanceFilter")]
-		double StandardLocationDistanceFilter ();
-
-		[Export ("setStandardLocationDistanceFilter:")]
-		void SetStandardLocationDistanceFilter (double distanceFilter);
+		double StandardLocationDistanceFilter { get; set; }
 
 		// -(CLLocationAccuracy)standardLocationDesiredAccuracy;
+		// -(void)setStandardLocationDesiredAccuracy:(CLLocationDistance)desiredAccuracy;
 		[Export ("standardLocationDesiredAccuracy")]
-		double StandardLocationDesiredAccuracy ();
+		double StandardLocationDesiredAccuracy { get; set; }
 
 		// -(void)setStandardLocationDesiredAccuracy:(CLLocationAccuracy)desiredAccuracy;
 		[Export ("setStandardLocationDesiredAccuracy:")]
