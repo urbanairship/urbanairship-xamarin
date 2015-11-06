@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirshipBindings", "Android\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample", "Android\Sample\Sample.csproj", "{3A31EBDD-6C46-4F7A-B453-85E0922F8C44}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "iOS", "iOS", "{26601E76-232F-49B0-BFE3-0F73E0629C48}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirshipBindings", "iOS\AirshipBindings\AirshipBindings.csproj", "{58346B7E-E18F-4CB1-A9B8-C2266BDCFE2A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,9 +25,14 @@ Global
 		{3A31EBDD-6C46-4F7A-B453-85E0922F8C44}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3A31EBDD-6C46-4F7A-B453-85E0922F8C44}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3A31EBDD-6C46-4F7A-B453-85E0922F8C44}.Release|Any CPU.Build.0 = Release|Any CPU
+		{58346B7E-E18F-4CB1-A9B8-C2266BDCFE2A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{58346B7E-E18F-4CB1-A9B8-C2266BDCFE2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{58346B7E-E18F-4CB1-A9B8-C2266BDCFE2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{58346B7E-E18F-4CB1-A9B8-C2266BDCFE2A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{1CAD9B42-85C2-495A-AA2D-1EA2FCFE1C3B} = {B7848DF9-D3DD-4C5B-BE93-3F70E13B450C}
 		{3A31EBDD-6C46-4F7A-B453-85E0922F8C44} = {B7848DF9-D3DD-4C5B-BE93-3F70E13B450C}
+		{58346B7E-E18F-4CB1-A9B8-C2266BDCFE2A} = {26601E76-232F-49B0-BFE3-0F73E0629C48}
 	EndGlobalSection
 EndGlobal
