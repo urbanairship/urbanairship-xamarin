@@ -17,7 +17,7 @@ namespace UrbanAirship {
 		// @required -(void)callWithData:(UAWebViewCallData * _Nonnull)data withCompletionHandler:(UAJavaScriptDelegateCompletionHandler _Nonnull)completionHandler;
 		[Abstract]
 		[Export ("callWithData:withCompletionHandler:")]
-		void WithCompletionHandler (UAWebViewCallData data, UAJavaScriptDelegateCompletionHandler completionHandler);
+		void CallWithData (UAWebViewCallData data, UAJavaScriptDelegateCompletionHandler completionHandler);
 	}
 
 	// @interface UAWhitelist : NSObject
@@ -1251,7 +1251,7 @@ namespace UrbanAirship {
 	{
 		// @optional -(void)closeWebView:(UIWebView * _Nonnull)webView animated:(BOOL)animated;
 		[Export ("closeWebView:animated:")]
-		void Animated (UIWebView webView, bool animated);
+		void CloseWebView (UIWebView webView, bool animated);
 	}
 
 	// @interface UAWebViewDelegate : NSObject <UIWebViewDelegate, UARichContentWindow>
