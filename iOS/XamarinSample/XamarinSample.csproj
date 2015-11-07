@@ -97,4 +97,7 @@
       <Name>AirshipBindings-iOS</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="AirshipConfig.plist" />
+  </ItemGroup>
 </Project>
