@@ -153,66 +153,6 @@ namespace UrbanAirship {
 		[Field ("UALocationServiceTimeoutError", "__Internal")]
 		NSString UALocationServiceTimeoutError { get; }
 
-		// extern UALocationEventAnalyticsKey *const _Nonnull UALocationEventForegroundKey;
-		[Field ("UALocationEventForegroundKey", "__Internal")]
-		NSString UALocationEventForegroundKey { get; }
-
-		// extern UALocationEventAnalyticsKey *const _Nonnull UALocationEventLatitudeKey;
-		[Field ("UALocationEventLatitudeKey", "__Internal")]
-		NSString UALocationEventLatitudeKey { get; }
-
-		// extern UALocationEventAnalyticsKey *const _Nonnull UALocationEventLongitudeKey;
-		[Field ("UALocationEventLongitudeKey", "__Internal")]
-		NSString UALocationEventLongitudeKey { get; }
-
-		// extern UALocationEventAnalyticsKey *const _Nonnull UALocationEventDesiredAccuracyKey;
-		[Field ("UALocationEventDesiredAccuracyKey", "__Internal")]
-		NSString UALocationEventDesiredAccuracyKey { get; }
-
-		// extern UALocationEventAnalyticsKey *const _Nonnull UALocationEventUpdateTypeKey;
-		[Field ("UALocationEventUpdateTypeKey", "__Internal")]
-		NSString UALocationEventUpdateTypeKey { get; }
-
-		// extern UALocationEventAnalyticsKey *const _Nonnull UALocationEventProviderKey;
-		[Field ("UALocationEventProviderKey", "__Internal")]
-		NSString UALocationEventProviderKey { get; }
-
-		// extern UALocationEventAnalyticsKey *const _Nonnull UALocationEventDistanceFilterKey;
-		[Field ("UALocationEventDistanceFilterKey", "__Internal")]
-		NSString UALocationEventDistanceFilterKey { get; }
-
-		// extern UALocationEventAnalyticsKey *const _Nonnull UALocationEventHorizontalAccuracyKey;
-		[Field ("UALocationEventHorizontalAccuracyKey", "__Internal")]
-		NSString UALocationEventHorizontalAccuracyKey { get; }
-
-		// extern UALocationEventAnalyticsKey *const _Nonnull UALocationEventVerticalAccuracyKey;
-		[Field ("UALocationEventVerticalAccuracyKey", "__Internal")]
-		NSString UALocationEventVerticalAccuracyKey { get; }
-
-		// extern UALocationEventAnalyticsKey *const _Nonnull UALocationEventSessionIDKey;
-		[Field ("UALocationEventSessionIDKey", "__Internal")]
-		NSString UALocationEventSessionIDKey { get; }
-
-		// extern UALocationEventUpdateType *const _Nonnull UALocationEventAnalyticsType;
-		[Field ("UALocationEventAnalyticsType", "__Internal")]
-		NSString UALocationEventAnalyticsType { get; }
-
-		// extern UALocationEventUpdateType *const _Nonnull UALocationEventUpdateTypeChange;
-		[Field ("UALocationEventUpdateTypeChange", "__Internal")]
-		NSString UALocationEventUpdateTypeChange { get; }
-
-		// extern UALocationEventUpdateType *const _Nonnull UALocationEventUpdateTypeContinuous;
-		[Field ("UALocationEventUpdateTypeContinuous", "__Internal")]
-		NSString UALocationEventUpdateTypeContinuous { get; }
-
-		// extern UALocationEventUpdateType *const _Nonnull UALocationEventUpdateTypeSingle;
-		[Field ("UALocationEventUpdateTypeSingle", "__Internal")]
-		NSString UALocationEventUpdateTypeSingle { get; }
-
-		// extern UALocationEventUpdateType *const _Nonnull UALocationEventUpdateTypeNone;
-		[Field ("UALocationEventUpdateTypeNone", "__Internal")]
-		NSString UALocationEventUpdateTypeNone { get; }
-
 		// extern NSString *const _Nonnull UAAnalyticsValueNone;
 		[Field ("UAAnalyticsValueNone", "__Internal")]
 		NSString UAAnalyticsValueNone { get; }
@@ -1740,31 +1680,6 @@ namespace UrbanAirship {
 		void SetStringArrayProperty (string[] value, string key);
 	}
 
-	// @interface UALocationEvent : UAEvent
-	[BaseType (typeof(UAEvent))]
-	interface UALocationEvent
-	{
-		// +(UALocationEvent * _Nonnull)locationEventWithLocation:(CLLocation * _Nonnull)location providerType:(UALocationServiceProviderType * _Nullable)providerType desiredAccuracy:(NSNumber * _Nullable)desiredAccuracy distanceFilter:(NSNumber * _Nullable)distanceFilter;
-		[Static]
-		[Export ("locationEventWithLocation:providerType:desiredAccuracy:distanceFilter:")]
-		UALocationEvent LocationEventWithLocation (CLLocation location, [NullAllowed] string providerType, [NullAllowed] NSNumber desiredAccuracy, [NullAllowed] NSNumber distanceFilter);
-
-		// +(UALocationEvent * _Nonnull)singleLocationEventWithLocation:(CLLocation * _Nonnull)location providerType:(UALocationServiceProviderType * _Nullable)providerType desiredAccuracy:(NSNumber * _Nullable)desiredAccuracy distanceFilter:(NSNumber * _Nullable)distanceFilter;
-		[Static]
-		[Export ("singleLocationEventWithLocation:providerType:desiredAccuracy:distanceFilter:")]
-		UALocationEvent SingleLocationEventWithLocation (CLLocation location, [NullAllowed] string providerType, [NullAllowed] NSNumber desiredAccuracy, [NullAllowed] NSNumber distanceFilter);
-
-		// +(UALocationEvent * _Nonnull)significantChangeLocationEventWithLocation:(CLLocation * _Nonnull)location providerType:(UALocationServiceProviderType * _Nullable)providerType;
-		[Static]
-		[Export ("significantChangeLocationEventWithLocation:providerType:")]
-		UALocationEvent SignificantChangeLocationEventWithLocation (CLLocation location, [NullAllowed] string providerType);
-
-		// +(UALocationEvent * _Nonnull)standardLocationEventWithLocation:(CLLocation * _Nonnull)location providerType:(UALocationServiceProviderType * _Nullable)providerType desiredAccuracy:(NSNumber * _Nullable)desiredAccuracy distanceFilter:(NSNumber * _Nullable)distanceFilter;
-		[Static]
-		[Export ("standardLocationEventWithLocation:providerType:desiredAccuracy:distanceFilter:")]
-		UALocationEvent StandardLocationEventWithLocation (CLLocation location, [NullAllowed] string providerType, [NullAllowed] NSNumber desiredAccuracy, [NullAllowed] NSNumber distanceFilter);
-	}
-
 	// @protocol UALocationServiceDelegate <NSObject>
 	[Protocol, Model]
 	[BaseType (typeof(NSObject))]
@@ -1796,10 +1711,6 @@ namespace UrbanAirship {
 		// -(void)setStandardLocationDesiredAccuracy:(CLLocationDistance)desiredAccuracy;
 		[Export ("standardLocationDesiredAccuracy")]
 		double StandardLocationDesiredAccuracy { get; set; }
-
-		// -(void)setStandardLocationDesiredAccuracy:(CLLocationAccuracy)desiredAccuracy;
-		[Export ("setStandardLocationDesiredAccuracy:")]
-		void SetStandardLocationDesiredAccuracy (double desiredAccuracy);
 
 		// +(BOOL)airshipLocationServiceEnabled;
 		[Static]
