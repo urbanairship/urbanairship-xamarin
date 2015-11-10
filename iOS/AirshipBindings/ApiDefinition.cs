@@ -441,19 +441,6 @@ namespace UrbanAirship {
 		bool IsBatchUpdating { get; }
 	}
 
-	// @interface UAChannel : NSObject
-	[BaseType (typeof(NSObject))]
-	interface UAChannel
-	{
-		// @property (readonly, copy, nonatomic) NSString * identifier;
-		[Export ("identifier")]
-		string Identifier { get; }
-
-		// @property (readonly, copy, nonatomic) NSString * location;
-		[Export ("location")]
-		string Location { get; }
-	}
-
 	// @protocol UAChannelRegistrarDelegate <NSObject>
 	[Protocol, Model]
 	[BaseType (typeof(NSObject))]
