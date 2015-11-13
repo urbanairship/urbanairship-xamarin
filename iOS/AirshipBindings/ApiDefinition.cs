@@ -441,102 +441,6 @@ namespace UrbanAirship {
 		bool IsBatchUpdating { get; }
 	}
 
-	// @protocol UAChannelRegistrarDelegate <NSObject>
-	[Protocol, Model]
-	[BaseType (typeof(NSObject))]
-	interface UAChannelRegistrarDelegate
-	{
-		// @optional -(void)registrationFailedWithPayload:(UAChannelRegistrationPayload * _Nonnull)payload;
-		[Export ("registrationFailedWithPayload:")]
-		void RegistrationFailedWithPayload (UAChannelRegistrationPayload payload);
-
-		// @optional -(void)registrationSucceededWithPayload:(UAChannelRegistrationPayload * _Nonnull)payload;
-		[Export ("registrationSucceededWithPayload:")]
-		void RegistrationSucceededWithPayload (UAChannelRegistrationPayload payload);
-
-		// @optional -(void)channelCreated:(NSString * _Nonnull)channelID channelLocation:(NSString * _Nonnull)channelLocation existing:(BOOL)existing;
-		[Export ("channelCreated:channelLocation:existing:")]
-		void ChannelCreated (string channelID, string channelLocation, bool existing);
-	}
-
-	// @interface UAChannelRegistrar : NSObject
-	[BaseType (typeof(NSObject))]
-	interface UAChannelRegistrar
-	{
-		[Wrap ("WeakDelegate")]
-		[NullAllowed]
-		UAChannelRegistrarDelegate Delegate { get; set; }
-
-		// @property (nonatomic, weak) id<UAChannelRegistrarDelegate> _Nullable delegate;
-		[NullAllowed, Export ("delegate", ArgumentSemantic.Weak)]
-		NSObject WeakDelegate { get; set; }
-
-		// -(void)registerWithChannelID:(NSString * _Nullable)channelID channelLocation:(NSString * _Nullable)channelLocation withPayload:(UAChannelRegistrationPayload * _Nonnull)payload forcefully:(BOOL)forcefully;
-		[Export ("registerWithChannelID:channelLocation:withPayload:forcefully:")]
-		void RegisterWithChannelID ([NullAllowed] string channelID, [NullAllowed] string channelLocation, UAChannelRegistrationPayload payload, bool forcefully);
-
-		// -(void)cancelAllRequests;
-		[Export ("cancelAllRequests")]
-		void CancelAllRequests ();
-	}
-
-	// @interface UAChannelRegistrationPayload : NSObject <NSCopying>
-	[BaseType (typeof(NSObject))]
-	interface UAChannelRegistrationPayload : INSCopying
-	{
-		// @property (copy, nonatomic) NSString * _Nullable userID;
-		[NullAllowed, Export ("userID")]
-		string UserID { get; set; }
-
-		// @property (copy, nonatomic) NSString * _Nullable deviceID;
-		[NullAllowed, Export ("deviceID")]
-		string DeviceID { get; set; }
-
-		// @property (getter = isOptedIn, assign, nonatomic) BOOL optedIn;
-		[Export ("optedIn")]
-		bool OptedIn { [Bind ("isOptedIn")] get; set; }
-
-		// @property (copy, nonatomic) NSString * _Nonnull pushAddress;
-		[Export ("pushAddress")]
-		string PushAddress { get; set; }
-
-		// @property (assign, nonatomic) BOOL setTags;
-		[Export ("setTags")]
-		bool SetTags { get; set; }
-
-		// @property (nonatomic, strong) NSArray<NSString *> * _Nullable tags;
-		[NullAllowed, Export ("tags", ArgumentSemantic.Strong)]
-		string[] Tags { get; set; }
-
-		// @property (copy, nonatomic) NSString * _Nullable alias;
-		[NullAllowed, Export ("alias")]
-		string Alias { get; set; }
-
-		// @property (nonatomic, strong) NSDictionary * _Nullable quietTime;
-		[NullAllowed, Export ("quietTime", ArgumentSemantic.Strong)]
-		NSDictionary QuietTime { get; set; }
-
-		// @property (copy, nonatomic) NSString * _Nullable timeZone;
-		[NullAllowed, Export ("timeZone")]
-		string TimeZone { get; set; }
-
-		// @property (nonatomic, strong) NSNumber * _Nullable badge;
-		[NullAllowed, Export ("badge", ArgumentSemantic.Strong)]
-		NSNumber Badge { get; set; }
-
-		// @property (getter = isBackgroundEnabled, assign, nonatomic) BOOL backgroundEnabled;
-		[Export ("backgroundEnabled")]
-		bool BackgroundEnabled { [Bind ("isBackgroundEnabled")] get; set; }
-
-		// -(NSData * _Nonnull)asJSONData;
-		[Export ("asJSONData")]
-		NSData AsJSONData { get; }
-
-		// -(BOOL)isEqualToPayload:(UAChannelRegistrationPayload * _Nullable)payload;
-		[Export ("isEqualToPayload:")]
-		bool IsEqualToPayload ([NullAllowed] UAChannelRegistrationPayload payload);
-	}
-
 	// typedef void (^UAHTTPConnectionSuccessBlock)(UAHTTPRequest * _Nonnull);
 	delegate void UAHTTPConnectionSuccessBlock (UAHTTPRequest arg0);
 
@@ -814,7 +718,7 @@ namespace UrbanAirship {
 
 	// @interface UAPush : NSObject <UAChannelRegistrarDelegate>
 	[BaseType (typeof(NSObject))]
-	interface UAPush : UAChannelRegistrarDelegate
+	interface UAPush
 	{
 		// @property (assign, nonatomic) BOOL backgroundPushNotificationsEnabled;
 		[Export ("backgroundPushNotificationsEnabled")]
