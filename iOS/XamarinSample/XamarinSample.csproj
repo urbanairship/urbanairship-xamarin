@@ -101,9 +101,9 @@
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
-    <ProjectReference Include="..\AirshipBindings\AirshipBindings-iOS.csproj">
+    <ProjectReference Include="..\AirshipBindings\AirshipBindings.iOS.csproj">
       <Project>{58346B7E-E18F-4CB1-A9B8-C2266BDCFE2A}</Project>
-      <Name>AirshipBindings-iOS</Name>
+      <Name>AirshipBindings.iOS</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
