@@ -363,6 +363,9 @@ namespace Sample
 			// aapt resource value: 0x7f0a0003
 			public const int always_allow = 2131361795;
 			
+			// aapt resource value: 0x7f0a0006
+			public const int channel_id = 2131361798;
+			
 			// aapt resource value: 0x7f0a000a
 			public const int close = 2131361802;
 			
@@ -374,9 +377,6 @@ namespace Sample
 			
 			// aapt resource value: 0x7f0a0008
 			public const int in_app_message = 2131361800;
-			
-			// aapt resource value: 0x7f0a0006
-			public const int myButton = 2131361798;
 			
 			// aapt resource value: 0x7f0a0005
 			public const int never_allow = 2131361797;
