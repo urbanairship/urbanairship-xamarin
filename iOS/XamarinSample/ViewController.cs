@@ -1,11 +1,14 @@
 ﻿using System;
 
 using UIKit;
+using UrbanAirship;
 
 namespace XamarinSample
 {
 	public partial class ViewController : UIViewController
 	{
+		RegistrationDelegate MyRegistrationDelegate;
+
 		public ViewController (IntPtr handle) : base (handle)
 		{
 		}
@@ -13,13 +16,25 @@ namespace XamarinSample
 		public override void ViewDidLoad ()
 		{
 			base.ViewDidLoad ();
-			// Perform any additional setup after loading the view, typically from a nib.
+
+			// Create and set a delegate to receive callbacks on channel registration
+			this.MyRegistrationDelegate = new RegistrationDelegate ();
+			this.MyRegistrationDelegate.ChannelLabel = this.ChannelLabel;
+			UAirship.Push.RegistrationDelegate = this.MyRegistrationDelegate;
+
+			// Display the channel ID, or "Unregistered" if we are still waiting for one
+			string channelID = UAirship.Push.ChannelID;
+			channelID = channelID != null ? channelID : "(Unregistered)";
+			this.ChannelLabel.Text = channelID;
 		}
 
-		public override void DidReceiveMemoryWarning ()
+		class RegistrationDelegate : UARegistrationDelegate
 		{
-			base.DidReceiveMemoryWarning ();
-			// Release any cached data, images, etc that aren't in use.
+			public UILabel ChannelLabel { get; set; }
+			public override void RegistrationSucceededForChannelID (string channelID, string deviceToken)
+			{
+				this.ChannelLabel.Text = UAirship.Push.ChannelID;
+			}
 		}
 	}
 }
