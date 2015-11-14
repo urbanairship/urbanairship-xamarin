@@ -17,7 +17,7 @@ namespace UrbanAirship {
 		// @required -(void)callWithData:(UAWebViewCallData * _Nonnull)data withCompletionHandler:(UAJavaScriptDelegateCompletionHandler _Nonnull)completionHandler;
 		[Abstract]
 		[Export ("callWithData:withCompletionHandler:")]
-		void CallWithData (UAWebViewCallData data, UAJavaScriptDelegateCompletionHandler completionHandler);
+		void Call (UAWebViewCallData data, UAJavaScriptDelegateCompletionHandler completionHandler);
 	}
 
 	// @interface UAWhitelist : NSObject
@@ -27,7 +27,7 @@ namespace UrbanAirship {
 		// +(instancetype _Nonnull)whitelistWithConfig:(UAConfig * _Nonnull)config;
 		[Static]
 		[Export ("whitelistWithConfig:")]
-		UAWhitelist WhitelistWithConfig (UAConfig config);
+		UAWhitelist Whitelist (UAConfig config);
 
 		// -(BOOL)addEntry:(NSString * _Nonnull)patternString;
 		[Export ("addEntry:")]
@@ -316,7 +316,7 @@ namespace UrbanAirship {
 		// +(instancetype _Nonnull)disposableWithBlock:(UADisposalBlock _Nonnull)disposalBlock;
 		[Static]
 		[Export ("disposableWithBlock:")]
-		UADisposable DisposableWithBlock (UADisposalBlock disposalBlock);
+		UADisposable Disposable (UADisposalBlock disposalBlock);
 
 		// -(void)dispose;
 		[Export ("dispose")]
@@ -381,7 +381,7 @@ namespace UrbanAirship {
 		// -(UADisposable * _Nullable)markMessageReadWithCompletionHandler:(UAInboxMessageCallbackBlock _Nullable)completionHandler;
 		[Export ("markMessageReadWithCompletionHandler:")]
 		[return: NullAllowed]
-		UADisposable MarkMessageReadWithCompletionHandler ([NullAllowed] UAInboxMessageCallbackBlock completionHandler);
+		UADisposable MarkMessageRead ([NullAllowed] UAInboxMessageCallbackBlock completionHandler);
 
 		// -(BOOL)isExpired;
 		[Export ("isExpired")]
@@ -408,7 +408,7 @@ namespace UrbanAirship {
 		// -(UADisposable * _Nullable)retrieveMessageListWithSuccessBlock:(UAInboxMessageListCallbackBlock _Nullable)successBlock withFailureBlock:(UAInboxMessageListCallbackBlock _Nullable)failureBlock;
 		[Export ("retrieveMessageListWithSuccessBlock:withFailureBlock:")]
 		[return: NullAllowed]
-		UADisposable RetrieveMessageListWithSuccessBlock ([NullAllowed] UAInboxMessageListCallbackBlock successBlock, [NullAllowed] UAInboxMessageListCallbackBlock failureBlock);
+		UADisposable RetrieveMessageList ([NullAllowed] UAInboxMessageListCallbackBlock successBlock, [NullAllowed] UAInboxMessageListCallbackBlock failureBlock);
 
 		// -(NSUInteger)messageCount;
 		[Export ("messageCount")]
@@ -439,188 +439,6 @@ namespace UrbanAirship {
 		// @property (readonly) BOOL isBatchUpdating;
 		[Export ("isBatchUpdating")]
 		bool IsBatchUpdating { get; }
-	}
-
-	// typedef void (^UAHTTPConnectionSuccessBlock)(UAHTTPRequest * _Nonnull);
-	delegate void UAHTTPConnectionSuccessBlock (UAHTTPRequest arg0);
-
-	// typedef void (^UAHTTPConnectionFailureBlock)(UAHTTPRequest * _Nonnull);
-	delegate void UAHTTPConnectionFailureBlock (UAHTTPRequest arg0);
-
-	// @interface UAHTTPRequest : NSObject
-	[BaseType (typeof(NSObject))]
-	interface UAHTTPRequest
-	{
-		// @property (readonly, nonatomic, strong) NSURL * _Nonnull url;
-		[Export ("url", ArgumentSemantic.Strong)]
-		NSUrl Url { get; }
-
-		// @property (nonatomic, strong) NSDictionary * _Nonnull headers;
-		[Export ("headers", ArgumentSemantic.Strong)]
-		NSDictionary Headers { get; set; }
-
-		// @property (copy, nonatomic) NSString * _Nonnull HTTPMethod;
-		[Export ("HTTPMethod")]
-		string HTTPMethod { get; set; }
-
-		// @property (copy, nonatomic) NSString * _Nullable username;
-		[NullAllowed, Export ("username")]
-		string Username { get; set; }
-
-		// @property (copy, nonatomic) NSString * _Nullable password;
-		[NullAllowed, Export ("password")]
-		string Password { get; set; }
-
-		// @property (nonatomic, strong) NSURL * _Nullable mainDocumentURL;
-		[NullAllowed, Export ("mainDocumentURL", ArgumentSemantic.Strong)]
-		NSUrl MainDocumentURL { get; set; }
-
-		// @property (nonatomic, strong) NSMutableData * _Nullable body;
-		[NullAllowed, Export ("body", ArgumentSemantic.Strong)]
-		NSMutableData Body { get; set; }
-
-		// @property (assign, nonatomic) BOOL compressBody;
-		[Export ("compressBody")]
-		bool CompressBody { get; set; }
-
-		// @property (nonatomic, strong) id _Nullable userInfo;
-		[NullAllowed, Export ("userInfo", ArgumentSemantic.Strong)]
-		NSObject UserInfo { get; set; }
-
-		// @property (readonly, nonatomic, strong) NSHTTPURLResponse * _Nullable response;
-		[NullAllowed, Export ("response", ArgumentSemantic.Strong)]
-		NSHttpUrlResponse Response { get; }
-
-		// @property (readonly, copy, nonatomic) NSString * _Nullable responseString;
-		[NullAllowed, Export ("responseString")]
-		string ResponseString { get; }
-
-		// @property (readonly, nonatomic, strong) NSData * _Nullable responseData;
-		[NullAllowed, Export ("responseData", ArgumentSemantic.Strong)]
-		NSData ResponseData { get; }
-
-		// @property (readonly, nonatomic, strong) NSError * _Nullable error;
-		[NullAllowed, Export ("error", ArgumentSemantic.Strong)]
-		NSError Error { get; }
-
-		// +(instancetype _Nonnull)requestWithURLString:(NSString * _Nonnull)urlString;
-		[Static]
-		[Export ("requestWithURLString:")]
-		UAHTTPRequest RequestWithURLString (string urlString);
-
-		// +(instancetype _Nonnull)requestWithURL:(NSURL * _Nonnull)url;
-		[Static]
-		[Export ("requestWithURL:")]
-		UAHTTPRequest RequestWithURL (NSUrl url);
-
-		// +(void)setDefaultUserAgentString:(NSString * _Nonnull)userAgent;
-		[Static]
-		[Export ("setDefaultUserAgentString:")]
-		void SetDefaultUserAgentString (string userAgent);
-
-		// -(instancetype _Nonnull)initWithURLString:(NSString * _Nonnull)urlString;
-		[Export ("initWithURLString:")]
-		IntPtr Constructor (string urlString);
-
-		// -(instancetype _Nonnull)initWithURL:(NSURL * _Nonnull)url;
-		[Export ("initWithURL:")]
-		IntPtr Constructor (NSUrl url);
-
-		// -(void)addRequestHeader:(NSString * _Nonnull)header value:(NSString * _Nonnull)value;
-		[Export ("addRequestHeader:value:")]
-		void AddRequestHeader (string header, string value);
-
-		// -(void)appendBodyData:(NSData * _Nonnull)data;
-		[Export ("appendBodyData:")]
-		void AppendBodyData (NSData data);
-	}
-
-	// @interface UAHTTPConnection : NSObject <NSURLConnectionDelegate>
-	[BaseType (typeof(NSObject))]
-	interface UAHTTPConnection : INSUrlConnectionDelegate
-	{
-		// @property (readonly, nonatomic, strong) NSURLConnection * _Nonnull urlConnection;
-		[Export ("urlConnection", ArgumentSemantic.Strong)]
-		NSUrlConnection UrlConnection { get; }
-
-		// @property (readonly, nonatomic, strong) UAHTTPRequest * _Nonnull request;
-		[Export ("request", ArgumentSemantic.Strong)]
-		UAHTTPRequest Request { get; }
-
-		[Wrap ("WeakDelegate")]
-		[NullAllowed]
-		NSObject Delegate { get; set; }
-
-		// @property (nonatomic, weak) id _Nullable delegate;
-		[NullAllowed, Export ("delegate", ArgumentSemantic.Weak)]
-		NSObject WeakDelegate { get; set; }
-
-		// @property (assign, nonatomic) SEL _Nullable successSelector;
-		[NullAllowed, Export ("successSelector", ArgumentSemantic.Assign)]
-		Selector SuccessSelector { get; set; }
-
-		// @property (assign, nonatomic) SEL _Nullable failureSelector;
-		[NullAllowed, Export ("failureSelector", ArgumentSemantic.Assign)]
-		Selector FailureSelector { get; set; }
-
-		// @property (copy, nonatomic) UAHTTPConnectionSuccessBlock _Nullable successBlock;
-		[NullAllowed, Export ("successBlock", ArgumentSemantic.Copy)]
-		UAHTTPConnectionSuccessBlock SuccessBlock { get; set; }
-
-		// @property (copy, nonatomic) UAHTTPConnectionFailureBlock _Nullable failureBlock;
-		[NullAllowed, Export ("failureBlock", ArgumentSemantic.Copy)]
-		UAHTTPConnectionFailureBlock FailureBlock { get; set; }
-
-		// @property (nonatomic, strong) NSOperationQueue * _Nullable delegateQueue;
-		[NullAllowed, Export ("delegateQueue", ArgumentSemantic.Strong)]
-		NSOperationQueue DelegateQueue { get; set; }
-
-		// +(instancetype _Nonnull)connectionWithRequest:(UAHTTPRequest * _Nonnull)httpRequest;
-		[Static]
-		[Export ("connectionWithRequest:")]
-		UAHTTPConnection ConnectionWithRequest (UAHTTPRequest httpRequest);
-
-		// +(instancetype _Nonnull)connectionWithRequest:(UAHTTPRequest * _Nonnull)httpRequest delegate:(id _Nonnull)delegate success:(SEL _Nonnull)successSelector failure:(SEL _Nonnull)failureSelector;
-		[Static]
-		[Export ("connectionWithRequest:delegate:success:failure:")]
-		UAHTTPConnection ConnectionWithRequest (UAHTTPRequest httpRequest, NSObject @delegate, Selector successSelector, Selector failureSelector);
-
-		// +(instancetype _Nonnull)connectionWithRequest:(UAHTTPRequest * _Nonnull)httpRequest successBlock:(UAHTTPConnectionSuccessBlock _Nonnull)successBlock failureBlock:(UAHTTPConnectionFailureBlock _Nonnull)failureBlock;
-		[Static]
-		[Export ("connectionWithRequest:successBlock:failureBlock:")]
-		UAHTTPConnection ConnectionWithRequest (UAHTTPRequest httpRequest, UAHTTPConnectionSuccessBlock successBlock, UAHTTPConnectionFailureBlock failureBlock);
-
-		// -(instancetype _Nonnull)initWithRequest:(UAHTTPRequest * _Nonnull)httpRequest;
-		[Export ("initWithRequest:")]
-		IntPtr Constructor (UAHTTPRequest httpRequest);
-
-		// -(BOOL)start;
-		[Export ("start")]
-		bool Start ();
-
-		// -(BOOL)startSynchronous;
-		[Export ("startSynchronous")]
-		bool StartSynchronous ();
-
-		// -(void)cancel;
-		[Export ("cancel")]
-		void Cancel ();
-
-		// -(void)connection:(NSURLConnection * _Nonnull)connection didReceiveResponse:(NSHTTPURLResponse * _Nonnull)response;
-		[Export ("connection:didReceiveResponse:")]
-		void Connection (NSUrlConnection connection, NSHttpUrlResponse response);
-
-		// -(void)connection:(NSURLConnection * _Nonnull)connection didReceiveData:(NSData * _Nonnull)data;
-		[Export ("connection:didReceiveData:")]
-		void Connection (NSUrlConnection connection, NSData data);
-
-		// -(void)connection:(NSURLConnection * _Nonnull)connection didFailWithError:(NSError * _Nonnull)error;
-		[Export ("connection:didFailWithError:")]
-		void Connection (NSUrlConnection connection, NSError error);
-
-		// -(void)connectionDidFinishLoading:(NSURLConnection * _Nonnull)connection;
-		[Export ("connectionDidFinishLoading:")]
-		void ConnectionDidFinishLoading (NSUrlConnection connection);
 	}
 
 	// @interface UANamedUser : NSObject
@@ -655,7 +473,7 @@ namespace UrbanAirship {
 	{
 		// @optional -(void)registrationSucceededForChannelID:(NSString * _Nonnull)channelID deviceToken:(NSString * _Nonnull)deviceToken;
 		[Export ("registrationSucceededForChannelID:deviceToken:")]
-		void RegistrationSucceededForChannelID (string channelID, string deviceToken);
+		void RegistrationSucceeded (string channelID, string deviceToken);
 
 		// @optional -(void)registrationFailed;
 		[Export ("registrationFailed")]
@@ -878,7 +696,7 @@ namespace UrbanAirship {
 
 		// -(void)appRegisteredForRemoteNotificationsWithDeviceToken:(NSData * _Nonnull)token;
 		[Export ("appRegisteredForRemoteNotificationsWithDeviceToken:")]
-		void AppRegisteredForRemoteNotificationsWithDeviceToken (NSData token);
+		void AppRegisteredForRemoteNotifications (NSData token);
 
 		// -(void)appRegisteredUserNotificationSettings;
 		[Export ("appRegisteredUserNotificationSettings")]
@@ -886,11 +704,11 @@ namespace UrbanAirship {
 
 		// -(void)appReceivedActionWithIdentifier:(NSString * _Nonnull)identifier notification:(NSDictionary * _Nonnull)notification applicationState:(UIApplicationState)state completionHandler:(void (^ _Nonnull)())completionHandler;
 		[Export ("appReceivedActionWithIdentifier:notification:applicationState:completionHandler:")]
-		void AppReceivedActionWithIdentifier (string identifier, NSDictionary notification, UIApplicationState state, Action completionHandler);
+		void AppReceivedAction (string identifier, NSDictionary notification, UIApplicationState state, Action completionHandler);
 
 		// -(void)appReceivedActionWithIdentifier:(NSString * _Nonnull)identifier notification:(NSDictionary * _Nonnull)notification responseInfo:(NSDictionary * _Nullable)responseInfo applicationState:(UIApplicationState)state completionHandler:(void (^ _Nonnull)())completionHandler;
 		[Export ("appReceivedActionWithIdentifier:notification:responseInfo:applicationState:completionHandler:")]
-		void AppReceivedActionWithIdentifier (string identifier, NSDictionary notification, [NullAllowed] NSDictionary responseInfo, UIApplicationState state, Action completionHandler);
+		void AppReceivedAction (string identifier, NSDictionary notification, [NullAllowed] NSDictionary responseInfo, UIApplicationState state, Action completionHandler);
 	}
 
 	// @interface UAConfig : NSObject
@@ -1016,12 +834,12 @@ namespace UrbanAirship {
 		// +(UAWebViewCallData * _Nonnull)callDataForURL:(NSURL * _Nonnull)url webView:(UIWebView * _Nonnull)webView;
 		[Static]
 		[Export ("callDataForURL:webView:")]
-		UAWebViewCallData CallDataForURL (NSUrl url, UIWebView webView);
+		UAWebViewCallData CallData (NSUrl url, UIWebView webView);
 
 		// +(UAWebViewCallData * _Nonnull)callDataForURL:(NSURL * _Nonnull)url webView:(UIWebView * _Nonnull)webView message:(UAInboxMessage * _Nullable)message;
 		[Static]
 		[Export ("callDataForURL:webView:message:")]
-		UAWebViewCallData CallDataForURL (NSUrl url, UIWebView webView, [NullAllowed] UAInboxMessage message);
+		UAWebViewCallData CallData (NSUrl url, UIWebView webView, [NullAllowed] UAInboxMessage message);
 
 		// @property (copy, nonatomic) NSString * _Nullable name;
 		[NullAllowed, Export ("name")]
@@ -1055,7 +873,7 @@ namespace UrbanAirship {
 	{
 		// @optional -(void)closeWebView:(UIWebView * _Nonnull)webView animated:(BOOL)animated;
 		[Export ("closeWebView:animated:")]
-		void CloseWebView (UIWebView webView, bool animated);
+		void Close (UIWebView webView, bool animated);
 	}
 
 	// @interface UAWebViewDelegate : NSObject <UIWebViewDelegate, UARichContentWindow>
@@ -1098,12 +916,12 @@ namespace UrbanAirship {
 		// +(instancetype _Nonnull)resultWithValue:(id _Nullable)value;
 		[Static]
 		[Export ("resultWithValue:")]
-		UAActionResult ResultWithValue ([NullAllowed] NSObject value);
+		UAActionResult Result ([NullAllowed] NSObject value);
 
 		// +(instancetype _Nonnull)resultWithValue:(id _Nullable)result withFetchResult:(UAActionFetchResult)fetchResult;
 		[Static]
 		[Export ("resultWithValue:withFetchResult:")]
-		UAActionResult ResultWithValue ([NullAllowed] NSObject result, UAActionFetchResult fetchResult);
+		UAActionResult Result ([NullAllowed] NSObject result, UAActionFetchResult fetchResult);
 
 		// +(instancetype _Nonnull)emptyResult;
 		[Static]
@@ -1113,12 +931,12 @@ namespace UrbanAirship {
 		// +(instancetype _Nonnull)resultWithError:(NSError * _Nonnull)error;
 		[Static]
 		[Export ("resultWithError:")]
-		UAActionResult ResultWithError (NSError error);
+		UAActionResult Result (NSError error);
 
 		// +(instancetype _Nonnull)resultWithError:(NSError * _Nonnull)error withFetchResult:(UAActionFetchResult)fetchResult;
 		[Static]
 		[Export ("resultWithError:withFetchResult:")]
-		UAActionResult ResultWithError (NSError error, UAActionFetchResult fetchResult);
+		UAActionResult Result (NSError error, UAActionFetchResult fetchResult);
 	}
 
 	// @interface UAActionArguments : NSObject
@@ -1128,12 +946,12 @@ namespace UrbanAirship {
 		// +(instancetype _Nonnull)argumentsWithValue:(id _Nullable)value withSituation:(UASituation)situation;
 		[Static]
 		[Export ("argumentsWithValue:withSituation:")]
-		UAActionArguments ArgumentsWithValue ([NullAllowed] NSObject value, UASituation situation);
+		UAActionArguments Arguments ([NullAllowed] NSObject value, UASituation situation);
 
 		// +(instancetype _Nonnull)argumentsWithValue:(id _Nullable)value withSituation:(UASituation)situation metadata:(NSDictionary * _Nullable)metadata;
 		[Static]
 		[Export ("argumentsWithValue:withSituation:metadata:")]
-		UAActionArguments ArgumentsWithValue ([NullAllowed] NSObject value, UASituation situation, [NullAllowed] NSDictionary metadata);
+		UAActionArguments Arguments ([NullAllowed] NSObject value, UASituation situation, [NullAllowed] NSDictionary metadata);
 
 		// @property (readonly, assign, nonatomic) UASituation situation;
 		[Export ("situation", ArgumentSemantic.Assign)]
@@ -1167,25 +985,25 @@ namespace UrbanAirship {
 
 		// -(void)willPerformWithArguments:(UAActionArguments * _Nonnull)arguments;
 		[Export ("willPerformWithArguments:")]
-		void WillPerformWithArguments (UAActionArguments arguments);
+		void WillPerform (UAActionArguments arguments);
 
 		// -(void)didPerformWithArguments:(UAActionArguments * _Nonnull)arguments withResult:(UAActionResult * _Nonnull)result;
 		[Export ("didPerformWithArguments:withResult:")]
-		void DidPerformWithArguments (UAActionArguments arguments, UAActionResult result);
+		void DidPerform (UAActionArguments arguments, UAActionResult result);
 
 		// -(void)performWithArguments:(UAActionArguments * _Nonnull)arguments completionHandler:(UAActionCompletionHandler _Nonnull)completionHandler;
 		[Export ("performWithArguments:completionHandler:")]
-		void PerformWithArguments (UAActionArguments arguments, UAActionCompletionHandler completionHandler);
+		void Perform (UAActionArguments arguments, UAActionCompletionHandler completionHandler);
 
 		// +(instancetype _Nonnull)actionWithBlock:(UAActionBlock _Nonnull)actionBlock;
 		[Static]
 		[Export ("actionWithBlock:")]
-		UAAction ActionWithBlock (UAActionBlock actionBlock);
+		UAAction Action (UAActionBlock actionBlock);
 
 		// +(instancetype _Nonnull)actionWithBlock:(UAActionBlock _Nonnull)actionBlock acceptingArguments:(UAActionPredicate _Nullable)predicateBlock;
 		[Static]
 		[Export ("actionWithBlock:acceptingArguments:")]
-		UAAction ActionWithBlock (UAActionBlock actionBlock, [NullAllowed] UAActionPredicate predicateBlock);
+		UAAction Action (UAActionBlock actionBlock, [NullAllowed] UAActionPredicate predicateBlock);
 	}
 
 	// @interface UALandingPageAction : UAAction
@@ -1299,22 +1117,22 @@ namespace UrbanAirship {
 		// +(void)runActionWithName:(NSString * _Nonnull)actionName value:(id _Nullable)value situation:(UASituation)situation;
 		[Static]
 		[Export ("runActionWithName:value:situation:")]
-		void RunActionWithName (string actionName, [NullAllowed] NSObject value, UASituation situation);
+		void RunAction (string actionName, [NullAllowed] NSObject value, UASituation situation);
 
 		// +(void)runActionWithName:(NSString * _Nonnull)actionName value:(id _Nullable)value situation:(UASituation)situation metadata:(NSDictionary * _Nonnull)metadata;
 		[Static]
 		[Export ("runActionWithName:value:situation:metadata:")]
-		void RunActionWithName (string actionName, [NullAllowed] NSObject value, UASituation situation, NSDictionary metadata);
+		void RunAction (string actionName, [NullAllowed] NSObject value, UASituation situation, NSDictionary metadata);
 
 		// +(void)runActionWithName:(NSString * _Nonnull)actionName value:(id _Nullable)value situation:(UASituation)situation completionHandler:(UAActionCompletionHandler _Nonnull)completionHandler;
 		[Static]
 		[Export ("runActionWithName:value:situation:completionHandler:")]
-		void RunActionWithName (string actionName, [NullAllowed] NSObject value, UASituation situation, UAActionCompletionHandler completionHandler);
+		void RunAction (string actionName, [NullAllowed] NSObject value, UASituation situation, UAActionCompletionHandler completionHandler);
 
 		// +(void)runActionWithName:(NSString * _Nonnull)actionName value:(id _Nullable)value situation:(UASituation)situation metadata:(NSDictionary * _Nullable)metadata completionHandler:(UAActionCompletionHandler _Nullable)completionHandler;
 		[Static]
 		[Export ("runActionWithName:value:situation:metadata:completionHandler:")]
-		void RunActionWithName (string actionName, [NullAllowed] NSObject value, UASituation situation, [NullAllowed] NSDictionary metadata, [NullAllowed] UAActionCompletionHandler completionHandler);
+		void RunAction (string actionName, [NullAllowed] NSObject value, UASituation situation, [NullAllowed] NSDictionary metadata, [NullAllowed] UAActionCompletionHandler completionHandler);
 
 		// +(void)runAction:(UAAction * _Nonnull)action value:(id _Nullable)value situation:(UASituation)situation;
 		[Static]
@@ -1365,13 +1183,6 @@ namespace UrbanAirship {
 	[BaseType (typeof(UAAction))]
 	interface UADisplayInboxAction
 	{
-		// -(void)displayInboxMessage:(UAInboxMessage * _Nonnull)message situation:(UASituation)situation;
-		[Export ("displayInboxMessage:situation:")]
-		void DisplayInboxMessage (UAInboxMessage message, UASituation situation);
-
-		// -(void)displayInboxWithSituation:(UASituation)situation;
-		[Export ("displayInboxWithSituation:")]
-		void DisplayInboxWithSituation (UASituation situation);
 	}
 
 	// @interface UAOpenExternalURLAction : UAAction
@@ -1467,7 +1278,7 @@ namespace UrbanAirship {
 		// +(instancetype _Nonnull)identifiersWithDictionary:(NSDictionary<NSString *,NSString *> * _Nonnull)identifiers;
 		[Static]
 		[Export ("identifiersWithDictionary:")]
-		UAAssociatedIdentifiers IdentifiersWithDictionary (NSDictionary<NSString, NSString> identifiers);
+		UAAssociatedIdentifiers Identifiers (NSDictionary<NSString, NSString> identifiers);
 
 		// @property (copy, nonatomic) NSString * _Nullable advertisingID;
 		[NullAllowed, Export ("advertisingID")]
@@ -1518,17 +1329,17 @@ namespace UrbanAirship {
 		// +(instancetype _Nonnull)eventWithName:(NSString * _Nonnull)eventName;
 		[Static]
 		[Export ("eventWithName:")]
-		UACustomEvent EventWithName (string eventName);
+		UACustomEvent Event (string eventName);
 
 		// +(instancetype _Nonnull)eventWithName:(NSString * _Nonnull)eventName valueFromString:(NSString * _Nullable)eventValue;
 		[Static]
 		[Export ("eventWithName:valueFromString:")]
-		UACustomEvent EventWithName (string eventName, [NullAllowed] string eventValue);
+		UACustomEvent Event (string eventName, [NullAllowed] string eventValue);
 
 		// +(instancetype _Nonnull)eventWithName:(NSString * _Nonnull)eventName value:(NSNumber * _Nullable)eventValue;
 		[Static]
 		[Export ("eventWithName:value:")]
-		UACustomEvent EventWithName (string eventName, [NullAllowed] NSNumber eventValue);
+		UACustomEvent Event (string eventName, [NullAllowed] NSNumber eventValue);
 
 		// @property (nonatomic, strong) NSDecimalNumber * _Nullable eventValue;
 		[NullAllowed, Export ("eventValue", ArgumentSemantic.Strong)]
@@ -1727,12 +1538,12 @@ namespace UrbanAirship {
 		// @required -(UIView * _Nonnull)viewForMessage:(UAInAppMessage * _Nonnull)message parentView:(UIView * _Nonnull)parentView;
 		[Abstract]
 		[Export ("viewForMessage:parentView:")]
-		UIView ViewForMessage (UAInAppMessage message, UIView parentView);
+		UIView View (UAInAppMessage message, UIView parentView);
 
 		// @required -(UIControl * _Nonnull)messageView:(UIView * _Nonnull)messageView buttonAtIndex:(NSUInteger)index;
 		[Abstract]
 		[Export ("messageView:buttonAtIndex:")]
-		UIControl ButtonAtIndex (UIView messageView, nuint index);
+		UIControl Button (UIView messageView, nuint index);
 
 		// @optional -(void)messageView:(UIView * _Nonnull)messageView didChangeTouchState:(BOOL)touchDown;
 		[Export ("messageView:didChangeTouchState:")]
@@ -1834,11 +1645,11 @@ namespace UrbanAirship {
 		// +(instancetype _Nonnull)messageWithPayload:(NSDictionary * _Nonnull)payload;
 		[Static]
 		[Export ("messageWithPayload:")]
-		UAInAppMessage MessageWithPayload (NSDictionary payload);
+		UAInAppMessage Message (NSDictionary payload);
 
 		// -(BOOL)isEqualToMessage:(UAInAppMessage * _Nullable)message;
 		[Export ("isEqualToMessage:")]
-		bool IsEqualToMessage ([NullAllowed] UAInAppMessage message);
+		bool IsEqual ([NullAllowed] UAInAppMessage message);
 
 		// @property (readonly, nonatomic) NSDictionary * _Nonnull payload;
 		[Export ("payload")]
@@ -1991,7 +1802,7 @@ namespace UrbanAirship {
 		// +(instancetype _Nonnull)actionWithUIUserNotificationAction:(UIUserNotificationAction * _Nonnull)uiAction;
 		[Static]
 		[Export ("actionWithUIUserNotificationAction:")]
-		UAMutableUserNotificationAction ActionWithUIUserNotificationAction (UIUserNotificationAction uiAction);
+		UAMutableUserNotificationAction Action (UIUserNotificationAction uiAction);
 
 		// @property (copy, nonatomic) NSString * _Nullable identifier;
 		[NullAllowed, Export ("identifier")]
@@ -2025,11 +1836,11 @@ namespace UrbanAirship {
 		// -(NSArray * _Nullable)actionsForContext:(UIUserNotificationActionContext)context;
 		[Export ("actionsForContext:")]
 		[return: NullAllowed]
-		UAUserNotificationAction[] ActionsForContext (UIUserNotificationActionContext context);
+		UAUserNotificationAction[] Actions (UIUserNotificationActionContext context);
 
 		// -(BOOL)isEqualToCategory:(UAUserNotificationCategory * _Nullable)category;
 		[Export ("isEqualToCategory:")]
-		bool IsEqualToCategory ([NullAllowed] UAUserNotificationCategory category);
+		bool IsEqual ([NullAllowed] UAUserNotificationCategory category);
 	}
 
 	// @interface UAMutableUserNotificationCategory : UAUserNotificationCategory
@@ -2039,7 +1850,7 @@ namespace UrbanAirship {
 		// +(instancetype _Nonnull)categoryWithUIUserNotificationCategory:(UIUserNotificationCategory * _Nonnull)uiCategory;
 		[Static]
 		[Export ("categoryWithUIUserNotificationCategory:")]
-		UAMutableUserNotificationCategory CategoryWithUIUserNotificationCategory (UIUserNotificationCategory uiCategory);
+		UAMutableUserNotificationCategory Category (UIUserNotificationCategory uiCategory);
 
 		// -(void)setActions:(NSArray * _Nullable)actions forContext:(UIUserNotificationActionContext)context;
 		[Export ("setActions:forContext:")]
@@ -2057,7 +1868,7 @@ namespace UrbanAirship {
 		// +(NSSet * _Nonnull)createCategoriesFromFile:(NSString * _Nonnull)filePath;
 		[Static]
 		[Export ("createCategoriesFromFile:")]
-		NSSet CreateCategoriesFromFile (string filePath);
+		NSSet CreateCategories (string filePath);
 
 		// +(UAUserNotificationCategory * _Nonnull)createCategory:(NSString * _Nonnull)categoryId actions:(NSArray * _Nonnull)actionDefinitions;
 		[Static]

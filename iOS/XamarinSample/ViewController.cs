@@ -31,7 +31,7 @@ namespace XamarinSample
 		class RegistrationDelegate : UARegistrationDelegate
 		{
 			public UILabel ChannelLabel { get; set; }
-			public override void RegistrationSucceededForChannelID (string channelID, string deviceToken)
+			public override void RegistrationSucceeded (string channelID, string deviceToken)
 			{
 				this.ChannelLabel.Text = UAirship.Push.ChannelID;
 			}
