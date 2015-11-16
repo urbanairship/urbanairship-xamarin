@@ -160,6 +160,14 @@ namespace UrbanAirship {
 		// extern NSString *const _Nonnull UALocationServiceBestAvailableSingleLocationKey;
 		[Field ("UALocationServiceBestAvailableSingleLocationKey", "__Internal")]
 		NSString UALocationServiceBestAvailableSingleLocationKey { get; }
+
+		// extern const NSUInteger UAAssociatedIdentifiersMaxCharacterCount;
+		[Field ("UAAssociatedIdentifiersMaxCharacterCount", "__Internal")]
+		nuint UAAssociatedIdentifiersMaxCharacterCount { get; }
+
+		// extern const NSUInteger UAAssociatedIdentifiersMaxCount;
+		[Field ("UAAssociatedIdentifiersMaxCount", "__Internal")]
+		nuint UAAssociatedIdentifiersMaxCount { get; }
 	}
 
 	// @interface UAirship : NSObject
@@ -676,7 +684,7 @@ namespace UrbanAirship {
 
 		// -(void)setQuietTimeStartHour:(NSUInteger)startHour startMinute:(NSUInteger)startMinute endHour:(NSUInteger)endHour endMinute:(NSUInteger)endMinute;
 		[Export ("setQuietTimeStartHour:startMinute:endHour:endMinute:")]
-		void SetQuietTimeStartHour (nuint startHour, nuint startMinute, nuint endHour, nuint endMinute);
+		void SetQuietTime (nuint startHour, nuint startMinute, nuint endHour, nuint endMinute);
 
 		// -(void)enableChannelCreation;
 		[Export ("enableChannelCreation")]
@@ -1221,82 +1229,6 @@ namespace UrbanAirship {
 	{
 	}
 
-	// @interface UAAnalytics : NSObject
-	[BaseType (typeof(NSObject))]
-	interface UAAnalytics
-	{
-		// @property (readonly, copy, nonatomic) NSString * _Nullable conversionSendID;
-		[NullAllowed, Export ("conversionSendID")]
-		string ConversionSendID { get; }
-
-		// @property (readonly, copy, nonatomic) NSString * _Nullable conversionRichPushID;
-		[NullAllowed, Export ("conversionRichPushID")]
-		string ConversionRichPushID { get; }
-
-		// @property (readonly, copy, nonatomic) NSString * _Nullable sessionID;
-		[NullAllowed, Export ("sessionID")]
-		string SessionID { get; }
-
-		// @property (readonly, assign, nonatomic) NSTimeInterval oldestEventTime;
-		[Export ("oldestEventTime")]
-		double OldestEventTime { get; }
-
-		// @property (getter = isEnabled, assign, nonatomic) BOOL enabled;
-		[Export ("enabled")]
-		bool Enabled { [Bind ("isEnabled")] get; set; }
-
-		// -(void)addEvent:(UAEvent * _Nonnull)event;
-		[Export ("addEvent:")]
-		void AddEvent (UAEvent @event);
-
-		// -(void)associateDeviceIdentifiers:(UAAssociatedIdentifiers * _Nonnull)associatedIdentifiers;
-		[Export ("associateDeviceIdentifiers:")]
-		void AssociateDeviceIdentifiers (UAAssociatedIdentifiers associatedIdentifiers);
-
-		// -(void)handleNotification:(NSDictionary * _Nonnull)userInfo inApplicationState:(UIApplicationState)applicationState;
-		[Export ("handleNotification:inApplicationState:")]
-		void HandleNotification (NSDictionary userInfo, UIApplicationState applicationState);
-
-		// -(NSDate * _Nonnull)lastSendTime;
-		[Export ("lastSendTime")]
-		NSDate LastSendTime { get; }
-
-		// -(void)trackScreen:(NSString * _Nullable)screen;
-		[Export ("trackScreen:")]
-		void TrackScreen ([NullAllowed] string screen);
-	}
-
-	// @interface UAAssociatedIdentifiers : NSObject
-	[BaseType (typeof(NSObject))]
-	interface UAAssociatedIdentifiers
-	{
-		// +(instancetype _Nonnull)identifiers;
-		[Static]
-		[Export ("identifiers")]
-		UAAssociatedIdentifiers Identifiers ();
-
-		// +(instancetype _Nonnull)identifiersWithDictionary:(NSDictionary<NSString *,NSString *> * _Nonnull)identifiers;
-		[Static]
-		[Export ("identifiersWithDictionary:")]
-		UAAssociatedIdentifiers Identifiers (NSDictionary<NSString, NSString> identifiers);
-
-		// @property (copy, nonatomic) NSString * _Nullable advertisingID;
-		[NullAllowed, Export ("advertisingID")]
-		string AdvertisingID { get; set; }
-
-		// @property (copy, nonatomic) NSString * _Nullable vendorID;
-		[NullAllowed, Export ("vendorID")]
-		string VendorID { get; set; }
-
-		// @property (readonly, nonatomic) NSDictionary * _Nonnull allIDs;
-		[Export ("allIDs")]
-		NSDictionary AllIDs { get; }
-
-		// -(void)setIdentifier:(NSString * _Nullable)identifier forKey:(NSString * _Nonnull)key;
-		[Export ("setIdentifier:forKey:")]
-		void SetIdentifier ([NullAllowed] string identifier, string key);
-	}
-
 	// @interface UAEvent : NSObject
 	[BaseType (typeof(NSObject))]
 	interface UAEvent
@@ -1380,6 +1312,82 @@ namespace UrbanAirship {
 		// -(void)setStringArrayProperty:(NSArray<NSString *> * _Nonnull)value forKey:(NSString * _Nonnull)key;
 		[Export ("setStringArrayProperty:forKey:")]
 		void SetStringArrayProperty (string[] value, string key);
+	}
+
+	// @interface UAAnalytics : NSObject
+	[BaseType (typeof(NSObject))]
+	interface UAAnalytics
+	{
+		// @property (readonly, copy, nonatomic) NSString * _Nullable conversionSendID;
+		[NullAllowed, Export ("conversionSendID")]
+		string ConversionSendID { get; }
+
+		// @property (readonly, copy, nonatomic) NSString * _Nullable conversionRichPushID;
+		[NullAllowed, Export ("conversionRichPushID")]
+		string ConversionRichPushID { get; }
+
+		// @property (readonly, copy, nonatomic) NSString * _Nullable sessionID;
+		[NullAllowed, Export ("sessionID")]
+		string SessionID { get; }
+
+		// @property (readonly, assign, nonatomic) NSTimeInterval oldestEventTime;
+		[Export ("oldestEventTime")]
+		double OldestEventTime { get; }
+
+		// @property (getter = isEnabled, assign, nonatomic) BOOL enabled;
+		[Export ("enabled")]
+		bool Enabled { [Bind ("isEnabled")] get; set; }
+
+		// -(void)addEvent:(UAEvent * _Nonnull)event;
+		[Export ("addEvent:")]
+		void AddEvent (UAEvent @event);
+
+		// -(void)associateDeviceIdentifiers:(UAAssociatedIdentifiers * _Nonnull)associatedIdentifiers;
+		[Export ("associateDeviceIdentifiers:")]
+		void AssociateDeviceIdentifiers (UAAssociatedIdentifiers associatedIdentifiers);
+
+		// -(void)handleNotification:(NSDictionary * _Nonnull)userInfo inApplicationState:(UIApplicationState)applicationState;
+		[Export ("handleNotification:inApplicationState:")]
+		void HandleNotification (NSDictionary userInfo, UIApplicationState applicationState);
+
+		// -(NSDate * _Nonnull)lastSendTime;
+		[Export ("lastSendTime")]
+		NSDate LastSendTime { get; }
+
+		// -(void)trackScreen:(NSString * _Nullable)screen;
+		[Export ("trackScreen:")]
+		void TrackScreen ([NullAllowed] string screen);
+	}
+
+	// @interface UAAssociatedIdentifiers : NSObject
+	[BaseType (typeof(NSObject))]
+	interface UAAssociatedIdentifiers
+	{
+		// +(instancetype _Nonnull)identifiers;
+		[Static]
+		[Export ("identifiers")]
+		UAAssociatedIdentifiers Identifiers ();
+
+		// +(instancetype _Nonnull)identifiersWithDictionary:(NSDictionary<NSString *,NSString *> * _Nonnull)identifiers;
+		[Static]
+		[Export ("identifiersWithDictionary:")]
+		UAAssociatedIdentifiers Identifiers (NSDictionary<NSString, NSString> identifiers);
+
+		// @property (copy, nonatomic) NSString * _Nullable advertisingID;
+		[NullAllowed, Export ("advertisingID")]
+		string AdvertisingID { get; set; }
+
+		// @property (copy, nonatomic) NSString * _Nullable vendorID;
+		[NullAllowed, Export ("vendorID")]
+		string VendorID { get; set; }
+
+		// @property (readonly, nonatomic) NSDictionary * _Nonnull allIDs;
+		[Export ("allIDs")]
+		NSDictionary AllIDs { get; }
+
+		// -(void)setIdentifier:(NSString * _Nullable)identifier forKey:(NSString * _Nonnull)key;
+		[Export ("setIdentifier:forKey:")]
+		void SetIdentifier ([NullAllowed] string identifier, string key);
 	}
 
 	// @protocol UALocationServiceDelegate <NSObject>
