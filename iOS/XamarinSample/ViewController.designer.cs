@@ -16,13 +16,13 @@ namespace XamarinSample
 	{
 		[Outlet]
 		[GeneratedCode ("iOS Designer", "1.0")]
-		UILabel ChannelLabel { get; set; }
+		UIButton ChannelButton { get; set; }
 
 		void ReleaseDesignerOutlets ()
 		{
-			if (ChannelLabel != null) {
-				ChannelLabel.Dispose ();
-				ChannelLabel = null;
+			if (ChannelButton != null) {
+				ChannelButton.Dispose ();
+				ChannelButton = null;
 			}
 		}
 	}
