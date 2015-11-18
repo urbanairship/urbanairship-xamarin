@@ -16,6 +16,8 @@
     <AssemblyName>Airship</AssemblyName>
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
     <TargetFrameworkVersion>v6.0</TargetFrameworkVersion>
+    <ReleaseVersion>1.0</ReleaseVersion>
+    <Description>Urban Airship Xamarin sample app for Android</Description>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>

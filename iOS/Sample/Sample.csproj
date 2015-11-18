@@ -9,6 +9,8 @@
     <RootNamespace>Sample</RootNamespace>
     <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
     <AssemblyName>XamarinSample</AssemblyName>
+    <ReleaseVersion>1.0</ReleaseVersion>
+    <Description>Urban Airship Xamarin sample app for iOS</Description>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhoneSimulator' ">
     <DebugSymbols>true</DebugSymbols>

@@ -78,4 +78,8 @@ Global
 		{C6EB4686-06A0-4B33-AEDE-C42E5EC8CA50} = {26601E76-232F-49B0-BFE3-0F73E0629C48}
 		{58346B7E-E18F-4CB1-A9B8-C2266BDCFE2A} = {26601E76-232F-49B0-BFE3-0F73E0629C48}
 	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		description = Urban Airship Xamarin Bindings
+		version = 1.0
+	EndGlobalSection
 EndGlobal
