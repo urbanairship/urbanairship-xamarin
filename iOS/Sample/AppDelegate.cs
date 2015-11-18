@@ -3,7 +3,7 @@ using UIKit;
 using UrbanAirship;
 using System.Threading.Tasks;
 
-namespace XamarinSample
+namespace Sample
 {
 	[Register ("AppDelegate")]
 	public class AppDelegate : UIApplicationDelegate

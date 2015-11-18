@@ -3,7 +3,7 @@
 using UIKit;
 using UrbanAirship;
 
-namespace XamarinSample
+namespace Sample
 {
 	public partial class ViewController : UIViewController
 	{
