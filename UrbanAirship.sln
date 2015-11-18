@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample", "Android\Sample\Sa
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "iOS", "iOS", "{26601E76-232F-49B0-BFE3-0F73E0629C48}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample", "iOS\XamarinSample\Sample.csproj", "{C6EB4686-06A0-4B33-AEDE-C42E5EC8CA50}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample", "iOS\Sample\Sample.csproj", "{C6EB4686-06A0-4B33-AEDE-C42E5EC8CA50}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirshipBindings.iOS", "iOS\AirshipBindings\AirshipBindings.iOS.csproj", "{58346B7E-E18F-4CB1-A9B8-C2266BDCFE2A}"
 EndProject
