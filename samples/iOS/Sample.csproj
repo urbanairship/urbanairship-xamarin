@@ -11,6 +11,8 @@
     <AssemblyName>XamarinSample</AssemblyName>
     <ReleaseVersion>1.0</ReleaseVersion>
     <Description>Urban Airship Xamarin sample app for iOS</Description>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhoneSimulator' ">
     <DebugSymbols>true</DebugSymbols>
@@ -103,12 +105,12 @@
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
-    <ProjectReference Include="..\AirshipBindings\AirshipBindings.iOS.csproj">
+    <BundleResource Include="AirshipConfig.plist" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\AirshipBindings.iOS\AirshipBindings.iOS.csproj">
       <Project>{58346B7E-E18F-4CB1-A9B8-C2266BDCFE2A}</Project>
       <Name>AirshipBindings.iOS</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="AirshipConfig.plist" />
   </ItemGroup>
 </Project>

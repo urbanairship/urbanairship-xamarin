@@ -15,9 +15,11 @@
     <AndroidUseLatestPlatformSdk>True</AndroidUseLatestPlatformSdk>
     <AssemblyName>Airship</AssemblyName>
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
-    <TargetFrameworkVersion>v6.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v5.0</TargetFrameworkVersion>
     <ReleaseVersion>1.0</ReleaseVersion>
     <Description>Urban Airship Xamarin sample app for Android</Description>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -76,12 +78,12 @@
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <ItemGroup>
-    <ProjectReference Include="..\AirshipBindings\AirshipBindings.Android.csproj">
+    <AndroidAsset Include="Assets\airshipconfig.properties" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\src\AirshipBindings.android\AirshipBindings.Android.csproj">
       <Project>{1CAD9B42-85C2-495A-AA2D-1EA2FCFE1C3B}</Project>
       <Name>AirshipBindings.Android</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidAsset Include="Assets\airshipconfig.properties" />
   </ItemGroup>
 </Project>

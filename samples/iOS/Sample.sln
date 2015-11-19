@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample", "Sample.csproj", "{C6EB4686-06A0-4B33-AEDE-C42E5EC8CA50}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirshipBindings.iOS", "..\..\src\AirshipBindings.iOS\AirshipBindings.iOS.csproj", "{58346B7E-E18F-4CB1-A9B8-C2266BDCFE2A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|iPhoneSimulator = Debug|iPhoneSimulator
+		Release|iPhone = Release|iPhone
+		Release|iPhoneSimulator = Release|iPhoneSimulator
+		Debug|iPhone = Debug|iPhone
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{58346B7E-E18F-4CB1-A9B8-C2266BDCFE2A}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{58346B7E-E18F-4CB1-A9B8-C2266BDCFE2A}.Debug|iPhone.Build.0 = Debug|Any CPU
+		{58346B7E-E18F-4CB1-A9B8-C2266BDCFE2A}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{58346B7E-E18F-4CB1-A9B8-C2266BDCFE2A}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{58346B7E-E18F-4CB1-A9B8-C2266BDCFE2A}.Release|iPhone.ActiveCfg = Release|Any CPU
+		{58346B7E-E18F-4CB1-A9B8-C2266BDCFE2A}.Release|iPhone.Build.0 = Release|Any CPU
+		{58346B7E-E18F-4CB1-A9B8-C2266BDCFE2A}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{58346B7E-E18F-4CB1-A9B8-C2266BDCFE2A}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
+		{C6EB4686-06A0-4B33-AEDE-C42E5EC8CA50}.Debug|iPhone.ActiveCfg = Debug|iPhone
+		{C6EB4686-06A0-4B33-AEDE-C42E5EC8CA50}.Debug|iPhone.Build.0 = Debug|iPhone
+		{C6EB4686-06A0-4B33-AEDE-C42E5EC8CA50}.Debug|iPhoneSimulator.ActiveCfg = Debug|iPhoneSimulator
+		{C6EB4686-06A0-4B33-AEDE-C42E5EC8CA50}.Debug|iPhoneSimulator.Build.0 = Debug|iPhoneSimulator
+		{C6EB4686-06A0-4B33-AEDE-C42E5EC8CA50}.Release|iPhone.ActiveCfg = Release|iPhone
+		{C6EB4686-06A0-4B33-AEDE-C42E5EC8CA50}.Release|iPhone.Build.0 = Release|iPhone
+		{C6EB4686-06A0-4B33-AEDE-C42E5EC8CA50}.Release|iPhoneSimulator.ActiveCfg = Release|iPhoneSimulator
+		{C6EB4686-06A0-4B33-AEDE-C42E5EC8CA50}.Release|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		version = 1.0
+	EndGlobalSection
+EndGlobal
