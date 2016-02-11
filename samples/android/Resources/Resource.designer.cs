@@ -119,11 +119,44 @@ namespace Sample
 			// aapt resource value: 0x7f01000b
 			public const int imageAspectRatioAdjust = 2130771979;
 			
+			// aapt resource value: 0x7f010024
+			public const int inAppMessageBannerStyle = 2130772004;
+			
+			// aapt resource value: 0x7f01001f
+			public const int messageCenterDividerColor = 2130771999;
+			
+			// aapt resource value: 0x7f01001e
+			public const int messageCenterEmptyMessageText = 2130771998;
+			
+			// aapt resource value: 0x7f01001d
+			public const int messageCenterEmptyMessageTextAppearance = 2130771997;
+			
 			// aapt resource value: 0x7f010018
-			public const int inAppMessageBannerStyle = 2130771992;
+			public const int messageCenterItemBackground = 2130771992;
+			
+			// aapt resource value: 0x7f01001a
+			public const int messageCenterItemDateTextAppearance = 2130771994;
+			
+			// aapt resource value: 0x7f010020
+			public const int messageCenterItemIconEnabled = 2130772000;
+			
+			// aapt resource value: 0x7f010021
+			public const int messageCenterItemIconPlaceholder = 2130772001;
 			
 			// aapt resource value: 0x7f010019
-			public const int mixed_content_mode = 2130771993;
+			public const int messageCenterItemTitleTextAppearance = 2130771993;
+			
+			// aapt resource value: 0x7f010025
+			public const int messageCenterStyle = 2130772005;
+			
+			// aapt resource value: 0x7f01001c
+			public const int messageNotSelectedText = 2130771996;
+			
+			// aapt resource value: 0x7f01001b
+			public const int messageNotSelectedTextAppearance = 2130771995;
+			
+			// aapt resource value: 0x7f010026
+			public const int mixed_content_mode = 2130772006;
 			
 			// aapt resource value: 0x7f010015
 			public const int optCardBackgroundColor = 2130771989;
@@ -133,6 +166,12 @@ namespace Sample
 			
 			// aapt resource value: 0x7f010017
 			public const int optCardElevation = 2130771991;
+			
+			// aapt resource value: 0x7f010022
+			public const int ua_state_highlighted = 2130772002;
+			
+			// aapt resource value: 0x7f010023
+			public const int urbanAirshipFontPath = 2130772003;
 			
 			static Attribute()
 			{
@@ -327,61 +366,67 @@ namespace Sample
 			public const int common_signin_btn_text_pressed_light = 2130837529;
 			
 			// aapt resource value: 0x7f02001a
-			public const int ic_close_white_18dp = 2130837530;
+			public const int Icon = 2130837530;
 			
 			// aapt resource value: 0x7f02001b
-			public const int ic_notification_button_accept = 2130837531;
+			public const int ua_iam_background = 2130837531;
 			
 			// aapt resource value: 0x7f02001c
-			public const int ic_notification_button_cart = 2130837532;
+			public const int ua_ic_close = 2130837532;
 			
 			// aapt resource value: 0x7f02001d
-			public const int ic_notification_button_copy = 2130837533;
+			public const int ua_ic_close_white_18dp = 2130837533;
 			
 			// aapt resource value: 0x7f02001e
-			public const int ic_notification_button_decline = 2130837534;
+			public const int ua_ic_image_placeholder = 2130837534;
 			
 			// aapt resource value: 0x7f02001f
-			public const int ic_notification_button_download = 2130837535;
+			public const int ua_ic_notification_button_accept = 2130837535;
 			
 			// aapt resource value: 0x7f020020
-			public const int ic_notification_button_follow = 2130837536;
+			public const int ua_ic_notification_button_cart = 2130837536;
 			
 			// aapt resource value: 0x7f020021
-			public const int ic_notification_button_happy = 2130837537;
+			public const int ua_ic_notification_button_copy = 2130837537;
 			
 			// aapt resource value: 0x7f020022
-			public const int ic_notification_button_open_browser = 2130837538;
+			public const int ua_ic_notification_button_decline = 2130837538;
 			
 			// aapt resource value: 0x7f020023
-			public const int ic_notification_button_remind = 2130837539;
+			public const int ua_ic_notification_button_download = 2130837539;
 			
 			// aapt resource value: 0x7f020024
-			public const int ic_notification_button_sad = 2130837540;
+			public const int ua_ic_notification_button_follow = 2130837540;
 			
 			// aapt resource value: 0x7f020025
-			public const int ic_notification_button_share = 2130837541;
+			public const int ua_ic_notification_button_happy = 2130837541;
 			
 			// aapt resource value: 0x7f020026
-			public const int ic_notification_button_thumbs_down = 2130837542;
+			public const int ua_ic_notification_button_open_browser = 2130837542;
 			
 			// aapt resource value: 0x7f020027
-			public const int ic_notification_button_thumbs_up = 2130837543;
+			public const int ua_ic_notification_button_remind = 2130837543;
 			
 			// aapt resource value: 0x7f020028
-			public const int ic_notification_button_unfollow = 2130837544;
+			public const int ua_ic_notification_button_sad = 2130837544;
 			
 			// aapt resource value: 0x7f020029
-			public const int ic_urbanairship_notification = 2130837545;
+			public const int ua_ic_notification_button_share = 2130837545;
 			
 			// aapt resource value: 0x7f02002a
-			public const int Icon = 2130837546;
+			public const int ua_ic_notification_button_thumbs_down = 2130837546;
 			
 			// aapt resource value: 0x7f02002b
-			public const int ua_iam_background = 2130837547;
+			public const int ua_ic_notification_button_thumbs_up = 2130837547;
 			
 			// aapt resource value: 0x7f02002c
-			public const int ua_ic_close = 2130837548;
+			public const int ua_ic_notification_button_unfollow = 2130837548;
+			
+			// aapt resource value: 0x7f02002d
+			public const int ua_ic_urbanairship_notification = 2130837549;
+			
+			// aapt resource value: 0x7f02002e
+			public const int ua_item_mc_background = 2130837550;
 			
 			static Drawable()
 			{
@@ -396,47 +441,86 @@ namespace Sample
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f0a0009
-			public const int action_button = 2131361801;
+			// aapt resource value: 0x7f0c000f
+			public const int action_button = 2131492879;
 			
-			// aapt resource value: 0x7f0a000d
-			public const int action_buttons = 2131361805;
+			// aapt resource value: 0x7f0c0013
+			public const int action_buttons = 2131492883;
 			
-			// aapt resource value: 0x7f0a000c
-			public const int action_divider = 2131361804;
+			// aapt resource value: 0x7f0c0012
+			public const int action_divider = 2131492882;
 			
-			// aapt resource value: 0x7f0a0000
-			public const int adjust_height = 2131361792;
+			// aapt resource value: 0x7f0c0000
+			public const int adjust_height = 2131492864;
 			
-			// aapt resource value: 0x7f0a0001
-			public const int adjust_width = 2131361793;
+			// aapt resource value: 0x7f0c0001
+			public const int adjust_width = 2131492865;
 			
-			// aapt resource value: 0x7f0a000b
-			public const int alert = 2131361803;
+			// aapt resource value: 0x7f0c0011
+			public const int alert = 2131492881;
 			
-			// aapt resource value: 0x7f0a0003
-			public const int always_allow = 2131361795;
+			// aapt resource value: 0x7f0c0003
+			public const int always_allow = 2131492867;
 			
-			// aapt resource value: 0x7f0a0006
-			public const int channel_id = 2131361798;
+			// aapt resource value: 0x7f0c0006
+			public const int channel_id = 2131492870;
 			
-			// aapt resource value: 0x7f0a000a
-			public const int close = 2131361802;
+			// aapt resource value: 0x7f0c0014
+			public const int checkbox = 2131492884;
 			
-			// aapt resource value: 0x7f0a0007
-			public const int close_button = 2131361799;
+			// aapt resource value: 0x7f0c0010
+			public const int close = 2131492880;
 			
-			// aapt resource value: 0x7f0a0004
-			public const int compatibility_mode = 2131361796;
+			// aapt resource value: 0x7f0c0007
+			public const int close_button = 2131492871;
 			
-			// aapt resource value: 0x7f0a0008
-			public const int in_app_message = 2131361800;
+			// aapt resource value: 0x7f0c0004
+			public const int compatibility_mode = 2131492868;
 			
-			// aapt resource value: 0x7f0a0005
-			public const int never_allow = 2131361797;
+			// aapt resource value: 0x7f0c000a
+			public const int container = 2131492874;
 			
-			// aapt resource value: 0x7f0a0002
-			public const int none = 2131361794;
+			// aapt resource value: 0x7f0c0016
+			public const int date = 2131492886;
+			
+			// aapt resource value: 0x7f0c0019
+			public const int delete = 2131492889;
+			
+			// aapt resource value: 0x7f0c000c
+			public const int error = 2131492876;
+			
+			// aapt resource value: 0x7f0c0017
+			public const int image = 2131492887;
+			
+			// aapt resource value: 0x7f0c0008
+			public const int in_app_message = 2131492872;
+			
+			// aapt resource value: 0x7f0c0018
+			public const int mark_read = 2131492888;
+			
+			// aapt resource value: 0x7f0c000b
+			public const int message_container = 2131492875;
+			
+			// aapt resource value: 0x7f0c0009
+			public const int message_list_fragment = 2131492873;
+			
+			// aapt resource value: 0x7f0c0005
+			public const int never_allow = 2131492869;
+			
+			// aapt resource value: 0x7f0c0002
+			public const int none = 2131492866;
+			
+			// aapt resource value: 0x7f0c000d
+			public const int retry_button = 2131492877;
+			
+			// aapt resource value: 0x7f0c001a
+			public const int select_all = 2131492890;
+			
+			// aapt resource value: 0x7f0c000e
+			public const int swipe_container = 2131492878;
+			
+			// aapt resource value: 0x7f0c0015
+			public const int title = 2131492885;
 			
 			static Id()
 			{
@@ -483,10 +567,31 @@ namespace Sample
 			public const int ua_fragment_iam_card = 2130903043;
 			
 			// aapt resource value: 0x7f030004
-			public const int ua_iam_button = 2130903044;
+			public const int ua_fragment_mc = 2130903044;
 			
 			// aapt resource value: 0x7f030005
-			public const int ua_iam_content = 2130903045;
+			public const int ua_fragment_message = 2130903045;
+			
+			// aapt resource value: 0x7f030006
+			public const int ua_fragment_message_list = 2130903046;
+			
+			// aapt resource value: 0x7f030007
+			public const int ua_fragment_no_message_selected = 2130903047;
+			
+			// aapt resource value: 0x7f030008
+			public const int ua_iam_button = 2130903048;
+			
+			// aapt resource value: 0x7f030009
+			public const int ua_iam_content = 2130903049;
+			
+			// aapt resource value: 0x7f03000a
+			public const int ua_item_mc = 2130903050;
+			
+			// aapt resource value: 0x7f03000b
+			public const int ua_item_mc_content = 2130903051;
+			
+			// aapt resource value: 0x7f03000c
+			public const int ua_item_mc_icon_content = 2130903052;
 			
 			static Layout()
 			{
@@ -498,11 +603,43 @@ namespace Sample
 			}
 		}
 		
+		public partial class Menu
+		{
+			
+			// aapt resource value: 0x7f0b0000
+			public const int ua_mc_action_mode = 2131427328;
+			
+			static Menu()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Menu()
+			{
+			}
+		}
+		
+		public partial class Plurals
+		{
+			
+			// aapt resource value: 0x7f0a0000
+			public const int ua_selected_count = 2131361792;
+			
+			static Plurals()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Plurals()
+			{
+			}
+		}
+		
 		public partial class String
 		{
 			
-			// aapt resource value: 0x7f080039
-			public const int app_name = 2131230777;
+			// aapt resource value: 0x7f080041
+			public const int app_name = 2131230785;
 			
 			// aapt resource value: 0x7f080003
 			public const int auth_google_play_services_client_facebook_display_name = 2131230723;
@@ -606,8 +743,8 @@ namespace Sample
 			// aapt resource value: 0x7f080001
 			public const int common_signin_button_text_long = 2131230721;
 			
-			// aapt resource value: 0x7f080038
-			public const int hello = 2131230776;
+			// aapt resource value: 0x7f080040
+			public const int hello = 2131230784;
 			
 			// aapt resource value: 0x7f080034
 			public const int ua_channel_copy_toast = 2131230772;
@@ -615,14 +752,32 @@ namespace Sample
 			// aapt resource value: 0x7f080035
 			public const int ua_channel_notification_ticker = 2131230773;
 			
+			// aapt resource value: 0x7f080036
+			public const int ua_delete = 2131230774;
+			
+			// aapt resource value: 0x7f080037
+			public const int ua_empty_message_list = 2131230775;
+			
+			// aapt resource value: 0x7f080038
+			public const int ua_mark_read = 2131230776;
+			
+			// aapt resource value: 0x7f080039
+			public const int ua_mc_failed_to_load = 2131230777;
+			
+			// aapt resource value: 0x7f08003a
+			public const int ua_message_center_title = 2131230778;
+			
+			// aapt resource value: 0x7f08003b
+			public const int ua_message_not_selected = 2131230779;
+			
 			// aapt resource value: 0x7f080022
 			public const int ua_notification_button_accept = 2131230754;
 			
 			// aapt resource value: 0x7f080023
 			public const int ua_notification_button_buy_now = 2131230755;
 			
-			// aapt resource value: 0x7f080036
-			public const int ua_notification_button_copy = 2131230774;
+			// aapt resource value: 0x7f08003c
+			public const int ua_notification_button_copy = 2131230780;
 			
 			// aapt resource value: 0x7f080024
 			public const int ua_notification_button_decline = 2131230756;
@@ -657,8 +812,8 @@ namespace Sample
 			// aapt resource value: 0x7f08002e
 			public const int ua_notification_button_remind = 2131230766;
 			
-			// aapt resource value: 0x7f080037
-			public const int ua_notification_button_save = 2131230775;
+			// aapt resource value: 0x7f08003d
+			public const int ua_notification_button_save = 2131230781;
 			
 			// aapt resource value: 0x7f08002f
 			public const int ua_notification_button_share = 2131230767;
@@ -671,6 +826,12 @@ namespace Sample
 			
 			// aapt resource value: 0x7f080032
 			public const int ua_notification_button_yes = 2131230770;
+			
+			// aapt resource value: 0x7f08003e
+			public const int ua_retry_button = 2131230782;
+			
+			// aapt resource value: 0x7f08003f
+			public const int ua_select_all = 2131230783;
 			
 			// aapt resource value: 0x7f080033
 			public const int ua_share_dialog_title = 2131230771;
@@ -706,6 +867,21 @@ namespace Sample
 			// aapt resource value: 0x7f070008
 			public const int Base_Widget_UrbanAirship_InAppMessage_Banner_Text = 2131165192;
 			
+			// aapt resource value: 0x7f070009
+			public const int Base_Widget_UrbanAirship_MessageCenter_Item_CheckBox = 2131165193;
+			
+			// aapt resource value: 0x7f07000a
+			public const int Base_Widget_UrbanAirship_MessageCenter_Item_Container = 2131165194;
+			
+			// aapt resource value: 0x7f07000b
+			public const int Base_Widget_UrbanAirship_MessageCenter_Item_Date = 2131165195;
+			
+			// aapt resource value: 0x7f07000c
+			public const int Base_Widget_UrbanAirship_MessageCenter_Item_Icon = 2131165196;
+			
+			// aapt resource value: 0x7f07000d
+			public const int Base_Widget_UrbanAirship_MessageCenter_Item_Title = 2131165197;
+			
 			// aapt resource value: 0x7f070000
 			public const int CardView = 2131165184;
 			
@@ -715,35 +891,65 @@ namespace Sample
 			// aapt resource value: 0x7f070002
 			public const int CardView_Light = 2131165186;
 			
-			// aapt resource value: 0x7f070009
-			public const int InAppMessage_Banner = 2131165193;
-			
-			// aapt resource value: 0x7f07000a
-			public const int InAppMessage_Banner_TextAppearance = 2131165194;
-			
-			// aapt resource value: 0x7f070012
-			public const int LandingPageStyle = 2131165202;
-			
-			// aapt resource value: 0x7f07000b
-			public const int Widget_UrbanAirship_InAppMessage_Banner = 2131165195;
-			
-			// aapt resource value: 0x7f07000c
-			public const int Widget_UrbanAirship_InAppMessage_Banner_ActionButton = 2131165196;
-			
-			// aapt resource value: 0x7f07000d
-			public const int Widget_UrbanAirship_InAppMessage_Banner_ActionButtonContainer = 2131165197;
-			
 			// aapt resource value: 0x7f07000e
-			public const int Widget_UrbanAirship_InAppMessage_Banner_Card = 2131165198;
+			public const int InAppMessage_Banner = 2131165198;
 			
 			// aapt resource value: 0x7f07000f
-			public const int Widget_UrbanAirship_InAppMessage_Banner_DismissButton = 2131165199;
+			public const int InAppMessage_Banner_TextAppearance = 2131165199;
+			
+			// aapt resource value: 0x7f070021
+			public const int LandingPageStyle = 2131165217;
 			
 			// aapt resource value: 0x7f070010
-			public const int Widget_UrbanAirship_InAppMessage_Banner_Divider = 2131165200;
+			public const int MessageCenter = 2131165200;
 			
 			// aapt resource value: 0x7f070011
-			public const int Widget_UrbanAirship_InAppMessage_Banner_Text = 2131165201;
+			public const int MessageCenter_EmptyMessage_TextAppearance = 2131165201;
+			
+			// aapt resource value: 0x7f070012
+			public const int MessageCenter_Item_Date_TextAppearance = 2131165202;
+			
+			// aapt resource value: 0x7f070013
+			public const int MessageCenter_Item_Title_TextAppearance = 2131165203;
+			
+			// aapt resource value: 0x7f070014
+			public const int MessageCenter_MessageNotSelected_TextAppearance = 2131165204;
+			
+			// aapt resource value: 0x7f070015
+			public const int Widget_UrbanAirship_InAppMessage_Banner = 2131165205;
+			
+			// aapt resource value: 0x7f070016
+			public const int Widget_UrbanAirship_InAppMessage_Banner_ActionButton = 2131165206;
+			
+			// aapt resource value: 0x7f070017
+			public const int Widget_UrbanAirship_InAppMessage_Banner_ActionButtonContainer = 2131165207;
+			
+			// aapt resource value: 0x7f070018
+			public const int Widget_UrbanAirship_InAppMessage_Banner_Card = 2131165208;
+			
+			// aapt resource value: 0x7f070019
+			public const int Widget_UrbanAirship_InAppMessage_Banner_DismissButton = 2131165209;
+			
+			// aapt resource value: 0x7f07001a
+			public const int Widget_UrbanAirship_InAppMessage_Banner_Divider = 2131165210;
+			
+			// aapt resource value: 0x7f07001b
+			public const int Widget_UrbanAirship_InAppMessage_Banner_Text = 2131165211;
+			
+			// aapt resource value: 0x7f07001c
+			public const int Widget_UrbanAirship_MessageCenter_Item_CheckBox = 2131165212;
+			
+			// aapt resource value: 0x7f07001d
+			public const int Widget_UrbanAirship_MessageCenter_Item_Container = 2131165213;
+			
+			// aapt resource value: 0x7f07001e
+			public const int Widget_UrbanAirship_MessageCenter_Item_Date = 2131165214;
+			
+			// aapt resource value: 0x7f07001f
+			public const int Widget_UrbanAirship_MessageCenter_Item_Icon = 2131165215;
+			
+			// aapt resource value: 0x7f070020
+			public const int Widget_UrbanAirship_MessageCenter_Item_Title = 2131165216;
 			
 			static Style()
 			{
@@ -863,16 +1069,77 @@ namespace Sample
 			// aapt resource value: 0
 			public const int LoadingImageView_imageAspectRatioAdjust = 0;
 			
+			public static int[] MessageCenter = new int[]
+			{
+					2130771992,
+					2130771993,
+					2130771994,
+					2130771995,
+					2130771996,
+					2130771997,
+					2130771998,
+					2130771999,
+					2130772000,
+					2130772001};
+			
+			// aapt resource value: 7
+			public const int MessageCenter_messageCenterDividerColor = 7;
+			
+			// aapt resource value: 6
+			public const int MessageCenter_messageCenterEmptyMessageText = 6;
+			
+			// aapt resource value: 5
+			public const int MessageCenter_messageCenterEmptyMessageTextAppearance = 5;
+			
+			// aapt resource value: 0
+			public const int MessageCenter_messageCenterItemBackground = 0;
+			
+			// aapt resource value: 2
+			public const int MessageCenter_messageCenterItemDateTextAppearance = 2;
+			
+			// aapt resource value: 8
+			public const int MessageCenter_messageCenterItemIconEnabled = 8;
+			
+			// aapt resource value: 9
+			public const int MessageCenter_messageCenterItemIconPlaceholder = 9;
+			
+			// aapt resource value: 1
+			public const int MessageCenter_messageCenterItemTitleTextAppearance = 1;
+			
+			// aapt resource value: 4
+			public const int MessageCenter_messageNotSelectedText = 4;
+			
+			// aapt resource value: 3
+			public const int MessageCenter_messageNotSelectedTextAppearance = 3;
+			
+			public static int[] States = new int[]
+			{
+					2130772002};
+			
+			// aapt resource value: 0
+			public const int States_ua_state_highlighted = 0;
+			
+			public static int[] TextAppearance = new int[]
+			{
+					2130772003};
+			
+			// aapt resource value: 0
+			public const int TextAppearance_urbanAirshipFontPath = 0;
+			
 			public static int[] Theme = new int[]
 			{
-					2130771992};
+					2130772004,
+					2130772005};
 			
 			// aapt resource value: 0
 			public const int Theme_inAppMessageBannerStyle = 0;
 			
+			// aapt resource value: 1
+			public const int Theme_messageCenterStyle = 1;
+			
 			public static int[] UAWebView = new int[]
 			{
-					2130771993};
+					2130772006};
 			
 			// aapt resource value: 0
 			public const int UAWebView_mixed_content_mode = 0;

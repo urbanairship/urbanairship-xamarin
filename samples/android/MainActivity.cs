@@ -27,17 +27,19 @@ namespace Sample
 			// Set our view from the "main" layout resource
 			SetContentView (Resource.Layout.Main);
 
-			channelIdUpdateReceiver = new ChannelIdBroadcastReceiver((Intent) => {
-				UpdateChannelIdField();
+			channelIdUpdateReceiver = new ChannelIdBroadcastReceiver ((Intent) => {
+				UpdateChannelIdField ();
 			});
+
+
 
 			channelID = FindViewById<TextView> (Resource.Id.channel_id);
 			channelID.Click += (sender, e) => {
 				if (!string.IsNullOrEmpty (channelID.Text)) {
 					// Using deprecated ClipboardManager to support Gingerbread (API 10)
-					var clipboard =  GetSystemService (Context.ClipboardService).JavaCast<ClipboardManager> ();
+					var clipboard = GetSystemService (Context.ClipboardService).JavaCast<ClipboardManager> ();
 					clipboard.Text = channelID.Text;
-					Toast.MakeText(this, "Channel ID copied to clipboard", ToastLength.Short).Show();
+					Toast.MakeText (this, "Channel ID copied to clipboard", ToastLength.Short).Show ();
 				}
 			};
 		}
@@ -47,24 +49,24 @@ namespace Sample
 			base.OnResume ();
 
 			// Handle any Google Play services errors
-			if (PlayServicesUtils.IsGooglePlayStoreAvailable) {
-				PlayServicesUtils.HandleAnyPlayServicesError(this);
+			if (PlayServicesUtils.IsGooglePlayStoreAvailable (this)) {
+				PlayServicesUtils.HandleAnyPlayServicesError (this);
 			}
 
 			// Use local broadcast manager to receive registration events to update the channel
 			IntentFilter channelIdUpdateFilter;
-			channelIdUpdateFilter = new IntentFilter();
-			channelIdUpdateFilter.AddAction(UrbanAirshipReceiver.ACTION_CHANNEL_UPDATED);
-			LocalBroadcastManager.GetInstance (this).RegisterReceiver(channelIdUpdateReceiver, channelIdUpdateFilter);
+			channelIdUpdateFilter = new IntentFilter ();
+			channelIdUpdateFilter.AddAction (UrbanAirshipReceiver.ACTION_CHANNEL_UPDATED);
+			LocalBroadcastManager.GetInstance (this).RegisterReceiver (channelIdUpdateReceiver, channelIdUpdateFilter);
 
 			// Update the channel field
-			UpdateChannelIdField();
+			UpdateChannelIdField ();
 		}
 
 		protected override void OnPause ()
 		{
 			base.OnPause ();
-			LocalBroadcastManager.GetInstance (this).UnregisterReceiver(channelIdUpdateReceiver);
+			LocalBroadcastManager.GetInstance (this).UnregisterReceiver (channelIdUpdateReceiver);
 		}
 
 		void UpdateChannelIdField ()
@@ -76,7 +78,7 @@ namespace Sample
 		{
 			Action<Intent> callback;
 
-			public ChannelIdBroadcastReceiver(Action<Intent> callback)
+			public ChannelIdBroadcastReceiver (Action<Intent> callback)
 			{
 				this.callback = callback;
 			}

@@ -16,6 +16,7 @@
   <attr path="/api/package[@name='com.urbanairship.push.notifications']" name="managedName">UrbanAirship.Push.Notifications</attr>
   <attr path="/api/package[@name='com.urbanairship.richpush']" name="managedName">UrbanAirship.RichPush</attr>
   <attr path="/api/package[@name='com.urbanairship.widget']" name="managedName">UrbanAirship.Widget</attr>
+  <attr path="/api/package[@name='com.urbanairship.messagecenter']" name="managedName">UrbanAirship.MessageCenter</attr>
 
   <remove-node path="/api/package[@name='com.urbanairship.http']" />
   <remove-node path="/api/package[@name='com.urbanairship.util']" />
@@ -23,7 +24,6 @@
   <!--- Non public parent classes -->
   <attr path="/api/package[@name='com.urbanairship.preference']/class[@name='UACheckBoxPreference']" name="visibility">public</attr>
   <attr path="/api/package[@name='com.urbanairship.preference']/class[@name='QuietTimePickerPreference']" name="visibility">public</attr>
-  <attr path="/api/package[@name='com.urbanairship.location']/class[@name='PendingLocationResult']" name="visibility">public</attr>
 
   <!-- Fixes issues with IComparable -->
   <remove-node path="/api/package[@name='com.urbanairship.preference']/class[@name='QuietTimePickerPreference']" />
