@@ -255,6 +255,16 @@ namespace UrbanAirship {
 		[Static]
 		[Export ("inAppMessaging")]
 		UAInAppMessaging InAppMessaging { get; }
+
+		// +(UADefaultMessageCenter * _Null_unspecified)defaultMessageCenter;
+		[Static]
+		[ExportAttribute ("defaultMessageCenter")]
+		UADefaultMessageCenter DefaultMessageCenter { get;}
+
+		// +(NSBundle * _Null_unspecified)resources;
+		[Static]
+		[ExportAttribute ("resources")]
+		NSBundle Resources { get;}
 	}
 
 	// @interface UAUser : NSObject
@@ -1322,6 +1332,10 @@ namespace UrbanAirship {
 		[NullAllowed, Export ("conversionSendID")]
 		string ConversionSendID { get; }
 
+		// @property (readonly, copy, nonatomic) NSString * _Nullable conversionPushMetadata;
+		[NullAllowed, Export ("conversionPushMetadata")]
+		string ConversionPushMetadata { get; }
+
 		// @property (readonly, copy, nonatomic) NSString * _Nullable conversionRichPushID;
 		[NullAllowed, Export ("conversionRichPushID")]
 		string ConversionRichPushID { get; }
@@ -1537,6 +1551,202 @@ namespace UrbanAirship {
 		[Export ("reportCurrentLocation")]
 		void ReportCurrentLocation ();
 	}
+
+	// @interface UADefaultMessageCenter : NSObject
+	[BaseType (typeof(NSObject))]
+	interface UADefaultMessageCenter
+	{
+		// @property (nonatomic, strong) NSString * title;
+		[Export ("title", ArgumentSemantic.Strong)]
+		string Title { get; set; }
+
+		// @property (nonatomic, strong) UADefaultMessageCenterStyle * style;
+		[Export ("style", ArgumentSemantic.Strong)]
+		UADefaultMessageCenterStyle Style { get; set; }
+
+		// -(void)display:(BOOL)animated;
+		[Export ("display:")]
+		void Display (bool animated);
+
+		// -(void)display;
+		[Export ("display")]
+		void Display ();
+
+		// -(void)displayMessage:(UAInboxMessage *)message animated:(BOOL)animated;
+		[Export ("displayMessage:animated:")]
+		void DisplayMessage (UAInboxMessage message, bool animated);
+
+		// -(void)displayMessage:(UAInboxMessage *)message;
+		[Export ("displayMessage:")]
+		void DisplayMessage (UAInboxMessage message);
+
+		// -(void)dismiss:(BOOL)animated;
+		[Export ("dismiss:")]
+		void Dismiss (bool animated);
+
+		// -(void)dismiss;
+		[Export ("dismiss")]
+		void Dismiss ();
+	}
+
+	// @interface UADefaultMessageCenterListCell : UITableViewCell
+	[BaseType (typeof(UITableViewCell))]
+	interface UADefaultMessageCenterListCell
+	{
+		// @property (nonatomic, strong) UADefaultMessageCenterStyle * style;
+		[Export ("style", ArgumentSemantic.Strong)]
+		UADefaultMessageCenterStyle Style { get; set; }
+
+		// @property (nonatomic, weak) UILabel * _Nullable date __attribute__((iboutlet));
+		[NullAllowed, Export ("date", ArgumentSemantic.Weak)]
+		UILabel Date { get; set; }
+
+		// @property (nonatomic, weak) UILabel * _Nullable title __attribute__((iboutlet));
+		[NullAllowed, Export ("title", ArgumentSemantic.Weak)]
+		UILabel Title { get; set; }
+
+		// @property (nonatomic, weak) UIView * _Nullable unreadIndicator __attribute__((iboutlet));
+		[NullAllowed, Export ("unreadIndicator", ArgumentSemantic.Weak)]
+		UIView UnreadIndicator { get; set; }
+
+		// @property (nonatomic, weak) UIImageView * _Nullable listIconView __attribute__((iboutlet));
+		[NullAllowed, Export ("listIconView", ArgumentSemantic.Weak)]
+		UIImageView ListIconView { get; set; }
+
+		// -(void)setData:(UAInboxMessage *)message;
+		[Export ("setData:")]
+		void SetData (UAInboxMessage message);
+	}
+
+	// @interface UADefaultMessageCenterListViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, UISplitViewControllerDelegate>
+	[BaseType (typeof(UIViewController))]
+	interface UADefaultMessageCenterListViewController : IUITableViewDelegate, IUITableViewDataSource, IUIScrollViewDelegate, IUISplitViewControllerDelegate
+	{
+		// @property (nonatomic, strong) UADefaultMessageCenterStyle * style;
+		[Export ("style", ArgumentSemantic.Strong)]
+		UADefaultMessageCenterStyle Style { get; set; }
+
+		// @property (copy, nonatomic) void (^closeBlock)(BOOL);
+		[Export ("closeBlock", ArgumentSemantic.Copy)]
+		Action<bool> CloseBlock { get; set; }
+
+		// -(void)displayMessage:(UAInboxMessage *)message;
+		[Export ("displayMessage:")]
+		void DisplayMessage (UAInboxMessage message);
+	}
+
+	// @interface UADefaultMessageCenterMessageViewController : UIViewController <UIWebViewDelegate, UARichContentWindow>
+	[BaseType (typeof(UIViewController))]
+	interface UADefaultMessageCenterMessageViewController : IUIWebViewDelegate, UARichContentWindow
+	{
+		// @property (nonatomic, strong) UAInboxMessage * message;
+		[Export ("message", ArgumentSemantic.Strong)]
+		UAInboxMessage Message { get; set; }
+
+		// @property (copy, nonatomic) void (^closeBlock)(BOOL);
+		[Export ("closeBlock", ArgumentSemantic.Copy)]
+		Action<bool> CloseBlock { get; set; }
+
+		// -(void)loadMessageAtIndex:(NSUInteger)index;
+		[Export ("loadMessageAtIndex:")]
+		void LoadMessageAtIndex (nuint index);
+
+		// -(void)loadMessageForID:(NSString *)mid;
+		[Export ("loadMessageForID:")]
+		void LoadMessageForID (string mid);
+	}
+
+	// @interface UADefaultMessageCenterSplitViewController : UISplitViewController
+	[BaseType (typeof(UISplitViewController))]
+	interface UADefaultMessageCenterSplitViewController
+	{
+		// @property (nonatomic, strong) UADefaultMessageCenterStyle * style;
+		[Export ("style", ArgumentSemantic.Strong)]
+		UADefaultMessageCenterStyle Style { get; set; }
+
+		// @property (readonly, nonatomic) UADefaultMessageCenterListViewController * listViewController;
+		[Export ("listViewController")]
+		UADefaultMessageCenterListViewController ListViewController { get; }
+	}
+
+	// @interface UADefaultMessageCenterStyle : NSObject
+	[BaseType (typeof(NSObject))]
+	interface UADefaultMessageCenterStyle
+	{
+		// @property (nonatomic, strong) UIFont * titleFont;
+		[Export ("titleFont", ArgumentSemantic.Strong)]
+		UIFont TitleFont { get; set; }
+
+		// @property (nonatomic, strong) UIColor * titleColor;
+		[Export ("titleColor", ArgumentSemantic.Strong)]
+		UIColor TitleColor { get; set; }
+
+		// @property (nonatomic, strong) UIColor * tintColor;
+		[Export ("tintColor", ArgumentSemantic.Strong)]
+		UIColor TintColor { get; set; }
+
+		// @property (nonatomic, strong) UIColor * navigationBarColor;
+		[Export ("navigationBarColor", ArgumentSemantic.Strong)]
+		UIColor NavigationBarColor { get; set; }
+
+		// @property (nonatomic, strong) UIColor * listColor;
+		[Export ("listColor", ArgumentSemantic.Strong)]
+		UIColor ListColor { get; set; }
+
+		// @property (nonatomic, strong) UIColor * refreshTintColor;
+		[Export ("refreshTintColor", ArgumentSemantic.Strong)]
+		UIColor RefreshTintColor { get; set; }
+
+		// @property (assign, nonatomic) BOOL iconsEnabled;
+		[Export ("iconsEnabled")]
+		bool IconsEnabled { get; set; }
+
+		// @property (nonatomic, strong) UIImage * placeholderIcon;
+		[Export ("placeholderIcon", ArgumentSemantic.Strong)]
+		UIImage PlaceholderIcon { get; set; }
+
+		// @property (nonatomic, strong) UIFont * cellTitleFont;
+		[Export ("cellTitleFont", ArgumentSemantic.Strong)]
+		UIFont CellTitleFont { get; set; }
+
+		// @property (nonatomic, strong) UIFont * cellDateFont;
+		[Export ("cellDateFont", ArgumentSemantic.Strong)]
+		UIFont CellDateFont { get; set; }
+
+		// @property (nonatomic, strong) UIColor * cellColor;
+		[Export ("cellColor", ArgumentSemantic.Strong)]
+		UIColor CellColor { get; set; }
+
+		// @property (nonatomic, strong) UIColor * cellHighlightedColor;
+		[Export ("cellHighlightedColor", ArgumentSemantic.Strong)]
+		UIColor CellHighlightedColor { get; set; }
+
+		// @property (nonatomic, strong) UIColor * cellTitleColor;
+		[Export ("cellTitleColor", ArgumentSemantic.Strong)]
+		UIColor CellTitleColor { get; set; }
+
+		// @property (nonatomic, strong) UIColor * cellTitleHighlightedColor;
+		[Export ("cellTitleHighlightedColor", ArgumentSemantic.Strong)]
+		UIColor CellTitleHighlightedColor { get; set; }
+
+		// @property (nonatomic, strong) UIColor * cellDateColor;
+		[Export ("cellDateColor", ArgumentSemantic.Strong)]
+		UIColor CellDateColor { get; set; }
+
+		// @property (nonatomic, strong) UIColor * cellDateHighlightedColor;
+		[Export ("cellDateHighlightedColor", ArgumentSemantic.Strong)]
+		UIColor CellDateHighlightedColor { get; set; }
+
+		// @property (nonatomic, strong) UIColor * cellSeparatorColor;
+		[Export ("cellSeparatorColor", ArgumentSemantic.Strong)]
+		UIColor CellSeparatorColor { get; set; }
+
+		// +(instancetype)style;
+		[Static]
+		[Export ("style")]
+		UADefaultMessageCenterStyle Style ();
+	}
+
 
 	// @protocol UAInAppMessageControllerDelegate <NSObject>
 	[Protocol, Model]
