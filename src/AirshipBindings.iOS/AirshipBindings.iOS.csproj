@@ -43,8 +43,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="libUAirship-7.0.1.linkwith.cs">
-      <DependentUpon>libUAirship-7.0.1.a</DependentUpon>
+    <Compile Include="libUAirship-7.0.2.linkwith.cs">
+      <DependentUpon>libUAirship-7.0.2.a</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -54,9 +54,6 @@
     <ObjcBindingCoreSource Include="StructsAndEnums.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.ObjCBinding.CSharp.targets" />
-  <ItemGroup>
-    <ObjcBindingNativeLibrary Include="libUAirship-7.0.1.a" />
-  </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\AirshipResources.bundle\Info.plist" />
     <BundleResource Include="Resources\AirshipResources.bundle\UADefaultMessageCenterListCell.nib" />
@@ -73,5 +70,8 @@
     <BundleResource Include="Resources\AirshipResources.bundle\pt.lproj\UAInteractiveNotifications.strings" />
     <BundleResource Include="Resources\AirshipResources.bundle\zh-Hans.lproj\UAInteractiveNotifications.strings" />
     <BundleResource Include="Resources\AirshipResources.bundle\zh-Hant.lproj\UAInteractiveNotifications.strings" />
+  </ItemGroup>
+  <ItemGroup>
+    <ObjcBindingNativeLibrary Include="libUAirship-7.0.2.a" />
   </ItemGroup>
 </Project>
