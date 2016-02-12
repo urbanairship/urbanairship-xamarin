@@ -19,6 +19,10 @@ Xamarin appliaction.
        }
     ```
 
+    Note that if the TakeOff process fails due to improper or missing configuration, the shared
+    UAirship instance will be null. The Urban Airship SDK always logs implementation errors at
+    high visibility.
+
 2. Provide `AirshipConfig.plist` file with the application's configuration:
     ```
         <?xml version="1.0" encoding="UTF-8"?>
@@ -38,6 +42,9 @@ Xamarin appliaction.
         </dict>
         </plist>
     ```
+
+    In order for this file to be visible to the SDK during TakeOff, be sure that its BuildAction
+    is set to "Bundle Resource" in your app project.
 
 3. Enable user notifications:
     ```
