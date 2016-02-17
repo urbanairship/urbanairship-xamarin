@@ -11,7 +11,7 @@ namespace UrbanAirship.Push
 	[BroadcastReceiver (Exported = true, Permission = "com.google.android.c2dm.permission.SEND")]
 	[IntentFilter (new[]{"com.google.android.c2dm.intent.RECEIVE", "com.google.android.c2dm.intent.REGISTRATION"}, 
 		Categories = new[]{"@PACKAGE_NAME@"})]
-	public partial class GCMPushReceiver
+	public partial class GcmPushReceiver
 	{
 
 	}
