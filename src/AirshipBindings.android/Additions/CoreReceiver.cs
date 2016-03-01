@@ -4,6 +4,8 @@ using Android.App;
 
 namespace UrbanAirship
 {
+
+	[Android.Runtime.Preserve (AllMembers = true)]
 	[BroadcastReceiver (Exported = false)]
 	[IntentFilter (new string[]{"com.urbanairship.push.OPENED"}, 
 		Categories = new string[]{"@PACKAGE_NAME@"},

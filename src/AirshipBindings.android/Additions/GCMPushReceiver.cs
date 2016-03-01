@@ -8,6 +8,8 @@ using Android.App;
 
 namespace UrbanAirship.Push
 {
+
+	[Android.Runtime.Preserve (AllMembers = true)]
 	[BroadcastReceiver (Exported = true, Permission = "com.google.android.c2dm.permission.SEND")]
 	[IntentFilter (new[]{"com.google.android.c2dm.intent.RECEIVE", "com.google.android.c2dm.intent.REGISTRATION"}, 
 		Categories = new[]{"@PACKAGE_NAME@"})]
