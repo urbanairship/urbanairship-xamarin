@@ -4,9 +4,14 @@ This component provides official bindings to the Urban Airship SDK, as well as s
 
 ### Release Notes
 
+=============================
+Version 2.0.2 - March 1, 2016
+=============================
+ - Fixed Android linker issues
+
 ============================
 Version 2.0.1 - Feb 17, 2016
-=============================
+============================
  - Fixed Android not registering the GcmPushReceiver
 
 ==========================
