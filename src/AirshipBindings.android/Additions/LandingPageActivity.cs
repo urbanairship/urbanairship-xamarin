@@ -4,6 +4,8 @@ using Android.Content;
 
 namespace UrbanAirship.Actions
 {
+
+	[Android.Runtime.Preserve (AllMembers = true)]
 	[Activity(Exported = false, Theme = "@style/LandingPageStyle")]
 	[IntentFilter (new string[]{"com.urbanairship.actions.SHOW_LANDING_PAGE_INTENT_ACTION"}, 
 		Categories = new string[]{Intent.CategoryDefault},

@@ -3,6 +3,8 @@ using Android.Content;
 
 namespace UrbanAirship
 {
+
+	[Android.Runtime.Preserve (AllMembers = true)]
 	[ContentProvider (new[]{"@PACKAGE_NAME@.urbanairship.provider"},
 		Exported = true,
 		MultiProcess = true,
