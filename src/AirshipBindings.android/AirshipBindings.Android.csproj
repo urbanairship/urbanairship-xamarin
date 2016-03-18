@@ -63,6 +63,7 @@
     <Compile Include="Additions\RichPushMessage.cs" />
     <Compile Include="Additions\UrbanAirshipProvider.cs" />
     <Compile Include="Additions\UAirship.cs" />
+    <Compile Include="Additions\UALocationManager.cs" />
     <Compile Include="Additions\ActionActivity.cs" />
     <Compile Include="Additions\CoreActivity.cs" />
     <Compile Include="Additions\PlayServicesErrorActivity.cs" />
@@ -77,6 +78,7 @@
     <Compile Include="Additions\GCMPushReceiver.cs" />
     <Compile Include="Additions\ADMPushReceiver.cs" />
     <Compile Include="Additions\ActionRunRequest.cs" />
+    <Compile Include="Additions\ILocationCallback.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Additions\AboutAdditions.txt" />
