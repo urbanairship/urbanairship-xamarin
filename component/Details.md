@@ -4,6 +4,12 @@ This component provides official bindings to the Urban Airship SDK, as well as s
 
 ### Release Notes
 
+
+==============================
+Version 2.0.3 - March 21, 2016
+==============================
+ - Fixed Android LocationCallback bindings
+
 =============================
 Version 2.0.2 - March 1, 2016
 =============================
