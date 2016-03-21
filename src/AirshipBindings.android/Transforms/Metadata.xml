@@ -28,7 +28,10 @@
   <!-- Fixes issues with IComparable -->
   <remove-node path="/api/package[@name='com.urbanairship.preference']/class[@name='QuietTimePickerPreference']" />
   <remove-node path="/api/package[@name='com.urbanairship.preference']/class[@name='UACheckBoxPreference']" />
-  <remove-node path="/api/package[@name='com.urbanairship']/interface[@name='PendingResult.ResultCallback']" />
+
+  <!-- Fix location callback. We provide our own bindings.-->
+  <remove-node path="/api/package[@name='com.urbanairship.location']/interface[@name='LocationCallback']" />
+  <remove-node path="/api/package[@name='com.urbanairship']/interface[@name='PendingResult']" />
 
   <!-- Fix intent service --> 
   <attr path="/api/package[@name='com.urbanairship']/class[@name='BaseIntentService' and @extends='android.app.IntentService']" name="extends">mono.android.app.IntentService</attr>
