@@ -12,7 +12,7 @@
     <AndroidUseLatestPlatformSdk>True</AndroidUseLatestPlatformSdk>
     <AssemblyName>AirshipBindings</AssemblyName>
     <TargetFrameworkVersion>v6.0</TargetFrameworkVersion>
-    <ReleaseVersion>2.0.3</ReleaseVersion>
+    <ReleaseVersion>2.0.4</ReleaseVersion>
     <Description>Urban Airship Xamarin bindings for Android</Description>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
@@ -79,6 +79,8 @@
     <Compile Include="Additions\ADMPushReceiver.cs" />
     <Compile Include="Additions\ActionRunRequest.cs" />
     <Compile Include="Additions\ILocationCallback.cs" />
+    <Compile Include="Additions\MessageCenterActivity.cs" />
+    <Compile Include="Additions\MessageActivity.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Additions\AboutAdditions.txt" />
