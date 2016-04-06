@@ -16,7 +16,7 @@
     <AssemblyName>Sample</AssemblyName>
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
     <TargetFrameworkVersion>v6.0</TargetFrameworkVersion>
-    <ReleaseVersion>2.0.3</ReleaseVersion>
+    <ReleaseVersion>2.0.4</ReleaseVersion>
     <Description>Urban Airship Xamarin sample app for Android</Description>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
