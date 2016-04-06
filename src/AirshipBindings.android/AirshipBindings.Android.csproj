@@ -79,6 +79,8 @@
     <Compile Include="Additions\ADMPushReceiver.cs" />
     <Compile Include="Additions\ActionRunRequest.cs" />
     <Compile Include="Additions\ILocationCallback.cs" />
+    <Compile Include="Additions\MessageCenterActivity.cs" />
+    <Compile Include="Additions\MessageActivity.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Additions\AboutAdditions.txt" />
