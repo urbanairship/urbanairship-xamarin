@@ -1,4 +1,5 @@
 ﻿using System;
+using Android.App;
 
 namespace UrbanAirship.MessageCenter
 {
