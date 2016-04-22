@@ -1,4 +1,8 @@
-﻿using Foundation;
+﻿/*
+ Copyright 2016 Urban Airship and Contributors
+*/
+
+using Foundation;
 using UIKit;
 using UrbanAirship;
 using System.Threading.Tasks;
