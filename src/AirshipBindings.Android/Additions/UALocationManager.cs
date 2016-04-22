@@ -1,4 +1,8 @@
-﻿using Android.Locations;
+﻿/*
+ Copyright 2016 Urban Airship and Contributors
+*/
+
+using Android.Locations;
 using Android.OS;
 using System;
 using Android.Runtime;
