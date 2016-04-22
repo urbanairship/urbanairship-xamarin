@@ -1328,6 +1328,58 @@ namespace UrbanAirship {
 		void SetStringArrayProperty (string[] value, string key);
 	}
 
+	// @interface UARegionEvent : UAEvent
+	[BaseType (typeof(UAEvent))]
+	interface UARegionEvent
+	{
+		// @property (nonatomic, strong) UAProximityRegion * _Nullable proximityRegion;
+		[NullAllowed, Export ("proximityRegion", ArgumentSemantic.Strong)]
+		UAProximityRegion ProximityRegion { get; set; }
+
+		// @property (nonatomic, strong) UACircularRegion * _Nullable circularRegion;
+		[NullAllowed, Export ("circularRegion", ArgumentSemantic.Strong)]
+		UACircularRegion CircularRegion { get; set; }
+
+		// +(instancetype _Nullable)regionEventWithRegionID:(NSString * _Nonnull)regionID source:(NSString * _Nonnull)source boundaryEvent:(UABoundaryEvent)boundaryEvent;
+		[Static]
+		[Export ("regionEventWithRegionID:source:boundaryEvent:")]
+		[return: NullAllowed]
+		UARegionEvent RegionEvent (string regionID, string source, UABoundaryEvent boundaryEvent);
+	}
+
+	// @interface UACircularRegion : NSObject
+	[BaseType (typeof(NSObject))]
+	interface UACircularRegion
+	{
+		// +(instancetype _Nonnull)circularRegionWithRadius:(NSNumber * _Nonnull)radius latitude:(NSNumber * _Nonnull)latitude longitude:(NSNumber * _Nonnull)longitude;
+		[Static]
+		[Export ("circularRegionWithRadius:latitude:longitude:")]
+		UACircularRegion CircularRegion (NSNumber radius, NSNumber latitude, NSNumber longitude);
+	}
+
+	// @interface UAProximityRegion : NSObject
+	[BaseType (typeof(NSObject))]
+	interface UAProximityRegion
+	{
+		// @property (nonatomic, strong) NSNumber * _Nullable latitude;
+		[NullAllowed, Export ("latitude", ArgumentSemantic.Strong)]
+		NSNumber Latitude { get; set; }
+
+		// @property (nonatomic, strong) NSNumber * _Nullable longitude;
+		[NullAllowed, Export ("longitude", ArgumentSemantic.Strong)]
+		NSNumber Longitude { get; set; }
+
+		// @property (nonatomic, strong) NSNumber * _Nullable RSSI;
+		[NullAllowed, Export ("RSSI", ArgumentSemantic.Strong)]
+		NSNumber RSSI { get; set; }
+
+		// +(instancetype _Nullable)proximityRegionWithID:(NSString * _Nonnull)proximityID major:(NSNumber * _Nonnull)major minor:(NSNumber * _Nonnull)minor;
+		[Static]
+		[Export ("proximityRegionWithID:major:minor:")]
+		[return: NullAllowed]
+		UAProximityRegion ProximityRegion (string proximityID, NSNumber major, NSNumber minor);
+	}
+
 	// @interface UAAnalytics : NSObject
 	[BaseType (typeof(NSObject))]
 	interface UAAnalytics
