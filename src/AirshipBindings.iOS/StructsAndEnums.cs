@@ -103,7 +103,7 @@ namespace UrbanAirship {
 	[Native]
 	public enum UABoundaryEvent : ulong
 	{
-		nter = 1,
-		xit = 2
+		Enter = 1,
+		Exit = 2
 	}
 }
