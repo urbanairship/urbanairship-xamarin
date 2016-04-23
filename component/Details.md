@@ -5,6 +5,11 @@ This component provides official bindings to the Urban Airship SDK, as well as s
 ### Release Notes
 
 ==============================
+Version 2.0.5 - April 22, 2016
+==============================
+ - Added iOS bindings for region events
+
+==============================
 Version 2.0.4 - April 6, 2016
 ==============================
  - Fixed missing AndroidManifest entries for the  MessageCenterActivity and MessageActivity.
