@@ -99,4 +99,11 @@ namespace UrbanAirship {
 		Unknown,
 		Banner
 	}
+
+	[Native]
+	public enum UABoundaryEvent : ulong
+	{
+		Enter = 1,
+		Exit = 2
+	}
 }
