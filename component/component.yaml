@@ -8,9 +8,6 @@ icons:
   - urbanairship_128x128.png
   - urbanairship_512x512.png
 publisher-url: http://urbanairship.com
-build:
-  - ../src/AirshipBindings.iOS/AirshipBindings.iOS.sln
-  - ../src/AirshipBindings.Android/AirshipBindings.Android.sln
 libraries: 
   ios-unified: ../src/AirshipBindings.iOS/bin/release/AirshipBindings.dll
   android: ../src/AirshipBindings.Android/bin/release/AirshipBindings.dll
@@ -23,6 +20,11 @@ samples:
   Android Sample: ../samples/android/AndroidSample.sln
 packages:
   android:
-    - Xamarin.Android.Support.v4, Version=23.1.1.0
-    - Xamarin.GooglePlayServices.Gcm, Version=27.0.0.0
-    - Xamarin.Android.Support.v7.CardView, Version=23.1.1.0
+    - urbanairship, Version=2.0.5
+  ios-unified:
+    - urbanairship, Version=2.0.5
+is_shell: true
+no_build: true
+output: ../build
+
+
