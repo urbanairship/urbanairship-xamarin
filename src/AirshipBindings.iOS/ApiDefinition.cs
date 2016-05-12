@@ -829,6 +829,10 @@ namespace UrbanAirship {
 		[Export ("customConfig", ArgumentSemantic.Copy)]
 		NSDictionary CustomConfig { get; set; }
 
+		// @property (copy, nonatomic) NSString * _Nonnull messageCenterStyleConfig;
+		[Export ("messageCenterStyleConfig")]
+		string MessageCenterStyleConfig { get; set; }
+
 		// +(UAConfig * _Nonnull)defaultConfig;
 		[Static]
 		[Export ("defaultConfig")]
@@ -1416,6 +1420,10 @@ namespace UrbanAirship {
 		[Export ("associateDeviceIdentifiers:")]
 		void AssociateDeviceIdentifiers (UAAssociatedIdentifiers associatedIdentifiers);
 
+		// -(UAAssociatedIdentifiers * _Nonnull)currentAssociatedDeviceIdentifiers;
+		[Export ("currentAssociatedDeviceIdentifiers")]
+		UAAssociatedIdentifiers CurrentAssociatedDeviceIdentifiers ();
+
 		// -(void)handleNotification:(NSDictionary * _Nonnull)userInfo inApplicationState:(UIApplicationState)applicationState;
 		[Export ("handleNotification:inApplicationState:")]
 		void HandleNotification (NSDictionary userInfo, UIApplicationState applicationState);
@@ -1458,6 +1466,10 @@ namespace UrbanAirship {
 		// -(void)setIdentifier:(NSString * _Nullable)identifier forKey:(NSString * _Nonnull)key;
 		[Export ("setIdentifier:forKey:")]
 		void SetIdentifier ([NullAllowed] string identifier, string key);
+
+		// @property (assign, nonatomic) BOOL advertisingTrackingEnabled;
+		[Export ("advertisingTrackingEnabled")]
+		bool AdvertisingTrackingEnabled { get; set; }
 	}
 
 	// @protocol UALocationServiceDelegate <NSObject>
@@ -1643,6 +1655,10 @@ namespace UrbanAirship {
 		// -(void)dismiss;
 		[Export ("dismiss")]
 		void Dismiss ();
+
+		// @property (nonatomic, strong) NSPredicate * filter;
+		[Export ("filter", ArgumentSemantic.Strong)]
+		NSPredicate Filter { get; set; }
 	}
 
 	// @interface UADefaultMessageCenterListCell : UITableViewCell
@@ -1689,6 +1705,10 @@ namespace UrbanAirship {
 		// -(void)displayMessage:(UAInboxMessage *)message;
 		[Export ("displayMessage:")]
 		void DisplayMessage (UAInboxMessage message);
+
+		// @property (nonatomic, strong) NSPredicate * filter;
+		[Export ("filter", ArgumentSemantic.Strong)]
+		NSPredicate Filter { get; set; }
 	}
 
 	// @interface UADefaultMessageCenterMessageViewController : UIViewController <UIWebViewDelegate, UARichContentWindow>
@@ -1710,6 +1730,10 @@ namespace UrbanAirship {
 		// -(void)loadMessageForID:(NSString *)mid;
 		[Export ("loadMessageForID:")]
 		void LoadMessageForID (string mid);
+
+		// @property (nonatomic, strong) NSPredicate * filter;
+		[Export ("filter", ArgumentSemantic.Strong)]
+		NSPredicate Filter { get; set; }
 	}
 
 	// @interface UADefaultMessageCenterSplitViewController : UISplitViewController
@@ -1723,6 +1747,10 @@ namespace UrbanAirship {
 		// @property (readonly, nonatomic) UADefaultMessageCenterListViewController * listViewController;
 		[Export ("listViewController")]
 		UADefaultMessageCenterListViewController ListViewController { get; }
+
+		// @property (nonatomic, strong) NSPredicate * filter;
+		[Export ("filter", ArgumentSemantic.Strong)]
+		NSPredicate Filter { get; set; }
 	}
 
 	// @interface UADefaultMessageCenterStyle : NSObject
@@ -1797,10 +1825,24 @@ namespace UrbanAirship {
 		[Export ("cellSeparatorColor", ArgumentSemantic.Strong)]
 		UIColor CellSeparatorColor { get; set; }
 
+		// @property (nonatomic, strong) UIColor * cellTintColor;
+		[Export ("cellTintColor", ArgumentSemantic.Strong)]
+		UIColor CellTintColor { get; set; }
+
+		// @property (nonatomic, strong) UIColor * unreadIndicatorColor;
+		[Export ("unreadIndicatorColor", ArgumentSemantic.Strong)]
+		UIColor UnreadIndicatorColor { get; set; }
+
+
 		// +(instancetype)style;
 		[Static]
 		[Export ("style")]
 		UADefaultMessageCenterStyle Style ();
+
+		// +(instancetype)styleWithContentsOfFile:(NSString *)path;
+		[Static]
+		[Export ("styleWithContentsOfFile:")]
+		UADefaultMessageCenterStyle StyleWithContentsOfFile (string path);
 	}
 
 
