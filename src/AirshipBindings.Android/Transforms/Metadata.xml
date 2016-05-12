@@ -40,5 +40,8 @@
   <!-- Fix name conflict with BaseIntentService.Delegate and System.Delegate --> 
   <attr path="/api/package[@name='com.urbanairship']/class[@name='BaseIntentService.Delegate']" name="managedName">BaseIntentServiceDelegate</attr>
 
+  <!-- Rename MessageCenter class to avoid conflict with the namespace -->
+  <attr path="/api/package[@name='com.urbanairship.messagecenter']/class[@name='MessageCenter']" name="managedName">MessageCenterManager</attr>
+
 </metadata>
 	
