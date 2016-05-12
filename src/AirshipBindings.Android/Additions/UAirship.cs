@@ -53,7 +53,7 @@ namespace UrbanAirship
 					callback.Invoke (airship);
 				}
 			}
-}
+		}
 	}
 }
 
