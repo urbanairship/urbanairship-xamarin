@@ -43,8 +43,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="libUAirship-7.0.2.linkwith.cs">
-      <DependentUpon>libUAirship-7.0.2.a</DependentUpon>
+    <Compile Include="libUAirship-7.1.2.linkwith.cs">
+      <DependentUpon>libUAirship-7.1.2.a</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -55,23 +55,55 @@
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.ObjCBinding.CSharp.targets" />
   <ItemGroup>
+    <ObjcBindingNativeLibrary Include="libUAirship-7.1.2.a" />
+  </ItemGroup>
+  <ItemGroup>
     <BundleResource Include="Resources\AirshipResources.bundle\Info.plist" />
     <BundleResource Include="Resources\AirshipResources.bundle\UADefaultMessageCenterListCell.nib" />
     <BundleResource Include="Resources\AirshipResources.bundle\UADefaultMessageCenterListViewController.nib" />
     <BundleResource Include="Resources\AirshipResources.bundle\UADefaultMessageCenterMessageViewController.nib" />
     <BundleResource Include="Resources\AirshipResources.bundle\UADefaultMessageCenterPlaceholderIcon.png" />
+    <BundleResource Include="Resources\AirshipResources.bundle\UANotificationCategories.plist" />
+    <BundleResource Include="Resources\AirshipResources.bundle\ar.lproj\UrbanAirship.strings" />
+    <BundleResource Include="Resources\AirshipResources.bundle\cs.lproj\UrbanAirship.strings" />
+    <BundleResource Include="Resources\AirshipResources.bundle\da.lproj\UrbanAirship.strings" />
     <BundleResource Include="Resources\AirshipResources.bundle\de.lproj\UAInteractiveNotifications.strings" />
+    <BundleResource Include="Resources\AirshipResources.bundle\de.lproj\UrbanAirship.strings" />
     <BundleResource Include="Resources\AirshipResources.bundle\en.lproj\UAInteractiveNotifications.strings" />
     <BundleResource Include="Resources\AirshipResources.bundle\en.lproj\UAMessageCenterUI.strings" />
+    <BundleResource Include="Resources\AirshipResources.bundle\en.lproj\UrbanAirship.strings" />
+    <BundleResource Include="Resources\AirshipResources.bundle\es-419.lproj\UrbanAirship.strings" />
     <BundleResource Include="Resources\AirshipResources.bundle\es.lproj\UAInteractiveNotifications.strings" />
+    <BundleResource Include="Resources\AirshipResources.bundle\es.lproj\UrbanAirship.strings" />
+    <BundleResource Include="Resources\AirshipResources.bundle\fi.lproj\UrbanAirship.strings" />
     <BundleResource Include="Resources\AirshipResources.bundle\fr.lproj\UAInteractiveNotifications.strings" />
+    <BundleResource Include="Resources\AirshipResources.bundle\fr.lproj\UrbanAirship.strings" />
+    <BundleResource Include="Resources\AirshipResources.bundle\hi.lproj\UrbanAirship.strings" />
+    <BundleResource Include="Resources\AirshipResources.bundle\hu.lproj\UrbanAirship.strings" />
+    <BundleResource Include="Resources\AirshipResources.bundle\id.lproj\UrbanAirship.strings" />
     <BundleResource Include="Resources\AirshipResources.bundle\it.lproj\UAInteractiveNotifications.strings" />
+    <BundleResource Include="Resources\AirshipResources.bundle\it.lproj\UrbanAirship.strings" />
+    <BundleResource Include="Resources\AirshipResources.bundle\iw.lproj\UrbanAirship.strings" />
     <BundleResource Include="Resources\AirshipResources.bundle\ja.lproj\UAInteractiveNotifications.strings" />
+    <BundleResource Include="Resources\AirshipResources.bundle\ja.lproj\UrbanAirship.strings" />
+    <BundleResource Include="Resources\AirshipResources.bundle\ko.lproj\UrbanAirship.strings" />
+    <BundleResource Include="Resources\AirshipResources.bundle\ms.lproj\UrbanAirship.strings" />
+    <BundleResource Include="Resources\AirshipResources.bundle\nl.lproj\UrbanAirship.strings" />
+    <BundleResource Include="Resources\AirshipResources.bundle\no.lproj\UrbanAirship.strings" />
+    <BundleResource Include="Resources\AirshipResources.bundle\pl.lproj\UrbanAirship.strings" />
+    <BundleResource Include="Resources\AirshipResources.bundle\pt-PT.lproj\UrbanAirship.strings" />
     <BundleResource Include="Resources\AirshipResources.bundle\pt.lproj\UAInteractiveNotifications.strings" />
+    <BundleResource Include="Resources\AirshipResources.bundle\pt.lproj\UrbanAirship.strings" />
+    <BundleResource Include="Resources\AirshipResources.bundle\ro.lproj\UrbanAirship.strings" />
+    <BundleResource Include="Resources\AirshipResources.bundle\ru.lproj\UrbanAirship.strings" />
+    <BundleResource Include="Resources\AirshipResources.bundle\sk.lproj\UrbanAirship.strings" />
+    <BundleResource Include="Resources\AirshipResources.bundle\sv.lproj\UrbanAirship.strings" />
+    <BundleResource Include="Resources\AirshipResources.bundle\th.lproj\UrbanAirship.strings" />
+    <BundleResource Include="Resources\AirshipResources.bundle\tr.lproj\UrbanAirship.strings" />
+    <BundleResource Include="Resources\AirshipResources.bundle\vi.lproj\UrbanAirship.strings" />
     <BundleResource Include="Resources\AirshipResources.bundle\zh-Hans.lproj\UAInteractiveNotifications.strings" />
+    <BundleResource Include="Resources\AirshipResources.bundle\zh-Hans.lproj\UrbanAirship.strings" />
     <BundleResource Include="Resources\AirshipResources.bundle\zh-Hant.lproj\UAInteractiveNotifications.strings" />
-  </ItemGroup>
-  <ItemGroup>
-    <ObjcBindingNativeLibrary Include="libUAirship-7.0.2.a" />
+    <BundleResource Include="Resources\AirshipResources.bundle\zh-Hant.lproj\UrbanAirship.strings" />
   </ItemGroup>
 </Project>
