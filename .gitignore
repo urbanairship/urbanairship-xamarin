@@ -199,3 +199,6 @@ FakesAssemblies/
 
 # Xam files
 *.xam
+
+# Build files
+.tools
