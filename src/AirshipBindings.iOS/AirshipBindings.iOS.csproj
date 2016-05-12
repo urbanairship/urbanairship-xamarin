@@ -43,8 +43,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="libUAirship-7.0.2.linkwith.cs">
-      <DependentUpon>libUAirship-7.0.2.a</DependentUpon>
+    <Compile Include="libUAirship-7.1.2.linkwith.cs">
+      <DependentUpon>libUAirship-7.1.2.a</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -72,6 +72,6 @@
     <BundleResource Include="Resources\AirshipResources.bundle\zh-Hant.lproj\UAInteractiveNotifications.strings" />
   </ItemGroup>
   <ItemGroup>
-    <ObjcBindingNativeLibrary Include="libUAirship-7.0.2.a" />
+    <ObjcBindingNativeLibrary Include="libUAirship-7.1.2.a" />
   </ItemGroup>
 </Project>
