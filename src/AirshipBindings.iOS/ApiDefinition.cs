@@ -1773,6 +1773,10 @@ namespace UrbanAirship {
 		[Export ("navigationBarColor", ArgumentSemantic.Strong)]
 		UIColor NavigationBarColor { get; set; }
 
+		// @property (assign, nonatomic) BOOL navigationBarOpaque;
+		[Export ("navigationBarOpaque")]
+		bool NavigationBarOpaque { get; set; }
+
 		// @property (nonatomic, strong) UIColor * listColor;
 		[Export ("listColor", ArgumentSemantic.Strong)]
 		UIColor ListColor { get; set; }

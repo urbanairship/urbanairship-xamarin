@@ -12,7 +12,7 @@
     <AndroidUseLatestPlatformSdk>True</AndroidUseLatestPlatformSdk>
     <AssemblyName>AirshipBindings</AssemblyName>
     <TargetFrameworkVersion>v6.0</TargetFrameworkVersion>
-    <ReleaseVersion>2.1.0</ReleaseVersion>
+    <ReleaseVersion>2.2.0</ReleaseVersion>
     <Description>Urban Airship Xamarin bindings for Android</Description>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
@@ -100,6 +100,6 @@
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.Bindings.targets" />
   <ItemGroup>
-    <LibraryProjectZip Include="Jars\urbanairship-sdk-7.1.3-no-manifest.aar" />
+    <LibraryProjectZip Include="Jars\urbanairship-sdk-7.1.5-no-manifest.aar" />
   </ItemGroup>
 </Project>
