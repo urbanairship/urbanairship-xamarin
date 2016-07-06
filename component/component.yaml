@@ -14,7 +14,7 @@ libraries:
 summary: A full suite of mobile engagement tools for building next-generation apps
 details: Details.md
 getting-started: GettingStarted.md
-version: "2.2.0"
+version: "2.2.1"
 samples:
   iOS Sample: ../samples/ios-unified/iOSSample.sln
   Android Sample: ../samples/android/AndroidSample.sln
