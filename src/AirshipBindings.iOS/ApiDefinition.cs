@@ -1241,12 +1241,6 @@ namespace UrbanAirship {
 	{
 	}
 
-	// @interface UAWalletAction : UAAction
-	[BaseType (typeof(UAAction))]
-	interface UAWalletAction
-	{
-	}
-
 	// @interface UAEvent : NSObject
 	[BaseType (typeof(NSObject))]
 	interface UAEvent
