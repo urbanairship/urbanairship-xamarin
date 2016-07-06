@@ -20,9 +20,9 @@ samples:
   Android Sample: ../samples/android/AndroidSample.sln
 packages:
   android:
-    - urbanairship, Version=2.2.0
+    - urbanairship, Version=2.2.1
   ios-unified:
-    - urbanairship, Version=2.2.0
+    - urbanairship, Version=2.2.1
 is_shell: true
 no_build: true
 output: ../build
