@@ -4,11 +4,15 @@ This component provides official bindings to the Urban Airship SDK, as well as s
 
 ### Release Notes
 
+=============================
+Version 2.2.2 - July 22, 2016
+=============================
+- Fixed missing Android bindings for UrbanAirship.Push.Notifications package.
+
 ============================
 Version 2.2.1 - July 6, 2016
 ============================
-- Fixed native linking errors for missing
-  UAWalletAction on iOS
+- Fixed native linking errors for missing UAWalletAction on iOS
  
 ==========================
 Version 2.2 - June 2, 2016
