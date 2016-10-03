@@ -7,6 +7,7 @@ using CoreLocation;
 using Foundation;
 using ObjCRuntime;
 using UIKit;
+using UserNotifications;
 
 namespace UrbanAirship {
 
@@ -109,61 +110,81 @@ namespace UrbanAirship {
 		[Field ("UACustomEventMaxPropertiesCount", "__Internal")]
 		nuint UACustomEventMaxPropertiesCount { get; }
 
-		// extern UALocationServiceProviderType *const _Nonnull UALocationServiceProviderGps;
-		[Field ("UALocationServiceProviderGps", "__Internal")]
-		NSString UALocationServiceProviderGps { get; }
-
-		// extern UALocationServiceProviderType *const _Nonnull UALocationServiceProviderNetwork;
-		[Field ("UALocationServiceProviderNetwork", "__Internal")]
-		NSString UALocationServiceProviderNetwork { get; }
-
-		// extern UALocationServiceProviderType *const _Nonnull UALocationServiceProviderUnknown;
-		[Field ("UALocationServiceProviderUnknown", "__Internal")]
-		NSString UALocationServiceProviderUnknown { get; }
-
-		// extern UALocationServiceNSDefaultsKey *const _Nonnull UALocationServiceAllowedKey;
-		[Field ("UALocationServiceAllowedKey", "__Internal")]
-		NSString UALocationServiceAllowedKey { get; }
-
-		// extern UALocationServiceNSDefaultsKey *const _Nonnull UALocationServiceEnabledKey;
-		[Field ("UALocationServiceEnabledKey", "__Internal")]
-		NSString UALocationServiceEnabledKey { get; }
-
-		// extern UALocationServiceNSDefaultsKey *const _Nonnull UAStandardLocationServiceRestartKey;
-		[Field ("UAStandardLocationServiceRestartKey", "__Internal")]
-		NSString UAStandardLocationServiceRestartKey { get; }
-
-		// extern UALocationServiceNSDefaultsKey *const _Nonnull UASignificantChangeServiceRestartKey;
-		[Field ("UASignificantChangeServiceRestartKey", "__Internal")]
-		NSString UASignificantChangeServiceRestartKey { get; }
-
-		// extern UALocationServiceNSDefaultsKey *const _Nonnull UAStandardLocationDistanceFilterKey;
-		[Field ("UAStandardLocationDistanceFilterKey", "__Internal")]
-		NSString UAStandardLocationDistanceFilterKey { get; }
-
-		// extern UALocationServiceNSDefaultsKey *const _Nonnull UAStandardLocationDesiredAccuracyKey;
-		[Field ("UAStandardLocationDesiredAccuracyKey", "__Internal")]
-		NSString UAStandardLocationDesiredAccuracyKey { get; }
-
-		// extern UALocationServiceNSDefaultsKey *const _Nonnull UASingleLocationDesiredAccuracyKey;
-		[Field ("UASingleLocationDesiredAccuracyKey", "__Internal")]
-		NSString UASingleLocationDesiredAccuracyKey { get; }
-
-		// extern UALocationServiceNSDefaultsKey *const _Nonnull UASingleLocationTimeoutKey;
-		[Field ("UASingleLocationTimeoutKey", "__Internal")]
-		NSString UASingleLocationTimeoutKey { get; }
-
-		// extern UALocationServiceErrorDomain *const _Nonnull UALocationServiceTimeoutError;
-		[Field ("UALocationServiceTimeoutError", "__Internal")]
-		NSString UALocationServiceTimeoutError { get; }
-
 		// extern NSString *const _Nonnull UAAnalyticsValueNone;
 		[Field ("UAAnalyticsValueNone", "__Internal")]
 		NSString UAAnalyticsValueNone { get; }
 
-		// extern NSString *const _Nonnull UALocationServiceBestAvailableSingleLocationKey;
-		[Field ("UALocationServiceBestAvailableSingleLocationKey", "__Internal")]
-		NSString UALocationServiceBestAvailableSingleLocationKey { get; }
+		// extern UALocationEventAnalyticsKey *const _Nonnull UALocationEventForegroundKey;
+		[Field("UALocationEventForegroundKey", "__Internal")]
+		NSString UALocationEventForegroundKey { get; }
+
+		// extern UALocationEventAnalyticsKey *const _Nonnull UALocationEventLatitudeKey;
+		[Field("UALocationEventLatitudeKey", "__Internal")]
+		NSString UALocationEventLatitudeKey { get; }
+
+		// extern UALocationEventAnalyticsKey *const _Nonnull UALocationEventLongitudeKey;
+		[Field("UALocationEventLongitudeKey", "__Internal")]
+		NSString UALocationEventLongitudeKey { get; }
+
+		// extern UALocationEventAnalyticsKey *const _Nonnull UALocationEventDesiredAccuracyKey;
+		[Field("UALocationEventDesiredAccuracyKey", "__Internal")]
+		NSString UALocationEventDesiredAccuracyKey { get; }
+
+		// extern UALocationEventAnalyticsKey *const _Nonnull UALocationEventUpdateTypeKey;
+		[Field("UALocationEventUpdateTypeKey", "__Internal")]
+		NSString UALocationEventUpdateTypeKey { get; }
+
+		// extern UALocationEventAnalyticsKey *const _Nonnull UALocationEventProviderKey;
+		[Field("UALocationEventProviderKey", "__Internal")]
+		NSString UALocationEventProviderKey { get; }
+
+		// extern UALocationEventAnalyticsKey *const _Nonnull UALocationEventDistanceFilterKey;
+		[Field("UALocationEventDistanceFilterKey", "__Internal")]
+		NSString UALocationEventDistanceFilterKey { get; }
+
+		// extern UALocationEventAnalyticsKey *const _Nonnull UALocationEventHorizontalAccuracyKey;
+		[Field("UALocationEventHorizontalAccuracyKey", "__Internal")]
+		NSString UALocationEventHorizontalAccuracyKey { get; }
+
+		// extern UALocationEventAnalyticsKey *const _Nonnull UALocationEventVerticalAccuracyKey;
+		[Field("UALocationEventVerticalAccuracyKey", "__Internal")]
+		NSString UALocationEventVerticalAccuracyKey { get; }
+
+		// extern UALocationEventAnalyticsKey *const _Nonnull UALocationEventSessionIDKey;
+		[Field("UALocationEventSessionIDKey", "__Internal")]
+		NSString UALocationEventSessionIDKey { get; }
+
+		// extern UALocationEventUpdateType *const _Nonnull UALocationEventAnalyticsType;
+		[Field("UALocationEventAnalyticsType", "__Internal")]
+		NSString UALocationEventAnalyticsType { get; }
+
+		// extern UALocationEventUpdateType *const _Nonnull UALocationEventUpdateTypeChange;
+		[Field("UALocationEventUpdateTypeChange", "__Internal")]
+		NSString UALocationEventUpdateTypeChange { get; }
+
+		// extern UALocationEventUpdateType *const _Nonnull UALocationEventUpdateTypeContinuous;
+		[Field("UALocationEventUpdateTypeContinuous", "__Internal")]
+		NSString UALocationEventUpdateTypeContinuous { get; }
+
+		// extern UALocationEventUpdateType *const _Nonnull UALocationEventUpdateTypeSingle;
+		[Field("UALocationEventUpdateTypeSingle", "__Internal")]
+		NSString UALocationEventUpdateTypeSingle { get; }
+
+		// extern UALocationEventUpdateType *const _Nonnull UALocationEventUpdateTypeNone;
+		[Field("UALocationEventUpdateTypeNone", "__Internal")]
+		NSString UALocationEventUpdateTypeNone { get; }
+
+		// extern UALocationServiceProviderType *const _Nonnull UALocationServiceProviderGps;
+		[Field("UALocationServiceProviderGps", "__Internal")]
+		NSString UALocationServiceProviderGps { get; }
+
+		// extern UALocationServiceProviderType *const _Nonnull UALocationServiceProviderNetwork;
+		[Field("UALocationServiceProviderNetwork", "__Internal")]
+		NSString UALocationServiceProviderNetwork { get; }
+
+		// extern UALocationServiceProviderType *const _Nonnull UALocationServiceProviderUnknown;
+		[Field("UALocationServiceProviderUnknown", "__Internal")]
+		NSString UALocationServiceProviderUnknown { get; }
 
 		// extern const NSUInteger UAAssociatedIdentifiersMaxCharacterCount;
 		[Field ("UAAssociatedIdentifiersMaxCharacterCount", "__Internal")]
@@ -172,6 +193,102 @@ namespace UrbanAirship {
 		// extern const NSUInteger UAAssociatedIdentifiersMaxCount;
 		[Field ("UAAssociatedIdentifiersMaxCount", "__Internal")]
 		nuint UAAssociatedIdentifiersMaxCount { get; }
+
+		// extern NSString *const UACancelSchedulesActionAll;
+		[Field("UACancelSchedulesActionAll", "__Internal")]
+		NSString UACancelSchedulesActionAll { get; }
+
+		// extern NSString *const UACancelSchedulesActionIDs;
+		[Field("UACancelSchedulesActionIDs", "__Internal")]
+		NSString UACancelSchedulesActionIDs { get; }
+
+		// extern NSString *const UACancelSchedulesActionGroups;
+		[Field("UACancelSchedulesActionGroups", "__Internal")]
+		NSString UACancelSchedulesActionGroups { get; }
+
+		// extern NSString *const _Nonnull UAScheduleTriggerTypeKey;
+		[Field("UAScheduleTriggerTypeKey", "__Internal")]
+		NSString UAScheduleTriggerTypeKey { get; }
+
+		// extern NSString *const _Nonnull UAScheduleTriggerPredicateKey;
+		[Field("UAScheduleTriggerPredicateKey", "__Internal")]
+		NSString UAScheduleTriggerPredicateKey { get; }
+
+		// extern NSString *const _Nonnull UAScheduleTriggerGoalKey;
+		[Field("UAScheduleTriggerGoalKey", "__Internal")]
+		NSString UAScheduleTriggerGoalKey { get; }
+
+		// extern NSString *const _Nonnull UAScheduleTriggerAppForegroundName;
+		[Field("UAScheduleTriggerAppForegroundName", "__Internal")]
+		NSString UAScheduleTriggerAppForegroundName { get; }
+
+		// extern NSString *const _Nonnull UAScheduleTriggerAppBackgroundName;
+		[Field("UAScheduleTriggerAppBackgroundName", "__Internal")]
+		NSString UAScheduleTriggerAppBackgroundName { get; }
+
+		// extern NSString *const _Nonnull UAScheduleTriggerRegionEnterName;
+		[Field("UAScheduleTriggerRegionEnterName", "__Internal")]
+		NSString UAScheduleTriggerRegionEnterName { get; }
+
+		// extern NSString *const _Nonnull UAScheduleTriggerRegionExitName;
+		[Field("UAScheduleTriggerRegionExitName", "__Internal")]
+		NSString UAScheduleTriggerRegionExitName { get; }
+
+		// extern NSString *const _Nonnull UAScheduleTriggerCustomEventCountName;
+		[Field("UAScheduleTriggerCustomEventCountName", "__Internal")]
+		NSString UAScheduleTriggerCustomEventCountName { get; }
+
+		// extern NSString *const _Nonnull UAScheduleTriggerCustomEventValueName;
+		[Field("UAScheduleTriggerCustomEventValueName", "__Internal")]
+		NSString UAScheduleTriggerCustomEventValueName { get; }
+
+		// extern NSString *const _Nonnull UAScheduleTriggerScreenName;
+		[Field("UAScheduleTriggerScreenName", "__Internal")]
+		NSString UAScheduleTriggerScreenName { get; }
+
+		// extern NSString *const _Nonnull UANotificationDefaultActionIdentifier;
+		[Field("UANotificationDefaultActionIdentifier", "__Internal")]
+		NSString UANotificationDefaultActionIdentifier { get; }
+
+		// extern NSString *const _Nonnull UANotificationDismissActionIdentifier;
+		[Field("UANotificationDismissActionIdentifier", "__Internal")]
+		NSString UANotificationDismissActionIdentifier { get; }
+
+		// extern NSString *const _Nonnull UAChannelCreatedEvent;
+		[Field("UAChannelCreatedEvent", "__Internal")]
+		NSString UAChannelCreatedEvent { get; }
+
+		// extern NSString *const _Nonnull UAChannelCreatedEventChannelKey;
+		[Field("UAChannelCreatedEventChannelKey", "__Internal")]
+		NSString UAChannelCreatedEventChannelKey { get; }
+
+		// extern NSString *const _Nonnull UAChannelCreatedEventExistingKey;
+		[Field("UAChannelCreatedEventExistingKey", "__Internal")]
+		NSString UAChannelCreatedEventExistingKey { get; }
+
+		// extern NSString *const _Nonnull UACustomEventNameKey;
+		[Field("UACustomEventNameKey", "__Internal")]
+		NSString UACustomEventNameKey { get; }
+
+		// extern NSString *const _Nonnull UACustomEventValueKey;
+		[Field("UACustomEventValueKey", "__Internal")]
+		NSString UACustomEventValueKey { get; }
+
+		// extern NSString *const _Nonnull UACustomEventPropertiesKey;
+		[Field("UACustomEventPropertiesKey", "__Internal")]
+		NSString UACustomEventPropertiesKey { get; }
+
+		// extern NSString *const _Nonnull UACustomEventTransactionIDKey;
+		[Field("UACustomEventTransactionIDKey", "__Internal")]
+		NSString UACustomEventTransactionIDKey { get; }
+
+		// extern NSString *const _Nonnull UACustomEventInteractionIDKey;
+		[Field("UACustomEventInteractionIDKey", "__Internal")]
+		NSString UACustomEventInteractionIDKey { get; }
+
+		// extern NSString *const _Nonnull UACustomEventInteractionTypeKey;
+		[Field("UACustomEventInteractionTypeKey", "__Internal")]
+		NSString UACustomEventInteractionTypeKey { get; }
 	}
 
 	// @interface UAirship : NSObject
@@ -205,10 +322,6 @@ namespace UrbanAirship {
 		// @property (readonly, nonatomic, strong) UAWhitelist * _Nonnull whitelist;
 		[Export ("whitelist", ArgumentSemantic.Strong)]
 		UAWhitelist Whitelist { get; }
-
-		// @property (readonly, nonatomic, strong) UALocationService * _Nonnull locationService;
-		[Export ("locationService", ArgumentSemantic.Strong)]
-		UALocationService LocationService { get; }
 
 		// +(void)setLogging:(BOOL)enabled;
 		[Static]
@@ -260,6 +373,11 @@ namespace UrbanAirship {
 		[Export ("inAppMessaging")]
 		UAInAppMessaging InAppMessaging { get; }
 
+		// +(UANamedUser * _Null_unspecified)namedUser;
+		[Static]
+		[Export("namedUser")]
+		UANamedUser NamedUser { get; }
+
 		// +(UADefaultMessageCenter * _Null_unspecified)defaultMessageCenter;
 		[Static]
 		[ExportAttribute ("defaultMessageCenter")]
@@ -269,7 +387,255 @@ namespace UrbanAirship {
 		[Static]
 		[ExportAttribute ("resources")]
 		NSBundle Resources { get;}
+
+		// +(UALocation * _Null_unspecified)location;
+		[Static]
+		[Export("location")]
+		UALocation Location { get; }
+
+		// +(UAAutomation * _Null_unspecified)automation;
+		[Static]
+		[Export("automation")]
+		UAAutomation Automation { get; }
 	}
+
+	// @interface UAAppIntegration : NSObject
+	[BaseType(typeof(NSObject))]
+	interface UAAppIntegration
+	{
+		// +(void)userNotificationCenter:(UNUserNotificationCenter * _Nonnull)center didReceiveNotificationResponse:(UNNotificationResponse * _Nonnull)response withCompletionHandler:(void (^ _Nonnull)())completionHandler;
+		[Static]
+		[Export("userNotificationCenter:didReceiveNotificationResponse:withCompletionHandler:")]
+		void UserNotificationCenterDidReceiveNotificationResponse(UNUserNotificationCenter center, UNNotificationResponse response, Action completionHandler);
+
+		// +(void)userNotificationCenter:(UNUserNotificationCenter * _Nonnull)center willPresentNotification:(UNNotification * _Nonnull)notification withCompletionHandler:(void (^ _Nonnull)(UNNotificationPresentationOptions))completionHandler;
+		[Static]
+		[Export("userNotificationCenter:willPresentNotification:withCompletionHandler:")]
+		void UserNotificationCenterWillPresentNotification(UNUserNotificationCenter center, UNNotification notification, Action<UNNotificationPresentationOptions> completionHandler);
+
+		// +(void)application:(UIApplication * _Nonnull)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData * _Nonnull)deviceToken;
+		[Static]
+		[Export("application:didRegisterForRemoteNotificationsWithDeviceToken:")]
+		void ApplicationDidRegisterForRemoteNotifications(UIApplication application, NSData deviceToken);
+
+		// +(void)application:(UIApplication * _Nonnull)application didReceiveRemoteNotification:(NSDictionary * _Nonnull)userInfo fetchCompletionHandler:(void (^ _Nonnull)(UIBackgroundFetchResult))completionHandler;
+		[Static]
+		[Export("application:didReceiveRemoteNotification:fetchCompletionHandler:")]
+		void ApplicationDidReceiveRemoteNotification(UIApplication application, NSDictionary userInfo, Action<UIBackgroundFetchResult> completionHandler);
+
+		// +(void)application:(UIApplication * _Nonnull)application didRegisterUserNotificationSettings:(UIUserNotificationSettings * _Nonnull)notificationSettings;
+		[Static]
+		[Export("application:didRegisterUserNotificationSettings:")]
+		void ApplicationDidRegisterUserNotificationSettings(UIApplication application, UIUserNotificationSettings notificationSettings);
+
+		// +(void)application:(UIApplication * _Nonnull)application handleActionWithIdentifier:(NSString * _Nonnull)identifier forRemoteNotification:(NSDictionary * _Nonnull)userInfo completionHandler:(void (^ _Nonnull)())handler;
+		[Static]
+		[Export("application:handleActionWithIdentifier:forRemoteNotification:completionHandler:")]
+		void HandleAction(UIApplication application, string identifier, NSDictionary userInfo, Action handler);
+
+		// +(void)application:(UIApplication * _Nonnull)application handleActionWithIdentifier:(NSString * _Nonnull)identifier forRemoteNotification:(NSDictionary * _Nonnull)userInfo withResponseInfo:(NSDictionary * _Nullable)responseInfo completionHandler:(void (^ _Nonnull)())handler;
+		[Static]
+		[Export("application:handleActionWithIdentifier:forRemoteNotification:withResponseInfo:completionHandler:")]
+		void HandleAction(UIApplication application, string identifier, NSDictionary userInfo, [NullAllowed] NSDictionary responseInfo, Action handler);
+	}
+
+	// @interface UANotificationAction : NSObject
+	[BaseType(typeof(NSObject))]
+	interface UANotificationAction
+	{
+		// @property (readonly, copy, nonatomic) NSString * _Nonnull identifier;
+		[Export("identifier")]
+		string Identifier { get; }
+
+		// @property (readonly, copy, nonatomic) NSString * _Nonnull title;
+		[Export("title")]
+		string Title { get; }
+
+		// @property (readonly, assign, nonatomic) UNNotificationActionOptions options;
+		[Export("options", ArgumentSemantic.Assign)]
+		UNNotificationActionOptions Options { get; }
+
+		// +(instancetype _Nonnull)actionWithIdentifier:(NSString * _Nonnull)identifier title:(NSString * _Nonnull)title options:(UNNotificationActionOptions)options;
+		[Static]
+		[Export("actionWithIdentifier:title:options:")]
+		UANotificationAction Action(string identifier, string title, UNNotificationActionOptions options);
+	}
+
+	// @interface UANotificationCategories : NSObject
+	[BaseType(typeof(NSObject))]
+	interface UANotificationCategories
+	{
+		// +(NSSet * _Nonnull)createCategoriesFromFile:(NSString * _Nonnull)filePath;
+		[Static]
+		[Export("createCategoriesFromFile:")]
+		NSSet CreateCategories(string filePath);
+
+		// +(UANotificationCategory * _Nullable)createCategory:(NSString * _Nonnull)categoryId actions:(NSArray * _Nonnull)actionDefinitions;
+		[Static]
+		[Export("createCategory:actions:")]
+		[return: NullAllowed]
+		UANotificationCategory CreateCategory(string categoryId, NSObject[] actionDefinitions);
+	}
+
+	// @interface UANotificationCategory : NSObject
+	[BaseType(typeof(NSObject))]
+	interface UANotificationCategory
+	{
+		// @property (readonly, copy, nonatomic) NSString * _Nonnull identifier;
+		[Export("identifier")]
+		string Identifier { get; }
+
+		// @property (readonly, copy, nonatomic) NSArray<UANotificationAction *> * _Nonnull actions;
+		[Export("actions", ArgumentSemantic.Copy)]
+		UANotificationAction[] Actions { get; }
+
+		// @property (readonly, copy, nonatomic) NSArray<NSString *> * _Nonnull intentIdentifiers;
+		[Export("intentIdentifiers", ArgumentSemantic.Copy)]
+		string[] IntentIdentifiers { get; }
+
+		// @property (readonly, assign, nonatomic) UNNotificationCategoryOptions options;
+		[Export("options", ArgumentSemantic.Assign)]
+		UNNotificationCategoryOptions Options { get; }
+
+		// +(instancetype _Nonnull)categoryWithIdentifier:(NSString * _Nonnull)identifier actions:(NSArray<UANotificationAction *> * _Nonnull)actions intentIdentifiers:(NSArray<NSString *> * _Nonnull)intentIdentifiers options:(UNNotificationCategoryOptions)options;
+		[Static]
+		[Export("categoryWithIdentifier:actions:intentIdentifiers:options:")]
+		UANotificationCategory Category(string identifier, UANotificationAction[] actions, string[] intentIdentifiers, UNNotificationCategoryOptions options);
+	}
+
+	// @interface UANotificationContent : NSObject
+	[BaseType(typeof(NSObject))]
+	interface UANotificationContent
+	{
+		// @property (readonly, copy, nonatomic) NSString * _Nullable alertTitle;
+		[NullAllowed, Export("alertTitle")]
+		string AlertTitle { get; }
+
+		// @property (readonly, copy, nonatomic) NSString * _Nullable alertBody;
+		[NullAllowed, Export("alertBody")]
+		string AlertBody { get; }
+
+		// @property (readonly, copy, nonatomic) NSString * _Nullable sound;
+		[NullAllowed, Export("sound")]
+		string Sound { get; }
+
+		// @property (readonly, assign, nonatomic) NSNumber * _Nullable badge;
+		[NullAllowed, Export("badge", ArgumentSemantic.Assign)]
+		NSNumber Badge { get; }
+
+		// @property (readonly, nonatomic, strong) NSNumber * _Nullable contentAvailable;
+		[NullAllowed, Export("contentAvailable", ArgumentSemantic.Strong)]
+		NSNumber ContentAvailable { get; }
+
+		// @property (readonly, copy, nonatomic) NSString * _Nullable categoryIdentifier;
+		[NullAllowed, Export("categoryIdentifier")]
+		string CategoryIdentifier { get; }
+
+		// @property (readonly, copy, nonatomic) NSString * _Nullable launchImage;
+		[NullAllowed, Export("launchImage")]
+		string LaunchImage { get; }
+
+		// @property (readonly, copy, nonatomic) NSDictionary * _Nullable localizationKeys;
+		[NullAllowed, Export("localizationKeys", ArgumentSemantic.Copy)]
+		NSDictionary LocalizationKeys { get; }
+
+		// @property (readonly, copy, nonatomic) NSDictionary * _Nonnull notificationInfo;
+		[Export("notificationInfo", ArgumentSemantic.Copy)]
+		NSDictionary NotificationInfo { get; }
+
+		// @property (readonly, nonatomic, strong) UNNotification * _Nullable notification;
+		[NullAllowed, Export("notification", ArgumentSemantic.Strong)]
+		UNNotification UNNotification { get; }
+
+		// +(instancetype _Nonnull)notificationWithNotificationInfo:(NSDictionary * _Nonnull)notificationInfo;
+		[Static]
+		[Export("notificationWithNotificationInfo:")]
+		UANotificationContent Notification(NSDictionary notificationInfo);
+
+		// +(instancetype _Nonnull)notificationWithUNNotification:(UNNotification * _Nonnull)notification;
+		[Static]
+		[Export("notificationWithUNNotification:")]
+		UANotificationContent Notification(UNNotification notification);
+	}
+
+	// @interface UANotificationResponse : NSObject
+	[BaseType(typeof(NSObject))]
+	interface UANotificationResponse
+	{
+		// @property (readonly, copy, nonatomic) NSString * _Nonnull actionIdentifier;
+		[Export("actionIdentifier")]
+		string ActionIdentifier { get; }
+
+		// @property (readonly, copy, nonatomic) NSString * _Nonnull responseText;
+		[Export("responseText")]
+		string ResponseText { get; }
+
+		// @property (readonly, nonatomic, strong) UANotificationContent * _Nonnull notificationContent;
+		[Export("notificationContent", ArgumentSemantic.Strong)]
+		UANotificationContent NotificationContent { get; }
+
+		// @property (readonly, nonatomic, strong) UNNotificationResponse * _Nullable response;
+		[NullAllowed, Export("response", ArgumentSemantic.Strong)]
+		UNNotificationResponse Response { get; }
+
+		// +(instancetype _Nonnull)notificationResponseWithNotificationInfo:(NSDictionary * _Nonnull)notificationInfo actionIdentifier:(NSString * _Nonnull)actionIdentifier responseText:(NSString * _Nullable)responseText;
+		[Static]
+		[Export("notificationResponseWithNotificationInfo:actionIdentifier:responseText:")]
+		UANotificationResponse NotificationResponse(NSDictionary notificationInfo, string actionIdentifier, [NullAllowed] string responseText);
+
+		// +(instancetype _Nonnull)notificationResponseWithUNNotificationResponse:(UNNotificationResponse * _Nonnull)response;
+		[Static]
+		[Export("notificationResponseWithUNNotificationResponse:")]
+		UANotificationResponse NotificationResponse(UNNotificationResponse response);
+	}
+
+	// @protocol UALocationDelegate <NSObject>
+	[Protocol, Model]
+	[BaseType(typeof(NSObject))]
+	interface UALocationDelegate
+	{
+		// @optional -(void)locationUpdatesStarted;
+		[Export("locationUpdatesStarted")]
+		void LocationUpdatesStarted();
+
+		// @optional -(void)locationUpdatesStopped;
+		[Export("locationUpdatesStopped")]
+		void LocationUpdatesStopped();
+
+		// @optional -(void)receivedLocationUpdates:(NSArray * _Nonnull)locations;
+		[Export("receivedLocationUpdates:")]
+		void ReceivedLocationUpdates(NSObject[] locations);
+	}
+
+	// @interface UALocation : NSObject
+	[BaseType(typeof(NSObject))]
+	interface UALocation
+	{
+		// @property (getter = isAutoRequestAuthorizationEnabled, assign, nonatomic) BOOL autoRequestAuthorizationEnabled;
+		[Export("autoRequestAuthorizationEnabled")]
+		bool AutoRequestAuthorizationEnabled { [Bind("isAutoRequestAuthorizationEnabled")] get; set; }
+
+		// @property (getter = isLocationUpdatesEnabled, assign, nonatomic) BOOL locationUpdatesEnabled;
+		[Export("locationUpdatesEnabled")]
+		bool LocationUpdatesEnabled { [Bind("isLocationUpdatesEnabled")] get; set; }
+
+		// @property (getter = isBackgroundLocationUpdatesAllowed, assign, nonatomic) BOOL backgroundLocationUpdatesAllowed;
+		[Export("backgroundLocationUpdatesAllowed")]
+		bool BackgroundLocationUpdatesAllowed { [Bind("isBackgroundLocationUpdatesAllowed")] get; set; }
+
+		[Wrap("WeakDelegate")]
+		[NullAllowed]
+		UALocationDelegate Delegate { get; set; }
+
+		// @property (nonatomic, weak) id<UALocationDelegate> _Nullable delegate;
+		[NullAllowed, Export("delegate", ArgumentSemantic.Weak)]
+		NSObject WeakDelegate { get; set; }
+
+		// @property (readonly, nonatomic) CLLocation * _Nullable lastLocation;
+		[NullAllowed, Export("lastLocation")]
+		CLLocation LastLocation { get; }
+	}
+
 
 	// @interface UAUser : NSObject
 	[BaseType (typeof(NSObject))]
@@ -504,56 +870,24 @@ namespace UrbanAirship {
 
 	// @protocol UAPushNotificationDelegate <NSObject>
 	[Protocol, Model]
-	[BaseType (typeof(NSObject))]
+	[BaseType(typeof(NSObject))]
 	interface UAPushNotificationDelegate
 	{
-		// @optional -(void)displayNotificationAlert:(NSString * _Nonnull)alertMessage;
-		[Export ("displayNotificationAlert:")]
-		void DisplayNotificationAlert (string alertMessage);
+		// @optional -(void)receivedForegroundNotification:(UANotificationContent * _Nonnull)notificationContent completionHandler:(void (^ _Nonnull)())completionHandler;
+		[Export("receivedForegroundNotification:completionHandler:")]
+		void ReceivedForegroundNotification(UANotificationContent notificationContent, Action completionHandler);
 
-		// @optional -(void)displayLocalizedNotificationAlert:(NSDictionary * _Nonnull)alertDict;
-		[Export ("displayLocalizedNotificationAlert:")]
-		void DisplayLocalizedNotificationAlert (NSDictionary alertDict);
+		// @optional -(void)receivedBackgroundNotification:(UANotificationContent * _Nonnull)notificationContent completionHandler:(void (^ _Nonnull)(UIBackgroundFetchResult))completionHandler;
+		[Export("receivedBackgroundNotification:completionHandler:")]
+		void ReceivedBackgroundNotification(UANotificationContent notificationContent, Action<UIBackgroundFetchResult> completionHandler);
 
-		// @optional -(void)playNotificationSound:(NSString * _Nonnull)soundFilename;
-		[Export ("playNotificationSound:")]
-		void PlayNotificationSound (string soundFilename);
+		// @optional -(void)receivedNotificationResponse:(UANotificationResponse * _Nonnull)notificationResponse completionHandler:(void (^ _Nonnull)())completionHandler;
+		[Export("receivedNotificationResponse:completionHandler:")]
+		void ReceivedNotificationResponse(UANotificationResponse notificationResponse, Action completionHandler);
 
-		// @optional -(void)handleBadgeUpdate:(NSInteger)badgeNumber;
-		[Export ("handleBadgeUpdate:")]
-		void HandleBadgeUpdate (nint badgeNumber);
-
-		// @optional -(void)receivedForegroundNotification:(NSDictionary * _Nonnull)notification;
-		[Export ("receivedForegroundNotification:")]
-		void ReceivedForegroundNotification (NSDictionary notification);
-
-		// @optional -(void)receivedForegroundNotification:(NSDictionary * _Nonnull)notification fetchCompletionHandler:(void (^ _Nonnull)(UIBackgroundFetchResult))completionHandler;
-		[Export ("receivedForegroundNotification:fetchCompletionHandler:")]
-		void ReceivedForegroundNotification (NSDictionary notification, Action<UIBackgroundFetchResult> completionHandler);
-
-		// @optional -(void)receivedBackgroundNotification:(NSDictionary * _Nonnull)notification;
-		[Export ("receivedBackgroundNotification:")]
-		void ReceivedBackgroundNotification (NSDictionary notification);
-
-		// @optional -(void)receivedBackgroundNotification:(NSDictionary * _Nonnull)notification fetchCompletionHandler:(void (^ _Nonnull)(UIBackgroundFetchResult))completionHandler;
-		[Export ("receivedBackgroundNotification:fetchCompletionHandler:")]
-		void ReceivedBackgroundNotification (NSDictionary notification, Action<UIBackgroundFetchResult> completionHandler);
-
-		// @optional -(void)launchedFromNotification:(NSDictionary * _Nonnull)notification;
-		[Export ("launchedFromNotification:")]
-		void LaunchedFromNotification (NSDictionary notification);
-
-		// @optional -(void)launchedFromNotification:(NSDictionary * _Nonnull)notification fetchCompletionHandler:(void (^ _Nonnull)(UIBackgroundFetchResult))completionHandler;
-		[Export ("launchedFromNotification:fetchCompletionHandler:")]
-		void LaunchedFromNotification (NSDictionary notification, Action<UIBackgroundFetchResult> completionHandler);
-
-		// @optional -(void)launchedFromNotification:(NSDictionary * _Nonnull)notification actionIdentifier:(NSString * _Nonnull)identifier completionHandler:(void (^ _Nonnull)())completionHandler;
-		[Export ("launchedFromNotification:actionIdentifier:completionHandler:")]
-		void LaunchedFromNotification (NSDictionary notification, string identifier, Action completionHandler);
-
-		// @optional -(void)receivedBackgroundNotification:(NSDictionary * _Nonnull)notification actionIdentifier:(NSString * _Nonnull)identifier completionHandler:(void (^ _Nonnull)())completionHandler;
-		[Export ("receivedBackgroundNotification:actionIdentifier:completionHandler:")]
-		void ReceivedBackgroundNotification (NSDictionary notification, string identifier, Action completionHandler);
+		// @optional -(UNNotificationPresentationOptions)presentationOptionsForNotification:(UNNotification * _Nonnull)notification;
+		[Export("presentationOptionsForNotification:")]
+		UNNotificationPresentationOptions PresentationOptions(UNNotification notification);
 	}
 
 	// @interface UAPush : NSObject <UAChannelRegistrarDelegate>
@@ -593,16 +927,8 @@ namespace UrbanAirship {
 		string DeviceToken { get; }
 
 		// @property (readonly, copy, nonatomic) NSString * _Nullable channelID;
-		[NullAllowed, Export ("channelID")]
+		[NullAllowed, Export("channelID")]
 		string ChannelID { get; }
-
-		// @property (assign, nonatomic) UIUserNotificationType userNotificationTypes;
-		[Export ("userNotificationTypes", ArgumentSemantic.Assign)]
-		UIUserNotificationType UserNotificationTypes { get; set; }
-
-		// @property (nonatomic, strong) NSSet * _Nonnull userNotificationCategories;
-		[Export ("userNotificationCategories", ArgumentSemantic.Strong)]
-		NSSet UserNotificationCategories { get; set; }
 
 		// @property (assign, nonatomic) BOOL requireAuthorizationForDefaultCategories;
 		[Export ("requireAuthorizationForDefaultCategories")]
@@ -624,10 +950,6 @@ namespace UrbanAirship {
 		[NullAllowed, Export ("registrationDelegate", ArgumentSemantic.Weak)]
 		NSObject WeakRegistrationDelegate { get; set; }
 
-		// @property (readonly, nonatomic, strong) NSDictionary * _Nullable launchNotification;
-		[NullAllowed, Export ("launchNotification", ArgumentSemantic.Strong)]
-		NSDictionary LaunchNotification { get; }
-
 		// @property (getter = isAutobadgeEnabled, assign, nonatomic) BOOL autobadgeEnabled;
 		[Export ("autobadgeEnabled")]
 		bool AutobadgeEnabled { [Bind ("isAutobadgeEnabled")] get; set; }
@@ -640,17 +962,9 @@ namespace UrbanAirship {
 		[Export ("resetBadge")]
 		void ResetBadge ();
 
-		// -(UIUserNotificationType)currentEnabledNotificationTypes;
-		[Export ("currentEnabledNotificationTypes")]
-		UIUserNotificationType CurrentEnabledNotificationTypes { get; }
-
 		// @property (copy, nonatomic) NSString * _Nullable alias;
 		[NullAllowed, Export ("alias")]
 		string Alias { get; set; }
-
-		// @property (nonatomic, strong) UANamedUser * _Nonnull namedUser;
-		[Export ("namedUser", ArgumentSemantic.Strong)]
-		UANamedUser NamedUser { get; set; }
 
 		// @property (copy, nonatomic) NSArray<NSString *> * _Nonnull tags;
 		[Export ("tags", ArgumentSemantic.Copy)]
@@ -708,29 +1022,25 @@ namespace UrbanAirship {
 		[Export ("updateRegistration")]
 		void UpdateRegistration ();
 
-		// -(void)appReceivedRemoteNotification:(NSDictionary * _Nonnull)notification applicationState:(UIApplicationState)state;
-		[Export ("appReceivedRemoteNotification:applicationState:")]
-		void AppReceivedRemoteNotification (NSDictionary notification, UIApplicationState state);
+		// @property (assign, nonatomic) UANotificationOptions notificationOptions;
+		[Export("notificationOptions", ArgumentSemantic.Assign)]
+		UANotificationOptions NotificationOptions { get; set; }
 
-		// -(void)appReceivedRemoteNotification:(NSDictionary * _Nonnull)notification applicationState:(UIApplicationState)state fetchCompletionHandler:(void (^ _Nullable)(UIBackgroundFetchResult))completionHandler;
-		[Export ("appReceivedRemoteNotification:applicationState:fetchCompletionHandler:")]
-		void AppReceivedRemoteNotification (NSDictionary notification, UIApplicationState state, [NullAllowed] Action<UIBackgroundFetchResult> completionHandler);
+		// @property (readonly, assign, nonatomic) UANotificationOptions authorizedNotificationOptions;
+		[Export("authorizedNotificationOptions", ArgumentSemantic.Assign)]
+		UANotificationOptions AuthorizedNotificationOptions { get; }
 
-		// -(void)appRegisteredForRemoteNotificationsWithDeviceToken:(NSData * _Nonnull)token;
-		[Export ("appRegisteredForRemoteNotificationsWithDeviceToken:")]
-		void AppRegisteredForRemoteNotifications (NSData token);
+		// @property (nonatomic, strong) NSSet<UANotificationCategory *> * _Nonnull customCategories;
+		[Export("customCategories", ArgumentSemantic.Strong)]
+		NSSet CustomCategories { get; set; }
 
-		// -(void)appRegisteredUserNotificationSettings;
-		[Export ("appRegisteredUserNotificationSettings")]
-		void AppRegisteredUserNotificationSettings ();
+		// @property (readonly, nonatomic, strong) UANotificationResponse * _Nullable launchNotificationResponse;
+		[NullAllowed, Export("launchNotificationResponse", ArgumentSemantic.Strong)]
+		UANotificationResponse LaunchNotificationResponse { get; }
 
-		// -(void)appReceivedActionWithIdentifier:(NSString * _Nonnull)identifier notification:(NSDictionary * _Nonnull)notification applicationState:(UIApplicationState)state completionHandler:(void (^ _Nonnull)())completionHandler;
-		[Export ("appReceivedActionWithIdentifier:notification:applicationState:completionHandler:")]
-		void AppReceivedAction (string identifier, NSDictionary notification, UIApplicationState state, Action completionHandler);
-
-		// -(void)appReceivedActionWithIdentifier:(NSString * _Nonnull)identifier notification:(NSDictionary * _Nonnull)notification responseInfo:(NSDictionary * _Nullable)responseInfo applicationState:(UIApplicationState)state completionHandler:(void (^ _Nonnull)())completionHandler;
-		[Export ("appReceivedActionWithIdentifier:notification:responseInfo:applicationState:completionHandler:")]
-		void AppReceivedAction (string identifier, NSDictionary notification, [NullAllowed] NSDictionary responseInfo, UIApplicationState state, Action completionHandler);
+		// @property (assign, nonatomic) UNNotificationPresentationOptions defaultPresentationOptions;
+		[Export("defaultPresentationOptions", ArgumentSemantic.Assign)]
+		UNNotificationPresentationOptions DefaultPresentationOptions { get; set; }
 	}
 
 	// @interface UAConfig : NSObject
@@ -1241,6 +1551,319 @@ namespace UrbanAirship {
 	{
 	}
 
+	// @interface UACancelSchedulesAction : UAAction
+	[BaseType(typeof(UAAction))]
+	interface UACancelSchedulesAction
+	{
+	}
+
+	// @interface UAActionSchedule : NSObject
+	[BaseType(typeof(NSObject))]
+	interface UAActionSchedule
+	{
+		// @property (readonly, nonatomic) NSString * _Nonnull identifier;
+		[Export("identifier")]
+		string Identifier { get; }
+
+		// @property (readonly, nonatomic) UAActionScheduleInfo * _Nonnull info;
+		[Export("info")]
+		UAActionScheduleInfo Info { get; }
+
+		// -(BOOL)isEqualToSchedule:(UAActionSchedule * _Nullable)schedule;
+		[Export("isEqualToSchedule:")]
+		bool IsEqual([NullAllowed] UAActionSchedule schedule);
+	}
+
+	// @interface UAActionScheduleInfo : NSObject
+	[BaseType(typeof(NSObject))]
+	interface UAActionScheduleInfo
+	{
+		// @property (readonly, nonatomic) NSDictionary * _Nonnull actions;
+		[Export("actions")]
+		NSDictionary Actions { get; }
+
+		// @property (readonly, nonatomic) NSArray<UAScheduleTrigger *> * _Nonnull triggers;
+		[Export("triggers")]
+		UAScheduleTrigger[] Triggers { get; }
+
+		// @property (readonly, nonatomic) NSUInteger limit;
+		[Export("limit")]
+		nuint Limit { get; }
+
+		// @property (readonly, nonatomic) NSString * _Nullable group;
+		[NullAllowed, Export("group")]
+		string Group { get; }
+
+		// @property (readonly, nonatomic) NSDate * _Nonnull start;
+		[Export("start")]
+		NSDate Start { get; }
+
+		// @property (readonly, nonatomic) NSDate * _Nonnull end;
+		[Export("end")]
+		NSDate End { get; }
+
+		// @property (readonly, nonatomic) BOOL isValid;
+		[Export("isValid")]
+		bool IsValid { get; }
+
+		// +(instancetype _Nonnull)actionScheduleInfoWithBuilderBlock:(void (^ _Nonnull)(UAActionScheduleInfoBuilder * _Nonnull))builderBlock;
+		[Static]
+		[Export("actionScheduleInfoWithBuilderBlock:")]
+		UAActionScheduleInfo ActionScheduleInfo(Action<UAActionScheduleInfoBuilder> builderBlock);
+
+		// -(BOOL)isEqualToScheduleInfo:(UAActionScheduleInfo * _Nullable)scheduleInfo;
+		[Export("isEqualToScheduleInfo:")]
+		bool IsEqual([NullAllowed] UAActionScheduleInfo scheduleInfo);
+
+		// +(instancetype _Nullable)actionScheduleInfoWithJSON:(id _Nonnull)json error:(NSError * _Nullable * _Nullable)error;
+		[Static]
+		[Export("actionScheduleInfoWithJSON:error:")]
+		[return: NullAllowed]
+		UAActionScheduleInfo ActionScheduleInfo(NSObject json, [NullAllowed] out NSError error);
+	}
+
+	// @interface UAActionScheduleInfoBuilder : NSObject
+	[BaseType(typeof(NSObject))]
+	interface UAActionScheduleInfoBuilder
+	{
+		// @property (nonatomic, strong) NSDictionary * _Nullable actions;
+		[NullAllowed, Export("actions", ArgumentSemantic.Strong)]
+		NSDictionary Actions { get; set; }
+
+		// @property (assign, nonatomic) NSUInteger limit;
+		[Export("limit")]
+		nuint Limit { get; set; }
+
+		// @property (nonatomic, strong) NSArray<UAScheduleTrigger *> * _Nullable triggers;
+		[NullAllowed, Export("triggers", ArgumentSemantic.Strong)]
+		UAScheduleTrigger[] Triggers { get; set; }
+
+		// @property (copy, nonatomic) NSString * _Nullable group;
+		[NullAllowed, Export("group")]
+		string Group { get; set; }
+
+		// @property (nonatomic, strong) NSDate * _Nullable start;
+		[NullAllowed, Export("start", ArgumentSemantic.Strong)]
+		NSDate Start { get; set; }
+
+		// @property (nonatomic, strong) NSDate * _Nullable end;
+		[NullAllowed, Export("end", ArgumentSemantic.Strong)]
+		NSDate End { get; set; }
+	}
+
+	// @interface UAScheduleTrigger : NSObject
+	[BaseType(typeof(NSObject))]
+	interface UAScheduleTrigger
+	{
+		// @property (readonly, nonatomic) UAScheduleTriggerType type;
+		[Export("type")]
+		UAScheduleTriggerType Type { get; }
+
+		// @property (readonly, nonatomic) NSNumber * _Nonnull goal;
+		[Export("goal")]
+		NSNumber Goal { get; }
+
+		// +(instancetype _Nonnull)foregroundTriggerWithCount:(NSUInteger)count;
+		[Static]
+		[Export("foregroundTriggerWithCount:")]
+		UAScheduleTrigger ForegroundTrigger(nuint count);
+
+		// +(instancetype _Nonnull)backgroundTriggerWithCount:(NSUInteger)count;
+		[Static]
+		[Export("backgroundTriggerWithCount:")]
+		UAScheduleTrigger BackgroundTrigger(nuint count);
+
+		// +(instancetype _Nonnull)regionEnterTriggerForRegionID:(NSString * _Nonnull)regionID count:(NSUInteger)count;
+		[Static]
+		[Export("regionEnterTriggerForRegionID:count:")]
+		UAScheduleTrigger RegionEnterTrigger(string regionID, nuint count);
+
+		// +(instancetype _Nonnull)regionExitTriggerForRegionID:(NSString * _Nonnull)regionID count:(NSUInteger)count;
+		[Static]
+		[Export("regionExitTriggerForRegionID:count:")]
+		UAScheduleTrigger RegionExitTrigger(string regionID, nuint count);
+
+		// +(instancetype _Nonnull)screenTriggerForScreenName:(NSString * _Nonnull)screenName count:(NSUInteger)count;
+		[Static]
+		[Export("screenTriggerForScreenName:count:")]
+		UAScheduleTrigger ScreenTrigger(string screenName, nuint count);
+
+		// +(instancetype _Nonnull)customEventTriggerWithPredicate:(UAJSONPredicate * _Nonnull)predicate count:(NSUInteger)count;
+		[Static]
+		[Export("customEventTriggerWithPredicate:count:")]
+		UAScheduleTrigger CustomEventTrigger(UAJSONPredicate predicate, nuint count);
+
+		// +(instancetype _Nonnull)customEventTriggerWithPredicate:(UAJSONPredicate * _Nonnull)predicate value:(NSNumber * _Nonnull)value;
+		[Static]
+		[Export("customEventTriggerWithPredicate:value:")]
+		UAScheduleTrigger CustomEventTrigger(UAJSONPredicate predicate, NSNumber value);
+
+		// -(BOOL)isEqualToTrigger:(UAScheduleTrigger * _Nullable)trigger;
+		[Export("isEqualToTrigger:")]
+		bool IsEqual([NullAllowed] UAScheduleTrigger trigger);
+
+		// +(instancetype _Nullable)triggerWithJSON:(id _Nonnull)json error:(NSError * _Nullable * _Nullable)error;
+		[Static]
+		[Export("triggerWithJSON:error:")]
+		[return: NullAllowed]
+		UAScheduleTrigger Trigger(NSObject json, [NullAllowed] out NSError error);
+	}
+
+	// @interface UAJSONMatcher : NSObject
+	[BaseType(typeof(NSObject))]
+	interface UAJSONMatcher
+	{
+		// @property (readonly, nonatomic) NSDictionary * _Nonnull payload;
+		[Export("payload")]
+		NSDictionary Payload { get; }
+
+		// -(BOOL)evaluateObject:(id _Nullable)object;
+		[Export("evaluateObject:")]
+		bool EvaluateObject([NullAllowed] NSObject @object);
+
+		// +(instancetype _Nonnull)matcherWithValueMatcher:(UAJSONValueMatcher * _Nonnull)valueMatcher;
+		[Static]
+		[Export("matcherWithValueMatcher:")]
+		UAJSONMatcher Matcher(UAJSONValueMatcher valueMatcher);
+
+		// +(instancetype _Nonnull)matcherWithValueMatcher:(UAJSONValueMatcher * _Nonnull)valueMatcher key:(NSString * _Nonnull)key;
+		[Static]
+		[Export("matcherWithValueMatcher:key:")]
+		UAJSONMatcher Matcher(UAJSONValueMatcher valueMatcher, string key);
+
+		// +(instancetype _Nonnull)matcherWithValueMatcher:(UAJSONValueMatcher * _Nonnull)valueMatcher key:(NSString * _Nonnull)key scope:(NSArray<NSString *> * _Nonnull)scope;
+		[Static]
+		[Export("matcherWithValueMatcher:key:scope:")]
+		UAJSONMatcher Matcher(UAJSONValueMatcher valueMatcher, string key, string[] scope);
+
+		// +(instancetype _Nullable)matcherWithJSON:(id _Nonnull)json error:(NSError * _Nullable * _Nullable)error;
+		[Static]
+		[Export("matcherWithJSON:error:")]
+		[return: NullAllowed]
+		UAJSONMatcher Matcher(NSObject json, [NullAllowed] out NSError error);
+	}
+
+	// @interface UAJSONValueMatcher : NSObject
+	[BaseType(typeof(NSObject))]
+	interface UAJSONValueMatcher
+	{
+		// @property (readonly, nonatomic) NSDictionary * _Nonnull payload;
+		[Export("payload")]
+		NSDictionary Payload { get; }
+
+		// -(BOOL)evaluateObject:(id _Nullable)object;
+		[Export("evaluateObject:")]
+		bool EvaluateObject([NullAllowed] NSObject @object);
+
+		// +(instancetype _Nonnull)matcherWhereNumberAtLeast:(NSNumber * _Nonnull)number;
+		[Static]
+		[Export("matcherWhereNumberAtLeast:")]
+		UAJSONValueMatcher MatcherWhereNumberAtLeast(NSNumber number);
+
+		// +(instancetype _Nonnull)matcherWhereNumberAtLeast:(NSNumber * _Nonnull)lowerNumber atMost:(NSNumber * _Nonnull)higherNumber;
+		[Static]
+		[Export("matcherWhereNumberAtLeast:atMost:")]
+		UAJSONValueMatcher MatcherWhereNumberAtLeast(NSNumber lowerNumber, NSNumber higherNumber);
+
+		// +(instancetype _Nonnull)matcherWhereNumberAtMost:(NSNumber * _Nonnull)number;
+		[Static]
+		[Export("matcherWhereNumberAtMost:")]
+		UAJSONValueMatcher MatcherWhereNumberAtMost(NSNumber number);
+
+		// +(instancetype _Nonnull)matcherWhereNumberEquals:(NSNumber * _Nonnull)number;
+		[Static]
+		[Export("matcherWhereNumberEquals:")]
+		UAJSONValueMatcher MatcherWhereNumberEquals(NSNumber number);
+
+		// +(instancetype _Nonnull)matcherWhereStringEquals:(NSString * _Nonnull)string;
+		[Static]
+		[Export("matcherWhereStringEquals:")]
+		UAJSONValueMatcher MatcherWhereStringEquals(string @string);
+
+		// +(instancetype _Nonnull)matcherWhereValueIsPresent:(BOOL)present;
+		[Static]
+		[Export("matcherWhereValueIsPresent:")]
+		UAJSONValueMatcher MatcherWhereValueIsPresent(bool present);
+
+		// +(instancetype _Nullable)matcherWithJSON:(id _Nonnull)json error:(NSError * _Nullable * _Nullable)error;
+		[Static]
+		[Export("matcherWithJSON:error:")]
+		[return: NullAllowed]
+		UAJSONValueMatcher Matcher(NSObject json, [NullAllowed] out NSError error);
+	}
+
+	// @interface UAJSONPredicate : NSObject
+	[BaseType(typeof(NSObject))]
+	interface UAJSONPredicate
+	{
+		// @property (readonly, nonatomic) NSDictionary * _Nonnull payload;
+		[Export("payload")]
+		NSDictionary Payload { get; }
+
+		// -(BOOL)evaluateObject:(id _Nullable)object;
+		[Export("evaluateObject:")]
+		bool EvaluateObject([NullAllowed] NSObject @object);
+
+		// +(instancetype _Nonnull)predicateWithJSONMatcher:(UAJSONMatcher * _Nonnull)matcher;
+		[Static]
+		[Export("predicateWithJSONMatcher:")]
+		UAJSONPredicate Predicate(UAJSONMatcher matcher);
+
+		// +(instancetype _Nonnull)andPredicateWithSubpredicates:(NSArray<UAJSONPredicate *> * _Nonnull)subpredicates;
+		[Static]
+		[Export("andPredicateWithSubpredicates:")]
+		UAJSONPredicate AndPredicate(UAJSONPredicate[] subpredicates);
+
+		// +(instancetype _Nonnull)orPredicateWithSubpredicates:(NSArray<UAJSONPredicate *> * _Nonnull)subpredicates;
+		[Static]
+		[Export("orPredicateWithSubpredicates:")]
+		UAJSONPredicate OrPredicate(UAJSONPredicate[] subpredicates);
+
+		// +(instancetype _Nonnull)notPredicateWithSubpredicate:(UAJSONPredicate * _Nonnull)subpredicate;
+		[Static]
+		[Export("notPredicateWithSubpredicate:")]
+		UAJSONPredicate NotPredicate(UAJSONPredicate subpredicate);
+
+		// +(instancetype _Nullable)predicateWithJSON:(id _Nonnull)json error:(NSError * _Nullable * _Nullable)error;
+		[Static]
+		[Export("predicateWithJSON:error:")]
+		[return: NullAllowed]
+		UAJSONPredicate Predicate(NSObject json, [NullAllowed] out NSError error);
+	}
+
+	// @interface UAAutomation : NSObject
+	[BaseType(typeof(NSObject))]
+	interface UAAutomation
+	{
+		// -(void)scheduleActions:(UAActionScheduleInfo * _Nonnull)scheduleInfo completionHandler:(void (^ _Nullable)(UAActionSchedule * _Nullable))completionHandler;
+		[Export("scheduleActions:completionHandler:")]
+		void ScheduleActions(UAActionScheduleInfo scheduleInfo, [NullAllowed] Action<UAActionSchedule> completionHandler);
+
+		// -(void)cancelScheduleWithIdentifier:(NSString * _Nonnull)identifier;
+		[Export("cancelScheduleWithIdentifier:")]
+		void CancelSchedule(string identifier);
+
+		// -(void)cancelSchedulesWithGroup:(NSString * _Nonnull)group;
+		[Export("cancelSchedulesWithGroup:")]
+		void CancelSchedules(string group);
+
+		// -(void)cancelAll;
+		[Export("cancelAll")]
+		void CancelAll();
+
+		// -(void)getScheduleWithIdentifier:(NSString * _Nonnull)identifier completionHandler:(void (^ _Nonnull)(UAActionSchedule * _Nullable))completionHandler;
+		[Export("getScheduleWithIdentifier:completionHandler:")]
+		void GetSchedule(string identifier, Action<UAActionSchedule> completionHandler);
+
+		// -(void)getSchedules:(void (^ _Nonnull)(NSArray<UAActionSchedule *> * _Nonnull))completionHandler;
+		[Export("getSchedules:")]
+		void GetSchedules(Action<NSArray> completionHandler);
+
+		// -(void)getSchedulesWithGroup:(NSString * _Nonnull)group completionHandler:(void (^ _Nonnull)(NSArray<UAActionSchedule *> * _Nonnull))completionHandler;
+		[Export("getSchedulesWithGroup:completionHandler:")]
+		void GetSchedules(string group, Action<NSArray> completionHandler);
+	}
+
 	// @interface UAEvent : NSObject
 	[BaseType (typeof(NSObject))]
 	interface UAEvent
@@ -1324,6 +1947,249 @@ namespace UrbanAirship {
 		// -(void)setStringArrayProperty:(NSArray<NSString *> * _Nonnull)value forKey:(NSString * _Nonnull)key;
 		[Export ("setStringArrayProperty:forKey:")]
 		void SetStringArrayProperty (string[] value, string key);
+
+		// @property (readonly, copy, nonatomic) NSDictionary * _Nonnull properties;
+		[Export("properties", ArgumentSemantic.Copy)]
+		NSDictionary Properties { get; }
+
+		// -(void)track;
+		[Export("track")]
+		void Track();
+	}
+
+	// @interface UAAccountEventTemplate : NSObject
+	[BaseType(typeof(NSObject))]
+	interface UAAccountEventTemplate
+	{
+		// +(instancetype _Nonnull)registeredTemplate;
+		[Static]
+		[Export("registeredTemplate")]
+		UAAccountEventTemplate RegisteredTemplate();
+
+		// +(instancetype _Nonnull)registeredTemplateWithValueFromString:(NSString * _Nullable)eventValue;
+		[Static]
+		[Export("registeredTemplateWithValueFromString:")]
+		UAAccountEventTemplate RegisteredTemplate([NullAllowed] string eventValue);
+
+		// +(instancetype _Nonnull)registeredTemplateWithValue:(NSNumber * _Nullable)eventValue;
+		[Static]
+		[Export("registeredTemplateWithValue:")]
+		UAAccountEventTemplate RegisteredTemplate([NullAllowed] NSNumber eventValue);
+
+		// @property (nonatomic, strong) NSDecimalNumber * _Nullable eventValue;
+		[NullAllowed, Export("eventValue", ArgumentSemantic.Strong)]
+		NSDecimalNumber EventValue { get; set; }
+
+		// @property (copy, nonatomic) NSString * _Nullable transactionID;
+		[NullAllowed, Export("transactionID")]
+		string TransactionID { get; set; }
+
+		// @property (copy, nonatomic) NSString * _Nullable category;
+		[NullAllowed, Export("category")]
+		string Category { get; set; }
+
+		// -(UACustomEvent * _Nonnull)createEvent;
+		[Export("createEvent")]
+		UACustomEvent CreateEvent ();
+	}
+
+	// @interface UAMediaEventTemplate : NSObject
+	[BaseType(typeof(NSObject))]
+	interface UAMediaEventTemplate
+	{
+		// +(instancetype _Nonnull)browsedTemplate;
+		[Static]
+		[Export("browsedTemplate")]
+		UAMediaEventTemplate BrowsedTemplate();
+
+		// +(instancetype _Nonnull)starredTemplate;
+		[Static]
+		[Export("starredTemplate")]
+		UAMediaEventTemplate StarredTemplate();
+
+		// +(instancetype _Nonnull)sharedTemplate;
+		[Static]
+		[Export("sharedTemplate")]
+		UAMediaEventTemplate SharedTemplate();
+
+		// +(instancetype _Nonnull)sharedTemplateWithSource:(NSString * _Nullable)source withMedium:(NSString * _Nullable)medium;
+		[Static]
+		[Export("sharedTemplateWithSource:withMedium:")]
+		UAMediaEventTemplate SharedTemplate([NullAllowed] string source, [NullAllowed] string medium);
+
+		// +(instancetype _Nonnull)consumedTemplate;
+		[Static]
+		[Export("consumedTemplate")]
+		UAMediaEventTemplate ConsumedTemplate();
+
+		// +(instancetype _Nonnull)consumedTemplateWithValueFromString:(NSString * _Nullable)eventValue;
+		[Static]
+		[Export("consumedTemplateWithValueFromString:")]
+		UAMediaEventTemplate ConsumedTemplate([NullAllowed] string eventValue);
+
+		// +(instancetype _Nonnull)consumedTemplateWithValue:(NSNumber * _Nullable)eventValue;
+		[Static]
+		[Export("consumedTemplateWithValue:")]
+		UAMediaEventTemplate ConsumedTemplate([NullAllowed] NSNumber eventValue);
+
+		// @property (copy, nonatomic) NSString * _Nullable identifier;
+		[NullAllowed, Export("identifier")]
+		string Identifier { get; set; }
+
+		// @property (copy, nonatomic) NSString * _Nullable category;
+		[NullAllowed, Export("category")]
+		string Category { get; set; }
+
+		// @property (copy, nonatomic) NSString * _Nullable type;
+		[NullAllowed, Export("type")]
+		string Type { get; set; }
+
+		// @property (copy, nonatomic) NSString * _Nullable eventDescription;
+		[NullAllowed, Export("eventDescription")]
+		string EventDescription { get; set; }
+
+		// @property (assign, nonatomic) BOOL isFeature;
+		[Export("isFeature")]
+		bool IsFeature { get; set; }
+
+		// @property (copy, nonatomic) NSString * _Nullable author;
+		[NullAllowed, Export("author")]
+		string Author { get; set; }
+
+		// @property (copy, nonatomic) NSString * _Nullable publishedDate;
+		[NullAllowed, Export("publishedDate")]
+		string PublishedDate { get; set; }
+
+		// -(UACustomEvent * _Nonnull)createEvent;
+		[Export("createEvent")]
+		UACustomEvent CreateEvent ();
+	}
+
+	// @interface UARetailEventTemplate : NSObject
+	[BaseType(typeof(NSObject))]
+	interface UARetailEventTemplate
+	{
+		// +(instancetype _Nonnull)browsedTemplate;
+		[Static]
+		[Export("browsedTemplate")]
+		UARetailEventTemplate BrowsedTemplate();
+
+		// +(instancetype _Nonnull)browsedTemplateWithValueFromString:(NSString * _Nullable)eventValue;
+		[Static]
+		[Export("browsedTemplateWithValueFromString:")]
+		UARetailEventTemplate BrowsedTemplate([NullAllowed] string eventValue);
+
+		// +(instancetype _Nonnull)browsedTemplateWithValue:(NSNumber * _Nullable)eventValue;
+		[Static]
+		[Export("browsedTemplateWithValue:")]
+		UARetailEventTemplate BrowsedTemplate([NullAllowed] NSNumber eventValue);
+
+		// +(instancetype _Nonnull)addedToCartTemplate;
+		[Static]
+		[Export("addedToCartTemplate")]
+		UARetailEventTemplate AddedToCartTemplate();
+
+		// +(instancetype _Nonnull)addedToCartTemplateWithValueFromString:(NSString * _Nullable)eventValue;
+		[Static]
+		[Export("addedToCartTemplateWithValueFromString:")]
+		UARetailEventTemplate AddedToCartTemplate([NullAllowed] string eventValue);
+
+		// +(instancetype _Nonnull)addedToCartTemplateWithValue:(NSNumber * _Nullable)eventValue;
+		[Static]
+		[Export("addedToCartTemplateWithValue:")]
+		UARetailEventTemplate AddedToCartTemplate([NullAllowed] NSNumber eventValue);
+
+		// +(instancetype _Nonnull)starredProductTemplate;
+		[Static]
+		[Export("starredProductTemplate")]
+		UARetailEventTemplate StarredProductTemplate();
+
+		// +(instancetype _Nonnull)starredProductTemplateWithValueFromString:(NSString * _Nullable)eventValue;
+		[Static]
+		[Export("starredProductTemplateWithValueFromString:")]
+		UARetailEventTemplate StarredProductTemplate([NullAllowed] string eventValue);
+
+		// +(instancetype _Nonnull)starredProductTemplateWithValue:(NSNumber * _Nullable)eventValue;
+		[Static]
+		[Export("starredProductTemplateWithValue:")]
+		UARetailEventTemplate StarredProductTemplate([NullAllowed] NSNumber eventValue);
+
+		// +(instancetype _Nonnull)purchasedTemplate;
+		[Static]
+		[Export("purchasedTemplate")]
+		UARetailEventTemplate PurchasedTemplate();
+
+		// +(instancetype _Nonnull)purchasedTemplateWithValueFromString:(NSString * _Nullable)eventValue;
+		[Static]
+		[Export("purchasedTemplateWithValueFromString:")]
+		UARetailEventTemplate PurchasedTemplate([NullAllowed] string eventValue);
+
+		// +(instancetype _Nonnull)purchasedTemplateWithValue:(NSNumber * _Nullable)eventValue;
+		[Static]
+		[Export("purchasedTemplateWithValue:")]
+		UARetailEventTemplate PurchasedTemplate([NullAllowed] NSNumber eventValue);
+
+		// +(instancetype _Nonnull)sharedProductTemplate;
+		[Static]
+		[Export("sharedProductTemplate")]
+		UARetailEventTemplate SharedProductTemplate();
+
+		// +(instancetype _Nonnull)sharedProductTemplateWithValueFromString:(NSString * _Nullable)eventValue;
+		[Static]
+		[Export("sharedProductTemplateWithValueFromString:")]
+		UARetailEventTemplate SharedProductTemplate([NullAllowed] string eventValue);
+
+		// +(instancetype _Nonnull)sharedProductTemplateWithValue:(NSNumber * _Nullable)eventValue;
+		[Static]
+		[Export("sharedProductTemplateWithValue:")]
+		UARetailEventTemplate SharedProductTemplate([NullAllowed] NSNumber eventValue);
+
+		// +(instancetype _Nonnull)sharedProductTemplateWithSource:(NSString * _Nullable)source withMedium:(NSString * _Nullable)medium;
+		[Static]
+		[Export("sharedProductTemplateWithSource:withMedium:")]
+		UARetailEventTemplate SharedProductTemplate([NullAllowed] string source, [NullAllowed] string medium);
+
+		// +(instancetype _Nonnull)sharedProductTemplateWithValueFromString:(NSString * _Nullable)eventValue withSource:(NSString * _Nullable)source withMedium:(NSString * _Nullable)medium;
+		[Static]
+		[Export("sharedProductTemplateWithValueFromString:withSource:withMedium:")]
+		UARetailEventTemplate SharedProductTemplate([NullAllowed] string eventValue, [NullAllowed] string source, [NullAllowed] string medium);
+
+		// +(instancetype _Nonnull)sharedProductTemplateWithValue:(NSNumber * _Nullable)eventValue withSource:(NSString * _Nullable)source withMedium:(NSString * _Nullable)medium;
+		[Static]
+		[Export("sharedProductTemplateWithValue:withSource:withMedium:")]
+		UARetailEventTemplate SharedProductTemplate([NullAllowed] NSNumber eventValue, [NullAllowed] string source, [NullAllowed] string medium);
+
+		// @property (nonatomic, strong) NSDecimalNumber * _Nullable eventValue;
+		[NullAllowed, Export("eventValue", ArgumentSemantic.Strong)]
+		NSDecimalNumber EventValue { get; set; }
+
+		// @property (copy, nonatomic) NSString * _Nullable transactionID;
+		[NullAllowed, Export("transactionID")]
+		string TransactionID { get; set; }
+
+		// @property (copy, nonatomic) NSString * _Nullable identifier;
+		[NullAllowed, Export("identifier")]
+		string Identifier { get; set; }
+
+		// @property (copy, nonatomic) NSString * _Nullable category;
+		[NullAllowed, Export("category")]
+		string Category { get; set; }
+
+		// @property (copy, nonatomic) NSString * _Nullable eventDescription;
+		[NullAllowed, Export("eventDescription")]
+		string EventDescription { get; set; }
+
+		// @property (copy, nonatomic) NSString * _Nullable brand;
+		[NullAllowed, Export("brand")]
+		string Brand { get; set; }
+
+		// @property (assign, nonatomic) BOOL isNewItem;
+		[Export("isNewItem")]
+		bool IsNewItem { get; set; }
+
+		// -(UACustomEvent * _Nonnull)createEvent;
+		[Export("createEvent")]
+		UACustomEvent CreateEvent();
 	}
 
 	// @interface UARegionEvent : UAEvent
@@ -1464,154 +2330,6 @@ namespace UrbanAirship {
 		// @property (assign, nonatomic) BOOL advertisingTrackingEnabled;
 		[Export ("advertisingTrackingEnabled")]
 		bool AdvertisingTrackingEnabled { get; set; }
-	}
-
-	// @protocol UALocationServiceDelegate <NSObject>
-	[Protocol, Model]
-	[BaseType (typeof(NSObject))]
-	interface UALocationServiceDelegate
-	{
-		// @optional -(void)locationService:(UALocationService * _Nonnull)service didFailWithError:(NSError * _Nonnull)error;
-		[Export ("locationService:didFailWithError:")]
-		void DidFailWithError (UALocationService service, NSError error);
-
-		// @optional -(void)locationService:(UALocationService * _Nonnull)service didChangeAuthorizationStatus:(CLAuthorizationStatus)status;
-		[Export ("locationService:didChangeAuthorizationStatus:")]
-		void DidChangeAuthorizationStatus (UALocationService service, CLAuthorizationStatus status);
-
-		// @optional -(void)locationService:(UALocationService * _Nonnull)service didUpdateLocations:(NSArray * _Nonnull)locations;
-		[Export ("locationService:didUpdateLocations:")]
-		void DidUpdateLocations (UALocationService service, CLLocation[] locations);
-	}
-
-	// @interface UALocationService : NSObject <UALocationProviderDelegate>
-	[BaseType (typeof(NSObject))]
-	interface UALocationService
-	{
-		// -(CLLocationDistance)standardLocationDistanceFilter;
-		// -(void)setStandardLocationDistanceFilter:(CLLocationDistance)distanceFilter;
-		[Export ("standardLocationDistanceFilter")]
-		double StandardLocationDistanceFilter { get; set; }
-
-		// -(CLLocationAccuracy)standardLocationDesiredAccuracy;
-		// -(void)setStandardLocationDesiredAccuracy:(CLLocationDistance)desiredAccuracy;
-		[Export ("standardLocationDesiredAccuracy")]
-		double StandardLocationDesiredAccuracy { get; set; }
-
-		// +(BOOL)airshipLocationServiceEnabled;
-		[Static]
-		[Export ("airshipLocationServiceEnabled")]
-		bool AirshipLocationServiceEnabled ();
-
-		// +(void)setAirshipLocationServiceEnabled:(BOOL)airshipLocationServiceEnabled;
-		[Static]
-		[Export ("setAirshipLocationServiceEnabled:")]
-		void SetAirshipLocationServiceEnabled (bool airshipLocationServiceEnabled);
-
-		// +(BOOL)locationServicesEnabled;
-		[Static]
-		[Export ("locationServicesEnabled")]
-		bool LocationServicesEnabled ();
-
-		// +(BOOL)locationServiceAuthorized;
-		[Static]
-		[Export ("locationServiceAuthorized")]
-		bool LocationServiceAuthorized ();
-
-		// +(BOOL)coreLocationWillPromptUserForPermissionToRun;
-		[Static]
-		[Export ("coreLocationWillPromptUserForPermissionToRun")]
-		bool CoreLocationWillPromptUserForPermissionToRun ();
-
-		// -(CLLocation * _Nullable)location;
-		[Export ("location")]
-		[return: NullAllowed]
-		CLLocation Location ();
-
-		// @property (readonly, nonatomic, strong) CLLocation * _Nullable lastReportedLocation;
-		[NullAllowed, Export ("lastReportedLocation", ArgumentSemantic.Strong)]
-		CLLocation LastReportedLocation { get; }
-
-		// @property (readonly, nonatomic, strong) NSDate * _Nullable dateOfLastLocation;
-		[NullAllowed, Export ("dateOfLastLocation", ArgumentSemantic.Strong)]
-		NSDate DateOfLastLocation { get; }
-
-		[Wrap ("WeakDelegate")]
-		[NullAllowed]
-		UALocationServiceDelegate Delegate { get; set; }
-
-		// @property (nonatomic, weak) id<UALocationServiceDelegate> _Nullable delegate;
-		[NullAllowed, Export ("delegate", ArgumentSemantic.Weak)]
-		NSObject WeakDelegate { get; set; }
-
-		// @property (assign, nonatomic, setter = setAutomaticLocationOnForegroundEnabled:) BOOL automaticLocationOnForegroundEnabled;
-		[Export ("automaticLocationOnForegroundEnabled")]
-		bool AutomaticLocationOnForegroundEnabled { get; [Bind ("setAutomaticLocationOnForegroundEnabled:")] set; }
-
-		// @property (assign, nonatomic) BOOL requestAlwaysAuthorization;
-		[Export ("requestAlwaysAuthorization")]
-		bool RequestAlwaysAuthorization { get; set; }
-
-		// @property (getter = isBackgroundLocationServiceEnabled, assign, nonatomic) BOOL backgroundLocationServiceEnabled;
-		[Export ("backgroundLocationServiceEnabled")]
-		bool BackgroundLocationServiceEnabled { [Bind ("isBackgroundLocationServiceEnabled")] get; set; }
-
-		// @property (assign, nonatomic) NSTimeInterval minimumTimeBetweenForegroundUpdates;
-		[Export ("minimumTimeBetweenForegroundUpdates")]
-		double MinimumTimeBetweenForegroundUpdates { get; set; }
-
-		// @property (readonly, assign, nonatomic) UALocationProviderStatus standardLocationServiceStatus;
-		[Export ("standardLocationServiceStatus", ArgumentSemantic.Assign)]
-		UALocationProviderStatus StandardLocationServiceStatus { get; }
-
-		// @property (readonly, assign, nonatomic) UALocationProviderStatus significantChangeServiceStatus;
-		[Export ("significantChangeServiceStatus", ArgumentSemantic.Assign)]
-		UALocationProviderStatus SignificantChangeServiceStatus { get; }
-
-		// @property (readonly, assign, nonatomic) UALocationProviderStatus singleLocationServiceStatus;
-		[Export ("singleLocationServiceStatus", ArgumentSemantic.Assign)]
-		UALocationProviderStatus SingleLocationServiceStatus { get; }
-
-		// -(NSString * _Nullable)purpose;
-		[Export ("purpose")]
-		[return: NullAllowed]
-		string Purpose ();
-
-		// -(void)startReportingStandardLocation;
-		[Export ("startReportingStandardLocation")]
-		void StartReportingStandardLocation ();
-
-		// -(void)stopReportingStandardLocation;
-		[Export ("stopReportingStandardLocation")]
-		void StopReportingStandardLocation ();
-
-		// -(void)startReportingSignificantLocationChanges;
-		[Export ("startReportingSignificantLocationChanges")]
-		void StartReportingSignificantLocationChanges ();
-
-		// -(void)stopReportingSignificantLocationChanges;
-		[Export ("stopReportingSignificantLocationChanges")]
-		void StopReportingSignificantLocationChanges ();
-
-		// -(NSTimeInterval)timeoutForSingleLocationService;
-		[Export ("timeoutForSingleLocationService")]
-		double TimeoutForSingleLocationService ();
-
-		// -(void)setTimeoutForSingleLocationService:(NSTimeInterval)timeoutForSingleLocationService;
-		[Export ("setTimeoutForSingleLocationService:")]
-		void SetTimeoutForSingleLocationService (double timeoutForSingleLocationService);
-
-		// -(CLLocationAccuracy)singleLocationDesiredAccuracy;
-		[Export ("singleLocationDesiredAccuracy")]
-		double SingleLocationDesiredAccuracy ();
-
-		// -(void)setSingleLocationDesiredAccuracy:(CLLocationAccuracy)desiredAccuracy;
-		[Export ("setSingleLocationDesiredAccuracy:")]
-		void SetSingleLocationDesiredAccuracy (double desiredAccuracy);
-
-		// -(void)reportCurrentLocation;
-		[Export ("reportCurrentLocation")]
-		void ReportCurrentLocation ();
 	}
 
 	// @interface UADefaultMessageCenter : NSObject
@@ -2023,11 +2741,11 @@ namespace UrbanAirship {
 
 		// @property (readonly, nonatomic) NSArray * _Nullable notificationActions;
 		[NullAllowed, Export ("notificationActions")]
-		UAUserNotificationAction[] NotificationActions { get; }
+		UANotificationAction[] NotificationActions { get; }
 
-		// @property (readonly, nonatomic) UAUserNotificationCategory * _Nullable buttonCategory;
+		// @property (readonly, nonatomic) UANotificationCategory * _Nullable buttonCategory;
 		[NullAllowed, Export ("buttonCategory")]
-		UAUserNotificationCategory ButtonCategory { get; }
+		UANotificationCategory ButtonCategory { get; }
 
 		// @property (readonly, nonatomic) NSArray * _Nullable buttonActionBindings;
 		[NullAllowed, Export ("buttonActionBindings")]
@@ -2079,115 +2797,4 @@ namespace UrbanAirship {
 		[Export ("closeAll:")]
 		void CloseAll (bool animated);
 	}
-
-	// @interface UAUserNotificationAction : NSObject
-	[BaseType (typeof(NSObject))]
-	interface UAUserNotificationAction
-	{
-		// @property (readonly, copy, nonatomic) NSString * _Nullable identifier;
-		[NullAllowed, Export ("identifier")]
-		string Identifier { get; }
-
-		// @property (readonly, copy, nonatomic) NSString * _Nullable title;
-		[NullAllowed, Export ("title")]
-		string Title { get; }
-
-		// @property (readonly, assign, nonatomic) UIUserNotificationActivationMode activationMode;
-		[Export ("activationMode", ArgumentSemantic.Assign)]
-		UIUserNotificationActivationMode ActivationMode { get; }
-
-		// @property (readonly, getter = isAuthenticationRequired, assign, nonatomic) BOOL authenticationRequired;
-		[Export ("authenticationRequired")]
-		bool AuthenticationRequired { [Bind ("isAuthenticationRequired")] get; }
-
-		// @property (readonly, getter = isDestructive, assign, nonatomic) BOOL destructive;
-		[Export ("destructive")]
-		bool Destructive { [Bind ("isDestructive")] get; }
-
-		// -(BOOL)isEqualToAction:(UAUserNotificationAction * _Nullable)notificationAction;
-		[Export ("isEqualToAction:")]
-		bool IsEqualToAction ([NullAllowed] UAUserNotificationAction notificationAction);
-	}
-
-	// @interface UAMutableUserNotificationAction : UAUserNotificationAction
-	[BaseType (typeof(UAUserNotificationAction))]
-	interface UAMutableUserNotificationAction
-	{
-		// +(instancetype _Nonnull)actionWithUIUserNotificationAction:(UIUserNotificationAction * _Nonnull)uiAction;
-		[Static]
-		[Export ("actionWithUIUserNotificationAction:")]
-		UAMutableUserNotificationAction Action (UIUserNotificationAction uiAction);
-
-		// @property (copy, nonatomic) NSString * _Nullable identifier;
-		[NullAllowed, Export ("identifier")]
-		string Identifier { get; set; }
-
-		// @property (copy, nonatomic) NSString * _Nullable title;
-		[NullAllowed, Export ("title")]
-		string Title { get; set; }
-
-		// @property (assign, nonatomic) UIUserNotificationActivationMode activationMode;
-		[Export ("activationMode", ArgumentSemantic.Assign)]
-		UIUserNotificationActivationMode ActivationMode { get; set; }
-
-		// @property (getter = isAuthenticationRequired, assign, nonatomic) BOOL authenticationRequired;
-		[Export ("authenticationRequired")]
-		bool AuthenticationRequired { [Bind ("isAuthenticationRequired")] get; set; }
-
-		// @property (getter = isDestructive, assign, nonatomic) BOOL destructive;
-		[Export ("destructive")]
-		bool Destructive { [Bind ("isDestructive")] get; set; }
-	}
-
-	// @interface UAUserNotificationCategory : NSObject
-	[BaseType (typeof(NSObject))]
-	interface UAUserNotificationCategory
-	{
-		// @property (readonly, copy, nonatomic) NSString * _Nullable identifier;
-		[NullAllowed, Export ("identifier")]
-		string Identifier { get; }
-
-		// -(NSArray * _Nullable)actionsForContext:(UIUserNotificationActionContext)context;
-		[Export ("actionsForContext:")]
-		[return: NullAllowed]
-		UAUserNotificationAction[] Actions (UIUserNotificationActionContext context);
-
-		// -(BOOL)isEqualToCategory:(UAUserNotificationCategory * _Nullable)category;
-		[Export ("isEqualToCategory:")]
-		bool IsEqual ([NullAllowed] UAUserNotificationCategory category);
-	}
-
-	// @interface UAMutableUserNotificationCategory : UAUserNotificationCategory
-	[BaseType (typeof(UAUserNotificationCategory))]
-	interface UAMutableUserNotificationCategory
-	{
-		// +(instancetype _Nonnull)categoryWithUIUserNotificationCategory:(UIUserNotificationCategory * _Nonnull)uiCategory;
-		[Static]
-		[Export ("categoryWithUIUserNotificationCategory:")]
-		UAMutableUserNotificationCategory Category (UIUserNotificationCategory uiCategory);
-
-		// -(void)setActions:(NSArray * _Nullable)actions forContext:(UIUserNotificationActionContext)context;
-		[Export ("setActions:forContext:")]
-		void SetActions ([NullAllowed] UAUserNotificationAction[] actions, UIUserNotificationActionContext context);
-
-		// @property (copy, nonatomic) NSString * _Nullable identifier;
-		[NullAllowed, Export ("identifier")]
-		string Identifier { get; set; }
-	}
-
-	// @interface UAUserNotificationCategories : NSObject
-	[BaseType (typeof(NSObject))]
-	interface UAUserNotificationCategories
-	{
-		// +(NSSet * _Nonnull)createCategoriesFromFile:(NSString * _Nonnull)filePath;
-		[Static]
-		[Export ("createCategoriesFromFile:")]
-		NSSet CreateCategories (string filePath);
-
-		// +(UAUserNotificationCategory * _Nonnull)createCategory:(NSString * _Nonnull)categoryId actions:(NSArray * _Nonnull)actionDefinitions;
-		[Static]
-		[Export ("createCategory:actions:")]
-		UAUserNotificationCategory CreateCategory (string categoryId, NSDictionary[] actionDefinitions);
-	}
-
 }
