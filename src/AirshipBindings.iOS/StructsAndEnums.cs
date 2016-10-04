@@ -74,16 +74,21 @@ namespace UrbanAirship {
 	}
 
 	[Native]
-	public enum UALocationProviderStatus : ulong
+	public enum UAScheduleTriggerErrorCode : ulong
 	{
-		NotUpdating,
-		Updating
+		UAScheduleTriggerErrorCodeInvalidJSON
 	}
 
 	[Native]
-	public enum UALocationServiceError : ulong
+	public enum UAScheduleTriggerType : ulong
 	{
-		UALocationServiceTimedOut
+		AppForeground,
+		AppBackground,
+		RegionEnter,
+		RegionExit,
+		CustomEventCount,
+		CustomEventValue,
+		Screen
 	}
 
 	[Native]
@@ -105,5 +110,14 @@ namespace UrbanAirship {
 	{
 		Enter = 1,
 		Exit = 2
+	}
+
+	[Native]
+	public enum UANotificationOptions : ulong
+	{
+		Badge = (1 << 0),
+		Sound = (1 << 1),
+		Alert = (1 << 2),
+		CarPlay = (1 << 3)
 	}
 }

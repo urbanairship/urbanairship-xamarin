@@ -5,6 +5,11 @@ This component provides official bindings to the Urban Airship SDK, as well as s
 ### Release Notes
 
 =============================
+Version 3.0 - October 4, 2016
+=============================
+- Updated iOS Urban Airship SDK to 8.0.2
+
+=============================
 Version 2.2.2 - July 22, 2016
 =============================
 - Fixed missing Android bindings for UrbanAirship.Push.Notifications package.
