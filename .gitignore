@@ -202,3 +202,6 @@ FakesAssemblies/
 
 # Build files
 .tools
+
+# Xamarin.Android Resource.Designer.cs file
+samples/android/Resources/Resource.designer.cs
