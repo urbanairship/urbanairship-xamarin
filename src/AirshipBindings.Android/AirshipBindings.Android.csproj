@@ -12,8 +12,6 @@
     <AndroidUseLatestPlatformSdk>True</AndroidUseLatestPlatformSdk>
     <AssemblyName>AirshipBindings</AssemblyName>
     <TargetFrameworkVersion>v6.0</TargetFrameworkVersion>
-    <ReleaseVersion>3.0.0</ReleaseVersion>
-    <Description>Urban Airship Xamarin bindings for Android</Description>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
   </PropertyGroup>
@@ -91,6 +89,9 @@
     <Compile Include="Additions\MessageCenterActivity.cs" />
     <Compile Include="Additions\MessageActivity.cs" />
     <Compile Include="Additions\RichPushInbox.cs" />
+    <Compile Include="..\SharedAssemblyInfo.cs">
+      <Link>Properties\SharedAssemblyInfo.cs</Link>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="Additions\AboutAdditions.txt" />
