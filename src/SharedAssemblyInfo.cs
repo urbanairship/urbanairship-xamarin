@@ -4,14 +4,9 @@ using System.Runtime.CompilerServices;
 // Information about this assembly is defined by the following attributes.
 // Change them to the values specific to your project.
 
-[assembly: AssemblyTitle ("AirshipBindings")]
-[assembly: AssemblyDescription ("")]
-[assembly: AssemblyConfiguration ("")]
+
 [assembly: AssemblyCompany ("Urban Airship")]
-[assembly: AssemblyProduct ("")]
 [assembly: AssemblyCopyright ("Copyright 2009-2016 Urban Airship Inc. All rights reserved.")]
-[assembly: AssemblyTrademark ("")]
-[assembly: AssemblyCulture ("")]
 
 // The assembly version has the format "{Major}.{Minor}.{Build}.{Revision}".
 // The form "{Major}.{Minor}.*" will automatically update the build and revision,

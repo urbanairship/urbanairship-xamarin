@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample", "Sample.csproj", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirshipBindings.iOS", "..\..\src\AirshipBindings.iOS\AirshipBindings.iOS.csproj", "{58346B7E-E18F-4CB1-A9B8-C2266BDCFE2A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirshipExtensionBindings.iOS", "..\..\src\AirshipExtensionBindings.iOS\AirshipExtensionBindings.iOS\AirshipExtensionBindings.iOS.csproj", "{2C453988-C24E-431A-A17C-6989E93C795E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|iPhoneSimulator = Debug|iPhoneSimulator
@@ -29,7 +31,13 @@ Global
 		{C6EB4686-06A0-4B33-AEDE-C42E5EC8CA50}.Release|iPhone.Build.0 = Release|iPhone
 		{C6EB4686-06A0-4B33-AEDE-C42E5EC8CA50}.Release|iPhoneSimulator.ActiveCfg = Release|iPhoneSimulator
 		{C6EB4686-06A0-4B33-AEDE-C42E5EC8CA50}.Release|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
-	EndGlobalSection
-	GlobalSection(MonoDevelopProperties) = preSolution
+		{2C453988-C24E-431A-A17C-6989E93C795E}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{2C453988-C24E-431A-A17C-6989E93C795E}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{2C453988-C24E-431A-A17C-6989E93C795E}.Release|iPhone.ActiveCfg = Release|Any CPU
+		{2C453988-C24E-431A-A17C-6989E93C795E}.Release|iPhone.Build.0 = Release|Any CPU
+		{2C453988-C24E-431A-A17C-6989E93C795E}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{2C453988-C24E-431A-A17C-6989E93C795E}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
+		{2C453988-C24E-431A-A17C-6989E93C795E}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{2C453988-C24E-431A-A17C-6989E93C795E}.Debug|iPhone.Build.0 = Debug|Any CPU
 	EndGlobalSection
 EndGlobal

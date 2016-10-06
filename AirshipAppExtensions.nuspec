@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+   <metadata>
+      <id>urbanairship-app-extensions</id>
+      <version>3.0.0</version>
+      <title>Urban Airship App Extensions</title>
+      <authors>Urban Airship, Inc.</authors>
+      <requireLicenseAcceptance>false</requireLicenseAcceptance>
+      <description>App extension support for iOS</description>
+   </metadata>
+
+   <files>
+     <file src="src/AirshipExtensionBindings.iOS/AirshipExtensionBindings.iOS/bin/Release/AirshipExtensionBindings.iOS.dll" target="lib/Xamarin.iOS10" />
+   </files>
+</package>
