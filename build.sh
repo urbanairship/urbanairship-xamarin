@@ -49,6 +49,10 @@ echo "Building Android bindings"
 mono $NUGET_EXE restore $ANDROID_BINDINGS
 "$MDTOOL" build -c:Release $ANDROID_BINDINGS
 
+# AirshipKit from Carthage
+echo "Updating Carthage"
+carthage update
+
 # Build iOS
 echo "Building iOS bindings"
 mono $NUGET_EXE restore $IOS_BINDINGS
