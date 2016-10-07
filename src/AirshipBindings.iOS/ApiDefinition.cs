@@ -150,9 +150,6 @@ namespace UrbanAirship {
 		[Field("UALocationEventVerticalAccuracyKey", "__Internal")]
 		NSString UALocationEventVerticalAccuracyKey { get; }
 
-		// extern UALocationEventAnalyticsKey *const _Nonnull UALocationEventSessionIDKey;
-		[Field("UALocationEventSessionIDKey", "__Internal")]
-		NSString UALocationEventSessionIDKey { get; }
 
 		// extern UALocationEventUpdateType *const _Nonnull UALocationEventAnalyticsType;
 		[Field("UALocationEventAnalyticsType", "__Internal")]
