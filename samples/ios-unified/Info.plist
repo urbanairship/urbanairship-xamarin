@@ -47,5 +47,7 @@
 	<array>
 		<string>remote-notification</string>
 	</array>
+	<key>CFBundleName</key>
+	<string>XamarinSample</string>
 </dict>
 </plist>
