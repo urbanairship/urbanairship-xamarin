@@ -10,7 +10,6 @@ APP_EXTENSIONS_NUSPEC=$ROOT_DIR/AirshipAppExtensions.nuspec
 
 ANDROID_BINDINGS=$ROOT_DIR/src/AirshipBindings.Android/AirshipBindings.Android.sln
 IOS_BINDINGS=$ROOT_DIR/src/AirshipBindings.iOS/AirshipBindings.iOS.sln
-IOS_APP_EXTENSION_BINDINGS=$ROOT_DIR/src/AirshipExtensionBindings.iOS/AirshipExtensionBindings.iOS.sln
 
 NUGET_EXE=$TOOLS_DIR/nuget.exe
 XAMARIN_COMPONENT_EXE=$TOOLS_DIR/xamarin-component.exe
@@ -59,12 +58,10 @@ carthage update
 echo "Building iOS bindings"
 mono $NUGET_EXE restore $IOS_BINDINGS
 "$MDTOOL" build -c:Release $IOS_BINDINGS
-"$MDTOOL" build -c:Release $IOS_APP_EXTENSION_BINDINGS
 
 # Build NuGet packages
 echo "Building NuGet package"
 mono $NUGET_EXE pack $NUSPEC -OutputDirectory $BUILD_DIR
-mono $NUGET_EXE pack $APP_EXTENSIONS_NUSPEC -OutputDirectory $BUILD_DIR
 
 # Build Xamarin component
 echo "Building Xamarin component"
