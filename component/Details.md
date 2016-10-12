@@ -3,10 +3,15 @@
 This component provides official bindings to the Urban Airship SDK, as well as sample applications for both iOS and Android.
 
 ### Release Notes
+================================
+Version 3.1.0 - October 12, 2016
+================================
+- Added iOS Urban Airship app extensions bindings
+- Fixed build errors when linker is disabled
 
-=============================
-Version 3.0 - October 4, 2016
-=============================
+===============================
+Version 3.0.0 - October 4, 2016
+===============================
 - Updated iOS Urban Airship SDK to 8.0.2
 
 =============================
