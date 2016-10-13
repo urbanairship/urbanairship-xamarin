@@ -1,7 +1,7 @@
 # Urban Airship SDK
 
 Here are some examples to help get you started integrating the Urban Airship SDK with your
-Xamarin appliaction.
+Xamarin application.
 
 ### iOS Setup
 
