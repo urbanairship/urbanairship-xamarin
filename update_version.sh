@@ -4,6 +4,7 @@ VERSION=$1
 
 # Nuspec
 sed -i '' "s/<version>.*<\/version>/<version>$VERSION<\/version>/g" $ROOT_DIR/UrbanAirship.nuspec
+sed -i '' "s/<version>.*<\/version>/<version>$VERSION<\/version>/g" $ROOT_DIR/AirshipAppExtensions.nuspec
 
 # Xamarin component yaml
 sed -i '' "s/version: \".*\"/version: \"$VERSION\"/g" $ROOT_DIR/component/component.yaml
