@@ -40,10 +40,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ObjcBindingApiDefinition Include="ApiDefinition.cs" />
+    <ObjcBindingApiDefinition Include="AirshipExtensionsApiDefinition.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ObjcBindingCoreSource Include="Structs.cs" />
+    <ObjcBindingCoreSource Include="AirshipExtensionsStructs.cs" />
   </ItemGroup>
   <ItemGroup>
     <NativeReference Include="..\..\..\Carthage\Build\iOS\AirshipAppExtensions.framework">
