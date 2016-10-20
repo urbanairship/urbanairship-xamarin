@@ -10,6 +10,6 @@
    </metadata>
 
    <files>
-     <file src="src/AirshipExtensionBindings.iOS/AirshipExtensionBindings.iOS/bin/Release/AirshipExtensionBindings.iOS.dll" target="lib/Xamarin.iOS10" />
+     <file src="src/AirshipExtensions.iOS/AirshipExtensions.iOS/bin/Release/AirshipExtensions.iOS.dll" target="lib/Xamarin.iOS10" />
    </files>
 </package>

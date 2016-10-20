@@ -10,7 +10,7 @@ APP_EXTENSIONS_NUSPEC=$ROOT_DIR/AirshipAppExtensions.nuspec
 
 ANDROID_BINDINGS=$ROOT_DIR/src/AirshipBindings.Android/AirshipBindings.Android.sln
 IOS_BINDINGS=$ROOT_DIR/src/AirshipBindings.iOS/AirshipBindings.iOS.sln
-IOS_APP_EXTENSION_BINDINGS=$ROOT_DIR/src/AirshipExtensionBindings.iOS/AirshipExtensionBindings.iOS.sln
+IOS_APP_EXTENSION_BINDINGS=$ROOT_DIR/src/AirshipExtensions.iOS/AirshipExtensions.iOS.sln
 
 NUGET_EXE=$TOOLS_DIR/nuget.exe
 XAMARIN_COMPONENT_EXE=$TOOLS_DIR/xamarin-component.exe
