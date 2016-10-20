@@ -4,6 +4,11 @@ This component provides official bindings to the Urban Airship SDK, as well as s
 
 ### Release Notes
 ================================
+Version 3.1.1 - October 20, 2016
+================================
+- Removed the Urban Airship app extension due to deployment issues with older iOS devices. The extension will be restored in a later version of the component.
+
+================================
 Version 3.1.0 - October 13, 2016
 ================================
 - Component is compatible with Urban Airship app extension bindings
