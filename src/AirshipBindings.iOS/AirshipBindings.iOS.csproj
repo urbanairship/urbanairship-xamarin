@@ -47,23 +47,13 @@
   </ItemGroup>
   <ItemGroup>
     <ObjcBindingApiDefinition Include="ApiDefinition.cs" />
-    <ObjcBindingApiDefinition Include="..\AirshipExtensionBindings.iOS\AirshipExtensionBindings.iOS\AirshipExtensionsApiDefinition.cs">
-      <Link>AirshipExtensionsApiDefinition.cs</Link>
-    </ObjcBindingApiDefinition>
   </ItemGroup>
   <ItemGroup>
     <ObjcBindingCoreSource Include="StructsAndEnums.cs" />
-    <ObjcBindingCoreSource Include="..\AirshipExtensionBindings.iOS\AirshipExtensionBindings.iOS\AirshipExtensionsStructs.cs">
-      <Link>AirshipExtensionsStructs.cs</Link>
-    </ObjcBindingCoreSource>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.ObjCBinding.CSharp.targets" />
   <ItemGroup>
     <NativeReference Include="..\..\Carthage\Build\iOS\AirshipKit.framework">
-      <Kind>Framework</Kind>
-      <SmartLink>False</SmartLink>
-    </NativeReference>
-    <NativeReference Include="..\..\Carthage\Build\iOS\AirshipAppExtensions.framework">
       <Kind>Framework</Kind>
       <SmartLink>False</SmartLink>
     </NativeReference>
