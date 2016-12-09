@@ -17,17 +17,24 @@ namespace Sample
 		Categories = new string[]{"@PACKAGE_NAME@"})]
 	public class UrbanAirshipReceiver : AirshipReceiver
 	{
-
 		public const string ACTION_CHANNEL_UPDATED = "channel_updated";
 
 		private const string TAG = "UrbanAirshipReceiver";
 
-		protected override void OnChannelRegistrationSucceeded(Context context, String channelId)
+		protected override void OnChannelCreated(Context context, String channelId)
 		{
-			Log.Info (TAG, "Channel registration updated. Channel Id:" + channelId);
+			Log.Info (TAG, "Channel created:" + channelId);
 
 			Intent intent = new Intent (ACTION_CHANNEL_UPDATED);
 			LocalBroadcastManager.GetInstance (context).SendBroadcast (intent);
+		}
+
+		protected override void OnChannelUpdated(Context context, String channelId)
+		{
+			Log.Info(TAG, "Channel updated:" + channelId);
+
+			Intent intent = new Intent(ACTION_CHANNEL_UPDATED);
+			LocalBroadcastManager.GetInstance(context).SendBroadcast(intent);
 		}
 
 		protected override void OnChannelRegistrationFailed(Context context)

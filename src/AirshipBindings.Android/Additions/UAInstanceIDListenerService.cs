@@ -10,7 +10,7 @@ namespace UrbanAirship.Push
 
 	[Android.Runtime.Preserve (AllMembers = true)]
 	[Service(Exported = false)]
-	[IntentFilter (new[]{"com.google.android.gms.iid.InstanceID"})]
+	[IntentFilter (new[]{"com.google.android.gms.iid.InstanceID"}, Priority = -999)]
 	public partial class UAInstanceIDListenerService
 	{
 		
