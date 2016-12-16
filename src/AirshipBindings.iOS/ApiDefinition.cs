@@ -436,27 +436,39 @@ namespace UrbanAirship {
 		void HandleAction(UIApplication application, string identifier, NSDictionary userInfo, [NullAllowed] NSDictionary responseInfo, Action handler);
 	}
 
-	// @interface UANotificationAction : NSObject
-	[BaseType(typeof(NSObject))]
-	interface UANotificationAction
-	{
-		// @property (readonly, copy, nonatomic) NSString * _Nonnull identifier;
-		[Export("identifier")]
-		string Identifier { get; }
+   // @interface UANotificationAction : NSObject
+   [BaseType (typeof(NSObject))]
+   interface UANotificationAction
+   {
+      // @property (readonly, copy, nonatomic) NSString * _Nonnull identifier;
+      [Export ("identifier")]
+      string Identifier { get; }
 
-		// @property (readonly, copy, nonatomic) NSString * _Nonnull title;
-		[Export("title")]
-		string Title { get; }
+      // @property (readonly, copy, nonatomic) NSString * _Nonnull title;
+      [Export ("title")]
+      string Title { get; }
 
-		// @property (readonly, assign, nonatomic) UNNotificationActionOptions options;
-		[Export("options", ArgumentSemantic.Assign)]
-		UNNotificationActionOptions Options { get; }
+      // @property (readonly, assign, nonatomic) UANotificationActionOptions options;
+      [Export ("options", ArgumentSemantic.Assign)]
+      UANotificationActionOptions Options { get; }
 
-		// +(instancetype _Nonnull)actionWithIdentifier:(NSString * _Nonnull)identifier title:(NSString * _Nonnull)title options:(UNNotificationActionOptions)options;
-		[Static]
-		[Export("actionWithIdentifier:title:options:")]
-		UANotificationAction Action(string identifier, string title, UNNotificationActionOptions options);
-	}
+      // -(instancetype _Nonnull)initWithIdentifier:(NSString * _Nonnull)identifier title:(NSString * _Nonnull)title options:(UANotificationActionOptions)options;
+      [Export ("initWithIdentifier:title:options:")]
+      IntPtr Constructor (string identifier, string title, UANotificationActionOptions options);
+
+      // +(instancetype _Nonnull)actionWithIdentifier:(NSString * _Nonnull)identifier title:(NSString * _Nonnull)title options:(UANotificationActionOptions)options;
+      [Static]
+      [Export ("actionWithIdentifier:title:options:")]
+      UANotificationAction ActionWithIdentifier (string identifier, string title, UANotificationActionOptions options);
+
+      // -(UIUserNotificationAction * _Nullable)asUIUserNotificationAction;
+      [NullAllowed, Export ("asUIUserNotificationAction")]
+      UIUserNotificationAction AsUIUserNotificationAction { get; }
+
+      // -(UNNotificationAction * _Nullable)asUNNotificationAction __attribute__((availability(ios, introduced=10.0)));
+      [NullAllowed, Export ("asUNNotificationAction")]
+      UNNotificationAction AsUNNotificationAction { get; }
+   }
 
 	// @interface UANotificationCategories : NSObject
 	[BaseType(typeof(NSObject))]
@@ -474,31 +486,31 @@ namespace UrbanAirship {
 		UANotificationCategory CreateCategory(string categoryId, NSObject[] actionDefinitions);
 	}
 
-	// @interface UANotificationCategory : NSObject
-	[BaseType(typeof(NSObject))]
-	interface UANotificationCategory
-	{
-		// @property (readonly, copy, nonatomic) NSString * _Nonnull identifier;
-		[Export("identifier")]
-		string Identifier { get; }
+   // @interface UANotificationCategory : NSObject
+   [BaseType (typeof(NSObject))]
+   interface UANotificationCategory
+   {
+      // @property (readonly, copy, nonatomic) NSString * _Nonnull identifier;
+      [Export ("identifier")]
+      string Identifier { get; }
 
-		// @property (readonly, copy, nonatomic) NSArray<UANotificationAction *> * _Nonnull actions;
-		[Export("actions", ArgumentSemantic.Copy)]
-		UANotificationAction[] Actions { get; }
+      // @property (readonly, copy, nonatomic) NSArray<UANotificationAction *> * _Nonnull actions;
+      [Export ("actions", ArgumentSemantic.Copy)]
+      UANotificationAction[] Actions { get; }
 
-		// @property (readonly, copy, nonatomic) NSArray<NSString *> * _Nonnull intentIdentifiers;
-		[Export("intentIdentifiers", ArgumentSemantic.Copy)]
-		string[] IntentIdentifiers { get; }
+      // @property (readonly, copy, nonatomic) NSArray<NSString *> * _Nonnull intentIdentifiers;
+      [Export ("intentIdentifiers", ArgumentSemantic.Copy)]
+      string[] IntentIdentifiers { get; }
 
-		// @property (readonly, assign, nonatomic) UNNotificationCategoryOptions options;
-		[Export("options", ArgumentSemantic.Assign)]
-		UNNotificationCategoryOptions Options { get; }
+      // @property (readonly, assign, nonatomic) UANotificationCategoryOptions options;
+      [Export ("options", ArgumentSemantic.Assign)]
+      UANotificationCategoryOptions Options { get; }
 
-		// +(instancetype _Nonnull)categoryWithIdentifier:(NSString * _Nonnull)identifier actions:(NSArray<UANotificationAction *> * _Nonnull)actions intentIdentifiers:(NSArray<NSString *> * _Nonnull)intentIdentifiers options:(UNNotificationCategoryOptions)options;
-		[Static]
-		[Export("categoryWithIdentifier:actions:intentIdentifiers:options:")]
-		UANotificationCategory Category(string identifier, UANotificationAction[] actions, string[] intentIdentifiers, UNNotificationCategoryOptions options);
-	}
+      // +(instancetype _Nonnull)categoryWithIdentifier:(NSString * _Nonnull)identifier actions:(NSArray<UANotificationAction *> * _Nonnull)actions intentIdentifiers:(NSArray<NSString *> * _Nonnull)intentIdentifiers options:(UANotificationCategoryOptions)options;
+      [Static]
+      [Export ("categoryWithIdentifier:actions:intentIdentifiers:options:")]
+      UANotificationCategory CategoryWithIdentifier (string identifier, UANotificationAction[] actions, string[] intentIdentifiers, UANotificationCategoryOptions options);
+   }
 
 	// @interface UANotificationContent : NSObject
 	[BaseType(typeof(NSObject))]
@@ -846,6 +858,10 @@ namespace UrbanAirship {
 		[Export ("removeTags:group:")]
 		void RemoveTags (string[] tags, string tagGroupID);
 
+      // -(void)setTags:(NSArray<NSString *> * _Nonnull)tags group:(NSString * _Nonnull)tagGroupID;
+      [Export ("setTags:group:")]
+      void SetTags (string[] tags, string tagGroupID);
+
 		// -(void)updateTags;
 		[Export ("updateTags")]
 		void UpdateTags ();
@@ -862,7 +878,15 @@ namespace UrbanAirship {
 
 		// @optional -(void)registrationFailed;
 		[Export ("registrationFailed")]
-		void RegistrationFailed ();
+   	void RegistrationFailed ();
+
+      // @optional -(void)notificationRegistrationFinishedWithOptions:(UANotificationOptions)options categories:(NSSet * _Nonnull)categories;
+      [Export ("notificationRegistrationFinishedWithOptions:categories:")]
+      void NotificationRegistrationFinishedWithOptions (UANotificationOptions options, NSSet categories);
+
+      // @optional -(void)notificationAuthorizedOptionsDidChange:(UANotificationOptions)options;
+      [Export ("notificationAuthorizedOptionsDidChange:")]
+      void NotificationAuthorizedOptionsDidChange (UANotificationOptions options);
 	}
 
 	// @protocol UAPushNotificationDelegate <NSObject>
@@ -994,6 +1018,10 @@ namespace UrbanAirship {
 		// -(void)removeTags:(NSArray<NSString *> * _Nonnull)tags group:(NSString * _Nonnull)tagGroupID;
 		[Export ("removeTags:group:")]
 		void RemoveTags (string[] tags, string tagGroupID);
+
+      // -(void)setTags:(NSArray<NSString *> * _Nonnull)tags group:(NSString * _Nonnull)tagGroupID;
+      [Export ("setTags:group:")]
+      void SetTags (string[] tags, string tagGroupID);
 
 		// @property (readonly, copy, nonatomic) NSDictionary * _Nullable quietTime;
 		[NullAllowed, Export ("quietTime", ArgumentSemantic.Copy)]
@@ -1498,6 +1526,17 @@ namespace UrbanAirship {
 	[BaseType (typeof(UAAction))]
 	interface UAModifyTagsAction
 	{
+      // -(void)applyChannelTags:(NSArray *)tags;
+      [Export ("applyChannelTags:")]
+      void ApplyChannelTags (string[] tags);
+
+      // -(void)applyChannelTags:(NSArray *)tags group:(NSString *)group;
+      [Export ("applyChannelTags:group:")]
+      void ApplyChannelTags (string[] tags, string group);
+
+      // -(void)applyNamedUserTags:(NSArray *)tags group:(NSString *)group;
+      [Export ("applyNamedUserTags:group:")]
+      void ApplyNamedUserTags (string[] tags, string group);
 	}
 
 	// @interface UAAddTagsAction : UAModifyTagsAction
@@ -2261,9 +2300,9 @@ namespace UrbanAirship {
 		[NullAllowed, Export ("sessionID")]
 		string SessionID { get; }
 
-		// @property (readonly, assign, nonatomic) NSTimeInterval oldestEventTime;
-		[Export ("oldestEventTime")]
-		double OldestEventTime { get; }
+      // @property (readonly, nonatomic, strong) NSDate * _Nonnull lastSendTime;
+      [Export ("lastSendTime", ArgumentSemantic.Strong)]
+      NSDate LastSendTime { get; }
 
 		// @property (getter = isEnabled, assign, nonatomic) BOOL enabled;
 		[Export ("enabled")]
@@ -2281,17 +2320,13 @@ namespace UrbanAirship {
 		[Export ("currentAssociatedDeviceIdentifiers")]
 		UAAssociatedIdentifiers CurrentAssociatedDeviceIdentifiers ();
 
-		// -(void)handleNotification:(NSDictionary * _Nonnull)userInfo inApplicationState:(UIApplicationState)applicationState;
-		[Export ("handleNotification:inApplicationState:")]
-		void HandleNotification (NSDictionary userInfo, UIApplicationState applicationState);
-
-		// -(NSDate * _Nonnull)lastSendTime;
-		[Export ("lastSendTime")]
-		NSDate LastSendTime { get; }
-
 		// -(void)trackScreen:(NSString * _Nullable)screen;
 		[Export ("trackScreen:")]
 		void TrackScreen ([NullAllowed] string screen);
+
+      // -(void)scheduleUpload;
+      [Export ("scheduleUpload")]
+      void ScheduleUpload ();
 	}
 
 	// @interface UAAssociatedIdentifiers : NSObject

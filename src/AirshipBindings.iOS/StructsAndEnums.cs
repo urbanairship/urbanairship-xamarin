@@ -120,4 +120,20 @@ namespace UrbanAirship {
 		Alert = (1 << 2),
 		CarPlay = (1 << 3)
 	}
+
+   [Native]
+   public enum UANotificationCategoryOptions : ulong
+   {
+      None = (0),
+      CustomDismissAction = (1 << 0),
+      AllowInCarPlay = (2 << 0)
+   }
+
+   [Native]
+   public enum UANotificationActionOptions : ulong
+   {
+      AuthenticationRequired = (1 << 0),
+      Destructive = (1 << 1),
+      Foreground = (1 << 2)
+   }
 }
