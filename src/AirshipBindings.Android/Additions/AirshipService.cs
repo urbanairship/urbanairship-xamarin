@@ -4,13 +4,14 @@
 
 using System;
 using Android.App;
+using Android.Content;
 
-namespace UrbanAirship.RichPush
+namespace UrbanAirship
 {
 
 	[Android.Runtime.Preserve (AllMembers = true)]
-	[Service]
-	public partial class RichPushUpdateService
+	[Service()]
+	public partial class AirshipService
 	{
 	}
 }

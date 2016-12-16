@@ -4,14 +4,13 @@
 
 using System;
 using Android.App;
-using Android.Content;
 
-namespace UrbanAirship.Analytics
+namespace UrbanAirship.Util
 {
 
 	[Android.Runtime.Preserve (AllMembers = true)]
-	[Service()]
-	public partial class EventService
+	[Activity(Theme = "@android:style/Theme.Translucent.NoTitleBar")]
+	public partial class HelperActivity
 	{
 	}
 }
