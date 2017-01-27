@@ -1,4 +1,4 @@
-Copyright 2009-2016 Urban Airship Inc. All rights reserved.
+Copyright 2009-2017 Urban Airship Inc. All rights reserved.
 
 You may not use this file except in compliance with the License.
 You may obtain a copy of the License at

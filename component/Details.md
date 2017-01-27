@@ -3,13 +3,17 @@
 This component provides official bindings to the Urban Airship SDK, as well as sample applications for both iOS and Android.
 
 ### Release Notes
+================================
+Version 4.0.1 - January 26, 2017
+================================
+- Updated iOS Urban Airship SDK to 8.1.6
+
 =================================
 Version 4.0.0 - December 16, 2016
 =================================
 - Updated iOS SDK to 8.1.4
 - Updated Android SDK to 8.2.2
 - iOS Media Extension is available as a Nuget package
-
 
 ================================
 Version 3.1.1 - October 20, 2016
