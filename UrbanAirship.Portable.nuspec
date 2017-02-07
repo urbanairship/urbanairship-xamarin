@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+   <metadata>
+      <id>urbanairship-portable</id>
+      <version>4.0.1</version>
+      <title>Urban Airship SDK</title>
+      <authors>Urban Airship, Inc.</authors>
+      <requireLicenseAcceptance>false</requireLicenseAcceptance>
+      <description>A full suite of mobile engagement tools for building next-generation apps</description>
+   </metadata>
+
+   <files>
+        <!-- Core files -->
+        <file src="src/AirshipBindings.Portable/AirshipBindings.Portable/bin/release/AirshipBindings.Portable.dll"
+            target="lib/portable-net45+wp8+wpa81+win8+MonoAndroid41+MonoTouch10+Xamarin.iOS10/AirshipBindings.Portable.dll" />
+        <file src="src/AirshipBindings.Portable/AirshipBindings.Portable.Abstractions/bin/release/AirshipBindings.Portable.Abstractions.dll"
+            target="lib/portable-net45+wp8+wpa81+win8+MonoAndroid41+MonoTouch10+Xamarin.iOS10/AirshipBindings.Portable.Abstractions.dll" />
+
+        <!-- Android -->
+        <file src="src/AirshipBindings.Portable/AirshipBindings.Portable.Android/bin/release/AirshipBindings.Portable.dll"
+            target="lib/MonoAndroid41/AirshipBindings.Portable.dll" />
+        <file src="src/AirshipBindings.Portable/AirshipBindings.Portable.Abstractions/bin/release/AirshipBindings.Portable.Abstractions.dll"
+            target="lib/MonoAndroid41/AirshipBindings.Portable.Abstractions.dll" />
+
+        <!-- iOS -->
+        <file src="src/AirshipBindings.Portable/AirshipBindings.Portable.iOS/bin/release/AirshipBindings.Portable.dll"
+            target="lib/Xamarin.iOS10/AirshipBindings.Portable.dll" />
+        <file src="src/AirshipBindings.Portable/AirshipBindings.Portable.Abstractions/bin/release/AirshipBindings.Portable.Abstractions.dll"
+            target="lib/Xamarin.iOS10/AirshipBindings.Portable.Abstractions.dll" />
+   </files>
+</package>

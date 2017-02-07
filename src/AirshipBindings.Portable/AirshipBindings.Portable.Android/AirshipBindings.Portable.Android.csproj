@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{44B732B9-BA44-49F5-8CB9-8FC3DCDBFCB8}</ProjectGuid>
+    <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <RootNamespace>AirshipBindings.Portable</RootNamespace>
+    <AssemblyName>AirshipBindings.Portable</AssemblyName>
+    <TargetFrameworkVersion>v7.1</TargetFrameworkVersion>
+    <AndroidResgenFile>Resources\Resource.designer.cs</AndroidResgenFile>
+    <AndroidResgenClass>Resource</AndroidResgenClass>
+    <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
+    <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
+    <AndroidUseLatestPlatformSdk>false</AndroidUseLatestPlatformSdk>
+    <AndroidTlsProvider></AndroidTlsProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AndroidLinkMode>None</AndroidLinkMode>
+    <AndroidSupportedAbis>arm64-v8a;armeabi;armeabi-v7a;x86</AndroidSupportedAbis>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AndroidManagedSymbols>true</AndroidManagedSymbols>
+    <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="Mono.Android" />
+    <Reference Include="Xamarin.Android.Support.Compat">
+      <HintPath>..\packages\Xamarin.Android.Support.Compat.24.2.1\lib\MonoAndroid70\Xamarin.Android.Support.Compat.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Android.Support.Core.UI">
+      <HintPath>..\packages\Xamarin.Android.Support.Core.UI.24.2.1\lib\MonoAndroid70\Xamarin.Android.Support.Core.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Android.Support.Core.Utils">
+      <HintPath>..\packages\Xamarin.Android.Support.Core.Utils.24.2.1\lib\MonoAndroid70\Xamarin.Android.Support.Core.Utils.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Android.Support.Media.Compat">
+      <HintPath>..\packages\Xamarin.Android.Support.Media.Compat.24.2.1\lib\MonoAndroid70\Xamarin.Android.Support.Media.Compat.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Android.Support.Fragment">
+      <HintPath>..\packages\Xamarin.Android.Support.Fragment.24.2.1\lib\MonoAndroid70\Xamarin.Android.Support.Fragment.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Android.Support.v4">
+      <HintPath>..\packages\Xamarin.Android.Support.v4.24.2.1\lib\MonoAndroid70\Xamarin.Android.Support.v4.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Android.Support.v7.CardView">
+      <HintPath>..\packages\Xamarin.Android.Support.v7.CardView.24.2.1\lib\MonoAndroid70\Xamarin.Android.Support.v7.CardView.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.GooglePlayServices.Basement">
+      <HintPath>..\packages\Xamarin.GooglePlayServices.Basement.32.961.0\lib\MonoAndroid70\Xamarin.GooglePlayServices.Basement.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.GooglePlayServices.Tasks">
+      <HintPath>..\packages\Xamarin.GooglePlayServices.Tasks.32.961.0\lib\MonoAndroid70\Xamarin.GooglePlayServices.Tasks.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.GooglePlayServices.Base">
+      <HintPath>..\packages\Xamarin.GooglePlayServices.Base.32.961.0\lib\MonoAndroid70\Xamarin.GooglePlayServices.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.GooglePlayServices.Iid">
+      <HintPath>..\packages\Xamarin.GooglePlayServices.Iid.32.961.0\lib\MonoAndroid70\Xamarin.GooglePlayServices.Iid.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.GooglePlayServices.Gcm">
+      <HintPath>..\packages\Xamarin.GooglePlayServices.Gcm.32.961.0\lib\MonoAndroid70\Xamarin.GooglePlayServices.Gcm.dll</HintPath>
+    </Reference>
+    <Reference Include="AirshipBindings">
+      <HintPath>..\packages\urbanairship.4.0.1\lib\MonoAndroid41\AirshipBindings.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Resources\Resource.designer.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UAirship.cs" />
+    <Compile Include="Push\TagEditor.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AboutResources.txt" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\values\Strings.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AirshipBindings.Portable.Abstractions\AirshipBindings.Portable.Abstractions.csproj">
+      <Project>{3D3696C8-5372-4BDF-B88A-57DE3B3ABE2D}</Project>
+      <Name>AirshipBindings.Portable.Abstractions</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Push\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
+  <Import Project="..\packages\Xamarin.GooglePlayServices.Basement.32.961.0\build\Xamarin.GooglePlayServices.Basement.targets" Condition="Exists('..\packages\Xamarin.GooglePlayServices.Basement.32.961.0\build\Xamarin.GooglePlayServices.Basement.targets')" />
+</Project>
