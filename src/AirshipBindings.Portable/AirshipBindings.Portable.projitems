@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>{6F1E3E41-BE6D-4D19-B338-5A479DC5F98E}</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>UrbanAirship.Portable</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)IUAirshipPlugin.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)UAirshipPluginIOS.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)UAirship.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)UAirshipPluginAndroid.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)StubbedPlugin.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Push\TagEditor.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Push\TagGroupEditor.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Analytics\CustomEvent.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="$(MSBuildThisFileDirectory)Push\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Analytics\" />
+  </ItemGroup>
+</Project>
