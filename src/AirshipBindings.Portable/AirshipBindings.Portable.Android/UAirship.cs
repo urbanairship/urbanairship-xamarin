@@ -107,12 +107,16 @@ namespace UrbanAirship.Portable
 			return new Push.TagEditor(this.DeviceTagHelper);
 		}
 
-		private void DeviceTagHelper(List<string> addTags, List<string> removeTags)
+		private void DeviceTagHelper(bool clear, string[] addTags, string[] removeTags)
 		{
-			UrbanAirship.UAirship.Shared().PushManager.EditTags()
-						.AddTags(addTags)
-						.RemoveTags(removeTags)
-						.Apply();
+			UrbanAirship.Push.TagEditor editor = UrbanAirship.UAirship.Shared().PushManager.EditTags();
+
+			if (clear)
+			{
+				editor = editor.Clear();
+			}
+
+			editor.AddTags(addTags).RemoveTags(removeTags).Apply();
 		}
 
 		public void AddCustomEvent(Portable.Analytics.CustomEvent customEvent)
@@ -192,7 +196,7 @@ namespace UrbanAirship.Portable
 
 		public Push.TagGroupsEditor EditNamedUserTagGroups()
 		{
-			return new Push.TagGroupsEditor((Dictionary<string, Dictionary<string, List<string>>> payload) =>
+			return new Push.TagGroupsEditor((List<Push.TagGroupsEditor.TagOperation> payload) =>
 			{
 				UrbanAirship.Push.TagGroupsEditor editor = UrbanAirship.UAirship.Shared().NamedUser.EditTagGroups();
 				TagGroupHelper(payload, editor);
@@ -202,7 +206,7 @@ namespace UrbanAirship.Portable
 
 		public Push.TagGroupsEditor EditChannelTagGroups()
 		{
-			return new Push.TagGroupsEditor((Dictionary<string, Dictionary<string, List<string>>> payload) =>
+			return new Push.TagGroupsEditor((List<Push.TagGroupsEditor.TagOperation> payload) =>
 			{
 				UrbanAirship.Push.TagGroupsEditor editor = UrbanAirship.UAirship.Shared().PushManager.EditTagGroups();
 				TagGroupHelper(payload, editor);
@@ -210,25 +214,24 @@ namespace UrbanAirship.Portable
 			});
 		}
 
-		private void TagGroupHelper(Dictionary<string, Dictionary<string, List<string>>> payload, UrbanAirship.Push.TagGroupsEditor editor)
+		private void TagGroupHelper(List<Push.TagGroupsEditor.TagOperation> payload, UrbanAirship.Push.TagGroupsEditor editor)
 		{
-			var actions = new Dictionary<string, Action<string, List<string>>>()
+			foreach (Push.TagGroupsEditor.TagOperation tagOperation in payload)
 			{
-				{ Push.TagGroupsEditor.ADD, (g, t) => editor.AddTags(g, t.ToArray()) },
-				{ Push.TagGroupsEditor.REMOVE, (g, t) => editor.RemoveTags(g, t.ToArray()) },
-				{ Push.TagGroupsEditor.SET, (g, t) => editor.SetTags(g, t.ToArray()) }
-			};
 
-			foreach (KeyValuePair<string, Dictionary<string, List<string>>> operation in payload)
-			{
-				if (!actions.ContainsKey(operation.Key))
+				switch (tagOperation.operationType)
 				{
-					continue;
-				}
-
-				foreach (KeyValuePair<string, List<string>> groupTagsPair in operation.Value)
-				{
-					actions[operation.Key](groupTagsPair.Key, groupTagsPair.Value);
+					case Push.TagGroupsEditor.OperationType.ADD:
+						editor.AddTags(tagOperation.group, tagOperation.tags);
+						break;
+					case Push.TagGroupsEditor.OperationType.REMOVE:
+						editor.RemoveTags(tagOperation.group, tagOperation.tags);
+						break;
+					case Push.TagGroupsEditor.OperationType.SET:
+						editor.SetTags(tagOperation.group, tagOperation.tags);
+						break;
+					default:
+						break;
 				}
 			}
 		}

@@ -4,17 +4,19 @@
 
 using System;
 using System.Collections.Generic;
-
+using System.Linq;
 
 namespace UrbanAirship.Portable.Push
 {
 	public partial class TagEditor
 	{
-		private Action<List<string>, List<string>> onApply;
-		private List<string> toAdd = new List<string>();
-		private List<string> toRemove = new List<string>();
+		private bool clear = false;
 
-		public TagEditor(Action<List<string>, List<string>> onApply)
+		private Action<bool, string[], string[]> onApply;
+		private HashSet<string> toAdd = new HashSet<string>();
+		private HashSet<string> toRemove = new HashSet<string>();
+
+		public TagEditor(Action<bool, string[], string[]> onApply)
 		{
 			this.onApply = onApply;
 		}
@@ -26,7 +28,7 @@ namespace UrbanAirship.Portable.Push
 		/// <param name="tag">The tag to add.</param>
 		public TagEditor AddTag(string tag)
 		{
-			toAdd.Add(tag);
+			AddTags(new string[] { tag });
 			return this;
 		}
 
@@ -37,7 +39,7 @@ namespace UrbanAirship.Portable.Push
 		/// <param name="tags">Tags to add.</param>
 		public TagEditor AddTags(ICollection<string> tags)
 		{
-			toAdd.AddRange(tags);
+			toAdd.UnionWith(tags);
 			return this;
 		}
 
@@ -48,7 +50,7 @@ namespace UrbanAirship.Portable.Push
 		/// <param name="tag">Tag to remove.</param>
 		public TagEditor RemoveTag(string tag)
 		{
-			toRemove.Add(tag);
+			RemoveTags(new string[] { tag });
 			return this;
 		}
 
@@ -59,7 +61,17 @@ namespace UrbanAirship.Portable.Push
 		/// <param name="tags">Tags to remove.</param>
 		public TagEditor RemoveTags(ICollection<string> tags)
 		{
-			toRemove.AddRange(tags);
+			toRemove.UnionWith(tags);
+			return this;
+		}
+
+		/// <summary>
+		/// Clear tags before executing add/remove operations.
+		/// </summary>
+		/// <returns>The TagEditor.</returns>
+		public TagEditor Clear()
+		{
+			clear = true;
 			return this;
 		}
 
@@ -70,7 +82,10 @@ namespace UrbanAirship.Portable.Push
 		{
 			if (onApply != null)
 			{
-				onApply(toAdd, toRemove);
+				IEnumerable<String> intersection = Enumerable.Intersect(toAdd, toRemove);
+				string[] toAddFinal = toAdd.Except(intersection).ToArray();
+				string[] toRemoveFinal = toRemove.Except(intersection).ToArray();
+				onApply(clear, toAddFinal, toRemoveFinal);
 			}
 		}
 	}

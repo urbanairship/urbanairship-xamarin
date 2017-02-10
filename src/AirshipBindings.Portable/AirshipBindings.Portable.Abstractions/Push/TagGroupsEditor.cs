@@ -10,17 +10,10 @@ namespace UrbanAirship.Portable.Push
 {
 	public class TagGroupsEditor
 	{
-		public static readonly string ADD = "add";
-		public static readonly string REMOVE = "remove";
-		public static readonly string SET = "set";
+		private List<TagOperation> operations;
+		private Action<List<TagOperation>> onApply;
 
-		private Action<Dictionary<string, Dictionary<string, List<string>>>> onApply;
-
-		private Dictionary<string, List<string>> addTags = new Dictionary<string, List<string>>();
-		private Dictionary<string, List<string>> removeTags = new Dictionary<string, List<string>>();
-		private Dictionary<string, List<string>> setTags = new Dictionary<string, List<string>>();
-
-		public TagGroupsEditor(Action<Dictionary<string, Dictionary<string, List<string>>>> onApply)
+		public TagGroupsEditor(Action<List<TagOperation>> onApply)
 		{
 			this.onApply = onApply;
 		}
@@ -33,7 +26,7 @@ namespace UrbanAirship.Portable.Push
 		/// <param name="group">Group to add the tag to.</param>
 		public TagGroupsEditor AddTag(string tag, string group)
 		{
-			appendMapValues(group, new List<string>() { tag }, addTags);
+			AddTags(new string[] { tag }, group);
 			return this;
 		}
 
@@ -45,8 +38,9 @@ namespace UrbanAirship.Portable.Push
 		/// <param name="group">Group to add tags to.</param>
 		public TagGroupsEditor AddTags(ICollection<string> tags, string group)
 		{
-			appendMapValues(group, tags, addTags);
+			operations.Add(new TagOperation(OperationType.ADD, tags, group));
 			return this;
+
 		}
 
 		/// <summary>
@@ -57,7 +51,7 @@ namespace UrbanAirship.Portable.Push
 		/// <param name="group">Group to remove the tag from.</param>
 		public TagGroupsEditor RemoveTag(string tag, string group)
 		{
-			appendMapValues(group, new List<string>() { tag }, removeTags);
+			RemoveTags(new string[] { tag }, group);
 			return this;
 		}
 
@@ -69,7 +63,7 @@ namespace UrbanAirship.Portable.Push
 		/// <param name="group">Group to remove the tags from.</param>
 		public TagGroupsEditor RemoveTags(ICollection<string> tags, string group)
 		{
-			appendMapValues(group, tags, removeTags);
+			operations.Add(new TagOperation(OperationType.REMOVE, tags, group));
 			return this;
 		}
 
@@ -81,7 +75,7 @@ namespace UrbanAirship.Portable.Push
 		/// <param name="group">Group to set the tag to.</param>
 		public TagGroupsEditor SetTag(string tag, string group)
 		{
-			appendMapValues(group, new List<string>() { tag }, setTags);
+			SetTags(new string[] { tag }, group);
 			return this;
 		}
 
@@ -93,7 +87,7 @@ namespace UrbanAirship.Portable.Push
 		/// <param name="group">Group to set the tags to.</param>
 		public TagGroupsEditor SetTags(ICollection<string> tags, string group)
 		{
-			appendMapValues(group, tags, setTags);
+			operations.Add(new TagOperation(OperationType.REMOVE, tags, group));
 			return this;
 		}
 
@@ -104,28 +98,26 @@ namespace UrbanAirship.Portable.Push
 		{
 			if (onApply != null)
 			{
-				Dictionary<string, Dictionary<string, List<string>>> tagOps = new Dictionary<string, Dictionary<string, List<string>>>();
-				tagOps.Add(ADD, addTags);
-				tagOps.Add(REMOVE, removeTags);
-				tagOps.Add(SET, setTags);
-				onApply(tagOps);
+				onApply(operations);
 			}
 		}
 
-		private static void appendMapValues(string key, ICollection<string> values, Dictionary<string, List<string>> map)
+		public class TagOperation
 		{
-			if (!map.ContainsKey(key))
+			public OperationType operationType;
+			public string[] tags;
+			public string group;
+
+			internal TagOperation(OperationType operation, ICollection<string> tags, string group)
 			{
-				List<string> vals = new List<string>();
-				vals.AddRange(values);
-				map.Add(key, vals);
-			}
-			else
-			{
-				List<string> newList = map[key];
-				newList.AddRange(values);
-				map[key] = newList;
+				this.operationType = operation;
+				string[] tagArray = new string[tags.Count];
+				tags.CopyTo(tagArray, 0);
+				this.tags = tagArray;
+				this.group = group;
 			}
 		}
+
+		public enum OperationType { ADD, REMOVE, SET }
 	}
 }
