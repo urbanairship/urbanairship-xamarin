@@ -8,6 +8,9 @@ using System.Collections.Generic;
 
 namespace UrbanAirship.Portable.Push
 {
+	/// <summary>
+	/// Interface used for modifying channel and named user tag groups.
+	/// </summary>
 	public class TagGroupsEditor
 	{
 		private List<TagOperation> operations;
@@ -87,7 +90,7 @@ namespace UrbanAirship.Portable.Push
 		/// <param name="group">Group to set the tags to.</param>
 		public TagGroupsEditor SetTags(ICollection<string> tags, string group)
 		{
-			operations.Add(new TagOperation(OperationType.REMOVE, tags, group));
+			operations.Add(new TagOperation(OperationType.SET, tags, group));
 			return this;
 		}
 

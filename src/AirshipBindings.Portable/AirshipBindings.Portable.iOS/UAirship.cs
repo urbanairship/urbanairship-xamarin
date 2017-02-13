@@ -9,16 +9,6 @@ namespace UrbanAirship.Portable
 {
 	public class UAirship : IUAirship
 	{
-		private static UAirship sharedAirship = new UAirship();
-
-		public static UAirship Shared
-		{
-			get
-			{
-				return sharedAirship;
-			}
-		}
-
 		public bool UserNotificationsEnabled
 		{
 			get
@@ -45,19 +35,6 @@ namespace UrbanAirship.Portable
 			get
 			{
 				return UrbanAirship.UAirship.Push.ChannelID;
-			}
-		}
-
-		public string Alias
-		{
-			get
-			{
-				return UrbanAirship.UAirship.Push.Alias;
-			}
-
-			set
-			{
-				UrbanAirship.UAirship.Push.Alias = value;
 			}
 		}
 
@@ -130,21 +107,21 @@ namespace UrbanAirship.Portable
 			string interactionType = customEvent.InteractionType;
 			string interactionId = customEvent.InteractionId;
 
-			UrbanAirship.UACustomEvent builder = UrbanAirship.UACustomEvent.Event(eventName, eventValue);
+			UACustomEvent uaEvent = UACustomEvent.Event(eventName, eventValue);
 
 			if (!string.IsNullOrEmpty(transactionId))
 			{
-				builder.TransactionID = transactionId;
+				uaEvent.TransactionID = transactionId;
 			}
 
 			if (!string.IsNullOrEmpty(interactionId))
 			{
-				builder.InteractionID = interactionId;
+				uaEvent.InteractionID = interactionId;
 			}
 
 			if (!string.IsNullOrEmpty(interactionType))
 			{
-				builder.InteractionType = interactionType;
+				uaEvent.InteractionType = interactionType;
 			}
 
 			if (customEvent.PropertyList != null)
@@ -158,24 +135,24 @@ namespace UrbanAirship.Portable
 
 					if (property.value is string)
 					{
-						builder.SetStringProperty(property.stringValue, property.name);
+						uaEvent.SetStringProperty(property.stringValue, property.name);
 					}
 					else if (property.value is double)
 					{
-						builder.SetNumberProperty(property.doubleValue, property.name);
+						uaEvent.SetNumberProperty(property.doubleValue, property.name);
 					}
 					else if (property.value is bool)
 					{
-						builder.SetBoolProperty(property.boolValue, property.name);
+						uaEvent.SetBoolProperty(property.boolValue, property.name);
 					}
 					else if (property.value is string[])
 					{
-						builder.SetStringArrayProperty(property.stringArrayValue, property.name);
+						uaEvent.SetStringArrayProperty(property.stringArrayValue, property.name);
 					}
 				}
 			}
 
-			UrbanAirship.UAirship.Shared.Analytics.AddEvent(builder);
+			UrbanAirship.UAirship.Shared.Analytics.AddEvent(uaEvent);
 		}
 
 		public void AssociateIdentifier(string key, string identifier)

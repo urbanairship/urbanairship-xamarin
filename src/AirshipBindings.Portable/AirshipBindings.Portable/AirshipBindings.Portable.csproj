@@ -31,6 +31,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UAirship.cs" />
     <Compile Include="Push\TagEditor.cs" />
+    <Compile Include="..\..\SharedAssemblyInfo.cs">
+      <Link>Properties\SharedAssemblyInfo.cs</Link>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AirshipBindings.Portable.Abstractions\AirshipBindings.Portable.Abstractions.csproj">

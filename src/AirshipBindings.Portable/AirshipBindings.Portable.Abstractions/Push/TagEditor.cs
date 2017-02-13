@@ -8,6 +8,9 @@ using System.Linq;
 
 namespace UrbanAirship.Portable.Push
 {
+	/// <summary>
+	/// Class used for modifying channel tags. 
+	/// </summary>
 	public partial class TagEditor
 	{
 		private bool clear = false;
@@ -39,6 +42,7 @@ namespace UrbanAirship.Portable.Push
 		/// <param name="tags">Tags to add.</param>
 		public TagEditor AddTags(ICollection<string> tags)
 		{
+			toRemove.ExceptWith(tags);
 			toAdd.UnionWith(tags);
 			return this;
 		}
@@ -61,6 +65,7 @@ namespace UrbanAirship.Portable.Push
 		/// <param name="tags">Tags to remove.</param>
 		public TagEditor RemoveTags(ICollection<string> tags)
 		{
+			toAdd.ExceptWith(tags);
 			toRemove.UnionWith(tags);
 			return this;
 		}
@@ -82,10 +87,7 @@ namespace UrbanAirship.Portable.Push
 		{
 			if (onApply != null)
 			{
-				IEnumerable<String> intersection = Enumerable.Intersect(toAdd, toRemove);
-				string[] toAddFinal = toAdd.Except(intersection).ToArray();
-				string[] toRemoveFinal = toRemove.Except(intersection).ToArray();
-				onApply(clear, toAddFinal, toRemoveFinal);
+				onApply(clear, toAdd.ToArray(), toRemove.ToArray());
 			}
 		}
 	}

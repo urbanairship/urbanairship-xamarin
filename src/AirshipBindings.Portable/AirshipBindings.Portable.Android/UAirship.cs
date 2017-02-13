@@ -76,19 +76,6 @@ namespace UrbanAirship.Portable
 			}
 		}
 
-		public string Alias
-		{
-			get
-			{
-				return UrbanAirship.UAirship.Shared().PushManager.Alias;
-			}
-
-			set
-			{
-				UrbanAirship.UAirship.Shared().PushManager.Alias = value;
-			}
-		}
-
 		public string NamedUser
 		{
 			get
