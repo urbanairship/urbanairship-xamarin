@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using Android.App;
 using Android.Content;
 using Android.Runtime;
+using Android.Util;
 using Android.Views;
 using Android.Widget;
 using Android.Support.Design.Widget;
@@ -38,13 +39,12 @@ namespace Sample
 	              DataScheme= "message")]
 	public class MainActivity : v7.App.AppCompatActivity
 	{
-		private const String TAG = "MainActivity";
+		private const string Tag = "MainActivity";
 
-		private const String NAV_ID = "NAV_ID";
-		private const String TITLE = "TITLE";
-		private const String LAST_MESSAGE_SENT_DATE = "LAST_MC_SENT_DATE";
-
-		private static readonly int MESSAGE_CENTER_INDICATOR_DURATION_MS = 10000;
+		private const string NavId = "NAV_ID";
+		private const string TitleKey = "TITLE";
+		private const string LastMessageCentDate = "LAST_MC_SENT_DATE";
+		private const int MessageCenterIndicatorDurationMs = 10000;
 
 		private DrawerLayout drawer;
 		private int currentNavPosition = -1;
@@ -54,7 +54,6 @@ namespace Sample
 		private NavigationView navigation;
 		private InboxListener inboxListener;
 
-		// TODO in progress
 		protected override void OnCreate (Bundle savedInstanceState)
 		{
 			base.OnCreate (savedInstanceState);
@@ -83,8 +82,8 @@ namespace Sample
 			// message center stuff
 			if (savedInstanceState != null)
 			{
-				Navigate(savedInstanceState.GetInt(NAV_ID));
-				Title = savedInstanceState.GetString(TITLE);
+				Navigate(savedInstanceState.GetInt(NavId));
+				Title = savedInstanceState.GetString(TitleKey);
 			}
 			else
 			{
@@ -102,12 +101,11 @@ namespace Sample
 		protected override void OnSaveInstanceState(Bundle outState)
 		{
 			base.OnSaveInstanceState(outState);
-			outState.PutInt(NAV_ID, currentNavPosition);
-			outState.PutString(TITLE, Title);
-			outState.PutLong(LAST_MESSAGE_SENT_DATE, messageCenterLastSentDate);
+			outState.PutInt(NavId, currentNavPosition);
+			outState.PutString(TitleKey, Title);
+			outState.PutLong(LastMessageCentDate, messageCenterLastSentDate);
 		}
 
-		// TODO figure this out;
 		protected override void OnResume ()
 		{
 			base.OnResume ();
@@ -179,7 +177,6 @@ namespace Sample
 			return base.OnOptionsItemSelected(item);
 		}
 
-		// TODO fill in message center crap.
 		private v4.App.Fragment Navigate(int id)
 		{
 			currentNavPosition = id;
@@ -212,6 +209,7 @@ namespace Sample
 					fragment = new LocationFragment();
 					break;
 				default:
+					Log.Error(Tag, "Unexpected navigation item");			
 					return null;
 			}
 
@@ -265,7 +263,7 @@ namespace Sample
 
 			String text = Resources.GetQuantityString(Resource.Plurals.mc_indicator_text, unreadMessages.Count, unreadMessages.Count);
 
-			messageCenterSnackbar = Snackbar.Make(FindViewById(Resource.Id.coordinatorLayout), text, MESSAGE_CENTER_INDICATOR_DURATION_MS)
+			messageCenterSnackbar = Snackbar.Make(FindViewById(Resource.Id.coordinatorLayout), text, MessageCenterIndicatorDurationMs)
 											.SetActionTextColor(ContextCompat.GetColor(this, Resource.Color.color_accent))
 											.SetAction(Resource.String.view, (View v) =>
 			{

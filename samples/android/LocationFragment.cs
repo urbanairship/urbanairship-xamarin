@@ -1,4 +1,8 @@
-﻿using System;
+﻿/*
+ Copyright 2017 Urban Airship and Contributors
+*/
+
+using System;
 
 using Android.Content.PM;
 using Android.Locations;

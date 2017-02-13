@@ -1,4 +1,8 @@
-﻿using System;
+﻿/*
+ Copyright 2017 Urban Airship and Contributors
+*/
+
+using System;
 
 using Android.App;
 using Android.OS;
@@ -18,7 +22,6 @@ namespace Sample
 		{
 			base.OnCreate(savedInstanceState);
 
-			// Todo works??
 			if (SupportActionBar != null)
 			{
 				SupportActionBar.SetDisplayHomeAsUpEnabled(true);

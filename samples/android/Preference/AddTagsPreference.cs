@@ -1,4 +1,8 @@
-﻿using System;
+﻿/*
+ Copyright 2017 Urban Airship and Contributors
+*/
+
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;

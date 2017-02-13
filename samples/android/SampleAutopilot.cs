@@ -1,4 +1,8 @@
-﻿using System;
+﻿/*
+ Copyright 2017 Urban Airship and Contributors
+*/
+
+using System;
 
 using Android.Content;
 using Android.Runtime;
@@ -21,7 +25,6 @@ namespace Sample
 			if (isFirstRun)
 			{
 				sharedPreferences.Edit().PutBoolean(FirstRunKey, false).Apply();
-
 				airship.PushManager.UserNotificationsEnabled = true;
 			}
 		}
@@ -30,14 +33,14 @@ namespace Sample
 		{
 			/* Optionally set your config at runtime 
 			AirshipConfigOptions options = new AirshipConfigOptions.Builder()
-				   .setInProduction(!BuildConfig.DEBUG)
-				   .setDevelopmentAppKey("Your Development App Key")
-				   .setDevelopmentAppSecret("Your Development App Secret")
-				   .setProductionAppKey("Your Production App Key")
-				   .setProductionAppSecret("Your Production App Secret")
-				   .setNotificationAccentColor(ContextCompat.getColor(this, R.color.color_accent))
-				   .setNotificationIcon(R.drawable.ic_notification)
-				   .build();
+				   .SetInProduction(!BuildConfig.DEBUG)
+				   .SetDevelopmentAppKey("Your Development App Key")
+				   .SetDevelopmentAppSecret("Your Development App Secret")
+				   .SetProductionAppKey("Your Production App Key")
+				   .SetProductionAppSecret("Your Production App Secret")
+				   .SetNotificationAccentColor(ContextCompat.getColor(this, R.color.color_accent))
+				   .SetNotificationIcon(R.drawable.ic_notification)
+				   .Build();
 
 			return options;
 			*/
