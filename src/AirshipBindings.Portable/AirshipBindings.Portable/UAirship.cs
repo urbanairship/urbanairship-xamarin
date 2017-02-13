@@ -36,12 +36,6 @@ namespace UrbanAirship.Portable
 		public IEnumerable<string> Tags { get { return null; } }
 
 		/// <summary>
-		/// Get or set the alias for the device.
-		/// </summary>
-		/// <value>The alias.</value>
-		public string Alias { get; set; }
-
-		/// <summary>
 		/// Get the channel ID for the device.
 		/// </summary>
 		/// <value>The channel identifier.</value>

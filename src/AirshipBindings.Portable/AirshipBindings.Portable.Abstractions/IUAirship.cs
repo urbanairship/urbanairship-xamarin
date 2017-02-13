@@ -20,11 +20,6 @@ namespace UrbanAirship.Portable
 			get;
 		}
 
-		string Alias
-		{
-			get; set;
-		}
-
 		string ChannelId
 		{
 			get;

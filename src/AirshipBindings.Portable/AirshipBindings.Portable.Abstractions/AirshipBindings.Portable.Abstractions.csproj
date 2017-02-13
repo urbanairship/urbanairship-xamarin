@@ -32,6 +32,9 @@
     <Compile Include="Push\TagEditor.cs" />
     <Compile Include="Push\TagGroupsEditor.cs" />
     <Compile Include="Analytics\CustomEvent.cs" />
+    <Compile Include="..\..\SharedAssemblyInfo.cs">
+      <Link>Properties\SharedAssemblyInfo.cs</Link>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Push\" />

@@ -9,16 +9,6 @@ namespace UrbanAirship.Portable
 {
 	public class UAirship : IUAirship
 	{
-		private static UAirship sharedAirship = new UAirship();
-
-		public static UAirship Shared
-		{
-			get
-			{
-				return sharedAirship;
-			}
-		}
-
 		public bool UserNotificationsEnabled
 		{
 			get
@@ -45,19 +35,6 @@ namespace UrbanAirship.Portable
 			get
 			{
 				return UrbanAirship.UAirship.Push.ChannelID;
-			}
-		}
-
-		public string Alias
-		{
-			get
-			{
-				return UrbanAirship.UAirship.Push.Alias;
-			}
-
-			set
-			{
-				UrbanAirship.UAirship.Push.Alias = value;
 			}
 		}
 
@@ -105,10 +82,15 @@ namespace UrbanAirship.Portable
 			return new Push.TagEditor(this.DeviceTagHelper);
 		}
 
-		private void DeviceTagHelper(List<string> addTags, List<string> removeTags)
+		private void DeviceTagHelper(bool clear, string[] addTags, string[] removeTags)
 		{
-			UrbanAirship.UAirship.Push.AddTags(addTags.ToArray());
-			UrbanAirship.UAirship.Push.RemoveTags(removeTags.ToArray());
+			if (clear)
+			{
+				UrbanAirship.UAirship.Push.Tags = new string[] { };
+			}
+
+			UrbanAirship.UAirship.Push.AddTags(addTags);
+			UrbanAirship.UAirship.Push.RemoveTags(removeTags);
 			UrbanAirship.UAirship.Push.UpdateRegistration();
 		}
 
@@ -125,21 +107,21 @@ namespace UrbanAirship.Portable
 			string interactionType = customEvent.InteractionType;
 			string interactionId = customEvent.InteractionId;
 
-			UrbanAirship.UACustomEvent builder = UrbanAirship.UACustomEvent.Event(eventName, eventValue);
+			UACustomEvent uaEvent = UACustomEvent.Event(eventName, eventValue);
 
 			if (!string.IsNullOrEmpty(transactionId))
 			{
-				builder.TransactionID = transactionId;
+				uaEvent.TransactionID = transactionId;
 			}
 
 			if (!string.IsNullOrEmpty(interactionId))
 			{
-				builder.InteractionID = interactionId;
+				uaEvent.InteractionID = interactionId;
 			}
 
 			if (!string.IsNullOrEmpty(interactionType))
 			{
-				builder.InteractionType = interactionType;
+				uaEvent.InteractionType = interactionType;
 			}
 
 			if (customEvent.PropertyList != null)
@@ -153,24 +135,24 @@ namespace UrbanAirship.Portable
 
 					if (property.value is string)
 					{
-						builder.SetStringProperty(property.stringValue, property.name);
+						uaEvent.SetStringProperty(property.stringValue, property.name);
 					}
 					else if (property.value is double)
 					{
-						builder.SetNumberProperty(property.doubleValue, property.name);
+						uaEvent.SetNumberProperty(property.doubleValue, property.name);
 					}
 					else if (property.value is bool)
 					{
-						builder.SetBoolProperty(property.boolValue, property.name);
+						uaEvent.SetBoolProperty(property.boolValue, property.name);
 					}
 					else if (property.value is string[])
 					{
-						builder.SetStringArrayProperty(property.stringArrayValue, property.name);
+						uaEvent.SetStringArrayProperty(property.stringArrayValue, property.name);
 					}
 				}
 			}
 
-			UrbanAirship.UAirship.Shared.Analytics.AddEvent(builder);
+			UrbanAirship.UAirship.Shared.Analytics.AddEvent(uaEvent);
 		}
 
 		public void AssociateIdentifier(string key, string identifier)
@@ -203,7 +185,7 @@ namespace UrbanAirship.Portable
 
 		public Push.TagGroupsEditor EditNamedUserTagGroups()
 		{
-			return new Push.TagGroupsEditor((Dictionary<string, Dictionary<string, List<string>>> payload) =>
+			return new Push.TagGroupsEditor((List<Push.TagGroupsEditor.TagOperation> payload) =>
 			{
 				TagGroupHelper(payload, true);
 				UrbanAirship.UAirship.NamedUser.UpdateTags();
@@ -212,41 +194,38 @@ namespace UrbanAirship.Portable
 
 		public Push.TagGroupsEditor EditChannelTagGroups()
 		{
-			return new Push.TagGroupsEditor((Dictionary<string, Dictionary<string, List<string>>> payload) =>
+			return new Push.TagGroupsEditor((List<Push.TagGroupsEditor.TagOperation> payload) =>
 			{
 				TagGroupHelper(payload, false);
 				UrbanAirship.UAirship.Push.UpdateRegistration();
 			});
 		}
 
-		private void TagGroupHelper(Dictionary<string, Dictionary<string, List<string>>> operations, bool namedUser)
+		private void TagGroupHelper(List<Push.TagGroupsEditor.TagOperation> operations, bool namedUser)
 		{
-			var namedUserActions = new Dictionary<string, Action<string, List<string>>>()
+			var namedUserActions = new Dictionary<Push.TagGroupsEditor.OperationType, Action<string, string[]>>()
 			{
-				{ Push.TagGroupsEditor.ADD, (group, t) => UrbanAirship.UAirship.NamedUser.AddTags(t.ToArray(), group) },
-				{ Push.TagGroupsEditor.REMOVE, (group, t) => UrbanAirship.UAirship.NamedUser.RemoveTags(t.ToArray(), group) },
-				{ Push.TagGroupsEditor.SET, (group, t) => UrbanAirship.UAirship.NamedUser.SetTags(t.ToArray(), group) }
+				{ Push.TagGroupsEditor.OperationType.ADD, (group, t) => UrbanAirship.UAirship.NamedUser.AddTags(t, group) },
+				{ Push.TagGroupsEditor.OperationType.REMOVE, (group, t) => UrbanAirship.UAirship.NamedUser.RemoveTags(t, group) },
+				{ Push.TagGroupsEditor.OperationType.SET, (group, t) => UrbanAirship.UAirship.NamedUser.SetTags(t, group) }
 			};
-			var channelActions = new Dictionary<string, Action<string, List<string>>>()
+			var channelActions = new Dictionary<Push.TagGroupsEditor.OperationType, Action<string, string[]>>()
 			{
-				{ Push.TagGroupsEditor.ADD, (group, t) => UrbanAirship.UAirship.Push.AddTags(t.ToArray(), group) },
-				{ Push.TagGroupsEditor.REMOVE, (group, t) => UrbanAirship.UAirship.Push.RemoveTags(t.ToArray(), group) },
-				{ Push.TagGroupsEditor.SET, (group, t) => UrbanAirship.UAirship.Push.SetTags(t.ToArray(), group) }
+				{ Push.TagGroupsEditor.OperationType.ADD, (group, t) => UrbanAirship.UAirship.Push.AddTags(t, group) },
+				{ Push.TagGroupsEditor.OperationType.REMOVE, (group, t) => UrbanAirship.UAirship.Push.RemoveTags(t, group) },
+				{ Push.TagGroupsEditor.OperationType.SET, (group, t) => UrbanAirship.UAirship.Push.SetTags(t, group) }
 			};
 
 			var actions = namedUser ? namedUserActions : channelActions;
 
-			foreach (KeyValuePair<string, Dictionary<string, List<string>>> operation in operations)
+			foreach (Push.TagGroupsEditor.TagOperation operation in operations)
 			{
-				if (!actions.ContainsKey(operation.Key))
+				if (!Enum.IsDefined(typeof(Push.TagGroupsEditor.OperationType), operation.operationType))
 				{
 					continue;
 				}
 
-				foreach (KeyValuePair<string, List<string>> g in operation.Value)
-				{
-					actions[operation.Key](g.Key, g.Value);
-				}
+				actions[operation.operationType](operation.group, operation.tags);
 			}
 		}
 	}
