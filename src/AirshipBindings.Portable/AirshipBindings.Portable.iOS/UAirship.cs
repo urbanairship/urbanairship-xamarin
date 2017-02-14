@@ -7,18 +7,28 @@ using System.Collections.Generic;
 
 namespace UrbanAirship.Portable
 {
-	public class UAirship : IUAirship
+	public class Airship : IAirship
 	{
+		private static Airship sharedAirship = new Airship();
+
+		public static Airship Instance
+		{
+			get
+			{
+				return sharedAirship;
+			}
+		}
+
 		public bool UserNotificationsEnabled
 		{
 			get
 			{
-				return UrbanAirship.UAirship.Push.UserPushNotificationsEnabled;
+				return UAirship.Push.UserPushNotificationsEnabled;
 			}
 
 			set
 			{
-				UrbanAirship.UAirship.Push.UserPushNotificationsEnabled = value;
+				UAirship.Push.UserPushNotificationsEnabled = value;
 			}
 		}
 
@@ -26,7 +36,7 @@ namespace UrbanAirship.Portable
 		{
 			get
 			{
-				return UrbanAirship.UAirship.Push.Tags;
+				return UAirship.Push.Tags;
 			}
 		}
 
@@ -34,7 +44,7 @@ namespace UrbanAirship.Portable
 		{
 			get
 			{
-				return UrbanAirship.UAirship.Push.ChannelID;
+				return UAirship.Push.ChannelID;
 			}
 		}
 
@@ -42,12 +52,12 @@ namespace UrbanAirship.Portable
 		{
 			get
 			{
-				return UrbanAirship.UAirship.Location.LocationUpdatesEnabled;
+				return UAirship.Location.LocationUpdatesEnabled;
 			}
 
 			set
 			{
-				UrbanAirship.UAirship.Location.LocationUpdatesEnabled = value;
+				UAirship.Location.LocationUpdatesEnabled = value;
 			}
 		}
 
@@ -55,12 +65,12 @@ namespace UrbanAirship.Portable
 		{
 			get
 			{
-				return UrbanAirship.UAirship.Location.BackgroundLocationUpdatesAllowed;
+				return UAirship.Location.BackgroundLocationUpdatesAllowed;
 			}
 
 			set
 			{
-				UrbanAirship.UAirship.Location.BackgroundLocationUpdatesAllowed = value;
+				UAirship.Location.BackgroundLocationUpdatesAllowed = value;
 			}
 		}
 
@@ -68,12 +78,12 @@ namespace UrbanAirship.Portable
 		{
 			get
 			{
-				return UrbanAirship.UAirship.NamedUser.Identifier;
+				return UAirship.NamedUser.Identifier;
 			}
 
 			set
 			{
-				UrbanAirship.UAirship.NamedUser.Identifier = value;
+				UAirship.NamedUser.Identifier = value;
 			}
 		}
 
@@ -86,12 +96,12 @@ namespace UrbanAirship.Portable
 		{
 			if (clear)
 			{
-				UrbanAirship.UAirship.Push.Tags = new string[] { };
+				UAirship.Push.Tags = new string[] { };
 			}
 
-			UrbanAirship.UAirship.Push.AddTags(addTags);
-			UrbanAirship.UAirship.Push.RemoveTags(removeTags);
-			UrbanAirship.UAirship.Push.UpdateRegistration();
+			UAirship.Push.AddTags(addTags);
+			UAirship.Push.RemoveTags(removeTags);
+			UAirship.Push.UpdateRegistration();
 		}
 
 		public void AddCustomEvent(Portable.Analytics.CustomEvent customEvent)
@@ -152,26 +162,26 @@ namespace UrbanAirship.Portable
 				}
 			}
 
-			UrbanAirship.UAirship.Shared.Analytics.AddEvent(uaEvent);
+			UAirship.Shared.Analytics.AddEvent(uaEvent);
 		}
 
 		public void AssociateIdentifier(string key, string identifier)
 		{
-			UAAssociatedIdentifiers identifiers = UrbanAirship.UAirship.Shared.Analytics.CurrentAssociatedDeviceIdentifiers();
+			UAAssociatedIdentifiers identifiers = UAirship.Shared.Analytics.CurrentAssociatedDeviceIdentifiers();
 			identifiers.SetIdentifier(identifier, key);
-			UrbanAirship.UAirship.Shared.Analytics.AssociateDeviceIdentifiers(identifiers);
+			UAirship.Shared.Analytics.AssociateDeviceIdentifiers(identifiers);
 		}
 
 		public void DisplayMessageCenter()
 		{
-			UrbanAirship.UAirship.DefaultMessageCenter.Display();
+			UAirship.DefaultMessageCenter.Display();
 		}
 
 		public int MessageCenterUnreadCount
 		{
 			get
 			{
-				return (int)UrbanAirship.UAirship.Inbox.MessageList.UnreadCount;
+				return (int)UAirship.Inbox.MessageList.UnreadCount;
 			}
 		}
 
@@ -179,7 +189,7 @@ namespace UrbanAirship.Portable
 		{
 			get
 			{
-				return (int)UrbanAirship.UAirship.Inbox.MessageList.MessageCount;
+				return (int)UAirship.Inbox.MessageList.MessageCount;
 			}
 		}
 
@@ -188,7 +198,7 @@ namespace UrbanAirship.Portable
 			return new Push.TagGroupsEditor((List<Push.TagGroupsEditor.TagOperation> payload) =>
 			{
 				TagGroupHelper(payload, true);
-				UrbanAirship.UAirship.NamedUser.UpdateTags();
+				UAirship.NamedUser.UpdateTags();
 			});
 		}
 
@@ -197,7 +207,7 @@ namespace UrbanAirship.Portable
 			return new Push.TagGroupsEditor((List<Push.TagGroupsEditor.TagOperation> payload) =>
 			{
 				TagGroupHelper(payload, false);
-				UrbanAirship.UAirship.Push.UpdateRegistration();
+				UAirship.Push.UpdateRegistration();
 			});
 		}
 
@@ -205,15 +215,15 @@ namespace UrbanAirship.Portable
 		{
 			var namedUserActions = new Dictionary<Push.TagGroupsEditor.OperationType, Action<string, string[]>>()
 			{
-				{ Push.TagGroupsEditor.OperationType.ADD, (group, t) => UrbanAirship.UAirship.NamedUser.AddTags(t, group) },
-				{ Push.TagGroupsEditor.OperationType.REMOVE, (group, t) => UrbanAirship.UAirship.NamedUser.RemoveTags(t, group) },
-				{ Push.TagGroupsEditor.OperationType.SET, (group, t) => UrbanAirship.UAirship.NamedUser.SetTags(t, group) }
+				{ Push.TagGroupsEditor.OperationType.ADD, (group, t) => UAirship.NamedUser.AddTags(t, group) },
+				{ Push.TagGroupsEditor.OperationType.REMOVE, (group, t) => UAirship.NamedUser.RemoveTags(t, group) },
+				{ Push.TagGroupsEditor.OperationType.SET, (group, t) => UAirship.NamedUser.SetTags(t, group) }
 			};
 			var channelActions = new Dictionary<Push.TagGroupsEditor.OperationType, Action<string, string[]>>()
 			{
-				{ Push.TagGroupsEditor.OperationType.ADD, (group, t) => UrbanAirship.UAirship.Push.AddTags(t, group) },
-				{ Push.TagGroupsEditor.OperationType.REMOVE, (group, t) => UrbanAirship.UAirship.Push.RemoveTags(t, group) },
-				{ Push.TagGroupsEditor.OperationType.SET, (group, t) => UrbanAirship.UAirship.Push.SetTags(t, group) }
+				{ Push.TagGroupsEditor.OperationType.ADD, (group, t) => UAirship.Push.AddTags(t, group) },
+				{ Push.TagGroupsEditor.OperationType.REMOVE, (group, t) => UAirship.Push.RemoveTags(t, group) },
+				{ Push.TagGroupsEditor.OperationType.SET, (group, t) => UAirship.Push.SetTags(t, group) }
 			};
 
 			var actions = namedUser ? namedUserActions : channelActions;
@@ -225,7 +235,9 @@ namespace UrbanAirship.Portable
 					continue;
 				}
 
-				actions[operation.operationType](operation.group, operation.tags);
+				string[] tagArray = new string[operation.tags.Count];
+				operation.tags.CopyTo(tagArray, 0);
+				actions[operation.operationType](operation.group, tagArray);
 			}
 		}
 	}

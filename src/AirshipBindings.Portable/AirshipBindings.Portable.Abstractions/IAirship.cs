@@ -8,7 +8,7 @@ using System.Collections.Generic;
 
 namespace UrbanAirship.Portable
 {
-	public interface IUAirship
+	public interface IAirship
 	{
 		bool UserNotificationsEnabled
 		{

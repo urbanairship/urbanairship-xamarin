@@ -13,7 +13,7 @@ namespace UrbanAirship.Portable.Push
 	/// </summary>
 	public class TagGroupsEditor
 	{
-		private List<TagOperation> operations;
+		private List<TagOperation> operations = new List<TagOperation>();
 		private Action<List<TagOperation>> onApply;
 
 		public TagGroupsEditor(Action<List<TagOperation>> onApply)
@@ -108,15 +108,13 @@ namespace UrbanAirship.Portable.Push
 		public class TagOperation
 		{
 			public OperationType operationType;
-			public string[] tags;
+			public ICollection<string> tags;
 			public string group;
 
 			internal TagOperation(OperationType operation, ICollection<string> tags, string group)
 			{
 				this.operationType = operation;
-				string[] tagArray = new string[tags.Count];
-				tags.CopyTo(tagArray, 0);
-				this.tags = tagArray;
+				this.tags = tags;
 				this.group = group;
 			}
 		}

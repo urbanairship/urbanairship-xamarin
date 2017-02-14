@@ -28,7 +28,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="IUAirship.cs" />
+    <Compile Include="IAirship.cs" />
     <Compile Include="Push\TagEditor.cs" />
     <Compile Include="Push\TagGroupsEditor.cs" />
     <Compile Include="Analytics\CustomEvent.cs" />

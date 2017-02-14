@@ -5,15 +5,13 @@
 using System;
 using System.Collections.Generic;
 
-using UrbanAirship;
-
 namespace UrbanAirship.Portable
 {
-	public class UAirship : IUAirship
+	public class Airship : IAirship
 	{
-		private static UAirship sharedAirship = new UAirship();
+		private static Airship sharedAirship = new Airship();
 
-		public static UAirship Shared
+		public static Airship Instance
 		{
 			get
 			{
@@ -25,12 +23,12 @@ namespace UrbanAirship.Portable
 		{
 			get
 			{
-				return UrbanAirship.UAirship.Shared().PushManager.UserNotificationsEnabled;
+				return UAirship.Shared().PushManager.UserNotificationsEnabled;
 			}
 
 			set
 			{
-				UrbanAirship.UAirship.Shared().PushManager.UserNotificationsEnabled = value;
+				UAirship.Shared().PushManager.UserNotificationsEnabled = value;
 			}
 		}
 
@@ -38,7 +36,7 @@ namespace UrbanAirship.Portable
 		{
 			get
 			{
-				return UrbanAirship.UAirship.Shared().PushManager.Tags;
+				return UAirship.Shared().PushManager.Tags;
 			}
 		}
 
@@ -46,7 +44,7 @@ namespace UrbanAirship.Portable
 		{
 			get
 			{
-				return UrbanAirship.UAirship.Shared().PushManager.ChannelId;
+				return UAirship.Shared().PushManager.ChannelId;
 			}
 		}
 
@@ -54,12 +52,12 @@ namespace UrbanAirship.Portable
 		{
 			get
 			{
-				return UrbanAirship.UAirship.Shared().LocationManager.LocationUpdatesEnabled;
+				return UAirship.Shared().LocationManager.LocationUpdatesEnabled;
 			}
 
 			set
 			{
-				UrbanAirship.UAirship.Shared().LocationManager.LocationUpdatesEnabled = value;
+				UAirship.Shared().LocationManager.LocationUpdatesEnabled = value;
 			}
 		}
 
@@ -67,12 +65,12 @@ namespace UrbanAirship.Portable
 		{
 			get
 			{
-				return UrbanAirship.UAirship.Shared().LocationManager.BackgroundLocationAllowed;
+				return UAirship.Shared().LocationManager.BackgroundLocationAllowed;
 			}
 
 			set
 			{
-				UrbanAirship.UAirship.Shared().LocationManager.BackgroundLocationAllowed = value;
+				UAirship.Shared().LocationManager.BackgroundLocationAllowed = value;
 			}
 		}
 
@@ -80,12 +78,12 @@ namespace UrbanAirship.Portable
 		{
 			get
 			{
-				return UrbanAirship.UAirship.Shared().NamedUser.Id;
+				return UAirship.Shared().NamedUser.Id;
 			}
 
 			set
 			{
-				UrbanAirship.UAirship.Shared().NamedUser.Id = value;
+				UAirship.Shared().NamedUser.Id = value;
 			}
 		}
 
@@ -96,7 +94,7 @@ namespace UrbanAirship.Portable
 
 		private void DeviceTagHelper(bool clear, string[] addTags, string[] removeTags)
 		{
-			UrbanAirship.Push.TagEditor editor = UrbanAirship.UAirship.Shared().PushManager.EditTags();
+			var editor = UAirship.Shared().PushManager.EditTags();
 
 			if (clear)
 			{
@@ -119,7 +117,7 @@ namespace UrbanAirship.Portable
 			string interactionType = customEvent.InteractionType;
 			string interactionId = customEvent.InteractionId;
 
-			UrbanAirship.Analytics.CustomEvent.Builder builder = new UrbanAirship.Analytics.CustomEvent.Builder(eventName)
+			var builder = new UrbanAirship.Analytics.CustomEvent.Builder(eventName)
 				.SetEventValue(eventValue);
 
 			if (!string.IsNullOrEmpty(transactionId))
@@ -145,31 +143,31 @@ namespace UrbanAirship.Portable
 				}
 			}
 
-			UrbanAirship.UAirship.Shared().Analytics.AddEvent(builder.Create());
+			UAirship.Shared().Analytics.AddEvent(builder.Create());
 		}
 
 		public void AssociateIdentifier(string key, string identifier)
 		{
 			if (identifier == null)
 			{
-				UrbanAirship.UAirship.Shared().Analytics.EditAssociatedIdentifiers().RemoveIdentifier(key).Apply();
+				UAirship.Shared().Analytics.EditAssociatedIdentifiers().RemoveIdentifier(key).Apply();
 			}
 			else
 			{
-				UrbanAirship.UAirship.Shared().Analytics.EditAssociatedIdentifiers().AddIdentifier(key, identifier).Apply();
+				UAirship.Shared().Analytics.EditAssociatedIdentifiers().AddIdentifier(key, identifier).Apply();
 			}
 		}
 
 		public void DisplayMessageCenter()
 		{
-			UrbanAirship.UAirship.Shared().Inbox.StartInboxActivity();
+			UAirship.Shared().Inbox.StartInboxActivity();
 		}
 
 		public int MessageCenterUnreadCount
 		{
 			get
 			{
-				return UrbanAirship.UAirship.Shared().Inbox.UnreadCount;
+				return UAirship.Shared().Inbox.UnreadCount;
 			}
 		}
 
@@ -177,7 +175,7 @@ namespace UrbanAirship.Portable
 		{
 			get
 			{
-				return UrbanAirship.UAirship.Shared().Inbox.Count;
+				return UAirship.Shared().Inbox.Count;
 			}
 		}
 
@@ -185,7 +183,7 @@ namespace UrbanAirship.Portable
 		{
 			return new Push.TagGroupsEditor((List<Push.TagGroupsEditor.TagOperation> payload) =>
 			{
-				UrbanAirship.Push.TagGroupsEditor editor = UrbanAirship.UAirship.Shared().NamedUser.EditTagGroups();
+				var editor = UAirship.Shared().NamedUser.EditTagGroups();
 				TagGroupHelper(payload, editor);
 				editor.Apply();
 			});
@@ -195,7 +193,7 @@ namespace UrbanAirship.Portable
 		{
 			return new Push.TagGroupsEditor((List<Push.TagGroupsEditor.TagOperation> payload) =>
 			{
-				UrbanAirship.Push.TagGroupsEditor editor = UrbanAirship.UAirship.Shared().PushManager.EditTagGroups();
+				var editor = UAirship.Shared().PushManager.EditTagGroups();
 				TagGroupHelper(payload, editor);
 				editor.Apply();
 			});

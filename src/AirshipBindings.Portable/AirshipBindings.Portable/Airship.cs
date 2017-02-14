@@ -7,15 +7,15 @@ using System.Collections.Generic;
 
 namespace UrbanAirship.Portable
 {
-	public class UAirship : IUAirship
+	public class Airship : IAirship
 	{
-		private static UAirship sharedAirship = new UAirship();
+		private static Airship sharedAirship = new Airship();
 
 		/// <summary>
 		/// Gets the shared UAirship instance.
 		/// </summary>
 		/// <value>The shared UAirship instance.</value>
-		public static UAirship Shared
+		public static Airship Instance
 		{
 			get
 			{
