@@ -98,7 +98,7 @@ WARN_LOGFILE           =
 #---------------------------------------------------------------------------
 # Configuration options related to the input files
 #---------------------------------------------------------------------------
-INPUT                  = ../src/AirshipBindings.Portable/AirshipBindings.Portable.Abstractions/ mainpage.md
+INPUT                  = ../src/AirshipBindings.Portable/AirshipBindings.Portable/ ../src/AirshipBindings.Portable/AirshipBindings.Portable.Abstractions/Push/ mainpage.md
 INPUT_ENCODING         = UTF-8
 FILE_PATTERNS          = *.cs
 RECURSIVE              = NO
