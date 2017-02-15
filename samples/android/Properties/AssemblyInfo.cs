@@ -10,3 +10,4 @@ using Android.App;
                        Theme = "@style/AppTheme")]
 
 [assembly: MetaData("com.urbanairship.autopilot", Value = "sample.SampleAutopilot")]
+[assembly: UsesPermission("android.permission.ACCESS_FINE_LOCATION")]

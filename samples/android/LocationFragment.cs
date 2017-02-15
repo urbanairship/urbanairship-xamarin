@@ -55,7 +55,7 @@ namespace Sample
 			Button button = (Button)view.FindViewById(Resource.Id.request_button);
 			button.Click += (sender, e) =>
 			{
-				// RequestLocation();
+				RequestLocation();
 			};
 
 			return view;
@@ -96,6 +96,7 @@ namespace Sample
 			if (Build.VERSION.SdkInt >= BuildVersionCodes.M && ContextCompat.CheckSelfPermission(Context, Android.Manifest.Permission.AccessFineLocation) != Permission.Granted)
 			{
 				RequestPermissions(new string[] { Android.Manifest.Permission.AccessFineLocation }, PERMISSIONS_REQUEST_LOCATION);
+				return;
 			}
 
 			if (pendingRequest != null)

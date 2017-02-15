@@ -44,9 +44,10 @@ namespace Sample
 			{
 				if (!string.IsNullOrEmpty(channelId.Text))
 				{
+							
 					ActionRunRequest.CreateRequest(ClipboardAction.DefaultRegistryName)
 									.SetValue(UAirship.Shared().PushManager.ChannelId)
-					                .Run((args, result) => 
+									.Run((args, result) => 
 					{
 						Toast.MakeText(Context, GetString(Resource.String.toast_channel_clipboard), ToastLength.Short).Show();
 					});

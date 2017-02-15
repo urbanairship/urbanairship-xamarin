@@ -110,7 +110,6 @@
     <Compile Include="HomeFragment.cs" />
     <Compile Include="SettingsActivity.cs" />
     <Compile Include="LocationFragment.cs" />
-    <Compile Include="Preference\SetAliasPreference.cs" />
     <Compile Include="Preference\AddTagsPreference.cs" />
     <Compile Include="Preference\SetNamedUserPreference.cs" />
     <Compile Include="SampleAutopilot.cs" />
