@@ -3,7 +3,7 @@
    <metadata>
       <id>urbanairship-portable</id>
       <version>4.0.1</version>
-      <title>Urban Airship SDK</title>
+      <title>Urban Airship SDK PCL</title>
       <authors>Urban Airship, Inc.</authors>
       <requireLicenseAcceptance>false</requireLicenseAcceptance>
       <description>A full suite of mobile engagement tools for building next-generation apps</description>

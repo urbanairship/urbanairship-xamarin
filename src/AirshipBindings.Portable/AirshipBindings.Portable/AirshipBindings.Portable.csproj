@@ -33,6 +33,7 @@
     <Compile Include="..\..\SharedAssemblyInfo.cs">
       <Link>Properties\SharedAssemblyInfo.cs</Link>
     </Compile>
+    <Compile Include="PCL.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AirshipBindings.Portable.Abstractions\AirshipBindings.Portable.Abstractions.csproj">
