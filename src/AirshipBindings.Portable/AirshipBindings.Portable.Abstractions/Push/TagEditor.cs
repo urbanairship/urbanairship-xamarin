@@ -73,7 +73,7 @@ namespace UrbanAirship.Portable.Push
 		/// <summary>
 		/// Clear tags before executing add/remove operations.
 		/// </summary>
-		/// <returns>The TagEditor.</returns>
+		/// <returns>The tag editor.</returns>
 		public TagEditor Clear()
 		{
 			clear = true;

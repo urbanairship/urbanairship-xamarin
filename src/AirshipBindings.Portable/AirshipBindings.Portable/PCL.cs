@@ -3,6 +3,6 @@
 	internal static class PCL
 	{
 		internal const string BaitWithoutSwitchMessage =
-			"The empty PCL implementation for Urbanairship was loaded. Check that you have added the urbanairship-portable package to each of your platform-specific projects.";
+			"The empty PCL implementation for Urban Airship was loaded. Check that you have added the urbanairship.portable package to each of your platform-specific projects.";
 	}
 }

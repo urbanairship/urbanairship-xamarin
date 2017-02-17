@@ -142,7 +142,7 @@ namespace UrbanAirship.Portable
 		/// <summary>
 		/// Returns an editor for named user tag groups.
 		/// </summary>
-		/// <returns>A TagGroupEditor for named user tag groups.</returns>
+		/// <returns>A TagGroupsEditor for named user tag groups.</returns>
 		public Push.TagGroupsEditor EditNamedUserTagGroups() 
 		{ 
 			throw new NotImplementedException(PCL.BaitWithoutSwitchMessage); 
@@ -151,7 +151,7 @@ namespace UrbanAirship.Portable
 		/// <summary>
 		/// Returns an editor for channel tag groups.
 		/// </summary>
-		/// <returns>A TagGroupEditor for named user tag groups.</returns>
+		/// <returns>A TagGroupsEditor for named user tag groups.</returns>
 		public Push.TagGroupsEditor EditChannelTagGroups() 
 		{ 
 			throw new NotImplementedException(PCL.BaitWithoutSwitchMessage);
