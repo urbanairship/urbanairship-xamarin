@@ -6,6 +6,7 @@ VERSION=$1
 sed -i '' "s/<version>.*<\/version>/<version>$VERSION<\/version>/g" $ROOT_DIR/UrbanAirship.nuspec
 sed -i '' "s/<version>.*<\/version>/<version>$VERSION<\/version>/g" $ROOT_DIR/AirshipAppExtensions.nuspec
 sed -i '' "s/<version>.*<\/version>/<version>$VERSION<\/version>/g" $ROOT_DIR/UrbanAirship.Portable.nuspec
+sed -i '' "s/<dependency id=\"urbanairship\" version=\".*\"\/>/<dependency id=\"urbanairship\" version=\"$VERSION\"\/>/g" $ROOT_DIR/UrbanAirship.Portable.nuspec
 
 # airship.properties
 sed -i '' "s/version = .*/version = $VERSION/g" $ROOT_DIR/airship.properties
