@@ -28,9 +28,9 @@ namespace UrbanAirship.Portable
 		/// Indicates whether notifications are enabled.
 		/// </summary>
 		/// <value><c>true</c> if notifications are enabled; otherwise, <c>false</c>.</value>
-		public bool UserNotificationsEnabled 
-		{ 
-			get { throw new NotImplementedException(PCL.BaitWithoutSwitchMessage); } 
+		public bool UserNotificationsEnabled
+		{
+			get { throw new NotImplementedException(PCL.BaitWithoutSwitchMessage); }
 			set { throw new NotImplementedException(PCL.BaitWithoutSwitchMessage); }
 		}
 
@@ -38,8 +38,8 @@ namespace UrbanAirship.Portable
 		/// Gets the tags currently set for the device.
 		/// </summary>
 		/// <value>The tags.</value>
-		public IEnumerable<string> Tags 
-		{ 
+		public IEnumerable<string> Tags
+		{
 			get { throw new NotImplementedException(PCL.BaitWithoutSwitchMessage); }
 		}
 
@@ -47,8 +47,8 @@ namespace UrbanAirship.Portable
 		/// Get the channel ID for the device.
 		/// </summary>
 		/// <value>The channel identifier.</value>
-		public string ChannelId 
-		{ 
+		public string ChannelId
+		{
 			get { throw new NotImplementedException(PCL.BaitWithoutSwitchMessage); }
 		}
 
@@ -56,8 +56,8 @@ namespace UrbanAirship.Portable
 		/// Indicates whether location is enabled
 		/// </summary>
 		/// <value><c>true</c> if location is enabled; otherwise, <c>false</c>.</value>
-		public bool LocationEnabled 
-		{ 
+		public bool LocationEnabled
+		{
 			get { throw new NotImplementedException(PCL.BaitWithoutSwitchMessage); }
 			set { throw new NotImplementedException(PCL.BaitWithoutSwitchMessage); }
 		}
@@ -66,8 +66,8 @@ namespace UrbanAirship.Portable
 		/// Indicates whether background location updates are allowed.
 		/// </summary>
 		/// <value><c>true</c> if background location updates are allowed; otherwise, <c>false</c>.</value>
-		public bool BackgroundLocationAllowed 
-		{ 
+		public bool BackgroundLocationAllowed
+		{
 			get { throw new NotImplementedException(PCL.BaitWithoutSwitchMessage); }
 			set { throw new NotImplementedException(PCL.BaitWithoutSwitchMessage); }
 		}
@@ -76,8 +76,8 @@ namespace UrbanAirship.Portable
 		/// Gets or sets the named user ID.
 		/// </summary>
 		/// <value>The named user ID.</value>
-		public string NamedUser 
-		{ 
+		public string NamedUser
+		{
 			get { throw new NotImplementedException(PCL.BaitWithoutSwitchMessage); }
 			set { throw new NotImplementedException(PCL.BaitWithoutSwitchMessage); }
 		}
@@ -85,17 +85,19 @@ namespace UrbanAirship.Portable
 		/// <summary>
 		/// Edit the device tags.
 		/// </summary>
-		/// <value>A Push.TagEditor for editing device tags.</value>
-		public Push.TagEditor EditDeviceTags() 
-		{ 
-			throw new NotImplementedException(PCL.BaitWithoutSwitchMessage); 
+		/// <returns>A <see cref="UrbanAirship.Portable.Push.TagEditor">TagEditor</see>
+                /// for editing device tags.</returns>
+		public Push.TagEditor EditDeviceTags()
+		{
+			throw new NotImplementedException(PCL.BaitWithoutSwitchMessage);
 		}
 
 		/// <summary>
 		/// Add a custom event
 		/// </summary>
-		/// <param name="customEvent">The custom event to add.</param>
-		public void AddCustomEvent(Analytics.CustomEvent customEvent) 
+		/// <param name="customEvent">The <see cref="UrbanAirship.Portable.Analytics.CustomEvent">CustomEvent</see>
+                /// to add.</param>
+		public void AddCustomEvent(Analytics.CustomEvent customEvent)
 		{
 			throw new NotImplementedException(PCL.BaitWithoutSwitchMessage);
 		}
@@ -106,7 +108,7 @@ namespace UrbanAirship.Portable
 		/// </summary>
 		/// <param name="key">The custom key for the identifier.</param>
 		/// <param name="identifier">The value of the identifier, or `null` to remove the identifier.</param>
-		public void AssociateIdentifier(string key, string identifier) 
+		public void AssociateIdentifier(string key, string identifier)
 		{
 			throw new NotImplementedException(PCL.BaitWithoutSwitchMessage);
 		}
@@ -114,7 +116,7 @@ namespace UrbanAirship.Portable
 		/// <summary>
 		/// Displays the message center.
 		/// </summary>
-		public void DisplayMessageCenter() 
+		public void DisplayMessageCenter()
 		{
 			throw new NotImplementedException(PCL.BaitWithoutSwitchMessage);
 		}
@@ -123,8 +125,8 @@ namespace UrbanAirship.Portable
 		/// Get the message center unread count.
 		/// </summary>
 		/// <value>The message center unread count.</value>
-		public int MessageCenterUnreadCount 
-		{ 
+		public int MessageCenterUnreadCount
+		{
 			get { throw new NotImplementedException(PCL.BaitWithoutSwitchMessage); }
 			private set { throw new NotImplementedException(PCL.BaitWithoutSwitchMessage); }
 		}
@@ -133,8 +135,8 @@ namespace UrbanAirship.Portable
 		/// Get the total count of message center messages.
 		/// </summary>
 		/// <value>The message center count.</value>
-		public int MessageCenterCount 
-		{ 
+		public int MessageCenterCount
+		{
 			get { throw new NotImplementedException(PCL.BaitWithoutSwitchMessage); }
 			private set { throw new NotImplementedException(PCL.BaitWithoutSwitchMessage); }
 		}
@@ -142,18 +144,20 @@ namespace UrbanAirship.Portable
 		/// <summary>
 		/// Returns an editor for named user tag groups.
 		/// </summary>
-		/// <returns>A TagGroupsEditor for named user tag groups.</returns>
-		public Push.TagGroupsEditor EditNamedUserTagGroups() 
-		{ 
-			throw new NotImplementedException(PCL.BaitWithoutSwitchMessage); 
+		/// <returns>A <see cref="UrbanAirship.Portable.Push.TagGroupsEditor">TagGroupsEditor</see>
+                /// for named user tag groups.</returns>
+		public Push.TagGroupsEditor EditNamedUserTagGroups()
+		{
+			throw new NotImplementedException(PCL.BaitWithoutSwitchMessage);
 		}
 
 		/// <summary>
 		/// Returns an editor for channel tag groups.
 		/// </summary>
-		/// <returns>A TagGroupsEditor for named user tag groups.</returns>
-		public Push.TagGroupsEditor EditChannelTagGroups() 
-		{ 
+		/// <returns>A <see cref="UrbanAirship.Portable.Push.TagGroupsEditor">TagGroupsEditor</see>
+                /// for channel tag groups.</returns>
+		public Push.TagGroupsEditor EditChannelTagGroups()
+		{
 			throw new NotImplementedException(PCL.BaitWithoutSwitchMessage);
 		}
 	}

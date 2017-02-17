@@ -9,7 +9,7 @@ using System.Linq;
 namespace UrbanAirship.Portable.Push
 {
 	/// <summary>
-	/// Class used for modifying channel tags. 
+	/// Class used for modifying channel tags.
 	/// </summary>
 	public partial class TagEditor
 	{
@@ -19,10 +19,12 @@ namespace UrbanAirship.Portable.Push
 		private HashSet<string> toAdd = new HashSet<string>();
 		private HashSet<string> toRemove = new HashSet<string>();
 
+                //@cond IGNORE
 		public TagEditor(Action<bool, string[], string[]> onApply)
 		{
 			this.onApply = onApply;
 		}
+                //@endcond
 
 		/// <summary>
 		/// Add a tag to the device.

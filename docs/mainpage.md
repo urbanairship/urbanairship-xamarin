@@ -12,9 +12,8 @@ shared codebases (e.g., a Xamarin Forms app).
  - [Getting started guide](http://docs.urbanairship.com/platform/xamarin.html)
 
 ## Setup
-Use the Xamarin component store or NuGeT to install the urbanairship-portable
-package. More detailed instructions can be found in the
-[Getting started guide](http://docs.urbanairship.com/platform/xamarin.html#installation).
+Use NuGet to install the urbanairship.portable package. Detailed instructions can be found
+in the [Getting started guide](http://docs.urbanairship.com/platform/xamarin.html#installation).
 
 Both Android and iOS example apps are provided in the `samples/` directory on
 [Github](https://github.com/urbanairship/xamarin-component).

@@ -205,6 +205,7 @@ FakesAssemblies/
 
 # Xamarin.Android Resource.Designer.cs file
 samples/android/Resources/Resource.designer.cs
+src/AirshipBindings.Portable/AirshipBindings.Portable.Android/Resources/Resource.designer.cs
 
 # Carthage
 Carthage/

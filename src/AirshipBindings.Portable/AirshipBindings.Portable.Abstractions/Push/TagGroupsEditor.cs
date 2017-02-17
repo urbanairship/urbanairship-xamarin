@@ -16,10 +16,12 @@ namespace UrbanAirship.Portable.Push
 		private List<TagOperation> operations = new List<TagOperation>();
 		private Action<List<TagOperation>> onApply;
 
+                //@cond IGNORE
 		public TagGroupsEditor(Action<List<TagOperation>> onApply)
 		{
 			this.onApply = onApply;
 		}
+                //@endcond
 
 		/// <summary>
 		/// Add a tag to a given tag group.
@@ -105,6 +107,7 @@ namespace UrbanAirship.Portable.Push
 			}
 		}
 
+                //@cond IGNORE
 		public class TagOperation
 		{
 			public OperationType operationType;
@@ -120,5 +123,6 @@ namespace UrbanAirship.Portable.Push
 		}
 
 		public enum OperationType { ADD, REMOVE, SET }
+                //@endcond
 	}
 }
