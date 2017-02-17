@@ -3,98 +3,290 @@
 */
 
 using System;
+using System.Collections.Generic;
 
 using Android.App;
 using Android.Content;
 using Android.Runtime;
+using Android.Util;
 using Android.Views;
 using Android.Widget;
+using Android.Support.Design.Widget;
+using Android.Support.V4.Widget;
+using v4 = Android.Support.V4;
+using v7 = Android.Support.V7;
 using Android.OS;
+
 using UrbanAirship.Google;
 using UrbanAirship;
 using UrbanAirship.Push;
+using UrbanAirship.RichPush;
+using UrbanAirship.MessageCenter;
 
 using Android.Support.V4.Content;
 
 namespace Sample
 {
-	[Activity (MainLauncher = true, Icon = "@drawable/icon")]
-	public class MainActivity : Activity
+	[Register("sample.MainActivity")]
+	[Activity (MainLauncher = true, 
+	           Icon = "@drawable/urbanairship_logo",
+	           Label = "@string/app_name",
+	           LaunchMode = Android.Content.PM.LaunchMode.SingleTop,
+	           Theme = "@style/AppTheme.NoActionBar")]
+	[IntentFilter(new string[] { "android.intent.action.MAIN" }, Categories = new string[] { "android.intent.category.LAUNCHER" })]
+	[IntentFilter(new string[] { "com.urbanairship.VIEW_RICH_PUSH_INBOX" }, Categories = new string[] { "android.intent.category.DEFAULT" })]
+	[IntentFilter(new string[] { "com.urbanairship.VIEW_RICH_PUSH_INBOX" }, Categories = new string[] { "android.intent.category.DEFAULT" },
+	              DataScheme= "message")]
+	public class MainActivity : v7.App.AppCompatActivity
 	{
-		private TextView channelID;
-		private BroadcastReceiver channelIdUpdateReceiver;
+		private const string Tag = "MainActivity";
 
-		protected override void OnCreate (Bundle bundle)
+		private const string NavId = "NAV_ID";
+		private const string TitleKey = "TITLE";
+		private const string LastMessageSentDate = "LAST_MC_SENT_DATE";
+		private const int MessageCenterIndicatorDurationMs = 10000;
+
+		private DrawerLayout drawer;
+		private int currentNavPosition = -1;
+
+		private Snackbar messageCenterSnackbar;
+		private long messageCenterLastSentDate;
+		private NavigationView navigation;
+		private InboxListener inboxListener;
+
+		protected override void OnCreate (Bundle savedInstanceState)
 		{
-			base.OnCreate (bundle);
+			base.OnCreate (savedInstanceState);
+			SetContentView(Resource.Layout.activity_main);
 
-			// Set our view from the "main" layout resource
-			SetContentView (Resource.Layout.Main);
+			// Action bar
+			v7.Widget.Toolbar toolbar = (v7.Widget.Toolbar)FindViewById(Resource.Id.toolbar);
+			SetSupportActionBar(toolbar);
 
-			channelIdUpdateReceiver = new ChannelIdBroadcastReceiver ((Intent) => {
-				UpdateChannelIdField ();
-			});
+			// App drawer
+			drawer = (DrawerLayout)FindViewById(Resource.Id.drawer_layout);
+			v7.App.ActionBarDrawerToggle toggle = new v7.App.ActionBarDrawerToggle(
+				this, drawer, toolbar, Resource.String.navigation_drawer_open, Resource.String.navigation_drawer_open
+			);
+			drawer.AddDrawerListener(toggle);
+			toggle.SyncState();
 
-
-
-			channelID = FindViewById<TextView> (Resource.Id.channel_id);
-			channelID.Click += (sender, e) => {
-				if (!string.IsNullOrEmpty (channelID.Text)) {
-					// Using deprecated ClipboardManager to support Gingerbread (API 10)
-					var clipboard = GetSystemService (Context.ClipboardService).JavaCast<ClipboardManager> ();
-					clipboard.Text = channelID.Text;
-					Toast.MakeText (this, "Channel ID copied to clipboard", ToastLength.Short).Show ();
-				}
+			navigation = (NavigationView) FindViewById(Resource.Id.nav_view);
+			navigation.NavigationItemSelected += (sender, e) =>
+			{
+				Navigate(e.MenuItem.ItemId);
 			};
+
+			inboxListener = new InboxListener(this);
+
+			// message center stuff
+			if (savedInstanceState != null)
+			{
+				Navigate(savedInstanceState.GetInt(NavId));
+				Title = savedInstanceState.GetString(TitleKey);
+			}
+			else
+			{
+				navigation.SetCheckedItem(Resource.Id.nav_home);
+				Navigate(Resource.Id.nav_home);
+			}
+		}
+
+		protected override void OnNewIntent(Intent intent)
+		{
+			base.OnNewIntent(intent);
+			Intent = intent;
+		}
+
+		protected override void OnSaveInstanceState(Bundle outState)
+		{
+			base.OnSaveInstanceState(outState);
+			outState.PutInt(NavId, currentNavPosition);
+			outState.PutString(TitleKey, Title);
+			outState.PutLong(LastMessageSentDate, messageCenterLastSentDate);
 		}
 
 		protected override void OnResume ()
 		{
 			base.OnResume ();
 
-			// Handle any Google Play services errors
-			if (PlayServicesUtils.IsGooglePlayStoreAvailable (this)) {
-				PlayServicesUtils.HandleAnyPlayServicesError (this);
+			if (PlayServicesUtils.IsGooglePlayStoreAvailable(this))
+			{
+				PlayServicesUtils.HandleAnyPlayServicesError(this);
 			}
 
-			// Use local broadcast manager to receive registration events to update the channel
-			IntentFilter channelIdUpdateFilter;
-			channelIdUpdateFilter = new IntentFilter ();
-			channelIdUpdateFilter.AddAction (UrbanAirshipReceiver.ACTION_CHANNEL_UPDATED);
-			LocalBroadcastManager.GetInstance (this).RegisterReceiver (channelIdUpdateReceiver, channelIdUpdateFilter);
+			if (RichPushInbox.ViewInboxIntentAction == Intent.Action)
+			{
+				v4.App.Fragment fragment = Navigate(Resource.Id.nav_message_center);
+				if (Intent.Data != null && Intent.Data.Scheme.ToLower() == RichPushInbox.MessageDataScheme)
+				{
+					string messageId = Intent.Data.SchemeSpecificPart;
+					if (fragment != null && fragment is MessageCenterFragment)
+					{
+						((MessageCenterFragment) fragment).SetMessageID(messageId);
+					}
+				}
 
-			// Update the channel field
-			UpdateChannelIdField ();
+				Intent.SetAction(null);
+			}
+
+			UAirship.Shared().Inbox.AddListener(inboxListener);
+			ShowMessageCenterIndicator();
+			UpdateUnreadCount();
 		}
 
 		protected override void OnPause ()
 		{
-			base.OnPause ();
-			LocalBroadcastManager.GetInstance (this).UnregisterReceiver (channelIdUpdateReceiver);
+			base.OnPause();
+			UAirship.Shared().Inbox.RemoveListener(inboxListener);
 		}
 
-		void UpdateChannelIdField ()
+		public override void OnBackPressed()
 		{
-			channelID.Text = UAirship.Shared ().PushManager.ChannelId ?? "";
-		}
-
-		internal class ChannelIdBroadcastReceiver : BroadcastReceiver
-		{
-			Action<Intent> callback;
-
-			public ChannelIdBroadcastReceiver (Action<Intent> callback)
+			DrawerLayout drawer = (DrawerLayout)FindViewById(Resource.Id.drawer_layout);
+			if (drawer.IsDrawerOpen(v4.View.GravityCompat.Start))
 			{
-				this.callback = callback;
+				drawer.CloseDrawer(v4.View.GravityCompat.Start);
+			}
+			else if (currentNavPosition != Resource.Id.nav_home)
+			{
+				Navigate(Resource.Id.nav_home);
+			}
+			else
+			{
+				base.OnBackPressed();
+			}
+		}
+
+		public override bool OnCreateOptionsMenu(IMenu menu)
+		{
+			MenuInflater.Inflate(Resource.Menu.menu_main, menu);
+			return true;
+		}
+
+		public override bool OnOptionsItemSelected(IMenuItem item)
+		{
+			int id = item.ItemId;
+
+			if (id == Resource.Id.action_settings)
+			{
+				this.StartActivity(new Intent(this, typeof(SettingsActivity)));
+				return true;
 			}
 
-			public override void OnReceive (Context context, Intent intent)
+			return base.OnOptionsItemSelected(item);
+		}
+
+		private v4.App.Fragment Navigate(int id)
+		{
+			currentNavPosition = id;
+			navigation.SetCheckedItem(id);
+
+			v4.App.Fragment fragment = SupportFragmentManager.FindFragmentByTag("content_frag" + id);
+
+			if (fragment != null)
 			{
-				if (callback != null) {
-					callback.Invoke (intent);
-				}
+				return fragment;
+			}
+
+			switch (id)
+			{
+				case Resource.Id.nav_home:
+					SetTitle(Resource.String.home_title);
+					fragment = new HomeFragment();
+					break;
+				case Resource.Id.nav_message_center:
+					SetTitle(Resource.String.message_center_title);
+					fragment = new MessageCenterFragment();
+
+					if (messageCenterSnackbar != null && messageCenterSnackbar.IsShownOrQueued)
+					{
+						messageCenterSnackbar.Dismiss();
+					}
+					break;
+				case Resource.Id.nav_location:
+					SetTitle(Resource.String.location_title);
+					fragment = new LocationFragment();
+					break;
+				default:
+					Log.Error(Tag, "Unexpected navigation item");			
+					return null;
+			}
+
+			currentNavPosition = id;
+			SupportFragmentManager.BeginTransaction()
+						   .Replace(Resource.Id.content_frame, fragment, "content_frag" + id)
+						   .Commit();
+
+			drawer.CloseDrawer(v4.View.GravityCompat.Start);
+
+			return fragment;
+		}
+
+
+		private void UpdateUnreadCount()
+		{
+			int unreadCount = UAirship.Shared().Inbox.UnreadCount;
+			TextView view = (TextView)navigation.Menu.FindItem(Resource.Id.nav_message_center).ActionView;
+
+			if (unreadCount > 0)
+			{
+				view.Visibility = ViewStates.Visible;
+				view.Text = unreadCount.ToString();
+			}
+			else
+			{
+				view.Visibility = ViewStates.Gone;
+			}
+		}
+
+		private void ShowMessageCenterIndicator()
+		{
+			IList<RichPushMessage> unreadMessages = UAirship.Shared().Inbox.UnreadMessages;
+
+			if (unreadMessages.Count == 0 || messageCenterLastSentDate >= unreadMessages[0].SentDateMS)
+			{
+				return;
+			}
+
+			messageCenterLastSentDate = unreadMessages[0].SentDateMS;
+
+			if (messageCenterSnackbar != null && messageCenterSnackbar.IsShownOrQueued)
+			{
+				return;
+			}
+
+			if (currentNavPosition == Resource.Id.nav_message_center)
+			{
+				return;
+			}
+
+			String text = Resources.GetQuantityString(Resource.Plurals.mc_indicator_text, unreadMessages.Count, unreadMessages.Count);
+
+			messageCenterSnackbar = Snackbar.Make(FindViewById(Resource.Id.coordinatorLayout), text, MessageCenterIndicatorDurationMs)
+											.SetActionTextColor(ContextCompat.GetColor(this, Resource.Color.color_accent))
+											.SetAction(Resource.String.view, (View v) =>
+			{
+				messageCenterSnackbar.Dismiss();
+				UAirship.Shared().Inbox.StartInboxActivity();
+			});
+
+			messageCenterSnackbar.Show();
+		}
+
+		internal class InboxListener : Java.Lang.Object, RichPushInbox.IListener
+		{
+			MainActivity activity;
+
+			public InboxListener(MainActivity activity)
+			{
+				this.activity = activity;
+			}
+			public void OnInboxUpdated()
+			{
+				activity.ShowMessageCenterIndicator();
+				activity.UpdateUnreadCount();
 			}
 		}
 	}
 }
-
-

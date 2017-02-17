@@ -60,7 +60,7 @@ namespace UrbanAirship.Portable.Analytics
 		}
 
 		/// <summary>
-		/// Gets or sets interaction type.
+		/// Gets or sets the interaction type.
 		/// </summary>
 		/// <value>The interaction type.</value>
 		public string InteractionType
