@@ -71,7 +71,7 @@ namespace Sample
 		{
 			base.OnResume();
 
-			// Register a local broadcast manager to list for ACTION_UPDATE_CHANNEL
+			// Register a local broadcast manager to listen for ACTION_UPDATE_CHANNEL
 			LocalBroadcastManager localBroadcastManager = LocalBroadcastManager.GetInstance(Context);
 
 			// Use local broadcast manager to receive registration events to update the channel

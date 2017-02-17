@@ -43,7 +43,7 @@ namespace Sample
 
 		private const string NavId = "NAV_ID";
 		private const string TitleKey = "TITLE";
-		private const string LastMessageCentDate = "LAST_MC_SENT_DATE";
+		private const string LastMessageSentDate = "LAST_MC_SENT_DATE";
 		private const int MessageCenterIndicatorDurationMs = 10000;
 
 		private DrawerLayout drawer;
@@ -103,7 +103,7 @@ namespace Sample
 			base.OnSaveInstanceState(outState);
 			outState.PutInt(NavId, currentNavPosition);
 			outState.PutString(TitleKey, Title);
-			outState.PutLong(LastMessageCentDate, messageCenterLastSentDate);
+			outState.PutLong(LastMessageSentDate, messageCenterLastSentDate);
 		}
 
 		protected override void OnResume ()

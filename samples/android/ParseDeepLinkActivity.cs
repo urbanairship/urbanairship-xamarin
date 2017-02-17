@@ -28,7 +28,7 @@ namespace Sample
 		{
 			base.OnCreate(savedInstanceState);
 
-			if (DeepLink != null)
+			if (DeepLink == null)
 			{
 				StartActivity(new Intent(this, typeof(MainActivity)));
 				Finish();
