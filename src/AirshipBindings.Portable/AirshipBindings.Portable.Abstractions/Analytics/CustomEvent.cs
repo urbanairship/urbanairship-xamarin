@@ -128,6 +128,7 @@ namespace UrbanAirship.Portable.Analytics
 			this.propertyList.Add(new Property<string[]>(name, value.ToArray()));
 		}
 
+                //@cond IGNORE
 		public class Property<T> : IProperty
 		{
 			public string name;
@@ -140,9 +141,10 @@ namespace UrbanAirship.Portable.Analytics
 			}
 		}
 
-		public interface IProperty 
+		public interface IProperty
 		{
-			
+
 		}
+                //@endcond
 	}
 }

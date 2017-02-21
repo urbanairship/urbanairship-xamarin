@@ -131,7 +131,7 @@ publish/
 # Publish Web Output
 *.[Pp]ublish.xml
 *.azurePubxml
-# TODO: Comment the next line if you want to checkin your web deploy settings 
+# TODO: Comment the next line if you want to checkin your web deploy settings
 # but database connection strings (with potential passwords) will be unencrypted
 *.pubxml
 *.publishproj
@@ -205,7 +205,11 @@ FakesAssemblies/
 
 # Xamarin.Android Resource.Designer.cs file
 samples/android/Resources/Resource.designer.cs
+src/AirshipBindings.Portable/AirshipBindings.Portable.Android/Resources/Resource.designer.cs
 
 # Carthage
 Carthage/
 Cartfile.resolved
+
+# Docs
+docs/doxygen.tag
