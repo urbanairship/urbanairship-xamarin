@@ -1,0 +1,40 @@
+project.ext {
+    airshipProperties = new Properties()
+    airshipProperties.load(new FileInputStream("airship.properties"))
+    toolsDir = new File("$projectDir/.tools")
+    if ( !toolsDir.exists() ) {
+        toolsDir.mkdirs()
+    }
+    nugetExe = new File("$toolsDir/nuget.exe")
+    xamarinComponentExe = new File("$toolsDir/xamarin-component.exe")
+    mdTool = "/Applications/Xamarin Studio.app/Contents/MacOS/mdtool"
+}
+
+task clean(type: Delete) {
+    delete "$buildDir"
+}
+
+def fetchDependencies() {
+    if (!nugetExe.exists()) {
+        new URL('https://dist.nuget.org/win-x86-commandline/latest/nuget.exe').withInputStream{
+            i -> nugetExe.withOutputStream{ it << i }
+        }
+    }
+    if (!xamarinComponentExe.exists()) {
+        def temp = new File("$toolsDir/xpkg")
+        new URL('https://components.xamarin.com/submit/xpkg').withInputStream{
+            i -> temp.withOutputStream{ it << i }
+        }
+        copy {
+            from zipTree(temp)
+            into "$toolsDir"
+        }
+        delete temp
+    }
+}
+
+task build << {
+    fetchDependencies()
+}
+
+build.dependsOn("clean")

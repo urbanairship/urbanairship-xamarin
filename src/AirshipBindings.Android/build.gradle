@@ -1,0 +1,16 @@
+bindings = "AirshipBindings.Android.sln"
+
+task clean(type: Delete) {
+    delete "$buildDir"
+}
+
+task build << {
+    exec {
+        executable "mono"
+            args ["$nugetExe", "restore", bindings]
+        executable "$mdTool"
+            args ["build", "-c:Release", bindings]
+    }
+}
+
+
