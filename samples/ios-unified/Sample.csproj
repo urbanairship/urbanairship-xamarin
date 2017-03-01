@@ -84,6 +84,12 @@
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="Xamarin.iOS" />
+    <Reference Include="Calabash">
+      <HintPath>packages\Xamarin.TestCloud.Agent.0.20.3\lib\Xamarin.iOS10\Calabash.dll</HintPath>
+    </Reference>
+    <Reference Include="AirshipBindings">
+      <HintPath>packages\urbanairship.4.1.0\lib\Xamarin.iOS10\AirshipBindings.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Contents.json" />
@@ -91,6 +97,7 @@
   <ItemGroup>
     <InterfaceDefinition Include="Resources\LaunchScreen.xib" />
     <InterfaceDefinition Include="Main.storyboard" />
+    <InterfaceDefinition Include="AddNamedUserTableViewController.xib" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
@@ -100,19 +107,69 @@
   <ItemGroup>
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
-    <Compile Include="ViewController.cs" />
-    <Compile Include="ViewController.designer.cs">
-      <DependentUpon>ViewController.cs</DependentUpon>
+    <Compile Include="PushHandler.cs" />
+    <Compile Include="HomeViewController.cs" />
+    <Compile Include="HomeViewController.designer.cs">
+      <DependentUpon>HomeViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PushSettingsViewController.cs" />
+    <Compile Include="PushSettingsViewController.designer.cs">
+      <DependentUpon>PushSettingsViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AddTagsTableViewController.cs" />
+    <Compile Include="AddTagsTableViewController.designer.cs">
+      <DependentUpon>AddTagsTableViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TagsTableViewController.cs" />
+    <Compile Include="TagsTableViewController.designer.cs">
+      <DependentUpon>TagsTableViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MessageCenterViewController.cs" />
+    <Compile Include="MessageCenterViewController.designer.cs">
+      <DependentUpon>MessageCenterViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InboxDelegate.cs" />
+    <Compile Include="AddNamedUserTableViewController.cs" />
+    <Compile Include="AddNamedUserTableViewController.designer.cs">
+      <DependentUpon>AddNamedUserTableViewController.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
     <BundleResource Include="AirshipConfig.plist" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\src\AirshipBindings.iOS\AirshipBindings.iOS.csproj">
-      <Project>{58346B7E-E18F-4CB1-A9B8-C2266BDCFE2A}</Project>
-      <Name>AirshipBindings.iOS</Name>
-    </ProjectReference>
+    <BundleResource Include="Resources\Contents.json" />
+    <BundleResource Include="Resources\urban-airship-logo-pacific.png" />
+    <BundleResource Include="Resources\urban-airship-pacific.png" />
+    <BundleResource Include="Resources\AppIcon.appiconset\Contents.json" />
+    <BundleResource Include="Resources\AppIcon.appiconset\Icon-60%402x.png" />
+    <BundleResource Include="Resources\AppIcon.appiconset\Icon-60%403x.png" />
+    <BundleResource Include="Resources\AppIcon.appiconset\Icon-72.png" />
+    <BundleResource Include="Resources\AppIcon.appiconset\Icon-72%402x.png" />
+    <BundleResource Include="Resources\AppIcon.appiconset\Icon-76.png" />
+    <BundleResource Include="Resources\AppIcon.appiconset\Icon-76%402x.png" />
+    <BundleResource Include="Resources\AppIcon.appiconset\Icon-83.5%402x.png" />
+    <BundleResource Include="Resources\AppIcon.appiconset\Icon-Small-40.png" />
+    <BundleResource Include="Resources\AppIcon.appiconset\Icon-Small-40%402x.png" />
+    <BundleResource Include="Resources\AppIcon.appiconset\Icon-Small-40%403x.png" />
+    <BundleResource Include="Resources\AppIcon.appiconset\Icon-Small-50.png" />
+    <BundleResource Include="Resources\AppIcon.appiconset\Icon-Small-50%402x.png" />
+    <BundleResource Include="Resources\AppIcon.appiconset\Icon-Small.png" />
+    <BundleResource Include="Resources\AppIcon.appiconset\Icon-Small%402x.png" />
+    <BundleResource Include="Resources\AppIcon.appiconset\Icon-Small%403x.png" />
+    <BundleResource Include="Resources\AppIcon.appiconset\Icon.png" />
+    <BundleResource Include="Resources\AppIcon.appiconset\Icon%402x.png" />
+    <BundleResource Include="Resources\Homescreen.imageset\Contents.json" />
+    <BundleResource Include="Resources\Homescreen.imageset\Homescreen.png" />
+    <BundleResource Include="Resources\Homescreen.imageset\Homescreen%402x.png" />
+    <BundleResource Include="Resources\Homescreen.imageset\Homescreen%403x.png" />
+    <BundleResource Include="Resources\Image.imageset\Contents.json" />
+    <BundleResource Include="Resources\Inbox.imageset\Contents.json" />
+    <BundleResource Include="Resources\Inbox.imageset\Inbox.png" />
+    <BundleResource Include="Resources\Inbox.imageset\Inbox%402x.png" />
+    <BundleResource Include="Resources\Inbox.imageset\Inbox%403x.png" />
+    <BundleResource Include="Resources\Settings.imageset\Contents.json" />
+    <BundleResource Include="Resources\Settings.imageset\Settings.png" />
+    <BundleResource Include="Resources\Settings.imageset\Settings%402x.png" />
+    <BundleResource Include="Resources\Settings.imageset\Settings%403x.png" />
   </ItemGroup>
 </Project>
