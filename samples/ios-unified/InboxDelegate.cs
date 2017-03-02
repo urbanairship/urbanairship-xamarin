@@ -6,7 +6,7 @@ using System.Linq;
 
 namespace Sample
 {
-	public class InboxDelegate
+	public class InboxDelegate : UAInboxDelegate
 	{
 
 		private UIViewController rootViewController;
@@ -22,13 +22,13 @@ namespace Sample
 			return (MessageCenterViewController)tabBarController.ViewControllers.ElementAt(2);
 		}
 
-		void ShowInboxMessage(UAInboxMessage message) {
+		public override void ShowInboxMessage(UAInboxMessage message) {
 			ShowInbox();
 
-			//MessageCenterViewController().DisplayMessage(message);
+			MessageCenterViewController().DisplayMessage(message);
 		}
 
-		void ShowInbox() 
+		public override void ShowInbox() 
 		{
 			UITabBarController tabBarController = (UITabBarController)this.rootViewController;
 			tabBarController.SelectedIndex = 2;

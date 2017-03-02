@@ -18,7 +18,7 @@
         <!--Home-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
-                <viewController title="Home" id="9pv-A4-QxB" customClass="HomeViewController" sceneMemberID="viewController">
+                <viewController title="Home" id="9pv-A4-QxB" customClass="HomeViewController" sceneMemberID="viewController" storyboardIdentifier="HomeViewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Ia1-K6-d13"/>
                         <viewControllerLayoutGuide type="bottom" id="4ug-Mw-9AY"/>
@@ -478,7 +478,6 @@
             </objects>
             <point key="canvasLocation" x="676" y="340"/>
         </scene>
-        <!--Add Alias Table View Controller-->
         <!--Add Named User Table View Controller-->
         <scene sceneID="LMT-4B-sIm">
             <objects>
@@ -533,7 +532,6 @@
             <point key="canvasLocation" x="2237" y="261"/>
         </scene>
     </scenes>
-    <color key="tintColor" red="0.53333333329999999" green="0.71372549019999998" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
     <resources>
         <image name="urban-airship-logo-pacific.png" width="1000" height="469"/>
         <image name="urban-airship-pacific.png" width="534" height="214"/>
@@ -549,4 +547,5 @@
         <image name="Inbox.imageset/Inbox.png" width="32" height="32"/>
         <image name="Settings.imageset/Settings.png" width="32" height="32"/>
     </resources>
+    <color key="tintColor" red="0.53333333329999999" green="0.71372549019999998" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

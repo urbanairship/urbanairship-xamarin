@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">iPhoneSimulator</Platform>
@@ -25,8 +24,7 @@
     <MtouchDebug>true</MtouchDebug>
     <MtouchProfiling>true</MtouchProfiling>
     <MtouchUseRefCounting>true</MtouchUseRefCounting>
-    <MtouchI18n>
-    </MtouchI18n>
+    <MtouchI18n></MtouchI18n>
     <CodesignKey>iPhone Developer</CodesignKey>
     <AssemblyName>Sample</AssemblyName>
   </PropertyGroup>
@@ -41,8 +39,7 @@
     <ConsolePause>false</ConsolePause>
     <CodesignKey>iPhone Developer</CodesignKey>
     <MtouchUseRefCounting>true</MtouchUseRefCounting>
-    <MtouchI18n>
-    </MtouchI18n>
+    <MtouchI18n></MtouchI18n>
     <AssemblyName>XamarinSample</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
@@ -54,8 +51,7 @@
     <MtouchArch>i386</MtouchArch>
     <ConsolePause>false</ConsolePause>
     <MtouchUseRefCounting>true</MtouchUseRefCounting>
-    <MtouchI18n>
-    </MtouchI18n>
+    <MtouchI18n></MtouchI18n>
     <AssemblyName>Sample</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhone' ">
@@ -72,11 +68,9 @@
     <MtouchProfiling>true</MtouchProfiling>
     <CodesignKey>iPhone Developer</CodesignKey>
     <MtouchDebug>true</MtouchDebug>
-    <IpaPackageName>
-    </IpaPackageName>
+    <IpaPackageName></IpaPackageName>
     <MtouchUseRefCounting>true</MtouchUseRefCounting>
-    <MtouchI18n>
-    </MtouchI18n>
+    <MtouchI18n></MtouchI18n>
     <AssemblyName>XamarinSample</AssemblyName>
   </PropertyGroup>
   <ItemGroup>
@@ -92,12 +86,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Contents.json" />
-  </ItemGroup>
-  <ItemGroup>
     <InterfaceDefinition Include="Resources\LaunchScreen.xib" />
     <InterfaceDefinition Include="Main.storyboard" />
-    <InterfaceDefinition Include="AddNamedUserTableViewController.xib" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
@@ -112,11 +102,12 @@
     <Compile Include="HomeViewController.designer.cs">
       <DependentUpon>HomeViewController.cs</DependentUpon>
     </Compile>
-    <Compile Include="PushSettingsViewController.cs" />
     <Compile Include="PushSettingsViewController.designer.cs">
       <DependentUpon>PushSettingsViewController.cs</DependentUpon>
     </Compile>
     <Compile Include="AddTagsTableViewController.cs" />
+    <Compile Include="MessageCenterViewController.cs" />
+    <Compile Include="PushSettingsViewController.cs" />
     <Compile Include="AddTagsTableViewController.designer.cs">
       <DependentUpon>AddTagsTableViewController.cs</DependentUpon>
     </Compile>
@@ -124,7 +115,6 @@
     <Compile Include="TagsTableViewController.designer.cs">
       <DependentUpon>TagsTableViewController.cs</DependentUpon>
     </Compile>
-    <Compile Include="MessageCenterViewController.cs" />
     <Compile Include="MessageCenterViewController.designer.cs">
       <DependentUpon>MessageCenterViewController.cs</DependentUpon>
     </Compile>
@@ -162,7 +152,6 @@
     <BundleResource Include="Resources\Homescreen.imageset\Homescreen.png" />
     <BundleResource Include="Resources\Homescreen.imageset\Homescreen%402x.png" />
     <BundleResource Include="Resources\Homescreen.imageset\Homescreen%403x.png" />
-    <BundleResource Include="Resources\Image.imageset\Contents.json" />
     <BundleResource Include="Resources\Inbox.imageset\Contents.json" />
     <BundleResource Include="Resources\Inbox.imageset\Inbox.png" />
     <BundleResource Include="Resources\Inbox.imageset\Inbox%402x.png" />
@@ -171,5 +160,8 @@
     <BundleResource Include="Resources\Settings.imageset\Settings.png" />
     <BundleResource Include="Resources\Settings.imageset\Settings%402x.png" />
     <BundleResource Include="Resources\Settings.imageset\Settings%403x.png" />
+    <BundleResource Include="Resources\Homescreen%403x.png" />
+    <BundleResource Include="Resources\Inbox%403x.png" />
+    <BundleResource Include="Resources\Settings%403x.png" />
   </ItemGroup>
 </Project>

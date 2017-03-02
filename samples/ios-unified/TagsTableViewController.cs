@@ -8,7 +8,7 @@ namespace Sample
 {
 	public partial class TagsTableViewController : UITableViewController
 	{
-		public TagsTableViewController() : base("TagsTableViewController", null)
+		public TagsTableViewController(IntPtr handle) : base(handle)
 		{
 		}
 

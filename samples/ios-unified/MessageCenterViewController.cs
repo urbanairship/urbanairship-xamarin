@@ -7,7 +7,7 @@ namespace Sample
 {
 	public partial class MessageCenterViewController : UADefaultMessageCenterSplitViewController
 	{
-		public MessageCenterViewController(IntPtr handle)
+		public MessageCenterViewController(IntPtr handle) : base(handle)
 		{
 		}
 
@@ -18,7 +18,7 @@ namespace Sample
 			this.Style = UAirship.DefaultMessageCenter.Style;
 		}
 
-		public void displayMessage(UAInboxMessage message) {
+		public void DisplayMessage(UAInboxMessage message) {
 			ListViewController.DisplayMessage(message);
 		}
 	}

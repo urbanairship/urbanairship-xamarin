@@ -19,7 +19,7 @@ namespace Sample
 	[Register("AppDelegate")]
 	public class AppDelegate : UIApplicationDelegate
 	{
-		private UAInboxDelegate inboxDelegate;
+		private InboxDelegate inboxDelegate;
 		private PushHandler pushHandler;
 
 		public override UIWindow Window
@@ -56,10 +56,18 @@ namespace Sample
 
 			UAirship.Push.ResetBadge();
 
-			// TODO add initWithRootViewController to bindings
-			//inboxDelegate = UAInboxDelegate
+			pushHandler = new PushHandler();
+			UAirship.Push.PushNotificationDelegate = pushHandler;
 
-			//
+			inboxDelegate = new InboxDelegate(Window.RootViewController);
+			UAirship.Inbox.Delegate = inboxDelegate;
+
+			NSString messageListUpdated = new NSString("com.urbanairship.notification.message_list_updated");
+
+			NSNotificationCenter.DefaultCenter.AddObserver(messageListUpdated, (notification) =>
+			{
+				refreshMessageCenterBadge();
+			});
 
 			return true;
 		}

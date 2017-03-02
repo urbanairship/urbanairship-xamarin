@@ -10,7 +10,7 @@ namespace Sample
 
 		NamedUserTextFieldDelegate MyTextFieldDelegate;
 
-		public AddNamedUserTableViewController() : base("AddNamedUserTableViewController", null)
+		public AddNamedUserTableViewController(IntPtr handle) : base (handle)
 		{
 		}
 

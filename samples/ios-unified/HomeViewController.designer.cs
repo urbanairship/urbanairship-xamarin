@@ -15,11 +15,9 @@ namespace Sample
     partial class HomeViewController
     {
         [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIButton channelIDButton { get; set; }
 
         [Outlet]
-        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIButton enablePushButton { get; set; }
 
         [Action ("buttonTapped:")]

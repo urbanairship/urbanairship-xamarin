@@ -1,4 +1,6 @@
-﻿using UIKit;
+﻿using System;
+
+using UIKit;
 using UrbanAirship;
 
 namespace Sample
@@ -7,7 +9,7 @@ namespace Sample
 	{
 		AddTagsTextFieldDelegate MyTextFieldDelegate;
 
-		public AddTagsTableViewController() : base("AddTagsTableViewController", null)
+		public AddTagsTableViewController(IntPtr handle) : base(handle)
 		{
 			
 		}

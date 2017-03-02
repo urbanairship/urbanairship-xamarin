@@ -9,7 +9,7 @@ namespace Sample
 {
 	public partial class PushSettingsViewController : UITableViewController
 	{
-		public PushSettingsViewController(IntPtr handle) : base("PushSettingsViewController", null)
+		public PushSettingsViewController(IntPtr handle) : base (handle)
 		{
 		
 		}
@@ -84,15 +84,15 @@ namespace Sample
 
 			NSMutableArray typeArray = new NSMutableArray(3);
 
-			//if (options & UANotificationOptions.Alert) {
-			//	typeArray.Add(new NSString("Alert"));
-			//}
-			//if (options & UANotificationOptions.Badge) {
-			//	typeArray.Add(new NSString("Badge"));
-			//}
-			//if (options & UANotificationOptions.Sound) {
-			//	typeArray.Add(new NSString("Sound"));
-			//}
+			if ((options & UANotificationOptions.Alert) > 0) {
+				typeArray.Add(new NSString("Alert"));
+			}
+			if ((options & UANotificationOptions.Badge) > 0) {
+				typeArray.Add(new NSString("Badge"));
+			}
+			if ((options & UANotificationOptions.Sound) > 0) {
+				typeArray.Add(new NSString("Sound"));
+			}
 
 			if (!(typeArray.Count > 0)) {
 				return new NSString("Pushes Currently Disabled"); 
@@ -103,7 +103,7 @@ namespace Sample
 
 		public override void RowSelected(UITableView tableView, NSIndexPath indexPath)
 		{
-			base.RowSelected(tableView, indexPath);
+			//base.RowSelected(tableView, indexPath);
 
 			tableView.DeselectRow(indexPath, true);
 

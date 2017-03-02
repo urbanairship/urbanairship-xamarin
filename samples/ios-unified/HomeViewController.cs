@@ -10,7 +10,7 @@ namespace Sample
 	public partial class HomeViewController : UIViewController
 	{
 
-		public HomeViewController (IntPtr handle) : base("HomeViewController", null)
+		public HomeViewController (IntPtr handle) : base (handle)
 		{
 		
 		}
