@@ -4,13 +4,18 @@ task clean(type: Delete) {
 }
 
 task build << {
-    def argv = ["${nugetExe}", "restore", "AirshipBindings.Android.sln"]
+    exec {
+        executable "carthage"
+        args ["update"]
+    }
+
+    def argv = ["${nugetExe}", "restore", "AirshipBindings.iOS.sln"]
     exec {
         executable "mono"
         args argv
     }
 
-    argv = ["build", "-c:Release", "AirshipBindings.Android.sln"]
+    argv = ["build", "-c:Release", "AirshipBindings.iOS.sln"]
     exec {
         executable "${mdTool}"
         args argv

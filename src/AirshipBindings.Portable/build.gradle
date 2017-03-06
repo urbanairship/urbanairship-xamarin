@@ -1,0 +1,27 @@
+task clean(type: Delete) {
+    def dirs = [
+        "AirshipBindings.Portable",
+        "AirshipBindings.Portable.Abstractions",
+        "AirshipBindings.Portable.iOS",
+        "AirshipBindings.Portable.Android"
+    ]
+
+    for (String path : dirs) {
+        delete "${path}/bin"
+        delete "${path}/obj"
+    }
+}
+
+task build << {
+    def argv = ["${nugetExe}", "restore", "AirshipBindings.Portable.sln"]
+    exec {
+        executable "mono"
+        args argv
+    }
+
+    argv = ["build", "-c:Release", "AirshipBindings.Portable.sln"]
+    exec {
+        executable "${mdTool}"
+        args argv
+    }
+}
