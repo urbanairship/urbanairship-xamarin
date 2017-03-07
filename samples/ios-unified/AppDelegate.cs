@@ -65,6 +65,8 @@ namespace Sample
 			inboxDelegate = new InboxDelegate(Window.RootViewController);
 			UAirship.Inbox.Delegate = inboxDelegate;
 
+			UAirship.Push.WeakRegistrationDelegate = this;
+
 			NSString messageListUpdated = new NSString("com.urbanairship.notification.message_list_updated");
 
 			NSNotificationCenter.DefaultCenter.AddObserver(messageListUpdated, (notification) =>
@@ -144,7 +146,8 @@ namespace Sample
 			Window.RootViewController.PresentViewController(alertController, true, null);
 		}
 
-		private void registrationSucceededForChannelID(String channelID, String deviceToken)
+		[Export("registrationSucceededForChannelID:deviceToken:")]
+		public void RegistrationSucceeded(string channelID, string deviceToken)
 		{
 			NSNotificationCenter.DefaultCenter.PostNotificationName("channelIDUpdated", this);
 		}

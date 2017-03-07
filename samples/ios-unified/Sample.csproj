@@ -141,12 +141,6 @@
     <BundleResource Include="Resources\urban-airship-pacific.png" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\src\AirshipBindings.iOS\AirshipBindings.iOS.csproj">
-      <Project>{58346B7E-E18F-4CB1-A9B8-C2266BDCFE2A}</Project>
-      <Name>AirshipBindings.iOS</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\Contents.json" />
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json" />
     <ImageAsset Include="Assets.xcassets\Inbox.imageset\Contents.json" />
@@ -176,6 +170,12 @@
     <Folder Include="Assets.xcassets\Inbox.imageset\" />
     <Folder Include="Assets.xcassets\Settings.imageset\" />
     <Folder Include="Assets.xcassets\HomeScreen.imageset\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\AirshipBindings.iOS\AirshipBindings.iOS.csproj">
+      <Project>{58346B7E-E18F-4CB1-A9B8-C2266BDCFE2A}</Project>
+      <Name>AirshipBindings.iOS</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="packages\Xamarin.Forms.2.3.3.193\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets" Condition="Exists('packages\Xamarin.Forms.2.3.3.193\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets')" />
 </Project>
