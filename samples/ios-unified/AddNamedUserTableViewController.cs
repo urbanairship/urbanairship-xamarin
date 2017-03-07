@@ -33,22 +33,20 @@ namespace Sample
 	class NamedUserTextFieldDelegate : UITextFieldDelegate
 	{
 		public AddNamedUserTableViewController MyAddNamedUserTableViewController;
-		UITextField addNamedUserTextField { get; set; }
 
-		bool TextFieldShouldReturn(UITextField textfield)
+		public override bool ShouldReturn(UITextField textField)
 		{
 			MyAddNamedUserTableViewController.View.EndEditing(true);
 
 			// Trim leading and trailing whitespac
-			var newTag = addNamedUserTextField.Text.Trim();
+			var newNamedUser = textField.Text.Trim();
 
-			if (newTag.Length > 0)
+			if (newNamedUser.Length > 0)
 			{
-				UAirship.Push.AddTag(newTag);
+				UAirship.NamedUser.Identifier = newNamedUser;
 			}
-			else
-			{
-				return false;
+			else {
+				UAirship.NamedUser.Identifier = null;
 			}
 
 			UAirship.Push.UpdateRegistration();

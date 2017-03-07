@@ -3,6 +3,7 @@
 using UIKit;
 using ObjCRuntime;
 using UrbanAirship;
+using System.Linq;
 
 namespace Sample
 {
@@ -16,7 +17,10 @@ namespace Sample
 		{
 			base.ViewDidLoad();
 
-			UIBarButtonItem addButton = new UIBarButtonItem(UIBarButtonSystemItem.Add, this, new Selector ("addTag:"));
+			UIBarButtonItem addButton = new UIBarButtonItem(UIBarButtonSystemItem.Add, (sender, e) => {
+				PerformSegue("addTagsSegue", sender: this);
+			}); 
+
 			NavigationItem.RightBarButtonItem = addButton;
 		}
 
@@ -27,13 +31,14 @@ namespace Sample
 			TableView.ReloadData();
 		}
 
-		public void AddTag() {
-			PerformSegue("addTagsSegue", sender: this);
+		public override nint NumberOfSections(UITableView tableView)
+		{
+			return 1;
 		}
 
 		public override nint RowsInSection(UITableView tableView, nint section)
 		{
-			return 1;
+			return UAirship.Push.Tags.Count();
 		}
 
 		public override UITableViewCell GetCell(UITableView tableView, Foundation.NSIndexPath indexPath)
@@ -44,7 +49,9 @@ namespace Sample
 				cell = new UITableViewCell(UITableViewCellStyle.Default, "tagCell");
 			}
 
-			cell.TextLabel.Text = UAirship.Push.Tags[indexPath.Row];
+			string[] tags = UAirship.Push.Tags;
+
+			cell.TextLabel.Text = tags[indexPath.Row];
 
 			return cell;
 		}

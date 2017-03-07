@@ -33,14 +33,13 @@ namespace Sample
 	class AddTagsTextFieldDelegate : UITextFieldDelegate
 	{
 		public AddTagsTableViewController AddTagsTableViewController;
-		UITextField addCustomTagTextField { get; set; }
 
-		bool TextFieldShouldReturn(UITextField textfield)
+		public override bool ShouldReturn(UITextField textField)
 		{
 			AddTagsTableViewController.View.EndEditing(true);
 
 			// Trim leading and trailing whitespace
-			var newTag = this.addCustomTagTextField.Text.Trim();
+			var newTag = textField.Text.Trim();
 
 			if (newTag.Length > 0)
 			{

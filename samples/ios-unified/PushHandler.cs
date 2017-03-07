@@ -33,8 +33,8 @@ namespace Sample
 			}
 
 			UIAlertController alertController = UIAlertController.Create(title: notificationContent.AlertTitle,
-																			 message: notificationContent.AlertBody,
-																			 preferredStyle: UIAlertControllerStyle.Alert);
+			                                                             message: notificationContent.AlertBody,
+			                                                             preferredStyle: UIAlertControllerStyle.Alert);
 
 			UIAlertAction okAction = UIAlertAction.Create(title: "OK", style: UIAlertActionStyle.Default, handler: (UIAlertAction action) =>
 			{

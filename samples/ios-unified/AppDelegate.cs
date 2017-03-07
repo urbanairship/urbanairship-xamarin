@@ -135,11 +135,11 @@ namespace Sample
 
 		private void ShowInvalidConfigAlert()
 		{
-			UIAlertController alertController = UIAlertController.Create(title: "Invalid AirshipConfig.plist", message:
-																 "The AirshipConfig.plist must be a part of the app bundle " +
-																		 "and include a valid appkey and secret for the " +
-																		 "selected production level.",
-																 preferredStyle: UIAlertControllerStyle.Alert);
+			UIAlertController alertController = UIAlertController.Create(title: "Invalid AirshipConfig.plist", 
+			                                                             message:"The AirshipConfig.plist must be a part " +
+			                                                             "of the app bundle and include a valid appkey and " +
+			                                                             "secret for the selected production level.",
+			                                                             preferredStyle: UIAlertControllerStyle.Alert);
 
 			Window.RootViewController.PresentViewController(alertController, true, null);
 		}
