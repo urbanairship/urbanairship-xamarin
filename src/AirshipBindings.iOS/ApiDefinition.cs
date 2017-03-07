@@ -598,6 +598,16 @@ namespace UrbanAirship {
 		UANotificationResponse NotificationResponse(UNNotificationResponse response);
 	}
 
+	// @interface UAInboxUtils : NSObject
+	[BaseType(typeof(NSObject))]
+	interface UAInboxUtils
+	{
+		// +(nullable NSString *)inboxMessageIDFromNotification:(NSDictionary *)notification
+		[Static]
+		[Export("inboxMessageIDFromNotification:")]
+		NSString InboxMessageIDFromNotification(NSDictionary notification);
+	}
+
 	// @protocol UALocationDelegate <NSObject>
 	[Protocol, Model]
 	[BaseType(typeof(NSObject))]

@@ -13,6 +13,7 @@ using Mono.Security.Interface;
 using CoreFoundation;
 using GameController;
 using System.Linq;
+using Xamarin.Forms;
 using System.Security.Authentication.ExtendedProtection;
 namespace Sample
 {
@@ -32,6 +33,8 @@ namespace Sample
 		{
 
 			this.FailIfSimulator();
+
+			Xamarin.Forms.Forms.Init();
 
 			// Set log level for debugging config loading (optional)
 			// It will be set to the value in the loaded config upon takeOff
@@ -74,14 +77,13 @@ namespace Sample
 
 		public override void WillEnterForeground(UIApplication application)
 		{
-			base.WillEnterForeground(application);
 			refreshMessageCenterBadge();
 		}
 
 		private void FailIfSimulator()
 		{
 
-			if (Runtime.Arch == Arch.SIMULATOR)
+			if (Runtime.Arch != Arch.SIMULATOR)
 			{
 				return;
 			}
@@ -96,12 +98,6 @@ namespace Sample
 			UIAlertController alertController = UIAlertController.Create(title: "Notice", message: "You will not be able " +
 																		 "to receive push notifications in the simulator.",
 																		 preferredStyle: UIAlertControllerStyle.Alert);
-			UIAlertAction disableAction = UIAlertAction.Create(title: "Disable Warning", style: UIAlertActionStyle.Cancel, handler: (UIAlertAction action) =>
-			{
-				NSUserDefaults.StandardUserDefaults.SetBool(true, "ua-simulator-warning-disabled");
-			});
-
-			alertController.AddAction(disableAction);
 
 			UIAlertAction cancelAction = UIAlertAction.Create(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: null);
 			alertController.AddAction(cancelAction);
@@ -116,16 +112,25 @@ namespace Sample
 
 		private void refreshMessageCenterBadge()
 		{
-			UITabBarItem messageCenterTab = Window.RootViewController.TabBarController.TabBar.Items.ElementAt(2);
+			Device.BeginInvokeOnMainThread(() =>
+			{
 
-			if (UAirship.Inbox.MessageList.UnreadCount > 0)
-			{
-				messageCenterTab.BadgeValue = UAirship.Inbox.MessageList.UnreadCount.ToString();
-			}
-			else
-			{
-				messageCenterTab.BadgeValue = null;
-			}
+				if (Window.RootViewController == null) {
+					return;
+				}
+
+				UITabBarController tabBarController = (UITabBarController)Window.RootViewController;
+				UITabBarItem messageCenterTab = tabBarController.TabBar.Items[2];
+
+				if (UAirship.Inbox.MessageList.UnreadCount > 0)
+				{
+					messageCenterTab.BadgeValue = UAirship.Inbox.MessageList.UnreadCount.ToString();
+				}
+				else
+				{
+					messageCenterTab.BadgeValue = null;
+				}
+			});
 		}
 
 		private void ShowInvalidConfigAlert()

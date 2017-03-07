@@ -81,8 +81,17 @@
     <Reference Include="Calabash">
       <HintPath>packages\Xamarin.TestCloud.Agent.0.20.3\lib\Xamarin.iOS10\Calabash.dll</HintPath>
     </Reference>
-    <Reference Include="AirshipBindings">
-      <HintPath>packages\urbanairship.4.1.0\lib\Xamarin.iOS10\AirshipBindings.dll</HintPath>
+    <Reference Include="Xamarin.Forms.Core">
+      <HintPath>packages\Xamarin.Forms.2.3.3.193\lib\Xamarin.iOS10\Xamarin.Forms.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Forms.Platform">
+      <HintPath>packages\Xamarin.Forms.2.3.3.193\lib\Xamarin.iOS10\Xamarin.Forms.Platform.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Forms.Platform.iOS">
+      <HintPath>packages\Xamarin.Forms.2.3.3.193\lib\Xamarin.iOS10\Xamarin.Forms.Platform.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Forms.Xaml">
+      <HintPath>packages\Xamarin.Forms.2.3.3.193\lib\Xamarin.iOS10\Xamarin.Forms.Xaml.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -130,38 +139,43 @@
     <BundleResource Include="Resources\Contents.json" />
     <BundleResource Include="Resources\urban-airship-logo-pacific.png" />
     <BundleResource Include="Resources\urban-airship-pacific.png" />
-    <BundleResource Include="Resources\AppIcon.appiconset\Contents.json" />
-    <BundleResource Include="Resources\AppIcon.appiconset\Icon-60%402x.png" />
-    <BundleResource Include="Resources\AppIcon.appiconset\Icon-60%403x.png" />
-    <BundleResource Include="Resources\AppIcon.appiconset\Icon-72.png" />
-    <BundleResource Include="Resources\AppIcon.appiconset\Icon-72%402x.png" />
-    <BundleResource Include="Resources\AppIcon.appiconset\Icon-76.png" />
-    <BundleResource Include="Resources\AppIcon.appiconset\Icon-76%402x.png" />
-    <BundleResource Include="Resources\AppIcon.appiconset\Icon-83.5%402x.png" />
-    <BundleResource Include="Resources\AppIcon.appiconset\Icon-Small-40.png" />
-    <BundleResource Include="Resources\AppIcon.appiconset\Icon-Small-40%402x.png" />
-    <BundleResource Include="Resources\AppIcon.appiconset\Icon-Small-40%403x.png" />
-    <BundleResource Include="Resources\AppIcon.appiconset\Icon-Small-50.png" />
-    <BundleResource Include="Resources\AppIcon.appiconset\Icon-Small-50%402x.png" />
-    <BundleResource Include="Resources\AppIcon.appiconset\Icon-Small.png" />
-    <BundleResource Include="Resources\AppIcon.appiconset\Icon-Small%402x.png" />
-    <BundleResource Include="Resources\AppIcon.appiconset\Icon-Small%403x.png" />
-    <BundleResource Include="Resources\AppIcon.appiconset\Icon.png" />
-    <BundleResource Include="Resources\AppIcon.appiconset\Icon%402x.png" />
-    <BundleResource Include="Resources\Homescreen.imageset\Contents.json" />
-    <BundleResource Include="Resources\Homescreen.imageset\Homescreen.png" />
-    <BundleResource Include="Resources\Homescreen.imageset\Homescreen%402x.png" />
-    <BundleResource Include="Resources\Homescreen.imageset\Homescreen%403x.png" />
-    <BundleResource Include="Resources\Inbox.imageset\Contents.json" />
-    <BundleResource Include="Resources\Inbox.imageset\Inbox.png" />
-    <BundleResource Include="Resources\Inbox.imageset\Inbox%402x.png" />
-    <BundleResource Include="Resources\Inbox.imageset\Inbox%403x.png" />
-    <BundleResource Include="Resources\Settings.imageset\Contents.json" />
-    <BundleResource Include="Resources\Settings.imageset\Settings.png" />
-    <BundleResource Include="Resources\Settings.imageset\Settings%402x.png" />
-    <BundleResource Include="Resources\Settings.imageset\Settings%403x.png" />
-    <BundleResource Include="Resources\Homescreen%403x.png" />
-    <BundleResource Include="Resources\Inbox%403x.png" />
-    <BundleResource Include="Resources\Settings%403x.png" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\AirshipBindings.iOS\AirshipBindings.iOS.csproj">
+      <Project>{58346B7E-E18F-4CB1-A9B8-C2266BDCFE2A}</Project>
+      <Name>AirshipBindings.iOS</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ImageAsset Include="Assets.xcassets\LaunchImage.launchimage\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\Inbox.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\Inbox.imageset\Inbox%403x.png" />
+    <ImageAsset Include="Assets.xcassets\Inbox.imageset\Inbox%402x.png" />
+    <ImageAsset Include="Assets.xcassets\Inbox.imageset\Inbox.png" />
+    <ImageAsset Include="Assets.xcassets\Settings.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\Settings.imageset\Settings.png" />
+    <ImageAsset Include="Assets.xcassets\Settings.imageset\Settings%402x.png" />
+    <ImageAsset Include="Assets.xcassets\Settings.imageset\Settings%403x.png" />
+    <ImageAsset Include="Assets.xcassets\HomeScreen.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\HomeScreen.imageset\Homescreen.png" />
+    <ImageAsset Include="Assets.xcassets\HomeScreen.imageset\Homescreen%402x.png" />
+    <ImageAsset Include="Assets.xcassets\HomeScreen.imageset\Homescreen%403x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon%402x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-60%402x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-60%403x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-72.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-72%402x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-76.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-76%402x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-Small-40.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-Small-40%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Assets.xcassets\Inbox.imageset\" />
+    <Folder Include="Assets.xcassets\Settings.imageset\" />
+    <Folder Include="Assets.xcassets\HomeScreen.imageset\" />
+  </ItemGroup>
+  <Import Project="packages\Xamarin.Forms.2.3.3.193\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets" Condition="Exists('packages\Xamarin.Forms.2.3.3.193\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets')" />
 </Project>

@@ -7,18 +7,19 @@ using System.IO.Compression;
 using CoreSpotlight;
 using Mono.Security.Interface;
 using System.Linq;
+using System.Runtime.CompilerServices;
 
 namespace Sample
 {
-	public class PushHandler 
+	public class PushHandler : UAPushNotificationDelegate
 	{
-		void ReceivedBackgroundNotification(UANotificationContent notificationContent, Action<UIBackgroundFetchResult> completionHandler) { 
+		public override void ReceivedBackgroundNotification(UANotificationContent notificationContent, Action<UIBackgroundFetchResult> completionHandler) { 
 			Console.WriteLine("The application received a background notification");
 
 			completionHandler(UIBackgroundFetchResult.NoData);
 		}
 
-		void ReceivedForegroundNotification(UANotificationContent notificationContent, Action completionHandler)
+		public override void ReceivedForegroundNotification(UANotificationContent notificationContent, Action completionHandler)
 		{
 
 			// Application received a foreground notification
@@ -37,18 +38,11 @@ namespace Sample
 
 			UIAlertAction okAction = UIAlertAction.Create(title: "OK", style: UIAlertActionStyle.Default, handler: (UIAlertAction action) =>
 			{
+				NSString messageID = UAInboxUtils.InboxMessageIDFromNotification(notificationContent.NotificationInfo);	
 
-				// If we have a message ID run the display inbox action to fetch and display the message.
-				//NSString *messageId = [UAInboxUtils inboxMessageIDFromNotification: notificationContent.notificationInfo];
-				//	if (messageId)
-				//	{
-				//	[UAActionRunner runActionWithName: kUADisplayInboxActionDefaultRegistryName
-				//								value: messageId
-				//							situation: UASituationManualInvocation];
-				//}
-				// TODO get message ID (expose UAInboxUtil method)
-				//String messageID = UAInboxUtil
-
+				if (messageID != null) {
+					UAActionRunner.RunAction("open_mc_action", messageID, UASituation.ManualInvocation);
+				}
 			});
 
 			alertController.AddAction(okAction);
@@ -62,7 +56,7 @@ namespace Sample
 			completionHandler();
 		}
 
-		void ReceivedNotificationResponse(UANotificationResponse notificationResponse, Action completionHandler)
+		public override void ReceivedNotificationResponse(UANotificationResponse notificationResponse, Action completionHandler)
 		{
 			Console.WriteLine("The user selected the following action identifier::{0}", notificationResponse.ActionIdentifier);
 
@@ -97,7 +91,7 @@ namespace Sample
 			completionHandler();
 		}
 
-		UNNotificationPresentationOptions PresentationOptions(UNNotification notification)
+		public override UNNotificationPresentationOptions PresentationOptions(UNNotification notification)
 		{
 			return UNNotificationPresentationOptions.Alert | UNNotificationPresentationOptions.Sound;
 		}
