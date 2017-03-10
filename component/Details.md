@@ -3,6 +3,17 @@
 This component provides official bindings to the Urban Airship SDK, as well as sample applications for both iOS and Android.
 
 ### Release Notes
+
+==============================
+Version 4.1.1 - March 10, 2017
+==============================
+- Fixed error on install when trying to use the Urban Airship portable library inside another PCL.
+
+=================================
+Version 4.1.0 - February 23, 2017
+=================================
+- Added an Urban Airship portable class library for use in Xamarin Forms apps.
+
 ================================
 Version 4.0.1 - January 26, 2017
 ================================
@@ -40,7 +51,7 @@ Version 2.2.2 - July 22, 2016
 Version 2.2.1 - July 6, 2016
 ============================
 - Fixed native linking errors for missing UAWalletAction on iOS
- 
+
 ==========================
 Version 2.2 - June 2, 2016
 ==========================
