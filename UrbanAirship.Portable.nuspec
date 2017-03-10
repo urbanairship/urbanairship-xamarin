@@ -9,7 +9,13 @@
       <description>A portable client library for the Urban Airship SDK.</description>
 
       <dependencies>
-          <dependency id="urbanairship" version="4.1.0"/>
+          <group targetFramework="MonoAndroid">
+            <dependency id="urbanairship" version="4.1.0"/>
+		  </group>
+		  
+		  <group targetFramework="Xamarin.iOS">
+		    <dependency id="urbanairship" version="4.1.0"/>
+		  </group>
       </dependencies>
    </metadata>
 
