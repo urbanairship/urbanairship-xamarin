@@ -11,11 +11,11 @@
       <dependencies>
           <group targetFramework="MonoAndroid">
             <dependency id="urbanairship" version="4.1.1"/>
-		  </group>
-		  
-		  <group targetFramework="Xamarin.iOS">
-		    <dependency id="urbanairship" version="4.1.1"/>
-		  </group>
+	  </group>
+
+	  <group targetFramework="Xamarin.iOS">
+	    <dependency id="urbanairship" version="4.1.1"/>
+	  </group>
       </dependencies>
    </metadata>
 
