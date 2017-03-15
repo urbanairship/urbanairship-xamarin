@@ -76,7 +76,38 @@ pkg.mustRunAfter('build')
 
 // Sync the version with the version declared in the airship.properties file.
 task syncVersion << {
+    // Handle nuspec files
+    ant.replaceregexp(
+        match: "<version>.*</version>",
+        replace: "<version>$airshipProperties.version</version>"
+    ) {
+        fileset(dir: "$projectDir", includes: "*.nuspec")
+    }
+    // Handle Airship.Portable nuspec special case
+    ant.replaceregexp(
+        file: "$projectDir/UrbanAirship.Portable.nuspec",
+        match: "<dependency id=\"urbanairship\" version=\".*\"/>",
+        replace: "<dependency id=\"urbanairship\" version=\"$airshipProperties.version\"/>"
+    )
 
+    // Xamarin component
+    ant.replaceregexp(
+        file: "$projectDir/component/component.yaml",
+        match: "version: \".*\"",
+        replace: "version: \"$airshipProperties.version\""
+    )
+    ant.replaceregexp(
+        file: "$projectDir/component/component.yaml",
+        match: "urbanairship, Version=.*",
+        replace: "urbanairship, Version=$airshipProperties.version"
+    )
+
+    // Shared assembly info
+    ant.replaceregexp(
+        file: "$projectDir/src/SharedAssemblyInfo.cs",
+        match: "AssemblyVersion (.*)]",
+        replace: "AssemblyVersion (\"$airshipProperties.version\")]"
+    )
 }
 
 
@@ -90,6 +121,7 @@ task clean(type: Delete) {
 // Build all of the projects
 task build
 build.mustRunAfter('clean')
+build.dependsOn('syncVersion')
 build.dependsOn('generateDeps')
 build.dependsOn(':docs:build',
     ':src:AirshipBindings.Portable:build',
