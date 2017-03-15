@@ -86,4 +86,9 @@ task clean(type: Delete) {
 task build
 build.mustRunAfter('clean')
 build.dependsOn('generateDeps')
+build.dependsOn(':docs:build',
+    ':src:AirshipBindings.Portable:build',
+    ':src:AirshipBindings.iOS:build',
+    ':src:AirshipExtensionBindings.iOS:build',
+    ':src:AirshipBindings.Android:build')
 build.finalizedBy('buildComponent')

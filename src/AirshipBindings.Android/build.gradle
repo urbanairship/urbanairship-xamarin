@@ -1,9 +1,51 @@
-task clean(type: Delete) {
+apply plugin: 'java'
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    compile('com.urbanairship.android:urbanairship-sdk:+') {
+        exclude group: 'com.android.support'
+        exclude group: 'com.google.android.gms'
+    }
+}
+
+def updateCsproj() {
+    def csprojFile = "$projectDir/AirshipBindings.Android.csproj"
+
+    def fileName = ""
+    new File("$projectDir/Jars").eachFileRecurse {
+        fileName += it.name
+    }
+
+    ant.replaceregexp(file: csprojFile, match: 'urbanairship-sdk-.*aar', replace: fileName)
+}
+
+task updateAar {
+    outputs.upToDateWhen { false }
+
+    // Remove existing aar
+    delete fileTree("$projectDir/Jars") {
+        include '*.aar'
+    }
+
+    // Copy most recently download aar
+    copy {
+        from configurations.compile
+        into "$projectDir/Jars/"
+    }
+
+    // Edit the csproj file to reflect this update
+    updateCsproj()
+}
+
+clean << {
     delete "bin"
     delete "obj"
 }
 
-task build << {
+build << {
     def argv = ["${nugetExe}", "restore", "AirshipBindings.Android.sln"]
     exec {
         executable "mono"
@@ -16,3 +58,5 @@ task build << {
         args argv
     }
 }
+
+build.mustRunAfter('updateAar')
