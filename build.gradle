@@ -79,7 +79,7 @@ task syncVersion << {
     // Handle nuspec files
     ant.replaceregexp(
         match: "<version>.*</version>",
-        replace: "<version>$airshipProperties.version</version>"
+        replace: "<version>$airshipProperties.libVersion</version>"
     ) {
         fileset(dir: "$projectDir", includes: "*.nuspec")
     }
@@ -87,26 +87,26 @@ task syncVersion << {
     ant.replaceregexp(
         file: "$projectDir/UrbanAirship.Portable.nuspec",
         match: "<dependency id=\"urbanairship\" version=\".*\"/>",
-        replace: "<dependency id=\"urbanairship\" version=\"$airshipProperties.version\"/>"
+        replace: "<dependency id=\"urbanairship\" version=\"$airshipProperties.libVersion\"/>"
     )
 
     // Xamarin component
     ant.replaceregexp(
         file: "$projectDir/component/component.yaml",
         match: "version: \".*\"",
-        replace: "version: \"$airshipProperties.version\""
+        replace: "version: \"$airshipProperties.libVersion\""
     )
     ant.replaceregexp(
         file: "$projectDir/component/component.yaml",
         match: "urbanairship, Version=.*",
-        replace: "urbanairship, Version=$airshipProperties.version"
+        replace: "urbanairship, Version=$airshipProperties.libVersion"
     )
 
     // Shared assembly info
     ant.replaceregexp(
         file: "$projectDir/src/SharedAssemblyInfo.cs",
         match: "AssemblyVersion (.*)]",
-        replace: "AssemblyVersion (\"$airshipProperties.version\")]"
+        replace: "AssemblyVersion (\"$airshipProperties.libVersion\")]"
     )
 }
 

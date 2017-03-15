@@ -1,3 +1,11 @@
+task syncVersion << {
+    ant.replaceregexp(
+        file: "$projectDir/Cartfile",
+        match: "\"urbanairship/ios-library\" == .*",
+        replace: "\"urbanairship/ios-library\" == $airshipProperties.iosVersion"
+    )
+}
+
 task clean(type: Delete) {
     delete "bin"
     delete "obj"
@@ -21,3 +29,4 @@ task build << {
         args argv
     }
 }
+build.dependsOn('syncVersion')
