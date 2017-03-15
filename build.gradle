@@ -74,6 +74,11 @@ task pkg << {
 }
 pkg.mustRunAfter('build')
 
+// Sync the version with the version declared in the airship.properties file.
+task syncVersion << {
+
+}
+
 
 //--- GLOBAL TASKS ---//
 
