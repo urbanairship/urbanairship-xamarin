@@ -313,7 +313,7 @@ namespace UrbanAirship {
 		UAJavaScriptDelegate JsDelegate { get; set; }
 
 		// @property (nonatomic, weak) id<UAJavaScriptDelegate> _Nullable jsDelegate;
-		[NullAllowed, Export ("jsDelegate", ArgumentSemantic.Weak)]
+		[NullAllowed, Export ("jsDelegate", ArgumentSemantic.Assign)]
 		NSObject WeakJsDelegate { get; set; }
 
 		// @property (readonly, nonatomic, strong) UAWhitelist * _Nonnull whitelist;
@@ -647,7 +647,7 @@ namespace UrbanAirship {
 		UALocationDelegate Delegate { get; set; }
 
 		// @property (nonatomic, weak) id<UALocationDelegate> _Nullable delegate;
-		[NullAllowed, Export("delegate", ArgumentSemantic.Weak)]
+		[NullAllowed, Export("delegate", ArgumentSemantic.Assign)]
 		NSObject WeakDelegate { get; set; }
 
 		// @property (readonly, nonatomic) CLLocation * _Nullable lastLocation;
@@ -709,7 +709,7 @@ namespace UrbanAirship {
 		UAInboxDelegate Delegate { get; set; }
 
 		// @property (nonatomic, weak) id<UAInboxDelegate> _Nullable delegate;
-		[NullAllowed, Export ("delegate", ArgumentSemantic.Weak)]
+		[NullAllowed, Export ("delegate", ArgumentSemantic.Assign)]
 		NSObject WeakDelegate { get; set; }
 	}
 
@@ -970,7 +970,7 @@ namespace UrbanAirship {
 		UAPushNotificationDelegate PushNotificationDelegate { get; set; }
 
 		// @property (nonatomic, weak) id<UAPushNotificationDelegate> _Nullable pushNotificationDelegate;
-		[NullAllowed, Export ("pushNotificationDelegate", ArgumentSemantic.Weak)]
+		[NullAllowed, Export ("pushNotificationDelegate", ArgumentSemantic.Assign)]
 		NSObject WeakPushNotificationDelegate { get; set; }
 
 		[Wrap ("WeakRegistrationDelegate")]
@@ -978,7 +978,7 @@ namespace UrbanAirship {
 		UARegistrationDelegate RegistrationDelegate { get; set; }
 
 		// @property (nonatomic, weak) id<UARegistrationDelegate> _Nullable registrationDelegate;
-		[NullAllowed, Export ("registrationDelegate", ArgumentSemantic.Weak)]
+		[NullAllowed, Export ("registrationDelegate", ArgumentSemantic.Assign)]
 		NSObject WeakRegistrationDelegate { get; set; }
 
 		// @property (getter = isAutobadgeEnabled, assign, nonatomic) BOOL autobadgeEnabled;
@@ -1256,7 +1256,7 @@ namespace UrbanAirship {
 		UIWebViewDelegate ForwardDelegate { get; set; }
 
 		// @property (nonatomic, weak) id<UIWebViewDelegate> _Nullable forwardDelegate;
-		[NullAllowed, Export ("forwardDelegate", ArgumentSemantic.Weak)]
+		[NullAllowed, Export ("forwardDelegate", ArgumentSemantic.Assign)]
 		NSObject WeakForwardDelegate { get; set; }
 
 		// @property (nonatomic, weak) id<UARichContentWindow> _Nullable richContentWindow;
@@ -2695,7 +2695,7 @@ namespace UrbanAirship {
 		UAInAppMessagingDelegate MessagingDelegate { get; set; }
 
 		// @property (nonatomic, weak) id<UAInAppMessagingDelegate> _Nullable messagingDelegate;
-		[NullAllowed, Export ("messagingDelegate", ArgumentSemantic.Weak)]
+		[NullAllowed, Export ("messagingDelegate", ArgumentSemantic.Assign)]
 		NSObject WeakMessagingDelegate { get; set; }
 
 		[Wrap ("WeakMessageControllerDelegate")]
@@ -2703,7 +2703,7 @@ namespace UrbanAirship {
 		UAInAppMessageControllerDelegate MessageControllerDelegate { get; set; }
 
 		// @property (nonatomic, weak) id<UAInAppMessageControllerDelegate> _Nullable messageControllerDelegate;
-		[NullAllowed, Export ("messageControllerDelegate", ArgumentSemantic.Weak)]
+		[NullAllowed, Export ("messageControllerDelegate", ArgumentSemantic.Assign)]
 		NSObject WeakMessageControllerDelegate { get; set; }
 	}
 
