@@ -5,6 +5,12 @@ This component provides official bindings to the Urban Airship SDK, as well as s
 ### Release Notes
 
 ==============================
+Version 4.2.0 - March 17, 2017
+==============================
+- Update Android Urban Airship SDK to 8.3.0.
+- Update iOS bindings with proper memory assignment.
+
+==============================
 Version 4.1.1 - March 10, 2017
 ==============================
 - Fixed error on install when trying to use the Urban Airship portable library inside another PCL.

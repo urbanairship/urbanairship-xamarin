@@ -2,7 +2,7 @@
 
   <attr path="/api/package[@name='com.urbanairship']" name="managedName">UrbanAirship</attr>
   <attr path="/api/package[@name='com.urbanairship.actions']" name="managedName">UrbanAirship.Actions</attr>
-  <attr path="/api/package[@name='com.urbanairship.actions.tags']" name="managedName">UrbanAirship.Actions.Tags</attr> 
+  <attr path="/api/package[@name='com.urbanairship.actions.tags']" name="managedName">UrbanAirship.Actions.Tags</attr>
   <attr path="/api/package[@name='com.urbanairship.amazon']" name="managedName">UrbanAirship.Amazon</attr>
   <attr path="/api/package[@name='com.urbanairship.analytics']" name="managedName">UrbanAirship.Analytics</attr>
   <attr path="/api/package[@name='com.urbanairship.google']" name="managedName">UrbanAirship.Google</attr>
@@ -33,6 +33,7 @@
   <!--- Non public parent classes -->
   <attr path="/api/package[@name='com.urbanairship.preference']/class[@name='UACheckBoxPreference']" name="visibility">public</attr>
   <attr path="/api/package[@name='com.urbanairship.preference']/class[@name='QuietTimePickerPreference']" name="visibility">public</attr>
+  <attr path="/api/package[@name='com.urbanairship.actions.tags']/class[@name='BaseTagsAction']" name="visibility">public</attr>
 
   <!-- Fixes issues with IComparable -->
   <remove-node path="/api/package[@name='com.urbanairship.preference']/class[@name='QuietTimePickerPreference']" />
@@ -40,11 +41,11 @@
 
   <!-- Fix location callback. We provide our own bindings.-->
   <remove-node path="/api/package[@name='com.urbanairship.location']/interface[@name='LocationCallback']" />
- 
+
   <!-- Fix field names have the same name as the class for the templates-->
   <attr path="/api/package[@name='com.urbanairship.analytics']/class[@name='RetailEventTemplate']/field[@name='RETAIL_EVENT_TEMPLATE']" name="managedName">TemplateName</attr>
   <attr path="/api/package[@name='com.urbanairship.analytics']/class[@name='AccountEventTemplate']/field[@name='ACCOUNT_EVENT_TEMPLATE']" name="managedName">TemplateName</attr>
   <attr path="/api/package[@name='com.urbanairship.analytics']/class[@name='MediaEventTemplate']/field[@name='MEDIA_EVENT_TEMPLATE']" name="managedName">TemplateName</attr>
 
 </metadata>
-	
+

@@ -1,0 +1,131 @@
+ext {
+    airshipProperties = new Properties()
+    airshipProperties.load(new FileInputStream("airship.properties"))
+    toolsDir = new File("$projectDir/.tools")
+    if ( !toolsDir.exists() ) {
+        toolsDir.mkdirs()
+    }
+    componentDir = new File("$projectDir/component")
+    if ( !componentDir.exists() ) {
+        componentDir.mkdirs()
+    }
+    nugetExe = new File("$toolsDir/nuget.exe")
+    xamarinComponentExe = new File("$toolsDir/xamarin-component.exe")
+    mdTool = "/Applications/Xamarin Studio.app/Contents/MacOS/mdtool"
+}
+
+task generateDeps << {
+    if (!nugetExe.exists()) {
+        new URL('https://dist.nuget.org/win-x86-commandline/latest/nuget.exe').withInputStream{
+            i -> nugetExe.withOutputStream{ it << i }
+        }
+    }
+
+    // Download xamarin component if it doesn't exist.
+    if (!xamarinComponentExe.exists()) {
+        def temp = new File("$toolsDir/xpkg")
+        new URL('https://components.xamarin.com/submit/xpkg').withInputStream{
+            i -> temp.withOutputStream{ it << i }
+        }
+        copy {
+            from zipTree(temp)
+            into "$toolsDir"
+        }
+        delete temp
+    }
+}
+
+task buildComponent << {
+    def argv = ["${xamarinComponentExe}", "package", "$componentDir", "-OutputDirectory", "$buildDir"]
+    exec {
+        executable "mono"
+        args argv
+    }
+
+    copy {
+        from "$componentDir"
+        include "*.xam"
+        into "$buildDir"
+    }
+}
+
+// Build nupkgs -- can pass in parameters (nuspec files) to specify which
+// nupkg files to build
+task pkg << {
+    def nupkgs = []
+    if (project.hasProperty('nuspec')) {
+        nupkgs = nuspec.split(',')
+    } else {
+        nupkgs = [
+            "UrbanAirship.nuspec",
+            "UrbanAirship.Portable.nuspec",
+            "AirshipAppExtensions.nuspec"
+        ]
+    }
+
+    def argv = []
+    for (pkg in nupkgs) {
+        argv = ["${nugetExe}", "pack", "$pkg", "-OutputDirectory", "$buildDir"]
+        exec {
+            executable "mono"
+            args argv
+        }
+    }
+}
+pkg.mustRunAfter('build')
+
+// Sync the version with the version declared in the airship.properties file.
+task syncVersion << {
+    // Handle nuspec files
+    ant.replaceregexp(
+        match: "<version>.*</version>",
+        replace: "<version>$airshipProperties.libVersion</version>"
+    ) {
+        fileset(dir: "$projectDir", includes: "*.nuspec")
+    }
+    // Handle Airship.Portable nuspec special case
+    ant.replaceregexp(
+        file: "$projectDir/UrbanAirship.Portable.nuspec",
+        match: "<dependency id=\"urbanairship\" version=\".*\"/>",
+        replace: "<dependency id=\"urbanairship\" version=\"$airshipProperties.libVersion\"/>"
+    )
+
+    // Xamarin component
+    ant.replaceregexp(
+        file: "$projectDir/component/component.yaml",
+        match: "version: \".*\"",
+        replace: "version: \"$airshipProperties.libVersion\""
+    )
+    ant.replaceregexp(
+        file: "$projectDir/component/component.yaml",
+        match: "urbanairship, Version=.*",
+        replace: "urbanairship, Version=$airshipProperties.libVersion"
+    )
+
+    // Shared assembly info
+    ant.replaceregexp(
+        file: "$projectDir/src/SharedAssemblyInfo.cs",
+        match: "AssemblyVersion (.*)]",
+        replace: "AssemblyVersion (\"$airshipProperties.libVersion\")]"
+    )
+}
+
+
+//--- GLOBAL TASKS ---//
+
+// Clean all
+task clean(type: Delete) {
+    delete "$buildDir"
+}
+
+// Build all of the projects
+task build
+build.mustRunAfter('clean')
+build.dependsOn('syncVersion')
+build.dependsOn('generateDeps')
+build.dependsOn(':docs:build',
+    ':src:AirshipBindings.Portable:build',
+    ':src:AirshipBindings.iOS:build',
+    ':src:AirshipExtensionBindings.iOS:build',
+    ':src:AirshipBindings.Android:build')
+build.finalizedBy('buildComponent')

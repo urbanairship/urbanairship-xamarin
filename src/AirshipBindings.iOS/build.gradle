@@ -1,0 +1,32 @@
+task syncVersion << {
+    ant.replaceregexp(
+        file: "$projectDir/Cartfile",
+        match: "\"urbanairship/ios-library\" == .*",
+        replace: "\"urbanairship/ios-library\" == $airshipProperties.iosVersion"
+    )
+}
+
+task clean(type: Delete) {
+    delete "bin"
+    delete "obj"
+}
+
+task build << {
+    exec {
+        executable "carthage"
+        args ["update"]
+    }
+
+    def argv = ["${nugetExe}", "restore", "AirshipBindings.iOS.sln"]
+    exec {
+        executable "mono"
+        args argv
+    }
+
+    argv = ["build", "-c:Release", "AirshipBindings.iOS.sln"]
+    exec {
+        executable "${mdTool}"
+        args argv
+    }
+}
+build.dependsOn('syncVersion')

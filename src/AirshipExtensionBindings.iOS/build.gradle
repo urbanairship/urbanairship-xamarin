@@ -1,0 +1,11 @@
+task clean(type: Delete) {
+    delete "$buildDir"
+}
+
+task build << {
+    def argv = ["build", "-c:Release", "AirshipExtensionBindings.iOS.sln"]
+    exec {
+        executable "${mdTool}"
+        args argv
+    }
+}

@@ -14,13 +14,13 @@ libraries:
 summary: A full suite of mobile engagement tools for building next-generation apps
 details: Details.md
 getting-started: GettingStarted.md
-version: "4.1.1"
+version: "4.2.0"
 samples:
   iOS Sample: ../samples/ios-unified/iOSSample.sln
   Android Sample: ../samples/android/AndroidSample.sln
 packages:
   android:
-    - urbanairship, Version=4.1.1
+    - urbanairship, Version=4.2.0
   ios-unified:
     - urbanairship, Version=4.1.1
 is_shell: true
