@@ -25,6 +25,29 @@ namespace UrbanAirship.RichPush
 			return GetMessages (new Predicate (predicate));
 		}
 
+		public void AddListener(Action listener)
+		{
+			AddListener(new Listener (listener));
+		}
+
+		internal class Listener : Java.Lang.Object, IListener
+		{
+			Action listener;
+
+			public Listener(Action listener)
+			{
+				this.listener = listener;
+			}
+
+			public void OnInboxUpdated()
+			{
+				if (listener != null)
+				{
+					listener.Invoke();
+				}
+			}
+		}
+
 		internal class FetchMessagesCallback : Java.Lang.Object, IFetchMessagesCallback
 		{
 			Action<bool> callback;
@@ -44,6 +67,7 @@ namespace UrbanAirship.RichPush
 		public class Predicate : Java.Lang.Object, IPredicate
 		{
 			Func<RichPushMessage, bool> predicate;
+
 			public Predicate(Func<RichPushMessage, bool> predicate)
 			{
 				this.predicate = predicate;
@@ -57,8 +81,5 @@ namespace UrbanAirship.RichPush
 				return true;
 			}
 		}
-
-
 	}
 }
-

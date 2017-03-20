@@ -109,6 +109,11 @@ namespace UrbanAirship.Location
 		{
 			return RequestSingleLocation (new LocationCallback (callback), requestOptions);
 		}
+
+		public virtual void AddLocationListener(Action<Android.Locations.Location> listener)
+		{
+			AddLocationListener(new LocationListener (listener));
+		}
 			
 		internal class LocationCallback : Java.Lang.Object, ILocationCallback
 		{
@@ -125,6 +130,24 @@ namespace UrbanAirship.Location
 				if (callback != null) {
 					callback.Invoke ((Android.Locations.Location)location);
 				}
+			}
+		}
+
+		internal class LocationListener : Java.Lang.Object, ILocationListener
+		{
+			Action<Android.Locations.Location> listener;
+
+			public LocationListener(Action<Android.Locations.Location> listener)
+			{
+				this.listener = listener;
+			}
+
+			public void OnLocationChanged (Android.Locations.Location location)
+			{
+				if (listener != null)
+				{
+					listener.Invoke((Android.Locations.Location)location);
+				}	
 			}
 		}
 	}

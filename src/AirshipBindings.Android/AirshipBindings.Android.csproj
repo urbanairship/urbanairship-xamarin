@@ -11,9 +11,10 @@
     <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
     <AndroidUseLatestPlatformSdk>True</AndroidUseLatestPlatformSdk>
     <AssemblyName>AirshipBindings</AssemblyName>
-    <TargetFrameworkVersion>v7.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v7.1</TargetFrameworkVersion>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
+    <AndroidTlsProvider></AndroidTlsProvider>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -107,6 +108,9 @@
     <Compile Include="Additions\AirshipService.cs" />
     <Compile Include="Additions\GcmPushReceiver.cs" />
     <Compile Include="Additions\HelperActivity.cs" />
+    <Compile Include="Additions\RichPushUser.cs" />
+    <Compile Include="Additions\PreferenceDataStore.cs" />
+    <Compile Include="Additions\MessageListFragment.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Additions\AboutAdditions.txt" />
