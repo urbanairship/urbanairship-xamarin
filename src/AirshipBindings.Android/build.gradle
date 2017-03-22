@@ -21,13 +21,19 @@ task syncVersion {
     // Download aar
     def filename = "urbanairship-sdk-${airshipProperties.androidVersion}.aar"
     def path = new File("$projectDir/Jars/$filename")
-    def url = "http://central.maven.org/maven2/com/urbanairship/android/urbanairship-sdk/${airshipProperties.androidVersion}/$filename"
-    new URL(url).withInputStream{
-        i -> path.withOutputStream{ it << i }
+    def url = new URL("http://central.maven.org/maven2/com/urbanairship/android/urbanairship-sdk/${airshipProperties.androidVersion}/$filename")
+    HttpURLConnection huc = (HttpURLConnection) url.openConnection()
+    huc.setRequestMethod("GET")
+    huc.connect();
+    if (huc.getResponseCode() / 100 != 2) {
+        println("Issue downloading version ${airshipProperties.androidVersion}. Maintaining previous version.")
+    } else {
+        url.withInputStream{
+            i -> path.withOutputStream{ it << i }
+        }
+        // Edit the csproj file to reflect this update
+        updateCsproj()
     }
-
-    // Edit the csproj file to reflect this update
-    updateCsproj()
 }
 
 task clean << {
