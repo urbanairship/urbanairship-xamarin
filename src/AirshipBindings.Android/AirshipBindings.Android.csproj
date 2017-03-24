@@ -92,11 +92,9 @@
     <Compile Include="Additions\CoreActivity.cs" />
     <Compile Include="Additions\PlayServicesErrorActivity.cs" />
     <Compile Include="Additions\LandingPageActivity.cs" />
-    <Compile Include="Additions\ActionService.cs" />
     <Compile Include="Additions\LocationService.cs" />
     <Compile Include="Additions\UAInstanceIDListenerService.cs" />
     <Compile Include="Additions\CoreReceiver.cs" />
-    <Compile Include="Additions\ActionRunRequest.cs" />
     <Compile Include="Additions\ILocationCallback.cs" />
     <Compile Include="Additions\MessageCenterActivity.cs" />
     <Compile Include="Additions\MessageActivity.cs" />
@@ -111,6 +109,11 @@
     <Compile Include="Additions\RichPushUser.cs" />
     <Compile Include="Additions\PreferenceDataStore.cs" />
     <Compile Include="Additions\MessageListFragment.cs" />
+    <Compile Include="Additions\ActionRegistry.cs" />
+    <Compile Include="Additions\ActionRunRequest.cs" />
+    <Compile Include="Additions\ActionService.cs" />
+    <Compile Include="Additions\ActionCompletionCallback.cs" />
+    <Compile Include="Additions\UAWebViewClient.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Additions\AboutAdditions.txt" />
