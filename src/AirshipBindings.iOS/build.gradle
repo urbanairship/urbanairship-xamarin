@@ -1,14 +1,78 @@
+ext {
+    diffFile = new File("$projectDir/current_diff.txt")
+    tempBindingsFolder = new File("$projectDir/bindings")
+    pods = ['UrbanAirship-iOS-SDK']
+
+}
+
+task clean(type: Delete) {
+    delete "$projectDir/bin"
+    delete "$projectDir/obj"
+    delete "$tempBindingsFolder"
+}
+
+//task generateBindings {
+//    pods.each { pod ->
+//       def currentDir = new File("$tempBindingsFolder/$pod")
+//       if (!currentDir.exists()) {
+//           currentDir.mkdirs()
+//       }
+//
+//       // Get the pod
+//       def argv = ['pod', 'init', 'ios', 'UrbanAirship-iOS-SDK']
+//       exec {
+//           workingDir "$currentDir"
+//           executable "sharpie"
+//           args argv
+//       }
+//
+//       // TODO: As of 11/23/2017, Xamarin cannot pull down specific pod
+//       // versions. Have to replace the version and run pod install.
+//       ant.replaceregexp(
+//           file: "$currentDir/Podfile",
+//           match: "pod '$pod'.*",
+//           replace: "pod '$pod', '$airshipProperties.iosVersion'"
+//       )
+//
+//       exec {
+//           workingDir "$currentDir"
+//           executable "pod"
+//           args "install"
+//       }
+//
+//       // Bind the pod
+//       argv = ['pod', 'bind']
+//       exec {
+//           workingDir "$currentDir"
+//           executable "sharpie"
+//           args argv
+//       }
+//    }
+//}
+
+task generateDiff {
+    pods.each { pod ->
+        def projectApiDefinition = new File("$projectDir/ApiDefinition.cs")
+        def genApiDefinition = new File("$tempBindingsFolder/$pod/Binding/AirshipKit_ApiDefinitions.cs")
+
+        def stdout = new ByteArrayOutputStream()
+        exec {
+            commandLine "diff", "$projectApiDefinition", "$genApiDefinition"
+            standardOutput stdout
+            ignoreExitValue true
+        }
+
+        PrintWriter out = new PrintWriter("$diffFile")
+        out.println(stdout.toString())
+    }
+}
+
 task syncVersion << {
     ant.replaceregexp(
         file: "$projectDir/Cartfile",
         match: "\"urbanairship/ios-library\" == .*",
         replace: "\"urbanairship/ios-library\" == $airshipProperties.iosVersion"
     )
-}
-
-task clean(type: Delete) {
-    delete "bin"
-    delete "obj"
 }
 
 task build << {
