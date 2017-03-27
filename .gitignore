@@ -213,3 +213,6 @@ Cartfile.resolved
 
 # Docs
 docs/doxygen.tag
+
+# Gradle
+.gradle
