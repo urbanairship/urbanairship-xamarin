@@ -5,6 +5,16 @@ This component provides official bindings to the Urban Airship SDK, as well as s
 ### Release Notes
 
 ==============================
+Version 4.2.2 - March 27, 2017
+==============================
+- Fixed dYSM generation build warnings.
+
+==============================
+Version 4.2.1 - March 22, 2017
+==============================
+- Update Android Urban Airship SDK to 8.3.1.
+
+==============================
 Version 4.2.0 - March 17, 2017
 ==============================
 - Update Android Urban Airship SDK to 8.3.0.
