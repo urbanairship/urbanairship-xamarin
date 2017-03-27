@@ -11,6 +11,26 @@ namespace UrbanAirship.RichPush
 {
 	public partial class RichPushInbox
 	{
+		private Dictionary<Action, Listener> eventHandlers = new Dictionary<Action, Listener>();
+		public event Action OnInboxUpdated
+		{
+			add
+			{
+				Listener listener = new Listener(value);
+				AddListener(listener);
+				eventHandlers.Add(value, listener);
+			}
+
+			remove
+			{
+				if (eventHandlers.ContainsKey(value))
+				{
+					RemoveListener(eventHandlers[value]);
+					eventHandlers.Remove(value);
+				}
+			}
+		}
+
 		public ICancelable FetchMessages(Action<bool> callback)
 		{
 			return FetchMessages (new FetchMessagesCallback (callback));
@@ -23,11 +43,6 @@ namespace UrbanAirship.RichPush
 
 		public IList<RichPushMessage> GetMessages(Func<RichPushMessage, bool> predicate) {
 			return GetMessages (new Predicate (predicate));
-		}
-
-		public void AddListener(Action listener)
-		{
-			AddListener(new Listener (listener));
 		}
 
 		internal class Listener : Java.Lang.Object, IListener

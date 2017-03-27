@@ -1,14 +1,30 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace UrbanAirship
 {
 	public partial class PreferenceDataStore
 	{
-		public void AddListener(Action<string> listener)
+		private Dictionary<Action<String>, PreferenceChangeListener> eventHandlers = new Dictionary<Action<String>, PreferenceChangeListener>();
+		public event Action<String> OnPreferenceChange
 		{
-			AddListener(new PreferenceChangeListener(listener));
+			add
+			{
+				PreferenceChangeListener listener = new PreferenceChangeListener(value);
+				AddListener(listener);
+				eventHandlers.Add(value, listener);
+			}
+
+			remove
+			{
+				if (eventHandlers.ContainsKey(value))
+				{
+					RemoveListener(eventHandlers[value]);
+					eventHandlers.Remove(value);
+				}
+			}
 		}
-		
+
 		internal class PreferenceChangeListener : Java.Lang.Object, IPreferenceChangeListener
 		{
 			Action<string> preferenceChangeListener;
