@@ -5,12 +5,32 @@
 using Android.Locations;
 using Android.OS;
 using System;
+using System.Collections.Generic;
 using Android.Runtime;
 
 namespace UrbanAirship.Location
 {
 	public partial class UALocationManager
 	{
+		private Dictionary<Action<Android.Locations.Location>, LocationListener> eventHandlers = new Dictionary<Action<Android.Locations.Location>, LocationListener>();
+		public event Action<Android.Locations.Location> OnLocationChanged
+		{
+			add
+			{
+				LocationListener listener = new LocationListener(value);
+				AddLocationListener(listener);
+				eventHandlers.Add(value, listener);
+			}
+
+			remove
+			{
+				if (eventHandlers.ContainsKey(value))
+				{
+					RemoveLocationListener(eventHandlers[value]);
+					eventHandlers.Remove(value);
+				}
+			}
+		}
 
 		/*
 		 * Since we provide our own ILocationCallback the request methods that take
@@ -109,7 +129,7 @@ namespace UrbanAirship.Location
 		{
 			return RequestSingleLocation (new LocationCallback (callback), requestOptions);
 		}
-			
+					
 		internal class LocationCallback : Java.Lang.Object, ILocationCallback
 		{
 			Action<Android.Locations.Location> callback;
@@ -125,6 +145,24 @@ namespace UrbanAirship.Location
 				if (callback != null) {
 					callback.Invoke ((Android.Locations.Location)location);
 				}
+			}
+		}
+
+		internal class LocationListener : Java.Lang.Object, ILocationListener
+		{
+			Action<Android.Locations.Location> listener;
+
+			public LocationListener(Action<Android.Locations.Location> listener)
+			{
+				this.listener = listener;
+			}
+
+			public void OnLocationChanged (Android.Locations.Location location)
+			{
+				if (listener != null)
+				{
+					listener.Invoke((Android.Locations.Location)location);
+				}	
 			}
 		}
 	}
