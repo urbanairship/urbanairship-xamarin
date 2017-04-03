@@ -9,6 +9,7 @@ ext {
     if ( !componentDir.exists() ) {
         componentDir.mkdirs()
     }
+    rootDir = new File("$projectDir")
     nugetExe = new File("$toolsDir/nuget.exe")
     xamarinComponentExe = new File("$toolsDir/xamarin-component.exe")
     mdTool = "/Applications/Xamarin Studio.app/Contents/MacOS/mdtool"
@@ -114,7 +115,7 @@ task syncVersion << {
 //--- GLOBAL TASKS ---//
 
 // Clean all
-task clean(type: Delete) {
+task clean(type: Delete) << {
     delete "$buildDir"
 }
 

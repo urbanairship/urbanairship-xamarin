@@ -1,78 +1,93 @@
 ext {
-    diffFile = new File("$projectDir/current_diff.txt")
-    tempBindingsFolder = new File("$projectDir/bindings")
-    pods = ['UrbanAirship-iOS-SDK']
+    currentDiff = new File("$projectDir/current_diff.patch")
+    pastDiff = new File("$projectDir/past_diff.patch")
+    diffOfDiffs = new File("$projectDir/diff_of_diffs.patch")
+
+    pod = 'UrbanAirship-iOS-SDK'
+    tempBindingsFolder = new File("$buildDir/bindings")
+
+    projectApiDefinition = new File("$projectDir/ApiDefinition.cs")
+    genApiDefinition = new File("$tempBindingsFolder/$pod/Binding/AirshipKit_ApiDefinitions.cs")
+
 
 }
 
-task clean(type: Delete) {
+task clean(type: Delete) << {
     delete "$projectDir/bin"
     delete "$projectDir/obj"
-    delete "$tempBindingsFolder"
+    delete "$buildDir"
 }
 
-//task generateBindings {
-//    pods.each { pod ->
-//       def currentDir = new File("$tempBindingsFolder/$pod")
-//       if (!currentDir.exists()) {
-//           currentDir.mkdirs()
-//       }
-//
-//       // Get the pod
-//       def argv = ['pod', 'init', 'ios', 'UrbanAirship-iOS-SDK']
-//       exec {
-//           workingDir "$currentDir"
-//           executable "sharpie"
-//           args argv
-//       }
-//
-//       // TODO: As of 11/23/2017, Xamarin cannot pull down specific pod
-//       // versions. Have to replace the version and run pod install.
-//       ant.replaceregexp(
-//           file: "$currentDir/Podfile",
-//           match: "pod '$pod'.*",
-//           replace: "pod '$pod', '$airshipProperties.iosVersion'"
-//       )
-//
-//       exec {
-//           workingDir "$currentDir"
-//           executable "pod"
-//           args "install"
-//       }
-//
-//       // Bind the pod
-//       argv = ['pod', 'bind']
-//       exec {
-//           workingDir "$currentDir"
-//           executable "sharpie"
-//           args argv
-//       }
-//    }
-//}
+task generateBindings << {
+    def currentDir = new File("$tempBindingsFolder/$pod")
+    if (!currentDir.exists()) {
+        currentDir.mkdirs()
+    }
 
-task generateDiff {
-    pods.each { pod ->
-        def projectApiDefinition = new File("$projectDir/ApiDefinition.cs")
-        def genApiDefinition = new File("$tempBindingsFolder/$pod/Binding/AirshipKit_ApiDefinitions.cs")
+    // Get the pod
+    def argv = ['pod', 'init', 'ios', 'UrbanAirship-iOS-SDK']
+    exec {
+        workingDir "$currentDir"
+        executable "sharpie"
+        args argv
+    }
 
-        def stdout = new ByteArrayOutputStream()
-        exec {
-            commandLine "diff", "$projectApiDefinition", "$genApiDefinition"
-            standardOutput stdout
-            ignoreExitValue true
-        }
+    // TODO: As of 03/23/2017, Xamarin cannot pull down specific pod
+    // versions. Have to replace the version and run pod install.
+    ant.replaceregexp(
+        file: "$currentDir/Podfile",
+        match: "pod '$pod'.*",
+        replace: "pod '$pod', '$airshipProperties.iosVersion'"
+    )
 
-        PrintWriter out = new PrintWriter("$diffFile")
-        out.println(stdout.toString())
+    exec {
+        workingDir "$currentDir"
+        executable "pod"
+        args "install"
+    }
+
+    // Bind the pod
+    argv = ['pod', 'bind']
+    exec {
+        workingDir "$currentDir"
+        executable "sharpie"
+        args argv
+    }
+
+    // Generate the initial diff
+    exec {
+        commandLine "diff", "$genApiDefinition", "$projectApiDefinition"
+        standardOutput new FileOutputStream("$currentDiff")
+        ignoreExitValue true
     }
 }
 
 task syncVersion << {
     ant.replaceregexp(
-        file: "$projectDir/Cartfile",
+        file: "$rootDir/Cartfile",
         match: "\"urbanairship/ios-library\" == .*",
         replace: "\"urbanairship/ios-library\" == $airshipProperties.iosVersion"
     )
+
+    //currentDiff.renameTo(pastDiff)
+    generateBindings.execute()
+
+    exec {
+        commandLine "diff", "$pastDiff", "$currentDiff"
+        standardOutput new FileOutputStream("$diffOfDiffs")
+        ignoreExitValue true
+    }
+
+    exec {
+        commandLine "patch", "$projectApiDefinition", "$currentDiff"
+    }
+
+    exec {
+        commandLine "patch", "-r", "$projectApiDefinition", "$pastDiff"
+        //ignoreExitValue true
+    }
+    //delete pastDiff
+    //delete diffOfDiffs
 }
 
 task build << {
