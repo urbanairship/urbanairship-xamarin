@@ -1,36 +1,54 @@
-task syncVersion << {
-    ant.replaceregexp(
-        file: "$projectDir/Cartfile",
-        match: "\"urbanairship/ios-library\" == .*",
-        replace: "\"urbanairship/ios-library\" == $airshipProperties.iosVersion"
-    )
+ext {
+    pod = 'UrbanAirship-iOS-SDK'
+    tempBindingsFolder = new File("$buildDir/bindings")
 }
 
 task clean(type: Delete) {
     delete "bin"
     delete "obj"
+    delete "$buildDir"
 }
 
-task build << {
+task syncVersion << {
+    ant.replaceregexp(
+        file: "$rootDir/Cartfile",
+        match: "\"urbanairship/ios-library\" == .*",
+        replace: "\"urbanairship/ios-library\" == $airshipProperties.iosVersion"
+    )
+}
+
+task carthageUpdate << {
     exec {
-        executable "carthage"
-        args ["update"]
+        workingDir "$rootDir"
+        commandLine "carthage", "update"
     }
 
     exec {
         commandLine "strip", "-S", "-x", "../../Carthage/Build/iOS/AirshipKit.framework/AirshipKit"
     }
 
-    def argv = ["${nugetExe}", "restore", "AirshipBindings.iOS.sln"]
+}
+
+task build << {
     exec {
-        executable "mono"
-        args argv
+        commandLine "mono", "$nugetExe", "restore", "AirshipBindings.iOS.sln"
     }
 
-    argv = ["build", "-c:Release", "AirshipBindings.iOS.sln"]
     exec {
-        executable "${mdTool}"
-        args argv
+        commandLine "$mdTool", "build", "-c:Release", "AirshipBindings.iOS.sln"
     }
 }
 build.dependsOn('syncVersion')
+build.dependsOn('carthageUpdate')
+
+task generateBindings << {
+    if (!tempBindingsFolder.exists()) {
+        tempBindingsFolder.mkdirs()
+    }
+
+    exec {
+        workingDir "$tempBindingsFolder"
+        commandLine "sharpie", "bind", "-framework", "$rootDir/Carthage/Build/iOS/AirshipKit.framework"
+    }
+}
+generateBindings.dependsOn('carthageUpdate')

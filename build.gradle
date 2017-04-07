@@ -9,6 +9,7 @@ ext {
     if ( !componentDir.exists() ) {
         componentDir.mkdirs()
     }
+    rootDir = new File("$projectDir")
     nugetExe = new File("$toolsDir/nuget.exe")
     xamarinComponentExe = new File("$toolsDir/xamarin-component.exe")
     mdTool = "/Applications/Xamarin Studio.app/Contents/MacOS/mdtool"
@@ -36,10 +37,8 @@ task generateDeps << {
 }
 
 task buildComponent << {
-    def argv = ["${xamarinComponentExe}", "package", "$componentDir", "-OutputDirectory", "$buildDir"]
     exec {
-        executable "mono"
-        args argv
+        commandLine "mono", "${xamarinComponentExe}", "package", "$componentDir", "-OutputDirectory", "$buildDir"
     }
 
     copy {
@@ -63,12 +62,9 @@ task pkg << {
         ]
     }
 
-    def argv = []
     for (pkg in nupkgs) {
-        argv = ["${nugetExe}", "pack", "$pkg", "-OutputDirectory", "$buildDir"]
         exec {
-            executable "mono"
-            args argv
+            commandLine "mono", "${nugetExe}", "pack", "$pkg", "-OutputDirectory", "$buildDir"
         }
     }
 }

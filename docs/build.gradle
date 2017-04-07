@@ -4,8 +4,7 @@ task clean(type: Delete) {
 
 task build << {
     exec {
-        executable "doxygen"
-        ["Doxyfile"]
+        commandLine "doxygen", "Doxyfile"
     }
 
     copy {
