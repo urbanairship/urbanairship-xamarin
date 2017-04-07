@@ -3,9 +3,7 @@ task clean(type: Delete) {
 }
 
 task build << {
-    def argv = ["build", "-c:Release", "AirshipExtensionBindings.iOS.sln"]
     exec {
-        executable "${mdTool}"
-        args argv
+        commandLine "${mdTool}", "build", "-c:Release", "AirshipExtensionBindings.iOS.sln"
     }
 }

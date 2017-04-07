@@ -10,8 +10,6 @@ def updateCsproj() {
 }
 
 task syncVersion << {
-    outputs.upToDateWhen { false }
-
     // Remove existing aar files
     delete fileTree("$projectDir/Jars") {
         include '*.aar'
@@ -42,16 +40,12 @@ task clean {
 }
 
 task build << {
-    def argv = ["${nugetExe}", "restore", "AirshipBindings.Android.sln"]
     exec {
-        executable "mono"
-        args argv
+        commandLine "mono", "$nugetExe", "restore", "AirshipBindings.Android.sln"
     }
 
-    argv = ["build", "-c:Release", "AirshipBindings.Android.sln"]
     exec {
-        executable "${mdTool}"
-        args argv
+        commandLine "${mdTool}", "build", "-c:Release", "AirshipBindings.Android.sln"
     }
 }
 

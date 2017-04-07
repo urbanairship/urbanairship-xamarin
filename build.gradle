@@ -37,10 +37,8 @@ task generateDeps << {
 }
 
 task buildComponent << {
-    def argv = ["${xamarinComponentExe}", "package", "$componentDir", "-OutputDirectory", "$buildDir"]
     exec {
-        executable "mono"
-        args argv
+        commandLine "mono", "${xamarinComponentExe}", "package", "$componentDir", "-OutputDirectory", "$buildDir"
     }
 
     copy {
@@ -64,12 +62,9 @@ task pkg << {
         ]
     }
 
-    def argv = []
     for (pkg in nupkgs) {
-        argv = ["${nugetExe}", "pack", "$pkg", "-OutputDirectory", "$buildDir"]
         exec {
-            executable "mono"
-            args argv
+            commandLine "mono", "${nugetExe}", "pack", "$pkg", "-OutputDirectory", "$buildDir"
         }
     }
 }
