@@ -3,35 +3,10 @@ ext {
     tempBindingsFolder = new File("$buildDir/bindings")
 }
 
-task generateBindings << {
-    if (!tempBindingsFolder.exists()) {
-        tempBindingsFolder.mkdirs()
-    }
-
-    // Get the pod
-    exec {
-        workingDir "$tempBindingsFolder"
-        commandLine "sharpie", "pod", "init", "ios", "$pod"
-    }
-
-    // TODO: As of 03/23/2017, Xamarin cannot pull down specific pod
-    // versions. Have to replace the version and run pod install.
-    ant.replaceregexp(
-        file: "$tempBindingsFolder/Podfile",
-        match: "pod '$pod'.*",
-        replace: "pod '$pod', '$airshipProperties.iosVersion'"
-    )
-
-    exec {
-        workingDir "$tempBindingsFolder"
-        commandLine "pod", "install"
-    }
-
-    // Bind the pod
-    exec {
-        workingDir "$tempBindingsFolder"
-        commandLine "sharpie", "pod", "bind"
-    }
+task clean(type: Delete) {
+    delete "bin"
+    delete "obj"
+    delete "$buildDir"
 }
 
 task syncVersion << {
@@ -42,13 +17,7 @@ task syncVersion << {
     )
 }
 
-task clean(type: Delete) {
-    delete "bin"
-    delete "obj"
-    delete "$buildDir"
-}
-
-task build << {
+task carthageUpdate << {
     exec {
         workingDir "$rootDir"
         commandLine "carthage", "update"
@@ -58,6 +27,9 @@ task build << {
         commandLine "strip", "-S", "-x", "../../Carthage/Build/iOS/AirshipKit.framework/AirshipKit"
     }
 
+}
+
+task build << {
     exec {
         commandLine "mono", "$nugetExe", "restore", "AirshipBindings.iOS.sln"
     }
@@ -67,3 +39,16 @@ task build << {
     }
 }
 build.dependsOn('syncVersion')
+build.dependsOn('carthageUpdate')
+
+task generateBindings << {
+    if (!tempBindingsFolder.exists()) {
+        tempBindingsFolder.mkdirs()
+    }
+
+    exec {
+        workingDir "$tempBindingsFolder"
+        commandLine "sharpie", "bind", "-framework", "$rootDir/Carthage/Build/iOS/AirshipKit.framework"
+    }
+}
+generateBindings.dependsOn('carthageUpdate')
