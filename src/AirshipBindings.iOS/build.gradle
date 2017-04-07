@@ -96,6 +96,10 @@ task build << {
         args ["update"]
     }
 
+    exec {
+        commandLine "strip", "-S", "-x", "../../Carthage/Build/iOS/AirshipKit.framework/AirshipKit"
+    }
+
     def argv = ["${nugetExe}", "restore", "AirshipBindings.iOS.sln"]
     exec {
         executable "mono"
