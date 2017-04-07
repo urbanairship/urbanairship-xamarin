@@ -115,7 +115,7 @@ task syncVersion << {
 //--- GLOBAL TASKS ---//
 
 // Clean all
-task clean(type: Delete) << {
+task clean(type: Delete) {
     delete "$buildDir"
 
     delete fileTree("$componentDir") { include "*.xam" }

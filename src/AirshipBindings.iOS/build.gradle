@@ -1,64 +1,36 @@
 ext {
-    currentDiff = new File("$projectDir/current_diff.patch")
-    pastDiff = new File("$projectDir/past_diff.patch")
-    diffOfDiffs = new File("$projectDir/diff_of_diffs.patch")
-
     pod = 'UrbanAirship-iOS-SDK'
     tempBindingsFolder = new File("$buildDir/bindings")
-
-    projectApiDefinition = new File("$projectDir/ApiDefinition.cs")
-    genApiDefinition = new File("$tempBindingsFolder/$pod/Binding/AirshipKit_ApiDefinitions.cs")
-
-
-}
-
-task clean(type: Delete) << {
-    delete "$projectDir/bin"
-    delete "$projectDir/obj"
-    delete "$buildDir"
 }
 
 task generateBindings << {
-    def currentDir = new File("$tempBindingsFolder/$pod")
-    if (!currentDir.exists()) {
-        currentDir.mkdirs()
+    if (!tempBindingsFolder.exists()) {
+        tempBindingsFolder.mkdirs()
     }
 
     // Get the pod
-    def argv = ['pod', 'init', 'ios', 'UrbanAirship-iOS-SDK']
     exec {
-        workingDir "$currentDir"
-        executable "sharpie"
-        args argv
+        workingDir "$tempBindingsFolder"
+        commandLine "sharpie", "pod", "init", "ios", "$pod"
     }
 
     // TODO: As of 03/23/2017, Xamarin cannot pull down specific pod
     // versions. Have to replace the version and run pod install.
     ant.replaceregexp(
-        file: "$currentDir/Podfile",
+        file: "$tempBindingsFolder/Podfile",
         match: "pod '$pod'.*",
         replace: "pod '$pod', '$airshipProperties.iosVersion'"
     )
 
     exec {
-        workingDir "$currentDir"
-        executable "pod"
-        args "install"
+        workingDir "$tempBindingsFolder"
+        commandLine "pod", "install"
     }
 
     // Bind the pod
-    argv = ['pod', 'bind']
     exec {
-        workingDir "$currentDir"
-        executable "sharpie"
-        args argv
-    }
-
-    // Generate the initial diff
-    exec {
-        commandLine "diff", "$genApiDefinition", "$projectApiDefinition"
-        standardOutput new FileOutputStream("$currentDiff")
-        ignoreExitValue true
+        workingDir "$tempBindingsFolder"
+        commandLine "sharpie", "pod", "bind"
     }
 }
 
@@ -68,48 +40,30 @@ task syncVersion << {
         match: "\"urbanairship/ios-library\" == .*",
         replace: "\"urbanairship/ios-library\" == $airshipProperties.iosVersion"
     )
+}
 
-    //currentDiff.renameTo(pastDiff)
-    generateBindings.execute()
-
-    exec {
-        commandLine "diff", "$pastDiff", "$currentDiff"
-        standardOutput new FileOutputStream("$diffOfDiffs")
-        ignoreExitValue true
-    }
-
-    exec {
-        commandLine "patch", "$projectApiDefinition", "$currentDiff"
-    }
-
-    exec {
-        commandLine "patch", "-r", "$projectApiDefinition", "$pastDiff"
-        //ignoreExitValue true
-    }
-    //delete pastDiff
-    //delete diffOfDiffs
+task clean(type: Delete) {
+    delete "bin"
+    delete "obj"
+    delete "$buildDir"
 }
 
 task build << {
     exec {
-        executable "carthage"
-        args ["update"]
+        workingDir "$rootDir"
+        commandLine "carthage", "update"
     }
 
     exec {
         commandLine "strip", "-S", "-x", "../../Carthage/Build/iOS/AirshipKit.framework/AirshipKit"
     }
 
-    def argv = ["${nugetExe}", "restore", "AirshipBindings.iOS.sln"]
     exec {
-        executable "mono"
-        args argv
+        commandLine "mono", "$nugetExe", "restore", "AirshipBindings.iOS.sln"
     }
 
-    argv = ["build", "-c:Release", "AirshipBindings.iOS.sln"]
     exec {
-        executable "${mdTool}"
-        args argv
+        commandLine "$mdTool", "build", "-c:Release", "AirshipBindings.iOS.sln"
     }
 }
 build.dependsOn('syncVersion')

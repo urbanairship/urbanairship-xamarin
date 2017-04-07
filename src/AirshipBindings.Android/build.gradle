@@ -35,9 +35,10 @@ task syncVersion << {
     }
 }
 
-task clean << {
+task clean {
     delete "bin"
     delete "obj"
+    delete "$buildDir"
 }
 
 task build << {
