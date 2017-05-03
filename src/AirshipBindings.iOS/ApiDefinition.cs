@@ -8,6 +8,7 @@ using Foundation;
 using ObjCRuntime;
 using UIKit;
 using UserNotifications;
+using WebKit;
 
 namespace UrbanAirship {
 
@@ -286,6 +287,42 @@ namespace UrbanAirship {
 		// extern NSString *const _Nonnull UACustomEventInteractionTypeKey;
 		[Field("UACustomEventInteractionTypeKey", "__Internal")]
 		NSString UACustomEventInteractionTypeKey { get; }
+
+		// extern NSString *const _Nonnull UAScheduleDelayErrorDomain;
+		[Field("UAScheduleDelayErrorDomain", "__Internal")]
+		NSString UAScheduleDelayErrorDomain { get; }
+
+		// extern NSString *const _Nonnull UAScheduleDelaySecondsKey;
+		[Field("UAScheduleDelaySecondsKey", "__Internal")]
+		NSString UAScheduleDelaySecondsKey { get; }
+
+		// extern NSString *const _Nonnull UAScheduleDelayRegionKey;
+		[Field("UAScheduleDelayRegionKey", "__Internal")]
+		NSString UAScheduleDelayRegionKey { get; }
+
+		// extern NSString *const _Nonnull UAScheduleDelayScreenKey;
+		[Field("UAScheduleDelayScreenKey", "__Internal")]
+		NSString UAScheduleDelayScreenKey { get; }
+
+		// extern NSString *const _Nonnull UAScheduleDelayCancellationTriggersKey;
+		[Field("UAScheduleDelayCancellationTriggersKey", "__Internal")]
+		NSString UAScheduleDelayCancellationTriggersKey { get; }
+
+		// extern NSString *const _Nonnull UAScheduleDelayAppStateKey;
+		[Field("UAScheduleDelayAppStateKey", "__Internal")]
+		NSString UAScheduleDelayAppStateKey { get; }
+
+		// extern NSString *const _Nonnull UAScheduleDelayAppStateForegroundName;
+		[Field("UAScheduleDelayAppStateForegroundName", "__Internal")]
+		NSString UAScheduleDelayAppStateForegroundName { get; }
+
+		// extern NSString *const _Nonnull UAScheduleDelayAppStateBackgroundName;
+		[Field("UAScheduleDelayAppStateBackgroundName", "__Internal")]
+		NSString UAScheduleDelayAppStateBackgroundName { get; }
+
+		// extern const NSUInteger UAScheduleDelayMaxCancellationTriggers;
+		[Field("UAScheduleDelayMaxCancellationTriggers", "__Internal")]
+		nuint UAScheduleDelayMaxCancellationTriggers { get; }
 	}
 
 	// @interface UAirship : NSObject
@@ -303,6 +340,8 @@ namespace UrbanAirship {
 		// @property (readonly, nonatomic, strong) UAActionRegistry * _Nonnull actionRegistry;
 		[Export ("actionRegistry", ArgumentSemantic.Strong)]
 		UAActionRegistry ActionRegistry { get; }
+
+
 
 		// @property (readonly, assign, nonatomic) BOOL remoteNotificationBackgroundModeEnabled;
 		[Export ("remoteNotificationBackgroundModeEnabled")]
@@ -888,15 +927,23 @@ namespace UrbanAirship {
 
 		// @optional -(void)registrationFailed;
 		[Export ("registrationFailed")]
-   	void RegistrationFailed ();
+   		void RegistrationFailed ();
 
-      // @optional -(void)notificationRegistrationFinishedWithOptions:(UANotificationOptions)options categories:(NSSet * _Nonnull)categories;
-      [Export ("notificationRegistrationFinishedWithOptions:categories:")]
-      void NotificationRegistrationFinishedWithOptions (UANotificationOptions options, NSSet categories);
+	    // @optional -(void)notificationRegistrationFinishedWithOptions:(UANotificationOptions)options categories:(NSSet * _Nonnull)categories;
+	    [Export ("notificationRegistrationFinishedWithOptions:categories:")]
+	    void NotificationRegistrationFinishedWithOptions (UANotificationOptions options, NSSet categories);
 
-      // @optional -(void)notificationAuthorizedOptionsDidChange:(UANotificationOptions)options;
-      [Export ("notificationAuthorizedOptionsDidChange:")]
-      void NotificationAuthorizedOptionsDidChange (UANotificationOptions options);
+        // @optional -(void)notificationAuthorizedOptionsDidChange:(UANotificationOptions)options;
+        [Export ("notificationAuthorizedOptionsDidChange:")]
+        void NotificationAuthorizedOptionsDidChange (UANotificationOptions options);
+
+		// @optional -(void)apnsRegistrationSucceededWithDeviceToken:(NSData * _Nonnull)deviceToken;
+		[Export("apnsRegistrationSucceededWithDeviceToken:")]
+		void ApnsRegistrationSucceededWithDeviceToken(NSData deviceToken);
+
+		// @optional -(void)apnsRegistrationFailedWithError:(NSError * _Nonnull)error;
+		[Export("apnsRegistrationFailedWithError:")]
+		void ApnsRegistrationFailedWithError(NSError error);
 	}
 
 	// @protocol UAPushNotificationDelegate <NSObject>
@@ -1082,6 +1129,10 @@ namespace UrbanAirship {
 	[BaseType (typeof(NSObject))]
 	interface UAConfig
 	{
+		// @property (assign, nonatomic) BOOL useWKWebView;
+		[Export("useWKWebView")]
+		bool UseWKWebView { get; set; }
+
 		// @property (readonly, nonatomic) NSString * _Nullable appKey;
 		[NullAllowed, Export ("appKey")]
 		string AppKey { get; }
@@ -1262,6 +1313,35 @@ namespace UrbanAirship {
 		// @property (nonatomic, weak) id<UARichContentWindow> _Nullable richContentWindow;
 		[NullAllowed, Export ("richContentWindow", ArgumentSemantic.Weak)]
 		UARichContentWindow RichContentWindow { get; set; }
+	}
+
+	// @protocol UAWKWebViewDelegate <WKNavigationDelegate>
+	[Protocol, Model]
+	[BaseType(typeof(NSObject))]
+	interface UAWKWebViewDelegate : IWKNavigationDelegate
+	{
+		// @optional -(void)closeWindowAnimated:(BOOL)animated;
+		[Export("closeWindowAnimated:")]
+		void CloseWindowAnimated(bool animated);
+	}
+
+	// @interface UABaseNativeBridge : NSObject
+	[BaseType(typeof(NSObject))]
+	interface UABaseNativeBridge
+	{
+	}
+
+	// @interface UAWKWebViewNativeBridge : UABaseNativeBridge <UAWKWebViewDelegate>
+	[BaseType(typeof(UABaseNativeBridge))]
+	interface UAWKWebViewNativeBridge : UAWKWebViewDelegate
+	{
+		[Wrap("WeakForwardDelegate")]
+		[NullAllowed]
+		UAWKWebViewDelegate ForwardDelegate { get; set; }
+
+		// @property (nonatomic, weak) id<UAWKWebViewDelegate> _Nullable forwardDelegate;
+		[NullAllowed, Export("forwardDelegate", ArgumentSemantic.Weak)]
+		NSObject WeakForwardDelegate { get; set; }
 	}
 
 	// @interface UAActionResult : NSObject
@@ -1603,6 +1683,44 @@ namespace UrbanAirship {
 	{
 	}
 
+	// @interface UAChannelCaptureAction : UAAction
+	[BaseType(typeof(UAAction))]
+	interface UAChannelCaptureAction
+	{
+	}
+
+	// @interface UAEnableFeatureAction : UAAction
+	[BaseType(typeof(UAAction))]
+	interface UAEnableFeatureAction
+	{
+	}
+
+	// @interface UATextInputNotificationAction : UANotificationAction
+	[BaseType(typeof(UANotificationAction))]
+	interface UATextInputNotificationAction
+	{
+		// @property (readonly, copy, nonatomic) NSString * _Nonnull textInputButtonTitle;
+		[Export("textInputButtonTitle")]
+		string TextInputButtonTitle { get; }
+
+		// @property (readonly, copy, nonatomic) NSString * _Nonnull textInputPlaceholder;
+		[Export("textInputPlaceholder")]
+		string TextInputPlaceholder { get; }
+
+		// @property (assign, nonatomic) BOOL forceBackgroundActivationModeInIOS9;
+		[Export("forceBackgroundActivationModeInIOS9")]
+		bool ForceBackgroundActivationModeInIOS9 { get; set; }
+
+		// -(instancetype _Nonnull)initWithIdentifier:(NSString * _Nonnull)identifier title:(NSString * _Nonnull)title textInputButtonTitle:(NSString * _Nonnull)textInputButtonTitle textInputPlaceholder:(NSString * _Nonnull)textInputPlaceholder options:(UANotificationActionOptions)options;
+		[Export("initWithIdentifier:title:textInputButtonTitle:textInputPlaceholder:options:")]
+		IntPtr Constructor(string identifier, string title, string textInputButtonTitle, string textInputPlaceholder, UANotificationActionOptions options);
+
+		// +(instancetype _Nonnull)actionWithIdentifier:(NSString * _Nonnull)identifier title:(NSString * _Nonnull)title textInputButtonTitle:(NSString * _Nonnull)textInputButtonTitle textInputPlaceholder:(NSString * _Nonnull)textInputPlaceholder options:(UANotificationActionOptions)options;
+		[Static]
+		[Export("actionWithIdentifier:title:textInputButtonTitle:textInputPlaceholder:options:")]
+		UATextInputNotificationAction ActionWithIdentifier(string identifier, string title, string textInputButtonTitle, string textInputPlaceholder, UANotificationActionOptions options);
+	}
+
 	// @interface UAActionSchedule : NSObject
 	[BaseType(typeof(NSObject))]
 	interface UAActionSchedule
@@ -1647,6 +1765,10 @@ namespace UrbanAirship {
 		// @property (readonly, nonatomic) NSDate * _Nonnull end;
 		[Export("end")]
 		NSDate End { get; }
+
+		// @property (readonly, nonatomic) UAScheduleDelay * _Nonnull delay;
+		[Export("delay")]
+		UAScheduleDelay Delay { get; }
 
 		// @property (readonly, nonatomic) BOOL isValid;
 		[Export("isValid")]
@@ -1695,6 +1817,35 @@ namespace UrbanAirship {
 		// @property (nonatomic, strong) NSDate * _Nullable end;
 		[NullAllowed, Export("end", ArgumentSemantic.Strong)]
 		NSDate End { get; set; }
+
+		// @property (nonatomic, strong) UAScheduleDelay * _Nullable delay;
+		[NullAllowed, Export("delay", ArgumentSemantic.Strong)]
+		UAScheduleDelay Delay { get; set; }
+	}
+
+	// @interface UAScheduleDelayBuilder : NSObject
+	[BaseType(typeof(NSObject))]
+	interface UAScheduleDelayBuilder
+	{
+		// @property (assign, nonatomic) NSTimeInterval seconds;
+		[Export("seconds")]
+		double Seconds { get; set; }
+
+		// @property (copy, nonatomic) NSString * _Nonnull screen;
+		[Export("screen")]
+		string Screen { get; set; }
+
+		// @property (copy, nonatomic) NSString * _Nonnull regionID;
+		[Export("regionID")]
+		string RegionID { get; set; }
+
+		// @property (assign, nonatomic) UAScheduleDelayAppState appState;
+		[Export("appState", ArgumentSemantic.Assign)]
+		UAScheduleDelayAppState AppState { get; set; }
+
+		// @property (copy, nonatomic) NSArray<UAScheduleTrigger *> * _Nonnull cancellationTriggers;
+		[Export("cancellationTriggers", ArgumentSemantic.Copy)]
+		UAScheduleTrigger[] CancellationTriggers { get; set; }
 	}
 
 	// @interface UAScheduleTrigger : NSObject
@@ -1744,6 +1895,11 @@ namespace UrbanAirship {
 		[Export("customEventTriggerWithPredicate:value:")]
 		UAScheduleTrigger CustomEventTrigger(UAJSONPredicate predicate, NSNumber value);
 
+		// +(instancetype _Nonnull)appInitTriggerWithCount:(NSUInteger)count;
+		[Static]
+		[Export("appInitTriggerWithCount:")]
+		UAScheduleTrigger AppInitTrigger(nuint count);
+
 		// -(BOOL)isEqualToTrigger:(UAScheduleTrigger * _Nullable)trigger;
 		[Export("isEqualToTrigger:")]
 		bool IsEqual([NullAllowed] UAScheduleTrigger trigger);
@@ -1753,6 +1909,48 @@ namespace UrbanAirship {
 		[Export("triggerWithJSON:error:")]
 		[return: NullAllowed]
 		UAScheduleTrigger Trigger(NSObject json, [NullAllowed] out NSError error);
+	}
+
+	// @interface UAScheduleDelay : NSObject
+	[BaseType(typeof(NSObject))]
+	interface UAScheduleDelay
+	{
+		// @property (readonly, nonatomic) BOOL isValid;
+		[Export("isValid")]
+		bool IsValid { get; }
+
+		// @property (readonly, nonatomic) NSTimeInterval seconds;
+		[Export("seconds")]
+		double Seconds { get; }
+
+		// @property (readonly, nonatomic) NSString * _Nonnull screen;
+		[Export("screen")]
+		string Screen { get; }
+
+		// @property (readonly, nonatomic) NSString * _Nonnull regionID;
+		[Export("regionID")]
+		string RegionID { get; }
+
+		// @property (readonly, nonatomic) UAScheduleDelayAppState appState;
+		[Export("appState")]
+		UAScheduleDelayAppState AppState { get; }
+
+		// @property (readonly, nonatomic) NSArray<UAScheduleTrigger *> * _Nonnull cancellationTriggers;
+		[Export("cancellationTriggers")]
+		UAScheduleTrigger[] CancellationTriggers { get; }
+
+		// +(instancetype _Nonnull)delayWithBuilderBlock:(void (^ _Nonnull)(UAScheduleDelayBuilder * _Nonnull))builderBlock;
+		[Export("delayWithBuilderBlock:")]
+		UAScheduleDelay ScheduleDelay(Action<UAScheduleDelayBuilder> builderBlock);
+
+		// +(instancetype _Nullable)delayWithJSON:(id _Nonnull)json error:(NSError * _Nullable * _Nullable)error;
+		[Static]
+		[Export("delayWithJSON:error:")]
+		UAScheduleDelay ScheduleDelay(NSObject json, [NullAllowed] out NSError error);
+
+		// -(BOOL)isEqualToDelay:(UAScheduleDelay * _Nullable)delay;
+		[Export("isEqualToDelay:")]
+		bool IsEqual([NullAllowed] UAScheduleDelay delay);
 	}
 
 	// @interface UAJSONMatcher : NSObject
@@ -2819,22 +3017,22 @@ namespace UrbanAirship {
 	[BaseType (typeof(NSObject))]
 	interface UALandingPageOverlayController : IUIWebViewDelegate, UARichContentWindow
 	{
-		// +(void)showURL:(NSURL * _Nonnull)url withHeaders:(NSDictionary * _Nullable)headers;
+		// +(void)showURL:(NSURL * _Nonnull)url withHeaders:(NSDictionary * _Nullable)headers __attribute__((deprecated("Deprecated - to be removed in SDK version 9.0 - please use UAOverlayViewController")));
 		[Static]
 		[Export ("showURL:withHeaders:")]
 		void ShowURL (NSUrl url, [NullAllowed] NSDictionary headers);
 
-		// +(void)showMessage:(UAInboxMessage * _Nonnull)message withHeaders:(NSDictionary * _Nullable)headers;
+		// +(void)showMessage:(UAInboxMessage * _Nonnull)message withHeaders:(NSDictionary * _Nullable)headers __attribute__((deprecated("Deprecated - to be removed in SDK version 9.0 - please use UAOverlayViewController")));
 		[Static]
 		[Export ("showMessage:withHeaders:")]
 		void ShowMessage (UAInboxMessage message, [NullAllowed] NSDictionary headers);
 
-		// +(void)showMessage:(UAInboxMessage * _Nonnull)message;
+		// +(void)showMessage:(UAInboxMessage * _Nonnull)message __attribute__((deprecated("Deprecated - to be removed in SDK version 9.0 - please use UAOverlayViewController")));
 		[Static]
 		[Export ("showMessage:")]
 		void ShowMessage (UAInboxMessage message);
 
-		// +(void)closeAll:(BOOL)animated;
+		// +(void)closeAll:(BOOL)animated __attribute__((deprecated("Deprecated - to be removed in SDK version 9.0 - please use UAOverlayViewController")));
 		[Static]
 		[Export ("closeAll:")]
 		void CloseAll (bool animated);

@@ -88,7 +88,8 @@ namespace UrbanAirship {
 		RegionExit,
 		CustomEventCount,
 		CustomEventValue,
-		Screen
+		Screen,
+		AppInit
 	}
 
 	[Native]
@@ -135,5 +136,19 @@ namespace UrbanAirship {
       AuthenticationRequired = (1 << 0),
       Destructive = (1 << 1),
       Foreground = (1 << 2)
+   }
+
+   [Native]
+   public enum UAScheduleDelayErrorCode : ulong
+   {
+ 	  UAScheduleDelayErrorCodeInvalidJSON
+   }
+
+   [Native]
+   public enum UAScheduleDelayAppState : ulong
+   {
+ 	  Any,
+ 	  Foreground,
+ 	  Background
    }
 }

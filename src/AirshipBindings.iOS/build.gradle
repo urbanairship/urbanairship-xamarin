@@ -38,8 +38,8 @@ task build << {
         commandLine "$mdTool", "build", "-c:Release", "AirshipBindings.iOS.sln"
     }
 }
-build.dependsOn('syncVersion')
 build.dependsOn('carthageUpdate')
+carthageUpdate.dependsOn('syncVersion')
 
 task generateBindings << {
     if (!tempBindingsFolder.exists()) {
