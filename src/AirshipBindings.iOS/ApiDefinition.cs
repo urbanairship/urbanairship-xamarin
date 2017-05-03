@@ -1635,12 +1635,6 @@ namespace UrbanAirship {
 	{
 	}
 
-	// @interface UACloseWindowAction : UAAction
-	[BaseType (typeof(UAAction))]
-	interface UACloseWindowAction
-	{
-	}
-
 	// @interface UADisplayInboxAction : UAAction
 	[BaseType (typeof(UAAction))]
 	interface UADisplayInboxAction
@@ -1940,6 +1934,7 @@ namespace UrbanAirship {
 		UAScheduleTrigger[] CancellationTriggers { get; }
 
 		// +(instancetype _Nonnull)delayWithBuilderBlock:(void (^ _Nonnull)(UAScheduleDelayBuilder * _Nonnull))builderBlock;
+		[Static]
 		[Export("delayWithBuilderBlock:")]
 		UAScheduleDelay ScheduleDelay(Action<UAScheduleDelayBuilder> builderBlock);
 
