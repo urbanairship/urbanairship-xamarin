@@ -118,6 +118,8 @@
     <Compile Include="Additions\ActionService.cs" />
     <Compile Include="Additions\ActionCompletionCallback.cs" />
     <Compile Include="Additions\UAWebViewClient.cs" />
+    <Compile Include="Additions\AirshipGcmTaskService.cs" />
+    <Compile Include="Additions\ChannelCaptureActivity.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Additions\AboutAdditions.txt" />
