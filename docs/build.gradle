@@ -2,14 +2,16 @@ task clean(type: Delete) {
     delete "$buildDir"
 }
 
-task build << {
-    exec {
-        commandLine "doxygen", "Doxyfile"
-    }
+task build {
+    doLast() {
+        exec {
+            commandLine "doxygen", "Doxyfile"
+        }
 
-    copy {
-        from "theme"
-        into "build/html"
-        include "doxy-boot.js", "header.html", "footer.html"
+        copy {
+            from "theme"
+            into "build/html"
+            include "doxy-boot.js", "header.html", "footer.html"
+        }
     }
 }
