@@ -12,12 +12,14 @@ task clean(type: Delete) {
     }
 }
 
-task build << {
-    exec {
-        commandLine "mono", "$nugetExe", "restore", "AirshipBindings.Portable.sln"
-    }
+task build {
+    doLast() {
+        exec {
+            commandLine "mono", "$nugetExe", "restore", "AirshipBindings.Portable.sln"
+        }
 
-    exec {
-        commandLine "${mdTool}", "build", "-c:Release", "AirshipBindings.Portable.sln"
+        exec {
+            commandLine "${mdTool}", "build", "-c:Release", "AirshipBindings.Portable.sln"
+        }
     }
 }

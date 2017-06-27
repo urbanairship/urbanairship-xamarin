@@ -9,27 +9,29 @@ def updateCsproj() {
     ant.replaceregexp(file: csprojFile, match: 'urbanairship-sdk-.*aar', replace: fileName)
 }
 
-task syncVersion << {
-    // Remove existing aar files
-    delete fileTree("$projectDir/Jars") {
-        include '*.aar'
-    }
-
-    // Download aar
-    def filename = "urbanairship-sdk-${airshipProperties.androidVersion}.aar"
-    def path = new File("$projectDir/Jars/$filename")
-    def url = new URL("http://central.maven.org/maven2/com/urbanairship/android/urbanairship-sdk/${airshipProperties.androidVersion}/$filename")
-    HttpURLConnection huc = (HttpURLConnection) url.openConnection()
-    huc.setRequestMethod("GET")
-    huc.connect();
-    if (huc.getResponseCode() / 100 != 2) {
-        println("Issue downloading version ${airshipProperties.androidVersion}. Maintaining previous version.")
-    } else {
-        url.withInputStream{
-            i -> path.withOutputStream{ it << i }
+task syncVersion  {
+    doLast() {
+        // Remove existing aar files
+        delete fileTree("$projectDir/Jars") {
+            include '*.aar'
         }
-        // Edit the csproj file to reflect this update
-        updateCsproj()
+
+        // Download aar
+        def filename = "urbanairship-sdk-${airshipProperties.androidVersion}.aar"
+        def path = new File("$projectDir/Jars/$filename")
+        def url = new URL("http://central.maven.org/maven2/com/urbanairship/android/urbanairship-sdk/${airshipProperties.androidVersion}/$filename")
+        HttpURLConnection huc = (HttpURLConnection) url.openConnection()
+        huc.setRequestMethod("GET")
+        huc.connect();
+        if (huc.getResponseCode() / 100 != 2) {
+            println("Issue downloading version ${airshipProperties.androidVersion}. Maintaining previous version.")
+        } else {
+            url.withInputStream{
+                i -> path.withOutputStream{ it << i }
+            }
+            // Edit the csproj file to reflect this update
+            updateCsproj()
+        }
     }
 }
 
@@ -39,13 +41,15 @@ task clean {
     delete "$buildDir"
 }
 
-task build << {
-    exec {
-        commandLine "mono", "$nugetExe", "restore", "AirshipBindings.Android.sln"
-    }
+task build {
+    doLast() {
+        exec {
+            commandLine "mono", "$nugetExe", "restore", "AirshipBindings.Android.sln"
+        }
 
-    exec {
-        commandLine "${mdTool}", "build", "-c:Release", "AirshipBindings.Android.sln"
+        exec {
+            commandLine "${mdTool}", "build", "-c:Release", "AirshipBindings.Android.sln"
+        }
     }
 }
 

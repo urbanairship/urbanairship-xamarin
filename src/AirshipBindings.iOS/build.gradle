@@ -9,46 +9,54 @@ task clean(type: Delete) {
     delete "$buildDir"
 }
 
-task syncVersion << {
-    ant.replaceregexp(
-        file: "$rootDir/Cartfile",
-        match: "\"urbanairship/ios-library\" == .*",
-        replace: "\"urbanairship/ios-library\" == $airshipProperties.iosVersion"
-    )
-}
-
-task carthageUpdate << {
-    exec {
-        workingDir "$rootDir"
-        commandLine "carthage", "update"
-    }
-
-    exec {
-        commandLine "strip", "-S", "-x", "../../Carthage/Build/iOS/AirshipKit.framework/AirshipKit"
-    }
-
-}
-
-task build << {
-    exec {
-        commandLine "mono", "$nugetExe", "restore", "AirshipBindings.iOS.sln"
-    }
-
-    exec {
-        commandLine "$mdTool", "build", "-c:Release", "AirshipBindings.iOS.sln"
+task syncVersion  {
+    doLast() {
+        ant.replaceregexp(
+            file: "$rootDir/Cartfile",
+            match: "\"urbanairship/ios-library\" == .*",
+            replace: "\"urbanairship/ios-library\" == $airshipProperties.iosVersion"
+        )
     }
 }
+
+task carthageUpdate {
+    doLast() {
+        exec {
+            workingDir "$rootDir"
+            commandLine "carthage", "update"
+        }
+
+        exec {
+            commandLine "strip", "-S", "-x", "../../Carthage/Build/iOS/AirshipKit.framework/AirshipKit"
+        }
+    }
+}
+
+task build {
+    doLast() {
+        exec {
+            commandLine "mono", "$nugetExe", "restore", "AirshipBindings.iOS.sln"
+        }
+
+        exec {
+            commandLine "$mdTool", "build", "-c:Release", "AirshipBindings.iOS.sln"
+        }
+    }
+}
+
 build.dependsOn('carthageUpdate')
 carthageUpdate.dependsOn('syncVersion')
 
-task generateBindings << {
-    if (!tempBindingsFolder.exists()) {
-        tempBindingsFolder.mkdirs()
-    }
+task generateBindings {
+    doLast() {
+        if (!tempBindingsFolder.exists()) {
+            tempBindingsFolder.mkdirs()
+        }
 
-    exec {
-        workingDir "$tempBindingsFolder"
-        commandLine "sharpie", "bind", "-framework", "$rootDir/Carthage/Build/iOS/AirshipKit.framework"
+        exec {
+            workingDir "$tempBindingsFolder"
+            commandLine "sharpie", "bind", "-framework", "$rootDir/Carthage/Build/iOS/AirshipKit.framework"
+        }
     }
 }
 generateBindings.dependsOn('carthageUpdate')
