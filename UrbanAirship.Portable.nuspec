@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
    <metadata>
       <id>urbanairship.portable</id>
-      <version>4.5.0</version>
+      <version>4.5.1</version>
       <title>Urban Airship SDK PCL</title>
       <authors>Urban Airship, Inc.</authors>
       <requireLicenseAcceptance>false</requireLicenseAcceptance>
@@ -10,7 +10,7 @@
 
       <dependencies>
           <group targetFramework="MonoAndroid">
-            <dependency id="urbanairship" version="4.5.0"/>
+            <dependency id="urbanairship" version="4.5.1"/>
 	  </group>
 
 	  <group targetFramework="Xamarin.iOS">
