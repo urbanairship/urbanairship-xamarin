@@ -4,6 +4,12 @@ This component provides official bindings to the Urban Airship SDK, as well as s
 
 ### Release Notes
 =============================
+Version 4.6.0 - August 15, 2017
+=============================
+- Update Android Urban Airship SDK to 8.8.2.
+- Update iOS Urban Airship SDK to 8.5.2.
+
+=============================
 Version 4.5.1 - June 28, 2017
 =============================
 - Fix iOS Sample for Xamarin component submission.

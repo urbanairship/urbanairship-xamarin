@@ -1,0 +1,211 @@
+#! /usr/bin/perl -n0
+
+# Copyright 2017 Urban Airship and Contributors
+
+# To prepare UA's ApiDefinition.cs file for sorting, first remove `namespace UrbanAirship {', the closing '}', 
+#   and then unindent everything that was in the namespace one tab.  The inner blocks should still be indented.
+# Xamarin-generated ApiDefinitions.cs files work fine without any changes.
+
+# loop through stdin, sort appropriately, and write to stdout
+while (
+       (s/(^(\/\*(.|\n)*\*\/)(\n|\Z))//m)
+    || (s/(^(using.*)(\n|\Z))//m)
+    || (s/(^(\[Static.+(.|\n)*?^.\n)(\n|\Z))//m)
+    || (s/(^(\[Native.+(.|\n)*?^.\n)(\n|\Z))//m)
+    || (s/(^(static class CFunctions(.|\n)*?^.\n)(\n|\Z))//m)
+    || (s/(^(\/\/(.|\n)*?))((?=^\/\/)|\Z)//m)
+    ) {
+    
+    $lines = $1;
+    @arrayOfLines=(split /\n/, $lines);
+
+    if ($lines =~ /^\/\*/) {
+        # just echo out any comment header
+        print $lines;
+    } elsif ($lines =~ /^using/) {
+        # sort the `using blah;` statements
+        push @usingStatements,$lines;
+    } elsif ($lines =~ /^\[Static/) {
+        # combine and sort the `Static` sections
+        @arrayOfLines=(split /\n/, $lines);
+        shift @arrayOfLines;
+
+        if ($arrayOfLines[0] =~ /^\[Verify \(ConstantsInterfaceAssociation\)\]/) {
+            $includeVerifyLine = 1;
+            shift @arrayOfLines; # remove "[Verify..."
+        } else {
+            $includeVerifyLine = 0;
+        }
+        
+        if ($arrayOfLines[0] !~ /^partial interface Constants/) {
+            print "2 ERROR: Couldn't parse file";
+            exit 1;
+        }
+        shift @arrayOfLines; # remove "partial interface..."
+
+        if ($arrayOfLines[0] !~ /^\{\s*$/) {
+            print "3 ERROR: Couldn't parse file";
+            exit 1;
+        }
+        shift @arrayOfLines; # remove starting bracket
+
+        if ($arrayOfLines[$#arrayOfLines] !~ /^\}\s*$/) {
+            print "4 ERROR: Couldn't parse file";
+            exit 1;
+        }
+        pop @arrayOfLines; # remove closing bracket
+        
+        # break up into separate groups of definitions, then sort
+        while ($#arrayOfLines >= 0) {
+            @definition = ();
+            if ($arrayOfLines[0] !~ /^\s*\/\/.*$/) {
+                print "5 ERROR: Couldn't parse file - expecting comment - got: ", $arrayOfLines[0];
+                exit 1;
+            }
+
+            $comment = $arrayOfLines[0];
+            shift @arrayOfLines;
+
+            while (($#arrayOfLines >= 0) && ($arrayOfLines[0] !~ /^\s*\/\/.*$/)) {
+                if ($arrayOfLines[0] !~ /^$/) {
+                    push @definition, $arrayOfLines[0];
+                }
+                shift @arrayOfLines; 
+            }
+
+            $static{$comment}=[] unless exists $static{$comment};
+            push @{static{$comment}},@definition;
+        }
+    } elsif ($lines =~ /^\[Native/) {
+        # sort the `[Native]` sections
+        @nativeDef=(split /\n/, $lines);
+        shift @nativeDef;
+        $str=$nativeDef[0];
+        shift @nativeDef;
+        $nativeDefs{$str}=[] unless exists $nativeDefs{$str};
+        push @{nativeDefs{$str}},@nativeDef;
+    } elsif ($lines =~ /^static class CFunctions/) {
+        # just echo any `static class CFunctions` classes
+        @staticClassCFunctions = (split /\n/, $lines);
+    } else {
+        # sort the rest of the API definitions
+        @arrayOfLines=(split /\n/, $lines);
+        $definition=$arrayOfLines[0];
+        ${apiDefinitions{$definition}}=[] unless exists $apiDefinitions{$definition};
+        $completeDefinition = "";
+        $foundOpeningParenthesis = 0;
+        # break up into separate groups of definitions, then sort
+        while (($#arrayOfLines >= 0) && ($arrayOfLines[0] !~ /^\t/)) {
+            if ($arrayOfLines[0] =~ /^{$/) {
+                $foundOpeningParenthesis = 1;
+            }
+            if ($arrayOfLines[0] !~ /^}$/) {
+                $completeDefinition .= $arrayOfLines[0] . "\n";
+            }
+            shift @arrayOfLines;
+        }
+
+        my $thisDefinitionsSubDefinitions = {};
+        while (($#arrayOfLines >= 0) && ($arrayOfLines[0] !~ /^\/\//)) {
+            @thisSubDefinition = ();
+            push @thisSubDefinition, $arrayOfLines[0];
+            shift @arrayOfLines;
+            while (($#arrayOfLines >= 0) && ($arrayOfLines[0] !~ /^\t*$/) && ($arrayOfLines[0] !~ /^\t\/\//)) {
+                push @thisSubDefinition, $arrayOfLines[0];
+                shift @arrayOfLines;
+            }
+            if (($#arrayOfLines >= 0) && ($arrayOfLines[0] !~ /^\t\/\//)) {
+                push @thisSubDefinition, $arrayOfLines[0];
+                shift @arrayOfLines;
+            }
+            $thisDefinitionsSubDefinitions{$thisSubDefinition[0]}=[];
+            push @{thisDefinitionsSubDefinitions{$thisSubDefinition[0]}},@thisSubDefinition;
+        }
+
+        foreach $key (sort keys %thisDefinitionsSubDefinitions) {
+            foreach ( @{$thisDefinitionsSubDefinitions{$key}} ) {
+                if ($_ !~ /^}$/) {
+                    $completeDefinition .= $_ . "\n";
+                }
+            }       
+            if ($completeDefinition !~ /\n\n$/) {
+                $completeDefinition .= "\n";
+            }
+           delete $thisDefinitionsSubDefinitions{$key};  
+        }
+        # remove extra new-line
+        if ($completeDefinition =~ /\n\n$/) {
+            chop($completeDefinition);
+        }
+
+        if ($foundOpeningParenthesis) {
+            $completeDefinition .= "}";
+        }
+        
+        $completeDefinition .= "\n";
+        
+        push @{apiDefinitions{$definition}},$completeDefinition;
+    }
+}
+
+if ($#usingStatements >= 0) {
+    @usingStatements = sort @usingStatements;
+    print join("",@usingStatements);
+    print "\n";
+}
+
+print "namespace UrbanAirship {\n";
+print "\n";
+
+if (%static) {
+    print "\t[Static]\n";
+    if ($includeVerifyLine) {
+        print "\t[Verify (ConstantsInterfaceAssociation)]\n";
+    }
+    print "\tpartial interface Constants\n";
+    print "\t{\n";
+    foreach $key (sort keys %static) {
+        print "\t" . $key . "\n";
+        foreach ( @{$static{$key}} ) {
+            print "\t" . $_ . "\n";
+        }
+        print "\n";
+    }
+    print "\t}\n";
+    print "\n";
+}
+
+if (%nativeDefs) {
+    foreach $key (sort keys %nativeDefs) {
+        print "\t[Native]\n";
+        print "\t" . $key . "\n";
+        foreach ( @{$nativeDefs{$key}} ) {
+            print "\t" . $_ . "\n";
+        }
+        print "\n";
+    }
+    print "\n";
+}
+
+foreach $key (sort keys %apiDefinitions) {
+    foreach ( @{$apiDefinitions{$key}} ) {
+        @linesForThisKey = (split /\n/, $_);
+        foreach (@linesForThisKey) {
+            if (length($_) > 0) {
+                print "\t" . $_ . "\n";
+            } else {
+                print "\n";
+            }
+        }
+        print "\n";
+    }
+}
+
+if ($#staticClassCFunctions >= 0) {
+    foreach ( @staticClassCFunctions) {
+        print "\t" . $_ . "\n";
+    }
+    
+}
+print "}\n";
+
