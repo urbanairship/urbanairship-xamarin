@@ -11,7 +11,7 @@ Code Contribution Agreement (http://docs.urbanairship.com/contribution-agreement
 
  - [Xamarin Platform Doc](http://docs.urbanairship.com/platform/xamarin.html)
  - [Getting Started](component/GettingStarted.md)
- - [CHANGELOG](component/Details.md)
+ - [CHANGELOG](CHANGELOG.md)
 
 
 ### Building
