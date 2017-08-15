@@ -25,6 +25,7 @@
   <remove-node path="/api/package[@name='com.urbanairship.http']" />
   <remove-node path="/api/package[@name='com.urbanairship.job']/class[@name='Job']" /> 
   <remove-node path="/api/package[@name='com.urbanairship.job']/class[@name='JobDispatcher']" /> 
+  <remove-node path="/api/package[@name='com.urbanairship.job']/class[@name='AndroidJobScheduler']" />
 	
   <!-- Class naming conflicts with namespace -->
   <attr path="/api/package[@name='com.urbanairship.analytics']/class[@name='Analytics']" name="managedName">AnalyticsClass</attr>

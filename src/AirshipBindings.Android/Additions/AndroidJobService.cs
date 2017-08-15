@@ -6,12 +6,13 @@ using System;
 using Android.App;
 using Android.Content;
 
+[assembly: UsesPermission(Name = "android.permission.BIND_JOB_SERVICE")]
 namespace UrbanAirship.Job
 {
 
-	[Android.Runtime.Preserve (AllMembers = true)]
+	[Android.Runtime.Preserve(AllMembers = true)]
 	[Service()]
-	public partial class AirshipService
+	public partial class AndroidJobService
 	{
 	}
 }

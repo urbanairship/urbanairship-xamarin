@@ -1,3 +1,8 @@
+ext {
+    pod = 'UrbanAirship-iOS-SDK'
+    tempBindingsFolder = new File("$buildDir/bindings")
+}
+
 task clean(type: Delete) {
     delete "$buildDir"
 }
@@ -7,3 +12,17 @@ task build << {
         commandLine "${mdTool}", "build", "-c:Release", "AirshipExtensionBindings.iOS.sln"
     }
 }
+
+task generateBindings {
+    doLast() {
+        if (!tempBindingsFolder.exists()) {
+            tempBindingsFolder.mkdirs()
+        }
+
+        exec {
+            workingDir "$tempBindingsFolder"
+            commandLine "sharpie", "bind", "-framework", "$rootDir/Carthage/Build/iOS/AirshipAppExtensions.framework"
+        }
+    }
+}
+
