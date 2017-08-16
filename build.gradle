@@ -90,7 +90,8 @@ task syncVersion {
         ant.replaceregexp(
             file: "$projectDir/UrbanAirship.Portable.nuspec",
             match: "<dependency id=\"urbanairship\" version=\".*\"/>",
-            replace: "<dependency id=\"urbanairship\" version=\"$airshipProperties.libVersion\"/>"
+            replace: "<dependency id=\"urbanairship\" version=\"$airshipProperties.libVersion\"/>",
+            flags: "g"
         )
 
         // Xamarin component
