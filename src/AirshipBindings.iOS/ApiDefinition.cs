@@ -3188,7 +3188,7 @@ namespace UrbanAirship {
 	delegate bool UAActionPredicate (UAActionArguments arg0);
 
 	// typedef void (^UAActionBlock)(UAActionArguments * _Nonnull, UAActionCompletionHandler _Nonnull);
-	delegate void UAActionBlock (UAActionArguments arg0, UAActionCompletionHandler arg1);
+	delegate void UAActionBlock(UAActionArguments arg0, [BlockCallback]UAActionCompletionHandler arg1);
 
 	// typedef void (^UAActionCompletionHandler)(UAActionResult * _Nonnull);
 	delegate void UAActionCompletionHandler (UAActionResult arg0);

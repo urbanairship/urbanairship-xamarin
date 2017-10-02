@@ -4,6 +4,11 @@ This component provides official bindings to the Urban Airship SDK, as well as s
 
 ### Release Notes
 
+Version 4.6.1 - October 2, 2017
+=============================
+- Deep link action had a run-time exception caused by ActionBlock having an incorrect binding.
+- Sample Push Handler was not validating a pointer, causing an NPE
+
 Version 4.6.0 - August 15, 2017
 =============================
 - Update Android Urban Airship SDK to 8.8.2.

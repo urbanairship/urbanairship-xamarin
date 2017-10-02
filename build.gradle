@@ -103,7 +103,8 @@ task syncVersion {
         ant.replaceregexp(
             file: "$projectDir/component/component.yaml",
             match: "urbanairship, Version=.*",
-            replace: "urbanairship, Version=$airshipProperties.libVersion"
+            replace: "urbanairship, Version=$airshipProperties.libVersion",
+            flags: "g"
         )
 
         // Shared assembly info
