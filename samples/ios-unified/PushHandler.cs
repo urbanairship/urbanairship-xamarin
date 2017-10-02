@@ -83,9 +83,9 @@ namespace Sample
 			alertController.AddAction(okAction);
 
 			UIViewController topController = UIApplication.SharedApplication.KeyWindow.RootViewController;
-            if (alertController.PopoverPresentationController != null) {
-                alertController.PopoverPresentationController.SourceView = topController.View;
-            }
+			if (alertController.PopoverPresentationController != null) {
+				alertController.PopoverPresentationController.SourceView = topController.View;
+			}
 
 			topController.PresentViewController(alertController, true, null);
 

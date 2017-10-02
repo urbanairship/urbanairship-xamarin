@@ -104,7 +104,7 @@ task syncVersion {
             file: "$projectDir/component/component.yaml",
             match: "urbanairship, Version=.*",
             replace: "urbanairship, Version=$airshipProperties.libVersion",
-	    flags: "g"
+            flags: "g"
         )
 
         // Shared assembly info
