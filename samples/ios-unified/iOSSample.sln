@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample", "Sample.csproj", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirshipBindings.iOS", "..\..\src\AirshipBindings.iOS\AirshipBindings.iOS.csproj", "{58346B7E-E18F-4CB1-A9B8-C2266BDCFE2A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleServiceExtension", "SampleServiceExtension\SampleServiceExtension.csproj", "{DDF8FDE3-49D5-4FF9-BF92-730A0C2F6E0A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|iPhoneSimulator = Debug|iPhoneSimulator
@@ -29,5 +31,13 @@ Global
 		{C6EB4686-06A0-4B33-AEDE-C42E5EC8CA50}.Release|iPhone.Build.0 = Release|iPhone
 		{C6EB4686-06A0-4B33-AEDE-C42E5EC8CA50}.Release|iPhoneSimulator.ActiveCfg = Release|iPhoneSimulator
 		{C6EB4686-06A0-4B33-AEDE-C42E5EC8CA50}.Release|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
+		{DDF8FDE3-49D5-4FF9-BF92-730A0C2F6E0A}.Debug|iPhoneSimulator.ActiveCfg = Debug|iPhoneSimulator
+		{DDF8FDE3-49D5-4FF9-BF92-730A0C2F6E0A}.Debug|iPhoneSimulator.Build.0 = Debug|iPhoneSimulator
+		{DDF8FDE3-49D5-4FF9-BF92-730A0C2F6E0A}.Release|iPhone.ActiveCfg = Release|iPhone
+		{DDF8FDE3-49D5-4FF9-BF92-730A0C2F6E0A}.Release|iPhone.Build.0 = Release|iPhone
+		{DDF8FDE3-49D5-4FF9-BF92-730A0C2F6E0A}.Release|iPhoneSimulator.ActiveCfg = Release|iPhoneSimulator
+		{DDF8FDE3-49D5-4FF9-BF92-730A0C2F6E0A}.Release|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
+		{DDF8FDE3-49D5-4FF9-BF92-730A0C2F6E0A}.Debug|iPhone.ActiveCfg = Debug|iPhone
+		{DDF8FDE3-49D5-4FF9-BF92-730A0C2F6E0A}.Debug|iPhone.Build.0 = Debug|iPhone
 	EndGlobalSection
 EndGlobal

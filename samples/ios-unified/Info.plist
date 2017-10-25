@@ -5,7 +5,7 @@
 	<key>CFBundleDisplayName</key>
 	<string>XamarinSample</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.urbanairship.xamarinsample</string>
+	<string>com.urbanairship.richpush</string>
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
