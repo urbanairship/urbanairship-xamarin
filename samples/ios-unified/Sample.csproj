@@ -172,6 +172,11 @@
       <Project>{58346B7E-E18F-4CB1-A9B8-C2266BDCFE2A}</Project>
       <Name>AirshipBindings.iOS</Name>
     </ProjectReference>
+    <ProjectReference Include="SampleServiceExtension\SampleServiceExtension.csproj">
+      <IsAppExtension>true</IsAppExtension>
+      <Project>{DDF8FDE3-49D5-4FF9-BF92-730A0C2F6E0A}</Project>
+      <Name>SampleServiceExtension</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="packages\Xamarin.Forms.2.3.4.247\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets" Condition="Exists('packages\Xamarin.Forms.2.3.4.247\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets')" />
 </Project>
