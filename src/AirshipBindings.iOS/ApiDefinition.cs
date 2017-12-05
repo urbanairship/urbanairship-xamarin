@@ -1604,11 +1604,11 @@ namespace UrbanAirship {
 
 		// @property (nonatomic, weak) id<UAInboxDelegate> _Nullable delegate;
 		[NullAllowed, Export ("delegate", ArgumentSemantic.Assign)]
-		NSObject WeakDelegate { get; set; }
+        IUAInboxDelegate WeakDelegate { get; set; }
 
 		[Wrap ("WeakDelegate")]
 		[NullAllowed]
-		UAInboxDelegate Delegate { get; set; }
+        IUAInboxDelegate Delegate { get; set; }
 	}
 
 	// @interface UAInboxMessage : NSObject
@@ -3057,6 +3057,8 @@ namespace UrbanAirship {
 		[Export ("showInbox")]
 		void ShowInbox ();
 	}
+
+    interface IUAInboxDelegate { }
 
 	// @protocol UAJavaScriptDelegate <NSObject>
 	[Protocol, Model]
