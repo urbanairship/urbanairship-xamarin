@@ -4,6 +4,10 @@ This component provides official bindings to the Urban Airship SDK, as well as s
 
 ### Release Notes
 
+Version 4.6.2 - December 12, 2017
+=============================
+- Enable use of IUAInAppMessageControllerDelegate protocol.
+
 Version 4.6.2 - December 5, 2017
 =============================
 - Enable use of IUAInboxDelegate protocol.
