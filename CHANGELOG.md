@@ -4,6 +4,10 @@ This component provides official bindings to the Urban Airship SDK, as well as s
 
 ### Release Notes
 
+Version 4.6.2 - December 5, 2017
+=============================
+- Enable use of IUAInboxDelegate protocol.
+
 Version 4.6.1 - October 2, 2017
 =============================
 - Deep link action had a run-time exception caused by ActionBlock having an incorrect binding.
