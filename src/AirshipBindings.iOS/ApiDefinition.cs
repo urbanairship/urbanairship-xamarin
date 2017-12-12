@@ -1579,7 +1579,7 @@ namespace UrbanAirship {
 
 		// @property (nonatomic, weak) id<UAInAppMessageControllerDelegate> _Nullable messageControllerDelegate;
 		[NullAllowed, Export ("messageControllerDelegate", ArgumentSemantic.Assign)]
-		NSObject WeakMessageControllerDelegate { get; set; }
+        IUAInAppMessageControllerDelegate WeakMessageControllerDelegate { get; set; }
 
 		// @property (nonatomic, weak) id<UAInAppMessagingDelegate> _Nullable messagingDelegate;
 		[NullAllowed, Export ("messagingDelegate", ArgumentSemantic.Assign)]
@@ -1587,7 +1587,7 @@ namespace UrbanAirship {
 
 		[Wrap ("WeakMessageControllerDelegate")]
 		[NullAllowed]
-		UAInAppMessageControllerDelegate MessageControllerDelegate { get; set; }
+		IUAInAppMessageControllerDelegate MessageControllerDelegate { get; set; }
 
 		[Wrap ("WeakMessagingDelegate")]
 		[NullAllowed]
@@ -3008,6 +3008,8 @@ namespace UrbanAirship {
 		[Export ("viewForMessage:parentView:")]
 		UIView View (UAInAppMessage message, UIView parentView);
 	}
+
+    interface IUAInAppMessageControllerDelegate { }
 
 	// @protocol UAInAppMessagingDelegate <NSObject>
 	[Protocol, Model]
