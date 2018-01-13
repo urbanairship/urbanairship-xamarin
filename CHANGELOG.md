@@ -4,7 +4,12 @@ This component provides official bindings to the Urban Airship SDK, as well as s
 
 ### Release Notes
 
-Version 4.6.2 - December 12, 2017
+Version 4.6.4 - January 12, 2018
+=============================
+- Enable use of UAMessageCenterMessageViewController class.
+- Enable use of initWithNibName:bundle: method in UAMessageCenterMessageViewController and UADefaultMessageCenterMessageViewController classes.
+
+Version 4.6.3 - December 12, 2017
 =============================
 - Enable use of IUAInAppMessageControllerDelegate protocol.
 
