@@ -1229,7 +1229,12 @@ namespace UrbanAirship {
 	[BaseType (typeof(UIViewController))]
 	interface UADefaultMessageCenterMessageViewController : IUIWebViewDelegate, UARichContentWindow
 	{
-		// -(void)loadMessageAtIndex:(NSUInteger)index;
+        // -(instancetype _Nonnull)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil __attribute__((objc_designated_initializer));
+        [Export("initWithNibName:bundle:")]
+        [DesignatedInitializer]
+        IntPtr Constructor([NullAllowed] string nibNameOrNil, [NullAllowed] NSBundle nibBundleOrNil);
+
+        // -(void)loadMessageAtIndex:(NSUInteger)index;
 		[Export ("loadMessageAtIndex:")]
 		void LoadMessageAtIndex (nuint index);
 
@@ -2151,7 +2156,7 @@ namespace UrbanAirship {
 		UIUserNotificationCategory AsUIUserNotificationCategory { get; }
 
 		// -(UNNotificationCategory * _Null_unspecified)asUNNotificationCategory __attribute__((availability(ios, introduced=10.0)));
-		[iOS (10, 0)]
+        [Introduced(PlatformName.iOS, 10, 0, message: "Introduced in iOS 10")]
 		[Export ("asUNNotificationCategory")]
 		UNNotificationCategory AsUNNotificationCategory { get; }
 
@@ -3091,6 +3096,16 @@ namespace UrbanAirship {
 		void ReceivedLocationUpdates(NSObject[] locations);
 	}
 
+    // @interface UAMessageCenterMessageViewController : UIViewController <UAWKWebViewDelegate, UAMessageCenterMessageViewProtocol>
+    [BaseType(typeof(UIViewController))]
+    interface UAMessageCenterMessageViewController : IUAWKWebViewDelegate, UAMessageCenterMessageViewProtocol
+    {
+        // -(instancetype _Nonnull)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil __attribute__((objc_designated_initializer));
+        [Export("initWithNibName:bundle:")]
+        [DesignatedInitializer]
+        IntPtr Constructor([NullAllowed] string nibNameOrNil, [NullAllowed] NSBundle nibBundleOrNil);
+    }
+
 	// @protocol UAMessageCenterMessageViewProtocol
 	[Protocol, Model]
 	interface UAMessageCenterMessageViewProtocol
@@ -3187,6 +3202,8 @@ namespace UrbanAirship {
 		[Export ("closeWindowAnimated:")]
 		void CloseWindowAnimated(bool animated);
 	}
+
+    interface IUAWKWebViewDelegate { }
 
 	// typedef BOOL (^UAActionPredicate)(UAActionArguments * _Nonnull);
 	delegate bool UAActionPredicate (UAActionArguments arg0);
