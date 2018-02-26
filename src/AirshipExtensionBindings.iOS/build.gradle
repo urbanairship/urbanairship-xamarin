@@ -7,9 +7,11 @@ task clean(type: Delete) {
     delete "$buildDir"
 }
 
-task build << {
-    exec {
-        commandLine "${mdTool}", "build", "-c:Release", "AirshipExtensionBindings.iOS.sln"
+task build {
+    doLast() {
+        exec {
+            commandLine "${msbuild}", "/t:build", "/p:Configuration=Release", "AirshipExtensionBindings.iOS.sln"
+        }
     }
 }
 

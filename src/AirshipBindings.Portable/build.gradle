@@ -19,7 +19,7 @@ task build {
         }
 
         exec {
-            commandLine "${mdTool}", "build", "-c:Release", "AirshipBindings.Portable.sln"
+            commandLine "${msbuild}", "/t:build", "/p:Configuration=Release", "AirshipBindings.Portable.sln"
         }
     }
 }

@@ -1396,6 +1396,7 @@ namespace UrbanAirship {
 
 		// -(void)dispose;
 		[Export ("dispose")]
+        [New]
 		void Dispose ();
 	}
 
@@ -3107,7 +3108,7 @@ namespace UrbanAirship {
     }
 
 	// @protocol UAMessageCenterMessageViewProtocol
-	[Protocol, Model]
+	[Protocol]
 	interface UAMessageCenterMessageViewProtocol
 	{
 		// @required -(void)loadMessage:(UAInboxMessage * _Nullable)message onlyIfChanged:(BOOL)onlyIfChanged __attribute__((deprecated("Deprecated - to be removed in SDK version 10.0")));
