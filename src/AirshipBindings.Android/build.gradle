@@ -48,7 +48,7 @@ task build {
         }
 
         exec {
-            commandLine "${mdTool}", "build", "-c:Release", "AirshipBindings.Android.sln"
+            commandLine "${msbuild}", "/t:build", "/p:Configuration=Release", "AirshipBindings.Android.sln"
         }
     }
 }

@@ -12,7 +12,7 @@ ext {
     rootDir = new File("$projectDir")
     nugetExe = new File("$toolsDir/nuget.exe")
     xamarinComponentExe = new File("$toolsDir/xamarin-component.exe")
-    mdTool = "/Applications/Xamarin Studio.app/Contents/MacOS/mdtool"
+    msbuild = "/Library/Frameworks/Mono.framework/Commands/msbuild"
 }
 
 task generateDeps {

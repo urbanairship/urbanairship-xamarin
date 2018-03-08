@@ -62,12 +62,13 @@
     <ConsolePause>false</ConsolePause>
     <MtouchArch>ARMv7, ARM64</MtouchArch>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
-    <MtouchProfiling>true</MtouchProfiling>
+    <MtouchProfiling>false</MtouchProfiling>
     <CodesignKey>iPhone Developer</CodesignKey>
     <MtouchDebug>true</MtouchDebug>
     <IpaPackageName></IpaPackageName>
     <MtouchI18n></MtouchI18n>
     <AssemblyName>XamarinSample</AssemblyName>
+    <MtouchFastDev>true</MtouchFastDev>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -151,16 +152,14 @@
     <ImageAsset Include="Assets.xcassets\HomeScreen.imageset\Homescreen.png" />
     <ImageAsset Include="Assets.xcassets\HomeScreen.imageset\Homescreen%402x.png" />
     <ImageAsset Include="Assets.xcassets\HomeScreen.imageset\Homescreen%403x.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon%402x.png" />
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-60%402x.png" />
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-60%403x.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-72.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-72%402x.png" />
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-76.png" />
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-76%402x.png" />
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-Small-40.png" />
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-Small-40%402x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-1024.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-83.5%402x.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Assets.xcassets\Inbox.imageset\" />

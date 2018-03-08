@@ -39,7 +39,7 @@ task build {
         }
 
         exec {
-            commandLine "$mdTool", "build", "-c:Release", "AirshipBindings.iOS.sln"
+            commandLine "${msbuild}", "/t:build", "/p:Configuration=Release", "AirshipBindings.iOS.sln"
         }
     }
 }
