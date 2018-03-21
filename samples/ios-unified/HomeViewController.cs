@@ -7,69 +7,66 @@ using Foundation;
 
 namespace Sample
 {
-	public partial class HomeViewController : UIViewController
-	{
+    public partial class HomeViewController : UIViewController
+    {
 
-		public HomeViewController (IntPtr handle) : base (handle)
-		{
-		
-		}
+        public HomeViewController(IntPtr handle) : base(handle)
+        {
 
-		public override void ViewDidLoad()
-		{
-			base.ViewDidLoad();
+        }
 
-			NSString channelIDNotification = new NSString("channelIDUpdated");
+        public override void ViewDidLoad()
+        {
+            base.ViewDidLoad();
 
-			NSNotificationCenter.DefaultCenter.AddObserver(channelIDNotification, (notification) =>
-			{
-				refreshView();					
-			});
-		}
+            NSString channelIDNotification = new NSString("channelIDUpdated");
+
+            NSNotificationCenter.DefaultCenter.AddObserver(channelIDNotification, (notification) =>
+            {
+                refreshView();
+            });
+        }
 
 
-		public override void ViewWillAppear(bool animated)
-		{
-			base.ViewWillAppear(animated);
+        public override void ViewWillAppear(bool animated)
+        {
+            base.ViewWillAppear(animated);
 
-			refreshView();
-		}
+            refreshView();
+        }
 
-		partial void buttonTapped(UIButton sender)
-		{
-			if (sender == enablePushButton) {
-				UAirship.Push.UserPushNotificationsEnabled = true;
-			}
+        partial void buttonTapped(UIButton sender)
+        {
+            if (sender == enablePushButton)
+            {
+                UAirship.Push().UserPushNotificationsEnabled = true;
+            }
 
-			if (sender == this.channelIDButton & UAirship.Push.ChannelID != null) {
-				UIPasteboard.General.String = UAirship.Push.ChannelID;
+            if (sender == this.channelIDButton & UAirship.Push().ChannelID != null)
+            {
+                UIPasteboard.General.String = UAirship.Push().ChannelID;
 
-				UAInAppMessage message = new UAInAppMessage();
+                UIAlertController alertController = UIAlertController.Create(null, "Channel copied to clipboard!", UIAlertControllerStyle.Alert);
+                alertController.AddAction(UIAlertAction.Create("OK", UIAlertActionStyle.Default, null));
 
-				message.Alert = "Copied to clipboard string";
-				message.Position = UAInAppMessagePosition.Top;
-				message.Duration = 1.5;
-				message.PrimaryColor = UIColor.FromRGB(255, 200, 40);
-				message.SecondaryColor = UIColor.FromRGB(0, 105, 143);
+                PresentViewController(alertController, animated: true, completionHandler: null);
+            }
+        }
 
-				UAirship.InAppMessaging.DisplayMessage(message);
-			}
-		}
+        void refreshView()
+        {
+            if (UAirship.Push().UserPushNotificationsEnabled)
+            {
+                this.channelIDButton.SetTitle(UAirship.Push().ChannelID, UIControlState.Normal);
+                this.channelIDButton.Hidden = false;
+                this.enablePushButton.Hidden = true;
+                return;
+            }
 
-		void refreshView()
-		{
-			if (UAirship.Push.UserPushNotificationsEnabled)
-			{
-				this.channelIDButton.SetTitle(UAirship.Push.ChannelID, UIControlState.Normal);
-				this.channelIDButton.Hidden = false;
-				this.enablePushButton.Hidden = true;
-				return;
-			}
+            this.channelIDButton.Hidden = true;
+            this.enablePushButton.Hidden = false;
+        }
 
-			this.channelIDButton.Hidden = true;
-			this.enablePushButton.Hidden = false;
-		}
-
-	}
+    }
 }
 

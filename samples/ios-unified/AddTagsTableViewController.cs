@@ -43,14 +43,14 @@ namespace Sample
 
 			if (newTag.Length > 0)
 			{
-				UAirship.Push.AddTag(newTag);
+				UAirship.Push().AddTag(newTag);
 			}
 			else
 			{
 				return false;
 			}
 
-			UAirship.Push.UpdateRegistration();
+			UAirship.Push().UpdateRegistration();
 
 			var navigationController = (UINavigationController)AddTagsTableViewController.ParentViewController;
 			navigationController.PopViewController(true);

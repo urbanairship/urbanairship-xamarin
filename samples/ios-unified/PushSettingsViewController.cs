@@ -7,141 +7,148 @@ using System.Linq;
 
 namespace Sample
 {
-	public partial class PushSettingsViewController : UITableViewController
-	{
-		public PushSettingsViewController(IntPtr handle) : base (handle)
-		{
-		
-		}
+    public partial class PushSettingsViewController : UITableViewController
+    {
+        public PushSettingsViewController(IntPtr handle) : base(handle)
+        {
 
-		public override void ViewDidLoad()
-		{
-			base.ViewDidLoad();
+        }
 
-			// Initialize switches
-			this.pushEnabledSwitch.On = UAirship.Push.UserPushNotificationsEnabled;
-			locationEnabledSwitch.On = UAirship.Location.LocationUpdatesEnabled;
-			analyticsSwitch.On = UAirship.Shared.Analytics.Enabled;
+        public override void ViewDidLoad()
+        {
+            base.ViewDidLoad();
 
-			NSString channelUpdatedNotification = new NSString("channelIDUpdated");
-			NSNotificationCenter.DefaultCenter.AddObserver(channelUpdatedNotification, (notification) =>
-			{
-				RefreshView();
-			});
+            // Initialize switches
+            this.pushEnabledSwitch.On = UAirship.Push().UserPushNotificationsEnabled;
+            locationEnabledSwitch.On = UAirship.Location().LocationUpdatesEnabled;
+            analyticsSwitch.On = UAirship.Analytics().Enabled;
 
-			NSString didBecomeActiveNotification = new NSString("UIApplicationDidBecomeActiveNotification");
-			NSNotificationCenter.DefaultCenter.AddObserver(didBecomeActiveNotification, (notification) =>
-			{
-				RefreshView();
-			});
+            NSString channelUpdatedNotification = new NSString("channelIDUpdated");
+            NSNotificationCenter.DefaultCenter.AddObserver(channelUpdatedNotification, (notification) =>
+            {
+                RefreshView();
+            });
 
-			locationEnabledLabel.Text = "Location Enabled label";
-			locationEnabledSubtitleLabel.Text = "Enable GPS and WIFI Based Location detail label";
-		}
+            NSString didBecomeActiveNotification = new NSString("UIApplicationDidBecomeActiveNotification");
+            NSNotificationCenter.DefaultCenter.AddObserver(didBecomeActiveNotification, (notification) =>
+            {
+                RefreshView();
+            });
 
-		public override void ViewWillAppear(bool animated)
-		{
-			base.ViewWillAppear(animated);
+            locationEnabledLabel.Text = "Location Enabled label";
+            locationEnabledSubtitleLabel.Text = "Enable GPS and WIFI Based Location detail label";
+        }
 
-			RefreshView();
-		}
+        public override void ViewWillAppear(bool animated)
+        {
+            base.ViewWillAppear(animated);
 
-		partial void switchValueChanged(UISwitch sender)
-		{
-			// Only allow disabling user notifications on iOS 10+
-			if (!NSProcessInfo.ProcessInfo.IsOperatingSystemAtLeastVersion(new NSOperatingSystemVersion(10, 0, 0)) &&
-			UAirship.Push.UserPushNotificationsEnabled)
-			{
-				UAirship.Push.UserPushNotificationsEnabled = pushEnabledSwitch.On;
-			}
-			else if (pushEnabledSwitch.On) {
-				UAirship.Push.UserPushNotificationsEnabled = true;
-			}
+            RefreshView();
+        }
 
-			UAirship.Location.LocationUpdatesEnabled = locationEnabledSwitch.On;
+        partial void switchValueChanged(UISwitch sender)
+        {
+            // Only allow disabling user notifications on iOS 10+
+            if (!NSProcessInfo.ProcessInfo.IsOperatingSystemAtLeastVersion(new NSOperatingSystemVersion(10, 0, 0)) &&
+            UAirship.Push().UserPushNotificationsEnabled)
+            {
+                UAirship.Push().UserPushNotificationsEnabled = pushEnabledSwitch.On;
+            }
+            else if (pushEnabledSwitch.On)
+            {
+                UAirship.Push().UserPushNotificationsEnabled = true;
+            }
 
-			UAirship.Shared.Analytics.Enabled = analyticsSwitch.On;
-		}
+            UAirship.Location().LocationUpdatesEnabled = locationEnabledSwitch.On;
 
-		void RefreshView() 
-		{
-			channelIDSubtitleLabel.Text = UAirship.Push.ChannelID;
+            UAirship.Analytics().Enabled = analyticsSwitch.On;
+        }
 
-			namedUserSubtitleLabel.Text = UAirship.NamedUser.Identifier == null ? "None" : UAirship.NamedUser.Identifier;
+        void RefreshView()
+        {
+            channelIDSubtitleLabel.Text = UAirship.Push().ChannelID;
 
-			if (UAirship.Push.Tags.Count() > 0) {
-				tagsSubtitleLabel.Text = string.Join(",", UAirship.Push.Tags);
-			}
-			else {
-				tagsSubtitleLabel.Text = "None";
-			}
-		}
+            namedUserSubtitleLabel.Text = UAirship.NamedUser().Identifier == null ? "None" : UAirship.NamedUser().Identifier;
 
-		NSString PushTypeString() 
-		{
+            if (UAirship.Push().Tags.Count() > 0)
+            {
+                tagsSubtitleLabel.Text = string.Join(",", UAirship.Push().Tags);
+            }
+            else
+            {
+                tagsSubtitleLabel.Text = "None";
+            }
+        }
 
-			UANotificationOptions options = UAirship.Push.AuthorizedNotificationOptions;
+        NSString PushTypeString()
+        {
 
-			NSMutableArray typeArray = new NSMutableArray(3);
+            UANotificationOptions options = UAirship.Push().AuthorizedNotificationOptions;
 
-			if ((options & UANotificationOptions.Alert) > 0) {
-				typeArray.Add(new NSString("Alert"));
-			}
-			if ((options & UANotificationOptions.Badge) > 0) {
-				typeArray.Add(new NSString("Badge"));
-			}
-			if ((options & UANotificationOptions.Sound) > 0) {
-				typeArray.Add(new NSString("Sound"));
-			}
+            NSMutableArray typeArray = new NSMutableArray(3);
 
-			if (!(typeArray.Count > 0)) {
-				return new NSString("Pushes Currently Disabled"); 
-			}
+            if ((options & UANotificationOptions.Alert) > 0)
+            {
+                typeArray.Add(new NSString("Alert"));
+            }
+            if ((options & UANotificationOptions.Badge) > 0)
+            {
+                typeArray.Add(new NSString("Badge"));
+            }
+            if ((options & UANotificationOptions.Sound) > 0)
+            {
+                typeArray.Add(new NSString("Sound"));
+            }
 
-			return new NSString(string.Join(",", typeArray));
-		}
+            if (!(typeArray.Count > 0))
+            {
+                return new NSString("Pushes Currently Disabled");
+            }
 
-		public override void RowSelected(UITableView tableView, NSIndexPath indexPath)
-		{
-			//base.RowSelected(tableView, indexPath);
+            return new NSString(string.Join(",", typeArray));
+        }
 
-			tableView.DeselectRow(indexPath, true);
+        public override void RowSelected(UITableView tableView, NSIndexPath indexPath)
+        {
+            //base.RowSelected(tableView, indexPath);
 
-			// iOS 8 & 9 - redirect push enabled cell to system settings
-			if (!NSProcessInfo.ProcessInfo.IsOperatingSystemAtLeastVersion(new NSOperatingSystemVersion(10, 0, 0)) && 
-			    UAirship.Push.UserPushNotificationsEnabled)
-			{
-				if (indexPath.Section.Equals(tableView.IndexPathForCell(pushEnabledCell).Section)) { 
-					if (indexPath.Row.Equals(tableView.IndexPathForCell(pushEnabledCell).Row)) {
-						NSUrl openSettingsURL = new NSUrl(UIApplication.OpenSettingsUrlString);
-						UIApplication.SharedApplication.OpenUrl(url: openSettingsURL);
-					}
-				}
-			}
+            tableView.DeselectRow(indexPath, true);
 
-			if (indexPath.Section.Equals(tableView.IndexPathForCell(channelIDCell).Section))
-			{
-				if (indexPath.Row.Equals(tableView.IndexPathForCell(channelIDCell).Row))
-				{
-					if (UAirship.Push.ChannelID != null) {
-						UIPasteboard.General.String = channelIDSubtitleLabel.Text;
-						ShowCopyMessage();
-					}
-				}
-			}
-		
-		}
+            // iOS 8 & 9 - redirect push enabled cell to system settings
+            if (!NSProcessInfo.ProcessInfo.IsOperatingSystemAtLeastVersion(new NSOperatingSystemVersion(10, 0, 0)) &&
+                UAirship.Push().UserPushNotificationsEnabled)
+            {
+                if (indexPath.Section.Equals(tableView.IndexPathForCell(pushEnabledCell).Section))
+                {
+                    if (indexPath.Row.Equals(tableView.IndexPathForCell(pushEnabledCell).Row))
+                    {
+                        NSUrl openSettingsURL = new NSUrl(UIApplication.OpenSettingsUrlString);
+                        UIApplication.SharedApplication.OpenUrl(url: openSettingsURL);
+                    }
+                }
+            }
 
-		void ShowCopyMessage() {
-			UAInAppMessage message = new UAInAppMessage();
-			message.Alert = "Copied to clipboard string";
-			message.Position = UAInAppMessagePosition.Top;
-			message.Duration = 1.5;
-			message.PrimaryColor = UIColor.FromRGB(255, 200, 40);
-			message.SecondaryColor = UIColor.FromRGB(0, 105, 143);
+            if (indexPath.Section.Equals(tableView.IndexPathForCell(channelIDCell).Section))
+            {
+                if (indexPath.Row.Equals(tableView.IndexPathForCell(channelIDCell).Row))
+                {
+                    if (UAirship.Push().ChannelID != null)
+                    {
+                        UIPasteboard.General.String = channelIDSubtitleLabel.Text;
+                        ShowCopyMessage();
+                    }
+                }
+            }
 
-			UAirship.InAppMessaging.DisplayMessage(message);
-		}
-	}
+        }
+
+        void ShowCopyMessage()
+        {
+            UIAlertController alertController = UIAlertController.Create(null, "Channel copied to clipboard!", UIAlertControllerStyle.Alert);
+            alertController.AddAction(UIAlertAction.Create("OK", UIAlertActionStyle.Default, null));
+
+            PresentViewController(alertController, animated: true, completionHandler: null);
+        }
+    }
 }
 

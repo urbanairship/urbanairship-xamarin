@@ -37,10 +37,11 @@ namespace Sample
 
 			UIAlertAction okAction = UIAlertAction.Create(title: "OK", style: UIAlertActionStyle.Default, handler: (UIAlertAction action) =>
 			{
-				NSString messageID = UAInboxUtils.InboxMessageIDFromNotification(notificationContent.NotificationInfo);	
+				string messageID = UAInboxUtils.InboxMessageID(notificationContent.NotificationInfo);
+
 
 				if (messageID != null) {
-					UAActionRunner.RunAction("open_mc_action", messageID, UASituation.ManualInvocation);
+					UAActionRunner.RunAction("open_mc_action", NSObject.FromObject(messageID), UASituation.ManualInvocation);
 				}
 			});
 

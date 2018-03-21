@@ -17,7 +17,7 @@ using System.Security.Authentication.ExtendedProtection;
 namespace Sample
 {
 	[Register("AppDelegate")]
-	public class AppDelegate : UIApplicationDelegate
+	public class AppDelegate : UIApplicationDelegate, IUARegistrationDelegate
 	{
 		private InboxDelegate inboxDelegate;
 		private PushHandler pushHandler;
@@ -56,15 +56,15 @@ namespace Sample
 
 			Console.WriteLine("Config:{0}", config);
 
-			UAirship.Push.ResetBadge();
+			UAirship.Push().ResetBadge();
 
 			pushHandler = new PushHandler();
-			UAirship.Push.PushNotificationDelegate = pushHandler;
+			UAirship.Push().PushNotificationDelegate = pushHandler;
 
 			inboxDelegate = new InboxDelegate(Window.RootViewController);
-			UAirship.Inbox.Delegate = inboxDelegate;
+			UAirship.Inbox().Delegate = inboxDelegate;
 
-			UAirship.Push.WeakRegistrationDelegate = this;
+			UAirship.Push().WeakRegistrationDelegate = this;
 
 			NSString messageListUpdated = new NSString("com.urbanairship.notification.message_list_updated");
 
@@ -123,9 +123,9 @@ namespace Sample
 				UITabBarController tabBarController = (UITabBarController)Window.RootViewController;
 				UITabBarItem messageCenterTab = tabBarController.TabBar.Items[2];
 
-				if (UAirship.Inbox.MessageList.UnreadCount > 0)
+				if (UAirship.Inbox().MessageList.UnreadCount > 0)
 				{
-					messageCenterTab.BadgeValue = UAirship.Inbox.MessageList.UnreadCount.ToString();
+					messageCenterTab.BadgeValue = UAirship.Inbox().MessageList.UnreadCount.ToString();
 				}
 				else
 				{

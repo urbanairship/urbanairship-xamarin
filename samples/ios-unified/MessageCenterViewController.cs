@@ -5,7 +5,7 @@ using UrbanAirship;
 
 namespace Sample
 {
-	public partial class MessageCenterViewController : UADefaultMessageCenterSplitViewController
+	public partial class MessageCenterViewController : UAMessageCenterSplitViewController
 	{
 		public MessageCenterViewController(IntPtr handle) : base(handle)
 		{
@@ -15,11 +15,11 @@ namespace Sample
 		{
 			base.ViewWillAppear(animated);
 
-			this.Style = UAirship.DefaultMessageCenter.Style;
+			this.Style = UAirship.MessageCenter().Style;
 		}
 
 		public void DisplayMessage(UAInboxMessage message) {
-			ListViewController.DisplayMessage(message);
+			ListViewController.DisplayMessage(message.MessageID);
 		}
 	}
 }

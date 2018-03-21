@@ -43,13 +43,13 @@ namespace Sample
 
 			if (newNamedUser.Length > 0)
 			{
-				UAirship.NamedUser.Identifier = newNamedUser;
+				UAirship.NamedUser().Identifier = newNamedUser;
 			}
 			else {
-				UAirship.NamedUser.Identifier = null;
+				UAirship.NamedUser().Identifier = null;
 			}
 
-			UAirship.Push.UpdateRegistration();
+			UAirship.Push().UpdateRegistration();
 
 			var navigationController = (UINavigationController)MyAddNamedUserTableViewController.ParentViewController;
 			navigationController.PopViewController(true);

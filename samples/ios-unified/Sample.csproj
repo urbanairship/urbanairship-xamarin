@@ -26,6 +26,7 @@
     <MtouchI18n></MtouchI18n>
     <CodesignKey>iPhone Developer</CodesignKey>
     <AssemblyName>Sample</AssemblyName>
+<MtouchExtraArgs>--mono:static</MtouchExtraArgs>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
     <DebugType>full</DebugType>
