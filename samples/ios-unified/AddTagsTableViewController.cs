@@ -5,58 +5,58 @@ using UrbanAirship;
 
 namespace Sample
 {
-	public partial class AddTagsTableViewController : UITableViewController
-	{
-		AddTagsTextFieldDelegate MyTextFieldDelegate;
+    public partial class AddTagsTableViewController : UITableViewController
+    {
+        AddTagsTextFieldDelegate MyTextFieldDelegate;
 
-		public AddTagsTableViewController(IntPtr handle) : base(handle)
-		{
-			
-		}
+        public AddTagsTableViewController(IntPtr handle) : base(handle)
+        {
 
-		public override void ViewDidLoad()
-		{
-			base.ViewDidLoad();
+        }
 
-			MyTextFieldDelegate = new AddTagsTextFieldDelegate();
+        public override void ViewDidLoad()
+        {
+            base.ViewDidLoad();
 
-			addCustomTagTextField.Delegate = MyTextFieldDelegate;
-			MyTextFieldDelegate.AddTagsTableViewController = this;
-		}
+            MyTextFieldDelegate = new AddTagsTextFieldDelegate();
 
-		public override bool CanEditRow(UITableView tableView, Foundation.NSIndexPath indexPath)
-		{
-			return false;
-		}
-	}
+            addCustomTagTextField.Delegate = MyTextFieldDelegate;
+            MyTextFieldDelegate.AddTagsTableViewController = this;
+        }
 
-	class AddTagsTextFieldDelegate : UITextFieldDelegate
-	{
-		public AddTagsTableViewController AddTagsTableViewController;
+        public override bool CanEditRow(UITableView tableView, Foundation.NSIndexPath indexPath)
+        {
+            return false;
+        }
+    }
 
-		public override bool ShouldReturn(UITextField textField)
-		{
-			AddTagsTableViewController.View.EndEditing(true);
+    class AddTagsTextFieldDelegate : UITextFieldDelegate
+    {
+        public AddTagsTableViewController AddTagsTableViewController;
 
-			// Trim leading and trailing whitespace
-			var newTag = textField.Text.Trim();
+        public override bool ShouldReturn(UITextField textField)
+        {
+            AddTagsTableViewController.View.EndEditing(true);
 
-			if (newTag.Length > 0)
-			{
-				UAirship.Push().AddTag(newTag);
-			}
-			else
-			{
-				return false;
-			}
+            // Trim leading and trailing whitespace
+            var newTag = textField.Text.Trim();
 
-			UAirship.Push().UpdateRegistration();
+            if (newTag.Length > 0)
+            {
+                UAirship.Push().AddTag(newTag);
+            }
+            else
+            {
+                return false;
+            }
 
-			var navigationController = (UINavigationController)AddTagsTableViewController.ParentViewController;
-			navigationController.PopViewController(true);
+            UAirship.Push().UpdateRegistration();
 
-			return true;
-		}
-	}
+            var navigationController = (UINavigationController)AddTagsTableViewController.ParentViewController;
+            navigationController.PopViewController(true);
+
+            return true;
+        }
+    }
 }
 

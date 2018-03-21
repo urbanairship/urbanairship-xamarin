@@ -5,56 +5,57 @@ using UrbanAirship;
 
 namespace Sample
 {
-	public partial class AddNamedUserTableViewController : UITableViewController
-	{
+    public partial class AddNamedUserTableViewController : UITableViewController
+    {
 
-		NamedUserTextFieldDelegate MyTextFieldDelegate;
+        NamedUserTextFieldDelegate MyTextFieldDelegate;
 
-		public AddNamedUserTableViewController(IntPtr handle) : base (handle)
-		{
-		}
+        public AddNamedUserTableViewController(IntPtr handle) : base(handle)
+        {
+        }
 
-		public override void ViewDidLoad()
-		{
-			base.ViewDidLoad();
+        public override void ViewDidLoad()
+        {
+            base.ViewDidLoad();
 
-			MyTextFieldDelegate = new NamedUserTextFieldDelegate();
-			MyTextFieldDelegate.MyAddNamedUserTableViewController = this;
+            MyTextFieldDelegate = new NamedUserTextFieldDelegate();
+            MyTextFieldDelegate.MyAddNamedUserTableViewController = this;
 
-			addNamedUserTextField.Delegate = MyTextFieldDelegate;
-		}
+            addNamedUserTextField.Delegate = MyTextFieldDelegate;
+        }
 
-		public override bool CanEditRow(UITableView tableView, Foundation.NSIndexPath indexPath)
-		{
-			return false;
-		}
-	}
+        public override bool CanEditRow(UITableView tableView, Foundation.NSIndexPath indexPath)
+        {
+            return false;
+        }
+    }
 
-	class NamedUserTextFieldDelegate : UITextFieldDelegate
-	{
-		public AddNamedUserTableViewController MyAddNamedUserTableViewController;
+    class NamedUserTextFieldDelegate : UITextFieldDelegate
+    {
+        public AddNamedUserTableViewController MyAddNamedUserTableViewController;
 
-		public override bool ShouldReturn(UITextField textField)
-		{
-			MyAddNamedUserTableViewController.View.EndEditing(true);
+        public override bool ShouldReturn(UITextField textField)
+        {
+            MyAddNamedUserTableViewController.View.EndEditing(true);
 
-			// Trim leading and trailing whitespac
-			var newNamedUser = textField.Text.Trim();
+            // Trim leading and trailing whitespac
+            var newNamedUser = textField.Text.Trim();
 
-			if (newNamedUser.Length > 0)
-			{
-				UAirship.NamedUser().Identifier = newNamedUser;
-			}
-			else {
-				UAirship.NamedUser().Identifier = null;
-			}
+            if (newNamedUser.Length > 0)
+            {
+                UAirship.NamedUser().Identifier = newNamedUser;
+            }
+            else
+            {
+                UAirship.NamedUser().Identifier = null;
+            }
 
-			UAirship.Push().UpdateRegistration();
+            UAirship.Push().UpdateRegistration();
 
-			var navigationController = (UINavigationController)MyAddNamedUserTableViewController.ParentViewController;
-			navigationController.PopViewController(true);
+            var navigationController = (UINavigationController)MyAddNamedUserTableViewController.ParentViewController;
+            navigationController.PopViewController(true);
 
-			return true;
-		}
-	}
+            return true;
+        }
+    }
 }
