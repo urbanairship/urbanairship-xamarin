@@ -50,5 +50,11 @@
   <attr path="/api/package[@name='com.urbanairship.analytics']/class[@name='AccountEventTemplate']/field[@name='ACCOUNT_EVENT_TEMPLATE']" name="managedName">TemplateName</attr>
   <attr path="/api/package[@name='com.urbanairship.analytics']/class[@name='MediaEventTemplate']/field[@name='MEDIA_EVENT_TEMPLATE']" name="managedName">TemplateName</attr>
 
+  <!-- Remove ActionScheduleEdits and ActionScheduleInfo data getters-->
+  <remove-node path="/api/package[@name='com.urbanairship.automation']/interface[@name='ScheduleEdits']/method[@name='getData']" />
+  <remove-node path="/api/package[@name='com.urbanairship.automation']/interface[@name='ScheduleInfo']/method[@name='getData']" />
+  <remove-node path="/api/package[@name='com.urbanairship.automation']/class[@name='ActionScheduleEdits']/method[@name='getData']" />
+  <remove-node path="/api/package[@name='com.urbanairship.automation']/class[@name='ActionScheduleInfo']/method[@name='getData']" />
+
 </metadata>
 
