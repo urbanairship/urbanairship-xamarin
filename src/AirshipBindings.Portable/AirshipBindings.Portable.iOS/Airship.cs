@@ -23,12 +23,12 @@ namespace UrbanAirship.Portable
 		{
 			get
 			{
-				return UAirship.Push.UserPushNotificationsEnabled;
+				return UAirship.Push().UserPushNotificationsEnabled;
 			}
 
 			set
 			{
-				UAirship.Push.UserPushNotificationsEnabled = value;
+				UAirship.Push().UserPushNotificationsEnabled = value;
 			}
 		}
 
@@ -36,7 +36,7 @@ namespace UrbanAirship.Portable
 		{
 			get
 			{
-				return UAirship.Push.Tags;
+				return UAirship.Push().Tags;
 			}
 		}
 
@@ -44,7 +44,7 @@ namespace UrbanAirship.Portable
 		{
 			get
 			{
-				return UAirship.Push.ChannelID;
+				return UAirship.Push().ChannelID;
 			}
 		}
 
@@ -52,12 +52,12 @@ namespace UrbanAirship.Portable
 		{
 			get
 			{
-				return UAirship.Location.LocationUpdatesEnabled;
+				return UAirship.Location().LocationUpdatesEnabled;
 			}
 
 			set
 			{
-				UAirship.Location.LocationUpdatesEnabled = value;
+				UAirship.Location().LocationUpdatesEnabled = value;
 			}
 		}
 
@@ -65,12 +65,12 @@ namespace UrbanAirship.Portable
 		{
 			get
 			{
-				return UAirship.Location.BackgroundLocationUpdatesAllowed;
+				return UAirship.Location().BackgroundLocationUpdatesAllowed;
 			}
 
 			set
 			{
-				UAirship.Location.BackgroundLocationUpdatesAllowed = value;
+				UAirship.Location().BackgroundLocationUpdatesAllowed = value;
 			}
 		}
 
@@ -78,12 +78,12 @@ namespace UrbanAirship.Portable
 		{
 			get
 			{
-				return UAirship.NamedUser.Identifier;
+				return UAirship.NamedUser().Identifier;
 			}
 
 			set
 			{
-				UAirship.NamedUser.Identifier = value;
+				UAirship.NamedUser().Identifier = value;
 			}
 		}
 
@@ -96,12 +96,12 @@ namespace UrbanAirship.Portable
 		{
 			if (clear)
 			{
-				UAirship.Push.Tags = new string[] { };
+				UAirship.Push().Tags = new string[] { };
 			}
 
-			UAirship.Push.AddTags(addTags);
-			UAirship.Push.RemoveTags(removeTags);
-			UAirship.Push.UpdateRegistration();
+			UAirship.Push().AddTags(addTags);
+			UAirship.Push().RemoveTags(removeTags);
+			UAirship.Push().UpdateRegistration();
 		}
 
 		public void AddCustomEvent(Portable.Analytics.CustomEvent customEvent)
@@ -162,26 +162,26 @@ namespace UrbanAirship.Portable
 				}
 			}
 
-			UAirship.Shared.Analytics.AddEvent(uaEvent);
+			UAirship.Analytics().AddEvent(uaEvent);
 		}
 
 		public void AssociateIdentifier(string key, string identifier)
 		{
-			UAAssociatedIdentifiers identifiers = UAirship.Shared.Analytics.CurrentAssociatedDeviceIdentifiers();
+			UAAssociatedIdentifiers identifiers = UAirship.Analytics().CurrentAssociatedDeviceIdentifiers();
 			identifiers.SetIdentifier(identifier, key);
-			UAirship.Shared.Analytics.AssociateDeviceIdentifiers(identifiers);
+			UAirship.Analytics().AssociateDeviceIdentifiers(identifiers);
 		}
 
 		public void DisplayMessageCenter()
 		{
-			UAirship.DefaultMessageCenter.Display();
+			UAirship.MessageCenter().Display();
 		}
 
 		public int MessageCenterUnreadCount
 		{
 			get
 			{
-				return (int)UAirship.Inbox.MessageList.UnreadCount;
+				return (int)UAirship.Inbox().MessageList.UnreadCount;
 			}
 		}
 
@@ -189,7 +189,7 @@ namespace UrbanAirship.Portable
 		{
 			get
 			{
-				return (int)UAirship.Inbox.MessageList.MessageCount;
+				return (int)UAirship.Inbox().MessageList.MessageCount();
 			}
 		}
 
@@ -198,7 +198,7 @@ namespace UrbanAirship.Portable
 			return new Push.TagGroupsEditor((List<Push.TagGroupsEditor.TagOperation> payload) =>
 			{
 				TagGroupHelper(payload, true);
-				UAirship.NamedUser.UpdateTags();
+				UAirship.NamedUser().UpdateTags();
 			});
 		}
 
@@ -207,7 +207,7 @@ namespace UrbanAirship.Portable
 			return new Push.TagGroupsEditor((List<Push.TagGroupsEditor.TagOperation> payload) =>
 			{
 				TagGroupHelper(payload, false);
-				UAirship.Push.UpdateRegistration();
+				UAirship.Push().UpdateRegistration();
 			});
 		}
 
@@ -215,15 +215,15 @@ namespace UrbanAirship.Portable
 		{
 			var namedUserActions = new Dictionary<Push.TagGroupsEditor.OperationType, Action<string, string[]>>()
 			{
-				{ Push.TagGroupsEditor.OperationType.ADD, (group, t) => UAirship.NamedUser.AddTags(t, group) },
-				{ Push.TagGroupsEditor.OperationType.REMOVE, (group, t) => UAirship.NamedUser.RemoveTags(t, group) },
-				{ Push.TagGroupsEditor.OperationType.SET, (group, t) => UAirship.NamedUser.SetTags(t, group) }
+				{ Push.TagGroupsEditor.OperationType.ADD, (group, t) => UAirship.NamedUser().AddTags(t, group) },
+				{ Push.TagGroupsEditor.OperationType.REMOVE, (group, t) => UAirship.NamedUser().RemoveTags(t, group) },
+				{ Push.TagGroupsEditor.OperationType.SET, (group, t) => UAirship.NamedUser().SetTags(t, group) }
 			};
 			var channelActions = new Dictionary<Push.TagGroupsEditor.OperationType, Action<string, string[]>>()
 			{
-				{ Push.TagGroupsEditor.OperationType.ADD, (group, t) => UAirship.Push.AddTags(t, group) },
-				{ Push.TagGroupsEditor.OperationType.REMOVE, (group, t) => UAirship.Push.RemoveTags(t, group) },
-				{ Push.TagGroupsEditor.OperationType.SET, (group, t) => UAirship.Push.SetTags(t, group) }
+				{ Push.TagGroupsEditor.OperationType.ADD, (group, t) => UAirship.Push().AddTags(t, group) },
+				{ Push.TagGroupsEditor.OperationType.REMOVE, (group, t) => UAirship.Push().RemoveTags(t, group) },
+				{ Push.TagGroupsEditor.OperationType.SET, (group, t) => UAirship.Push().SetTags(t, group) }
 			};
 
 			var actions = namedUser ? namedUserActions : channelActions;
