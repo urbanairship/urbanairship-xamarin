@@ -48,7 +48,7 @@ Xamarin application.
 
 3. Enable user notifications:
     ```
-        UAirship.Push.UserPushNotificationsEnabled = true;
+        UAirship.Push().UserPushNotificationsEnabled = true;
     ```
 
 ### Android Setup
