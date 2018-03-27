@@ -4,7 +4,7 @@ This component provides official bindings to the Urban Airship SDK, as well as s
 
 ### Release Notes
 
-Version 5.0.0 - March 22, 2018
+Version 5.0.0 - March 27, 2018
 ==============================
 - Updated iOS and Android SDKs to 9.0.4
 
