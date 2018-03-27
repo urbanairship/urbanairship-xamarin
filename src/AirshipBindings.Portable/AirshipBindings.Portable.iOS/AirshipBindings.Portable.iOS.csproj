@@ -45,9 +45,6 @@
     <Reference Include="System.Core" />
     <Reference Include="Xamarin.iOS" />
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="AirshipBindings">
-      <HintPath>..\packages\urbanairship.5.0.0\lib\Xamarin.iOS10\AirshipBindings.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
@@ -64,9 +61,10 @@
       <Project>{3D3696C8-5372-4BDF-B88A-57DE3B3ABE2D}</Project>
       <Name>AirshipBindings.Portable.Abstractions</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
+    <ProjectReference Include="..\..\AirshipBindings.iOS\AirshipBindings.iOS.csproj">
+      <Project>{58346B7E-E18F-4CB1-A9B8-C2266BDCFE2A}</Project>
+      <Name>AirshipBindings.iOS</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>

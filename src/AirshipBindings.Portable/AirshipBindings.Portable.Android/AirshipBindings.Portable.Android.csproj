@@ -43,9 +43,6 @@
     <Reference Include="System.Core" />
     <Reference Include="Mono.Android" />
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="AirshipBindings">
-      <HintPath>..\packages\urbanairship.5.0.0\lib\MonoAndroid41\AirshipBindings.dll</HintPath>
-    </Reference>
     <Reference Include="Xamarin.Android.Support.Annotations">
       <HintPath>..\packages\Xamarin.Android.Support.Annotations.27.0.2\lib\MonoAndroid81\Xamarin.Android.Support.Annotations.dll</HintPath>
     </Reference>
@@ -114,6 +111,10 @@
     <ProjectReference Include="..\AirshipBindings.Portable.Abstractions\AirshipBindings.Portable.Abstractions.csproj">
       <Project>{3D3696C8-5372-4BDF-B88A-57DE3B3ABE2D}</Project>
       <Name>AirshipBindings.Portable.Abstractions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AirshipBindings.Android\AirshipBindings.Android.csproj">
+      <Project>{1CAD9B42-85C2-495A-AA2D-1EA2FCFE1C3B}</Project>
+      <Name>AirshipBindings.Android</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
