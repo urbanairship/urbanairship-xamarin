@@ -12,8 +12,8 @@
   <attr path="/api/package[@name='com.urbanairship.location']" name="managedName">UrbanAirship.Location</attr>
   <attr path="/api/package[@name='com.urbanairship.preference']" name="managedName">UrbanAirship.Preference</attr>
   <attr path="/api/package[@name='com.urbanairship.push']" name="managedName">UrbanAirship.Push</attr>
-  <attr path="/api/package[@name='com.urbanairship.push.iam']" name="managedName">UrbanAirship.Push.InApp</attr>
-  <attr path="/api/package[@name='com.urbanairship.push.iam.view']" name="managedName">UrbanAirship.Push.InApp.View</attr>
+  <attr path="/api/package[@name='com.urbanairship.push.gcm']" name="managedName">UrbanAirship.Push.Gcm</attr>
+  <attr path="/api/package[@name='com.urbanairship.push.adm']" name="managedName">UrbanAirship.Push.Adm</attr>
   <attr path="/api/package[@name='com.urbanairship.push.notifications']" name="managedName">UrbanAirship.Push.Notifications</attr>
   <attr path="/api/package[@name='com.urbanairship.richpush']" name="managedName">UrbanAirship.RichPush</attr>
   <attr path="/api/package[@name='com.urbanairship.widget']" name="managedName">UrbanAirship.Widget</attr>

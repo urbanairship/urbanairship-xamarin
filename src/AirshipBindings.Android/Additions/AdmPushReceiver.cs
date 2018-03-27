@@ -10,7 +10,7 @@ using Android.App;
 [assembly: UsesPermission(Name = "@PACKAGE_NAME@.permission.RECEIVE_ADM_MESSAGE")]
 [assembly: UsesPermission(Name = "com.amazon.device.messaging.permission.RECEIVE")]
 
-namespace UrbanAirship.Push
+namespace UrbanAirship.Push.Adm
 {
 
 	[Android.Runtime.Preserve (AllMembers = true)]
