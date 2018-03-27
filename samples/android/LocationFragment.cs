@@ -15,12 +15,13 @@ using Android.Widget;
 
 using UrbanAirship;
 using UrbanAirship.Location;
+using Java.Lang;
 
 namespace Sample
 {
 	public class LocationFragment : Fragment
 	{
-		private UrbanAirship.ICancelable pendingRequest;
+		private PendingResult pendingResult;
 		private RadioGroup priorityGroup;
 		private View progress;
 		const int PERMISSIONS_REQUEST_LOCATION = 100;
@@ -65,9 +66,9 @@ namespace Sample
 		{
 			base.OnPause();
 
-			if (pendingRequest != null)
+			if (pendingResult != null)
 			{
-				pendingRequest.Cancel();
+				pendingResult.Cancel();
 				progress.Visibility = ViewStates.Invisible;
 			}
 		}
@@ -99,9 +100,9 @@ namespace Sample
 				return;
 			}
 
-			if (pendingRequest != null)
+			if (pendingResult != null)
 			{
-				pendingRequest.Cancel();
+				pendingResult.Cancel();
 			}
 
 			progress.Visibility = ViewStates.Visible;
@@ -110,10 +111,11 @@ namespace Sample
 																	   .SetPriority(Priority)
 																	   .Create();
 
-			pendingRequest = UAirship.Shared().LocationManager.RequestSingleLocation(new LocManagerCallback(Context, progress), options);
+			pendingResult = UAirship.Shared().LocationManager.RequestSingleLocation(options);
+            pendingResult.AddResultCallback(new LocManagerCallback(Context, progress));
 		}
 
-		internal class LocManagerCallback : Java.Lang.Object, ILocationCallback
+		internal class LocManagerCallback : Java.Lang.Object, IResultCallback
 		{
 			View progress;
 			Android.Content.Context context;
@@ -124,8 +126,9 @@ namespace Sample
 				this.context = context;
 			}
 
-			public void OnResult(Location location)
+			public void OnResult(Java.Lang.Object @object)
 			{
+                Location location = (Location)@object;
 				progress.Visibility = ViewStates.Invisible;
 
 				if (location != null)
@@ -138,9 +141,9 @@ namespace Sample
 				}
 			}
 
-			private string FormatLocation(Location location)
+            private string FormatLocation(Location location)
 			{
-				return String.Format("provider: {0}, lat: {1}, lon: {2}, accuracy: {3}",
+				return System.String.Format("provider: {0}, lat: {1}, lon: {2}, accuracy: {3}",
 									 location.Provider, location.Latitude, location.Longitude, location.Accuracy);
 			}
 		}

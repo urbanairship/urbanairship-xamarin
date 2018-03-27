@@ -10,7 +10,7 @@ using Android.App;
 [assembly: UsesPermission(Name = "@PACKAGE_NAME@.permission.C2D_MESSAGE")]
 [assembly: UsesPermission(Name = "com.google.android.c2dm.permission.RECEIVE")]
 
-namespace UrbanAirship.Push
+namespace UrbanAirship.Push.Gcm
 {
 
 	[Android.Runtime.Preserve (AllMembers = true)]

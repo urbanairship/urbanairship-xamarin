@@ -10,91 +10,96 @@ using System.Runtime.CompilerServices;
 
 namespace Sample
 {
-	public class PushHandler : UAPushNotificationDelegate
-	{
-		public override void ReceivedBackgroundNotification(UANotificationContent notificationContent, Action<UIBackgroundFetchResult> completionHandler) { 
-			Console.WriteLine("The application received a background notification");
+    public class PushHandler : UAPushNotificationDelegate
+    {
+        public override void ReceivedBackgroundNotification(UANotificationContent notificationContent, Action<UIBackgroundFetchResult> completionHandler)
+        {
+            Console.WriteLine("The application received a background notification");
 
-			completionHandler(UIBackgroundFetchResult.NoData);
-		}
+            completionHandler(UIBackgroundFetchResult.NoData);
+        }
 
-		public override void ReceivedForegroundNotification(UANotificationContent notificationContent, Action completionHandler)
-		{
+        public override void ReceivedForegroundNotification(UANotificationContent notificationContent, Action completionHandler)
+        {
 
-			// Application received a foreground notification
-			Console.WriteLine("The application received a foreground notification");
+            // Application received a foreground notification
+            Console.WriteLine("The application received a foreground notification");
 
-			// iOS 10 - let foreground presentations options handle it
-			if (NSProcessInfo.ProcessInfo.IsOperatingSystemAtLeastVersion(new NSOperatingSystemVersion(10, 0, 0)))
-			{
-				completionHandler();
-				return;
-			}
+            // iOS 10 - let foreground presentations options handle it
+            if (NSProcessInfo.ProcessInfo.IsOperatingSystemAtLeastVersion(new NSOperatingSystemVersion(10, 0, 0)))
+            {
+                completionHandler();
+                return;
+            }
 
-			UIAlertController alertController = UIAlertController.Create(title: notificationContent.AlertTitle,
-			                                                             message: notificationContent.AlertBody,
-			                                                             preferredStyle: UIAlertControllerStyle.Alert);
+            UIAlertController alertController = UIAlertController.Create(title: notificationContent.AlertTitle,
+                                                                         message: notificationContent.AlertBody,
+                                                                         preferredStyle: UIAlertControllerStyle.Alert);
 
-			UIAlertAction okAction = UIAlertAction.Create(title: "OK", style: UIAlertActionStyle.Default, handler: (UIAlertAction action) =>
-			{
-				NSString messageID = UAInboxUtils.InboxMessageIDFromNotification(notificationContent.NotificationInfo);	
+            UIAlertAction okAction = UIAlertAction.Create(title: "OK", style: UIAlertActionStyle.Default, handler: (UIAlertAction action) =>
+            {
+                string messageID = UAInboxUtils.InboxMessageID(notificationContent.NotificationInfo);
 
-				if (messageID != null) {
-					UAActionRunner.RunAction("open_mc_action", messageID, UASituation.ManualInvocation);
-				}
-			});
 
-			alertController.AddAction(okAction);
+                if (messageID != null)
+                {
+                    UAActionRunner.RunAction("open_mc_action", NSObject.FromObject(messageID), UASituation.ManualInvocation);
+                }
+            });
 
-			UIViewController topController = UIApplication.SharedApplication.KeyWindow.RootViewController;
+            alertController.AddAction(okAction);
 
-			alertController.PopoverPresentationController.SourceView = topController.View;
+            UIViewController topController = UIApplication.SharedApplication.KeyWindow.RootViewController;
 
-			topController.PresentViewController(alertController, true, null);
+            alertController.PopoverPresentationController.SourceView = topController.View;
 
-			completionHandler();
-		}
+            topController.PresentViewController(alertController, true, null);
 
-		public override void ReceivedNotificationResponse(UANotificationResponse notificationResponse, Action completionHandler)
-		{
-			Console.WriteLine("The user selected the following action identifier::{0}", notificationResponse.ActionIdentifier);
+            completionHandler();
+        }
 
-			UANotificationContent notificationContent = notificationResponse.NotificationContent;
+        public override void ReceivedNotificationResponse(UANotificationResponse notificationResponse, Action completionHandler)
+        {
+            Console.WriteLine("The user selected the following action identifier::{0}", notificationResponse.ActionIdentifier);
 
-			String message = String.Format("Action Identifier:{0}", notificationResponse.ActionIdentifier);
-			String alertBody = notificationContent.AlertBody;
+            UANotificationContent notificationContent = notificationResponse.NotificationContent;
 
-			if (alertBody.Length > 0) 
-			{
-				message += String.Format("\nAlert Body:\n{0}", alertBody); 
-			}
+            String message = String.Format("Action Identifier:{0}", notificationResponse.ActionIdentifier);
+            String alertBody = notificationContent.AlertBody;
 
-			String responseText = notificationResponse.ResponseText;
+            if (alertBody.Length > 0)
+            {
+                message += String.Format("\nAlert Body:\n{0}", alertBody);
+            }
 
-			if (responseText != null) {
-				message += String.Format("\nResponse:\n{0}", responseText);
-			}
+            String responseText = notificationResponse.ResponseText;
 
-			UIAlertController alertController = UIAlertController.Create(title: notificationContent.AlertTitle,
-																		 message: alertBody,
-																		 preferredStyle: UIAlertControllerStyle.Alert);
+            if (responseText != null)
+            {
+                message += String.Format("\nResponse:\n{0}", responseText);
+            }
 
-			UIAlertAction okAction = UIAlertAction.Create(title: "OK", style: UIAlertActionStyle.Default, handler: null);
-			alertController.AddAction(okAction);
+            UIAlertController alertController = UIAlertController.Create(title: notificationContent.AlertTitle,
+                                                                         message: alertBody,
+                                                                         preferredStyle: UIAlertControllerStyle.Alert);
 
-			UIViewController topController = UIApplication.SharedApplication.KeyWindow.RootViewController;
-			if (alertController.PopoverPresentationController != null) {
-				alertController.PopoverPresentationController.SourceView = topController.View;
-			}
+            UIAlertAction okAction = UIAlertAction.Create(title: "OK", style: UIAlertActionStyle.Default, handler: null);
+            alertController.AddAction(okAction);
 
-			topController.PresentViewController(alertController, true, null);
+            UIViewController topController = UIApplication.SharedApplication.KeyWindow.RootViewController;
+            if (alertController.PopoverPresentationController != null)
+            {
+                alertController.PopoverPresentationController.SourceView = topController.View;
+            }
 
-			completionHandler();
-		}
+            topController.PresentViewController(alertController, true, null);
 
-		public override UNNotificationPresentationOptions PresentationOptions(UNNotification notification)
-		{
-			return UNNotificationPresentationOptions.Alert | UNNotificationPresentationOptions.Sound;
-		}
-	}
+            completionHandler();
+        }
+
+        public override UNNotificationPresentationOptions PresentationOptions(UNNotification notification)
+        {
+            return UNNotificationPresentationOptions.Alert | UNNotificationPresentationOptions.Sound;
+        }
+    }
 }

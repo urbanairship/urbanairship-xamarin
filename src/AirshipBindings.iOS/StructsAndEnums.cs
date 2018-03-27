@@ -1,5 +1,5 @@
 /*
- Copyright 2017 Urban Airship and Contributors
+ Copyright 2018 Urban Airship and Contributors
 */
 using ObjCRuntime;
 using System;
@@ -7,148 +7,268 @@ using UIKit;
 
 namespace UrbanAirship {
 
-	[Native]
-	public enum UAActionFetchResult : ulong
-	{
-		NoData = UIBackgroundFetchResult.NoData,
-		NewData = UIBackgroundFetchResult.NewData,
-		Failed = UIBackgroundFetchResult.Failed
-	}
+    [Native]
+    public enum UASituation : long
+    {
+        ManualInvocation = 0,
+        LaunchedFromPush = 1,
+        ForegroundPush = 2,
+        BackgroundPush = 3,
+        WebViewInvocation = 4,
+        ForegroundInteractiveButton = 5,
+        BackgroundInteractiveButton = 6,
+        Automation = 7
+    }
 
-	[Native]
-	public enum UAActionOperatorErrorCode : ulong
-	{
-		UAActionOperatorErrorCodeChildActionRejectedArgs
-	}
+    [Native]
+    public enum UAActionFetchResult : ulong
+    {
+        NoData = UIBackgroundFetchResult.NoData,
+        NewData = UIBackgroundFetchResult.NewData,
+        Failed = UIBackgroundFetchResult.Failed
+    }
 
-	[Native]
-	public enum UAActionStatus : ulong
-	{
-		Completed,
-		ArgumentsRejected,
-		ActionNotFound,
-		Error
-	}
-		
-	[Native]
-	public enum UASituation : ulong
-	{
-		ManualInvocation,
-		LaunchedFromPush,
-		ForegroundPush,
-		BackgroundPush,
-		WebViewInvocation,
-		ForegroundInteractiveButton,
-		BackgroundInteractiveButton
-	}
+    [Native]
+    public enum UAActionStatus : long
+    {
+        Completed = 0,
+        ArgumentsRejected = 1,
+        ActionNotFound = 2,
+        Error = 3
+    }
 
-	[Native]
-	public enum UAAddCustomEventActionErrorCode : ulong
-	{
-		UAAddCustomEventActionErrorCodeInvalidEventName
-	}
+    [Native]
+    public enum UAAddCustomEventActionErrorCode : long
+    {
+        InvalidEventName = 0
+    }
 
-	[Native]
-	public enum UABoundaryEvent : ulong
-	{
-		Enter = 1,
-		Exit = 2
-	}
+    [Native]
+    public enum UALogLevel : long
+    {
+        Undefined = -1,
+        None = 0,
+        Error = 1,
+        Warn = 2,
+        Info = 3,
+        Debug = 4,
+        Trace = 5
+    }
 
-	[Native]
-	public enum UAInAppMessageDisplayType : ulong
-	{
-		Unknown,
-		Banner
-	}
+    [Native]
+    public enum UAJSONMatcherErrorCode : long
+    {
+        InvalidJSON = 0
+    }
 
-	[Native]
-	public enum UAInAppMessagePosition : ulong
-	{
-		Top,
-		Bottom
-	}
+    [Native]
+    public enum UAJSONPredicateErrorCode : long
+    {
+        InvalidJSON = 0
+    }
 
-	[Native]
-	public enum UALogLevel : long
-	{
-		Undefined = -1,
-		None = 0,
-		Error = 1,
-		Warn = 2,
-		Info = 3,
-		Debug = 4,
-		Trace = 5
-	}
+    [Native]
+    public enum UAJSONValueMatcherErrorCode : long
+    {
+        InvalidJSON = 0
+    }
 
-	[Native]
-	public enum UANotificationActionOptions : ulong
-	{
-		AuthenticationRequired = (1 << 0),
-		Destructive = (1 << 1),
-		Foreground = (1 << 2)
-	}
+    [Native]
+    public enum UANotificationActionOptions : ulong
+    {
+        AuthenticationRequired = (1 << 0),
+        Destructive = (1 << 1),
+        Foreground = (1 << 2)
+    }
 
-	[Native]
-	public enum UANotificationCategoryOptions : ulong
-	{
-		CustomDismissAction = (1 << 0),
-		AllowInCarPlay = (2 << 0)
-	}
+    [Native]
+    public enum UANotificationCategoryOptions : ulong
+    {
+        CustomDismissAction = (1 << 0),
+        AllowInCarPlay = (2 << 0)
+    }
 
-	[Native]
-	public enum UANotificationOptions : ulong
-	{
-		Badge = (1 << 0),
-		Sound = (1 << 1),
-		Alert = (1 << 2),
-		CarPlay = (1 << 3)
-	}
+    [Native]
+    public enum UAOpenExternalURLActionErrorCode : long
+    {
+        UrlFailedToOpen = 0
+    }
 
-	[Native]
-	public enum UAOpenExternalURLActionErrorCode : ulong
-	{
-		UAOpenExternalURLActionErrorCodeURLFailedToOpen
-	}
+    [Native]
+    public enum UANotificationOptions : ulong
+    {
+        Badge = (1 << 0),
+        Sound = (1 << 1),
+        Alert = (1 << 2),
+        CarPlay = (1 << 3)
+    }
 
-	[Native]
-	public enum UAOverlayInboxMessageActionErrorCode : ulong
-	{
-		UAOverlayInboxMessageActionErrorCodeMessageUnavailable
-	}
+    [Native]
+    public enum UABoundaryEvent : long
+    {
+        Enter = 1,
+        Exit = 2
+    }
 
-	[Native]
-	public enum UAScheduleDelayAppState : ulong
-	{
-		Any,
-		Foreground,
-		Background
-	}
+    [Native]
+    public enum UAScheduleDelayErrorCode : long
+    {
+        InvalidJSON = 0
+    }
 
-	[Native]
-	public enum UAScheduleDelayErrorCode : ulong
-	{
-		UAScheduleDelayErrorCodeInvalidJSON
-	}
+    [Native]
+    public enum UAScheduleDelayAppState : long
+    {
+        Any = 0,
+        Foreground = 1,
+        Background = 2
+    }
 
-	[Native]
-	public enum UAScheduleTriggerErrorCode : ulong
-	{
-		UAScheduleTriggerErrorCodeInvalidJSON
-	}
+    [Native]
+    public enum UAScheduleTriggerErrorCode : long
+    {
+        InvalidJSON = 0
+    }
 
-	[Native]
-	public enum UAScheduleTriggerType : ulong
-	{
-		AppForeground,
-		AppBackground,
-		RegionEnter,
-		RegionExit,
-		CustomEventCount,
-		CustomEventValue,
-		Screen,
-		AppInit
-	}
+    [Native]
+    public enum UAScheduleTriggerType : long
+    {
+        AppForeground = 0,
+        AppBackground = 1,
+        RegionEnter = 2,
+        RegionExit = 3,
+        CustomEventCount = 4,
+        CustomEventValue = 5,
+        Screen = 6,
+        AppInit = 7,
+        ActiveSession = 8,
+        Version = 9
+    }
+
+    [Native]
+    public enum UAWhitelistScope : ulong
+    {
+        JavaScriptInterface = 1 << 0,
+        OpenURL = 1 << 1,
+        All = JavaScriptInterface | OpenURL
+    }
+
+    [Native]
+    public enum UAInAppMessagePrepareResult : ulong
+    {
+        Success = 0,
+        Retry = 1,
+        Cancel = 2
+    }
+
+    [Native]
+    public enum UAInAppMessageBannerPlacementType : long
+    {
+        Top = 0,
+        Bottom = 1
+    }
+
+    [Native]
+    public enum UAInAppMessageBannerContentLayoutType : long
+    {
+        MediaLeft = 0,
+        MediaRight = 1
+    }
+
+    [Native]
+    public enum UAInAppMessageButtonInfoBehaviorType : long
+    {
+        Dismiss = 0,
+        Cancel = 1
+    }
+
+    [Native]
+    public enum UAInAppMessageDisplayType : long
+    {
+        Banner = 0,
+        FullScreen = 1,
+        Modal = 2,
+        HTML = 3,
+        Custom = 4
+    }
+
+    [Native]
+    public enum UAInAppMessageButtonLayoutType : long
+    {
+        Stacked = 0,
+        Separate = 1,
+        Joined = 2
+    }
+
+    [Native]
+    public enum UAInAppMessageFullScreenContentLayoutType : long
+    {
+        HeaderMediaBody = 0,
+        MediaHeaderBody = 1,
+        HeaderBodyMedia = 2
+    }
+
+    [Native]
+    public enum UAInAppMessageMediaInfoType : long
+    {
+        Image = 0,
+        Video = 1,
+        YouTube = 2
+    }
+
+    [Native]
+    public enum UAInAppMessageModalContentLayoutType : long
+    {
+        HeaderMediaBody = 0,
+        MediaHeaderBody = 1,
+        HeaderBodyMedia = 2
+    }
+
+    [Native]
+    public enum UAInAppMessageResolutionType : long
+    {
+        ButtonClick = 0,
+        MessageClick = 1,
+        UserDismissed = 2,
+        TimedOut = 3
+    }
+
+    [Native]
+    public enum UAInAppMessageTextInfoStyleType : ulong
+    {
+        Normal = 0,
+        Bold = 1 << 0,
+        Italic = 1 << 1,
+        Underline = 1 << 2
+    }
+
+    [Native]
+    public enum UAInAppMessageTextInfoAlignmentType : ulong
+    {
+        None = 0,
+        Left = 1,
+        Center = 2,
+        Right = 3
+    }
+
+    [Native]
+    public enum UALegacyInAppMessagePosition : long
+    {
+        Top = 0,
+        Bottom = 1
+    }
+
+    [Native]
+    public enum UALegacyInAppMessageDisplayType : long
+    {
+        Banner = 0
+    }
+
+    [Native]
+    public enum UAOverlayInboxMessageActionErrorCode : long
+    {
+        MessageUnavailable = 0
+    }
 
 
 }

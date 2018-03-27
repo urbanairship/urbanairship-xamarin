@@ -4,6 +4,16 @@ This component provides official bindings to the Urban Airship SDK, as well as s
 
 ### Release Notes
 
+Version 5.0.0 - March 27, 2018
+==============================
+- Updated iOS and Android SDKs to 9.0.4
+
+Note: Aside from SDK interface changes between 8.x and 9.x, iOS bindings have also
+changed in that they no longer implicitly convert methods into properties.
+Notably, accessors such as `UAirship.Push` and `UAirship.NamedUser` are now methods,
+e.g. `UAirship.Push()` and `UAirship.NamedUser()`. This more closely refelcts
+the structure of the iOS SDK and will help to make bindings more stable moving forward.  
+
 Version 4.6.4 - January 12, 2018
 =============================
 - Enable use of UAMessageCenterMessageViewController class.

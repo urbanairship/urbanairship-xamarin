@@ -12,8 +12,8 @@
   <attr path="/api/package[@name='com.urbanairship.location']" name="managedName">UrbanAirship.Location</attr>
   <attr path="/api/package[@name='com.urbanairship.preference']" name="managedName">UrbanAirship.Preference</attr>
   <attr path="/api/package[@name='com.urbanairship.push']" name="managedName">UrbanAirship.Push</attr>
-  <attr path="/api/package[@name='com.urbanairship.push.iam']" name="managedName">UrbanAirship.Push.InApp</attr>
-  <attr path="/api/package[@name='com.urbanairship.push.iam.view']" name="managedName">UrbanAirship.Push.InApp.View</attr>
+  <attr path="/api/package[@name='com.urbanairship.push.gcm']" name="managedName">UrbanAirship.Push.Gcm</attr>
+  <attr path="/api/package[@name='com.urbanairship.push.adm']" name="managedName">UrbanAirship.Push.Adm</attr>
   <attr path="/api/package[@name='com.urbanairship.push.notifications']" name="managedName">UrbanAirship.Push.Notifications</attr>
   <attr path="/api/package[@name='com.urbanairship.richpush']" name="managedName">UrbanAirship.RichPush</attr>
   <attr path="/api/package[@name='com.urbanairship.widget']" name="managedName">UrbanAirship.Widget</attr>
@@ -21,6 +21,13 @@
   <attr path="/api/package[@name='com.urbanairship.util']" name="managedName">UrbanAirship.Util</attr>
   <attr path="/api/package[@name='com.urbanairship.wallet']" name="managedName">UrbanAirship.Wallet</attr>
   <attr path="/api/package[@name='com.urbanairship.automation']" name="managedName">UrbanAirship.Automation</attr>
+  <attr path="/api/package[@name='com.urbanairship.iam']" name="managedName">UrbanAirship.Iam</attr>
+  <attr path="/api/package[@name='com.urbanairship.iam.banner']" name="managedName">UrbanAirship.Iam.Banner</attr>
+  <attr path="/api/package[@name='com.urbanairship.iam.custom']" name="managedName">UrbanAirship.Iam.Custom</attr>
+  <attr path="/api/package[@name='com.urbanairship.iam.fullscreen']" name="managedName">UrbanAirship.Iam.FullScreen</attr>
+  <attr path="/api/package[@name='com.urbanairship.iam.html']" name="managedName">UrbanAirship.Iam.Html</attr>
+  <attr path="/api/package[@name='com.urbanairship.iam.modal']" name="managedName">UrbanAirship.Iam.Modal</attr>
+  <attr path="/api/package[@name='com.urbanairship.iam.view']" name="managedName">UrbanAirship.Iam.View</attr>
 
   <remove-node path="/api/package[@name='com.urbanairship.http']" />
   <remove-node path="/api/package[@name='com.urbanairship.job']/class[@name='Job']" /> 
@@ -42,13 +49,16 @@
   <remove-node path="/api/package[@name='com.urbanairship.preference']/class[@name='QuietTimePickerPreference']" />
   <remove-node path="/api/package[@name='com.urbanairship.preference']/class[@name='UACheckBoxPreference']" />
 
-  <!-- Fix location callback. We provide our own bindings.-->
-  <remove-node path="/api/package[@name='com.urbanairship.location']/interface[@name='LocationCallback']" />
-
   <!-- Fix field names have the same name as the class for the templates-->
   <attr path="/api/package[@name='com.urbanairship.analytics']/class[@name='RetailEventTemplate']/field[@name='RETAIL_EVENT_TEMPLATE']" name="managedName">TemplateName</attr>
   <attr path="/api/package[@name='com.urbanairship.analytics']/class[@name='AccountEventTemplate']/field[@name='ACCOUNT_EVENT_TEMPLATE']" name="managedName">TemplateName</attr>
   <attr path="/api/package[@name='com.urbanairship.analytics']/class[@name='MediaEventTemplate']/field[@name='MEDIA_EVENT_TEMPLATE']" name="managedName">TemplateName</attr>
+
+  <!-- Remove ActionScheduleEdits and ActionScheduleInfo data getters-->
+  <remove-node path="/api/package[@name='com.urbanairship.automation']/interface[@name='ScheduleEdits']/method[@name='getData']" />
+  <remove-node path="/api/package[@name='com.urbanairship.automation']/interface[@name='ScheduleInfo']/method[@name='getData']" />
+  <remove-node path="/api/package[@name='com.urbanairship.automation']/class[@name='ActionScheduleEdits']/method[@name='getData']" />
+  <remove-node path="/api/package[@name='com.urbanairship.automation']/class[@name='ActionScheduleInfo']/method[@name='getData']" />
 
 </metadata>
 

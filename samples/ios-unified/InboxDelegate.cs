@@ -6,33 +6,34 @@ using System.Linq;
 
 namespace Sample
 {
-	public class InboxDelegate : UAInboxDelegate
-	{
+    public class InboxDelegate : UAInboxDelegate
+    {
 
-		private UIViewController rootViewController;
+        private UIViewController rootViewController;
 
-		public InboxDelegate(UIViewController rootViewController)
-		{
-			this.rootViewController = rootViewController;
-		}
+        public InboxDelegate(UIViewController rootViewController)
+        {
+            this.rootViewController = rootViewController;
+        }
 
-		MessageCenterViewController MessageCenterViewController()
-		{
-			UITabBarController tabBarController = (UITabBarController)this.rootViewController;
-			return (MessageCenterViewController)tabBarController.ViewControllers.ElementAt(2);
-		}
+        MessageCenterViewController MessageCenterViewController()
+        {
+            UITabBarController tabBarController = (UITabBarController)this.rootViewController;
+            return (MessageCenterViewController)tabBarController.ViewControllers.ElementAt(2);
+        }
 
-		public override void ShowInboxMessage(UAInboxMessage message) {
-			ShowInbox();
+        public override void ShowInboxMessage(UAInboxMessage message)
+        {
+            ShowInbox();
 
-			MessageCenterViewController().DisplayMessage(message);
-		}
+            MessageCenterViewController().DisplayMessage(message);
+        }
 
-		public override void ShowInbox() 
-		{
-			UITabBarController tabBarController = (UITabBarController)this.rootViewController;
-			tabBarController.SelectedIndex = 2;
-		}
-	}
+        public override void ShowInbox()
+        {
+            UITabBarController tabBarController = (UITabBarController)this.rootViewController;
+            tabBarController.SelectedIndex = 2;
+        }
+    }
 }
 
