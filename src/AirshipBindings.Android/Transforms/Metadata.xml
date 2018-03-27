@@ -21,6 +21,13 @@
   <attr path="/api/package[@name='com.urbanairship.util']" name="managedName">UrbanAirship.Util</attr>
   <attr path="/api/package[@name='com.urbanairship.wallet']" name="managedName">UrbanAirship.Wallet</attr>
   <attr path="/api/package[@name='com.urbanairship.automation']" name="managedName">UrbanAirship.Automation</attr>
+  <attr path="/api/package[@name='com.urbanairship.iam']" name="managedName">UrbanAirship.Iam</attr>
+  <attr path="/api/package[@name='com.urbanairship.iam.banner']" name="managedName">UrbanAirship.Iam.Banner</attr>
+  <attr path="/api/package[@name='com.urbanairship.iam.custom']" name="managedName">UrbanAirship.Iam.Custom</attr>
+  <attr path="/api/package[@name='com.urbanairship.iam.fullscreen']" name="managedName">UrbanAirship.Iam.FullScreen</attr>
+  <attr path="/api/package[@name='com.urbanairship.iam.html']" name="managedName">UrbanAirship.Iam.Html</attr>
+  <attr path="/api/package[@name='com.urbanairship.iam.modal']" name="managedName">UrbanAirship.Iam.Modal</attr>
+  <attr path="/api/package[@name='com.urbanairship.iam.view']" name="managedName">UrbanAirship.Iam.View</attr>
 
   <remove-node path="/api/package[@name='com.urbanairship.http']" />
   <remove-node path="/api/package[@name='com.urbanairship.job']/class[@name='Job']" /> 
