@@ -244,10 +244,6 @@ namespace UrbanAirship
         [Field("UAChannelCreatedEventExistingKey", "__Internal")]
         NSString UAChannelCreatedEventExistingKey { get; }
 
-        // static const UANotificationOptions UANotificationOptionNone = 0
-        [Field("UANotificationOptionNone", "__Internal")]
-        UANotificationOptions UANotificationOptionNone { get; }
-
         // extern NSString *const _Nonnull UAScheduleDelayErrorDomain
         [Field("UAScheduleDelayErrorDomain", "__Internal")]
         NSString UAScheduleDelayErrorDomain { get; }
@@ -283,14 +279,6 @@ namespace UrbanAirship
         // extern const NSUInteger UAScheduleDelayMaxCancellationTriggers
         [Field("UAScheduleDelayMaxCancellationTriggers", "__Internal")]
         nuint UAScheduleDelayMaxCancellationTriggers { get; }
-
-        // extern const NSInteger UAScheduleInfoMaxPriority
-        [Field("UAScheduleInfoMaxPriority", "__Internal")]
-        nint UAScheduleInfoMaxPriority { get; }
-
-        // extern const NSInteger UAScheduleInfoMinPriority
-        [Field("UAScheduleInfoMinPriority", "__Internal")]
-        nint UAScheduleInfoMinPriority { get; }
 
         // extern const NSUInteger UAScheduleInfoMaxTriggers
         [Field("UAScheduleInfoMaxTriggers", "__Internal")]
