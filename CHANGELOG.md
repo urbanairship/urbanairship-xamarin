@@ -4,8 +4,8 @@ This component provides official bindings to the Urban Airship SDK, as well as s
 
 ### Release Notes
 
-Version 5.0.1 - April 9, 2018
-=============================
+Version 5.0.1 - April 10, 2018
+===============================
 - Updated iOS SDK to 9.0.5, and Android SDK to 9.0.6.
 - Fix for undefined symbol errors in iOS bindings when using the mtouch linker.
 
