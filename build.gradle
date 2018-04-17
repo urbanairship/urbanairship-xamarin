@@ -63,6 +63,7 @@ task pkg {
             nupkgs = [
                 "UrbanAirship.nuspec",
                 "UrbanAirship.Portable.nuspec",
+                "UrbanAirship.NETStandard.nuspec",
                 "AirshipAppExtensions.nuspec"
             ]
         }
@@ -89,6 +90,14 @@ task syncVersion {
         // Handle Airship.Portable nuspec special case
         ant.replaceregexp(
             file: "$projectDir/UrbanAirship.Portable.nuspec",
+            match: "<dependency id=\"urbanairship\" version=\".*\"/>",
+            replace: "<dependency id=\"urbanairship\" version=\"$airshipProperties.libVersion\"/>",
+            flags: "g"
+        )
+
+        // Handle Airship.NETStandard nuspec special case
+        ant.replaceregexp(
+            file: "$projectDir/UrbanAirship.NETStandard.nuspec",
             match: "<dependency id=\"urbanairship\" version=\".*\"/>",
             replace: "<dependency id=\"urbanairship\" version=\"$airshipProperties.libVersion\"/>",
             flags: "g"
@@ -133,6 +142,7 @@ build.dependsOn('syncVersion')
 build.dependsOn('generateDeps')
 build.dependsOn(':docs:build',
     ':src:AirshipBindings.Portable:build',
+    ':src:AirshipBindings.NETStandard:build',
     ':src:AirshipBindings.iOS:build',
     ':src:AirshipExtensionBindings.iOS:build',
     ':src:AirshipBindings.Android:build')

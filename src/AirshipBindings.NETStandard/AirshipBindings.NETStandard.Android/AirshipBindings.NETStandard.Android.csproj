@@ -7,8 +7,8 @@
     <ProjectGuid>{98B269BE-8EFA-4D13-9B88-78AC3538559F}</ProjectGuid>
     <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
-    <RootNamespace>AirshipBindings.NETStandard.Android</RootNamespace>
-    <AssemblyName>AirshipBindings.NETStandard.Android</AssemblyName>
+    <RootNamespace>AirshipBindings.NETStandard</RootNamespace>
+    <AssemblyName>AirshipBindings.NETStandard</AssemblyName>
     <TargetFrameworkVersion>v8.1</TargetFrameworkVersion>
     <AndroidResgenFile>Resources\Resource.designer.cs</AndroidResgenFile>
     <AndroidResgenClass>Resource</AndroidResgenClass>

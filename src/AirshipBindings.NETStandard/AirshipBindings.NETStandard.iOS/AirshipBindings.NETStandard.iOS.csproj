@@ -6,8 +6,8 @@
     <ProjectGuid>{7BEDF548-FCCF-4EA1-9B77-1D5B8CF07AA1}</ProjectGuid>
     <ProjectTypeGuids>{FEACFBD2-3405-455C-9665-78FE426C6842};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
-    <RootNamespace>AirshipBindings.NETStandard.iOS</RootNamespace>
-    <AssemblyName>AirshipBindings.NETStandard.iOS</AssemblyName>
+    <RootNamespace>AirshipBindings.NETStandard</RootNamespace>
+    <AssemblyName>AirshipBindings.NETStandard</AssemblyName>
     <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">

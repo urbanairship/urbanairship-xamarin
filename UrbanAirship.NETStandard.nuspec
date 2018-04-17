@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
    <metadata>
-      <id>urbanairship.portable</id>
+      <id>urbanairship.netstandard</id>
       <version>5.0.1</version>
       <title>Urban Airship SDK .NET Standard Library</title>
       <authors>Urban Airship, Inc.</authors>
@@ -29,13 +29,13 @@
         <!-- Android -->
         <file src="src/AirshipBindings.NETStandard/AirshipBindings.NETStandard.Android/bin/release/AirshipBindings.NETStandard.dll"
             target="lib/MonoAndroid41/AirshipBindings.NETStandard.dll" />
-        <file src="src/AirshipBindings.NETStandard/AirshipBindings.NETStandard.Abstractions/bin/release/AirshipBindings.NETStandard.Abstractions.dll"
+        <file src="src/AirshipBindings.NETStandard/AirshipBindings.NETStandard.Abstractions/bin/release/netstandard2.0/AirshipBindings.NETStandard.Abstractions.dll"
             target="lib/MonoAndroid41/AirshipBindings.NETStandard.Abstractions.dll" />
 
         <!-- iOS -->
         <file src="src/AirshipBindings.NETStandard/AirshipBindings.NETStandard.iOS/bin/release/AirshipBindings.NETStandard.dll"
             target="lib/Xamarin.iOS10/AirshipBindings.NETStandard.dll" />
-        <file src="src/AirshipBindings.NETStandard/AirshipBindings.NETStandard.Abstractions/bin/release/AirshipBindings.NETStandard.Abstractions.dll"
+        <file src="src/AirshipBindings.NETStandard/AirshipBindings.NETStandard.Abstractions/bin/release/netstandard2.0/AirshipBindings.NETStandard.Abstractions.dll"
             target="lib/Xamarin.iOS10/AirshipBindings.NETStandard.Abstractions.dll" />
    </files>
 </package>

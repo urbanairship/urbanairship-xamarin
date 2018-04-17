@@ -9,9 +9,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: global::Android.Runtime.ResourceDesignerAttribute("AirshipBindings.NETStandard.Android.Resource", IsApplication=false)]
+[assembly: global::Android.Runtime.ResourceDesignerAttribute("AirshipBindings.NETStandard.Resource", IsApplication=false)]
 
-namespace AirshipBindings.NETStandard.Android
+namespace AirshipBindings.NETStandard
 {
 	
 	
