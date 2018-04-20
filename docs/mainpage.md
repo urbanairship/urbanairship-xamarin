@@ -1,6 +1,6 @@
 # AirshipBindings .NET Standard Library and Portable Class Library
 
-The AirshipBindings .NET standard library and portable client library expose a common subset
+The AirshipBindings .NET standard and portable client libraries expose a common subset
 of functionality between the iOS and Android SDKs. These libraries can be used within
 shared codebases (e.g., a Xamarin Forms app).
 
