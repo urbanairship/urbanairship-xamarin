@@ -1,0 +1,25 @@
+task clean(type: Delete) {
+    def dirs = [
+        "AirshipBindings.NETStandard",
+        "AirshipBindings.NETStandard.Abstractions",
+        "AirshipBindings.NETStandard.iOS",
+        "AirshipBindings.NETStandard.Android"
+    ]
+
+    for (String path : dirs) {
+        delete "${path}/bin"
+        delete "${path}/obj"
+    }
+}
+
+task build {
+    doLast() {
+        exec {
+            commandLine "mono", "$nugetExe", "restore", "AirshipBindings.NETStandard.sln"
+        }
+
+        exec {
+            commandLine "${msbuild}", "/t:build", "/p:Configuration=Release", "AirshipBindings.NETStandard.sln"
+        }
+    }
+}

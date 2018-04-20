@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+   <metadata>
+      <id>urbanairship.netstandard</id>
+      <version>5.0.2</version>
+      <title>Urban Airship SDK .NET Standard Library</title>
+      <authors>Urban Airship, Inc.</authors>
+      <requireLicenseAcceptance>false</requireLicenseAcceptance>
+      <description>A .NET Standard Library for the Urban Airship SDK.</description>
+
+      <dependencies>
+          <group targetFramework="MonoAndroid">
+            <dependency id="urbanairship" version="5.0.2"/>
+	  </group>
+
+	  <group targetFramework="Xamarin.iOS">
+	    <dependency id="urbanairship" version="5.0.2"/>
+	  </group>
+      </dependencies>
+   </metadata>
+
+   <files>
+        <!-- Core files -->
+        <file src="src/AirshipBindings.NETStandard/AirshipBindings.NETStandard/bin/release/netstandard2.0/AirshipBindings.NETStandard.dll"
+            target="lib/netstandard2.0/AirshipBindings.NETStandard.dll" />
+        <file src="src/AirshipBindings.NETStandard/AirshipBindings.NETStandard.Abstractions/bin/release/netstandard2.0/AirshipBindings.NETStandard.Abstractions.dll"
+            target="lib/netstandard2.0/AirshipBindings.NETStandard.Abstractions.dll" />
+
+        <!-- Android -->
+        <file src="src/AirshipBindings.NETStandard/AirshipBindings.NETStandard.Android/bin/release/AirshipBindings.NETStandard.dll"
+            target="lib/MonoAndroid41/AirshipBindings.NETStandard.dll" />
+        <file src="src/AirshipBindings.NETStandard/AirshipBindings.NETStandard.Abstractions/bin/release/netstandard2.0/AirshipBindings.NETStandard.Abstractions.dll"
+            target="lib/MonoAndroid41/AirshipBindings.NETStandard.Abstractions.dll" />
+
+        <!-- iOS -->
+        <file src="src/AirshipBindings.NETStandard/AirshipBindings.NETStandard.iOS/bin/release/AirshipBindings.NETStandard.dll"
+            target="lib/Xamarin.iOS10/AirshipBindings.NETStandard.dll" />
+        <file src="src/AirshipBindings.NETStandard/AirshipBindings.NETStandard.Abstractions/bin/release/netstandard2.0/AirshipBindings.NETStandard.Abstractions.dll"
+            target="lib/Xamarin.iOS10/AirshipBindings.NETStandard.Abstractions.dll" />
+   </files>
+</package>

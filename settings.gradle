@@ -1,5 +1,6 @@
 include ':docs'
 include ':src:AirshipBindings.Portable'
+include ':src:AirshipBindings.NETStandard'
 include ':src:AirshipBindings.iOS'
 include ':src:AirshipExtensionBindings.iOS'
 include ':src:AirshipBindings.Android'
