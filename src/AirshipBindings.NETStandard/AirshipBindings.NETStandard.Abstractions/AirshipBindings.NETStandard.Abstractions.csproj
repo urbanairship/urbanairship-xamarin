@@ -9,9 +9,6 @@
   </PropertyGroup> 
 
   <ItemGroup>
-    <Compile Remove="Class1.cs" />
-  </ItemGroup>
-  <ItemGroup>
     <Folder Include="Push\" />
     <Folder Include="Analytics\" />
   </ItemGroup>

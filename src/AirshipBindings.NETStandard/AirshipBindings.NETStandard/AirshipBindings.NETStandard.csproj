@@ -9,9 +9,6 @@
   </PropertyGroup> 
   
   <ItemGroup>
-    <Compile Remove="Class1.cs" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\AirshipBindings.NETStandard.Abstractions\AirshipBindings.NETStandard.Abstractions.csproj" />
   </ItemGroup>
   <ItemGroup>
