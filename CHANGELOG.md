@@ -4,6 +4,27 @@ This component provides official bindings to the Urban Airship SDK, as well as s
 
 ### Release Notes
 
+Version 5.1.0 - May 18, 2018
+=============================
+- Updated iOS SDK to 9.1.0
+- Updated Android SDK to 9.2.0.
+
+Note: Android SDK version 9.1.0 introduced support for FCM apis, modular packages, and in-app message design updates. More Android-specific details are available in the [changelog](https://github.com/urbanairship/android-library/blob/9.1.0/CHANGELOG.md). For FCM migration, please follow the [FCM Migration Guide](https://github.com/urbanairship/xamarin-component/blob/master/documentation/migration/migration-guide-fcm.md).
+
+Changes
+-------
+- Moved Android push providers into their own packages. `urbanairship` has been split into:
+
+   - `urbanairship.core`
+   - `urbanairship.android.adm`
+   - `urbanairship.android.fcm`
+   - `urbanairship.android.gcm`
+
+The package `urbanairship` still exists and is now just a wrapper package that depends on Core, ADM, and GCM to prevent breaking apps. `urbanairship` is deprecated and will be removed in version 6.0.
+
+- Fixed `clean` task in a number of build.gradle files.
+
+
 Version 5.0.2 - April 20, 2018
 ==============================
 - Added a .NET 2.0 standard library package.

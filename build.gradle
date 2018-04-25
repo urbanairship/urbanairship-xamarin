@@ -52,30 +52,70 @@ task buildComponent {
     }
 }
 
-// Build nupkgs -- can pass in parameters (nuspec files) to specify which
+// Build nuget pkgs -- can pass in parameters (nuspec files) to specify which
 // nupkg files to build
 task pkg {
     doLast() {
-        def nupkgs = []
+        def nuspecs = []
         if (project.hasProperty('nuspec')) {
-            nupkgs = nuspec.split(',')
+            nuspecs = nuspec.split(',')
         } else {
-            nupkgs = [
+            nuspecs = [
                 "UrbanAirship.nuspec",
+                "UrbanAirship.Core.nuspec",
+                "UrbanAirship.Android.ADM.nuspec",
+                "UrbanAirship.Android.FCM.nuspec",
+                "UrbanAirship.Android.GCM.nuspec",
                 "UrbanAirship.Portable.nuspec",
                 "UrbanAirship.NETStandard.nuspec",
                 "AirshipAppExtensions.nuspec"
             ]
         }
 
-        for (pkg in nupkgs) {
+        for (nuspec in nuspecs) {
             exec {
-                commandLine "mono", "${nugetExe}", "pack", "$pkg", "-OutputDirectory", "$buildDir"
+                commandLine "mono", "${nugetExe}", "pack", "$nuspec", "-OutputDirectory", "$buildDir"
             }
         }
     }
 }
 pkg.mustRunAfter('build')
+
+// Create local nuget feed
+task createLocalFeed {
+    doLast() {
+        // get all the nuget packages from the build directory
+        def nupkgs = buildDir.listFiles(new FilenameFilter() {
+            public boolean accept(File dir, String name) {
+                return name.toLowerCase().endsWith(".nupkg");
+            }
+        }) 
+
+        // add the packages to the local nuget feed
+        File localNugetFeed = file("${rootDir}/local-nuget-feed")
+        nupkgs.each { nupkg ->
+            // add doesn't have a "-force" option, so first remove the nuget package from the local feed
+            def nupkgNoExt = nupkg.name.replaceFirst("[.][^.]+\$", "")
+            def nupkgID = nupkgNoExt.replaceFirst("[.][0-9][.][0-9][.][0-9]\$", "")
+            def nupkgVersion = nupkgNoExt.replaceFirst("^$nupkgID[.]", "")
+            File localNugetFeedForThisPackage = file("${localNugetFeed}/${nupkgID}/${nupkgVersion}")
+            delete localNugetFeedForThisPackage
+
+            // add the package to the local nuget feed
+            exec {
+                commandLine "mono", "${nugetExe}", "add", "$nupkg", "-source", "$localNugetFeed" 
+            }
+        }
+
+        // clear the local nuget cache (so new packages with unchanged versions are used)
+        exec {
+            commandLine "mono", "${nugetExe}", "locals", "all", "-clear"
+        }
+        
+    }
+}
+createLocalFeed.dependsOn('build')
+createLocalFeed.dependsOn('pkg')
 
 // Sync the version with the version declared in the airship.properties file.
 task syncVersion {
@@ -130,9 +170,11 @@ task syncVersion {
 
 // Clean all
 task clean(type: Delete) {
-    delete "$buildDir"
+    doLast() {
+        delete "$buildDir"
 
-    delete fileTree("$componentDir") { include "*.xam" }
+        delete fileTree("$componentDir") { include "*.xam" }
+    }
 }
 
 // Build all of the projects
@@ -141,9 +183,12 @@ build.mustRunAfter('clean')
 build.dependsOn('syncVersion')
 build.dependsOn('generateDeps')
 build.dependsOn(':docs:build',
-    ':src:AirshipBindings.Portable:build',
-    ':src:AirshipBindings.NETStandard:build',
     ':src:AirshipBindings.iOS:build',
     ':src:AirshipExtensionBindings.iOS:build',
-    ':src:AirshipBindings.Android:build')
+    ':src:AirshipBindings.Android.Core:build',
+    ':src:AirshipBindings.Android.ADM:build',
+    ':src:AirshipBindings.Android.FCM:build',
+    ':src:AirshipBindings.Android.GCM:build',
+    ':src:AirshipBindings.NETStandard:build',
+    ':src:AirshipBindings.Portable:build')
 build.finalizedBy('buildComponent')

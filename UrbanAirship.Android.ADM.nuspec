@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+   <metadata>
+      <id>urbanairship.android.adm</id>
+      <version>5.1.0</version>
+      <title>Urban Airship SDK</title>
+      <authors>Urban Airship, Inc.</authors>
+      <requireLicenseAcceptance>false</requireLicenseAcceptance>
+      <description>A full suite of mobile engagement tools for building next-generation apps</description>
+
+      <dependencies>
+         <group targetFramework="MonoAndroid">
+            <dependency id="urbanairship.core" version="5.1.0"/>
+         </group>
+      </dependencies>
+   </metadata>
+
+   <files>
+     <file src="src/AirshipBindings.Android.ADM/bin/release/AirshipBindings.ADM.dll" target="lib/MonoAndroid41" />
+   </files>
+</package>

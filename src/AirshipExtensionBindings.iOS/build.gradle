@@ -4,7 +4,9 @@ ext {
 }
 
 task clean(type: Delete) {
-    delete "$buildDir"
+    doLast() {
+        delete "$buildDir"
+    }
 }
 
 task build {

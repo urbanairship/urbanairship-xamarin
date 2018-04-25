@@ -4,9 +4,11 @@ ext {
 }
 
 task clean(type: Delete) {
-    delete "bin"
-    delete "obj"
-    delete "$buildDir"
+    doLast() {
+        delete "bin"
+        delete "obj"
+        delete "$buildDir"
+    }
 }
 
 task syncVersion  {
