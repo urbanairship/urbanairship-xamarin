@@ -95,12 +95,9 @@ task createLocalFeed {
         File localNugetFeed = file("${rootDir}/local-nuget-feed")
         nupkgs.each { nupkg ->
             // add doesn't have a "-force" option, so first remove the nuget package from the local feed
-            def nupkgNoExt = nupkg.name.replaceFirst("[.][^.]+\$", "")
-            def nupkgID = nupkgNoExt.replaceFirst("[.][0-9][.][0-9][.][0-9]\$", "")
-            def nupkgVersion = nupkgNoExt.replaceFirst("^$nupkgID[.]", "")
-            File localNugetFeedForThisPackage = file("${localNugetFeed}/${nupkgID}/${nupkgVersion}")
-            delete localNugetFeedForThisPackage
-
+            exec {
+                commandLine "mono", "${nugetExe}", "delete", "$nupkg", "-source", "$localNugetFeed", "-noprompt"
+            }
             // add the package to the local nuget feed
             exec {
                 commandLine "mono", "${nugetExe}", "add", "$nupkg", "-source", "$localNugetFeed" 
