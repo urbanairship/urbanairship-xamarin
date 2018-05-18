@@ -1,7 +1,7 @@
 
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirshipExtensionBindings.iOS", "AirshipExtensionBindings.iOS\AirshipExtensionBindings.iOS.csproj", "{2C453988-C24E-431A-A17C-6989E93C795E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirshipBindings.iOS.AppExtensions", "AirshipBindings.iOS.AppExtensions.csproj", "{2C453988-C24E-431A-A17C-6989E93C795E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

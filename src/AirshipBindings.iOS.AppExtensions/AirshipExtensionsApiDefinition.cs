@@ -5,7 +5,7 @@
 using Foundation;
 using UserNotifications;
 
-namespace AirshipAppExtensions
+namespace AirshipBindings.iOS.AppExtensions
 {
 	// @interface UAMediaAttachmentContent : NSObject
 	[BaseType(typeof(NSObject))]

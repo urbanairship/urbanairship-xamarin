@@ -13,16 +13,16 @@ Note: Android SDK version 9.1.0 introduced support for FCM apis, modular package
 
 Changes
 -------
-- Moved Android push providers into their own packages. `urbanairship` has been split into:
+- Split urbanairship package into iOS and Android packages. Also moved Android push providers into their own packages. `urbanairship` has been split into:
 
-   - `urbanairship.core`
-   - `urbanairship.android.adm`
-   - `urbanairship.android.fcm`
-   - `urbanairship.android.gcm`
+   - `urbanairship.ios` (iOS)
+   - `urbanairship.ios.appextensions` (iOS Notification Service Extension)
+   - `urbanairship.android.core` (Android core functionality)
+   - `urbanairship.android.adm`  (Android ADM Push Provider)
+   - `urbanairship.android.fcm`  (Android FCM Push Provider)
+   - `urbanairship.android.gcm`  (Android GCM Push Provider)
 
 The package `urbanairship` still exists and is now just a wrapper package that depends on Core, ADM, and GCM to prevent breaking apps. `urbanairship` is deprecated and will be removed in version 6.0.
-
-- Fixed `clean` task in a number of build.gradle files.
 
 
 Version 5.0.2 - April 20, 2018

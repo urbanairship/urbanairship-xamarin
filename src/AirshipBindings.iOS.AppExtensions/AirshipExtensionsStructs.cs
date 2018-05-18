@@ -4,6 +4,6 @@
 
 using System;
 
-namespace AirshipAppExtensions
+namespace AirshipBindings.iOS.AppExtensions
 {
 }

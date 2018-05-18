@@ -82,8 +82,9 @@
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="Xamarin.iOS" />
-    <Reference Include="AirshipExtensionBindings.iOS">
-      <HintPath>..\packages\urbanairship.appextensions.4.6.1\lib\Xamarin.iOS10\AirshipExtensionBindings.iOS.dll</HintPath>
+    <Reference Include="AirshipBindings.iOS.AppExtensions">
+      <HintPath>..\packages\urbanairship.ios.appextensions.5.1.0\lib\Xamarin.iOS10\AirshipBindings.iOS.AppExtensions.dll</HintPath>
+      <Private>False</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>

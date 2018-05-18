@@ -6,8 +6,8 @@
     <ProjectGuid>{2C453988-C24E-431A-A17C-6989E93C795E}</ProjectGuid>
     <ProjectTypeGuids>{8FFB629D-F513-41CE-95D2-7ECE97B6EEEC};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
-    <RootNamespace>AirshipExtensionBindings.iOS</RootNamespace>
-    <AssemblyName>AirshipExtensionBindings.iOS</AssemblyName>
+    <RootNamespace>AirshipBindings.iOS.AppExtensions</RootNamespace>
+    <AssemblyName>AirshipBindings.iOS.AppExtensions</AssemblyName>
     <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
@@ -35,7 +35,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="..\..\SharedAssemblyInfo.cs">
+    <Compile Include="..\SharedAssemblyInfo.cs">
       <Link>Properties\SharedAssemblyInfo.cs</Link>
     </Compile>
   </ItemGroup>
@@ -46,7 +46,7 @@
     <ObjcBindingCoreSource Include="AirshipExtensionsStructs.cs" />
   </ItemGroup>
   <ItemGroup>
-    <NativeReference Include="..\..\..\Carthage\Build\iOS\AirshipAppExtensions.framework">
+    <NativeReference Include="..\..\Carthage\Build\iOS\AirshipAppExtensions.framework">
       <Kind>Framework</Kind>
       <SmartLink>False</SmartLink>
     </NativeReference>

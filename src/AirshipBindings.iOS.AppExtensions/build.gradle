@@ -12,7 +12,7 @@ task clean(type: Delete) {
 task build {
     doLast() {
         exec {
-            commandLine "${msbuild}", "/t:build", "/p:Configuration=Release", "AirshipExtensionBindings.iOS.sln"
+            commandLine "${msbuild}", "/t:build", "/p:Configuration=Release", "AirshipBindings.iOS.AppExtensions.sln"
         }
     }
 }

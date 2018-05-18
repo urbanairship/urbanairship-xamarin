@@ -61,14 +61,14 @@ task pkg {
             nuspecs = nuspec.split(',')
         } else {
             nuspecs = [
-                "UrbanAirship.nuspec",
-                "UrbanAirship.Core.nuspec",
+                "UrbanAirship.Android.Core.nuspec",
                 "UrbanAirship.Android.ADM.nuspec",
                 "UrbanAirship.Android.FCM.nuspec",
                 "UrbanAirship.Android.GCM.nuspec",
                 "UrbanAirship.Portable.nuspec",
                 "UrbanAirship.NETStandard.nuspec",
-                "AirshipAppExtensions.nuspec"
+                "UrbanAirship.iOS.nuspec",
+                "UrbanAirship.iOS.AppExtensions.nuspec"
             ]
         }
 
@@ -183,12 +183,12 @@ build.mustRunAfter('clean')
 build.dependsOn('syncVersion')
 build.dependsOn('generateDeps')
 build.dependsOn(':docs:build',
-    ':src:AirshipBindings.iOS:build',
-    ':src:AirshipExtensionBindings.iOS:build',
-    ':src:AirshipBindings.Android.Core:build',
     ':src:AirshipBindings.Android.ADM:build',
+    ':src:AirshipBindings.Android.Core:build',
     ':src:AirshipBindings.Android.FCM:build',
     ':src:AirshipBindings.Android.GCM:build',
     ':src:AirshipBindings.NETStandard:build',
-    ':src:AirshipBindings.Portable:build')
+    ':src:AirshipBindings.Portable:build',
+    ':src:AirshipBindings.iOS:build',
+    ':src:AirshipBindings.iOS.AppExtensions:build')
 build.finalizedBy('buildComponent')

@@ -1,5 +1,5 @@
 ﻿using Foundation;
-using AirshipAppExtensions;
+using AirshipBindings.iOS.AppExtensions;
 
 namespace SampleServiceExtension
 {
