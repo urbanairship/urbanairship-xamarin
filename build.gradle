@@ -120,28 +120,53 @@ createLocalFeed.dependsOn('pkg')
 // Sync the version with the version declared in the airship.properties file.
 task syncVersion {
     doLast() {
-        // Handle nuspec files
+        // Handle Android nuspec versions
         ant.replaceregexp(
             match: "<version>.*</version>",
-            replace: "<version>$airshipProperties.libVersion</version>"
+            replace: "<version>$airshipProperties.androidVersion</version>"
         ) {
-            fileset(dir: "$projectDir", includes: "*.nuspec")
+            fileset(dir: "$projectDir", includes: "UrbanAirship.Android*.nuspec")
         }
-        // Handle Airship.Portable nuspec special case
+
+        // Handle iOS nuspec versions
+        ant.replaceregexp(
+            match: "<version>.*</version>",
+            replace: "<version>$airshipProperties.iosVersion</version>"
+        ) {
+            fileset(dir: "$projectDir", includes: "UrbanAirship.iOS*.nuspec")
+        }
+
+        // Handle Portable & .NET Standard versions 
         ant.replaceregexp(
             file: "$projectDir/UrbanAirship.Portable.nuspec",
-            match: "<dependency id=\"urbanairship\" version=\".*\"/>",
-            replace: "<dependency id=\"urbanairship\" version=\"$airshipProperties.libVersion\"/>",
+            match: "<version>.*</version>",
+            replace: "<version>$airshipProperties.libVersion</version>",
+            flags: "g"
+        )
+        ant.replaceregexp(
+            file: "$projectDir/UrbanAirship.NETStandard.nuspec",
+            match: "<version>.*</version>",
+            replace: "<version>$airshipProperties.libVersion</version>",
             flags: "g"
         )
 
-        // Handle Airship.NETStandard nuspec special case
+        // handle urbanairship.android.core dependencies
         ant.replaceregexp(
-            file: "$projectDir/UrbanAirship.NETStandard.nuspec",
-            match: "<dependency id=\"urbanairship\" version=\".*\"/>",
-            replace: "<dependency id=\"urbanairship\" version=\"$airshipProperties.libVersion\"/>",
+            match: "<dependency id=\"urbanairship.android.core\" version=\".*\"/>",
+            replace: "<dependency id=\"urbanairship.android.core\" version=\"$airshipProperties.androidVersion\"/>",
             flags: "g"
-        )
+        ) {
+            fileset(dir: "$projectDir", includes: "UrbanAirship*.nuspec")
+        }
+
+        // handle urbanairship.ios dependencies
+        ant.replaceregexp(
+            match: "<dependency id=\"urbanairship.ios\" version=\".*\"/>",
+            replace: "<dependency id=\"urbanairship.ios\" version=\"$airshipProperties.iosVersion\"/>",
+            flags: "g"
+        ) {
+            fileset(dir: "$projectDir", includes: "UrbanAirship*.nuspec")
+        }
 
         // Xamarin component
         ant.replaceregexp(
