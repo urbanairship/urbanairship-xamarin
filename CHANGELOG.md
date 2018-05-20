@@ -4,7 +4,7 @@ This component provides official bindings to the Urban Airship SDK, as well as s
 
 ### Release Notes
 
-Version 5.1.0 - May 18, 2018
+Version 9 - May 18, 2018
 =============================
 - Updated iOS SDK to 9.1.0
 - Updated Android SDK to 9.2.0.
@@ -21,9 +21,14 @@ Changes
    - `urbanairship.android.adm`  (Android ADM Push Provider)
    - `urbanairship.android.fcm`  (Android FCM Push Provider)
    - `urbanairship.android.gcm`  (Android GCM Push Provider)
+- Starting with Version 9 of the Xamarin SDK, the version of the native bindings will track the native SDK version contained in that binding. The cross-platform libraries will be independently versioned.
 
-The package `urbanairship` still exists and is now just a wrapper package that depends on Core, ADM, and GCM to prevent breaking apps. `urbanairship` is deprecated and will be removed in version 6.0.
-
+Package | Version
+--- | ---
+urbanairship.android.* | 9.2.0
+urbanairship.ios.* | 9.1.0  
+urbanairship.netstandard | 9.0.0
+urbanairship.portable | 9.0.0
 
 Version 5.0.2 - April 20, 2018
 ==============================
