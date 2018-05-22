@@ -204,8 +204,7 @@ FakesAssemblies/
 .tools
 
 # Xamarin.Android Resource.Designer.cs file
-samples/android/Resources/Resource.designer.cs
-src/AirshipBindings.Portable/AirshipBindings.Portable.Android/Resources/Resource.designer.cs
+Resources/Resource.designer.cs
 
 # Carthage
 Carthage/
@@ -216,3 +215,9 @@ docs/doxygen.tag
 
 # Gradle
 .gradle
+
+# Local nuget feed
+local-nuget-feed/
+
+# UA native jars
+urbanairship*.aar

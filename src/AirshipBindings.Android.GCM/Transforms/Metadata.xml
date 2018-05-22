@@ -1,0 +1,6 @@
+﻿<metadata>
+
+  <attr path="/api/package[@name='com.urbanairship.push.gcm']" name="managedName">UrbanAirship.Push.Gcm</attr>
+
+</metadata>
+

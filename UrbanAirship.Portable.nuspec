@@ -2,40 +2,40 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
    <metadata>
       <id>urbanairship.portable</id>
-      <version>5.0.2</version>
+      <version>9.0.0</version>
       <title>Urban Airship SDK PCL</title>
       <authors>Urban Airship, Inc.</authors>
       <requireLicenseAcceptance>false</requireLicenseAcceptance>
       <description>A portable client library for the Urban Airship SDK.</description>
 
       <dependencies>
-          <group targetFramework="MonoAndroid">
-            <dependency id="urbanairship" version="5.0.2"/>
-	  </group>
+         <group targetFramework="MonoAndroid">
+            <dependency id="urbanairship.android.core" version="9.2.0"/>
+         </group>
 
-	  <group targetFramework="Xamarin.iOS">
-	    <dependency id="urbanairship" version="5.0.2"/>
-	  </group>
+         <group targetFramework="Xamarin.iOS">
+            <dependency id="urbanairship.ios" version="9.1.0"/>
+         </group>
       </dependencies>
    </metadata>
 
    <files>
         <!-- Core files -->
         <file src="src/AirshipBindings.Portable/AirshipBindings.Portable/bin/release/AirshipBindings.Portable.dll"
-            target="lib/portable-net45+wp8+wpa81+win8+MonoAndroid41+MonoTouch10+Xamarin.iOS10/AirshipBindings.Portable.dll" />
+            target="lib/portable-net45+wp8+wpa81+win8+MonoAndroid41+MonoTouch10+Xamarin.iOS10" />
         <file src="src/AirshipBindings.Portable/AirshipBindings.Portable.Abstractions/bin/release/AirshipBindings.Portable.Abstractions.dll"
-            target="lib/portable-net45+wp8+wpa81+win8+MonoAndroid41+MonoTouch10+Xamarin.iOS10/AirshipBindings.Portable.Abstractions.dll" />
+            target="lib/portable-net45+wp8+wpa81+win8+MonoAndroid41+MonoTouch10+Xamarin.iOS10" />
 
         <!-- Android -->
         <file src="src/AirshipBindings.Portable/AirshipBindings.Portable.Android/bin/release/AirshipBindings.Portable.dll"
-            target="lib/MonoAndroid41/AirshipBindings.Portable.dll" />
+            target="lib/MonoAndroid41" />
         <file src="src/AirshipBindings.Portable/AirshipBindings.Portable.Abstractions/bin/release/AirshipBindings.Portable.Abstractions.dll"
-            target="lib/MonoAndroid41/AirshipBindings.Portable.Abstractions.dll" />
+            target="lib/MonoAndroid41" />
 
         <!-- iOS -->
         <file src="src/AirshipBindings.Portable/AirshipBindings.Portable.iOS/bin/release/AirshipBindings.Portable.dll"
-            target="lib/Xamarin.iOS10/AirshipBindings.Portable.dll" />
+            target="lib/Xamarin.iOS10" />
         <file src="src/AirshipBindings.Portable/AirshipBindings.Portable.Abstractions/bin/release/AirshipBindings.Portable.Abstractions.dll"
-            target="lib/Xamarin.iOS10/AirshipBindings.Portable.Abstractions.dll" />
+            target="lib/Xamarin.iOS10" />
    </files>
 </package>

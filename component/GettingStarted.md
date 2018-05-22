@@ -5,7 +5,7 @@ Xamarin application.
 
 ### iOS Setup
 
-1. In the Applicaiton's delegate, call `TakeOff` in `FinishedLaunching`:
+1. In the Application's delegate, call `TakeOff` in `FinishedLaunching`:
    ```
    [Register ("AppDelegate")]
        public class AppDelegate : UIApplicationDelegate

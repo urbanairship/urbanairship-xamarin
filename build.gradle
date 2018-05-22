@@ -52,56 +52,118 @@ task buildComponent {
     }
 }
 
-// Build nupkgs -- can pass in parameters (nuspec files) to specify which
+// Build nuget pkgs -- can pass in parameters (nuspec files) to specify which
 // nupkg files to build
 task pkg {
     doLast() {
-        def nupkgs = []
+        def nuspecs = []
         if (project.hasProperty('nuspec')) {
-            nupkgs = nuspec.split(',')
+            nuspecs = nuspec.split(',')
         } else {
-            nupkgs = [
-                "UrbanAirship.nuspec",
+            nuspecs = [
+                "UrbanAirship.Android.Core.nuspec",
+                "UrbanAirship.Android.ADM.nuspec",
+                "UrbanAirship.Android.FCM.nuspec",
+                "UrbanAirship.Android.GCM.nuspec",
                 "UrbanAirship.Portable.nuspec",
                 "UrbanAirship.NETStandard.nuspec",
-                "AirshipAppExtensions.nuspec"
+                "UrbanAirship.iOS.nuspec",
+                "UrbanAirship.iOS.AppExtensions.nuspec"
             ]
         }
 
-        for (pkg in nupkgs) {
+        for (nuspec in nuspecs) {
             exec {
-                commandLine "mono", "${nugetExe}", "pack", "$pkg", "-OutputDirectory", "$buildDir"
+                commandLine "mono", "${nugetExe}", "pack", "$nuspec", "-OutputDirectory", "$buildDir"
             }
         }
     }
 }
 pkg.mustRunAfter('build')
 
+// Create local nuget feed
+task createLocalFeed {
+    doLast() {
+        // get all the nuget packages from the build directory
+        def nupkgs = buildDir.listFiles(new FilenameFilter() {
+            public boolean accept(File dir, String name) {
+                return name.toLowerCase().endsWith(".nupkg");
+            }
+        }) 
+
+        // add the packages to the local nuget feed
+        File localNugetFeed = file("${rootDir}/local-nuget-feed")
+        nupkgs.each { nupkg ->
+            // add doesn't have a "-force" option, so first remove the nuget package from the local feed
+            exec {
+                commandLine "mono", "${nugetExe}", "delete", "$nupkg", "-source", "$localNugetFeed", "-noprompt"
+            }
+            // add the package to the local nuget feed
+            exec {
+                commandLine "mono", "${nugetExe}", "add", "$nupkg", "-source", "$localNugetFeed" 
+            }
+        }
+
+        // clear the local nuget cache (so new packages with unchanged versions are used)
+        exec {
+            commandLine "mono", "${nugetExe}", "locals", "all", "-clear"
+        }
+        
+    }
+}
+createLocalFeed.dependsOn('build')
+createLocalFeed.dependsOn('pkg')
+
 // Sync the version with the version declared in the airship.properties file.
 task syncVersion {
     doLast() {
-        // Handle nuspec files
+        // Handle Android nuspec versions
         ant.replaceregexp(
             match: "<version>.*</version>",
-            replace: "<version>$airshipProperties.libVersion</version>"
+            replace: "<version>$airshipProperties.androidVersion</version>"
         ) {
-            fileset(dir: "$projectDir", includes: "*.nuspec")
+            fileset(dir: "$projectDir", includes: "UrbanAirship.Android*.nuspec")
         }
-        // Handle Airship.Portable nuspec special case
+
+        // Handle iOS nuspec versions
+        ant.replaceregexp(
+            match: "<version>.*</version>",
+            replace: "<version>$airshipProperties.iosVersion</version>"
+        ) {
+            fileset(dir: "$projectDir", includes: "UrbanAirship.iOS*.nuspec")
+        }
+
+        // Handle Portable & .NET Standard versions 
         ant.replaceregexp(
             file: "$projectDir/UrbanAirship.Portable.nuspec",
-            match: "<dependency id=\"urbanairship\" version=\".*\"/>",
-            replace: "<dependency id=\"urbanairship\" version=\"$airshipProperties.libVersion\"/>",
+            match: "<version>.*</version>",
+            replace: "<version>$airshipProperties.libVersion</version>",
+            flags: "g"
+        )
+        ant.replaceregexp(
+            file: "$projectDir/UrbanAirship.NETStandard.nuspec",
+            match: "<version>.*</version>",
+            replace: "<version>$airshipProperties.libVersion</version>",
             flags: "g"
         )
 
-        // Handle Airship.NETStandard nuspec special case
+        // handle urbanairship.android.core dependencies
         ant.replaceregexp(
-            file: "$projectDir/UrbanAirship.NETStandard.nuspec",
-            match: "<dependency id=\"urbanairship\" version=\".*\"/>",
-            replace: "<dependency id=\"urbanairship\" version=\"$airshipProperties.libVersion\"/>",
+            match: "<dependency id=\"urbanairship.android.core\" version=\".*\"/>",
+            replace: "<dependency id=\"urbanairship.android.core\" version=\"$airshipProperties.androidVersion\"/>",
             flags: "g"
-        )
+        ) {
+            fileset(dir: "$projectDir", includes: "UrbanAirship*.nuspec")
+        }
+
+        // handle urbanairship.ios dependencies
+        ant.replaceregexp(
+            match: "<dependency id=\"urbanairship.ios\" version=\".*\"/>",
+            replace: "<dependency id=\"urbanairship.ios\" version=\"$airshipProperties.iosVersion\"/>",
+            flags: "g"
+        ) {
+            fileset(dir: "$projectDir", includes: "UrbanAirship*.nuspec")
+        }
 
         // Xamarin component
         ant.replaceregexp(
@@ -130,9 +192,11 @@ task syncVersion {
 
 // Clean all
 task clean(type: Delete) {
-    delete "$buildDir"
+    doLast() {
+        delete "$buildDir"
 
-    delete fileTree("$componentDir") { include "*.xam" }
+        delete fileTree("$componentDir") { include "*.xam" }
+    }
 }
 
 // Build all of the projects
@@ -141,9 +205,12 @@ build.mustRunAfter('clean')
 build.dependsOn('syncVersion')
 build.dependsOn('generateDeps')
 build.dependsOn(':docs:build',
-    ':src:AirshipBindings.Portable:build',
+    ':src:AirshipBindings.Android.ADM:build',
+    ':src:AirshipBindings.Android.Core:build',
+    ':src:AirshipBindings.Android.FCM:build',
+    ':src:AirshipBindings.Android.GCM:build',
     ':src:AirshipBindings.NETStandard:build',
+    ':src:AirshipBindings.Portable:build',
     ':src:AirshipBindings.iOS:build',
-    ':src:AirshipExtensionBindings.iOS:build',
-    ':src:AirshipBindings.Android:build')
+    ':src:AirshipBindings.iOS.AppExtensions:build')
 build.finalizedBy('buildComponent')

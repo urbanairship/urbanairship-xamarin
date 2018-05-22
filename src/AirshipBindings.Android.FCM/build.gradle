@@ -1,0 +1,69 @@
+def updateCsproj() {
+    def csprojFile = "$projectDir/AirshipBindings.Android.FCM.csproj"
+
+    def fileName = ""
+    new File("$projectDir/Jars").eachFileRecurse {
+        fileName += it.name
+    }
+
+    ant.replaceregexp(file: csprojFile, match: 'urbanairship-fcm-.*aar', replace: fileName)
+}
+
+task syncVersion  {
+    doLast() {
+        def filename = "urbanairship-fcm-${airshipProperties.androidVersion}.aar"
+        def jarDirectory = new File("$projectDir/Jars")
+        if ( jarDirectory.exists() ) {
+            // Remove aar files that aren't the correct version
+            delete fileTree("$projectDir/Jars") {
+                include '*.aar'
+                exclude filename
+            }
+        } else {
+            // create Jars directory
+            jarDirectory.mkdirs()
+        }
+
+        def path = new File("$projectDir/Jars/$filename")
+        if ( !path.exists() ) {
+           // Download aar
+            def url = new URL("http://central.maven.org/maven2/com/urbanairship/android/urbanairship-fcm/${airshipProperties.androidVersion}/$filename")
+            HttpURLConnection huc = (HttpURLConnection) url.openConnection()
+            huc.setRequestMethod("GET")
+            huc.connect();
+            if (huc.getResponseCode() / 100 != 2) {
+                println("Issue downloading version ${airshipProperties.androidVersion}. Maintaining previous version.")
+            } else {
+                url.withInputStream{
+                    i -> path.withOutputStream{ it << i }
+                }
+                // Edit the csproj file to reflect this update
+                updateCsproj()
+            }
+        }
+    }
+}
+
+task clean {
+    doLast() {
+        delete "bin"
+        delete "obj"
+        delete "$buildDir"
+        delete "Jars"
+    }
+}
+
+task build {
+    doLast() {
+        exec {
+            commandLine "mono", "$nugetExe", "restore", "AirshipBindings.Android.FCM.sln"
+        }
+
+        exec {
+            commandLine "${msbuild}", "/t:build", "/p:Configuration=Release", "AirshipBindings.Android.FCM.sln"
+        }
+    }
+}
+
+build.dependsOn('syncVersion',
+    ':src:AirshipBindings.Android.Core:build')

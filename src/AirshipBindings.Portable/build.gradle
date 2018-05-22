@@ -1,14 +1,16 @@
 task clean(type: Delete) {
-    def dirs = [
-        "AirshipBindings.Portable",
-        "AirshipBindings.Portable.Abstractions",
-        "AirshipBindings.Portable.iOS",
-        "AirshipBindings.Portable.Android"
-    ]
+    doLast() {
+        def dirs = [
+            "AirshipBindings.Portable",
+            "AirshipBindings.Portable.Abstractions",
+            "AirshipBindings.Portable.iOS",
+            "AirshipBindings.Portable.Android"
+        ]
 
-    for (String path : dirs) {
-        delete "${path}/bin"
-        delete "${path}/obj"
+        for (String path : dirs) {
+            delete "${path}/bin"
+            delete "${path}/obj"
+        }
     }
 }
 
@@ -23,3 +25,5 @@ task build {
         }
     }
 }
+
+build.dependsOn(':src:AirshipBindings.Android.Core:build')

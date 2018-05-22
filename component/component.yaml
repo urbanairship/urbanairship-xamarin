@@ -10,19 +10,19 @@ icons:
 publisher-url: http://urbanairship.com
 libraries: 
   ios-unified: ../src/AirshipBindings.iOS/bin/release/AirshipBindings.dll
-  android: ../src/AirshipBindings.Android/bin/release/AirshipBindings.dll
+  android: ../src/AirshipBindings.Android.Core/bin/release/AirshipBindings.Core.dll
 summary: A full suite of mobile engagement tools for building next-generation apps
 details: ../CHANGELOG.md
 getting-started: GettingStarted.md
-version: "5.0.2"
+version: "9.0.0"
 samples:
   iOS Sample: ../samples/ios-unified/iOSSample.sln
   Android Sample: ../samples/android/AndroidSample.sln
 packages:
   android:
-    - urbanairship, Version=5.0.2
+    - urbanairship, Version=9.0.0
   ios-unified:
-    - urbanairship, Version=5.0.2
+    - urbanairship, Version=9.0.0
 is_shell: true
 no_build: true
 output: ../build

@@ -4,6 +4,32 @@ This component provides official bindings to the Urban Airship SDK, as well as s
 
 ### Release Notes
 
+Version 9 - May 18, 2018
+=============================
+- Updated iOS SDK to 9.1.0
+- Updated Android SDK to 9.2.0.
+
+Note: Android SDK version 9.1.0 introduced support for FCM apis, modular packages, and in-app message design updates. More Android-specific details are available in the [changelog](https://github.com/urbanairship/android-library/blob/9.1.0/CHANGELOG.md). For FCM migration, please follow the [FCM Migration Guide](https://github.com/urbanairship/xamarin-component/blob/master/documentation/migration/migration-guide-fcm.md).
+
+Changes
+-------
+- Split urbanairship package into iOS and Android packages. Also moved Android push providers into their own packages. `urbanairship` has been split into:
+
+   - `urbanairship.ios` (iOS)
+   - `urbanairship.ios.appextensions` (iOS Notification Service Extension)
+   - `urbanairship.android.core` (Android core functionality)
+   - `urbanairship.android.adm`  (Android ADM Push Provider)
+   - `urbanairship.android.fcm`  (Android FCM Push Provider)
+   - `urbanairship.android.gcm`  (Android GCM Push Provider)
+- Starting with Version 9 of the Xamarin SDK, the version of the native bindings will track the native SDK version contained in that binding. The cross-platform libraries will be independently versioned.
+
+Package | Version
+--- | ---
+urbanairship.android.* | 9.2.0
+urbanairship.ios.* | 9.1.0  
+urbanairship.netstandard | 9.0.0
+urbanairship.portable | 9.0.0
+
 Version 5.0.2 - April 20, 2018
 ==============================
 - Added a .NET 2.0 standard library package.
