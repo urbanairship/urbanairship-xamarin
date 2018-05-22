@@ -5,13 +5,8 @@ ext {
     if ( !toolsDir.exists() ) {
         toolsDir.mkdirs()
     }
-    componentDir = new File("$projectDir/component")
-    if ( !componentDir.exists() ) {
-        componentDir.mkdirs()
-    }
     rootDir = new File("$projectDir")
     nugetExe = new File("$toolsDir/nuget.exe")
-    xamarinComponentExe = new File("$toolsDir/xamarin-component.exe")
     msbuild = "/Library/Frameworks/Mono.framework/Commands/msbuild"
 }
 
@@ -136,19 +131,6 @@ task syncVersion {
             fileset(dir: "$projectDir", includes: "UrbanAirship*.nuspec")
         }
 
-        // Xamarin component
-        ant.replaceregexp(
-            file: "$projectDir/component/component.yaml",
-            match: "version: \".*\"",
-            replace: "version: \"$airshipProperties.libVersion\""
-        )
-        ant.replaceregexp(
-            file: "$projectDir/component/component.yaml",
-            match: "urbanairship, Version=.*",
-            replace: "urbanairship, Version=$airshipProperties.libVersion",
-            flags: "g"
-        )
-
         // Shared assembly info
         ant.replaceregexp(
             file: "$projectDir/src/SharedAssemblyInfo.cs",
@@ -211,8 +193,6 @@ publishToProduction.dependsOn('pkg')
 task clean(type: Delete) {
     doLast() {
         delete "$buildDir"
-
-        delete fileTree("$componentDir") { include "*.xam" }
     }
 }
 
