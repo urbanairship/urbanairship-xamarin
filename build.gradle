@@ -158,6 +158,52 @@ task syncVersion {
     }
 }
 
+class PublishTask extends DefaultTask {
+    @InputDirectory
+    @Optional
+    def File nupkgDir = getProject().buildDir
+
+    @Input
+    @Optional
+    def File nugetExec = getProject().nugetExe
+
+    @Input
+    def String nugetRepoURL
+
+    @Input
+    def String nugetApiKey
+
+    @TaskAction
+    def publish() {
+        // get all the nuget packages from the build directory
+        def nupkgs = nupkgDir.listFiles(new FilenameFilter() {
+            public boolean accept(File dir, String name) {
+                return name.toLowerCase().endsWith(".nupkg");
+            }
+        }) 
+
+        // publish the packages to nuget
+        nupkgs.each { nupkg ->
+            // publish the package
+            getProject().exec {
+                ignoreExitValue true
+                commandLine "mono", "${nugetExec}", "push", "$nupkg", "-source", "${nugetRepoURL}", "-apikey", "${nugetApiKey}"
+            }
+        }
+    }
+}
+
+task publishToStaging(type:PublishTask) {
+    nugetRepoURL = "https://int.nugettest.org/api/v2/package"
+    nugetApiKey = "$System.env.NUGET_STAGING_API_KEY"
+}
+publishToStaging.dependsOn('pkg')
+
+task publishToProduction(type:PublishTask) {
+    nugetRepoURL = "https://www.nuget.org/api/v2/package"
+    nugetApiKey = "$System.env.NUGET_PRODUCTION_API_KEY"
+}
+publishToProduction.dependsOn('pkg')
 
 //--- GLOBAL TASKS ---//
 
