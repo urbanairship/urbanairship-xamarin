@@ -11,6 +11,7 @@
       <dependencies>
          <group targetFramework="MonoAndroid">
             <dependency id="Xamarin.Firebase.Messaging" version="60.1142.1" />
+            <dependency id="Xamarin.GooglePlayServices.Base" version="60.1142.1" />
             <dependency id="urbanairship.android.core" version="9.2.0"/>
          </group>
       </dependencies>
