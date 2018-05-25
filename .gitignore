@@ -221,3 +221,5 @@ local-nuget-feed/
 
 # UA native jars
 urbanairship*.aar
+
+google-services.json

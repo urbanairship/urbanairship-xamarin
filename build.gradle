@@ -22,33 +22,6 @@ task generateDeps {
                 i -> nugetExe.withOutputStream{ it << i }
             }
         }
-
-        // Download xamarin component if it doesn't exist.
-        if (!xamarinComponentExe.exists()) {
-            def temp = new File("$toolsDir/xpkg")
-            new URL('https://components.xamarin.com/submit/xpkg').withInputStream{
-                i -> temp.withOutputStream{ it << i }
-            }
-            copy {
-                from zipTree(temp)
-                into "$toolsDir"
-            }
-            delete temp
-        }
-    }
-}
-
-task buildComponent {
-    doLast() {
-        exec {
-            commandLine "mono", "${xamarinComponentExe}", "package", "$componentDir", "-OutputDirectory", "$buildDir"
-        }
-
-        copy {
-            from "$componentDir"
-            include "*.xam"
-            into "$buildDir"
-        }
     }
 }
 
@@ -79,11 +52,15 @@ task pkg {
         }
     }
 }
-pkg.mustRunAfter('build')
+pkg.dependsOn('build')
 
 // Create local nuget feed
 task createLocalFeed {
     doLast() {
+        // add doesn't have a "-force" option, so first remove all the nuget packages from the local feed
+        File localNugetFeed = file("${rootDir}/local-nuget-feed")
+        localNugetFeed.deleteDir()
+
         // get all the nuget packages from the build directory
         def nupkgs = buildDir.listFiles(new FilenameFilter() {
             public boolean accept(File dir, String name) {
@@ -92,12 +69,7 @@ task createLocalFeed {
         }) 
 
         // add the packages to the local nuget feed
-        File localNugetFeed = file("${rootDir}/local-nuget-feed")
         nupkgs.each { nupkg ->
-            // add doesn't have a "-force" option, so first remove the nuget package from the local feed
-            exec {
-                commandLine "mono", "${nugetExe}", "delete", "$nupkg", "-source", "$localNugetFeed", "-noprompt"
-            }
             // add the package to the local nuget feed
             exec {
                 commandLine "mono", "${nugetExe}", "add", "$nupkg", "-source", "$localNugetFeed" 
@@ -111,7 +83,6 @@ task createLocalFeed {
         
     }
 }
-createLocalFeed.dependsOn('build')
 createLocalFeed.dependsOn('pkg')
 
 // Sync the version with the version declared in the airship.properties file.
@@ -213,4 +184,3 @@ build.dependsOn(':docs:build',
     ':src:AirshipBindings.Portable:build',
     ':src:AirshipBindings.iOS:build',
     ':src:AirshipBindings.iOS.AppExtensions:build')
-build.finalizedBy('buildComponent')
