@@ -5,6 +5,7 @@
       <version>9.2.0</version>
       <title>Urban Airship SDK</title>
       <authors>Urban Airship, Inc.</authors>
+      <projectUrl>https://github.com/urbanairship/urbanairship-xamarin</projectUrl>
       <requireLicenseAcceptance>false</requireLicenseAcceptance>
       <description>A full suite of mobile engagement tools for building next-generation apps</description>
 

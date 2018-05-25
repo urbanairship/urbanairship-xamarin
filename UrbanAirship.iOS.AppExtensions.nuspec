@@ -5,6 +5,7 @@
       <version>9.1.0</version>
       <title>Urban Airship App Extensions</title>
       <authors>Urban Airship, Inc.</authors>
+      <projectUrl>https://github.com/urbanairship/urbanairship-xamarin</projectUrl>
       <requireLicenseAcceptance>false</requireLicenseAcceptance>
       <description>App extension support for iOS</description>
    </metadata>

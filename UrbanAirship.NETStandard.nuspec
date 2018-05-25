@@ -5,6 +5,7 @@
       <version>9.0.0</version>
       <title>Urban Airship SDK .NET Standard Library</title>
       <authors>Urban Airship, Inc.</authors>
+      <projectUrl>https://github.com/urbanairship/urbanairship-xamarin</projectUrl>
       <requireLicenseAcceptance>false</requireLicenseAcceptance>
       <description>A .NET Standard Library for the Urban Airship SDK.</description>
 
