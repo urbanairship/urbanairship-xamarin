@@ -1,15 +1,17 @@
-# Urban Airship SDK
+# Urban Airship Xamarin Library
 
-This component provides official bindings to the Urban Airship SDK, as well as sample applications for both iOS and Android.
+This library provides official bindings to the Urban Airship SDK, as well as sample applications for both iOS and Android.
+
+> Note: The library has moved to https://github.com/urbanairship/urbanairship-xamarin
 
 ### Release Notes
 
-Version 9 - May 18, 2018
+Version 9 - May 22, 2018
 =============================
 - Updated iOS SDK to 9.1.0
 - Updated Android SDK to 9.2.0.
 
-Note: Android SDK version 9.1.0 introduced support for FCM apis, modular packages, and in-app message design updates. More Android-specific details are available in the [changelog](https://github.com/urbanairship/android-library/blob/9.1.0/CHANGELOG.md). For FCM migration, please follow the [FCM Migration Guide](https://github.com/urbanairship/xamarin-component/blob/master/documentation/migration/migration-guide-fcm.md).
+Note: Android SDK version 9.1.0 introduced support for FCM apis, modular packages, and in-app message design updates. More Android-specific details are available in the [changelog](https://github.com/urbanairship/android-library/blob/9.1.0/CHANGELOG.md). For FCM migration, please follow the [FCM Migration Guide](documentation/migration-guide-fcm.md).
 
 Changes
 -------

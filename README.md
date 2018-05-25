@@ -1,6 +1,6 @@
-# Urban Airship Xamarin Component
+# Urban Airship Xamarin Library
 
-This component provides official bindings to the Urban Airship SDK, as well as sample applications for both iOS and Android.
+This library provides official bindings to the Urban Airship SDK, as well as sample applications for both iOS and Android.
 
 ### Contributing Code
 
@@ -12,7 +12,7 @@ One of our engineers will verify receipt of the agreement before approving your 
 ### Resources
 
  - [Xamarin Platform Doc](http://docs.urbanairship.com/platform/xamarin.html)
- - [Getting Started](component/GettingStarted.md)
+ - [Getting Started](GettingStarted.md)
  - [CHANGELOG](CHANGELOG.md)
 
 
