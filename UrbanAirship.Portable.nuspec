@@ -5,6 +5,7 @@
       <version>9.0.0</version>
       <title>Urban Airship SDK PCL</title>
       <authors>Urban Airship, Inc.</authors>
+      <projectUrl>https://github.com/urbanairship/urbanairship-xamarin</projectUrl>
       <requireLicenseAcceptance>false</requireLicenseAcceptance>
       <description>A portable client library for the Urban Airship SDK.</description>
 
