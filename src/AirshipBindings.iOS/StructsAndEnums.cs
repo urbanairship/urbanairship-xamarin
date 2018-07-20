@@ -104,6 +104,18 @@ namespace UrbanAirship {
     }
 
     [Native]
+    public enum UAAuthorizedNotificationSettings : ulong
+    {
+        None = 0,
+        Badge = (1 << 0),
+        Sound = (1 << 1),
+        Alert = (1 << 2),
+        CarPlay = (1 << 3),
+        LockScreen = (1 << 4),
+        NotificationCenter = (1 << 5)
+    }
+
+    [Native]
     public enum UABoundaryEvent : long
     {
         Enter = 1,
