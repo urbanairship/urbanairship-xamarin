@@ -82,10 +82,6 @@
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="Xamarin.iOS" />
-    <Reference Include="AirshipBindings.iOS.AppExtensions">
-      <HintPath>..\packages\urbanairship.ios.appextensions.5.1.0\lib\Xamarin.iOS10\AirshipBindings.iOS.AppExtensions.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
@@ -93,10 +89,15 @@
   <ItemGroup>
     <None Include="Info.plist" />
     <None Include="Entitlements.plist" />
-    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="NotificationService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\src\AirshipBindings.iOS.AppExtensions\AirshipBindings.iOS.AppExtensions.csproj">
+      <Project>{2C453988-C24E-431A-A17C-6989E93C795E}</Project>
+      <Name>AirshipBindings.iOS.AppExtensions</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.AppExtension.CSharp.targets" />
 </Project>

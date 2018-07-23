@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
    <metadata>
       <id>urbanairship.portable</id>
-      <version>9.0.0</version>
+      <version>9.1.0</version>
       <title>Urban Airship SDK PCL</title>
       <authors>Urban Airship, Inc.</authors>
       <projectUrl>https://github.com/urbanairship/urbanairship-xamarin</projectUrl>
@@ -11,11 +11,11 @@
 
       <dependencies>
          <group targetFramework="MonoAndroid">
-            <dependency id="urbanairship.android.core" version="9.2.0"/>
+            <dependency id="urbanairship.android.core" version="9.4.0"/>
          </group>
 
          <group targetFramework="Xamarin.iOS">
-            <dependency id="urbanairship.ios" version="9.1.0"/>
+            <dependency id="urbanairship.ios" version="9.3.2"/>
          </group>
       </dependencies>
    </metadata>

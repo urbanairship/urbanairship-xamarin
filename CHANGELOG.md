@@ -6,6 +6,11 @@ This library provides official bindings to the Urban Airship SDK, as well as sam
 
 ### Release Notes
 
+Version 9.1 - July 23, 2018
+===========================
+- Update iOS SDK to 9.3.2
+- Updated Android SDK to 9.4.0
+
 Version 9 - May 22, 2018
 =============================
 - Updated iOS SDK to 9.1.0
