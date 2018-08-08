@@ -8,20 +8,21 @@ task clean(type: Delete) {
         ]
 
         for (String path : dirs) {
-            delete "${path}/bin"
-            delete "${path}/obj"
+            project.delete "${path}/bin"
+            project.delete "${path}/obj"
         }
     }
 }
 
 task build {
+    def BuildConfiguration=project.properties['build_configuration'] ?: "Release"
     doLast() {
         exec {
             commandLine "mono", "$nugetExe", "restore", "AirshipBindings.Portable.sln"
         }
 
         exec {
-            commandLine "${msbuild}", "/t:build", "/p:Configuration=Release", "AirshipBindings.Portable.sln"
+            commandLine "${msbuild}", "/t:build", "/p:Configuration=${BuildConfiguration}", "AirshipBindings.Portable.sln"
         }
     }
 }

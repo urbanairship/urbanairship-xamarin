@@ -5,14 +5,17 @@ ext {
 
 task clean(type: Delete) {
     doLast() {
-        delete "$buildDir"
+        project.delete "bin"
+        project.delete "obj"
+        project.delete "$buildDir"
     }
 }
 
 task build {
+    def BuildConfiguration=project.properties['build_configuration'] ?: "Release"
     doLast() {
         exec {
-            commandLine "${msbuild}", "/t:build", "/p:Configuration=Release", "AirshipBindings.iOS.AppExtensions.sln"
+            commandLine "${msbuild}", "/t:build", "/p:Configuration=${BuildConfiguration}", "AirshipBindings.iOS.AppExtensions.sln"
         }
     }
 }

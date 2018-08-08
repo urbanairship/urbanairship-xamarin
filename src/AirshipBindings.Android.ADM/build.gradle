@@ -46,21 +46,22 @@ task syncVersion  {
 
 task clean {
     doLast() {
-        delete "bin"
-        delete "obj"
-        delete "$buildDir"
-        delete "Jars"
+        project.delete "bin"
+        project.delete "obj"
+        project.delete "$buildDir"
+        project.delete "Jars"
     }
 }
 
 task build {
+    def BuildConfiguration=project.properties['build_configuration'] ?: "Release"
     doLast() {
         exec {
             commandLine "mono", "$nugetExe", "restore", "AirshipBindings.Android.ADM.sln"
         }
 
         exec {
-            commandLine "${msbuild}", "/t:build", "/p:Configuration=Release", "AirshipBindings.Android.ADM.sln"
+            commandLine "${msbuild}", "/t:build", "/p:Configuration=${BuildConfiguration}", "AirshipBindings.Android.ADM.sln"
         }
     }
 }

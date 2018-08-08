@@ -15,7 +15,7 @@ task syncVersion  {
         def jarDirectory = new File("$projectDir/Jars")
         if ( jarDirectory.exists() ) {
             // Remove aar files that aren't the correct version
-            delete fileTree("$projectDir/Jars") {
+            project.delete fileTree("$projectDir/Jars") {
                 include '*.aar'
                 exclude filename
             }
@@ -46,21 +46,22 @@ task syncVersion  {
 
 task clean {
     doLast() {
-        delete "bin"
-        delete "obj"
-        delete "$buildDir"
-        delete "Jars"
+        project.delete "bin"
+        project.delete "obj"
+        project.delete "$buildDir"
+        project.delete "Jars"
     }
 }
 
 task build {
+    def BuildConfiguration=project.properties['build_configuration'] ?: "Release"
     doLast() {
         exec {
             commandLine "mono", "$nugetExe", "restore", "AirshipBindings.Android.GCM.sln"
         }
 
         exec {
-            commandLine "${msbuild}", "/t:build", "/p:Configuration=Release", "AirshipBindings.Android.GCM.sln"
+            commandLine "${msbuild}", "/t:build", "/p:Configuration=${BuildConfiguration}", "AirshipBindings.Android.GCM.sln"
         }
     }
 }

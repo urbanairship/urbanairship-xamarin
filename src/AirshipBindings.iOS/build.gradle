@@ -5,9 +5,10 @@ ext {
 
 task clean(type: Delete) {
     doLast() {
-        delete "bin"
-        delete "obj"
-        delete "$buildDir"
+        project.delete "bin"
+        project.delete "obj"
+        project.delete "$buildDir"
+        project.delete "$rootDir/Carthage"
     }
 }
 
@@ -35,13 +36,14 @@ task carthageUpdate {
 }
 
 task build {
+    def BuildConfiguration=project.properties['build_configuration'] ?: "Release"
     doLast() {
         exec {
             commandLine "mono", "$nugetExe", "restore", "AirshipBindings.iOS.sln"
         }
 
         exec {
-            commandLine "${msbuild}", "/t:build", "/p:Configuration=Release", "AirshipBindings.iOS.sln"
+            commandLine "${msbuild}", "/t:build", "/p:Configuration=${BuildConfiguration}", "AirshipBindings.iOS.sln"
         }
     }
 }
