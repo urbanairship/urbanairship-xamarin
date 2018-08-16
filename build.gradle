@@ -7,17 +7,12 @@ ext {
     }
     rootDir = new File("$projectDir")
     nugetExe = new File("$toolsDir/nuget.exe")
-    msbuild = "/Library/Frameworks/Mono.framework/Commands/msbuild"
-}
-
-task generateDeps {
-    doLast() {
-        if (!nugetExe.exists()) {
-            new URL('https://dist.nuget.org/win-x86-commandline/latest/nuget.exe').withInputStream{
-                i -> nugetExe.withOutputStream{ it << i }
-            }
+    if (!nugetExe.exists()) {
+        new URL('https://dist.nuget.org/win-x86-commandline/latest/nuget.exe').withInputStream{
+            i -> nugetExe.withOutputStream{ it << i }
         }
     }
+    msbuild = "/Library/Frameworks/Mono.framework/Commands/msbuild"
 }
 
 // Build nuget pkgs -- can pass in parameters (nuspec files) to specify which
@@ -192,15 +187,14 @@ publishToProduction.dependsOn('pkg')
 // Clean all
 task clean(type: Delete) {
     doLast() {
-        delete "$buildDir"
+        project.delete "$buildDir"
     }
 }
 
-// Build all of the projects
+// Build the plugin
 task build
 build.mustRunAfter('clean')
 build.dependsOn('syncVersion')
-build.dependsOn('generateDeps')
 build.dependsOn(':docs:build',
     ':src:AirshipBindings.Android.ADM:build',
     ':src:AirshipBindings.Android.Core:build',

@@ -1,6 +1,6 @@
 task clean(type: Delete) {
     doLast() {
-        delete "$buildDir"
+        project.delete "$buildDir"
     }
 }
 
