@@ -57,5 +57,8 @@
   <remove-node path="/api/package[@name='com.urbanairship.automation']/class[@name='ActionScheduleEdits']/method[@name='getData']" />
   <remove-node path="/api/package[@name='com.urbanairship.automation']/class[@name='ActionScheduleInfo']/method[@name='getData']" />
 
+ <!-- Remove remote config package to prevent public/protected conflicts-->
+ <remove-node path="/api/package[@name='com.urbanairship.remoteconfig']" />
+
 </metadata>
 
