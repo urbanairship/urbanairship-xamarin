@@ -174,6 +174,14 @@ namespace UrbanAirship {
     }
 
     [Native]
+    public enum UAInAppMessageAudienceMissBehaviorType : long
+    {
+        Cancel = 0,
+        Skip = 1,
+        Penalize = 2
+    }
+
+    [Native]
     public enum UAInAppMessageBannerPlacementType : long
     {
         Top = 0,

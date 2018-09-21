@@ -487,6 +487,10 @@ namespace UrbanAirship {
         [Field("UAInAppMessageModalAllowsFullScreenKey", "__Internal")]
         NSString UAInAppMessageModalAllowsFullScreenKey { get; }
 
+        // extern NSString *const UAInAppMessageHTMLAllowsFullScreenKey
+        [Field("UAInAppMessageHTMLAllowsFullScreenKey", "__Internal")]
+        NSString UAInAppMessageHTMLAllowsFullScreenKey { get; }
+
         // extern NSString *const UAInAppMessageButtonLayoutStackedValue
         [Field("UAInAppMessageButtonLayoutStackedValue", "__Internal")]
         NSString UAInAppMessageButtonLayoutStackedValue { get; }
@@ -534,6 +538,26 @@ namespace UrbanAirship {
         // extern NSString *const _Nonnull UAFullScreenMediaStyleKey
         [Field("UAFullScreenMediaStyleKey", "__Internal")]
         NSString UAFullScreenMediaStyleKey { get; }
+
+        // extern NSString *const UAHTMLStyleFileName
+        [Field("UAHTMLStyleFileName", "__Internal")]
+        NSString UAHTMLStyleFileName { get; }
+
+        // extern NSString *const _Nonnull UAHTMLDismissIconResourceKey
+        [Field("UAHTMLDismissIconResourceKey", "__Internal")]
+        NSString UAHTMLDismissIconResourceKey { get; }
+
+        // extern NSString *const _Nonnull UAHTMLAdditionalPaddingKey
+        [Field("UAHTMLAdditionalPaddingKey", "__Internal")]
+        NSString UAHTMLAdditionalPaddingKey { get; }
+
+        // extern NSString *const _Nonnull UAHTMLMaxWidthKey
+        [Field("UAHTMLMaxWidthKey", "__Internal")]
+        NSString UAHTMLMaxWidthKey { get; }
+
+        // extern NSString *const _Nonnull UAHTMLMaxHeightKey
+        [Field("UAHTMLMaxHeightKey", "__Internal")]
+        NSString UAHTMLMaxHeightKey { get; }
 
         // extern NSString *const _Nonnull UAMediaAdditionalPaddingKey
         [Field("UAMediaAdditionalPaddingKey", "__Internal")]
@@ -3327,6 +3351,10 @@ namespace UrbanAirship {
         [NullAllowed, Export("versionPredicate", ArgumentSemantic.Strong)]
         UAJSONPredicate VersionPredicate { get; set; }
 
+        // @property (assign, readwrite, nonatomic) UAInAppMessageAudienceMissBehaviorType missBehavior;
+        [Export("missBehavior", ArgumentSemantic.Assign)]
+        UAInAppMessageAudienceMissBehaviorType MissBehavior { get; set; }
+
         // - (BOOL)isValid;
         [Export("isValid")]
         bool IsValid();
@@ -3355,6 +3383,10 @@ namespace UrbanAirship {
         // @property (readonly, nonatomic, nullable) UAJSONPredicate *versionPredicate;
         [NullAllowed, Export("versionPredicate")]
         UAJSONPredicate VersionPredicate { get; }
+
+        // @property (readonly, assign, nonatomic) UAInAppMessageAudienceMissBehaviorType missBehavior;
+        [Export("missBehavior", ArgumentSemantic.Assign)]
+        UAInAppMessageAudienceMissBehaviorType MissBehavior { get; }
 
         // + (nonnull instancetype)audienceWithBuilderBlock: (nonnull void (^)(UAInAppMessageAudienceBuilder *_Nonnull))builderBlock;
         [Static]
@@ -3804,6 +3836,9 @@ namespace UrbanAirship {
     [BaseType(typeof(NSObject))]
     interface UAInAppMessageHTMLAdapter : IUAInAppMessageAdapterProtocol
     {
+        // @property (readwrite, strong, nonatomic, nullable) UAInAppMessageHTMLStyle *style;
+        [NullAllowed, Export("style", ArgumentSemantic.Strong)]
+        UAInAppMessageHTMLStyle Style { get; set; }
 
     }
 
@@ -3822,6 +3857,14 @@ namespace UrbanAirship {
         // @property (readwrite, copy, nonatomic, nullable) NSString *url;
         [NullAllowed, Export("url")]
         string Url { get; set; }
+
+        // @property (assign, readwrite, nonatomic) NSUInteger borderRadius;
+        [Export("borderRadius")]
+        nuint BorderRadius { get; set; }
+
+        // @property (assign, readwrite, nonatomic) BOOL allowFullScreenDisplay;
+        [Export("allowFullScreenDisplay")]
+        bool AllowFullScreenDisplay { get; set; }
 
         // - (BOOL)isValid;
         [Export("isValid")]
@@ -3844,6 +3887,14 @@ namespace UrbanAirship {
         [Export("dismissButtonColor", ArgumentSemantic.Strong)]
         UIColor DismissButtonColor { get; }
 
+        // @property (readonly, assign, nonatomic) NSUInteger borderRadius;
+        [Export("borderRadius")]
+        nuint BorderRadius { get; }
+
+        // @property (readonly, assign, nonatomic) BOOL allowFullScreenDisplay;
+        [Export("allowFullScreenDisplay")]
+        bool AllowFullScreenDisplay { get; }
+
         // + (nullable instancetype)displayContentWithBuilderBlock: (nonnull void (^)(UAInAppMessageHTMLDisplayContentBuilder *_Nonnull)) builderBlock;
         [Static]
         [Export("displayContentWithBuilderBlock:")]
@@ -3853,6 +3904,28 @@ namespace UrbanAirship {
         // - (nonnull UAInAppMessageHTMLDisplayContent *)extend: (nonnull void (^)(UAInAppMessageHTMLDisplayContentBuilder *_Nonnull)) builderBlock;
         [Export("extend:")]
         UAInAppMessageHTMLDisplayContent Extend(Action<UAInAppMessageHTMLDisplayContentBuilder> builderBlock);
+    }
+
+    // @interface UAInAppMessageHTMLStyle : NSObject <UAInAppMessageStyleProtocol>
+    [BaseType(typeof(NSObject))]
+    interface UAInAppMessageHTMLStyle : IUAInAppMessageStyleProtocol
+    {
+        // @property (readwrite, strong, nonatomic) UAPadding *_Nonnull additionalPadding;
+        [Export("additionalPadding", ArgumentSemantic.Strong)]
+        UAPadding AdditionalPadding { get; set; }
+
+        // @property (readwrite, strong, nonatomic, nullable) NSString *dismissIconResource;
+        [NullAllowed, Export("dismissIconResource")]
+        string DismissIconResource { get; set; }
+
+        // @property (readwrite, strong, nonatomic, nullable) NSNumber *maxWidth;
+        [NullAllowed, Export("maxWidth", ArgumentSemantic.Strong)]
+        NSNumber MaxWidth { get; set; }
+
+        // @property (readwrite, strong, nonatomic, nullable) NSNumber *maxHeight;
+        [NullAllowed, Export("maxHeight", ArgumentSemantic.Strong)]
+        NSNumber MaxHeight { get; set; }
+
     }
 
     // @protocol UAInAppMessagingDelegate <NSObject>
