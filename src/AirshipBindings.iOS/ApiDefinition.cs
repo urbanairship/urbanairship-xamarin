@@ -1779,7 +1779,7 @@ namespace UrbanAirship {
 
         // @property (readwrite, nonatomic, nullable) id<UALocationDelegate> delegate;
         [NullAllowed, Export("delegate", ArgumentSemantic.Assign)]
-        IUALocationDelegate WeakDelegate { get; set; }
+        NSObject WeakDelegate { get; set; }
 
         [Wrap("WeakDelegate")]
         [NullAllowed]
@@ -2325,7 +2325,7 @@ namespace UrbanAirship {
 
         // @property (readwrite, nonatomic, nullable) id<UAPushNotificationDelegate> pushNotificationDelegate;
         [NullAllowed, Export("pushNotificationDelegate", ArgumentSemantic.Assign)]
-        IUAPushNotificationDelegate WeakPushNotificationDelegate { get; set; }
+        NSObject WeakPushNotificationDelegate { get; set; }
 
         [Wrap("WeakPushNotificationDelegate")]
         [NullAllowed]
@@ -2333,7 +2333,7 @@ namespace UrbanAirship {
 
         // @property (readwrite, nonatomic, nullable) id<UARegistrationDelegate> registrationDelegate;
         [NullAllowed, Export("registrationDelegate", ArgumentSemantic.Assign)]
-        IUARegistrationDelegate WeakRegistrationDelegate { get; set; }
+        NSObject WeakRegistrationDelegate { get; set; }
 
         [Wrap("WeakRegistrationDelegate")]
         [NullAllowed]
@@ -2986,7 +2986,7 @@ namespace UrbanAirship {
 
         // @property (readwrite, nonatomic, nullable) id<UAWhitelistDelegate> delegate;
         [NullAllowed, Export("delegate", ArgumentSemantic.Assign)]
-        IUAWhitelistDelegate WeakDelegate { get; set; }
+        NSObject WeakDelegate { get; set; }
 
         [Wrap("WeakDelegate")]
         [NullAllowed]
@@ -3049,7 +3049,7 @@ namespace UrbanAirship {
 
         // @property (readwrite, nonatomic, nullable) id<UAJavaScriptDelegate> jsDelegate;
         [NullAllowed, Export("jsDelegate", ArgumentSemantic.Assign)]
-        IUAJavaScriptDelegate WeakJsDelegate { get; set; }
+        NSObject WeakJsDelegate { get; set; }
 
         [Wrap("WeakJsDelegate")]
         [NullAllowed]
@@ -3057,7 +3057,7 @@ namespace UrbanAirship {
 
         // @property (readwrite, nonatomic, nullable) id<UADeepLinkDelegate> deepLinkDelegate;
         [NullAllowed, Export("deepLinkDelegate", ArgumentSemantic.Assign)]
-        IUADeepLinkDelegate WeakDeepLinkDelegate { get; set; }
+        NSObject WeakDeepLinkDelegate { get; set; }
 
         [Wrap("WeakDeepLinkDelegate")]
         [NullAllowed]
@@ -3963,7 +3963,7 @@ namespace UrbanAirship {
 
         // @property (readwrite, nonatomic) id<UAInAppMessagingDelegate> _Nullable delegate;
         [NullAllowed, Export("delegate", ArgumentSemantic.Assign)]
-        IUAInAppMessagingDelegate WeakDelegate { get; set; }
+        NSObject WeakDelegate { get; set; }
 
         [Wrap("WeakDelegate")]
         [NullAllowed]
@@ -4478,7 +4478,7 @@ namespace UrbanAirship {
 
         // @property (readwrite, nonatomic, nullable) id<UAInboxDelegate> delegate;
         [NullAllowed, Export("delegate", ArgumentSemantic.Assign)]
-        IUAInboxDelegate WeakDelegate { get; set; }
+        NSObject WeakDelegate { get; set; }
 
         [Wrap("WeakDelegate")]
         [NullAllowed]
@@ -4749,7 +4749,7 @@ namespace UrbanAirship {
 
         // @property (readwrite, nonatomic) id<UALegacyInAppMessageFactoryDelegate> _Nullable factoryDelegate;
         [NullAllowed, Export("factoryDelegate", ArgumentSemantic.Assign)]
-        IUALegacyInAppMessageFactoryDelegate WeakFactoryDelegate { get; set; }
+        NSObject WeakFactoryDelegate { get; set; }
 
         [Wrap("WeakFactoryDelegate")]
         [NullAllowed]
@@ -5127,7 +5127,7 @@ namespace UrbanAirship {
     {
         // @property (readwrite, nonatomic, nullable) id<UAWKWebViewDelegate> forwardDelegate;
         [NullAllowed, Export("forwardDelegate", ArgumentSemantic.Assign)]
-        IUAWKWebViewDelegate WeakForwardDelegate { get; set; }
+        NSObject WeakForwardDelegate { get; set; }
 
         [Wrap("WeakForwardDelegate")]
         [NullAllowed]
@@ -5160,7 +5160,7 @@ namespace UrbanAirship {
 
         // @property (readwrite, nonatomic, nullable) id<UAWKWebViewDelegate> delegate;
         [NullAllowed, Export("delegate", ArgumentSemantic.Assign)]
-        IUAWKWebViewDelegate WeakDelegate { get; set; }
+        NSObject WeakDelegate { get; set; }
 
         [Wrap("WeakDelegate")]
         [NullAllowed]
