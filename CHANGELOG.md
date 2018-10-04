@@ -6,6 +6,11 @@ This library provides official bindings to the Urban Airship SDK, as well as sam
 
 ### Release Notes
 
+Version 9.3 - October 4, 2018
+=============================
+- Update iOS SDK to 10.0.1
+- Android SDK version is still 9.5.2
+
 Version 9.2 - September 24, 2018
 ================================
 - Update iOS SDK to 9.4.0
@@ -38,7 +43,7 @@ Changes
 Package | Version
 --- | ---
 urbanairship.android.* | 9.2.0
-urbanairship.ios.* | 9.1.0  
+urbanairship.ios.* | 9.1.0
 urbanairship.netstandard | 9.0.0
 urbanairship.portable | 9.0.0
 
@@ -59,7 +64,7 @@ Note: Aside from SDK interface changes between 8.x and 9.x, iOS bindings have al
 changed in that they no longer implicitly convert methods into properties.
 Notably, accessors such as `UAirship.Push` and `UAirship.NamedUser` are now methods,
 e.g. `UAirship.Push()` and `UAirship.NamedUser()`. This more closely refelcts
-the structure of the iOS SDK and will help to make bindings more stable moving forward.  
+the structure of the iOS SDK and will help to make bindings more stable moving forward.
 
 Version 4.6.4 - January 12, 2018
 =============================

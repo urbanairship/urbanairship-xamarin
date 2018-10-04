@@ -18,9 +18,9 @@ namespace Sample
             this.Style = UAirship.MessageCenter().Style;
         }
 
-        public void DisplayMessage(UAInboxMessage message)
+        public void DisplayMessage(string messageID)
         {
-            ListViewController.DisplayMessage(message.MessageID);
+            ListViewController.DisplayMessage(messageID);
         }
     }
 }
