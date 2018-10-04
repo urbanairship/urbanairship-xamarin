@@ -22,11 +22,11 @@ namespace Sample
             return (MessageCenterViewController)tabBarController.ViewControllers.ElementAt(2);
         }
 
-        public override void ShowInboxMessage(UAInboxMessage message)
+        public override void ShowMessage(string messageID)
         {
             ShowInbox();
 
-            MessageCenterViewController().DisplayMessage(message);
+            MessageCenterViewController().DisplayMessage(messageID);
         }
 
         public override void ShowInbox()

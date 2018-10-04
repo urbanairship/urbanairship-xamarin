@@ -100,7 +100,10 @@ namespace UrbanAirship {
         Badge = (1 << 0),
         Sound = (1 << 1),
         Alert = (1 << 2),
-        CarPlay = (1 << 3)
+        CarPlay = (1 << 3),
+        CriticalAlert = (1 << 4),
+        ProvidesAppNotificationSettings = (1 << 5),
+        Provisional = (1 << 6)
     }
 
     [Native]
@@ -112,7 +115,17 @@ namespace UrbanAirship {
         Alert = (1 << 2),
         CarPlay = (1 << 3),
         LockScreen = (1 << 4),
-        NotificationCenter = (1 << 5)
+        NotificationCenter = (1 << 5),
+        CriticalAlert = (1 << 6)
+    }
+
+    [Native]
+    public enum UAAuthorizationStatus : long
+    {
+        NotDetermined = 0,
+        Denied = 1,
+        Authorized = 2,
+        Provisional = 3
     }
 
     [Native]
