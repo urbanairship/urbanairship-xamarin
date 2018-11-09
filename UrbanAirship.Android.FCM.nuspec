@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
    <metadata>
       <id>urbanairship.android.fcm</id>
-      <version>9.5.2</version>
+      <version>9.5.4</version>
       <title>Urban Airship SDK</title>
       <authors>Urban Airship, Inc.</authors>
       <projectUrl>https://github.com/urbanairship/urbanairship-xamarin</projectUrl>
@@ -13,7 +13,7 @@
          <group targetFramework="MonoAndroid">
             <dependency id="Xamarin.Firebase.Messaging" version="60.1142.1" />
             <dependency id="Xamarin.GooglePlayServices.Base" version="60.1142.1" />
-            <dependency id="urbanairship.android.core" version="9.5.2"/>
+            <dependency id="urbanairship.android.core" version="9.5.4"/>
          </group>
       </dependencies>
    </metadata>
