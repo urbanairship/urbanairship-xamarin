@@ -9,8 +9,9 @@ This library provides official bindings to the Urban Airship SDK, as well as sam
 Version 9.4.0 - March 14, 2019
 ==============================
 Fixed a security issue within Urban Airship SDK, that could allow trusted URL redirects in certain
-edge cases. All applications that are using urbanairship.android packages from 9.2.0 - 9.5.6,
-or urbanairship.netstandard packages 9.0.0 - 9.3.3, should update as soon as possible. 
+edge cases. Affected package versions include the deprecated urbanairship package 5.0.0 - 5.0.2, the 
+urbanairship.android packages 9.2.0 - 9.5.6, as well as the urbanairship.netstandard and 
+urbanairship.portable packages 9.0.0 - 9.3.3. Apps using any of these should update as soon as possible. 
 For more details, please email security@urbanairship.com.
 
 - Update Android SDK to 9.7.2
