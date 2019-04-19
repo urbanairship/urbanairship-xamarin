@@ -6,6 +6,14 @@ This library provides official bindings to the Urban Airship SDK, as well as sam
 
 ### Release Notes
 
+Version 9.4.1 - April 19, 2019
+==============================
+
+- Update package references to better support Xamarin 9.x
+- Update Android package dependencies to target API level 28
+- Update Android package to 9.7.1.1. SDK remains at 9.7.1
+- Update iOS SDK to 10.2.2
+
 Version 9.4.0 - March 14, 2019
 ==============================
 Fixed a security issue within Urban Airship SDK, that could allow trusted URL redirects in certain
