@@ -10,7 +10,6 @@
     <RootNamespace>UrbanAirship</RootNamespace>
     <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
     <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
-    <AndroidUseLatestPlatformSdk>True</AndroidUseLatestPlatformSdk>
     <AssemblyName>AirshipBindings.ADM</AssemblyName>
     <TargetFrameworkVersion>v8.1</TargetFrameworkVersion>
     <ProductVersion>8.0.30703</ProductVersion>
