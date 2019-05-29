@@ -40,7 +40,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ObjcBindingApiDefinition Include="AirshipExtensionsApiDefinition.cs" />
+    <ObjcBindingApiDefinition Include="AirshipExtensionsApiDefinitions.cs" />
   </ItemGroup>
   <ItemGroup>
     <ObjcBindingCoreSource Include="AirshipExtensionsStructs.cs" />
