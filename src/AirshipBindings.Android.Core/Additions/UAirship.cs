@@ -31,7 +31,7 @@ namespace UrbanAirship
 
 		public static ICancelable Shared (Action<UAirship> callback, Looper looper)
 		{
-			return Shared (new AirshipReadyCallback (callback), looper);
+			return Shared (looper, new AirshipReadyCallback (callback));
 		}
 
 		public static ICancelable Shared (Action<UAirship> callback)

@@ -15,44 +15,44 @@ namespace Sample
 	[BroadcastReceiver(Exported = false)]
 	[IntentFilter (new string[]{"com.urbanairship.push.CHANNEL_UPDATED", "com.urbanairship.push.OPENED", "com.urbanairship.push.DISMISSED", "com.urbanairship.push.RECEIVED"}, 
 		Categories = new string[]{"@PACKAGE_NAME@"})]
-	public class UrbanAirshipReceiver : AirshipReceiver
-	{
+	public class UrbanAirshipListener : Java.Lang.Object, IRegistrationListener, IPushListener, INotificationListener
+    {
 		public const string ACTION_CHANNEL_UPDATED = "channel_updated";
 
 		private const string TAG = "UrbanAirshipReceiver";
 
-		protected override void OnChannelCreated(Context context, String channelId)
+        public void OnChannelCreated(String channelId)
 		{
 			Log.Info (TAG, "Channel created:" + channelId);
 
 			Intent intent = new Intent (ACTION_CHANNEL_UPDATED);
-			LocalBroadcastManager.GetInstance (context).SendBroadcast (intent);
+			LocalBroadcastManager.GetInstance(Application.Context).SendBroadcast (intent);
 		}
 
-		protected override void OnChannelUpdated(Context context, String channelId)
+		public void OnChannelUpdated(String channelId)
 		{
 			Log.Info(TAG, "Channel updated:" + channelId);
 
 			Intent intent = new Intent(ACTION_CHANNEL_UPDATED);
-			LocalBroadcastManager.GetInstance(context).SendBroadcast(intent);
+			LocalBroadcastManager.GetInstance(Application.Context).SendBroadcast(intent);
 		}
 
-		protected override void OnChannelRegistrationFailed(Context context)
+		public void OnPushTokenUpdated(String token)
 		{
-			Log.Info (TAG, "Channel registration failed.");
+			Log.Info (TAG, "Push token updated:" + token);
 		}
 
-		protected override void OnPushReceived(Context context, PushMessage message, bool notificationPosted)
+        public void OnPushReceived(PushMessage message, bool notificationPosted)
 		{
 			Log.Info (TAG, "Received push message. Alert: " + message.Alert + ". Notification posted: " + notificationPosted);
 		}
 
-		protected override void OnNotificationPosted(Context context, AirshipReceiver.NotificationInfo notificationInfo)
+        public void OnNotificationPosted(NotificationInfo notificationInfo)
 		{
 			Log.Info (TAG, "Notification posted. Alert: " + notificationInfo.Message.Alert + ". Notification ID: " + notificationInfo.NotificationId);
 		}
 
-		protected override bool OnNotificationOpened(Context context, AirshipReceiver.NotificationInfo notificationInfo)
+        public bool OnNotificationOpened(NotificationInfo notificationInfo)
 		{
 			Log.Info (TAG, "Notification opened. Alert: " + notificationInfo.Message.Alert + ". Notification ID: " + notificationInfo.NotificationId);
 
@@ -61,16 +61,21 @@ namespace Sample
 			return false;
 		}
 
-		protected override bool OnNotificationOpened(Context context, AirshipReceiver.NotificationInfo notificationInfo, AirshipReceiver.ActionButtonInfo actionButtonInfo)
+        public bool OnNotificationForegroundAction(NotificationInfo notificationInfo, NotificationActionButtonInfo actionButtonInfo)
 		{
-			Log.Info (TAG, "User clicked notification button. Button ID: " + actionButtonInfo.ButtonId + " Alert: " + notificationInfo.Message.Alert);
+			Log.Info (TAG, "User clicked notification button in the foreground. Button ID: " + actionButtonInfo.ButtonId + " Alert: " + notificationInfo.Message.Alert);
 
 			// Return false here to allow Urban Airship to auto launch the launcher
 			// activity for foreground notification action buttons
 			return false;
 		}
 
-		protected override void OnNotificationDismissed(Context context, AirshipReceiver.NotificationInfo notificationInfo)
+        public void OnNotificationBackgroundAction(NotificationInfo notificationInfo, NotificationActionButtonInfo actionButtonInfo)
+        {
+            Log.Info(TAG, "User clicked notification button in the background. Button ID: " + actionButtonInfo.ButtonId + " Alert: " + notificationInfo.Message.Alert);
+        }
+
+        public void OnNotificationDismissed(NotificationInfo notificationInfo)
 		{
 			Log.Info (TAG, "Notification dismissed. Alert: " + notificationInfo.Message.Alert + ". Notification ID: " + notificationInfo.NotificationId);
 		}

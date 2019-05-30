@@ -16,7 +16,7 @@ namespace UrbanAirship.Actions
 
 		public virtual void Run (Action<ActionArguments, ActionResult> callback, Looper looper)
 		{
-			Run (new ActionCompletionCallback (callback), looper);
+			Run (looper, new ActionCompletionCallback (callback));
 		}
 	}
 }

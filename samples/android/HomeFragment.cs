@@ -76,7 +76,7 @@ namespace Sample
 
 			// Use local broadcast manager to receive registration events to update the channel
 			IntentFilter channelUpdateFilter = new IntentFilter();
-			channelUpdateFilter.AddAction(UrbanAirshipReceiver.ACTION_CHANNEL_UPDATED);
+			channelUpdateFilter.AddAction(UrbanAirshipListener.ACTION_CHANNEL_UPDATED);
 			localBroadcastManager.RegisterReceiver(channelIdUpdateReceiver, channelUpdateFilter);
 
 			RefreshChannelId();

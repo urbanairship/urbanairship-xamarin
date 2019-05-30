@@ -27,6 +27,11 @@ namespace Sample
 				sharedPreferences.Edit().PutBoolean(FirstRunKey, false).Apply();
 				airship.PushManager.UserNotificationsEnabled = true;
 			}
+
+            UrbanAirshipListener airshipListener = new UrbanAirshipListener();
+            airship.PushManager.SetNotificationListener(airshipListener);
+            airship.PushManager.AddPushListener(airshipListener);
+            airship.PushManager.AddRegistrationListener(airshipListener);
 		}
 
 		public override AirshipConfigOptions CreateAirshipConfigOptions(Context context)
