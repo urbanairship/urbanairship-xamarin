@@ -20,7 +20,15 @@ namespace Sample
 
             // Initialize switches
             this.pushEnabledSwitch.On = UAirship.Push().UserPushNotificationsEnabled;
-            locationEnabledSwitch.On = UAirship.Shared().LocationProviderDelegate.GetLocationUpdatesEnabled();
+            if (UAirship.Shared().LocationProviderDelegate == null)
+            {
+                locationEnabledSwitch.Enabled = false;
+            } 
+            else 
+            {
+                locationEnabledSwitch.Enabled = true; 
+                locationEnabledSwitch.On = UAirship.Shared().LocationProviderDelegate.LocationUpdatesEnabled;
+            }
             analyticsSwitch.On = UAirship.Analytics().Enabled;
 
             NSString channelUpdatedNotification = new NSString("channelIDUpdated");
@@ -34,9 +42,6 @@ namespace Sample
             {
                 RefreshView();
             });
-
-            locationEnabledLabel.Text = "Location Enabled label";
-            locationEnabledSubtitleLabel.Text = "Enable GPS and WIFI Based Location detail label";
         }
 
         public override void ViewWillAppear(bool animated)
@@ -59,7 +64,10 @@ namespace Sample
                 UAirship.Push().UserPushNotificationsEnabled = true;
             }
 
-            UAirship.Shared().LocationProviderDelegate.SetLocationUpdatesEnabled(locationEnabledSwitch.On);
+            if (UAirship.Shared().LocationProviderDelegate != null)
+            {
+                UAirship.Shared().LocationProviderDelegate.LocationUpdatesEnabled = locationEnabledSwitch.On;
+            }
 
             UAirship.Analytics().Enabled = analyticsSwitch.On;
         }

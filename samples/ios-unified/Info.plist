@@ -51,5 +51,11 @@
 	<string>XamarinSample</string>
 	<key>XSLaunchImageAssets</key>
 	<string>Assets.xcassets/LaunchImage.launchimage</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Sample location, when in use.</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Sample location, always.</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Sample location, always and when in use.</string>
 </dict>
 </plist>
