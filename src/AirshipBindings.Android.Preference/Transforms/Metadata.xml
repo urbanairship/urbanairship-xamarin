@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <attr path="/api/package[@name='com.urbanairship.preference']" name="managedName">UrbanAirship.Preference</attr>
+  
+  <!--- Non public parent classes -->
+  <attr path="/api/package[@name='com.urbanairship.preference']/class[@name='UACheckBoxPreference']" name="visibility">public</attr>
+  <attr path="/api/package[@name='com.urbanairship.preference']/class[@name='QuietTimePickerPreference']" name="visibility">public</attr>
+  
+  <!-- Fixes issues with IComparable -->
+  <remove-node path="/api/package[@name='com.urbanairship.preference']/class[@name='QuietTimePickerPreference']" />
+  <remove-node path="/api/package[@name='com.urbanairship.preference']/class[@name='UACheckBoxPreference']" />
+  
+</metadata>

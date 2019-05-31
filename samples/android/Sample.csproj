@@ -183,6 +183,9 @@
     <Reference Include="Xamarin.Firebase.Messaging">
       <HintPath>packages\Xamarin.Firebase.Messaging.71.1733.0-preview6\lib\monoandroid90\Xamarin.Firebase.Messaging.dll</HintPath>
     </Reference>
+    <Reference Include="Xamarin.Android.Support.v7.Preference">
+      <HintPath>packages\Xamarin.Android.Support.v7.Preference.28.0.0.1\lib\monoandroid90\Xamarin.Android.Support.v7.Preference.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainActivity.cs" />
@@ -274,6 +277,10 @@
       <Project>{8EE00A82-2E14-4DF5-A183-52BBF17544A2}</Project>
       <Name>AirshipBindings.Android.FCM</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\src\AirshipBindings.Android.Preference\AirshipBindings.Android.Preference.csproj">
+      <Project>{03CF33ED-4783-4288-A3F6-0CA06246B684}</Project>
+      <Name>AirshipBindings.Android.Preference</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Import Project="packages\Xamarin.GooglePlayServices.Basement.32.961.0\build\Xamarin.GooglePlayServices.Basement.targets" Condition="Exists('packages\Xamarin.GooglePlayServices.Basement.32.961.0\build\Xamarin.GooglePlayServices.Basement.targets')" />
@@ -338,4 +345,5 @@
   <Import Project="packages\Xamarin.Firebase.Iid.Interop.71.1601.0-preview6\build\MonoAndroid90\Xamarin.Firebase.Iid.Interop.targets" Condition="Exists('packages\Xamarin.Firebase.Iid.Interop.71.1601.0-preview6\build\MonoAndroid90\Xamarin.Firebase.Iid.Interop.targets')" />
   <Import Project="packages\Xamarin.Firebase.Iid.71.1703.0-preview6\build\MonoAndroid90\Xamarin.Firebase.Iid.targets" Condition="Exists('packages\Xamarin.Firebase.Iid.71.1703.0-preview6\build\MonoAndroid90\Xamarin.Firebase.Iid.targets')" />
   <Import Project="packages\Xamarin.Firebase.Messaging.71.1733.0-preview6\build\MonoAndroid90\Xamarin.Firebase.Messaging.targets" Condition="Exists('packages\Xamarin.Firebase.Messaging.71.1733.0-preview6\build\MonoAndroid90\Xamarin.Firebase.Messaging.targets')" />
+  <Import Project="packages\Xamarin.Android.Support.v7.Preference.28.0.0.1\build\monoandroid90\Xamarin.Android.Support.v7.Preference.targets" Condition="Exists('packages\Xamarin.Android.Support.v7.Preference.28.0.0.1\build\monoandroid90\Xamarin.Android.Support.v7.Preference.targets')" />
 </Project>
