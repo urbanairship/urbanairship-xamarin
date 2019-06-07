@@ -194,10 +194,10 @@
     <Compile Include="SettingsActivity.cs" />
     <Compile Include="LocationFragment.cs" />
     <Compile Include="Preference\AddTagsPreference.cs" />
-    <Compile Include="Preference\SetNamedUserPreference.cs" />
     <Compile Include="SampleAutopilot.cs" />
     <Compile Include="ParseDeepLinkActivity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Preference\NamedUserPreference.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\AndroidManifest.xml" />

@@ -9,6 +9,7 @@ using Android.OS;
 using Android.Preferences;
 using Android.Runtime;
 using Android.Support.V7.App;
+using Android.Support.V7.Preferences;
 
 namespace Sample
 {
@@ -29,19 +30,39 @@ namespace Sample
 
 			if (savedInstanceState == null)
 			{
-				FragmentManager.BeginTransaction()
+				SupportFragmentManager.BeginTransaction()
 				               .Replace(Android.Resource.Id.Content, new SettingsFragment())
 							   .Commit();
 			}
 		}
 	}
 
-	public class SettingsFragment : PreferenceFragment
+	public class SettingsFragment : PreferenceFragmentCompat
 	{
-		public override void OnCreate(Bundle savedInstanceState)
+		public override void OnCreatePreferences(Bundle bundle, string s)
 		{
-			base.OnCreate(savedInstanceState);
 			AddPreferencesFromResource(Resource.Xml.preferences);
 		}
-	}
+
+        public override void OnDisplayPreferenceDialog(Android.Support.V7.Preferences.Preference preference)
+        {
+            PreferenceDialogFragmentCompat dialogFragment = null;
+
+            if ("tags" == preference.Key)
+            {
+                dialogFragment = new Sample.Preference.AddTagsPreferenceDialogFragmentCompat(preference.Key);
+            }
+
+            if (dialogFragment == null)
+            {
+                base.OnDisplayPreferenceDialog(preference);
+                return;
+            }
+
+            dialogFragment.SetTargetFragment(this, 0);
+            dialogFragment.Show(this.FragmentManager,
+                    "android.support.v7.preference" +
+                    ".PreferenceFragment.DIALOG");
+        }
+    }
 }

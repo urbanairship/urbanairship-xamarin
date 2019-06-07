@@ -1,93 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+<android.support.v7.preference.PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-	<PreferenceCategory
-		android:title="@string/push_preference_category_title" >
+    <android.support.v7.preference.PreferenceCategory app:title="@string/push_preference_category_title">
 
-		<com.urbanairship.preference.PushEnablePreference
-			android:key="push_preference"
-			android:persistent="false"
-			android:title="@string/push_preference_title" />
+        <com.urbanairship.preference.PushEnablePreference
+            app:key="push_preference"
+            app:persistent="false"
+            app:title="@string/push_preference_title" />
 
-		<com.urbanairship.preference.SoundEnablePreference
-			android:dependency="push_preference"
-			android:key="sound_preference"
-			android:persistent="false"
-			android:title="@string/sound_preference_title" />
+    </android.support.v7.preference.PreferenceCategory>
 
-		<com.urbanairship.preference.VibrateEnablePreference
-			android:dependency="push_preference"
-			android:key="vibrate_preference"
-			android:persistent="false"
-			android:title="@string/vibrate_preference_title" />
+    <android.support.v7.preference.PreferenceCategory android:title="@string/analytics_preference_category_title">
 
-		<com.urbanairship.preference.QuietTimeEnablePreference
-			android:dependency="push_preference"
-			android:key="quiet_time_enabled_preference"
-			android:persistent="false"
-			android:title="@string/quiet_time_enable_preference_title" />
+        <com.urbanairship.preference.AnalyticsEnablePreference
+            app:key="analytics_preference"
+            app:persistent="false"
+            app:title="@string/analytics_preference_title" />
 
-		<com.urbanairship.preference.QuietTimeStartPreference
-			android:dependency="quiet_time_enabled_preference"
-			android:key="quiet_time_start_preference"
-			android:persistent="false"
-			android:title="@string/quiet_time_start_preference_title" />
+    </android.support.v7.preference.PreferenceCategory>
 
-		<com.urbanairship.preference.QuietTimeEndPreference
-			android:dependency="quiet_time_enabled_preference"
-			android:key="quiet_time_end_preference"
-			android:persistent="false"
-			android:title="@string/quiet_time_end_preference_title" />
+    <android.support.v7.preference.PreferenceCategory app:title="@string/location_preference_category_title">
 
-	</PreferenceCategory>
+        <com.urbanairship.preference.LocationUpdatesEnabledPreference
+            app:key="location_preference"
+            app:persistent="false"
+            app:title="@string/location_preference_title" />
 
-	<PreferenceCategory
-		android:title="@string/analytics_preference_category_title" >
+        <com.urbanairship.preference.LocationBackgroundUpdatesAllowedPreference
+            app:dependency="location_preference"
+            app:key="background_location_preference"
+            app:persistent="false"
+            app:title="@string/background_location_preference_title" />
 
-		<com.urbanairship.preference.AnalyticsEnablePreference
-			android:persistent="false"
-			android:key="analytics_preference"
-			android:title="@string/analytics_preference_title" />
+    </android.support.v7.preference.PreferenceCategory>
 
-	</PreferenceCategory>
+    <android.support.v7.preference.PreferenceCategory app:title="@string/advanced_preference_category_title">
 
-	<PreferenceCategory
-		android:title="@string/location_preference_category_title" >
+        <UrbanAirship.Preference.ChannelIdPreference
+            app:persistent="false"
+            app:title="@string/channel_id_preference_title" />
 
-		<com.urbanairship.preference.LocationUpdatesEnabledPreference
-			android:persistent="false"
-			android:key="location_preference"
-			android:title="@string/location_preference_title" />
+        <Sample.Preference.NamedUserPreference
+            app:key="named user"
+            app:persistent="false"
+            app:title="@string/set_named_user_preference_title" />
 
-		<com.urbanairship.preference.LocationBackgroundUpdatesAllowedPreference
-			android:persistent="false"
-			android:dependency="location_preference"
-			android:key="background_location_preference"
-			android:title="@string/background_location_preference_title" />
+        <Sample.Preference.AddTagsPreference
+            app:key="tags"
+            app:persistent="false"
+            app:title="@string/add_tags_preference_title" />
 
+    </android.support.v7.preference.PreferenceCategory>
 
-	</PreferenceCategory>
-
-	<PreferenceCategory
-        android:title="@string/advanced_preference_category_title" >
-        
-	    <com.urbanairship.preference.ChannelIdPreference
-	        android:persistent="false"
-	        android:title="@string/channel_id_preference_title" />
-
-	    <com.urbanairship.preference.UserIdPreference
-	        android:persistent="false"
-	        android:title="@string/user_id_preference_title" />
-	        
-        <sample.preference.SetNamedUserPreference
-            android:persistent="false"
-            android:title="@string/set_named_user_preference_title" />
-		
-	    <sample.preference.AddTagsPreference
-	        android:persistent="false"
-	        android:dialogLayout="@layout/dialog_add_tags"
-	        android:title="@string/add_tags_preference_title" />
-	
-    </PreferenceCategory>
-
-</PreferenceScreen>
+</android.support.v7.preference.PreferenceScreen>
