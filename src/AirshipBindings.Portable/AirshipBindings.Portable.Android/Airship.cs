@@ -117,7 +117,7 @@ namespace UrbanAirship.Portable
 				}
 			}
 
-			UAirship.Shared().Analytics.AddEvent(builder.Create());
+			UAirship.Shared().Analytics.AddEvent(builder.Build());
 		}
 
 		public void AssociateIdentifier(string key, string identifier)

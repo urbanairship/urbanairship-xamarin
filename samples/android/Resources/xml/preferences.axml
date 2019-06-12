@@ -37,7 +37,7 @@
 
     <android.support.v7.preference.PreferenceCategory app:title="@string/advanced_preference_category_title">
 
-        <UrbanAirship.Preference.ChannelIdPreference
+        <com.urbanairship.preference.ChannelIdPreference
             app:persistent="false"
             app:title="@string/channel_id_preference_title" />
 

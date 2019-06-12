@@ -173,7 +173,7 @@
     <Folder Include="Jars\" />
   </ItemGroup>
   <ItemGroup>
-    <LibraryProjectZip Include="Jars\urbanairship-core-10.0.0.aar" />
+    <LibraryProjectZip Include="Jars\urbanairship-core-10.0.1.aar" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

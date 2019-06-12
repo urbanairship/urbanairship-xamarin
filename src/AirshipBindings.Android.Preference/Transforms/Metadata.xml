@@ -1,7 +1,4 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <metadata>
   <attr path="/api/package[@name='com.urbanairship.preference']" name="managedName">UrbanAirship.Preference</attr>
-  
-  <!-- Rename UrbanAirship.Preference.ChannelIdPreference so we can override and fix issue -->
-  <attr path="/api/package[@name='com.urbanairship.preference']/class[@name='ChannelIdPreference']" name="managedName">ChannelIdPreferenceClass</attr>
 </metadata>
