@@ -2,7 +2,7 @@
 
 # Copyright 2017 Urban Airship and Contributors
 
-# To prepare UA's ApiDefinition.cs file for sorting, first remove `namespace UrbanAirship {', the closing '}', 
+# To prepare UA's ApiDefinitions.cs file for sorting, first remove `namespace UrbanAirship {', the closing '}', 
 #   and then unindent everything that was in the namespace one tab.  The inner blocks should still be indented.
 # Xamarin-generated ApiDefinitions.cs files work fine without any changes.
 

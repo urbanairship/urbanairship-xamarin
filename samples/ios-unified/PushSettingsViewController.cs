@@ -20,7 +20,7 @@ namespace Sample
 
             // Initialize switches
             this.pushEnabledSwitch.On = UAirship.Push().UserPushNotificationsEnabled;
-            locationEnabledSwitch.On = UAirship.Location().LocationUpdatesEnabled;
+            locationEnabledSwitch.On = UAirship.Shared().LocationProviderDelegate.GetLocationUpdatesEnabled();
             analyticsSwitch.On = UAirship.Analytics().Enabled;
 
             NSString channelUpdatedNotification = new NSString("channelIDUpdated");
@@ -59,7 +59,7 @@ namespace Sample
                 UAirship.Push().UserPushNotificationsEnabled = true;
             }
 
-            UAirship.Location().LocationUpdatesEnabled = locationEnabledSwitch.On;
+            UAirship.Shared().LocationProviderDelegate.SetLocationUpdatesEnabled(locationEnabledSwitch.On);
 
             UAirship.Analytics().Enabled = analyticsSwitch.On;
         }
@@ -82,20 +82,19 @@ namespace Sample
 
         NSString PushTypeString()
         {
-
-            UANotificationOptions options = UAirship.Push().AuthorizedNotificationOptions;
+            UAAuthorizedNotificationSettings settings = UAirship.Push().AuthorizedNotificationSettings;
 
             NSMutableArray typeArray = new NSMutableArray(3);
 
-            if ((options & UANotificationOptions.Alert) > 0)
+            if ((settings & UAAuthorizedNotificationSettings.Alert) > 0)
             {
                 typeArray.Add(new NSString("Alert"));
             }
-            if ((options & UANotificationOptions.Badge) > 0)
+            if ((settings & UAAuthorizedNotificationSettings.Badge) > 0)
             {
                 typeArray.Add(new NSString("Badge"));
             }
-            if ((options & UANotificationOptions.Sound) > 0)
+            if ((settings & UAAuthorizedNotificationSettings.Sound) > 0)
             {
                 typeArray.Add(new NSString("Sound"));
             }

@@ -44,6 +44,13 @@ namespace UrbanAirship {
     }
 
     [Native]
+    public enum UACloudSite : ulong
+    {
+        US = 0,
+        EU = 1
+    }
+
+    [Native]
     public enum UALogLevel : long
     {
         Undefined = -1,
@@ -71,6 +78,16 @@ namespace UrbanAirship {
     public enum UAJSONValueMatcherErrorCode : long
     {
         InvalidJSON = 0
+    }
+
+    [Native]
+    public enum UALocationProviderPermissionStatus : ulong
+    {
+        Disabled = 0,
+        Unprompted = 1,
+        NotAllowed = 2,
+        ForegroundAllowed = 3,
+        AlwaysAllowed = 4
     }
 
     [Native]
@@ -183,7 +200,8 @@ namespace UrbanAirship {
     {
         Success = 0,
         Retry = 1,
-        Cancel = 2
+        Cancel = 2,
+        Invalidate = 3
     }
 
     [Native]
