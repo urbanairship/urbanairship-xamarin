@@ -3757,7 +3757,7 @@ namespace UrbanAirship {
 
     interface IUAInAppMessageAdapterProtocol { }
 
-    // @protocol UAInAppMessageCachePolicyDelegate <NSObject> /** * Return cache policy for caching assets on schedule * * @param message The message for which the assets will or won't be cached * @return `YES` requests the Asset Manager to cache the message's assets when the message is scheduled. * * @note If unimplemented, the message's assets will not be cached when the message is scheduled. */ - (BOOL)shouldCacheOnSchedule:(UAInAppMessage *)message; /** * Return cache policy for retaining cached assets after display * * @param message The message for which the assets will or won't be cached * @return `YES` requests the Asset Manager to persist the caching of the message's assets when * the message has finished displaying. * * @note If unimplemented, the message's assets will not be persisted when the message has finished displaying. */ - (BOOL)shouldPersistCacheAfterDisplay:(UAInAppMessage *)message; @end
+    // @protocol UAInAppMessageCachePolicyDelegate <NSObject>
     [Protocol, Model]
     [BaseType(typeof(NSObject))]
     interface UAInAppMessageCachePolicyDelegate
@@ -3776,7 +3776,7 @@ namespace UrbanAirship {
 
     interface IUAInAppMessageCachePolicyDelegate { }
 
-    // @protocol UAInAppMessagePrepareAssetsDelegate <NSObject> /** * Extend assets for this message when the message is scheduled * * @note This method is intended to allow the app to fetch URLs that the SDK may not be able to fetch. * It also covers the case where the Asset Manager can't decode the message (Custom message type). * * @note If implemented, the message WILL NOT display until the completionHandler is called. * * @param message The message for which the assets can be extended * @param assets Assets instance for caching assets * @param completionHandler The completion handler to call when asset fetching is complete. */ - (void)onSchedule:(UAInAppMessage *)message assets:(UAInAppMessageAssets *)assets completionHandler:(void (^)(UAInAppMessagePrepareResult))completionHandler; /** * Extend assets for this message when the message is prepared * * @note This method is intended to allow the app to fetch URLs that the SDK may not be able to fetch. * It also covers the case where the Asset Manager can't decode the message (Custom message type). * * @note If implemented, the message WILL NOT display until the completionHandler is called. * * @param message The message for which the assets can be extended * @param assets Assets instance for caching assets * @param completionHandler The completion handler to call when asset fetching is complete. */ - (void)onPrepare:(UAInAppMessage *)message assets:(UAInAppMessageAssets *)assets completionHandler:(void (^)(UAInAppMessagePrepareResult))completionHandler; @end
+    // @protocol UAInAppMessagePrepareAssetsDelegate <NSObject> 
     [Protocol, Model]
     [BaseType(typeof(NSObject))]
     interface UAInAppMessagePrepareAssetsDelegate
@@ -3795,7 +3795,7 @@ namespace UrbanAirship {
 
     interface IUAInAppMessagePrepareAssetsDelegate { }
 
-    // @interface UAInAppMessageAssetManager : NSObject /** * In-app messaging prepare assets delegate. */ @property (nonatomic, strong) id<UAInAppMessagePrepareAssetsDelegate> prepareAssetsDelegate; /** * In-app messaging cache policy delegate. */ @property (nonatomic, weak) id<UAInAppMessageCachePolicyDelegate> cachePolicyDelegate; @end
+    // @interface UAInAppMessageAssetManager : NSObject
     [BaseType(typeof(NSObject))]
     interface UAInAppMessageAssetManager
     {
@@ -3816,7 +3816,7 @@ namespace UrbanAirship {
 
     }
 
-    // @interface UAInAppMessageAssets : NSObject /** * Return URL at which to cache the assetURL * * @param assetURL URL from which the cached data is fetched * @return URL for the cached asset or `nil` if the asset cannot be cached at this time */ - (nullable NSURL *)getCacheURL:(NSURL *)assetURL; /** * Check if data is cached for this asset * * @param assetURL URL from which the data is fetched * @return `YES` if data for the URL is in the cache, `NO` if it is not. */ - (BOOL)isCached:(NSURL *)assetURL; @end
+    // @interface UAInAppMessageAssets : NSObject
     [BaseType(typeof(NSObject))]
     interface UAInAppMessageAssets
     {
