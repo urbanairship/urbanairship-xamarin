@@ -2,8 +2,6 @@
  Copyright 2017 Urban Airship and Contributors
 */
 
-using System;
-
 using Android.Content.PM;
 using Android.Locations;
 using Android.OS;
@@ -12,10 +10,8 @@ using Android.Support.V4.App;
 using Android.Views;
 using Android.Widget;
 
-
 using UrbanAirship;
 using UrbanAirship.Location;
-using Java.Lang;
 
 namespace Sample
 {
@@ -109,7 +105,7 @@ namespace Sample
 
 			LocationRequestOptions options = new LocationRequestOptions.Builder()
 																	   .SetPriority(Priority)
-																	   .Create();
+																	   .Build();
 
 			pendingResult = UAirship.Shared().LocationManager.RequestSingleLocation(options);
             pendingResult.AddResultCallback(new LocManagerCallback(Context, progress));

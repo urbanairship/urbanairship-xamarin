@@ -2,8 +2,6 @@
  Copyright 2017 Urban Airship and Contributors
 */
 
-using System;
-
 using Android.App;
 using Android.Content;
 using Android.OS;
@@ -47,11 +45,11 @@ namespace Sample
 					string messageId = GetDeepLinkQueryParameter("message_id");
 					if (messageId != null && messageId.Length > 0)
 					{
-						UAirship.Shared().Inbox.StartMessageActivity(messageId);
+						UAirship.Shared().MessageCenter.ShowMessageCenter(messageId);
 					}
 					else
 					{
-						UAirship.Shared().Inbox.StartInboxActivity();
+						UAirship.Shared().MessageCenter.ShowMessageCenter();
 					}
 					break;
 				default:

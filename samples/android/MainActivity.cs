@@ -19,7 +19,6 @@ using Android.OS;
 
 using UrbanAirship.Google;
 using UrbanAirship;
-using UrbanAirship.Push;
 using UrbanAirship.RichPush;
 using UrbanAirship.MessageCenter;
 
@@ -115,10 +114,10 @@ namespace Sample
 				PlayServicesUtils.HandleAnyPlayServicesError(this);
 			}
 
-			if (RichPushInbox.ViewInboxIntentAction == Intent.Action)
+			if (MessageCenterClass.MessageDataScheme == Intent.Action)
 			{
 				v4.App.Fragment fragment = Navigate(Resource.Id.nav_message_center);
-				if (Intent.Data != null && Intent.Data.Scheme.ToLower() == RichPushInbox.MessageDataScheme)
+				if (Intent.Data != null && Intent.Data.Scheme.ToLower() == MessageCenterClass.MessageDataScheme)
 				{
 					string messageId = Intent.Data.SchemeSpecificPart;
 					if (fragment != null && fragment is MessageCenterFragment)
@@ -268,7 +267,7 @@ namespace Sample
 											.SetAction(Resource.String.view, (View v) =>
 			{
 				messageCenterSnackbar.Dismiss();
-				UAirship.Shared().Inbox.StartInboxActivity();
+				UAirship.Shared().MessageCenter.ShowMessageCenter();
 			});
 
 			messageCenterSnackbar.Show();
