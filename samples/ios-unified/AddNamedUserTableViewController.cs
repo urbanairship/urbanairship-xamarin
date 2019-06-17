@@ -1,6 +1,6 @@
 ﻿using System;
-
 using UIKit;
+
 using UrbanAirship;
 
 namespace Sample

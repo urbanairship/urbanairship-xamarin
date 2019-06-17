@@ -1,8 +1,7 @@
 ﻿using UIKit;
-using System;
-using UrbanAirship;
-using System.Xml.Serialization;
 using System.Linq;
+
+using UrbanAirship;
 
 namespace Sample
 {
