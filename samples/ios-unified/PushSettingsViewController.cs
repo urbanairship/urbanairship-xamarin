@@ -19,16 +19,9 @@ namespace Sample
             base.ViewDidLoad();
 
             // Initialize switches
-            this.pushEnabledSwitch.On = UAirship.Push().UserPushNotificationsEnabled;
-            if (UAirship.Shared().LocationProviderDelegate == null)
-            {
-                locationEnabledSwitch.Enabled = false;
-            } 
-            else 
-            {
-                locationEnabledSwitch.Enabled = true; 
-                locationEnabledSwitch.On = UAirship.Shared().LocationProviderDelegate.LocationUpdatesEnabled;
-            }
+            pushEnabledSwitch.On = UAirship.Push().UserPushNotificationsEnabled;
+            locationEnabledSwitch.On = UALocation.SharedLocation().LocationUpdatesEnabled;
+
             analyticsSwitch.On = UAirship.Analytics().Enabled;
 
             NSString channelUpdatedNotification = new NSString("channelIDUpdated");
@@ -64,10 +57,7 @@ namespace Sample
                 UAirship.Push().UserPushNotificationsEnabled = true;
             }
 
-            if (UAirship.Shared().LocationProviderDelegate != null)
-            {
-                UAirship.Shared().LocationProviderDelegate.LocationUpdatesEnabled = locationEnabledSwitch.On;
-            }
+            UALocation.SharedLocation().LocationUpdatesEnabled = locationEnabledSwitch.On;
 
             UAirship.Analytics().Enabled = analyticsSwitch.On;
         }

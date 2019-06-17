@@ -15,8 +15,6 @@ using System.Linq;
 using Xamarin.Forms;
 using System.Security.Authentication.ExtendedProtection;
 
-[assembly: Preserve (typeof (UALocation), AllMembers = true)]
-
 namespace Sample
 {
     [Register("AppDelegate")]
