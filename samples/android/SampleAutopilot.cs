@@ -32,6 +32,7 @@ namespace Sample
             airship.PushManager.SetNotificationListener(airshipListener);
             airship.PushManager.AddPushListener(airshipListener);
             airship.PushManager.AddRegistrationListener(airshipListener);
+            airship.MessageCenter.SetOnShowMessageCenterListener(airshipListener);
         }
 
         public override AirshipConfigOptions CreateAirshipConfigOptions(Context context)
