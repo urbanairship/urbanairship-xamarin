@@ -12,29 +12,18 @@ using Android.Support.V4.Content;
 
 namespace Sample
 {
-	[BroadcastReceiver(Exported = false)]
-	[IntentFilter (new string[]{"com.urbanairship.push.CHANNEL_UPDATED", "com.urbanairship.push.OPENED", "com.urbanairship.push.DISMISSED", "com.urbanairship.push.RECEIVED"}, 
-		Categories = new string[]{"@PACKAGE_NAME@"})]
 	public class UrbanAirshipListener : Java.Lang.Object, IRegistrationListener, IPushListener, INotificationListener
     {
-		public const string ACTION_CHANNEL_UPDATED = "channel_updated";
-
 		private const string TAG = "UrbanAirshipReceiver";
 
         public void OnChannelCreated(String channelId)
 		{
 			Log.Info (TAG, "Channel created:" + channelId);
-
-			Intent intent = new Intent (ACTION_CHANNEL_UPDATED);
-			LocalBroadcastManager.GetInstance(Application.Context).SendBroadcast (intent);
 		}
 
 		public void OnChannelUpdated(String channelId)
 		{
 			Log.Info(TAG, "Channel updated:" + channelId);
-
-			Intent intent = new Intent(ACTION_CHANNEL_UPDATED);
-			LocalBroadcastManager.GetInstance(Application.Context).SendBroadcast(intent);
 		}
 
 		public void OnPushTokenUpdated(String token)
