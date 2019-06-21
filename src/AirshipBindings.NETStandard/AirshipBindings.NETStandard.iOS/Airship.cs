@@ -52,12 +52,12 @@ namespace UrbanAirship.NETStandard
         {
             get
             {
-                return UAirship.Location().LocationUpdatesEnabled;
+                return UAirship.Shared().LocationProviderDelegate.LocationUpdatesEnabled;
             }
 
             set
             {
-                UAirship.Location().LocationUpdatesEnabled = value;
+                UAirship.Shared().LocationProviderDelegate.LocationUpdatesEnabled = value;
             }
         }
 
@@ -65,12 +65,12 @@ namespace UrbanAirship.NETStandard
         {
             get
             {
-                return UAirship.Location().BackgroundLocationUpdatesAllowed;
+                return UAirship.Shared().LocationProviderDelegate.BackgroundLocationUpdatesAllowed;
             }
 
             set
             {
-                UAirship.Location().BackgroundLocationUpdatesAllowed = value;
+                UAirship.Shared().LocationProviderDelegate.BackgroundLocationUpdatesAllowed = value;
             }
         }
 
