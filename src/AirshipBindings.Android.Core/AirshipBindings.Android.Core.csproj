@@ -136,33 +136,18 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Additions\RichPushMessage.cs" />
-    <Compile Include="Additions\UrbanAirshipProvider.cs" />
     <Compile Include="Additions\UAirship.cs" />
-    <Compile Include="Additions\CoreActivity.cs" />
-    <Compile Include="Additions\PlayServicesErrorActivity.cs" />
-    <Compile Include="Additions\LandingPageActivity.cs" />
-    <Compile Include="Additions\LocationService.cs" />
-    <Compile Include="Additions\UAInstanceIDListenerService.cs" />
-    <Compile Include="Additions\CoreReceiver.cs" />
-    <Compile Include="Additions\MessageCenterActivity.cs" />
-    <Compile Include="Additions\MessageActivity.cs" />
     <Compile Include="Additions\RichPushInbox.cs" />
     <Compile Include="..\SharedAssemblyInfo.cs">
       <Link>Properties\SharedAssemblyInfo.cs</Link>
     </Compile>
-    <Compile Include="Additions\AirshipService.cs" />
-    <Compile Include="Additions\HelperActivity.cs" />
     <Compile Include="Additions\RichPushUser.cs" />
     <Compile Include="Additions\PreferenceDataStore.cs" />
     <Compile Include="Additions\MessageListFragment.cs" />
     <Compile Include="Additions\ActionRegistry.cs" />
     <Compile Include="Additions\ActionRunRequest.cs" />
-    <Compile Include="Additions\ActionService.cs" />
     <Compile Include="Additions\ActionCompletionCallback.cs" />
     <Compile Include="Additions\UAWebViewClient.cs" />
-    <Compile Include="Additions\ChannelCaptureActivity.cs" />
-    <Compile Include="Additions\PushService.cs" />
-    <Compile Include="Additions\AndroidJobService.cs" />
   </ItemGroup>
   <ItemGroup>
     <TransformFile Include="Transforms\EnumFields.xml" />
