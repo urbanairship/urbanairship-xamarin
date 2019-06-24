@@ -110,13 +110,13 @@ task syncVersion {
         ant.replaceregexp(
             file: "$projectDir/UrbanAirship.Portable.nuspec",
             match: "<version>.*</version>",
-            replace: "<version>$airshipProperties.libVersion</version>",
+            replace: "<version>$airshipProperties.crossPlatformVersion</version>",
             flags: "g"
         )
         ant.replaceregexp(
             file: "$projectDir/UrbanAirship.NETStandard.nuspec",
             match: "<version>.*</version>",
-            replace: "<version>$airshipProperties.libVersion</version>",
+            replace: "<version>$airshipProperties.crossPlatformVersion</version>",
             flags: "g"
         )
 
@@ -140,9 +140,21 @@ task syncVersion {
 
         // Shared assembly info
         ant.replaceregexp(
-            file: "$projectDir/src/SharedAssemblyInfo.cs",
+            file: "$projectDir/src/SharedAssemblyInfo.CrossPlatform.cs",
             match: "AssemblyVersion (.*)]",
-            replace: "AssemblyVersion (\"$airshipProperties.libVersion\")]"
+            replace: "AssemblyVersion (\"$airshipProperties.crossPlatformVersion\")]"
+        )
+
+        ant.replaceregexp(
+            file: "$projectDir/src/SharedAssemblyInfo.Android.cs",
+            match: "AssemblyVersion (.*)]",
+            replace: "AssemblyVersion (\"$airshipProperties.androidVersion\")]"
+        )
+
+        ant.replaceregexp(
+            file: "$projectDir/src/SharedAssemblyInfo.iOS.cs",
+            match: "AssemblyVersion (.*)]",
+            replace: "AssemblyVersion (\"$airshipProperties.iosVersion\")]"
         )
     }
 }

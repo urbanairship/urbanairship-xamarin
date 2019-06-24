@@ -71,8 +71,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="..\SharedAssemblyInfo.cs">
-      <Link>Properties\SharedAssemblyInfo.cs</Link>
+    <Compile Include="..\SharedAssemblyInfo.Android.cs">
+      <Link>Properties\SharedAssemblyInfo.Android.cs</Link>
     </Compile>
     <Compile Include="Additions\AdmPushReceiver.cs" />
     <Compile Include="Additions\AdmPushProvider.cs" />
