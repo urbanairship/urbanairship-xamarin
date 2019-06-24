@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 using UIKit;
 using Foundation;
@@ -47,8 +48,7 @@ namespace Sample
         partial void switchValueChanged(UISwitch sender)
         {
             // Only allow disabling user notifications on iOS 10+
-            if (!NSProcessInfo.ProcessInfo.IsOperatingSystemAtLeastVersion(new NSOperatingSystemVersion(10, 0, 0)) &&
-            UAirship.Push().UserPushNotificationsEnabled)
+            if (NSProcessInfo.ProcessInfo.IsOperatingSystemAtLeastVersion(new NSOperatingSystemVersion(10, 0, 0)))
             {
                 UAirship.Push().UserPushNotificationsEnabled = pushEnabledSwitch.On;
             }
@@ -60,10 +60,21 @@ namespace Sample
             UALocation.SharedLocation().LocationUpdatesEnabled = locationEnabledSwitch.On;
 
             UAirship.Analytics().Enabled = analyticsSwitch.On;
+
+            RefreshView();
         }
 
         void RefreshView()
         {
+            if (UAirship.Push().UserPushNotificationsEnabled)
+            {
+                pushSettingsSubtitleLabel.Text = PushTypeString();
+            }
+            else
+            {
+                pushSettingsSubtitleLabel.Text = "Enable push notifications";
+            }
+             
             channelIDSubtitleLabel.Text = UAirship.Push().ChannelID;
 
             namedUserSubtitleLabel.Text = UAirship.NamedUser().Identifier == null ? "None" : UAirship.NamedUser().Identifier;
@@ -78,31 +89,46 @@ namespace Sample
             }
         }
 
-        NSString PushTypeString()
+        String PushTypeString()
         {
             UAAuthorizedNotificationSettings settings = UAirship.Push().AuthorizedNotificationSettings;
 
-            NSMutableArray typeArray = new NSMutableArray(3);
+            List<String> settingsList = new List<String>();
 
             if ((settings & UAAuthorizedNotificationSettings.Alert) > 0)
             {
-                typeArray.Add(new NSString("Alert"));
+                settingsList.Add("Alert");
             }
             if ((settings & UAAuthorizedNotificationSettings.Badge) > 0)
             {
-                typeArray.Add(new NSString("Badge"));
+                settingsList.Add("Badge");
             }
             if ((settings & UAAuthorizedNotificationSettings.Sound) > 0)
             {
-                typeArray.Add(new NSString("Sound"));
+                settingsList.Add("Sound");
             }
-
-            if (!(typeArray.Count > 0))
+            if ((settings & UAAuthorizedNotificationSettings.CarPlay) > 0)
             {
-                return new NSString("Pushes Currently Disabled");
+                settingsList.Add("CarPlay");
+            }
+            if ((settings & UAAuthorizedNotificationSettings.LockScreen) > 0)
+            {
+                settingsList.Add("LockScreen");
+            }
+            if ((settings & UAAuthorizedNotificationSettings.NotificationCenter) > 0)
+            {
+                settingsList.Add("NotificationCenter");
+            }
+            if ((settings & UAAuthorizedNotificationSettings.CriticalAlert) > 0)
+            {
+                settingsList.Add("CriticalAlert");
+            }
+            if (!(settingsList.Count > 0))
+            {
+                return new String("Pushes Currently Unauthorized");
             }
 
-            return new NSString(string.Join(",", typeArray));
+            return String.Join(", ", settingsList);
         }
 
         public override void RowSelected(UITableView tableView, NSIndexPath indexPath)
