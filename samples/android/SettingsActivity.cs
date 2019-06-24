@@ -13,36 +13,36 @@ using Android.Support.V7.Preferences;
 
 namespace Sample
 {
-	[Register("sample.SettingsActivity")]
-	[Activity(Label="@string/settings", ParentActivity=typeof(MainActivity))]
-	[IntentFilter(new string[] { "android.intent.action.MAIN" }, 
-	              Categories=new string[] { "android.intent.category.NOTIFICATION_PREFERENCES" })]
-	public class SettingsActivity : AppCompatActivity
-	{
-		protected override void OnCreate(Android.OS.Bundle savedInstanceState)
-		{
-			base.OnCreate(savedInstanceState);
+    [Register("sample.SettingsActivity")]
+    [Activity(Label = "@string/settings", ParentActivity = typeof(MainActivity))]
+    [IntentFilter(new string[] { "android.intent.action.MAIN" },
+                  Categories = new string[] { "android.intent.category.NOTIFICATION_PREFERENCES" })]
+    public class SettingsActivity : AppCompatActivity
+    {
+        protected override void OnCreate(Android.OS.Bundle savedInstanceState)
+        {
+            base.OnCreate(savedInstanceState);
 
-			if (SupportActionBar != null)
-			{
-				SupportActionBar.SetDisplayHomeAsUpEnabled(true);
-			}
+            if (SupportActionBar != null)
+            {
+                SupportActionBar.SetDisplayHomeAsUpEnabled(true);
+            }
 
-			if (savedInstanceState == null)
-			{
-				SupportFragmentManager.BeginTransaction()
-				               .Replace(Android.Resource.Id.Content, new SettingsFragment())
-							   .Commit();
-			}
-		}
-	}
+            if (savedInstanceState == null)
+            {
+                SupportFragmentManager.BeginTransaction()
+                               .Replace(Android.Resource.Id.Content, new SettingsFragment())
+                               .Commit();
+            }
+        }
+    }
 
-	public class SettingsFragment : PreferenceFragmentCompat
-	{
-		public override void OnCreatePreferences(Bundle bundle, string s)
-		{
-			AddPreferencesFromResource(Resource.Xml.preferences);
-		}
+    public class SettingsFragment : PreferenceFragmentCompat
+    {
+        public override void OnCreatePreferences(Bundle bundle, string s)
+        {
+            AddPreferencesFromResource(Resource.Xml.preferences);
+        }
 
         public override void OnDisplayPreferenceDialog(Android.Support.V7.Preferences.Preference preference)
         {

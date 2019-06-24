@@ -15,56 +15,56 @@ using UrbanAirship.Push;
 
 namespace Sample
 {
-	
-	public class HomeFragment : Fragment, IRegistrationListener
+
+    public class HomeFragment : Fragment, IRegistrationListener
     {
-		private TextView channelId;
-		private Button shareButton;
-		private Button copyButton;
+        private TextView channelId;
+        private Button shareButton;
+        private Button copyButton;
 
-		public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
-		{
-			View view = inflater.Inflate(Resource.Layout.fragment_home, container, false);
+        public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
+        {
+            View view = inflater.Inflate(Resource.Layout.fragment_home, container, false);
 
-			channelId = (TextView)view.FindViewById(Resource.Id.channel_id);
-			shareButton = (Button)view.FindViewById(Resource.Id.share_button);
-			copyButton = (Button)view.FindViewById(Resource.Id.copy_button);
+            channelId = (TextView)view.FindViewById(Resource.Id.channel_id);
+            shareButton = (Button)view.FindViewById(Resource.Id.share_button);
+            copyButton = (Button)view.FindViewById(Resource.Id.copy_button);
 
-			copyButton.Click += (sender, e) =>
-			{
-				if (!string.IsNullOrEmpty(channelId.Text))
-				{
-							
-					ActionRunRequest.CreateRequest(ClipboardAction.DefaultRegistryName)
-									.SetValue(UAirship.Shared().PushManager.ChannelId)
-									.Run((args, result) => 
-					{
-						Toast.MakeText(Context, GetString(Resource.String.toast_channel_clipboard), ToastLength.Short).Show();
-					});
-				}
-			};
+            copyButton.Click += (sender, e) =>
+            {
+                if (!string.IsNullOrEmpty(channelId.Text))
+                {
 
-			shareButton.Click += (sender, e) =>
-			{
-				if (!string.IsNullOrEmpty(channelId.Text))
-				{
-					ActionRunRequest.CreateRequest(ShareAction.DefaultRegistryName)
-									.SetValue(UAirship.Shared().PushManager.ChannelId)
-									.Run();
-				}
-			};
+                    ActionRunRequest.CreateRequest(ClipboardAction.DefaultRegistryName)
+                                    .SetValue(UAirship.Shared().PushManager.ChannelId)
+                                    .Run((args, result) =>
+                    {
+                        Toast.MakeText(Context, GetString(Resource.String.toast_channel_clipboard), ToastLength.Short).Show();
+                    });
+                }
+            };
 
-			return view;
-		}
+            shareButton.Click += (sender, e) =>
+            {
+                if (!string.IsNullOrEmpty(channelId.Text))
+                {
+                    ActionRunRequest.CreateRequest(ShareAction.DefaultRegistryName)
+                                    .SetValue(UAirship.Shared().PushManager.ChannelId)
+                                    .Run();
+                }
+            };
 
-		public override void OnResume()
-		{
-			base.OnResume();
+            return view;
+        }
+
+        public override void OnResume()
+        {
+            base.OnResume();
 
             UAirship.Shared().PushManager.AddRegistrationListener(this);
 
             RefreshChannelId();
-		}
+        }
 
         public override void OnPause()
         {
@@ -78,24 +78,24 @@ namespace Sample
             RefreshChannelId(UAirship.Shared().PushManager.ChannelId);
         }
 
-		void RefreshChannelId(String channelIdString)
-		{
-			if (!(channelIdString == channelId.Text))
-			{
-				channelId.Text = channelIdString;
-			}
+        void RefreshChannelId(String channelIdString)
+        {
+            if (!(channelIdString == channelId.Text))
+            {
+                channelId.Text = channelIdString;
+            }
 
-			if (String.IsNullOrEmpty(channelIdString))
-			{
-				copyButton.Enabled = false;
-				shareButton.Enabled = false;
-			}
-			else
-			{
-				copyButton.Enabled = true;
-				shareButton.Enabled = true;
-			}
-		}
+            if (String.IsNullOrEmpty(channelIdString))
+            {
+                copyButton.Enabled = false;
+                shareButton.Enabled = false;
+            }
+            else
+            {
+                copyButton.Enabled = true;
+                shareButton.Enabled = true;
+            }
+        }
 
         public void OnChannelCreated(string channelId)
         {
@@ -118,5 +118,5 @@ namespace Sample
         public void OnPushTokenUpdated(string token)
         {
         }
-	}
+    }
 }
