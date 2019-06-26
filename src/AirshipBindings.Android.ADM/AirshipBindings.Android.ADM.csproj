@@ -89,7 +89,7 @@
     <Folder Include="Jars\" />
   </ItemGroup>
   <ItemGroup>
-    <LibraryProjectZip Include="Jars\urbanairship-adm-10.0.1.aar" />
+    <LibraryProjectZip Include="Jars\urbanairship-adm-10.0.2.aar" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AirshipBindings.Android.Core\AirshipBindings.Android.Core.csproj">

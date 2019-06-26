@@ -6,9 +6,9 @@ This library provides official bindings to the Urban Airship SDK, as well as sam
 
 ### Release Notes
 
-Versions 10.0.0 (.NETStandard & PCL), 10.0.1 (Android), 11.0.0 (iOS)
+Versions 10.0.0 (.NETStandard & PCL), 10.0.2 (Android), 11.0.0 (iOS)
 ====================================================================
-- Update Android SDK to 10.0.1
+- Update Android SDK to 10.0.2
 - Update iOS SDK to 11.0.0
 
 Changes
