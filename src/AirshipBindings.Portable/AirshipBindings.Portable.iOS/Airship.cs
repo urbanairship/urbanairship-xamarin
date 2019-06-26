@@ -48,32 +48,6 @@ namespace UrbanAirship.Portable
 			}
 		}
 
-		public bool LocationEnabled
-		{
-			get
-			{
-				return UAirship.Location().LocationUpdatesEnabled;
-			}
-
-			set
-			{
-				UAirship.Location().LocationUpdatesEnabled = value;
-			}
-		}
-
-		public bool BackgroundLocationAllowed
-		{
-			get
-			{
-				return UAirship.Location().BackgroundLocationUpdatesAllowed;
-			}
-
-			set
-			{
-				UAirship.Location().BackgroundLocationUpdatesAllowed = value;
-			}
-		}
-
 		public string NamedUser
 		{
 			get

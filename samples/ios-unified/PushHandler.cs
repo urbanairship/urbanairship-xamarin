@@ -1,12 +1,9 @@
 ﻿using System;
-using UrbanAirship;
 using UserNotifications;
 using UIKit;
 using Foundation;
-using System.IO.Compression;
-using CoreSpotlight;
-using System.Linq;
-using System.Runtime.CompilerServices;
+
+using UrbanAirship;
 
 namespace Sample
 {

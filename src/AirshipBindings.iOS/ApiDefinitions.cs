@@ -1898,10 +1898,12 @@ namespace UrbanAirship {
     interface UALocationProviderDelegate
     {
         // @property (getter=isLocationUpdatesEnabled, assign, readwrite, nonatomic) BOOL locationUpdatesEnabled;
+        [Abstract]
         [Export("locationUpdatesEnabled")]
         bool LocationUpdatesEnabled { [Bind("isLocationUpdatesEnabled")] get; set; }
 
         // @property (getter=isBackgroundLocationUpdatesAllowed, assign, readwrite, nonatomic) BOOL backgroundLocationUpdatesAllowed;
+        [Abstract]
         [Export("backgroundLocationUpdatesAllowed")]
         bool BackgroundLocationUpdatesAllowed { [Bind("isBackgroundLocationUpdatesAllowed")] get; set; }
 

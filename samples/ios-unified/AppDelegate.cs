@@ -4,16 +4,14 @@
 
 using Foundation;
 using UIKit;
-using UrbanAirship;
-using System.Threading.Tasks;
 using System;
 using ObjCRuntime;
-
 using CoreFoundation;
-using GameController;
-using System.Linq;
+
 using Xamarin.Forms;
-using System.Security.Authentication.ExtendedProtection;
+
+using UrbanAirship;
+
 namespace Sample
 {
     [Register("AppDelegate")]

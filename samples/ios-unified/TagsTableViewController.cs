@@ -1,7 +1,6 @@
 ﻿using System;
 
 using UIKit;
-using ObjCRuntime;
 using UrbanAirship;
 using System.Linq;
 

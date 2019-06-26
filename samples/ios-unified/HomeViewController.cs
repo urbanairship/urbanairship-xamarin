@@ -1,9 +1,8 @@
 ﻿using System;
-using UrbanAirship;
-
 using UIKit;
-using System.Runtime.CompilerServices;
 using Foundation;
+
+using UrbanAirship;
 
 namespace Sample
 {

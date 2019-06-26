@@ -25,16 +25,6 @@ namespace UrbanAirship.NETStandard
             get;
         }
 
-        bool LocationEnabled
-        {
-            get; set;
-        }
-
-        bool BackgroundLocationAllowed
-        {
-            get; set;
-        }
-
         string NamedUser
         {
             get; set;
