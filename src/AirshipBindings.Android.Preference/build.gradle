@@ -1,17 +1,17 @@
 def updateCsproj() {
-    def csprojFile = "$projectDir/AirshipBindings.Android.GCM.csproj"
+    def csprojFile = "$projectDir/AirshipBindings.Android.Preference.csproj"
 
     def fileName = ""
     new File("$projectDir/Jars").eachFileRecurse {
         fileName += it.name
     }
 
-    ant.replaceregexp(file: csprojFile, match: 'urbanairship-gcm-.*aar', replace: fileName)
+    ant.replaceregexp(file: csprojFile, match: 'urbanairship-preference-.*aar', replace: fileName)
 }
 
 task syncVersion  {
     doLast() {
-        def filename = "urbanairship-gcm-${airshipProperties.androidVersion}.aar"
+        def filename = "urbanairship-preference-${airshipProperties.androidVersion}.aar"
         def jarDirectory = new File("$projectDir/Jars")
         if ( jarDirectory.exists() ) {
             // Remove aar files that aren't the correct version
@@ -27,7 +27,7 @@ task syncVersion  {
         def path = new File("$projectDir/Jars/$filename")
         if ( !path.exists() ) {
            // Download aar
-            def url = new URL("http://central.maven.org/maven2/com/urbanairship/android/urbanairship-gcm/${airshipProperties.androidVersion}/$filename")
+            def url = new URL("http://central.maven.org/maven2/com/urbanairship/android/urbanairship-preference/${airshipProperties.androidVersion}/$filename")
             HttpURLConnection huc = (HttpURLConnection) url.openConnection()
             huc.setRequestMethod("GET")
             huc.connect();
@@ -57,11 +57,11 @@ task build {
     def BuildConfiguration=project.properties['build_configuration'] ?: "Release"
     doLast() {
         exec {
-            commandLine "mono", "$nugetExe", "restore", "AirshipBindings.Android.GCM.sln"
+            commandLine "mono", "$nugetExe", "restore", "AirshipBindings.Android.Preference.sln"
         }
 
         exec {
-            commandLine "${msbuild}", "/t:build", "/p:Configuration=${BuildConfiguration}", "AirshipBindings.Android.GCM.sln"
+            commandLine "${msbuild}", "/t:build", "/p:Configuration=${BuildConfiguration}", "AirshipBindings.Android.Preference.sln"
         }
     }
 }

@@ -21,4 +21,4 @@ task build {
 build.dependsOn(':src:AirshipBindings.Android.ADM:build',
     ':src:AirshipBindings.Android.Core:build',
     ':src:AirshipBindings.Android.FCM:build',
-    ':src:AirshipBindings.Android.GCM:build')
+    ':src:AirshipBindings.Android.Preference:build')

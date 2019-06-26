@@ -38,7 +38,7 @@ namespace UrbanAirship.RichPush
 
 		public ICancelable FetchMessages(Action<bool> callback, Looper looper)
 		{
-			return FetchMessages (new FetchMessagesCallback (callback), looper);
+			return FetchMessages (looper, new FetchMessagesCallback (callback));
 		}
 
 		public IList<RichPushMessage> GetMessages(Func<RichPushMessage, bool> predicate) {

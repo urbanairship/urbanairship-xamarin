@@ -86,9 +86,6 @@ Xamarin application.
         # Before submitting your application to an app store set to true
         inProduction = false
 
-        # Required for GCM
-        gcmSender = Your GCM Sender ID
-
         # LogLevel is "VERBOSE", "DEBUG", "INFO", "WARN", "ERROR" or "ASSERT"
         developmentLogLevel = DEBUG
         productionLogLevel = ERROR
