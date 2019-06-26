@@ -14,7 +14,6 @@ using Android.OS;
 [assembly: UsesPermission(Name = "android.permission.ACCESS_NETWORK_STATE")]
 [assembly: UsesPermission(Name = "android.permission.WAKE_LOCK")]
 [assembly: UsesPermission(Name = "android.permission.VIBRATE")]
-[assembly: UsesPermission(Name = "android.permission.INTERNET")]
 namespace UrbanAirship
 {
 	public partial class UAirship

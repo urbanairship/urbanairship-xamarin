@@ -2,11 +2,8 @@
  Copyright 2017 Urban Airship and Contributors
 */
 
-using System;
-
 using Android.App;
 using Android.OS;
-using Android.Preferences;
 using Android.Runtime;
 using Android.Support.V7.App;
 using Android.Support.V7.Preferences;
