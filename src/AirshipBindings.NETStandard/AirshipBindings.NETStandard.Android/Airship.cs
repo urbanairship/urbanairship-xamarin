@@ -48,32 +48,6 @@ namespace UrbanAirship.NETStandard
             }
         }
 
-        public bool LocationEnabled
-        {
-            get
-            {
-                return UAirship.Shared().LocationManager.LocationUpdatesEnabled;
-            }
-
-            set
-            {
-                UAirship.Shared().LocationManager.LocationUpdatesEnabled = value;
-            }
-        }
-
-        public bool BackgroundLocationAllowed
-        {
-            get
-            {
-                return UAirship.Shared().LocationManager.BackgroundLocationAllowed;
-            }
-
-            set
-            {
-                UAirship.Shared().LocationManager.BackgroundLocationAllowed = value;
-            }
-        }
-
         public string NamedUser
         {
             get

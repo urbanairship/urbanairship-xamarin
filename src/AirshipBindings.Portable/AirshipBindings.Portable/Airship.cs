@@ -53,26 +53,6 @@ namespace UrbanAirship.Portable
 		}
 
 		/// <summary>
-		/// Indicates whether location is enabled
-		/// </summary>
-		/// <value><c>true</c> if location is enabled; otherwise, <c>false</c>.</value>
-		public bool LocationEnabled
-		{
-			get { throw new NotImplementedException(PCL.BaitWithoutSwitchMessage); }
-			set { throw new NotImplementedException(PCL.BaitWithoutSwitchMessage); }
-		}
-
-		/// <summary>
-		/// Indicates whether background location updates are allowed.
-		/// </summary>
-		/// <value><c>true</c> if background location updates are allowed; otherwise, <c>false</c>.</value>
-		public bool BackgroundLocationAllowed
-		{
-			get { throw new NotImplementedException(PCL.BaitWithoutSwitchMessage); }
-			set { throw new NotImplementedException(PCL.BaitWithoutSwitchMessage); }
-		}
-
-		/// <summary>
 		/// Gets or sets the named user ID.
 		/// </summary>
 		/// <value>The named user ID.</value>
