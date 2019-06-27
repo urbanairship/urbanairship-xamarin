@@ -4,15 +4,16 @@
 
 using System;
 using Android.Content;
-using Android.App;
+using Android.OS;
 using Android.Util;
-using UrbanAirship.Push;
+
 using UrbanAirship;
-using Android.Support.V4.Content;
+using UrbanAirship.Push;
+using UrbanAirship.MessageCenter;
 
 namespace Sample
 {
-    public class UrbanAirshipListener : Java.Lang.Object, IRegistrationListener, IPushListener, INotificationListener
+    public class UrbanAirshipListener : Java.Lang.Object, IRegistrationListener, IPushListener, INotificationListener, MessageCenterClass.IOnShowMessageCenterListener
     {
         private const string TAG = "UrbanAirshipReceiver";
 
@@ -67,6 +68,31 @@ namespace Sample
         public void OnNotificationDismissed(NotificationInfo notificationInfo)
         {
             Log.Info(TAG, "Notification dismissed. Alert: " + notificationInfo.Message.Alert + ". Notification ID: " + notificationInfo.NotificationId);
+        }
+
+        public bool OnShowMessageCenter(String messageId)
+        {
+            using (var h = new Handler(Looper.MainLooper))
+                h.Post(() =>
+                {
+                    Log.Debug(TAG, "Navigate to messagecenter - message =" + messageId);
+
+                    Context context = UAirship.ApplicationContext;
+
+                    Intent intent = new Intent()
+                        .SetPackage(context.PackageName)
+                        .SetAction(MessageCenterClass.MessageDataScheme)
+                        .SetClass(context, typeof(MainActivity));
+
+                    if (messageId != null)
+                    {
+                        intent.SetData(Android.Net.Uri.FromParts(MessageCenterClass.MessageDataScheme, messageId, null));
+                    }
+
+                    context.StartActivity(intent);
+                });
+
+            return true;
         }
     }
 }
