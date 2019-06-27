@@ -32,8 +32,8 @@
     <Compile Include="Push\TagEditor.cs" />
     <Compile Include="Push\TagGroupsEditor.cs" />
     <Compile Include="Analytics\CustomEvent.cs" />
-    <Compile Include="..\..\SharedAssemblyInfo.cs">
-      <Link>Properties\SharedAssemblyInfo.cs</Link>
+    <Compile Include="..\..\SharedAssemblyInfo.CrossPlatform.cs">
+      <Link>Properties\SharedAssemblyInfo.CrossPlatform.cs</Link>
     </Compile>
   </ItemGroup>
   <ItemGroup>

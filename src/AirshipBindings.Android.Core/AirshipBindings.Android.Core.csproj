@@ -138,8 +138,8 @@
     <Compile Include="Additions\RichPushMessage.cs" />
     <Compile Include="Additions\UAirship.cs" />
     <Compile Include="Additions\RichPushInbox.cs" />
-    <Compile Include="..\SharedAssemblyInfo.cs">
-      <Link>Properties\SharedAssemblyInfo.cs</Link>
+    <Compile Include="..\SharedAssemblyInfo.Android.cs">
+      <Link>Properties\SharedAssemblyInfo.Android.cs</Link>
     </Compile>
     <Compile Include="Additions\RichPushUser.cs" />
     <Compile Include="Additions\PreferenceDataStore.cs" />
@@ -158,7 +158,7 @@
     <Folder Include="Jars\" />
   </ItemGroup>
   <ItemGroup>
-    <LibraryProjectZip Include="Jars\urbanairship-core-10.0.1.aar" />
+    <LibraryProjectZip Include="Jars\urbanairship-core-10.0.2.aar" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

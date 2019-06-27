@@ -30,8 +30,8 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Airship.cs" />
-    <Compile Include="..\..\SharedAssemblyInfo.cs">
-      <Link>Properties\SharedAssemblyInfo.cs</Link>
+    <Compile Include="..\..\SharedAssemblyInfo.CrossPlatform.cs">
+      <Link>Properties\SharedAssemblyInfo.CrossPlatform.cs</Link>
     </Compile>
     <Compile Include="PCL.cs" />
   </ItemGroup>
