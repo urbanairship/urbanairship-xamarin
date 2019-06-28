@@ -1,13 +1,13 @@
-# Urban Airship Xamarin Library
+# Airship Xamarin Library
 
-This library provides official bindings to the Urban Airship SDK, as well as sample applications for both iOS and Android.
+This library provides official bindings to the Airship SDK, as well as sample applications for both iOS and Android.
 
 > Note: The library has moved to https://github.com/urbanairship/urbanairship-xamarin
 
 ### Release Notes
 
-Versions 10.0.0 (.NETStandard & PCL), 10.0.2 (Android), 11.0.0 (iOS)
-====================================================================
+Versions 10.0.0 (.NETStandard & PCL), 10.0.2 (Android), 11.0.0 (iOS) - July 1, 2019
+===================================================================================
 - Update Android SDK to 10.0.2
 - Update iOS SDK to 11.0.0
 
