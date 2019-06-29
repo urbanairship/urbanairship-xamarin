@@ -1,4 +1,8 @@
-﻿using UIKit;
+﻿/*
+ Copyright Airship and Contributors
+*/
+
+using UIKit;
 using System.Linq;
 
 using UrbanAirship;

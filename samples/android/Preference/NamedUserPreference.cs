@@ -1,4 +1,8 @@
-﻿using System;
+﻿/*
+ Copyright Airship and Contributors
+*/
+
+using System;
 using Android.Support.V7.Preferences;
 using Android.Content;
 using Android.Util;

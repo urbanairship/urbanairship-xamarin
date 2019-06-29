@@ -1,5 +1,5 @@
 ﻿/*
- Copyright 2017 Urban Airship and Contributors
+ Copyright Airship and Contributors
 */
 
 using System;
@@ -46,7 +46,7 @@ namespace Sample
         {
             Log.Info(TAG, "Notification opened. Alert: " + notificationInfo.Message.Alert + ". Notification ID: " + notificationInfo.NotificationId);
 
-            // Return false here to allow Urban Airship to auto launch the launcher
+            // Return false here to allow Airship to auto launch the launcher
             // activity for foreground notification action buttons
             return false;
         }
@@ -55,7 +55,7 @@ namespace Sample
         {
             Log.Info(TAG, "User clicked notification button in the foreground. Button ID: " + actionButtonInfo.ButtonId + " Alert: " + notificationInfo.Message.Alert);
 
-            // Return false here to allow Urban Airship to auto launch the launcher
+            // Return false here to allow Airship to auto launch the launcher
             // activity for foreground notification action buttons
             return false;
         }

@@ -3,7 +3,7 @@
 FCM migration is optional, but recommended as Google deprecated GCM and is planning on dropping
 GCM client APIs in April of 2019. For more info, please read the [GCM F.A.Q](https://developers.google.com/cloud-messaging/faq).
 
-Urban Airship supports the FCM client library starting in SDK 9.1.0. It is available in a new package
+Airship supports the FCM client library starting in SDK 9.1.0. It is available in a new package
 `urbanairship.android.fcm`. The FCM package is not compatible with the deprecated package `UrbanAirship`.
 
 Migration Steps:

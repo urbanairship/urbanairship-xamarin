@@ -1,4 +1,8 @@
-﻿using System;
+﻿/*
+ Copyright Airship and Contributors
+*/
+
+using System;
 using UserNotifications;
 using UIKit;
 using Foundation;

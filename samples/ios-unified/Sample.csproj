@@ -7,7 +7,7 @@
     <OutputType>Exe</OutputType>
     <RootNamespace>Sample</RootNamespace>
     <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
-    <Description>Urban Airship Xamarin sample app for iOS</Description>
+    <Description>Airship Xamarin sample app for iOS</Description>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
   </PropertyGroup>

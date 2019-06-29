@@ -1,5 +1,5 @@
 ﻿/*
- Copyright 2017 Urban Airship and Contributors
+ Copyright Airship and Contributors
 */
 
 using Foundation;
@@ -49,7 +49,7 @@ namespace Sample
 
             config.MessageCenterStyleConfig = "UAMessageCenterDefaultStyle";
 
-            // Bootstrap the Urban Airship SDK
+            // Bootstrap the Airship SDK
             UAirship.TakeOff(config);
 
             Console.WriteLine("Config:{0}", config);

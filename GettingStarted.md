@@ -1,6 +1,6 @@
-# Urban Airship SDK
+# Airship SDK
 
-Here are some examples to help get you started integrating the Urban Airship SDK with your
+Here are some examples to help get you started integrating the Airship SDK with your
 Xamarin application.
 
 ### iOS Setup
@@ -20,7 +20,7 @@ Xamarin application.
     ```
 
     Note that if the TakeOff process fails due to improper or missing configuration, the shared
-    UAirship instance will be null. The Urban Airship SDK always logs implementation errors at
+    UAirship instance will be null. The Airship SDK always logs implementation errors at
     high visibility.
 
 2. Provide `AirshipConfig.plist` file with the application's configuration:

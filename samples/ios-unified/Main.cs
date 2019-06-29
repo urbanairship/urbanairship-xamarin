@@ -1,4 +1,8 @@
-﻿using UIKit;
+﻿/*
+ Copyright Airship and Contributors
+*/
+
+using UIKit;
 
 namespace Sample
 {

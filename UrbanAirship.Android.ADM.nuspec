@@ -3,7 +3,7 @@
    <metadata>
       <id>urbanairship.android.adm</id>
       <version>10.0.2</version>
-      <title>Urban Airship SDK</title>
+      <title>Airship Android SDK - ADM Push Provider</title>
       <authors>Urban Airship, Inc.</authors>
       <projectUrl>https://github.com/urbanairship/urbanairship-xamarin</projectUrl>
       <requireLicenseAcceptance>false</requireLicenseAcceptance>

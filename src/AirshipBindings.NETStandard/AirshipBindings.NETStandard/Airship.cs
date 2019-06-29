@@ -1,5 +1,5 @@
 ﻿/*
- Copyright 2017 Urban Airship and Contributors
+ Copyright Airship and Contributors
 */
 
 using System;
@@ -10,7 +10,7 @@ namespace UrbanAirship.NETStandard
 {
     public class Airship : IAirship
     {
-        private const string BaitWithoutSwitchMessage = "The empty .NET Standard implementation for Urban Airship was loaded. Check that you have added the urbanairship.netstandard package to each of your platform-specific projects.";   
+        private const string BaitWithoutSwitchMessage = "The empty .NET Standard implementation for Airship was loaded. Check that you have added the urbanairship.netstandard package to each of your platform-specific projects.";   
 
         private static Airship sharedAirship = new Airship();
 

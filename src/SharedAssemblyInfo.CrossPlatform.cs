@@ -6,7 +6,7 @@ using System.Runtime.CompilerServices;
 
 
 [assembly: AssemblyCompany ("Urban Airship")]
-[assembly: AssemblyCopyright ("Copyright Urban Airship Inc. All rights reserved.")]
+[assembly: AssemblyCopyright ("Copyright Airship Inc. All rights reserved.")]
 
 // The assembly version has the format "{Major}.{Minor}.{Build}.{Revision}".
 // The form "{Major}.{Minor}.*" will automatically update the build and revision,

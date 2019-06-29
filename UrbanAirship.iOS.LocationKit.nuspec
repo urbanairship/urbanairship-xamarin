@@ -3,7 +3,7 @@
    <metadata>
       <id>urbanairship.ios.locationkit</id>
       <version>11.0.0</version>
-      <title>Urban Airship Location Kit</title>
+      <title>Airship iOS SDK - Location Kit</title>
       <authors>Urban Airship, Inc.</authors>
       <projectUrl>https://github.com/urbanairship/urbanairship-xamarin</projectUrl>
       <requireLicenseAcceptance>false</requireLicenseAcceptance>

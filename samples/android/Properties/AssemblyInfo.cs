@@ -1,4 +1,8 @@
-﻿using System;
+﻿/*
+ Copyright Airship and Contributors
+*/
+
+using System;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using Android.App;

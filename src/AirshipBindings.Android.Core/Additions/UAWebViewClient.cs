@@ -1,4 +1,8 @@
-﻿using System;
+﻿/*
+ Copyright Airship and Contributors
+*/
+
+using System;
 using UrbanAirship.Actions;
 
 namespace UrbanAirship.Widget

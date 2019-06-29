@@ -3,11 +3,11 @@
    <metadata>
       <id>urbanairship.portable</id>
       <version>10.0.0</version>
-      <title>Urban Airship SDK PCL</title>
+      <title>Airship SDK Portable Client Library</title>
       <authors>Urban Airship, Inc.</authors>
       <projectUrl>https://github.com/urbanairship/urbanairship-xamarin</projectUrl>
       <requireLicenseAcceptance>false</requireLicenseAcceptance>
-      <description>A portable client library for the Urban Airship SDK.</description>
+      <description>A portable client library for the Airship SDK.</description>
 
       <dependencies>
          <group targetFramework="MonoAndroid">

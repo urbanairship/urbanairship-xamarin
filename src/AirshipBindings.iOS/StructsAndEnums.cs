@@ -1,5 +1,5 @@
 /*
- Copyright 2018 Urban Airship and Contributors
+ Copyright Airship and Contributors
 */
 using ObjCRuntime;
 using System;
