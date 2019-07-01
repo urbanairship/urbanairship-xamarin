@@ -1,6 +1,6 @@
-# Urban Airship Xamarin Library
+# Airship Xamarin Library
 
-This library provides official bindings to the Urban Airship SDK, as well as sample applications for both iOS and Android.
+This library provides official bindings to the Airship SDK, as well as sample applications for both iOS and Android.
 
 ### Resources
 
@@ -13,5 +13,5 @@ This library provides official bindings to the Urban Airship SDK, as well as sam
 
 Before running the `build.sh` script or trying to build either iOS projects, you must
 run `carthage update` in the root repo directory. This will fetch and build the version
-of iOS Urban Airship SDK defined in the `Cartfile`. Carthage can be installed with
+of iOS Airship SDK defined in the `Cartfile`. Carthage can be installed with
 `brew update && brew install carthage`.

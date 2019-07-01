@@ -35,12 +35,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="..\SharedAssemblyInfo.cs">
-      <Link>Properties\SharedAssemblyInfo.cs</Link>
+    <Compile Include="..\SharedAssemblyInfo.iOS.cs">
+      <Link>Properties\SharedAssemblyInfo.iOS.cs</Link>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ObjcBindingApiDefinition Include="AirshipExtensionsApiDefinition.cs" />
+    <ObjcBindingApiDefinition Include="AirshipExtensionsApiDefinitions.cs" />
   </ItemGroup>
   <ItemGroup>
     <ObjcBindingCoreSource Include="AirshipExtensionsStructs.cs" />

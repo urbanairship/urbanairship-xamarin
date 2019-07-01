@@ -1,5 +1,5 @@
 ﻿/*
- Copyright 2017 Urban Airship and Contributors
+ Copyright Airship and Contributors
 */
 
 using System;
@@ -45,32 +45,6 @@ namespace UrbanAirship.NETStandard
             get
             {
                 return UAirship.Push().ChannelID;
-            }
-        }
-
-        public bool LocationEnabled
-        {
-            get
-            {
-                return UAirship.Location().LocationUpdatesEnabled;
-            }
-
-            set
-            {
-                UAirship.Location().LocationUpdatesEnabled = value;
-            }
-        }
-
-        public bool BackgroundLocationAllowed
-        {
-            get
-            {
-                return UAirship.Location().BackgroundLocationUpdatesAllowed;
-            }
-
-            set
-            {
-                UAirship.Location().BackgroundLocationUpdatesAllowed = value;
             }
         }
 

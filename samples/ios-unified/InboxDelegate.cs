@@ -1,8 +1,11 @@
-﻿using UIKit;
-using System;
-using UrbanAirship;
-using System.Xml.Serialization;
+﻿/*
+ Copyright Airship and Contributors
+*/
+
+using UIKit;
 using System.Linq;
+
+using UrbanAirship;
 
 namespace Sample
 {

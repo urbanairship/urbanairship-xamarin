@@ -1,9 +1,12 @@
-﻿using System;
-using UrbanAirship;
+﻿/*
+ Copyright Airship and Contributors
+*/
 
+using System;
 using UIKit;
-using System.Runtime.CompilerServices;
 using Foundation;
+
+using UrbanAirship;
 
 namespace Sample
 {

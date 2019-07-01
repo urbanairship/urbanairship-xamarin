@@ -1,4 +1,9 @@
-﻿using System;
+﻿/*
+ Copyright Airship and Contributors
+*/
+
+using System;
+using System.Collections.Generic;
 
 using UIKit;
 using Foundation;
@@ -19,8 +24,9 @@ namespace Sample
             base.ViewDidLoad();
 
             // Initialize switches
-            this.pushEnabledSwitch.On = UAirship.Push().UserPushNotificationsEnabled;
-            locationEnabledSwitch.On = UAirship.Location().LocationUpdatesEnabled;
+            pushEnabledSwitch.On = UAirship.Push().UserPushNotificationsEnabled;
+            locationEnabledSwitch.On = UALocation.SharedLocation().LocationUpdatesEnabled;
+
             analyticsSwitch.On = UAirship.Analytics().Enabled;
 
             NSString channelUpdatedNotification = new NSString("channelIDUpdated");
@@ -34,9 +40,6 @@ namespace Sample
             {
                 RefreshView();
             });
-
-            locationEnabledLabel.Text = "Location Enabled label";
-            locationEnabledSubtitleLabel.Text = "Enable GPS and WIFI Based Location detail label";
         }
 
         public override void ViewWillAppear(bool animated)
@@ -49,8 +52,7 @@ namespace Sample
         partial void switchValueChanged(UISwitch sender)
         {
             // Only allow disabling user notifications on iOS 10+
-            if (!NSProcessInfo.ProcessInfo.IsOperatingSystemAtLeastVersion(new NSOperatingSystemVersion(10, 0, 0)) &&
-            UAirship.Push().UserPushNotificationsEnabled)
+            if (NSProcessInfo.ProcessInfo.IsOperatingSystemAtLeastVersion(new NSOperatingSystemVersion(10, 0, 0)))
             {
                 UAirship.Push().UserPushNotificationsEnabled = pushEnabledSwitch.On;
             }
@@ -59,13 +61,24 @@ namespace Sample
                 UAirship.Push().UserPushNotificationsEnabled = true;
             }
 
-            UAirship.Location().LocationUpdatesEnabled = locationEnabledSwitch.On;
+            UALocation.SharedLocation().LocationUpdatesEnabled = locationEnabledSwitch.On;
 
             UAirship.Analytics().Enabled = analyticsSwitch.On;
+
+            RefreshView();
         }
 
         void RefreshView()
         {
+            if (UAirship.Push().UserPushNotificationsEnabled)
+            {
+                pushSettingsSubtitleLabel.Text = PushTypeString();
+            }
+            else
+            {
+                pushSettingsSubtitleLabel.Text = "Enable push notifications";
+            }
+             
             channelIDSubtitleLabel.Text = UAirship.Push().ChannelID;
 
             namedUserSubtitleLabel.Text = UAirship.NamedUser().Identifier == null ? "None" : UAirship.NamedUser().Identifier;
@@ -80,32 +93,46 @@ namespace Sample
             }
         }
 
-        NSString PushTypeString()
+        String PushTypeString()
         {
+            UAAuthorizedNotificationSettings settings = UAirship.Push().AuthorizedNotificationSettings;
 
-            UANotificationOptions options = UAirship.Push().AuthorizedNotificationOptions;
+            List<String> settingsList = new List<String>();
 
-            NSMutableArray typeArray = new NSMutableArray(3);
-
-            if ((options & UANotificationOptions.Alert) > 0)
+            if ((settings & UAAuthorizedNotificationSettings.Alert) > 0)
             {
-                typeArray.Add(new NSString("Alert"));
+                settingsList.Add("Alert");
             }
-            if ((options & UANotificationOptions.Badge) > 0)
+            if ((settings & UAAuthorizedNotificationSettings.Badge) > 0)
             {
-                typeArray.Add(new NSString("Badge"));
+                settingsList.Add("Badge");
             }
-            if ((options & UANotificationOptions.Sound) > 0)
+            if ((settings & UAAuthorizedNotificationSettings.Sound) > 0)
             {
-                typeArray.Add(new NSString("Sound"));
+                settingsList.Add("Sound");
+            }
+            if ((settings & UAAuthorizedNotificationSettings.CarPlay) > 0)
+            {
+                settingsList.Add("CarPlay");
+            }
+            if ((settings & UAAuthorizedNotificationSettings.LockScreen) > 0)
+            {
+                settingsList.Add("LockScreen");
+            }
+            if ((settings & UAAuthorizedNotificationSettings.NotificationCenter) > 0)
+            {
+                settingsList.Add("NotificationCenter");
+            }
+            if ((settings & UAAuthorizedNotificationSettings.CriticalAlert) > 0)
+            {
+                settingsList.Add("CriticalAlert");
+            }
+            if (!(settingsList.Count > 0))
+            {
+                return new String("Pushes Currently Unauthorized");
             }
 
-            if (!(typeArray.Count > 0))
-            {
-                return new NSString("Pushes Currently Disabled");
-            }
-
-            return new NSString(string.Join(",", typeArray));
+            return String.Join(", ", settingsList);
         }
 
         public override void RowSelected(UITableView tableView, NSIndexPath indexPath)

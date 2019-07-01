@@ -1,5 +1,5 @@
 ﻿/*
- Copyright 2017 Urban Airship and Contributors
+ Copyright Airship and Contributors
 */
 
 using System;
@@ -14,7 +14,6 @@ using Android.OS;
 [assembly: UsesPermission(Name = "android.permission.ACCESS_NETWORK_STATE")]
 [assembly: UsesPermission(Name = "android.permission.WAKE_LOCK")]
 [assembly: UsesPermission(Name = "android.permission.VIBRATE")]
-[assembly: UsesPermission(Name = "android.permission.INTERNET")]
 namespace UrbanAirship
 {
 	public partial class UAirship
@@ -31,7 +30,7 @@ namespace UrbanAirship
 
 		public static ICancelable Shared (Action<UAirship> callback, Looper looper)
 		{
-			return Shared (new AirshipReadyCallback (callback), looper);
+			return Shared (looper, new AirshipReadyCallback (callback));
 		}
 
 		public static ICancelable Shared (Action<UAirship> callback)

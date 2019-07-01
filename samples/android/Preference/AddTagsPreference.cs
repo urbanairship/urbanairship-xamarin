@@ -1,5 +1,5 @@
 ﻿/*
- Copyright 2017 Urban Airship and Contributors
+ Copyright Airship and Contributors
 */
 
 using System;
@@ -7,8 +7,11 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 
+using Android.App;
 using Android.Content;
-using Android.Preferences;
+using Android.Content.Res;
+using Android.OS;
+using Android.Support.V7.Preferences;
 using Android.Util;
 using Android.Views;
 using Android.Views.InputMethods;
@@ -18,128 +21,162 @@ using UrbanAirship;
 
 namespace Sample.Preference
 {
-	public class AddTagsPreference : DialogPreference
-	{
-		private readonly List<string> tags = new List<string>();
-		private readonly ISet<string> currentTags;
-		private TagsAdapter tagsAdapter;
+    public class AddTagsPreference : DialogPreference
+    {
+        public List<string> tags = new List<string>();
+        public ISet<string> currentTags;
 
-		public AddTagsPreference(Context context, IAttributeSet attrs) : base(context, attrs)
-		{
-			currentTags = new HashSet<string>(UAirship.Shared().PushManager.Tags);
-		}
+        public AddTagsPreference(Context context, IAttributeSet attrs) : base(context, attrs)
+        {
+            currentTags = new HashSet<string>(UAirship.Shared().PushManager.Tags);
+        }
 
-		public override Java.Lang.ICharSequence SummaryFormatted
-		{
-			get
-			{
-				return new Java.Lang.String(string.Join(", ", currentTags));
-			}
-		}
+        public override Java.Lang.ICharSequence SummaryFormatted
+        {
+            get
+            {
+                return new Java.Lang.String(string.Join(", ", currentTags));
+            }
+        }
 
-		protected override View OnCreateDialogView()
-		{
-			tags.Clear();
-			tags.AddRange(currentTags);
+        protected override Java.Lang.Object OnGetDefaultValue(TypedArray a, int index)
+        {
+            return a.GetString(index);
+        }
 
-			View view = base.OnCreateDialogView();
-			ListView listView = (ListView)view.FindViewById(Resource.Id.tags_list);
-			tagsAdapter = new TagsAdapter(Context, Resource.Layout.tag_preference_item, this);
-			listView.Adapter = tagsAdapter;
+        protected override bool ShouldPersist()
+        {
+          return false;
+        }
 
-			EditText editText = (EditText)view.FindViewById(Resource.Id.new_tag_text);
+        protected override void OnSetInitialValue(Java.Lang.Object defaultValue)
+        {
+            base.OnSetInitialValue(defaultValue);
+        }
 
-			ImageButton button = (ImageButton)view.FindViewById(Resource.Id.new_tag_button);
-			button.Click += (sender, e) =>
-			{
-				String newTag = editText.Text;
-				editText.Text = null;
-				InputMethodManager imm = (InputMethodManager)Context.GetSystemService(Context.InputMethodService);
-				imm.HideSoftInputFromWindow(editText.WindowToken, 0);
+        public override int DialogLayoutResource
+        {
+            get
+            {
+                return Resource.Layout.dialog_add_tags;
+            }
+        }
 
-				if (!String.IsNullOrEmpty(newTag))
-				{
-					if (tags.Contains(newTag))
-					{
-						Toast.MakeText(Context, Resource.String.duplicate_tag_warning, ToastLength.Short).Show();
-					}
-					else
-					{
-						tags.Add(newTag);
-						tagsAdapter.NotifyDataSetChanged();
-					}
-				}
-			};
+        public void SetTags(List<string> addTags)
+        {
+            currentTags.Clear();
+            currentTags.UnionWith(addTags);
 
-			return view;
-		}
+            UAirship.Shared().PushManager.Tags = currentTags;
 
-		protected override View OnCreateView(ViewGroup parent)
-		{
-			View view = base.OnCreateView(parent);
-			view.ContentDescription = "ADD_TAGS";
-			return view;
-		}
+            this.NotifyChanged();
+        }
 
-		protected override void OnDialogClosed(bool positiveResult)
-		{
-			if (positiveResult)
-			{
-				if (CallChangeListener(tags.ToArray()))
-				{
-					SetTags(tags);
-					NotifyChanged();
-				}
-			}
-		}
+    }
 
-		protected override bool ShouldPersist()
-		{
-			return false;
-		}
+    public class AddTagsPreferenceDialogFragmentCompat : PreferenceDialogFragmentCompat
+    {
+        private TagsAdapter tagsAdapter;
+        private AddTagsPreference preference;
 
-		private void SetTags(List<string> addTags)
-		{
-			currentTags.Clear();
-			currentTags.UnionWith(addTags);
+        public AddTagsPreferenceDialogFragmentCompat() : base() {}
 
-			UAirship.Shared().PushManager.Tags = currentTags;
-		}
+        public AddTagsPreferenceDialogFragmentCompat(String key) : base()
+        {
+            Bundle bundle = new Bundle(1);
+            bundle.PutString("key", key);
+            this.Arguments = bundle;
+        }
 
-		private class TagsAdapter : ArrayAdapter<string>
-		{
-			private readonly int layout;
-			private AddTagsPreference outer;
+        protected override void OnBindDialogView(View view)
+        {
 
-			public TagsAdapter(Context context, int layout, AddTagsPreference outer) : base(context, layout)
-			{
-				this.layout = layout;
-				this.outer = outer;
-			}
+            base.OnBindDialogView(view);
 
-			private View CreateView(ViewGroup parent)
-			{
-				LayoutInflater layoutInflater = (LayoutInflater)Context.GetSystemService(Context.LayoutInflaterService);
-				return layoutInflater.Inflate(layout, parent, false);
-			}
+            preference = (AddTagsPreference)Preference;
 
-			public override View GetView(int position, View convertView, ViewGroup parent)
-			{
-				View view = convertView == null ? CreateView(parent) : convertView;
-				string tag = this.GetItem(position);
+            preference.tags.Clear();
+            preference.tags.AddRange(preference.currentTags);
 
-				TextView textView = (TextView)view.FindViewById(Resource.Id.tag_text);
-				textView.Text = tag;
+            ListView listView = (ListView)(view.FindViewById(Resource.Id.tags_list));
 
-				ImageButton button = (ImageButton)view.FindViewById(Resource.Id.delete_tag_button);
-				button.Click += (sender, e) =>
-				{
-					outer.tags.Remove(tag);
-					this.NotifyDataSetChanged();
-				};
+            if (listView == null)
+            {
+                throw new System.InvalidOperationException("Dialog view must contain" +
+                        " a ListView with id 'tags_list'");
+            }
 
-				return view;
-			}
-		}
-	}
+            tagsAdapter = new TagsAdapter(Context, Resource.Layout.tag_preference_item, preference);
+            listView.Adapter = tagsAdapter;
+
+            EditText editText = (EditText)view.FindViewById(Resource.Id.new_tag_text);
+
+            ImageButton button = (ImageButton)view.FindViewById(Resource.Id.new_tag_button);
+            button.Click += (sender, e) =>
+            {
+                String newTag = editText.Text;
+                editText.Text = null;
+                InputMethodManager imm = (InputMethodManager)Context.GetSystemService(Context.InputMethodService);
+                imm.HideSoftInputFromWindow(editText.WindowToken, 0);
+
+                if (!String.IsNullOrEmpty(newTag))
+                {
+                    if (preference.tags.Contains(newTag))
+                    {
+                        Toast.MakeText(Context, Resource.String.duplicate_tag_warning, ToastLength.Short).Show();
+                    }
+                    else
+                    {
+                        preference.tags.Add(newTag);
+                        tagsAdapter.NotifyDataSetChanged();
+                    }
+                }
+            };
+        }
+
+        public override void OnDialogClosed(bool positiveResult)
+        {
+            if (positiveResult)
+            {
+                preference.SetTags(preference.tags);
+            }
+        }
+
+
+        private class TagsAdapter : ArrayAdapter<string>
+        {
+            private readonly int layout;
+            private AddTagsPreference outer;
+
+            public TagsAdapter(Context context, int layout, AddTagsPreference outer) : base(context, layout)
+            {
+                this.layout = layout;
+                this.outer = outer;
+            }
+
+            private View CreateView(ViewGroup parent)
+            {
+                LayoutInflater layoutInflater = (LayoutInflater)Context.GetSystemService(Context.LayoutInflaterService);
+                return layoutInflater.Inflate(layout, parent, false);
+            }
+
+            public override View GetView(int position, View convertView, ViewGroup parent)
+            {
+                View view = convertView == null ? CreateView(parent) : convertView;
+                string tag = this.GetItem(position);
+
+                TextView textView = (TextView)view.FindViewById(Resource.Id.tag_text);
+                textView.Text = tag;
+
+                ImageButton button = (ImageButton)view.FindViewById(Resource.Id.delete_tag_button);
+                button.Click += (sender, e) =>
+                {
+                    outer.tags.Remove(tag);
+                    this.NotifyDataSetChanged();
+                };
+
+                return view;
+            }
+        }
+    }
 }

@@ -1,5 +1,5 @@
 ﻿/*
- Copyright 2017 Urban Airship and Contributors
+ Copyright Airship and Contributors
 */
 
 using System;
@@ -16,7 +16,7 @@ namespace UrbanAirship.Actions
 
 		public virtual void Run (Action<ActionArguments, ActionResult> callback, Looper looper)
 		{
-			Run (new ActionCompletionCallback (callback), looper);
+			Run (looper, new ActionCompletionCallback (callback));
 		}
 	}
 }

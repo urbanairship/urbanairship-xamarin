@@ -1,5 +1,5 @@
 ﻿/*
- Copyright 2017 Urban Airship and Contributors
+ Copyright Airship and Contributors
 */
 
 using System;
@@ -10,7 +10,7 @@ namespace UrbanAirship.NETStandard
 {
     public class Airship : IAirship
     {
-        private const string BaitWithoutSwitchMessage = "The empty .NET Standard implementation for Urban Airship was loaded. Check that you have added the urbanairship.netstandard package to each of your platform-specific projects.";   
+        private const string BaitWithoutSwitchMessage = "The empty .NET Standard implementation for Airship was loaded. Check that you have added the urbanairship.netstandard package to each of your platform-specific projects.";   
 
         private static Airship sharedAirship = new Airship();
 
@@ -52,26 +52,6 @@ namespace UrbanAirship.NETStandard
         public string ChannelId
         {
             get { throw new NotImplementedException(BaitWithoutSwitchMessage); }
-        }
-
-        /// <summary>
-        /// Indicates whether location is enabled
-        /// </summary>
-        /// <value><c>true</c> if location is enabled; otherwise, <c>false</c>.</value>
-        public bool LocationEnabled
-        {
-            get { throw new NotImplementedException(BaitWithoutSwitchMessage); }
-            set { throw new NotImplementedException(BaitWithoutSwitchMessage); }
-        }
-
-        /// <summary>
-        /// Indicates whether background location updates are allowed.
-        /// </summary>
-        /// <value><c>true</c> if background location updates are allowed; otherwise, <c>false</c>.</value>
-        public bool BackgroundLocationAllowed
-        {
-            get { throw new NotImplementedException(BaitWithoutSwitchMessage); }
-            set { throw new NotImplementedException(BaitWithoutSwitchMessage); }
         }
 
         /// <summary>

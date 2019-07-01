@@ -1,12 +1,13 @@
-﻿using System;
-using UrbanAirship;
+﻿/*
+ Copyright Airship and Contributors
+*/
+
+using System;
 using UserNotifications;
 using UIKit;
 using Foundation;
-using System.IO.Compression;
-using CoreSpotlight;
-using System.Linq;
-using System.Runtime.CompilerServices;
+
+using UrbanAirship;
 
 namespace Sample
 {

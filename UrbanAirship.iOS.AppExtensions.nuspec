@@ -2,8 +2,8 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
    <metadata>
       <id>urbanairship.ios.appextensions</id>
-      <version>10.2.2</version>
-      <title>Urban Airship App Extensions</title>
+      <version>11.0.0</version>
+      <title>Airship iOS SDK - App Extensions</title>
       <authors>Urban Airship, Inc.</authors>
       <projectUrl>https://github.com/urbanairship/urbanairship-xamarin</projectUrl>
       <requireLicenseAcceptance>false</requireLicenseAcceptance>

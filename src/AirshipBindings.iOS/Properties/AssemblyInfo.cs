@@ -1,4 +1,8 @@
-﻿using System.Reflection;
+﻿/*
+ Copyright Airship and Contributors
+*/
+
+using System.Reflection;
 using System.Runtime.CompilerServices;
 
 using Foundation;

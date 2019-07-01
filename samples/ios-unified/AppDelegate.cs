@@ -1,19 +1,17 @@
 ﻿/*
- Copyright 2017 Urban Airship and Contributors
+ Copyright Airship and Contributors
 */
 
 using Foundation;
 using UIKit;
-using UrbanAirship;
-using System.Threading.Tasks;
 using System;
 using ObjCRuntime;
-
 using CoreFoundation;
-using GameController;
-using System.Linq;
+
 using Xamarin.Forms;
-using System.Security.Authentication.ExtendedProtection;
+
+using UrbanAirship;
+
 namespace Sample
 {
     [Register("AppDelegate")]
@@ -51,7 +49,7 @@ namespace Sample
 
             config.MessageCenterStyleConfig = "UAMessageCenterDefaultStyle";
 
-            // Bootstrap the Urban Airship SDK
+            // Bootstrap the Airship SDK
             UAirship.TakeOff(config);
 
             Console.WriteLine("Config:{0}", config);

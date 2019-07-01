@@ -1,5 +1,5 @@
 ﻿/*
- Copyright 2017 Urban Airship and Contributors
+ Copyright Airship and Contributors
 */
 
 using System;
@@ -23,16 +23,6 @@ namespace UrbanAirship.Portable
 		string ChannelId
 		{
 			get;
-		}
-
-		bool LocationEnabled
-		{
-			get; set;
-		}
-
-		bool BackgroundLocationAllowed
-		{
-			get; set;
 		}
 
 		string NamedUser

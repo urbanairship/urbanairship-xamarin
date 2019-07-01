@@ -1,6 +1,10 @@
-﻿using System;
+﻿/*
+ Copyright Airship and Contributors
+*/
 
+using System;
 using UIKit;
+
 using UrbanAirship;
 
 namespace Sample

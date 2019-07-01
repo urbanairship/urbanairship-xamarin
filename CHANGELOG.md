@@ -1,14 +1,25 @@
-# Urban Airship Xamarin Library
+# Airship Xamarin Library
 
-This library provides official bindings to the Urban Airship SDK, as well as sample applications for both iOS and Android.
+This library provides official bindings to the Airship SDK, as well as sample applications for both iOS and Android.
 
 > Note: The library has moved to https://github.com/urbanairship/urbanairship-xamarin
 
 ### Release Notes
 
+Versions 10.0.0 (.NETStandard & PCL), 10.0.2 (Android), 11.0.0 (iOS) - July 1, 2019
+===================================================================================
+- Update Android SDK to 10.0.2
+- Update iOS SDK to 11.0.0
+
+Changes
+-------
+- Android GCM support has been removed. Please use FCM instead.
+- Android preference support has been moved to the urbanairship.android.preference package.
+- iOS location support has been moved to the urbanairship.ios.locationkit package.
+- Location support has been removed from the PCL and .NETStandard libraries.
+
 Version 9.4.1 - April 19, 2019
 ==============================
-
 - Update package references to better support Xamarin 9.x
 - Update Android package dependencies to target API level 28
 - Update Android package to 9.7.1.1. SDK remains at 9.7.1

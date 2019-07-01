@@ -69,7 +69,7 @@
                             <constraint firstItem="He6-LA-1je" firstAttribute="top" secondItem="Ia1-K6-d13" secondAttribute="bottom" constant="8" symbolic="YES" id="iUm-ke-wO4"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Urban Airship" image="HomeScreen" selectedImage="HomeScreen" id="acW-dT-cKf"/>
+                    <tabBarItem key="tabBarItem" title="Airship" image="HomeScreen" selectedImage="HomeScreen" id="acW-dT-cKf"/>
                     <connections>
                         <outlet property="channelIDButton" destination="iZm-tj-QRc" id="name-outlet-iZm-tj-QRc"/>
                         <outlet property="enablePushButton" destination="UCg-eu-blq" id="40k-6K-g2a"/>
@@ -261,8 +261,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Enable GPS and WIFI Based Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QG4-KP-fz8">
-                                                    <rect key="frame" x="15" y="24.5" width="193.5" height="13.5"/>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Enable GPS and WiFi Based Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QG4-KP-fz8">
+                                                    <rect key="frame" x="27" y="24.5" width="193.5" height="13.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>

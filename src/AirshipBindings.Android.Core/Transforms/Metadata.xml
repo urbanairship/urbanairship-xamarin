@@ -9,7 +9,6 @@
   <attr path="/api/package[@name='com.urbanairship.json']" name="managedName">UrbanAirship.Json</attr>
   <attr path="/api/package[@name='com.urbanairship.js']" name="managedName">UrbanAirship.Js</attr>
   <attr path="/api/package[@name='com.urbanairship.location']" name="managedName">UrbanAirship.Location</attr>
-  <attr path="/api/package[@name='com.urbanairship.preference']" name="managedName">UrbanAirship.Preference</attr>
   <attr path="/api/package[@name='com.urbanairship.push']" name="managedName">UrbanAirship.Push</attr>
   <attr path="/api/package[@name='com.urbanairship.push.notifications']" name="managedName">UrbanAirship.Push.Notifications</attr>
   <attr path="/api/package[@name='com.urbanairship.richpush']" name="managedName">UrbanAirship.RichPush</attr>
@@ -35,16 +34,9 @@
   <attr path="/api/package[@name='com.urbanairship.analytics']/class[@name='Analytics']" name="managedName">AnalyticsClass</attr>
   <attr path="/api/package[@name='com.urbanairship.automation']/class[@name='Automation']" name="managedName">AutomationClass</attr>
   <attr path="/api/package[@name='com.urbanairship.messagecenter']/class[@name='MessageCenter']" name="managedName">MessageCenterClass</attr>
-
-
+  
   <!--- Non public parent classes -->
-  <attr path="/api/package[@name='com.urbanairship.preference']/class[@name='UACheckBoxPreference']" name="visibility">public</attr>
-  <attr path="/api/package[@name='com.urbanairship.preference']/class[@name='QuietTimePickerPreference']" name="visibility">public</attr>
   <attr path="/api/package[@name='com.urbanairship.actions.tags']/class[@name='BaseTagsAction']" name="visibility">public</attr>
-
-  <!-- Fixes issues with IComparable -->
-  <remove-node path="/api/package[@name='com.urbanairship.preference']/class[@name='QuietTimePickerPreference']" />
-  <remove-node path="/api/package[@name='com.urbanairship.preference']/class[@name='UACheckBoxPreference']" />
 
   <!-- Fix field names have the same name as the class for the templates-->
   <attr path="/api/package[@name='com.urbanairship.analytics']/class[@name='RetailEventTemplate']/field[@name='RETAIL_EVENT_TEMPLATE']" name="managedName">TemplateName</attr>

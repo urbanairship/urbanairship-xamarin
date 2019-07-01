@@ -1,5 +1,5 @@
 ﻿/*
- Copyright 2017 Urban Airship and Contributors
+ Copyright Airship and Contributors
 */
 
 using System;
@@ -50,26 +50,6 @@ namespace UrbanAirship.Portable
 		public string ChannelId
 		{
 			get { throw new NotImplementedException(PCL.BaitWithoutSwitchMessage); }
-		}
-
-		/// <summary>
-		/// Indicates whether location is enabled
-		/// </summary>
-		/// <value><c>true</c> if location is enabled; otherwise, <c>false</c>.</value>
-		public bool LocationEnabled
-		{
-			get { throw new NotImplementedException(PCL.BaitWithoutSwitchMessage); }
-			set { throw new NotImplementedException(PCL.BaitWithoutSwitchMessage); }
-		}
-
-		/// <summary>
-		/// Indicates whether background location updates are allowed.
-		/// </summary>
-		/// <value><c>true</c> if background location updates are allowed; otherwise, <c>false</c>.</value>
-		public bool BackgroundLocationAllowed
-		{
-			get { throw new NotImplementedException(PCL.BaitWithoutSwitchMessage); }
-			set { throw new NotImplementedException(PCL.BaitWithoutSwitchMessage); }
 		}
 
 		/// <summary>
