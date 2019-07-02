@@ -97,9 +97,9 @@ Xamarin application.
     ```
 
 ### Platform Documentation
-- iOS: http://docs.urbanairship.com/platform/ios.html
-- Android: http://docs.urbanairship.com/platform/android.html
-- Topic guides: http://docs.urbanairship.com/topic-guides/index.html
+- iOS: http://docs.airship.com/platform/ios.html
+- Android: http://docs.airship.com/platform/android.html
+- Topic guides: http://docs.airship.com/topic-guides/index.html
 
 ### Support
-- https://support.urbanairship.com
+- https://support.airship.com
