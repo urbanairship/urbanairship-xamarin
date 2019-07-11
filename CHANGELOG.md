@@ -6,6 +6,14 @@ This library provides official bindings to the Airship SDK, as well as sample ap
 
 ### Release Notes
 
+Versions 10.1.0 (.NETStandard & PCL), 11.1.0 (iOS) - July 11, 2019
+===================================================================================
+- Update iOS SDK to 11.1.0
+
+Changes
+-------
+- Fixed problem with installation of new iOS LocationKit package.
+
 Versions 10.0.0 (.NETStandard & PCL), 10.0.2 (Android), 11.0.0 (iOS) - July 1, 2019
 ===================================================================================
 - Update Android SDK to 10.0.2
