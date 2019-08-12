@@ -6,6 +6,14 @@ This library provides official bindings to the Airship SDK, as well as sample ap
 
 ### Release Notes
 
+Versions 10.1.1 (.NETStandard & PCL, Android), 11.1.0 (iOS) – August 12, 2019
+=============================================================================
+- Update Android SDK to 10.1.1
+
+Changes
+-------
+- Patch release to fix direct open reporting for notifications when an activity is resumed from the background
+
 Versions 10.1.0 (.NETStandard & PCL), 11.1.0 (iOS) - July 11, 2019
 ===================================================================================
 - Update iOS SDK to 11.1.0
