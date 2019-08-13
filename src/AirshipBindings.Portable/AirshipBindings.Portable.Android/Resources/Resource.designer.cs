@@ -122,8 +122,8 @@ namespace AirshipBindings.Portable
 			// aapt resource value: 0x7f01000a
 			public static int messageCenterItemTitleTextAppearance = 2130771978;
 			
-			// aapt resource value: 0x7f010015
-			public static int messageCenterStyle = 2130771989;
+			// aapt resource value: 0x7f010014
+			public static int messageCenterStyle = 2130771988;
 			
 			// aapt resource value: 0x7f01000d
 			public static int messageNotSelectedText = 2130771981;
@@ -131,29 +131,26 @@ namespace AirshipBindings.Portable
 			// aapt resource value: 0x7f01000c
 			public static int messageNotSelectedTextAppearance = 2130771980;
 			
-			// aapt resource value: 0x7f010016
-			public static int mixed_content_mode = 2130771990;
+			// aapt resource value: 0x7f010015
+			public static int mixed_content_mode = 2130771989;
 			
 			// aapt resource value: 0x7f010013
 			public static int ua_state_highlighted = 2130771987;
 			
-			// aapt resource value: 0x7f010017
-			public static int urbanAirshipButtonLayoutResourceId = 2130771991;
-			
-			// aapt resource value: 0x7f010014
-			public static int urbanAirshipFontPath = 2130771988;
-			
-			// aapt resource value: 0x7f01001b
-			public static int urbanAirshipMaxHeight = 2130771995;
+			// aapt resource value: 0x7f010016
+			public static int urbanAirshipButtonLayoutResourceId = 2130771990;
 			
 			// aapt resource value: 0x7f01001a
-			public static int urbanAirshipMaxWidth = 2130771994;
+			public static int urbanAirshipMaxHeight = 2130771994;
 			
 			// aapt resource value: 0x7f010019
-			public static int urbanAirshipSeparatedSpaceWidth = 2130771993;
+			public static int urbanAirshipMaxWidth = 2130771993;
 			
 			// aapt resource value: 0x7f010018
-			public static int urbanAirshipStackedSpaceHeight = 2130771992;
+			public static int urbanAirshipSeparatedSpaceWidth = 2130771992;
+			
+			// aapt resource value: 0x7f010017
+			public static int urbanAirshipStackedSpaceHeight = 2130771991;
 			
 			static Attribute()
 			{
@@ -343,7 +340,7 @@ namespace AirshipBindings.Portable
 			public static int ua_ic_close = 2130837516;
 			
 			// aapt resource value: 0x7f02000d
-			public static int ua_ic_close_white_18dp = 2130837517;
+			public static int ua_ic_close_white = 2130837517;
 			
 			// aapt resource value: 0x7f02000e
 			public static int ua_ic_image_placeholder = 2130837518;
@@ -847,7 +844,10 @@ namespace AirshipBindings.Portable
 		{
 			
 			// aapt resource value: 0x7f070000
-			public static int ua_native_bridge = 2131165184;
+			public static int ua_blank_favicon = 2131165184;
+			
+			// aapt resource value: 0x7f070001
+			public static int ua_native_bridge = 2131165185;
 			
 			static Raw()
 			{
@@ -1393,10 +1393,13 @@ namespace AirshipBindings.Portable
 			public static int ua_default_actions = 2131099648;
 			
 			// aapt resource value: 0x7f060001
-			public static int ua_notification_button_overrides = 2131099649;
+			public static int ua_default_channels = 2131099649;
 			
 			// aapt resource value: 0x7f060002
-			public static int ua_notification_buttons = 2131099650;
+			public static int ua_notification_button_overrides = 2131099650;
+			
+			// aapt resource value: 0x7f060003
+			public static int ua_notification_buttons = 2131099651;
 			
 			static Xml()
 			{
@@ -1511,20 +1514,14 @@ namespace AirshipBindings.Portable
 			// aapt resource value: 0
 			public static int States_ua_state_highlighted = 0;
 			
-			public static int[] TextAppearance = new int[] {
-					2130771988};
-			
-			// aapt resource value: 0
-			public static int TextAppearance_urbanAirshipFontPath = 0;
-			
 			public static int[] Theme = new int[] {
-					2130771989};
+					2130771988};
 			
 			// aapt resource value: 0
 			public static int Theme_messageCenterStyle = 0;
 			
 			public static int[] UAWebView = new int[] {
-					2130771990};
+					2130771989};
 			
 			// aapt resource value: 0
 			public static int UAWebView_mixed_content_mode = 0;
@@ -1540,9 +1537,9 @@ namespace AirshipBindings.Portable
 			public static int UrbanAirshipActionButton_android_label = 0;
 			
 			public static int[] UrbanAirshipInAppButtonLayout = new int[] {
+					2130771990,
 					2130771991,
-					2130771992,
-					2130771993};
+					2130771992};
 			
 			// aapt resource value: 0
 			public static int UrbanAirshipInAppButtonLayout_urbanAirshipButtonLayoutResourceId = 0;
@@ -1554,8 +1551,8 @@ namespace AirshipBindings.Portable
 			public static int UrbanAirshipInAppButtonLayout_urbanAirshipStackedSpaceHeight = 1;
 			
 			public static int[] UrbanAirshipLayout = new int[] {
-					2130771994,
-					2130771995};
+					2130771993,
+					2130771994};
 			
 			// aapt resource value: 1
 			public static int UrbanAirshipLayout_urbanAirshipMaxHeight = 1;

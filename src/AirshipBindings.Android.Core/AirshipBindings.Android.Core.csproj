@@ -158,7 +158,7 @@
     <Folder Include="Jars\" />
   </ItemGroup>
   <ItemGroup>
-    <LibraryProjectZip Include="Jars\urbanairship-core-10.0.2.aar" />
+    <LibraryProjectZip Include="Jars\urbanairship-core-10.1.1.aar" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
