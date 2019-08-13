@@ -6,7 +6,7 @@ This library provides official bindings to the Airship SDK, as well as sample ap
 
 ### Release Notes
 
-Versions 10.1.1 (.NETStandard & PCL, Android), 11.1.0 (iOS) – August 12, 2019
+Versions 10.1.1 (.NETStandard & PCL, Android), 11.1.0 (iOS) – August 13, 2019
 =============================================================================
 - Update Android SDK to 10.1.1
 
