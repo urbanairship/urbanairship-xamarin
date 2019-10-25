@@ -45,9 +45,9 @@ namespace Sample
                 UAirship.Push().UserPushNotificationsEnabled = true;
             }
 
-            if (sender == this.channelIDButton & UAirship.Push().ChannelID != null)
+            if (sender == this.channelIDButton & UAirship.Channel().Identifier != null)
             {
-                UIPasteboard.General.String = UAirship.Push().ChannelID;
+                UIPasteboard.General.String = UAirship.Channel().Identifier;
 
                 UIAlertController alertController = UIAlertController.Create(null, "Channel copied to clipboard!", UIAlertControllerStyle.Alert);
                 alertController.AddAction(UIAlertAction.Create("OK", UIAlertActionStyle.Default, null));
@@ -60,7 +60,7 @@ namespace Sample
         {
             if (UAirship.Push().UserPushNotificationsEnabled)
             {
-                this.channelIDButton.SetTitle(UAirship.Push().ChannelID, UIControlState.Normal);
+                this.channelIDButton.SetTitle(UAirship.Channel().Identifier, UIControlState.Normal);
                 this.channelIDButton.Hidden = false;
                 this.enablePushButton.Hidden = true;
                 return;
