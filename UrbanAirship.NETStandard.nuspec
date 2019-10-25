@@ -15,7 +15,7 @@
          </group>
 
          <group targetFramework="Xamarin.iOS">
-            <dependency id="urbanairship.ios" version="11.1.0"/>
+            <dependency id="urbanairship.ios" version="12.0.0"/>
          </group>
       </dependencies>
    </metadata>
