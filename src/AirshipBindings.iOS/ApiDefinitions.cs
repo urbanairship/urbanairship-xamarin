@@ -2506,12 +2506,12 @@ namespace UrbanAirship {
 
         // - (void)registrationSucceededForChannelID:(nonnull NSString *)channelID deviceToken:(nonnull NSString *)deviceToken;
         [Export("registrationSucceededForChannelID:deviceToken:")]
-        [Obsolete("Deprecated ? to be removed in SDK version 13.0. Please use the UAChannelUpdatedEvent NSNotification.")]
+        [Obsolete("Deprecated - to be removed in SDK version 13.0. Please use the UAChannelUpdatedEvent NSNotification.")]
         void RegistrationSucceeded(string channelID, string deviceToken);
 
         // - (void)registrationFailed;
         [Export("registrationFailed")]
-        [Obsolete("Deprecated ? to be removed in SDK version 13.0. Please use the UAChannelRegistrationFailedEvent NSNotification.")]
+        [Obsolete("Deprecated - to be removed in SDK version 13.0. Please use the UAChannelRegistrationFailedEvent NSNotification.")]
         void RegistrationFailed();
 
         // - (void) notificationRegistrationFinishedWithAuthorizedSettings: (UAAuthorizedNotificationSettings)authorizedSettings categories: (nonnull NSSet< UANotificationCategory *> *)categories status: (UAAuthorizationStatus) status;
@@ -2597,7 +2597,7 @@ namespace UrbanAirship {
 
         // @property (readonly, copy, nonatomic, nullable) NSString *channelID;
         [NullAllowed, Export("channelID")]
-        [Obsolete("Deprecated ? to be removed in SDK version 13.0. Please use the identifier property on UAChannel.")]
+        [Obsolete("Deprecated - to be removed in SDK version 13.0. Please use the identifier property on UAChannel.")]
         string ChannelID { get; }
 
         // @property (assign, readwrite, nonatomic) UANotificationOptions notificationOptions;
@@ -2662,12 +2662,12 @@ namespace UrbanAirship {
 
         // @property (readwrite, copy, nonatomic) NSArray<NSString *> *_Nonnull tags;
         [Export("tags", ArgumentSemantic.Copy)]
-        [Obsolete("Deprecated ? to be removed in SDK version 13.0. Please use the equivalent property on UAChannel.")]
+        [Obsolete("Deprecated - to be removed in SDK version 13.0. Please use the equivalent property on UAChannel.")]
         string[] Tags { get; set; }
 
         // @property (getter=isChannelTagRegistrationEnabled, assign, readwrite, nonatomic) BOOL channelTagRegistrationEnabled;
         [Export("channelTagRegistrationEnabled")]
-        [Obsolete("Deprecated ? to be removed in SDK version 13.0. Please use the equivalent property on UAChannel.")]
+        [Obsolete("Deprecated - to be removed in SDK version 13.0. Please use the equivalent property on UAChannel.")]
         bool ChannelTagRegistrationEnabled { [Bind("isChannelTagRegistrationEnabled")] get; set; }
 
         // @property (readonly, copy, nonatomic, nullable) NSDictionary *quietTime;
@@ -2692,37 +2692,37 @@ namespace UrbanAirship {
 
         // - (void)addTag:(nonnull NSString *)tag;
         [Export("addTag:")]
-        [Obsolete("Deprecated ? to be removed in SDK version 13.0. Please use the equivalent method on UAChannel.")]
+        [Obsolete("Deprecated - to be removed in SDK version 13.0. Please use the equivalent method on UAChannel.")]
         void AddTag(string tag);
 
         // - (void)addTags:(nonnull NSArray<NSString *> *)tags;
         [Export("addTags:")]
-        [Obsolete("Deprecated ? to be removed in SDK version 13.0. Please use the equivalent method on UAChannel.")]
+        [Obsolete("Deprecated - to be removed in SDK version 13.0. Please use the equivalent method on UAChannel.")]
         void AddTags(string[] tags);
 
         // - (void)removeTag:(nonnull NSString *)tag;
         [Export("removeTag:")]
-        [Obsolete("Deprecated ? to be removed in SDK version 13.0. Please use the equivalent method on UAChannel.")]
+        [Obsolete("Deprecated - to be removed in SDK version 13.0. Please use the equivalent method on UAChannel.")]
         void RemoveTag(string tag);
 
         // - (void)removeTags:(nonnull NSArray<NSString *> *)tags;
         [Export("removeTags:")]
-        [Obsolete("Deprecated ? to be removed in SDK version 13.0. Please use the equivalent method on UAChannel.")]
+        [Obsolete("Deprecated - to be removed in SDK version 13.0. Please use the equivalent method on UAChannel.")]
         void RemoveTags(string[] tags);
 
         // - (void)addTags:(nonnull NSArray<NSString *> *)tags group:(nonnull NSString *)tagGroupID;
         [Export("addTags:group:")]
-        [Obsolete("Deprecated ? to be removed in SDK version 13.0. Please use the equivalent method on UAChannel.")]
+        [Obsolete("Deprecated - to be removed in SDK version 13.0. Please use the equivalent method on UAChannel.")]
         void AddTags(string[] tags, string tagGroupID);
 
         // - (void)removeTags:(nonnull NSArray<NSString *> *)tags group:(nonnull NSString *)tagGroupID;
         [Export("removeTags:group:")]
-        [Obsolete("Deprecated ? to be removed in SDK version 13.0. Please use the equivalent method on UAChannel.")]
+        [Obsolete("Deprecated - to be removed in SDK version 13.0. Please use the equivalent method on UAChannel.")]
         void RemoveTags(string[] tags, string tagGroupID);
 
         // - (void)setTags:(nonnull NSArray<NSString *> *)tags group:(nonnull NSString *)tagGroupID;
         [Export("setTags:group:")]
-        [Obsolete("Deprecated ? to be removed in SDK version 13.0. Please use the equivalent method on UAChannel.")]
+        [Obsolete("Deprecated - to be removed in SDK version 13.0. Please use the equivalent method on UAChannel.")]
         void SetTags(string[] tags, string tagGroupID);
 
         // - (void)setQuietTimeStartHour:(NSUInteger)startHour startMinute:(NSUInteger)startMinute endHour:(NSUInteger)endHour endMinute:(NSUInteger)endMinute;
@@ -2731,7 +2731,7 @@ namespace UrbanAirship {
 
         // - (void)enableChannelCreation;
         [Export("enableChannelCreation")]
-        [Obsolete("Deprecated ? to be removed in SDK version 13.0. Please use the equivalent method on UAChannel.")]
+        [Obsolete("Deprecated - to be removed in SDK version 13.0. Please use the equivalent method on UAChannel.")]
         void EnableChannelCreation();
 
         // - (void)updateRegistration;
