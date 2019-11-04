@@ -102,7 +102,8 @@ namespace UrbanAirship {
     public enum UANotificationCategoryOptions : ulong
     {
         CustomDismissAction = (1 << 0),
-        AllowInCarPlay = (2 << 0)
+        AllowInCarPlay = (1 << 1),
+        AllowAnnouncement = (1 << 4)
     }
 
     [Native]
@@ -120,7 +121,8 @@ namespace UrbanAirship {
         CarPlay = (1 << 3),
         CriticalAlert = (1 << 4),
         ProvidesAppNotificationSettings = (1 << 5),
-        Provisional = (1 << 6)
+        Provisional = (1 << 6),
+        Announcement = (1 << 7)
     }
 
     [Native]
@@ -133,7 +135,8 @@ namespace UrbanAirship {
         CarPlay = (1 << 3),
         LockScreen = (1 << 4),
         NotificationCenter = (1 << 5),
-        CriticalAlert = (1 << 6)
+        CriticalAlert = (1 << 6),
+        Announcement = (1 << 7)
     }
 
     [Native]
@@ -313,6 +316,13 @@ namespace UrbanAirship {
     public enum UALegacyInAppMessageDisplayType : long
     {
         Banner = 0
+    }
+
+    [Native]
+    public enum UANavigationBarStyle : ulong
+    {
+        Default = 0,
+        Black = 1
     }
 
     [Native]

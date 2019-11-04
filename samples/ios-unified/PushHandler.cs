@@ -98,9 +98,9 @@ namespace Sample
             completionHandler();
         }
 
-        public override UNNotificationPresentationOptions PresentationOptions(UNNotification notification)
+        public override UNNotificationPresentationOptions ExtendPresentationOptions(UNNotificationPresentationOptions options, UNNotification notification)
         {
-            return UNNotificationPresentationOptions.Alert | UNNotificationPresentationOptions.Sound;
+            return options | UNNotificationPresentationOptions.Alert | UNNotificationPresentationOptions.Sound;
         }
     }
 }

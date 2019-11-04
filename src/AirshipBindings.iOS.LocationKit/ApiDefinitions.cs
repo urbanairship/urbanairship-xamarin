@@ -6,7 +6,7 @@ using Foundation;
 using ObjCRuntime;
 
 namespace UrbanAirship {
-    // @protocol UALocationDelegate <NSObject> 
+    // @protocol UALocationDelegate <NSObject>
     [Protocol, Model]
     [BaseType(typeof(NSObject))]
     interface UALocationDelegate
@@ -14,15 +14,15 @@ namespace UrbanAirship {
 
         // - (void)locationUpdatesStarted;
         [Export("locationUpdatesStarted")]
-        void LocationUpdatesStarted();
+        void LocationUpdatesStarted ();
 
         // - (void)locationUpdatesStopped;
         [Export("locationUpdatesStopped")]
-        void LocationUpdatesStopped();
+        void LocationUpdatesStopped ();
 
         // - (void)receivedLocationUpdates:(nonnull NSArray *)locations;
         [Export("receivedLocationUpdates:")]
-        void ReceivedLocationUpdates(NSObject[] locations);
+        void ReceivedLocationUpdates (NSObject[] locations);
     }
 
     interface IUALocationDelegate { }
@@ -34,6 +34,14 @@ namespace UrbanAirship {
         // @property (getter=isAutoRequestAuthorizationEnabled, assign, readwrite, nonatomic) BOOL autoRequestAuthorizationEnabled;
         [Export("autoRequestAuthorizationEnabled")]
         bool AutoRequestAuthorizationEnabled { [Bind("isAutoRequestAuthorizationEnabled")] get; set; }
+
+        // @property (getter=isLocationUpdatesEnabled, assign, readwrite, nonatomic) BOOL locationUpdatesEnabled;
+        [Export("locationUpdatesEnabled")]
+        bool LocationUpdatesEnabled { [Bind("isLocationUpdatesEnabled")] get; set; }
+
+        // @property (getter=isBackgroundLocationUpdatesAllowed, assign, readwrite, nonatomic) BOOL backgroundLocationUpdatesAllowed;
+        [Export("backgroundLocationUpdatesAllowed")]
+        bool BackgroundLocationUpdatesAllowed { [Bind("isBackgroundLocationUpdatesAllowed")] get; set; }
 
         // @property (readwrite, nonatomic, nullable) id<UALocationDelegate> delegate;
         [NullAllowed, Export("delegate", ArgumentSemantic.Assign)]
@@ -50,6 +58,19 @@ namespace UrbanAirship {
         // + (null_unspecified UALocation *)sharedLocation;
         [Static]
         [Export("sharedLocation")]
-        UALocation SharedLocation();
+        UALocation SharedLocation ();
+
+        // - (BOOL)isLocationOptedIn;
+        [Export("isLocationOptedIn")]
+        bool IsLocationOptedIn ();
+
+        // - (BOOL)isLocationDeniedOrRestricted;
+        [Export("isLocationDeniedOrRestricted")]
+        bool IsLocationDeniedOrRestricted ();
+
+        // - (UALocationProviderPermissionStatus)locationPermissionStatus;
+        [Export("locationPermissionStatus")]
+        UALocationProviderPermissionStatus LocationPermissionStatus ();
     }
+
 }

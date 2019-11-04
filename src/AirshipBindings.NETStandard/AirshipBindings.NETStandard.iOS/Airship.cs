@@ -36,7 +36,7 @@ namespace UrbanAirship.NETStandard
         {
             get
             {
-                return UAirship.Push().Tags;
+                return UAirship.Channel().Tags;
             }
         }
 
@@ -44,7 +44,7 @@ namespace UrbanAirship.NETStandard
         {
             get
             {
-                return UAirship.Push().ChannelID;
+                return UAirship.Channel().Identifier;
             }
         }
 
@@ -70,11 +70,11 @@ namespace UrbanAirship.NETStandard
         {
             if (clear)
             {
-                UAirship.Push().Tags = new string[] { };
+                UAirship.Channel().Tags = new string[] { };
             }
 
-            UAirship.Push().AddTags(addTags);
-            UAirship.Push().RemoveTags(removeTags);
+            UAirship.Channel().AddTags(addTags);
+            UAirship.Channel().RemoveTags(removeTags);
             UAirship.Push().UpdateRegistration();
         }
 
@@ -195,9 +195,9 @@ namespace UrbanAirship.NETStandard
             };
             var channelActions = new Dictionary<Push.TagGroupsEditor.OperationType, Action<string, string[]>>()
             {
-                { Push.TagGroupsEditor.OperationType.ADD, (group, t) => UAirship.Push().AddTags(t, group) },
-                { Push.TagGroupsEditor.OperationType.REMOVE, (group, t) => UAirship.Push().RemoveTags(t, group) },
-                { Push.TagGroupsEditor.OperationType.SET, (group, t) => UAirship.Push().SetTags(t, group) }
+                { Push.TagGroupsEditor.OperationType.ADD, (group, t) => UAirship.Channel().AddTags(t, group) },
+                { Push.TagGroupsEditor.OperationType.REMOVE, (group, t) => UAirship.Channel().RemoveTags(t, group) },
+                { Push.TagGroupsEditor.OperationType.SET, (group, t) => UAirship.Channel().SetTags(t, group) }
             };
 
             var actions = namedUser ? namedUserActions : channelActions;

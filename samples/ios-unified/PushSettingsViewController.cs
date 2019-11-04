@@ -79,13 +79,13 @@ namespace Sample
                 pushSettingsSubtitleLabel.Text = "Enable push notifications";
             }
              
-            channelIDSubtitleLabel.Text = UAirship.Push().ChannelID;
+            channelIDSubtitleLabel.Text = UAirship.Channel().Identifier;
 
             namedUserSubtitleLabel.Text = UAirship.NamedUser().Identifier == null ? "None" : UAirship.NamedUser().Identifier;
 
-            if (UAirship.Push().Tags.Count() > 0)
+            if (UAirship.Channel().Tags.Count() > 0)
             {
-                tagsSubtitleLabel.Text = string.Join(",", UAirship.Push().Tags);
+                tagsSubtitleLabel.Text = string.Join(",", UAirship.Channel().Tags);
             }
             else
             {
@@ -159,7 +159,7 @@ namespace Sample
             {
                 if (indexPath.Row.Equals(tableView.IndexPathForCell(channelIDCell).Row))
                 {
-                    if (UAirship.Push().ChannelID != null)
+                    if (UAirship.Channel().Identifier != null)
                     {
                         UIPasteboard.General.String = channelIDSubtitleLabel.Text;
                         ShowCopyMessage();

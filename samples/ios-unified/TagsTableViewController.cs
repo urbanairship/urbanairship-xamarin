@@ -42,7 +42,7 @@ namespace Sample
 
         public override nint RowsInSection(UITableView tableView, nint section)
         {
-            return UAirship.Push().Tags.Count();
+            return UAirship.Channel().Tags.Count();
         }
 
         public override UITableViewCell GetCell(UITableView tableView, Foundation.NSIndexPath indexPath)
@@ -54,7 +54,7 @@ namespace Sample
                 cell = new UITableViewCell(UITableViewCellStyle.Default, "tagCell");
             }
 
-            string[] tags = UAirship.Push().Tags;
+            string[] tags = UAirship.Channel().Tags;
 
             cell.TextLabel.Text = tags[indexPath.Row];
 
@@ -65,7 +65,7 @@ namespace Sample
         {
             if (editingStyle == UITableViewCellEditingStyle.Delete)
             {
-                UAirship.Push().RemoveTag(tableView.CellAt(indexPath).TextLabel.Text);
+                UAirship.Channel().RemoveTag(tableView.CellAt(indexPath).TextLabel.Text);
 
                 tableView.DeleteRows(new[] { indexPath }, UITableViewRowAnimation.Fade);
 
