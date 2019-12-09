@@ -795,7 +795,7 @@ namespace UrbanAirship {
         [Export("registeredTemplateWithValueFromString:")]
         UAAccountEventTemplate RegisteredTemplate([NullAllowed] string eventValue);
 
-        // + (nonnull instancetype)registeredTemplateWithValue:(nullable NSNumber *)eventValue;
+        // + (nonnull instancetype)registeredTemplateWithValue: (nullable NSNumber *)eventValue;
         [Static]
         [Export("registeredTemplateWithValue:")]
         UAAccountEventTemplate RegisteredTemplate([NullAllowed] NSNumber eventValue);
@@ -831,7 +831,7 @@ namespace UrbanAirship {
         [Export("didPerformWithArguments:withResult:")]
         void DidPerform(UAActionArguments arguments, UAActionResult result);
 
-        // - (void)performWithArguments:(nonnull UAActionArguments *)arguments completionHandler:(nonnull UAActionCompletionHandler)completionHandler;
+        // - (void)performWithArguments:(nonnull UAActionArguments *)arguments completionHandler: (nonnull UAActionCompletionHandler)completionHandler;
         [Export("performWithArguments:completionHandler:")]
         void Perform(UAActionArguments arguments, UAActionCompletionHandler completionHandler);
 
@@ -840,7 +840,7 @@ namespace UrbanAirship {
         [Export("actionWithBlock:")]
         UAAction Action(UAActionBlock actionBlock);
 
-        // + (nonnull instancetype)actionWithBlock:(nonnull UAActionBlock)actionBlock acceptingArguments:(nullable UAActionPredicate)predicateBlock;
+        // + (nonnull instancetype)actionWithBlock:(nonnull UAActionBlock)actionBlock acceptingArguments: (nullable UAActionPredicate)predicateBlock;
         [Static]
         [Export("actionWithBlock:acceptingArguments:")]
         UAAction Action(UAActionBlock actionBlock, [NullAllowed] UAActionPredicate predicateBlock);
@@ -918,7 +918,7 @@ namespace UrbanAirship {
         [Export("registerActionClass:names:")]
         bool RegisterActionClass(Class actionClass, NSObject[] names);
 
-        // - (nullable UAActionRegistryEntry *)registryEntryWithName:(nonnull NSString *)name;
+        // - (nullable UAActionRegistryEntry *)registryEntryWithName: (nonnull NSString *)name;
         [Export("registryEntryWithName:")]
         [return: NullAllowed]
         UAActionRegistryEntry RegistryEntry(string name);
@@ -973,7 +973,7 @@ namespace UrbanAirship {
         [Export("entryForAction:predicate:")]
         UAActionRegistryEntry Entry(UAAction action, UAActionPredicate predicate);
 
-        // + (nonnull instancetype)entryForActionClass:(nonnull Class)actionClass predicate:(nonnull UAActionPredicate)predicate;
+        // + (nonnull instancetype)entryForActionClass:(nonnull Class)actionClass predicate: (nonnull UAActionPredicate)predicate;
         [Static]
         [Export("entryForActionClass:predicate:")]
         UAActionRegistryEntry Entry(Class actionClass, UAActionPredicate predicate);
@@ -1093,7 +1093,7 @@ namespace UrbanAirship {
         [NullAllowed, Export("actions")]
         NSDictionary Actions { get; }
 
-        // + (nonnull instancetype)editsWithBuilderBlock:(nonnull void (^)(UAActionScheduleEditsBuilder *_Nonnull))builderBlock;
+        // + (nonnull instancetype)editsWithBuilderBlock: (nonnull void (^)(UAActionScheduleEditsBuilder *_Nonnull))builderBlock;
         [Static]
         [Export("editsWithBuilderBlock:")]
         UAActionScheduleEdits Edits(Action<UAActionScheduleEditsBuilder> builderBlock);
@@ -1125,7 +1125,7 @@ namespace UrbanAirship {
         [NullAllowed, Export("actions")]
         NSDictionary Actions { get; }
 
-        // + (nonnull instancetype)scheduleInfoWithBuilderBlock:(nonnull void (^)(UAActionScheduleInfoBuilder *_Nonnull))builderBlock;
+        // + (nonnull instancetype)scheduleInfoWithBuilderBlock: (nonnull void (^)(UAActionScheduleInfoBuilder *_Nonnull))builderBlock;
         [Static]
         [Export("scheduleInfoWithBuilderBlock:")]
         UAActionScheduleInfo ScheduleInfo(Action<UAActionScheduleInfoBuilder> builderBlock);
@@ -1201,7 +1201,7 @@ namespace UrbanAirship {
         [Export("addEvent:")]
         void AddEvent(UAEvent @event);
 
-        // - (void)associateDeviceIdentifiers:(nonnull UAAssociatedIdentifiers *)associatedIdentifiers;
+        // - (void)associateDeviceIdentifiers: (nonnull UAAssociatedIdentifiers *)associatedIdentifiers;
         [Export("associateDeviceIdentifiers:")]
         void AssociateDeviceIdentifiers(UAAssociatedIdentifiers associatedIdentifiers);
 
@@ -1216,6 +1216,10 @@ namespace UrbanAirship {
         // - (void)scheduleUpload;
         [Export("scheduleUpload")]
         void ScheduleUpload();
+
+        // - (void)registerSDKExtension:(UASDKExtension)extension version:(nonnull NSString *)version;
+        [Export("registerSDKExtension:version:")]
+        void RegisterSDKExtension(UASDKExtension extension, string version);
     }
 
     // @protocol UAAnalyticsEventConsumerProtocol
@@ -1242,7 +1246,7 @@ namespace UrbanAirship {
         [Export("userNotificationCenter:didReceiveNotificationResponse:withCompletionHandler:")]
         void UserNotificationCenter(UNUserNotificationCenter center, UNNotificationResponse response, Action completionHandler);
 
-        // + (void)userNotificationCenter:(nonnull UNUserNotificationCenter *)center willPresentNotification:(nonnull UNNotification *)notification withCompletionHandler:(nonnull void (^)(UNNotificationPresentationOptions)) completionHandler;
+        // + (void)userNotificationCenter:(nonnull UNUserNotificationCenter *)center willPresentNotification:(nonnull UNNotification *)notification withCompletionHandler: (nonnull void (^)(UNNotificationPresentationOptions)) completionHandler;
         [Static]
         [Export("userNotificationCenter:willPresentNotification:withCompletionHandler:")]
         void UserNotificationCenter(UNUserNotificationCenter center, UNNotification notification, Action<UNNotificationPresentationOptions> completionHandler);
@@ -1252,7 +1256,7 @@ namespace UrbanAirship {
         [Export("application:performFetchWithCompletionHandler:")]
         void Application(UIApplication application, Action<UIBackgroundFetchResult> completionHandler);
 
-        // + (void)application:(nonnull UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(nonnull NSData *)deviceToken;
+        // + (void)application:(nonnull UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken: (nonnull NSData *)deviceToken;
         [Static]
         [Export("application:didRegisterForRemoteNotificationsWithDeviceToken:")]
         void Application(UIApplication application, NSData deviceToken);
@@ -1262,7 +1266,7 @@ namespace UrbanAirship {
         [Export("application:didFailToRegisterForRemoteNotificationsWithError:")]
         void Application(UIApplication application, NSError error);
 
-        // + (void)application:(nonnull UIApplication *)application didReceiveRemoteNotification:(nonnull NSDictionary *)userInfo fetchCompletionHandler:(nonnull void (^)(UIBackgroundFetchResult))completionHandler;
+        // + (void)application:(nonnull UIApplication *)application didReceiveRemoteNotification:(nonnull NSDictionary *)userInfo fetchCompletionHandler: (nonnull void (^)(UIBackgroundFetchResult))completionHandler;
         [Static]
         [Export("application:didReceiveRemoteNotification:fetchCompletionHandler:")]
         void Application(UIApplication application, NSDictionary userInfo, Action<UIBackgroundFetchResult> completionHandler);
@@ -1306,7 +1310,7 @@ namespace UrbanAirship {
         [Export("allIDs")]
         NSDictionary AllIDs { get; }
 
-        // + (nonnull instancetype)identifiersWithDictionary:(nonnull NSDictionary<NSString *, NSString *> *)identifiers;
+        // + (nonnull instancetype)identifiersWithDictionary: (nonnull NSDictionary<NSString *, NSString *> *)identifiers;
         [Static]
         [Export("identifiersWithDictionary:")]
         UAAssociatedIdentifiers Identifiers(NSDictionary<NSString, NSString> identifiers);
@@ -1316,16 +1320,34 @@ namespace UrbanAirship {
         void SetIdentifier([NullAllowed] string identifier, string key);
     }
 
+    // @interface UAAttributeMutations : NSObject
+    interface UAAttributeMutations
+    {
+
+        // + (nonnull instancetype)mutations;
+        [Static]
+        [Export("mutations")]
+        UAAttributeMutations Mutations();
+
+        // - (void)setString:(nonnull NSString *)string forAttribute:(nonnull NSString *)attribute;
+        [Export("setString:forAttribute:")]
+        void SetString(NSObject @string, NSObject attribute);
+
+        // - (void)removeAttribute:(nonnull NSString *)attribute;
+        [Export("removeAttribute:")]
+        void RemoveAttribute(NSObject attribute);
+    }
+
     // @interface UAAutomation : UAComponent
     [BaseType(typeof(UAComponent))]
     interface UAAutomation
     {
 
-        // - (void)scheduleActions:(nonnull UAActionScheduleInfo *)scheduleInfo completionHandler:(nullable void (^)(UASchedule *_Nullable))completionHandler;
+        // - (void)scheduleActions:(nonnull UAActionScheduleInfo *)scheduleInfo completionHandler: (nullable void (^)(UASchedule *_Nullable))completionHandler;
         [Export("scheduleActions:completionHandler:")]
         void ScheduleActions(UAActionScheduleInfo scheduleInfo, [NullAllowed] Action completionHandler);
 
-        // - (void)scheduleActions:(nonnull UAActionScheduleInfo *)scheduleInfo metadata:(nonnull NSDictionary *)metadata completionHandler:(nullable void (^)(UASchedule *_Nullable))completionHandler;
+        // - (void)scheduleActions:(nonnull UAActionScheduleInfo *)scheduleInfo metadata:(nonnull NSDictionary *)metadata completionHandler: (nullable void (^)(UASchedule *_Nullable))completionHandler;
         [Export("scheduleActions:metadata:completionHandler:")]
         void ScheduleActions(UAActionScheduleInfo scheduleInfo, NSDictionary metadata, [NullAllowed] Action completionHandler);
 
@@ -1341,19 +1363,19 @@ namespace UrbanAirship {
         [Export("cancelAll")]
         void CancelAll();
 
-        // - (void)getScheduleWithID:(nonnull NSString *)identifier completionHandler:(nonnull void (^)(UASchedule *_Nullable))completionHandler;
+        // - (void)getScheduleWithID:(nonnull NSString *)identifier completionHandler: (nonnull void (^)(UASchedule *_Nullable))completionHandler;
         [Export("getScheduleWithID:completionHandler:")]
         void GetSchedule(string identifier, Action<UASchedule> completionHandler);
 
-        // - (void)getSchedules:(nonnull void (^)(NSArray<UASchedule *> *_Nonnull))completionHandler;
+        // - (void)getSchedules: (nonnull void (^)(NSArray<UASchedule *> *_Nonnull))completionHandler;
         [Export("getSchedules:")]
         void GetSchedules(UASchedule[] completionHandler);
 
-        // - (void)getSchedulesWithGroup:(nonnull NSString *)group completionHandler:(nonnull void (^)(NSArray<UASchedule *> *_Nonnull)) completionHandler;
+        // - (void)getSchedulesWithGroup:(nonnull NSString *)group completionHandler: (nonnull void (^)(NSArray<UASchedule *> *_Nonnull)) completionHandler;
         [Export("getSchedulesWithGroup:completionHandler:")]
         void GetSchedules(string group, UASchedule[] completionHandler);
 
-        // - (void)editScheduleWithID:(nonnull NSString *)identifier edits:(nonnull UAActionScheduleEdits *)edits completionHandler:(nonnull void (^)(UASchedule *_Nullable))completionHandler;
+        // - (void)editScheduleWithID:(nonnull NSString *)identifier edits:(nonnull UAActionScheduleEdits *)edits completionHandler: (nonnull void (^)(UASchedule *_Nullable))completionHandler;
         [Export("editScheduleWithID:edits:completionHandler:")]
         void EditSchedule(string identifier, UAActionScheduleEdits edits, Action<UASchedule> completionHandler);
     }
@@ -1429,6 +1451,10 @@ namespace UrbanAirship {
         // - (void)setTags:(nonnull NSArray<NSString *> *)tags group:(nonnull NSString *)tagGroupID;
         [Export("setTags:group:")]
         void SetTags(string[] tags, string tagGroupID);
+
+        // - (void)applyAttributeMutations:(nonnull UAAttributeMutations *)mutations;
+        [Export("applyAttributeMutations:")]
+        void ApplyAttributeMutations(UAAttributeMutations mutations);
 
         // - (void)enableChannelCreation;
         [Export("enableChannelCreation")]
@@ -2171,7 +2197,7 @@ namespace UrbanAirship {
         [return: NullAllowed]
         UANotificationCategory CreateCategory(string categoryId, NSObject[] actionDefinitions);
 
-        // + (UANotificationCategory *_Nullable) createCategory:(nonnull NSString *)categoryId actions:(nonnull NSArray *)actionDefinitions hiddenPreviewsBodyPlaceholder:(nonnull NSString *)hiddenPreviewsBodyPlaceholder;
+        // + (UANotificationCategory *_Nullable) createCategory:(nonnull NSString *)categoryId actions:(nonnull NSArray *)actionDefinitions hiddenPreviewsBodyPlaceholder: (nonnull NSString *)hiddenPreviewsBodyPlaceholder;
         [Static]
         [Export("createCategory:actions:hiddenPreviewsBodyPlaceholder:")]
         [return: NullAllowed]
@@ -2211,12 +2237,12 @@ namespace UrbanAirship {
         [Export("categoryWithIdentifier:actions:intentIdentifiers:options:")]
         UANotificationCategory Category(string identifier, UANotificationAction[] actions, string[] intentIdentifiers, UANotificationCategoryOptions options);
 
-        // + (nonnull instancetype) categoryWithIdentifier:(nonnull NSString *)identifier actions:(nonnull NSArray<UANotificationAction *> *)actions intentIdentifiers:(nonnull NSArray<NSString *> *)intentIdentifiers hiddenPreviewsBodyPlaceholder:(nullable NSString *)hiddenPreviewsBodyPlaceholder options:(UANotificationCategoryOptions)options;
+        // + (nonnull instancetype) categoryWithIdentifier:(nonnull NSString *)identifier actions: (nonnull NSArray<UANotificationAction *> *)actions intentIdentifiers: (nonnull NSArray<NSString *> *)intentIdentifiers hiddenPreviewsBodyPlaceholder: (nullable NSString *)hiddenPreviewsBodyPlaceholder options:(UANotificationCategoryOptions)options;
         [Static]
         [Export("categoryWithIdentifier:actions:intentIdentifiers:hiddenPreviewsBodyPlaceholder:options:")]
         UANotificationCategory Category(string identifier, UANotificationAction[] actions, string[] intentIdentifiers, [NullAllowed] string hiddenPreviewsBodyPlaceholder, UANotificationCategoryOptions options);
 
-        // + (nonnull instancetype) categoryWithIdentifier:(nonnull NSString *)identifier actions:(nonnull NSArray<UANotificationAction *> *)actions intentIdentifiers:(nonnull NSArray<NSString *> *)intentIdentifiers hiddenPreviewsBodyPlaceholder:(nullable NSString *)hiddenPreviewsBodyPlaceholder categorySummaryFormat:(nullable NSString *)format options:(UANotificationCategoryOptions)options;
+        // + (nonnull instancetype) categoryWithIdentifier:(nonnull NSString *)identifier actions: (nonnull NSArray<UANotificationAction *> *)actions intentIdentifiers: (nonnull NSArray<NSString *> *)intentIdentifiers hiddenPreviewsBodyPlaceholder: (nullable NSString *)hiddenPreviewsBodyPlaceholder categorySummaryFormat:(nullable NSString *)format options:(UANotificationCategoryOptions)options;
         [Static]
         [Export("categoryWithIdentifier:actions:intentIdentifiers:hiddenPreviewsBodyPlaceholder:categorySummaryFormat:options:")]
         UANotificationCategory Category(string identifier, UANotificationAction[] actions, string[] intentIdentifiers, [NullAllowed] string hiddenPreviewsBodyPlaceholder, [NullAllowed] string format, UANotificationCategoryOptions options);
@@ -2225,7 +2251,7 @@ namespace UrbanAirship {
         [Export("asUNNotificationCategory")]
         UNNotificationCategory AsUNNotificationCategory();
 
-        // - (BOOL)isEqualToUNNotificationCategory:(nonnull UNNotificationCategory *)category;
+        // - (BOOL)isEqualToUNNotificationCategory: (nonnull UNNotificationCategory *)category;
         [Export("isEqualToUNNotificationCategory:")]
         bool IsEqualToUNNotificationCategory(UNNotificationCategory category);
     }
@@ -2290,12 +2316,12 @@ namespace UrbanAirship {
         [NullAllowed, Export("notification", ArgumentSemantic.Strong)]
         UNNotification Notification { get; }
 
-        // + (nonnull instancetype)notificationWithNotificationInfo:(nonnull NSDictionary *)notificationInfo;
+        // + (nonnull instancetype)notificationWithNotificationInfo: (nonnull NSDictionary *)notificationInfo;
         [Static]
         [Export("notificationWithNotificationInfo:")]
         UANotificationContent NotificationWithNotificationInfo(NSDictionary notificationInfo);
 
-        // + (nonnull instancetype)notificationWithUNNotification:(nonnull UNNotification *)notification;
+        // + (nonnull instancetype)notificationWithUNNotification: (nonnull UNNotification *)notification;
         [Static]
         [Export("notificationWithUNNotification:")]
         UANotificationContent NotificationWithUNNotification(UNNotification notification);
@@ -2321,12 +2347,12 @@ namespace UrbanAirship {
         [NullAllowed, Export("response", ArgumentSemantic.Strong)]
         UNNotificationResponse Response { get; }
 
-        // + (nonnull instancetype) notificationResponseWithNotificationInfo:(nonnull NSDictionary *)notificationInfo actionIdentifier:(nonnull NSString *)actionIdentifier responseText:(nullable NSString *)responseText;
+        // + (nonnull instancetype) notificationResponseWithNotificationInfo: (nonnull NSDictionary *)notificationInfo actionIdentifier: (nonnull NSString *)actionIdentifier responseText:(nullable NSString *)responseText;
         [Static]
         [Export("notificationResponseWithNotificationInfo:actionIdentifier:responseText:")]
         UANotificationResponse NotificationResponse(NSDictionary notificationInfo, string actionIdentifier, [NullAllowed] string responseText);
 
-        // + (nonnull instancetype)notificationResponseWithUNNotificationResponse:(nonnull UNNotificationResponse *)response;
+        // + (nonnull instancetype)notificationResponseWithUNNotificationResponse: (nonnull UNNotificationResponse *)response;
         [Static]
         [Export("notificationResponseWithUNNotificationResponse:")]
         UANotificationResponse NotificationResponse(UNNotificationResponse response);
@@ -2337,7 +2363,7 @@ namespace UrbanAirship {
     interface UAOpenExternalURLAction
     {
 
-        // + (nullable NSURL *)parseURLFromArguments:(nonnull UAActionArguments *)arguments;
+        // + (nullable NSURL *)parseURLFromArguments: (nonnull UAActionArguments *)arguments;
         [Static]
         [Export("parseURLFromArguments:")]
         [return: NullAllowed]
@@ -3468,6 +3494,12 @@ namespace UrbanAirship {
         [return: NullAllowed]
         UIViewController TopController();
 
+        // + (nullable NSString *)carrierName;
+        [Static]
+        [Export("carrierName")]
+        [return: NullAllowed]
+        string CarrierName();
+
         // + (nonnull NSString *)connectionType;
         [Static]
         [Export("connectionType")]
@@ -3902,7 +3934,7 @@ namespace UrbanAirship {
 
     interface IUAInAppMessageAdapterProtocol { }
 
-    // @protocol UAInAppMessageCachePolicyDelegate <NSObject>
+    // @protocol UAInAppMessageCachePolicyDelegate <NSObject> 
     [Protocol, Model]
     [BaseType(typeof(NSObject))]
     interface UAInAppMessageCachePolicyDelegate
@@ -3961,7 +3993,7 @@ namespace UrbanAirship {
 
     }
 
-    // @interface UAInAppMessageAssets : NSObject
+    // @interface UAInAppMessageAssets : NSObject /** * Return URL at which to cache the assetURL * * @param assetURL URL from which the cached data is fetched * @return URL for the cached asset or `nil` if the asset cannot be cached at this time */ - (nullable NSURL *)getCacheURL:(NSURL *)assetURL; /** * Check if data is cached for this asset * * @param assetURL URL from which the data is fetched * @return `YES` if data for the URL is in the cache, `NO` if it is not. */ - (BOOL)isCached:(NSURL *)assetURL; @end
     [BaseType(typeof(NSObject))]
     interface UAInAppMessageAssets
     {
@@ -5134,7 +5166,7 @@ namespace UrbanAirship {
         [Export("or:")]
         UAInAppMessageTagSelector Or(UAInAppMessageTagSelector[] selectors);
 
-        // + (nonnull instancetype) not:(nonnull UAInAppMessageTagSelector *)selector;
+        // + (nonnull instancetype)not:(nonnull UAInAppMessageTagSelector *)selector;
         [Static]
         [Export("not:")]
         UAInAppMessageTagSelector Not(UAInAppMessageTagSelector selector);
@@ -5377,17 +5409,17 @@ namespace UrbanAirship {
         [Export("isBatchUpdating")]
         bool IsBatchUpdating { get; }
 
-        // - (nullable UADisposable *) retrieveMessageListWithSuccessBlock: (nullable UAInboxMessageListCallbackBlock)successBlock withFailureBlock: (nullable UAInboxMessageListCallbackBlock)failureBlock;
+        // - (nullable UADisposable *) retrieveMessageListWithSuccessBlock: (nullable UAInboxMessageListCallbackBlock)successBlock withFailureBlock: (nullable UAInboxMessageListCallbackBlock) failureBlock;
         [Export("retrieveMessageListWithSuccessBlock:withFailureBlock:")]
         [return: NullAllowed]
         UADisposable RetrieveMessageList([NullAllowed] UAInboxMessageListCallbackBlock successBlock, [NullAllowed] UAInboxMessageListCallbackBlock failureBlock);
 
-        // - (nullable UADisposable *) markMessagesRead:(nonnull NSArray *)messages completionHandler:(nullable UAInboxMessageListCallbackBlock)completionHandler;
+        // - (nullable UADisposable *)markMessagesRead:(nonnull NSArray *)messages completionHandler: (nullable UAInboxMessageListCallbackBlock) completionHandler;
         [Export("markMessagesRead:completionHandler:")]
         [return: NullAllowed]
         UADisposable MarkMessagesRead(NSObject[] messages, [NullAllowed] UAInboxMessageListCallbackBlock completionHandler);
 
-        // - (nullable UADisposable *) markMessagesDeleted:(nonnull NSArray *)messages completionHandler:(nullable UAInboxMessageListCallbackBlock)completionHandler;
+        // - (nullable UADisposable *)markMessagesDeleted:(nonnull NSArray *)messages completionHandler: (nullable UAInboxMessageListCallbackBlock) completionHandler;
         [Export("markMessagesDeleted:completionHandler:")]
         [return: NullAllowed]
         UADisposable MarkMessagesDeleted(NSObject[] messages, [NullAllowed] UAInboxMessageListCallbackBlock completionHandler);
@@ -5986,6 +6018,4 @@ namespace UrbanAirship {
         [Export("callDataForURL:delegate:message:")]
         UAWebViewCallData CallData(NSUrl url, UAWKWebViewDelegate @delegate, [NullAllowed] UAInboxMessage message);
     }
-
-
 }

@@ -44,6 +44,16 @@ namespace UrbanAirship {
     }
 
     [Native]
+    public enum UASDKExtension : ulong
+    {
+        Cordova = 0,
+        Xamarin = 1,
+        Unity = 2,
+        Flutter = 3,
+        ReactNative = 4
+    }
+
+    [Native]
     public enum UACloudSite : ulong
     {
         US = 0,
