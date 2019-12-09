@@ -2,7 +2,6 @@
  Copyright Airship and Contributors
 */
 using CoreGraphics;
-using CoreLocation;
 using Foundation;
 using ObjCRuntime;
 using System;
@@ -1321,6 +1320,7 @@ namespace UrbanAirship {
     }
 
     // @interface UAAttributeMutations : NSObject
+    [BaseType(typeof(NSObject))]
     interface UAAttributeMutations
     {
 
@@ -3934,7 +3934,7 @@ namespace UrbanAirship {
 
     interface IUAInAppMessageAdapterProtocol { }
 
-    // @protocol UAInAppMessageCachePolicyDelegate <NSObject> 
+    // @protocol UAInAppMessageCachePolicyDelegate <NSObject>
     [Protocol, Model]
     [BaseType(typeof(NSObject))]
     interface UAInAppMessageCachePolicyDelegate
@@ -3993,7 +3993,7 @@ namespace UrbanAirship {
 
     }
 
-    // @interface UAInAppMessageAssets : NSObject /** * Return URL at which to cache the assetURL * * @param assetURL URL from which the cached data is fetched * @return URL for the cached asset or `nil` if the asset cannot be cached at this time */ - (nullable NSURL *)getCacheURL:(NSURL *)assetURL; /** * Check if data is cached for this asset * * @param assetURL URL from which the data is fetched * @return `YES` if data for the URL is in the cache, `NO` if it is not. */ - (BOOL)isCached:(NSURL *)assetURL; @end
+    // @interface UAInAppMessageAssets : NSObject
     [BaseType(typeof(NSObject))]
     interface UAInAppMessageAssets
     {
