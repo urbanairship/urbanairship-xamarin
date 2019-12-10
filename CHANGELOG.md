@@ -6,6 +6,18 @@ This library provides official bindings to the Airship SDK, as well as sample ap
 
 ### Release Notes
 
+Versions 11.1.0 (.NETStandard & PCL), 12.1.0 (iOS) - December 9, 2019
+=====================================================================
+Patch release to fix a bug affecting loss of tags on iOS during app migration to
+version 12.0.0. This patch release fixes the bug by combining previous tags with
+tags that have been set since the update to 12.0.0. Applications using 12.0.0 
+should update.
+
+Changes
+-------
+
+- Update iOS SDK to 12.1.0
+
 Versions 11.0.0 (.NETStandard & PCL), 12.0.0 (iOS) - October 28, 2019
 =====================================================================
 - Update iOS SDK to 12.0.0
