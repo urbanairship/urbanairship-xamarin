@@ -27,7 +27,7 @@ task syncVersion  {
         def path = new File("$projectDir/Jars/$filename")
         if ( !path.exists() ) {
            // Download aar
-            def url = new URL("http://central.maven.org/maven2/com/urbanairship/android/urbanairship-fcm/${airshipProperties.androidVersion}/$filename")
+            def url = new URL("https://repo1.maven.org/maven2/com/urbanairship/android/urbanairship-fcm/${airshipProperties.androidVersion}/$filename")
             HttpURLConnection huc = (HttpURLConnection) url.openConnection()
             huc.setRequestMethod("GET")
             huc.connect();
