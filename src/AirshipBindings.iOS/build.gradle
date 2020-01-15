@@ -30,7 +30,12 @@ task carthageUpdate {
         }
 
         exec {
-            commandLine "strip", "-S", "-x", "../../Carthage/Build/iOS/AirshipKit.framework/AirshipKit"
+            commandLine "strip", "-S", "-x", "../../Carthage/Build/iOS/Airship.framework/Airship"
+            commandLine "strip", "-S", "-x", "../../Carthage/Build/iOS/AirshipAutomation.framework/AirshipAutomation"
+            commandLine "strip", "-S", "-x", "../../Carthage/Build/iOS/AirshipCore.framework/AirshipCore"
+            commandLine "strip", "-S", "-x", "../../Carthage/Build/iOS/AirshipExtendedActions.framework/AirshipExtendedActions"
+            commandLine "strip", "-S", "-x", "../../Carthage/Build/iOS/AirshipLocation.framework/AirshipLocation"
+            commandLine "strip", "-S", "-x", "../../Carthage/Build/iOS/AirshipMessageCenter.framework/AirshipMessageCenter"
         }
     }
 }

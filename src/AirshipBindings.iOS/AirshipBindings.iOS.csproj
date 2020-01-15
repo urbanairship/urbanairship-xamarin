@@ -53,7 +53,7 @@
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.ObjCBinding.CSharp.targets" />
   <ItemGroup>
-    <NativeReference Include="..\..\Carthage\Build\iOS\AirshipKit.framework">
+    <NativeReference Include="..\..\Carthage\Build\iOS\Airship.framework">
       <Kind>Framework</Kind>
       <SmartLink>False</SmartLink>
     </NativeReference>
