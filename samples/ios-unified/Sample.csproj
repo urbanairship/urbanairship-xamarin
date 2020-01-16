@@ -177,9 +177,9 @@
       <Project>{DDF8FDE3-49D5-4FF9-BF92-730A0C2F6E0A}</Project>
       <Name>SampleServiceExtension</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\src\AirshipBindings.iOS.LocationKit\AirshipBindings.iOS.LocationKit.csproj">
+    <ProjectReference Include="..\..\src\AirshipBindings.iOS.Location\AirshipBindings.iOS.Location.csproj">
       <Project>{ED7C16D7-F9D4-43A7-8B5E-F7182773A956}</Project>
-      <Name>AirshipBindings.iOS.LocationKit</Name>
+      <Name>AirshipBindings.iOS.Location</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="packages\Xamarin.Forms.2.3.4.247\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets" Condition="Exists('packages\Xamarin.Forms.2.3.4.247\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets')" />

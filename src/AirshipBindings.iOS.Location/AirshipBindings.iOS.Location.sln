@@ -1,7 +1,7 @@
 
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirshipBindings.iOS.LocationKit", "AirshipBindings.iOS.LocationKit.csproj", "{ED7C16D7-F9D4-43A7-8B5E-F7182773A956}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirshipBindings.iOS.Location", "AirshipBindings.iOS.Location.csproj", "{ED7C16D7-F9D4-43A7-8B5E-F7182773A956}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

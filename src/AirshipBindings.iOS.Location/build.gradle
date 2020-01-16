@@ -15,7 +15,7 @@ task build {
     def BuildConfiguration=project.properties['build_configuration'] ?: "Release"
     doLast() {
         exec {
-            commandLine "${msbuild}", "/t:build", "/p:Configuration=${BuildConfiguration}", "AirshipBindings.iOS.LocationKit.sln"
+            commandLine "${msbuild}", "/t:build", "/p:Configuration=${BuildConfiguration}", "AirshipBindings.iOS.Location.sln"
         }
     }
 }

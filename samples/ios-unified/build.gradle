@@ -15,7 +15,7 @@ task build {
         }
 
         // This file becomes corrupt for some reason, causing the build to fail if it is present. The build will re-create it.
-        project.delete "obj/iPhoneSimulator/Release/mtouch-cache/AirshipKit.framework.zip"
+        project.delete "obj/iPhoneSimulator/Release/mtouch-cache/Airship.framework.zip"
 
         exec {
             commandLine "${msbuild}", "/t:build", "/property:Configuration=${BuildConfiguration}", "iOSSample.sln"

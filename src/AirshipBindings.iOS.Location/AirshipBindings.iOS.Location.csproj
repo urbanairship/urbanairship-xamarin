@@ -7,8 +7,8 @@
     <ProjectGuid>{ED7C16D7-F9D4-43A7-8B5E-F7182773A956}</ProjectGuid>
     <TemplateGuid>{b6f3ff35-79b2-4f25-a2fc-60a7cf61013b}</TemplateGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>AirshipBindings.iOS.LocationKit</RootNamespace>
-    <AssemblyName>AirshipBindings.iOS.LocationKit</AssemblyName>
+    <RootNamespace>AirshipBindings.iOS.Location</RootNamespace>
+    <AssemblyName>AirshipBindings.iOS.Location</AssemblyName>
     <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>

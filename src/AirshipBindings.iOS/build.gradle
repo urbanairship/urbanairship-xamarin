@@ -64,7 +64,7 @@ task generateBindings {
 
         exec {
             workingDir "$tempBindingsFolder"
-            commandLine "sharpie", "bind", "-framework", "$rootDir/Carthage/Build/iOS/AirshipKit.framework"
+            commandLine "sharpie", "bind", "-framework", "$rootDir/Carthage/Build/iOS/Airship.framework"
         }
     }
 }

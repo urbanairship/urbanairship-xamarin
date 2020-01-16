@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleServiceExtension", "S
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirshipBindings.iOS.AppExtensions", "..\..\src\AirshipBindings.iOS.AppExtensions\AirshipBindings.iOS.AppExtensions.csproj", "{2C453988-C24E-431A-A17C-6989E93C795E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirshipBindings.iOS.LocationKit", "..\..\src\AirshipBindings.iOS.LocationKit\AirshipBindings.iOS.LocationKit.csproj", "{ED7C16D7-F9D4-43A7-8B5E-F7182773A956}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirshipBindings.iOS.Location", "..\..\src\AirshipBindings.iOS.Location\AirshipBindings.iOS.Location.csproj", "{ED7C16D7-F9D4-43A7-8B5E-F7182773A956}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -13,4 +13,4 @@ using Foundation;
 
 [assembly: LinkerSafe]
 
-[assembly: AssemblyTitle("AirshipBindings.iOS.LocationKit")]
+[assembly: AssemblyTitle("AirshipBindings.iOS.Location")]
