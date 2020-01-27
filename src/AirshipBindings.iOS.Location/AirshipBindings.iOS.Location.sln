@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirshipBindings.iOS.Location", "AirshipBindings.iOS.Location.csproj", "{ED7C16D7-F9D4-43A7-8B5E-F7182773A956}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirshipBindings.iOS.Core", "..\AirshipBindings.iOS.Core\AirshipBindings.iOS.Core.csproj", "{7F49C0FA-F958-44CF-9246-8B8577748E6F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,5 +15,9 @@ Global
 		{ED7C16D7-F9D4-43A7-8B5E-F7182773A956}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ED7C16D7-F9D4-43A7-8B5E-F7182773A956}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ED7C16D7-F9D4-43A7-8B5E-F7182773A956}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7F49C0FA-F958-44CF-9246-8B8577748E6F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F49C0FA-F958-44CF-9246-8B8577748E6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F49C0FA-F958-44CF-9246-8B8577748E6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F49C0FA-F958-44CF-9246-8B8577748E6F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
