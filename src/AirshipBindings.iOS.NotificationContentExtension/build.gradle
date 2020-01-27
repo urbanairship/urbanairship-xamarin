@@ -15,7 +15,7 @@ task build {
     def BuildConfiguration=project.properties['build_configuration'] ?: "Release"
     doLast() {
         exec {
-            commandLine "${msbuild}", "/t:build", "/p:Configuration=${BuildConfiguration}", "AirshipBindings.iOS.NotificationServiceExtension.sln"
+            commandLine "${msbuild}", "/t:build", "/p:Configuration=${BuildConfiguration}", "AirshipBindings.iOS.NotificationContentExtension.sln"
         }
     }
 }
@@ -28,7 +28,7 @@ task generateBindings {
 
         exec {
             workingDir "$tempBindingsFolder"
-            commandLine "sharpie", "bind", "-framework", "$rootDir/Carthage/Build/iOS/AirshipNotificationServiceExtension.framework"
+            commandLine "sharpie", "bind", "-framework", "$rootDir/Carthage/Build/iOS/AirshipNotificationContentExtension.framework"
         }
     }
 }
