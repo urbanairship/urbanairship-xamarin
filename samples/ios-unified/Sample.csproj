@@ -185,6 +185,10 @@
       <Project>{7F49C0FA-F958-44CF-9246-8B8577748E6F}</Project>
       <Name>AirshipBindings.iOS.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\src\AirshipBindings.iOS.ExtendedActions\AirshipBindings.iOS.ExtendedActions.csproj">
+      <Project>{BFFFE653-04CD-4563-BF2D-B6F31349F30D}</Project>
+      <Name>AirshipBindings.iOS.ExtendedActions</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="packages\Xamarin.Forms.2.3.4.247\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets" Condition="Exists('packages\Xamarin.Forms.2.3.4.247\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets')" />
 </Project>

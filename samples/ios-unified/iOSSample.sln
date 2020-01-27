@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirshipBindings.iOS.Core", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirshipBindings.iOS.Automation", "..\..\src\AirshipBindings.iOS.Automation\AirshipBindings.iOS.Automation.csproj", "{70434FB5-A468-4777-9478-DD2AB80BE0E2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirshipBindings.iOS.ExtendedActions", "..\..\src\AirshipBindings.iOS.ExtendedActions\AirshipBindings.iOS.ExtendedActions.csproj", "{BFFFE653-04CD-4563-BF2D-B6F31349F30D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|iPhoneSimulator = Debug|iPhoneSimulator
@@ -69,5 +71,13 @@ Global
 		{70434FB5-A468-4777-9478-DD2AB80BE0E2}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
 		{70434FB5-A468-4777-9478-DD2AB80BE0E2}.Debug|iPhone.ActiveCfg = Debug|Any CPU
 		{70434FB5-A468-4777-9478-DD2AB80BE0E2}.Debug|iPhone.Build.0 = Debug|Any CPU
+		{BFFFE653-04CD-4563-BF2D-B6F31349F30D}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{BFFFE653-04CD-4563-BF2D-B6F31349F30D}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{BFFFE653-04CD-4563-BF2D-B6F31349F30D}.Release|iPhone.ActiveCfg = Release|Any CPU
+		{BFFFE653-04CD-4563-BF2D-B6F31349F30D}.Release|iPhone.Build.0 = Release|Any CPU
+		{BFFFE653-04CD-4563-BF2D-B6F31349F30D}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{BFFFE653-04CD-4563-BF2D-B6F31349F30D}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
+		{BFFFE653-04CD-4563-BF2D-B6F31349F30D}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{BFFFE653-04CD-4563-BF2D-B6F31349F30D}.Debug|iPhone.Build.0 = Debug|Any CPU
 	EndGlobalSection
 EndGlobal
