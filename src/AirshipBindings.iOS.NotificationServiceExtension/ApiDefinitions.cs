@@ -1,19 +1,21 @@
 /*
  Copyright Airship and Contributors
 */
+using CoreGraphics;
 using Foundation;
+using ObjCRuntime;
+using System;
+using UIKit;
 using UserNotifications;
+using WebKit;
 
-namespace AirshipBindings.iOS.AppExtensions {
+namespace UrbanAirship {
 
-    // @interface UAMediaAttachmentExtension : UNNotificationServiceExtension
-    [BaseType(typeof(UNNotificationServiceExtension))]
-    interface UAMediaAttachmentExtension
+    [Static]
+    partial interface Constants
     {
 
-        // - (NSString *)uniformTypeIdentifierForData:(NSData *)data;
-        [Export("uniformTypeIdentifierForData:")]
-        string UniformTypeIdentifier(NSData data);
+
     }
 
     // @interface UAMediaAttachmentContent : NSObject
@@ -34,6 +36,20 @@ namespace AirshipBindings.iOS.AppExtensions {
 
     }
 
+    // @interface UAMediaAttachmentURL : NSObject
+    [BaseType(typeof(NSObject))]
+    interface UAMediaAttachmentURL
+    {
+        // @property (readonly, nonatomic) NSString *urlID;
+        [Export("urlID")]
+        string UrlID { get; }
+
+        // @property (readonly, nonatomic) NSURL *url;
+        [Export("url")]
+        NSUrl Url { get; }
+
+    }
+
     // @interface UAMediaAttachmentPayload : NSObject
     [BaseType(typeof(NSObject))]
     interface UAMediaAttachmentPayload
@@ -50,10 +66,24 @@ namespace AirshipBindings.iOS.AppExtensions {
         [Export("content")]
         UAMediaAttachmentContent Content { get; }
 
+        // @property (readonly, nonatomic) NSString *thumbnailID;
+        [Export("thumbnailID")]
+        string ThumbnailID { get; }
+
         // + (instancetype)payloadWithJSONObject:(id)object;
         [Static]
         [Export("payloadWithJSONObject:")]
-        UAMediaAttachmentPayload Payload(NSObject @object);
+        UAMediaAttachmentPayload Payload (NSObject @object);
+    }
+
+    // @interface UANotificationServiceExtension : UNNotificationServiceExtension
+    [BaseType(typeof(UNNotificationServiceExtension))]
+    interface UANotificationServiceExtension
+    {
+
+        // - (NSString *)uniformTypeIdentifierForData:(NSData *)data;
+        [Export("uniformTypeIdentifierForData:")]
+        string UniformTypeIdentifier (NSData data);
     }
 
 

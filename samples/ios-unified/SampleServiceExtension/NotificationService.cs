@@ -1,10 +1,10 @@
 ﻿using Foundation;
-using AirshipBindings.iOS.AppExtensions;
+using UrbanAirship;
 
 namespace SampleServiceExtension
 {
     [Register("NotificationService")]
-    public class NotificationService : UAMediaAttachmentExtension
+    public class NotificationService : UANotificationServiceExtension
     {
     }
 }
