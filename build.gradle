@@ -35,6 +35,7 @@ task pkg {
                 "UrbanAirship.iOS.ExtendedActions.nuspec",
                 "UrbanAirship.iOS.MessageCenter.nuspec",
                 "UrbanAirship.iOS.Location.nuspec",
+                "UrbanAirship.iOS.NotificationContentExtension.nuspec",
                 "UrbanAirship.iOS.NotificationServiceExtension.nuspec"
             ]
         }
@@ -234,4 +235,5 @@ build.dependsOn(':docs:build',
     ':src:AirshipBindings.iOS.ExtendedActions:build',
     ':src:AirshipBindings.iOS.MessageCenter:build',
     ':src:AirshipBindings.iOS.Location:build',
+    ':src:AirshipBindings.iOS.NotificationContentExtension:build',
     ':src:AirshipBindings.iOS.NotificationServiceExtension:build' )

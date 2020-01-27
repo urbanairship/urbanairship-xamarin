@@ -28,5 +28,6 @@ build.dependsOn(':src:AirshipBindings.iOS.Core:build',
     ':src:AirshipBindings.iOS.ExtendedActions:build',
     ':src:AirshipBindings.iOS.MessageCenter:build',
     ':src:AirshipBindings.iOS.Location:build',
+    ':src:AirshipBindings.iOS.NotificationContentExtension:build',
     ':src:AirshipBindings.iOS.NotificationServiceExtension:build')
 
