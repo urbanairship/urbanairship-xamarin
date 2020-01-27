@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample", "Sample.csproj", "{C6EB4686-06A0-4B33-AEDE-C42E5EC8CA50}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirshipBindings.iOS", "..\..\src\AirshipBindings.iOS\AirshipBindings.iOS.csproj", "{58346B7E-E18F-4CB1-A9B8-C2266BDCFE2A}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleServiceExtension", "SampleServiceExtension\SampleServiceExtension.csproj", "{DDF8FDE3-49D5-4FF9-BF92-730A0C2F6E0A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirshipBindings.iOS.AppExtensions", "..\..\src\AirshipBindings.iOS.AppExtensions\AirshipBindings.iOS.AppExtensions.csproj", "{2C453988-C24E-431A-A17C-6989E93C795E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirshipBindings.iOS.Location", "..\..\src\AirshipBindings.iOS.Location\AirshipBindings.iOS.Location.csproj", "{ED7C16D7-F9D4-43A7-8B5E-F7182773A956}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirshipBindings.iOS.Core", "..\..\src\AirshipBindings.iOS.Core\AirshipBindings.iOS.Core.csproj", "{7F49C0FA-F958-44CF-9246-8B8577748E6F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,14 +19,6 @@ Global
 		Debug|iPhone = Debug|iPhone
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{58346B7E-E18F-4CB1-A9B8-C2266BDCFE2A}.Debug|iPhone.ActiveCfg = Debug|Any CPU
-		{58346B7E-E18F-4CB1-A9B8-C2266BDCFE2A}.Debug|iPhone.Build.0 = Debug|Any CPU
-		{58346B7E-E18F-4CB1-A9B8-C2266BDCFE2A}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
-		{58346B7E-E18F-4CB1-A9B8-C2266BDCFE2A}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
-		{58346B7E-E18F-4CB1-A9B8-C2266BDCFE2A}.Release|iPhone.ActiveCfg = Release|Any CPU
-		{58346B7E-E18F-4CB1-A9B8-C2266BDCFE2A}.Release|iPhone.Build.0 = Release|Any CPU
-		{58346B7E-E18F-4CB1-A9B8-C2266BDCFE2A}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
-		{58346B7E-E18F-4CB1-A9B8-C2266BDCFE2A}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
 		{C6EB4686-06A0-4B33-AEDE-C42E5EC8CA50}.Debug|iPhone.ActiveCfg = Debug|iPhone
 		{C6EB4686-06A0-4B33-AEDE-C42E5EC8CA50}.Debug|iPhone.Build.0 = Debug|iPhone
 		{C6EB4686-06A0-4B33-AEDE-C42E5EC8CA50}.Debug|iPhoneSimulator.ActiveCfg = Debug|iPhoneSimulator
@@ -59,5 +51,13 @@ Global
 		{ED7C16D7-F9D4-43A7-8B5E-F7182773A956}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
 		{ED7C16D7-F9D4-43A7-8B5E-F7182773A956}.Debug|iPhone.ActiveCfg = Debug|Any CPU
 		{ED7C16D7-F9D4-43A7-8B5E-F7182773A956}.Debug|iPhone.Build.0 = Debug|Any CPU
+		{7F49C0FA-F958-44CF-9246-8B8577748E6F}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{7F49C0FA-F958-44CF-9246-8B8577748E6F}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{7F49C0FA-F958-44CF-9246-8B8577748E6F}.Release|iPhone.ActiveCfg = Release|Any CPU
+		{7F49C0FA-F958-44CF-9246-8B8577748E6F}.Release|iPhone.Build.0 = Release|Any CPU
+		{7F49C0FA-F958-44CF-9246-8B8577748E6F}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{7F49C0FA-F958-44CF-9246-8B8577748E6F}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
+		{7F49C0FA-F958-44CF-9246-8B8577748E6F}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{7F49C0FA-F958-44CF-9246-8B8577748E6F}.Debug|iPhone.Build.0 = Debug|Any CPU
 	EndGlobalSection
 EndGlobal
