@@ -61,9 +61,21 @@
       <Project>{3D3696C8-5372-4BDF-B88A-57DE3B3ABE2D}</Project>
       <Name>AirshipBindings.Portable.Abstractions</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\AirshipBindings.iOS\AirshipBindings.iOS.csproj">
-      <Project>{58346B7E-E18F-4CB1-A9B8-C2266BDCFE2A}</Project>
-      <Name>AirshipBindings.iOS</Name>
+    <ProjectReference Include="..\..\AirshipBindings.iOS.Automation\AirshipBindings.iOS.Automation.csproj">
+      <Project>{70434FB5-A468-4777-9478-DD2AB80BE0E2}</Project>
+      <Name>AirshipBindings.iOS.Automation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AirshipBindings.iOS.Core\AirshipBindings.iOS.Core.csproj">
+      <Project>{7F49C0FA-F958-44CF-9246-8B8577748E6F}</Project>
+      <Name>AirshipBindings.iOS.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AirshipBindings.iOS.ExtendedActions\AirshipBindings.iOS.ExtendedActions.csproj">
+      <Project>{BFFFE653-04CD-4563-BF2D-B6F31349F30D}</Project>
+      <Name>AirshipBindings.iOS.ExtendedActions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AirshipBindings.iOS.MessageCenter\AirshipBindings.iOS.MessageCenter.csproj">
+      <Project>{AC22EEC5-DCA6-49D3-8B37-533B5565E2CF}</Project>
+      <Name>AirshipBindings.iOS.MessageCenter</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />

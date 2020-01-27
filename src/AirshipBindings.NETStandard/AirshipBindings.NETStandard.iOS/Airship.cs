@@ -148,14 +148,14 @@ namespace UrbanAirship.NETStandard
 
         public void DisplayMessageCenter()
         {
-            UAirship.MessageCenter().Display();
+            UAMessageCenter.Shared().Display();
         }
 
         public int MessageCenterUnreadCount
         {
             get
             {
-                return (int)UAirship.Inbox().MessageList.UnreadCount;
+                return (int)UAMessageCenter.Shared().MessageList.UnreadCount;
             }
         }
 
@@ -163,7 +163,7 @@ namespace UrbanAirship.NETStandard
         {
             get
             {
-                return (int)UAirship.Inbox().MessageList.MessageCount();
+                return (int)UAMessageCenter.Shared().MessageList.MessageCount();
             }
         }
 
