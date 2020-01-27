@@ -177,6 +177,10 @@
       <Project>{ED7C16D7-F9D4-43A7-8B5E-F7182773A956}</Project>
       <Name>AirshipBindings.iOS.Location</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\src\AirshipBindings.iOS.Automation\AirshipBindings.iOS.Automation.csproj">
+      <Project>{70434FB5-A468-4777-9478-DD2AB80BE0E2}</Project>
+      <Name>AirshipBindings.iOS.Automation</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\src\AirshipBindings.iOS.Core\AirshipBindings.iOS.Core.csproj">
       <Project>{7F49C0FA-F958-44CF-9246-8B8577748E6F}</Project>
       <Name>AirshipBindings.iOS.Core</Name>

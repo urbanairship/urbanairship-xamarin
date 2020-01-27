@@ -25,5 +25,6 @@ task build {
 
 build.dependsOn(':src:AirshipBindings.iOS.Core:build',
     ':src:AirshipBindings.iOS.AppExtensions:build')
+    ':src:AirshipBindings.iOS.Automation:build',
     ':src:AirshipBindings.iOS.Location:build',
 

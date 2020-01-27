@@ -31,6 +31,7 @@ task pkg {
                 "UrbanAirship.Portable.nuspec",
                 "UrbanAirship.NETStandard.nuspec",
                 "UrbanAirship.iOS.Core.nuspec",
+                "UrbanAirship.iOS.Automation.nuspec",
                 "UrbanAirship.iOS.Location.nuspec",
                 "UrbanAirship.iOS.AppExtensions.nuspec"
             ]
@@ -227,5 +228,6 @@ build.dependsOn(':docs:build',
     ':src:AirshipBindings.NETStandard:build',
     ':src:AirshipBindings.Portable:build',
     ':src:AirshipBindings.iOS.Core:build',
+    ':src:AirshipBindings.iOS.Automation:build',
     ':src:AirshipBindings.iOS.Location:build',
     ':src:AirshipBindings.iOS.AppExtensions:build')
