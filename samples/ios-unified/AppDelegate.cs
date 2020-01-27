@@ -17,7 +17,7 @@ namespace Sample
     [Register("AppDelegate")]
     public class AppDelegate : UIApplicationDelegate, IUARegistrationDelegate
     {
-        private InboxDelegate inboxDelegate;
+        private MessageCenterDelegate messageCenterDelegate;
         private PushHandler pushHandler;
 
         public override UIWindow Window
@@ -59,8 +59,8 @@ namespace Sample
             pushHandler = new PushHandler();
             UAirship.Push().PushNotificationDelegate = pushHandler;
 
-            inboxDelegate = new InboxDelegate(Window.RootViewController);
-            UAirship.Inbox().Delegate = inboxDelegate;
+            messageCenterDelegate = new MessageCenterDelegate(Window.RootViewController);
+            UAMessageCenter.Shared().DisplayDelegate = messageCenterDelegate;
 
             UAirship.Push().WeakRegistrationDelegate = this;
 
@@ -122,9 +122,9 @@ namespace Sample
                 UITabBarController tabBarController = (UITabBarController)Window.RootViewController;
                 UITabBarItem messageCenterTab = tabBarController.TabBar.Items[2];
 
-                if (UAirship.Inbox().MessageList.UnreadCount > 0)
+                if (UAMessageCenter.Shared().MessageList.UnreadCount > 0)
                 {
-                    messageCenterTab.BadgeValue = UAirship.Inbox().MessageList.UnreadCount.ToString();
+                    messageCenterTab.BadgeValue = UAMessageCenter.Shared().MessageList.UnreadCount.ToString();
                 }
                 else
                 {

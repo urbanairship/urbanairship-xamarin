@@ -9,12 +9,12 @@ using UrbanAirship;
 
 namespace Sample
 {
-    public class InboxDelegate : UAInboxDelegate
+    public class MessageCenterDelegate : UAMessageCenterDisplayDelegate
     {
 
         private UIViewController rootViewController;
 
-        public InboxDelegate(UIViewController rootViewController)
+        public MessageCenterDelegate(UIViewController rootViewController)
         {
             this.rootViewController = rootViewController;
         }
@@ -25,17 +25,23 @@ namespace Sample
             return (MessageCenterViewController)tabBarController.ViewControllers.ElementAt(2);
         }
 
-        public override void ShowMessage(string messageID)
+
+        public override void DisplayMessageCenter (string messageID, bool animated)
         {
-            ShowInbox();
+            DisplayMessageCenter(animated);
 
             MessageCenterViewController().DisplayMessage(messageID);
         }
 
-        public override void ShowInbox()
+        public override void DisplayMessageCenter (bool animated)
         {
             UITabBarController tabBarController = (UITabBarController)this.rootViewController;
             tabBarController.SelectedIndex = 2;
+        }
+
+        public override void DismissMessageCenterAnimated (bool animated)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

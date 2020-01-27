@@ -125,7 +125,7 @@
     <Compile Include="MessageCenterViewController.designer.cs">
       <DependentUpon>MessageCenterViewController.cs</DependentUpon>
     </Compile>
-    <Compile Include="InboxDelegate.cs" />
+    <Compile Include="MessageCenterDelegate.cs" />
     <Compile Include="AddNamedUserTableViewController.cs" />
     <Compile Include="AddNamedUserTableViewController.designer.cs">
       <DependentUpon>AddNamedUserTableViewController.cs</DependentUpon>
@@ -188,6 +188,10 @@
     <ProjectReference Include="..\..\src\AirshipBindings.iOS.ExtendedActions\AirshipBindings.iOS.ExtendedActions.csproj">
       <Project>{BFFFE653-04CD-4563-BF2D-B6F31349F30D}</Project>
       <Name>AirshipBindings.iOS.ExtendedActions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\AirshipBindings.iOS.MessageCenter\AirshipBindings.iOS.MessageCenter.csproj">
+      <Project>{AC22EEC5-DCA6-49D3-8B37-533B5565E2CF}</Project>
+      <Name>AirshipBindings.iOS.MessageCenter</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="packages\Xamarin.Forms.2.3.4.247\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets" Condition="Exists('packages\Xamarin.Forms.2.3.4.247\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+Xamarin.iOS10+xamarinmac20\Xamarin.Forms.targets')" />

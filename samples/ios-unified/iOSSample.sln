@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirshipBindings.iOS.Locatio
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirshipBindings.iOS.Core", "..\..\src\AirshipBindings.iOS.Core\AirshipBindings.iOS.Core.csproj", "{7F49C0FA-F958-44CF-9246-8B8577748E6F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirshipBindings.iOS.MessageCenter", "..\..\src\AirshipBindings.iOS.MessageCenter\AirshipBindings.iOS.MessageCenter.csproj", "{AC22EEC5-DCA6-49D3-8B37-533B5565E2CF}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirshipBindings.iOS.Automation", "..\..\src\AirshipBindings.iOS.Automation\AirshipBindings.iOS.Automation.csproj", "{70434FB5-A468-4777-9478-DD2AB80BE0E2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirshipBindings.iOS.ExtendedActions", "..\..\src\AirshipBindings.iOS.ExtendedActions\AirshipBindings.iOS.ExtendedActions.csproj", "{BFFFE653-04CD-4563-BF2D-B6F31349F30D}"
@@ -63,6 +65,14 @@ Global
 		{7F49C0FA-F958-44CF-9246-8B8577748E6F}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
 		{7F49C0FA-F958-44CF-9246-8B8577748E6F}.Debug|iPhone.ActiveCfg = Debug|Any CPU
 		{7F49C0FA-F958-44CF-9246-8B8577748E6F}.Debug|iPhone.Build.0 = Debug|Any CPU
+		{AC22EEC5-DCA6-49D3-8B37-533B5565E2CF}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{AC22EEC5-DCA6-49D3-8B37-533B5565E2CF}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{AC22EEC5-DCA6-49D3-8B37-533B5565E2CF}.Release|iPhone.ActiveCfg = Release|Any CPU
+		{AC22EEC5-DCA6-49D3-8B37-533B5565E2CF}.Release|iPhone.Build.0 = Release|Any CPU
+		{AC22EEC5-DCA6-49D3-8B37-533B5565E2CF}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{AC22EEC5-DCA6-49D3-8B37-533B5565E2CF}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
+		{AC22EEC5-DCA6-49D3-8B37-533B5565E2CF}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{AC22EEC5-DCA6-49D3-8B37-533B5565E2CF}.Debug|iPhone.Build.0 = Debug|Any CPU
 		{70434FB5-A468-4777-9478-DD2AB80BE0E2}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
 		{70434FB5-A468-4777-9478-DD2AB80BE0E2}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
 		{70434FB5-A468-4777-9478-DD2AB80BE0E2}.Release|iPhone.ActiveCfg = Release|Any CPU
