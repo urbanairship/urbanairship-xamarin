@@ -11,14 +11,28 @@ task clean(type: Delete) {
     }
 }
 
+task carthageUpdate {
+    doLast() {
+        exec {
+            commandLine "strip", "-S", "-x", "../../Carthage/Build/iOS/AirshipCore.framework/AirshipCore"
+        }
+    }
+}
+
 task build {
     def BuildConfiguration=project.properties['build_configuration'] ?: "Release"
     doLast() {
+        exec {
+            commandLine "mono", "$nugetExe", "restore", "AirshipBindings.iOS.Core.sln"
+        }
+
         exec {
             commandLine "${msbuild}", "/t:build", "/p:Configuration=${BuildConfiguration}", "AirshipBindings.iOS.Core.sln"
         }
     }
 }
+
+build.dependsOn(':src:AirshipBindings.iOS:build')
 
 task generateBindings {
     doLast() {
@@ -28,8 +42,9 @@ task generateBindings {
 
         exec {
             workingDir "$tempBindingsFolder"
-            commandLine "sharpie", "bind", "-framework", "$rootDir/Carthage/Build/iOS/AirshipLCore.framework"
+            commandLine "sharpie", "bind", "-framework", "$rootDir/Carthage/Build/iOS/AirshipCore.framework"
         }
     }
 }
 
+generateBindings.dependsOn('carthageUpdate')

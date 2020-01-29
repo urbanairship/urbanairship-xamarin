@@ -11,14 +11,28 @@ task clean(type: Delete) {
     }
 }
 
+task carthageUpdate {
+    doLast() {
+        exec {
+            commandLine "strip", "-S", "-x", "../../Carthage/Build/iOS/AirshipAutomation.framework/AirshipAutomation"
+        }
+    }
+}
+
 task build {
     def BuildConfiguration=project.properties['build_configuration'] ?: "Release"
     doLast() {
+        exec {
+            commandLine "mono", "$nugetExe", "restore", "AirshipBindings.iOS.Automation.sln"
+        }
+
         exec {
             commandLine "${msbuild}", "/t:build", "/p:Configuration=${BuildConfiguration}", "AirshipBindings.iOS.Automation.sln"
         }
     }
 }
+
+build.dependsOn(':src:AirshipBindings.iOS:build')
 
 task generateBindings {
     doLast() {
@@ -33,3 +47,4 @@ task generateBindings {
     }
 }
 
+generateBindings.dependsOn('carthageUpdate')

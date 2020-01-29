@@ -2,6 +2,8 @@ task clean(type: Delete) {
     doLast() {
         project.delete "bin"
         project.delete "obj"
+        project.delete "SampleContentExtension/bin"
+        project.delete "SampleContentExtension/obj"
         project.delete "SampleServiceExtension/bin"
         project.delete "SampleServiceExtension/obj"
     }
@@ -13,13 +15,6 @@ task build {
         exec {
             commandLine "mono", "$nugetExe", "restore"
         }
-
-        // These files becomes corrupt for some reason, causing the build to fail if it is present. The build will re-create it.
-        project.delete "obj/iPhoneSimulator/Release/mtouch-cache/AirshipCore.framework.zip"
-        project.delete "obj/iPhoneSimulator/Release/mtouch-cache/AirshipLocation.framework.zip"
-        project.delete "obj/iPhoneSimulator/Release/mtouch-cache/AirshipMessageCenter.framework.zip"
-        project.delete "obj/iPhoneSimulator/Release/mtouch-cache/AirshipNotificationContentExtension.framework.zip"
-        project.delete "obj/iPhoneSimulator/Release/mtouch-cache/AirshipNotificationServiceExtension.framework.zip"
 
         exec {
             commandLine "${msbuild}", "/t:build", "/property:Configuration=${BuildConfiguration}", "iOSSample.sln"

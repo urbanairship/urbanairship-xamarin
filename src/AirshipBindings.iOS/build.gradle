@@ -1,0 +1,35 @@
+ext {
+    pod = 'UrbanAirship-iOS-SDK'
+}
+
+task clean(type: Delete) {
+    doLast() {
+        project.delete "$rootDir/Carthage"
+    }
+}
+
+task syncVersion  {
+    doLast() {
+        ant.replaceregexp(
+            file: "$rootDir/Cartfile",
+            match: "\"urbanairship/ios-library\" == .*",
+            replace: "\"urbanairship/ios-library\" == $airshipProperties.iosVersion"
+        )
+    }
+}
+
+task carthageUpdate {
+    doLast() {
+        exec {
+            workingDir "$rootDir"
+            commandLine "carthage", "update"
+        }
+    }
+}
+
+carthageUpdate.dependsOn('syncVersion')
+
+task build {
+}
+
+build.dependsOn('carthageUpdate')

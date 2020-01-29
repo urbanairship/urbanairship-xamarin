@@ -11,14 +11,27 @@ task clean(type: Delete) {
     }
 }
 
+task carthageUpdate {
+    doLast() {
+        exec {
+            commandLine "strip", "-S", "-x", "../../Carthage/Build/iOS/AirshipNotificationServiceExtension.framework/AirshipNotificationServiceExtension"
+        }
+    }
+}
+
 task build {
     def BuildConfiguration=project.properties['build_configuration'] ?: "Release"
     doLast() {
+        exec {
+            commandLine "mono", "$nugetExe", "restore", "AirshipBindings.iOS.NotificationServiceExtension.sln"
+        }
         exec {
             commandLine "${msbuild}", "/t:build", "/p:Configuration=${BuildConfiguration}", "AirshipBindings.iOS.NotificationServiceExtension.sln"
         }
     }
 }
+
+build.dependsOn(':src:AirshipBindings.iOS:build')
 
 task generateBindings {
     doLast() {
@@ -33,3 +46,4 @@ task generateBindings {
     }
 }
 
+generateBindings.dependsOn('carthageUpdate')
