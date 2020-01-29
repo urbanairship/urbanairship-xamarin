@@ -1,6 +1,5 @@
 ext {
     pod = 'UrbanAirship-iOS-SDK'
-    tempBindingsFolder = new File("$buildDir/bindings")
 }
 
 task clean(type: Delete) {
@@ -32,19 +31,4 @@ task build {
     }
 }
 
-build.dependsOn(':src:AirshipBindings.iOS:build')
-
-task generateBindings {
-    doLast() {
-        if (!tempBindingsFolder.exists()) {
-            tempBindingsFolder.mkdirs()
-        }
-
-        exec {
-            workingDir "$tempBindingsFolder"
-            commandLine "sharpie", "bind", "-framework", "$rootDir/Carthage/Build/iOS/AirshipNotificationContentExtension.framework"
-        }
-    }
-}
-
-generateBindings.dependsOn('carthageUpdate')
+build.dependsOn(':src:AirshipBindings.iOS.common:build')

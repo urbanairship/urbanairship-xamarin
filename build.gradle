@@ -30,6 +30,7 @@ task pkg {
                 "UrbanAirship.Android.Preference.nuspec",
                 "UrbanAirship.Portable.nuspec",
                 "UrbanAirship.NETStandard.nuspec",
+                "UrbanAirship.iOS.nuspec",
                 "UrbanAirship.iOS.Core.nuspec",
                 "UrbanAirship.iOS.Automation.nuspec",
                 "UrbanAirship.iOS.ExtendedActions.nuspec",
