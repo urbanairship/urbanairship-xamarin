@@ -25,7 +25,7 @@ namespace Sample
 
             // Initialize switches
             pushEnabledSwitch.On = UAirship.Push().UserPushNotificationsEnabled;
-            locationEnabledSwitch.On = UALocation.SharedLocation().LocationUpdatesEnabled;
+            locationEnabledSwitch.On = UALocation.Shared().LocationUpdatesEnabled;
 
             analyticsSwitch.On = UAirship.Analytics().Enabled;
 
@@ -61,7 +61,7 @@ namespace Sample
                 UAirship.Push().UserPushNotificationsEnabled = true;
             }
 
-            UALocation.SharedLocation().LocationUpdatesEnabled = locationEnabledSwitch.On;
+            UALocation.Shared().LocationUpdatesEnabled = locationEnabledSwitch.On;
 
             UAirship.Analytics().Enabled = analyticsSwitch.On;
 

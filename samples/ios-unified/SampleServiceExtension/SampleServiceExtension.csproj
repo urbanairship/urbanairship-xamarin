@@ -94,9 +94,9 @@
     <Compile Include="NotificationService.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\src\AirshipBindings.iOS.AppExtensions\AirshipBindings.iOS.AppExtensions.csproj">
+    <ProjectReference Include="..\..\..\src\AirshipBindings.iOS.NotificationServiceExtension\AirshipBindings.iOS.NotificationServiceExtension.csproj">
       <Project>{2C453988-C24E-431A-A17C-6989E93C795E}</Project>
-      <Name>AirshipBindings.iOS.AppExtensions</Name>
+      <Name>AirshipBindings.iOS.NotificationServiceExtension</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.AppExtension.CSharp.targets" />

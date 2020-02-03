@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirshipBindings.NETStandard", "AirshipBindings.NETStandard\AirshipBindings.NETStandard.csproj", "{4FC0B7D7-B05C-442D-AC4C-0899533B975C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirshipBindings.iOS", "..\AirshipBindings.iOS\AirshipBindings.iOS.csproj", "{58346B7E-E18F-4CB1-A9B8-C2266BDCFE2A}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirshipBindings.Android.Core", "..\AirshipBindings.Android.Core\AirshipBindings.Android.Core.csproj", "{98DC9E01-745C-4CEA-93A9-6546B349B8EE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirshipBindings.NETStandard.Abstractions", "AirshipBindings.NETStandard.Abstractions\AirshipBindings.NETStandard.Abstractions.csproj", "{2B019324-94E9-4C90-BA84-554F659EB6E4}"
@@ -12,6 +10,14 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirshipBindings.NETStandard.Android", "AirshipBindings.NETStandard.Android\AirshipBindings.NETStandard.Android.csproj", "{98B269BE-8EFA-4D13-9B88-78AC3538559F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirshipBindings.NETStandard.iOS", "AirshipBindings.NETStandard.iOS\AirshipBindings.NETStandard.iOS.csproj", "{7BEDF548-FCCF-4EA1-9B77-1D5B8CF07AA1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirshipBindings.iOS.Automation", "..\AirshipBindings.iOS.Automation\AirshipBindings.iOS.Automation.csproj", "{70434FB5-A468-4777-9478-DD2AB80BE0E2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirshipBindings.iOS.Core", "..\AirshipBindings.iOS.Core\AirshipBindings.iOS.Core.csproj", "{7F49C0FA-F958-44CF-9246-8B8577748E6F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirshipBindings.iOS.ExtendedActions", "..\AirshipBindings.iOS.ExtendedActions\AirshipBindings.iOS.ExtendedActions.csproj", "{BFFFE653-04CD-4563-BF2D-B6F31349F30D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirshipBindings.iOS.MessageCenter", "..\AirshipBindings.iOS.MessageCenter\AirshipBindings.iOS.MessageCenter.csproj", "{AC22EEC5-DCA6-49D3-8B37-533B5565E2CF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +29,6 @@ Global
 		{4FC0B7D7-B05C-442D-AC4C-0899533B975C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4FC0B7D7-B05C-442D-AC4C-0899533B975C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4FC0B7D7-B05C-442D-AC4C-0899533B975C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{58346B7E-E18F-4CB1-A9B8-C2266BDCFE2A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{58346B7E-E18F-4CB1-A9B8-C2266BDCFE2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{58346B7E-E18F-4CB1-A9B8-C2266BDCFE2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{58346B7E-E18F-4CB1-A9B8-C2266BDCFE2A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{98DC9E01-745C-4CEA-93A9-6546B349B8EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{98DC9E01-745C-4CEA-93A9-6546B349B8EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{98DC9E01-745C-4CEA-93A9-6546B349B8EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -43,5 +45,21 @@ Global
 		{7BEDF548-FCCF-4EA1-9B77-1D5B8CF07AA1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7BEDF548-FCCF-4EA1-9B77-1D5B8CF07AA1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7BEDF548-FCCF-4EA1-9B77-1D5B8CF07AA1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{70434FB5-A468-4777-9478-DD2AB80BE0E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{70434FB5-A468-4777-9478-DD2AB80BE0E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{70434FB5-A468-4777-9478-DD2AB80BE0E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{70434FB5-A468-4777-9478-DD2AB80BE0E2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7F49C0FA-F958-44CF-9246-8B8577748E6F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F49C0FA-F958-44CF-9246-8B8577748E6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F49C0FA-F958-44CF-9246-8B8577748E6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F49C0FA-F958-44CF-9246-8B8577748E6F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BFFFE653-04CD-4563-BF2D-B6F31349F30D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BFFFE653-04CD-4563-BF2D-B6F31349F30D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BFFFE653-04CD-4563-BF2D-B6F31349F30D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BFFFE653-04CD-4563-BF2D-B6F31349F30D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC22EEC5-DCA6-49D3-8B37-533B5565E2CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC22EEC5-DCA6-49D3-8B37-533B5565E2CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC22EEC5-DCA6-49D3-8B37-533B5565E2CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC22EEC5-DCA6-49D3-8B37-533B5565E2CF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

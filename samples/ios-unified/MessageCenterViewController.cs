@@ -18,7 +18,7 @@ namespace Sample
         {
             base.ViewWillAppear(animated);
 
-            this.Style = UAirship.MessageCenter().Style;
+            this.Style = UAMessageCenter.Shared().DefaultUI.Style;
         }
 
         public void DisplayMessage(string messageID)

@@ -15,7 +15,10 @@
          </group>
 
          <group targetFramework="Xamarin.iOS">
-            <dependency id="urbanairship.ios" version="12.1.2"/>
+            <dependency id="urbanairship.ios.core" version="13.0.4"/>
+            <dependency id="urbanairship.ios.automation" version="13.0.4"/>
+            <dependency id="urbanairship.ios.extendedactions" version="13.0.4"/>
+            <dependency id="urbanairship.ios.messagecenter" version="13.0.4"/>
          </group>
       </dependencies>
    </metadata>

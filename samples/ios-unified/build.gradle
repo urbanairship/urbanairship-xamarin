@@ -2,6 +2,8 @@ task clean(type: Delete) {
     doLast() {
         project.delete "bin"
         project.delete "obj"
+        project.delete "SampleContentExtension/bin"
+        project.delete "SampleContentExtension/obj"
         project.delete "SampleServiceExtension/bin"
         project.delete "SampleServiceExtension/obj"
     }
@@ -14,15 +16,17 @@ task build {
             commandLine "mono", "$nugetExe", "restore"
         }
 
-        // This file becomes corrupt for some reason, causing the build to fail if it is present. The build will re-create it.
-        project.delete "obj/iPhoneSimulator/Release/mtouch-cache/AirshipKit.framework.zip"
-
         exec {
             commandLine "${msbuild}", "/t:build", "/property:Configuration=${BuildConfiguration}", "iOSSample.sln"
         }
     }
 }
 
-build.dependsOn(':src:AirshipBindings.iOS:build',
-    ':src:AirshipBindings.iOS.AppExtensions:build')
+build.dependsOn(':src:AirshipBindings.iOS.Core:build',
+    ':src:AirshipBindings.iOS.Automation:build',
+    ':src:AirshipBindings.iOS.ExtendedActions:build',
+    ':src:AirshipBindings.iOS.MessageCenter:build',
+    ':src:AirshipBindings.iOS.Location:build',
+    ':src:AirshipBindings.iOS.NotificationContentExtension:build',
+    ':src:AirshipBindings.iOS.NotificationServiceExtension:build')
 
