@@ -4,6 +4,7 @@
 
 using System;
 using System.Collections.Generic;
+using UrbanAirship.NETStandard.Analytics;
 
 namespace UrbanAirship.NETStandard
 {
@@ -78,7 +79,7 @@ namespace UrbanAirship.NETStandard
             UAirship.Push().UpdateRegistration();
         }
 
-        public void AddCustomEvent(NETStandard.Analytics.CustomEvent customEvent)
+        public void AddCustomEvent(CustomEvent customEvent)
         {
             if (customEvent == null || string.IsNullOrEmpty(customEvent.EventName))
             {
@@ -110,28 +111,28 @@ namespace UrbanAirship.NETStandard
 
             if (customEvent.PropertyList != null)
             {
-                foreach (dynamic property in customEvent.PropertyList)
+                foreach (var property in customEvent.PropertyList)
                 {
                     if (string.IsNullOrEmpty(property.name))
                     {
                         continue;
                     }
 
-                    if (property.value is string)
+                    if (property is CustomEvent.Property<string> stringProperty)
                     {
-                        uaEvent.SetStringProperty(property.stringValue, property.name);
+                        uaEvent.SetStringProperty(stringProperty.value, stringProperty.name);
                     }
-                    else if (property.value is double)
+                    else if (property is CustomEvent.Property<double> doubleProperty)
                     {
-                        uaEvent.SetNumberProperty(property.doubleValue, property.name);
+                        uaEvent.SetNumberProperty(doubleProperty.value, doubleProperty.name);
                     }
-                    else if (property.value is bool)
+                    else if (property is CustomEvent.Property<bool> boolProperty)
                     {
-                        uaEvent.SetBoolProperty(property.boolValue, property.name);
+                        uaEvent.SetBoolProperty(boolProperty.value, boolProperty.name);
                     }
-                    else if (property.value is string[])
+                    else if (property is CustomEvent.Property<string[]> stringArrayProperty)
                     {
-                        uaEvent.SetStringArrayProperty(property.stringArrayValue, property.name);
+                        uaEvent.SetStringArrayProperty(stringArrayProperty.value, stringArrayProperty.name);
                     }
                 }
             }

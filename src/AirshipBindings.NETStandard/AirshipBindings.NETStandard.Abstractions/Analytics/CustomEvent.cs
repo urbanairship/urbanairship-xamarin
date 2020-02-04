@@ -129,10 +129,11 @@ namespace UrbanAirship.NETStandard.Analytics
         }
 
         //@cond IGNORE
+
         public class Property<T> : IProperty
         {
-            public string name;
-            public T value;
+            public string name { get; private set; }
+            public T value { get; private set; }
 
             public Property(string name, T value)
             {
@@ -141,10 +142,10 @@ namespace UrbanAirship.NETStandard.Analytics
             }
         }
 
-        public interface IProperty
-        {
-
+        public interface IProperty {
+            string name { get; }
         }
+
         //@endcond
     }
 }
