@@ -457,6 +457,7 @@ namespace UrbanAirship {
         // + (null_unspecified instancetype)shared;
         [Static]
         [Export("shared")]
+        [New]
         UAActionAutomation Shared ();
 
         // - (void)scheduleActions:(nonnull UAActionScheduleInfo *)scheduleInfo completionHandler: (nullable void (^)(UASchedule *_Nullable))completionHandler;
@@ -1510,6 +1511,7 @@ namespace UrbanAirship {
         // + (null_unspecified instancetype)shared;
         [Static]
         [Export("shared")]
+        [New]
         UAInAppMessageManager Shared ();
 
         // @property (getter=isEnabled, assign, readwrite, nonatomic) BOOL enabled;
@@ -2215,6 +2217,7 @@ namespace UrbanAirship {
         // + (null_unspecified instancetype)shared;
         [Static]
         [Export("shared")]
+        [New]
         UALegacyInAppMessaging Shared ();
 
         // @property (assign, readwrite, nonatomic) BOOL displayASAPEnabled;

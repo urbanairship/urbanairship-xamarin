@@ -620,6 +620,7 @@ namespace UrbanAirship {
         // + (null_unspecified instancetype)shared;
         [Static]
         [Export("shared")]
+        [New]
         UAAnalytics Shared ();
 
         // @property (readonly, copy, nonatomic, nullable) NSString *conversionSendID;
@@ -761,6 +762,10 @@ namespace UrbanAirship {
         [Export("setString:forAttribute:")]
         void SetString (string @string, string attribute);
 
+        // - (void)setNumber:(nonnull NSNumber *)number forAttribute:(nonnull NSString *)attribute;
+        [Export("setNumber:forAttribute:")]
+        void SetNumber (NSNumber number, string attribute);
+
         // - (void)removeAttribute:(nonnull NSString *)attribute;
         [Export("removeAttribute:")]
         void RemoveAttribute (string attribute);
@@ -798,6 +803,7 @@ namespace UrbanAirship {
         // + (null_unspecified instancetype)shared;
         [Static]
         [Export("shared")]
+        [New]
         UAChannel Shared ();
 
         // @property (readonly, nonatomic, nullable) NSString *identifier;
@@ -945,6 +951,10 @@ namespace UrbanAirship {
         // @property (nonatomic, assign) UACloudSite site
         [Export("site", ArgumentSemantic.Assign)]
         UACloudSite Site { get; set; }
+
+        // @property (getter=isDataCollectionOptInEnabled, assign, readwrite, nonatomic) BOOL dataCollectionOptInEnabled;
+        [Export("dataCollectionOptInEnabled")]
+        bool DataCollectionOptInEnabled { [Bind("isDataCollectionOptInEnabled")] get; set; }
 
         // @property (readwrite, copy, nonatomic, nullable) NSString *defaultAppKey;
         [NullAllowed, Export("defaultAppKey")]
@@ -1402,11 +1412,11 @@ namespace UrbanAirship {
         [Export("defaultEnvironment")]
         UAJavaScriptEnvironment DefaultEnvironment ();
 
-        // - (void)addStringGetter:(nonnull NSString *)methodName value:(NSString *_Nullable)value;
+        // - (void)addStringGetter:(nonnull NSString *)methodName value:(nullable NSString *)value;
         [Export("addStringGetter:value:")]
         void AddStringGetter (string methodName, [NullAllowed] string value);
 
-        // - (void)addNumberGetter:(nonnull NSString *)methodName value:(NSNumber *_Nullable)value;
+        // - (void)addNumberGetter:(nonnull NSString *)methodName value:(nullable NSNumber *)value;
         [Export("addNumberGetter:value:")]
         void AddNumberGetter (string methodName, [NullAllowed] NSNumber value);
 
@@ -1526,6 +1536,7 @@ namespace UrbanAirship {
         // + (null_unspecified instancetype)shared;
         [Static]
         [Export("shared")]
+        [New]
         UANamedUser Shared ();
 
         // @property (readwrite, copy, nonatomic, nullable) NSString *identifier;
@@ -1676,7 +1687,7 @@ namespace UrbanAirship {
         [return: NullAllowed]
         UANotificationCategory CreateCategory (string categoryId, NSObject[] actionDefinitions);
 
-        // + (UANotificationCategory *_Nullable) createCategory:(nonnull NSString *)categoryId actions:(nonnull NSArray *)actionDefinitions hiddenPreviewsBodyPlaceholder: (nonnull NSString *)hiddenPreviewsBodyPlaceholder;
+        // + (nullable UANotificationCategory *) createCategory:(nonnull NSString *)categoryId actions:(nonnull NSArray *)actionDefinitions hiddenPreviewsBodyPlaceholder: (nonnull NSString *)hiddenPreviewsBodyPlaceholder;
         [Static]
         [Export("createCategory:actions:hiddenPreviewsBodyPlaceholder:")]
         [return: NullAllowed]
@@ -1986,6 +1997,7 @@ namespace UrbanAirship {
         // + (null_unspecified instancetype)shared;
         [Static]
         [Export("shared")]
+        [New]
         UAPush Shared ();
 
         // @property (assign, readwrite, nonatomic) BOOL backgroundPushNotificationsEnabled;
@@ -2424,6 +2436,10 @@ namespace UrbanAirship {
         [Export("requestAuthorizationToUseNotifications")]
         bool RequestAuthorizationToUseNotifications { get; }
 
+        // @property (readonly, getter=isDataCollectionOptInEnabled, atomic) BOOL dataCollectionOptInEnabled;
+        [Export("dataCollectionOptInEnabled")]
+        bool DataCollectionOptInEnabled { get; }
+
         // @property (readonly, atomic, nonnull) NSString *appKey;
         [Export("appKey")]
         string AppKey { get; }
@@ -2724,7 +2740,7 @@ namespace UrbanAirship {
     interface UADeepLinkDelegate
     {
 
-        // - (void)receivedDeepLink:(NSURL *_Nonnull)url completionHandler:(void (^_Nonnull)(void))completionHandler;
+        // - (void)receivedDeepLink:(nonnull NSURL *)url completionHandler:(nonnull void (^)(void))completionHandler;
         [Export("receivedDeepLink:completionHandler:")]
         void ReceivedDeepLink (NSUrl url, Action completionHandler);
     }
@@ -2774,6 +2790,10 @@ namespace UrbanAirship {
         // @property (readonly, strong, nonatomic) UAChannelCapture *_Nonnull channelCapture;
         [Export("channelCapture", ArgumentSemantic.Strong)]
         UAChannelCapture ChannelCapture { get; }
+
+        // @property (getter=isDataCollectionEnabled, assign, readwrite, nonatomic) BOOL dataCollectionEnabled;
+        [Export("dataCollectionEnabled")]
+        bool DataCollectionEnabled { [Bind("isDataCollectionEnabled")] get; set; }
 
         // + (void)setLogging:(BOOL)enabled;
         [Static]
