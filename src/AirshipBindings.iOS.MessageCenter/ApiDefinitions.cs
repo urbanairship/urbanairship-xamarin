@@ -240,6 +240,7 @@ namespace UrbanAirship {
         // + (null_unspecified instancetype)shared;
         [Static]
         [Export("shared")]
+        [New]
         UAMessageCenter Shared ();
 
         // @property (readwrite, nonatomic) id<UAMessageCenterDisplayDelegate> displayDelegate;
