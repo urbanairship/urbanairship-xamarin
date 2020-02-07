@@ -137,8 +137,8 @@ task syncVersion {
 
         // handle urbanairship.ios dependencies
         ant.replaceregexp(
-            match: "<dependency id=\"urbanairship.ios\" version=\".*\"/>",
-            replace: "<dependency id=\"urbanairship.ios\" version=\"$iosNugetVersion\"/>",
+            match: "<dependency id=\"urbanairship.ios(.*)\" version=\".*\"/>",
+            replace: "<dependency id=\"urbanairship.ios\\1\" version=\"$iosNugetVersion\"/>",
             flags: "g"
         ) {
             fileset(dir: "$projectDir", includes: "UrbanAirship*.nuspec")
