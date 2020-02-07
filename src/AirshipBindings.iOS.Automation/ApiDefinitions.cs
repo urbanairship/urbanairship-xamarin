@@ -64,10 +64,6 @@ namespace UrbanAirship {
         [Field("UAButtonHeightKey", "__Internal")]
         NSString UAButtonHeightKey { get; }
 
-        // extern NSString *const _Nonnull UAButtonStyleKey
-        [Field("UAButtonStyleKey", "__Internal")]
-        NSString UAButtonStyleKey { get; }
-
         // extern NSString *const UACancelSchedulesActionAll
         [Field("UACancelSchedulesActionAll", "__Internal")]
         NSString UACancelSchedulesActionAll { get; }
@@ -79,10 +75,6 @@ namespace UrbanAirship {
         // extern NSString *const UACancelSchedulesActionIDs
         [Field("UACancelSchedulesActionIDs", "__Internal")]
         NSString UACancelSchedulesActionIDs { get; }
-
-        // extern NSString *const _Nonnull UAFullScreenAdditonalPaddingKey
-        [Field("UAFullScreenAdditonalPaddingKey", "__Internal")]
-        NSString UAFullScreenAdditonalPaddingKey { get; }
 
         // extern NSString *const _Nonnull UAFullScreenBodyStyleKey
         [Field("UAFullScreenBodyStyleKey", "__Internal")]
@@ -192,10 +184,6 @@ namespace UrbanAirship {
         [Field("UAInAppMessageDisplayBehaviorImmediate", "__Internal")]
         NSString UAInAppMessageDisplayBehaviorImmediate { get; }
 
-        // static NSString *const UAInAppMessageDisplayCoordinatorIsReadyKey = @"isReady"
-        [Field("UAInAppMessageDisplayCoordinatorIsReadyKey", "__Internal")]
-        NSString UAInAppMessageDisplayCoordinatorIsReadyKey { get; }
-
         // extern NSString *const UAInAppMessageDurationKey
         [Field("UAInAppMessageDurationKey", "__Internal")]
         NSString UAInAppMessageDurationKey { get; }
@@ -268,10 +256,6 @@ namespace UrbanAirship {
         [Field("UALandingPageDefaultBorderRadiusPoints", "__Internal")]
         nfloat UALandingPageDefaultBorderRadiusPoints { get; }
 
-        // extern NSString *const _Nonnull UALandingPageFill
-        [Field("UALandingPageFill", "__Internal")]
-        NSString UALandingPageFill { get; }
-
         // extern NSString *const _Nonnull UALandingPageHeightKey
         [Field("UALandingPageHeightKey", "__Internal")]
         NSString UALandingPageHeightKey { get; }
@@ -287,10 +271,6 @@ namespace UrbanAirship {
         // extern NSString *const _Nonnull UALineSpacingKey
         [Field("UALineSpacingKey", "__Internal")]
         NSString UALineSpacingKey { get; }
-
-        // extern NSString *const _Nonnull UAMediaAdditionalPaddingKey
-        [Field("UAMediaAdditionalPaddingKey", "__Internal")]
-        NSString UAMediaAdditionalPaddingKey { get; }
 
         // extern NSString *const _Nonnull UAModalAdditionalPaddingKey
         [Field("UAModalAdditionalPaddingKey", "__Internal")]
@@ -443,11 +423,6 @@ namespace UrbanAirship {
         // extern NSString *const _Nonnull UATextAdditonalPaddingKey
         [Field("UATextAdditonalPaddingKey", "__Internal")]
         NSString UATextAdditonalPaddingKey { get; }
-
-        // extern NSString *const _Nonnull UATextSpacingKey
-        [Field("UATextSpacingKey", "__Internal")]
-        NSString UATextSpacingKey { get; }
-
     }
 
     // @interface UAActionAutomation : UAComponent
