@@ -154,10 +154,6 @@ namespace UrbanAirship {
         [Field("UANotificationDismissActionIdentifier", "__Internal")]
         NSString UANotificationDismissActionIdentifier { get; }
 
-        // static const UANotificationOptions UANotificationOptionNone = 0
-        [Field("UANotificationOptionNone", "__Internal")]
-        UANotificationOptions UANotificationOptionNone { get; }
-
         // extern NSString *const _Nonnull UAOpenExternalURLActionErrorDomain
         [Field("UAOpenExternalURLActionErrorDomain", "__Internal")]
         NSString UAOpenExternalURLActionErrorDomain { get; }
