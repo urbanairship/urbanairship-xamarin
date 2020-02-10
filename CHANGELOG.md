@@ -6,6 +6,39 @@ This library provides official bindings to the Airship SDK, as well as sample ap
 
 ### Release Notes
 
+Versions 12.0.0 (.NETStandard & PCL), 13.1.0 (iOS) - February 10, 2020
+======================================================================
+Major release to support iOS SDK 13.1. Notable changes since the previous (12.1.2) release:
+- Split the iOS SDK into packages. Apps can continue to use a single Airship package in basic integration scenarios,
+but as of SDK 13 it is now possible to create custom integrations by selecting feature packages.
+- Adds support for number attributes & data privacy controls.
+
+This release also fixes the following issues:
+- nupkg installations failing to link with missing symbol errors.
+- .NETStandard and PCL app crashes when adding a custom event (`Airship.Instance.AddCustomEvent();`)
+Apps experiencing either of these issues should update to this version.
+
+Changes
+-------
+- Updated iOS SDK to 13.1.0
+- Created new package layout for the new iOS SDK modules:
+  - New packages
+    - urbanairship.ios.automation
+    - urbanairship.ios.core
+    - urbanairship.ios.extendedactions
+    - urbanairship.ios.messagecenter
+    - urbanairship.ios.notificationcontentextension
+      - A new content extension for iOS apps.
+  - Renamed packages
+    - urbanairship.ios.locationkit -> urbanairship.ios.location
+    - urbanairship.ios.appextensions -> urbanairship.ios.notificationserviceextension
+  - urbanairship.ios
+    - A container package with urbanairship.ios.automation, urbanairship.ios.core, urbanairship.ios.extendedactions and urbanairship.ios.messagecenter
+    - Apps can use this to replace the previous urbanairship.ios package.
+  - Removed undefined constants from iOS bindings.
+  - Changes handling of CustomEvent generics in .NETStandard and PCL libraries.
+
+
 Versions 11.1.0 (.NETStandard & PCL), 12.1.2 (iOS) - December 9, 2019
 =====================================================================
 Patch release to fix a bug affecting loss of tags on iOS during app migration to
