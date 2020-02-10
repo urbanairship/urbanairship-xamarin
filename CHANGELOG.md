@@ -6,8 +6,8 @@ This library provides official bindings to the Airship SDK, as well as sample ap
 
 ### Release Notes
 
-Versions 12.0.0 (.NETStandard & PCL), 13.1.0 (iOS) - February 7, 2020
-=====================================================================
+Versions 12.0.0 (.NETStandard & PCL), 13.1.0 (iOS) - February 10, 2020
+======================================================================
 Major release to support iOS SDK 13.1. Notable changes since the previous (12.1.2) release:
 - Split the iOS SDK into packages. Apps can continue to use a single Airship package in basic integration scenarios,
 but as of SDK 13 it is now possible to create custom integrations by selecting feature packages.
