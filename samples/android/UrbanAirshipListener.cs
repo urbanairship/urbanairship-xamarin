@@ -82,7 +82,8 @@ namespace Sample
                     Intent intent = new Intent()
                         .SetPackage(context.PackageName)
                         .SetAction(MessageCenterClass.MessageDataScheme)
-                        .SetClass(context, typeof(MainActivity));
+                        .SetClass(context, typeof(MainActivity))
+                        .AddFlags(ActivityFlags.NewTask);
 
                     if (messageId != null)
                     {
