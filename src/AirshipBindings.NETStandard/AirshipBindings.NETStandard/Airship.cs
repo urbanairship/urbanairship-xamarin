@@ -124,6 +124,16 @@ namespace UrbanAirship.NETStandard
         }
 
         /// <summary>
+        /// Edit channel attributes.
+        /// </summary>
+        /// <returns>An <see cref="UrbanAirship.Portable.Attributes.AttributeEditor">AttributeEditor</see>
+        /// for channel attributes.</returns>
+        public Attributes.AttributeEditor EditAttributes()
+        {
+            throw new NotImplementedException(BaitWithoutSwitchMessage);
+        }
+
+        /// <summary>
         /// Returns an editor for named user tag groups.
         /// </summary>
         /// <returns>A <see cref="UrbanAirship.NETStandard.Channel.TagGroupsEditor">TagGroupsEditor</see>

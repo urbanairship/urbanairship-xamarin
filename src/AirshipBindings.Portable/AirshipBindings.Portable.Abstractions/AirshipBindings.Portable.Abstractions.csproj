@@ -35,10 +35,12 @@
     <Compile Include="..\..\SharedAssemblyInfo.CrossPlatform.cs">
       <Link>Properties\SharedAssemblyInfo.CrossPlatform.cs</Link>
     </Compile>
+    <Compile Include="Attributes\AttributeEditor.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Channel\" />
     <Folder Include="Analytics\" />
+    <Folder Include="Attributes\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
 </Project>
