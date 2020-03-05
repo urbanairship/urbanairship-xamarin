@@ -51,6 +51,8 @@
 
  <!-- Remove remote config package to prevent public/protected conflicts-->
  <remove-node path="/api/package[@name='com.urbanairship.remoteconfig']" />
+ 
+ <remove-node path="/api/package[@name='com.urbanairship.richpush']/class[@name='RichPushInbox.SentAtRichPushMessageComparator']" /> 
 
 </metadata>
 

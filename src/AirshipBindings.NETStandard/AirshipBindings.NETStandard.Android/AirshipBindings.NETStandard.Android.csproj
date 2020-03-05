@@ -9,7 +9,7 @@
     <OutputType>Library</OutputType>
     <RootNamespace>AirshipBindings.NETStandard</RootNamespace>
     <AssemblyName>AirshipBindings.NETStandard</AssemblyName>
-    <TargetFrameworkVersion>v8.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v10.0</TargetFrameworkVersion>
     <AndroidResgenFile>Resources\Resource.designer.cs</AndroidResgenFile>
     <AndroidResgenClass>Resource</AndroidResgenClass>
     <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
@@ -112,13 +112,15 @@
     <AndroidResource Include="Resources\values\Strings.xml" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\AirshipBindings.Android.Core\AirshipBindings.Android.Core.csproj">
-      <Project>{98DC9E01-745C-4CEA-93A9-6546B349B8EE}</Project>
-      <Name>AirshipBindings.Android.Core</Name>
-    </ProjectReference>
     <ProjectReference Include="..\AirshipBindings.NETStandard.Abstractions\AirshipBindings.NETStandard.Abstractions.csproj">
       <Project>{2B019324-94E9-4C90-BA84-554F659EB6E4}</Project>
       <Name>AirshipBindings.NETStandard.Abstractions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\AirshipBindings.Android.Core\AirshipBindings.Android.Core.csproj">
+      <IsAppExtension>true</IsAppExtension>
+      <Project>{98DC9E01-745C-4CEA-93A9-6546B349B8EE}</Project>
+      <Name>AirshipBindings.Android.Core</Name>
+      <ReferenceOutputAssembly>False</ReferenceOutputAssembly>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
