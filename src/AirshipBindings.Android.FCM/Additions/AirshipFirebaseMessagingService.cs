@@ -2,7 +2,6 @@
  Copyright Airship and Contributors
 */
 
-using System;
 using Android.Content;
 using Android.App;
 

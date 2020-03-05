@@ -5,10 +5,11 @@
 using Android.Content.PM;
 using Android.Locations;
 using Android.OS;
-using Android.Support.V4.Content;
-using Android.Support.V4.App;
 using Android.Views;
 using Android.Widget;
+
+using AndroidX.Core.Content;
+using AndroidX.Fragment.App;
 
 using UrbanAirship;
 using UrbanAirship.Location;

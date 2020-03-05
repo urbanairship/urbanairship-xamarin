@@ -2,10 +2,6 @@
  Copyright Airship and Contributors
 */
 
-using System;
-using Android.Content;
-using Android.App;
-
 namespace UrbanAirship.Push.Fcm
 {
     [Android.Runtime.Preserve(AllMembers = true)]

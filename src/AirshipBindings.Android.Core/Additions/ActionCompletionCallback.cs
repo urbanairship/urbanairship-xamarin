@@ -1,4 +1,5 @@
 ﻿using System;
+
 namespace UrbanAirship.Actions
 {
 	public class ActionCompletionCallback : Java.Lang.Object, IActionCompletionCallback

@@ -5,8 +5,9 @@
 using Android.App;
 using Android.OS;
 using Android.Runtime;
-using Android.Support.V7.App;
-using Android.Support.V7.Preferences;
+
+using AndroidX.AppCompat.App;
+using AndroidX.Preference;
 
 namespace Sample
 {
@@ -41,7 +42,7 @@ namespace Sample
             AddPreferencesFromResource(Resource.Xml.preferences);
         }
 
-        public override void OnDisplayPreferenceDialog(Android.Support.V7.Preferences.Preference preference)
+        public override void OnDisplayPreferenceDialog(AndroidX.Preference.Preference preference)
         {
             PreferenceDialogFragmentCompat dialogFragment = null;
 
@@ -58,7 +59,7 @@ namespace Sample
 
             dialogFragment.SetTargetFragment(this, 0);
             dialogFragment.Show(this.FragmentManager,
-                    "android.support.v7.preference" +
+                    "androidx.preference" +
                     ".PreferenceFragment.DIALOG");
         }
     }
