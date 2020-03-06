@@ -5,12 +5,12 @@
 	<key>inProduction</key>
 	<false/>
 	<key>developmentAppKey</key>
-	<string>Your Development App Key</string>
+	<string>Hx7SIqHqQDmFj6aruaAFcQ</string>
 	<key>developmentAppSecret</key>
-	<string>Your Development App Secret</string>
+	<string>JkyLL9IqQ2OVkashrzLq-A</string>
 	<key>productionAppKey</key>
-	<string>Your Production App Key</string>
+	<string>Hx7SIqHqQDmFj6aruaAFcQ</string>
 	<key>productionAppSecret</key>
-	<string>Your Production App Secret</string>
+	<string>JkyLL9IqQ2OVkashrzLq-A</string>
 </dict>
 </plist>
