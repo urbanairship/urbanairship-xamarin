@@ -6,7 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace UrbanAirship.NETStandard.Push
+namespace UrbanAirship.Portable.Channel
 {
     /// <summary>
     /// Class used for modifying channel tags.

@@ -9,7 +9,7 @@
   </PropertyGroup> 
 
   <ItemGroup>
-    <Folder Include="Push\" />
+    <Folder Include="Channel\" />
     <Folder Include="Analytics\" />
   </ItemGroup>
   <ItemGroup>

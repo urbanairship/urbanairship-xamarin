@@ -6,7 +6,7 @@ using System;
 using System.Collections.Generic;
 
 
-namespace UrbanAirship.NETStandard.Push
+namespace UrbanAirship.NETStandard.Channel
 {
     /// <summary>
     /// Interface used for modifying channel and named user tag groups.
