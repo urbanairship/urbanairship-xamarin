@@ -19,6 +19,6 @@
    </metadata>
 
    <files>
-     <file src="src/AirshipBindings.Android.FCM/bin/release/AirshipBindings.FCM.dll" target="lib/MonoAndroid41" />
+     <file src="src/AirshipBindings.Android.FCM/bin/release/AirshipBindings.Android.FCM.dll" target="lib/MonoAndroid41" />
    </files>
 </package>

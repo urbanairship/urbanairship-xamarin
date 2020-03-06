@@ -131,7 +131,6 @@ namespace Sample
 				Intent.SetAction(null);
 			}
 
-			Log.Debug(Tag, "BDB: Adding Listener()");
 			UAirship.Shared().Inbox.AddListener(inboxListener);
 			ShowMessageCenterIndicator();
 			UpdateUnreadCount();
