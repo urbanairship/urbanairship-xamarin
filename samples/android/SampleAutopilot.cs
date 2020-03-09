@@ -31,7 +31,8 @@ namespace Sample
             UrbanAirshipListener airshipListener = new UrbanAirshipListener();
             airship.PushManager.SetNotificationListener(airshipListener);
             airship.PushManager.AddPushListener(airshipListener);
-            airship.PushManager.AddRegistrationListener(airshipListener);
+            airship.PushManager.AddPushTokenListener(airshipListener);
+            airship.Channel.AddChannelListener(airshipListener);
             airship.MessageCenter.SetOnShowMessageCenterListener(airshipListener);
         }
 
