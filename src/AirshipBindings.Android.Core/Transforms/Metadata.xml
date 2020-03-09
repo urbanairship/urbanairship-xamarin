@@ -4,7 +4,6 @@
   <attr path="/api/package[@name='com.urbanairship.actions']" name="managedName">UrbanAirship.Actions</attr>
   <attr path="/api/package[@name='com.urbanairship.actions.tags']" name="managedName">UrbanAirship.Actions.Tags</attr>
   <attr path="/api/package[@name='com.urbanairship.analytics']" name="managedName">UrbanAirship.Analytics</attr>
-  <attr path="/api/package[@name='com.urbanairship.analytics.data']" name="managedName">UrbanAirship.Analytics.Data</attr>
   <attr path="/api/package[@name='com.urbanairship.app']" name="managedName">UrbanAirship.App</attr>
   <attr path="/api/package[@name='com.urbanairship.channel']" name="managedName">UrbanAirship.Channel</attr>
   <attr path="/api/package[@name='com.urbanairship.google']" name="managedName">UrbanAirship.Google</attr>
@@ -64,6 +63,7 @@
   <remove-node path="/api/package[@name='com.urbanairship.remoteconfig']" />
  
   <!-- Remove stuff that should be private-->
+  <remove-node path="/api/package[@name='com.urbanairship.analytics.data']" </attr>
   <remove-node path="/api/package[@name='com.urbanairship.modules']" />
  
   <!-- Remove after started erroring when changed AndroidClassParser to "class-parse"-->
