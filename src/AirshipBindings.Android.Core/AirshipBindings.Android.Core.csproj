@@ -92,12 +92,6 @@
     <Reference Include="Xamarin.AndroidX.Interpolator">
       <HintPath>packages\Xamarin.AndroidX.Interpolator.1.0.0\lib\monoandroid90\Xamarin.AndroidX.Interpolator.dll</HintPath>
     </Reference>
-    <Reference Include="Xamarin.AndroidX.VectorDrawable">
-      <HintPath>packages\Xamarin.AndroidX.VectorDrawable.1.1.0\lib\monoandroid90\Xamarin.AndroidX.VectorDrawable.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.AndroidX.VectorDrawable.Animated">
-      <HintPath>packages\Xamarin.AndroidX.VectorDrawable.Animated.1.1.0\lib\monoandroid90\Xamarin.AndroidX.VectorDrawable.Animated.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -147,6 +141,4 @@
   <Import Project="packages\Xamarin.AndroidX.ViewPager.1.0.0\build\monoandroid90\Xamarin.AndroidX.ViewPager.targets" Condition="Exists('packages\Xamarin.AndroidX.ViewPager.1.0.0\build\monoandroid90\Xamarin.AndroidX.ViewPager.targets')" />
   <Import Project="packages\Xamarin.AndroidX.Fragment.1.1.0\build\monoandroid90\Xamarin.AndroidX.Fragment.targets" Condition="Exists('packages\Xamarin.AndroidX.Fragment.1.1.0\build\monoandroid90\Xamarin.AndroidX.Fragment.targets')" />
   <Import Project="packages\Xamarin.AndroidX.Interpolator.1.0.0\build\monoandroid90\Xamarin.AndroidX.Interpolator.targets" Condition="Exists('packages\Xamarin.AndroidX.Interpolator.1.0.0\build\monoandroid90\Xamarin.AndroidX.Interpolator.targets')" />
-  <Import Project="packages\Xamarin.AndroidX.VectorDrawable.1.1.0\build\monoandroid90\Xamarin.AndroidX.VectorDrawable.targets" Condition="Exists('packages\Xamarin.AndroidX.VectorDrawable.1.1.0\build\monoandroid90\Xamarin.AndroidX.VectorDrawable.targets')" />
-  <Import Project="packages\Xamarin.AndroidX.VectorDrawable.Animated.1.1.0\build\monoandroid90\Xamarin.AndroidX.VectorDrawable.Animated.targets" Condition="Exists('packages\Xamarin.AndroidX.VectorDrawable.Animated.1.1.0\build\monoandroid90\Xamarin.AndroidX.VectorDrawable.Animated.targets')" />
 </Project>
