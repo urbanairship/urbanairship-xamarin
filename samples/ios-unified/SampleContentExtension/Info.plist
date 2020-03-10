@@ -23,7 +23,7 @@
 		<key>NSExtensionAttributes</key>
 		<dict>
 			<key>UNNotificationExtensionCategory</key>
-			<string>myNotificationCategory</string>
+			<string>sample-extension-category</string>
 			<key>UNNotificationExtensionInitialContentSizeRatio</key>
 			<real>1</real>
 		</dict>
@@ -33,11 +33,7 @@
 		<string>com.apple.usernotifications.content-extension</string>
 		<key>NSExtensionActionWantsFullScreenPresentation</key>
 		<true/>
-		<key>UNNotificationExtensionCategory</key>
-		<string>sample-extension-category</string>
 	</dict>
-	<key>UNNotificationExtensionCategory</key>
-	<string>sample-extension-category</string>
 	<key>CFBundleName</key>
 	<string>SampleContentExtension</string>
 </dict>
