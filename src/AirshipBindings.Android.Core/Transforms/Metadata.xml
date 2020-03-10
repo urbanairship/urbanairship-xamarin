@@ -63,7 +63,7 @@
   <remove-node path="/api/package[@name='com.urbanairship.remoteconfig']" />
  
   <!-- Remove stuff that should be private-->
-  <remove-node path="/api/package[@name='com.urbanairship.analytics.data']" </attr>
+  <remove-node path="/api/package[@name='com.urbanairship.analytics.data']" />
   <remove-node path="/api/package[@name='com.urbanairship.modules']" />
  
   <!-- Remove after started erroring when changed AndroidClassParser to "class-parse"-->
