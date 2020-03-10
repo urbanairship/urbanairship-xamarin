@@ -62,6 +62,18 @@ namespace Sample
             messageCenterDelegate = new MessageCenterDelegate(Window.RootViewController);
             UAMessageCenter.Shared().DisplayDelegate = messageCenterDelegate;
 
+            UANotificationAction sampleAction = UANotificationAction.Action("sampleAction", title: "Sample Action Title", options:UANotificationActionOptions.Destructive);
+
+            var sampleActions = new UANotificationAction[] { sampleAction };
+            var intentIdentifiers = new string[] { };
+
+            // Create category for sample content extension
+            UANotificationCategory[] SampleCategoryArray = { UANotificationCategory.Category(identifier: "sample-extension-category", actions: sampleActions, intentIdentifiers: intentIdentifiers, options: UANotificationCategoryOptions.None) };
+            NSSet categories = NSSet.MakeNSObjectSet(SampleCategoryArray);
+
+            // Add sample content extension category to Airship custom categories
+            UAirship.Push().CustomCategories = categories;
+
             UAirship.Push().WeakRegistrationDelegate = this;
 
             NSString messageListUpdated = new NSString("com.urbanairship.notification.message_list_updated");

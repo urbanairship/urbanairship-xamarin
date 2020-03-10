@@ -17,6 +17,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirshipBindings.iOS.Automat
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirshipBindings.iOS.ExtendedActions", "..\..\src\AirshipBindings.iOS.ExtendedActions\AirshipBindings.iOS.ExtendedActions.csproj", "{BFFFE653-04CD-4563-BF2D-B6F31349F30D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirshipBindings.iOS.NotificationContentExtension", "..\..\src\AirshipBindings.iOS.NotificationContentExtension\AirshipBindings.iOS.NotificationContentExtension.csproj", "{C9325C9E-B43A-4BE8-AD68-B7BF6942F9F8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleContentExtension", "SampleContentExtension\SampleContentExtension.csproj", "{55571012-1720-4723-AB9D-2C83C2474C6F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|iPhoneSimulator = Debug|iPhoneSimulator
@@ -89,5 +93,21 @@ Global
 		{BFFFE653-04CD-4563-BF2D-B6F31349F30D}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
 		{BFFFE653-04CD-4563-BF2D-B6F31349F30D}.Debug|iPhone.ActiveCfg = Debug|Any CPU
 		{BFFFE653-04CD-4563-BF2D-B6F31349F30D}.Debug|iPhone.Build.0 = Debug|Any CPU
+		{C9325C9E-B43A-4BE8-AD68-B7BF6942F9F8}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{C9325C9E-B43A-4BE8-AD68-B7BF6942F9F8}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{C9325C9E-B43A-4BE8-AD68-B7BF6942F9F8}.Release|iPhone.ActiveCfg = Release|Any CPU
+		{C9325C9E-B43A-4BE8-AD68-B7BF6942F9F8}.Release|iPhone.Build.0 = Release|Any CPU
+		{C9325C9E-B43A-4BE8-AD68-B7BF6942F9F8}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{C9325C9E-B43A-4BE8-AD68-B7BF6942F9F8}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
+		{C9325C9E-B43A-4BE8-AD68-B7BF6942F9F8}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{C9325C9E-B43A-4BE8-AD68-B7BF6942F9F8}.Debug|iPhone.Build.0 = Debug|Any CPU
+		{55571012-1720-4723-AB9D-2C83C2474C6F}.Debug|iPhoneSimulator.ActiveCfg = Debug|iPhoneSimulator
+		{55571012-1720-4723-AB9D-2C83C2474C6F}.Debug|iPhoneSimulator.Build.0 = Debug|iPhoneSimulator
+		{55571012-1720-4723-AB9D-2C83C2474C6F}.Release|iPhone.ActiveCfg = Release|iPhone
+		{55571012-1720-4723-AB9D-2C83C2474C6F}.Release|iPhone.Build.0 = Release|iPhone
+		{55571012-1720-4723-AB9D-2C83C2474C6F}.Release|iPhoneSimulator.ActiveCfg = Release|iPhoneSimulator
+		{55571012-1720-4723-AB9D-2C83C2474C6F}.Release|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
+		{55571012-1720-4723-AB9D-2C83C2474C6F}.Debug|iPhone.ActiveCfg = Debug|iPhone
+		{55571012-1720-4723-AB9D-2C83C2474C6F}.Debug|iPhone.Build.0 = Debug|iPhone
 	EndGlobalSection
 EndGlobal
