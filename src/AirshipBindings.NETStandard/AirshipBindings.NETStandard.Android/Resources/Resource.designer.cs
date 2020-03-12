@@ -72,85 +72,58 @@ namespace AirshipBindings.NETStandard
 		{
 			
 			// aapt resource value: 0x7F030000
-			public static int font = 2130903040;
+			public static int messageCenterDividerColor = 2130903040;
 			
 			// aapt resource value: 0x7F030001
-			public static int fontProviderAuthority = 2130903041;
+			public static int messageCenterEmptyMessageText = 2130903041;
 			
 			// aapt resource value: 0x7F030002
-			public static int fontProviderCerts = 2130903042;
+			public static int messageCenterEmptyMessageTextAppearance = 2130903042;
 			
 			// aapt resource value: 0x7F030003
-			public static int fontProviderFetchStrategy = 2130903043;
+			public static int messageCenterItemBackground = 2130903043;
 			
 			// aapt resource value: 0x7F030004
-			public static int fontProviderFetchTimeout = 2130903044;
+			public static int messageCenterItemDateTextAppearance = 2130903044;
 			
 			// aapt resource value: 0x7F030005
-			public static int fontProviderPackage = 2130903045;
+			public static int messageCenterItemIconEnabled = 2130903045;
 			
 			// aapt resource value: 0x7F030006
-			public static int fontProviderQuery = 2130903046;
+			public static int messageCenterItemIconPlaceholder = 2130903046;
 			
 			// aapt resource value: 0x7F030007
-			public static int fontStyle = 2130903047;
+			public static int messageCenterItemTitleTextAppearance = 2130903047;
 			
 			// aapt resource value: 0x7F030008
-			public static int fontWeight = 2130903048;
+			public static int messageCenterStyle = 2130903048;
 			
 			// aapt resource value: 0x7F030009
-			public static int messageCenterDividerColor = 2130903049;
+			public static int messageNotSelectedText = 2130903049;
 			
 			// aapt resource value: 0x7F03000A
-			public static int messageCenterEmptyMessageText = 2130903050;
+			public static int messageNotSelectedTextAppearance = 2130903050;
 			
 			// aapt resource value: 0x7F03000B
-			public static int messageCenterEmptyMessageTextAppearance = 2130903051;
+			public static int mixed_content_mode = 2130903051;
 			
 			// aapt resource value: 0x7F03000C
-			public static int messageCenterItemBackground = 2130903052;
+			public static int ua_state_highlighted = 2130903052;
 			
 			// aapt resource value: 0x7F03000D
-			public static int messageCenterItemDateTextAppearance = 2130903053;
+			public static int urbanAirshipButtonLayoutResourceId = 2130903053;
 			
 			// aapt resource value: 0x7F03000E
-			public static int messageCenterItemIconEnabled = 2130903054;
+			public static int urbanAirshipMaxHeight = 2130903054;
 			
 			// aapt resource value: 0x7F03000F
-			public static int messageCenterItemIconPlaceholder = 2130903055;
+			public static int urbanAirshipMaxWidth = 2130903055;
 			
 			// aapt resource value: 0x7F030010
-			public static int messageCenterItemTitleTextAppearance = 2130903056;
+			public static int urbanAirshipSeparatedSpaceWidth = 2130903056;
 			
 			// aapt resource value: 0x7F030011
-			public static int messageCenterStyle = 2130903057;
-			
-			// aapt resource value: 0x7F030012
-			public static int messageNotSelectedText = 2130903058;
-			
-			// aapt resource value: 0x7F030013
-			public static int messageNotSelectedTextAppearance = 2130903059;
-			
-			// aapt resource value: 0x7F030014
-			public static int mixed_content_mode = 2130903060;
-			
-			// aapt resource value: 0x7F030015
-			public static int ua_state_highlighted = 2130903061;
-			
-			// aapt resource value: 0x7F030016
-			public static int urbanAirshipButtonLayoutResourceId = 2130903062;
-			
-			// aapt resource value: 0x7F030017
-			public static int urbanAirshipMaxHeight = 2130903063;
-			
-			// aapt resource value: 0x7F030018
-			public static int urbanAirshipMaxWidth = 2130903064;
-			
-			// aapt resource value: 0x7F030019
-			public static int urbanAirshipSeparatedSpaceWidth = 2130903065;
-			
-			// aapt resource value: 0x7F03001A
-			public static int urbanAirshipStackedSpaceHeight = 2130903066;
+			public static int urbanAirshipStackedSpaceHeight = 2130903057;
 			
 			static Attribute()
 			{
@@ -166,13 +139,10 @@ namespace AirshipBindings.NETStandard
 		{
 			
 			// aapt resource value: 0x7F040000
-			public static int abc_action_bar_embed_tabs = 2130968576;
+			public static int ua_iam_html_allow_fullscreen_display = 2130968576;
 			
 			// aapt resource value: 0x7F040001
-			public static int ua_iam_html_allow_fullscreen_display = 2130968577;
-			
-			// aapt resource value: 0x7F040002
-			public static int ua_iam_modal_allow_fullscreen_display = 2130968578;
+			public static int ua_iam_modal_allow_fullscreen_display = 2130968577;
 			
 			static Boolean()
 			{
@@ -184,235 +154,92 @@ namespace AirshipBindings.NETStandard
 			}
 		}
 		
-		public partial class Color
-		{
-			
-			// aapt resource value: 0x7F050000
-			public static int notification_action_color_filter = 2131034112;
-			
-			// aapt resource value: 0x7F050001
-			public static int notification_icon_bg_color = 2131034113;
-			
-			// aapt resource value: 0x7F050002
-			public static int notification_material_background_media_default_color = 2131034114;
-			
-			// aapt resource value: 0x7F050003
-			public static int primary_text_default_material_dark = 2131034115;
-			
-			// aapt resource value: 0x7F050004
-			public static int ripple_material_light = 2131034116;
-			
-			// aapt resource value: 0x7F050005
-			public static int secondary_text_default_material_dark = 2131034117;
-			
-			// aapt resource value: 0x7F050006
-			public static int secondary_text_default_material_light = 2131034118;
-			
-			static Color()
-			{
-				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
-			}
-			
-			private Color()
-			{
-			}
-		}
-		
-		public partial class Dimension
-		{
-			
-			// aapt resource value: 0x7F060000
-			public static int compat_button_inset_horizontal_material = 2131099648;
-			
-			// aapt resource value: 0x7F060001
-			public static int compat_button_inset_vertical_material = 2131099649;
-			
-			// aapt resource value: 0x7F060002
-			public static int compat_button_padding_horizontal_material = 2131099650;
-			
-			// aapt resource value: 0x7F060003
-			public static int compat_button_padding_vertical_material = 2131099651;
-			
-			// aapt resource value: 0x7F060004
-			public static int compat_control_corner_material = 2131099652;
-			
-			// aapt resource value: 0x7F060005
-			public static int notification_action_icon_size = 2131099653;
-			
-			// aapt resource value: 0x7F060006
-			public static int notification_action_text_size = 2131099654;
-			
-			// aapt resource value: 0x7F060007
-			public static int notification_big_circle_margin = 2131099655;
-			
-			// aapt resource value: 0x7F060008
-			public static int notification_content_margin_start = 2131099656;
-			
-			// aapt resource value: 0x7F060009
-			public static int notification_large_icon_height = 2131099657;
-			
-			// aapt resource value: 0x7F06000A
-			public static int notification_large_icon_width = 2131099658;
-			
-			// aapt resource value: 0x7F06000B
-			public static int notification_main_column_padding_top = 2131099659;
-			
-			// aapt resource value: 0x7F06000C
-			public static int notification_media_narrow_margin = 2131099660;
-			
-			// aapt resource value: 0x7F06000D
-			public static int notification_right_icon_size = 2131099661;
-			
-			// aapt resource value: 0x7F06000E
-			public static int notification_right_side_padding_top = 2131099662;
-			
-			// aapt resource value: 0x7F06000F
-			public static int notification_small_icon_background_padding = 2131099663;
-			
-			// aapt resource value: 0x7F060010
-			public static int notification_small_icon_size_as_large = 2131099664;
-			
-			// aapt resource value: 0x7F060011
-			public static int notification_subtext_size = 2131099665;
-			
-			// aapt resource value: 0x7F060012
-			public static int notification_top_pad = 2131099666;
-			
-			// aapt resource value: 0x7F060013
-			public static int notification_top_pad_large_text = 2131099667;
-			
-			static Dimension()
-			{
-				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
-			}
-			
-			private Dimension()
-			{
-			}
-		}
-		
 		public partial class Drawable
 		{
 			
-			// aapt resource value: 0x7F070000
-			public static int notification_action_background = 2131165184;
+			// aapt resource value: 0x7F050000
+			public static int ua_iam_banner_pull_background = 2131034112;
 			
-			// aapt resource value: 0x7F070001
-			public static int notification_bg = 2131165185;
+			// aapt resource value: 0x7F050001
+			public static int ua_iam_dismiss_background = 2131034113;
 			
-			// aapt resource value: 0x7F070002
-			public static int notification_bg_low = 2131165186;
+			// aapt resource value: 0x7F050002
+			public static int ua_ic_close = 2131034114;
 			
-			// aapt resource value: 0x7F070003
-			public static int notification_bg_low_normal = 2131165187;
+			// aapt resource value: 0x7F050003
+			public static int ua_ic_close_white = 2131034115;
 			
-			// aapt resource value: 0x7F070004
-			public static int notification_bg_low_pressed = 2131165188;
+			// aapt resource value: 0x7F050004
+			public static int ua_ic_image_placeholder = 2131034116;
 			
-			// aapt resource value: 0x7F070005
-			public static int notification_bg_normal = 2131165189;
+			// aapt resource value: 0x7F050005
+			public static int ua_ic_notification_button_accept = 2131034117;
 			
-			// aapt resource value: 0x7F070006
-			public static int notification_bg_normal_pressed = 2131165190;
+			// aapt resource value: 0x7F050006
+			public static int ua_ic_notification_button_add = 2131034118;
 			
-			// aapt resource value: 0x7F070007
-			public static int notification_icon_background = 2131165191;
+			// aapt resource value: 0x7F050007
+			public static int ua_ic_notification_button_book = 2131034119;
 			
-			// aapt resource value: 0x7F070008
-			public static int notification_template_icon_bg = 2131165192;
+			// aapt resource value: 0x7F050008
+			public static int ua_ic_notification_button_cart = 2131034120;
 			
-			// aapt resource value: 0x7F070009
-			public static int notification_template_icon_low_bg = 2131165193;
+			// aapt resource value: 0x7F050009
+			public static int ua_ic_notification_button_copy = 2131034121;
 			
-			// aapt resource value: 0x7F07000A
-			public static int notification_tile_bg = 2131165194;
+			// aapt resource value: 0x7F05000A
+			public static int ua_ic_notification_button_decline = 2131034122;
 			
-			// aapt resource value: 0x7F07000B
-			public static int notify_panel_notification_icon_bg = 2131165195;
+			// aapt resource value: 0x7F05000B
+			public static int ua_ic_notification_button_download = 2131034123;
 			
-			// aapt resource value: 0x7F07000C
-			public static int ua_iam_banner_pull_background = 2131165196;
+			// aapt resource value: 0x7F05000C
+			public static int ua_ic_notification_button_event = 2131034124;
 			
-			// aapt resource value: 0x7F07000D
-			public static int ua_iam_dismiss_background = 2131165197;
+			// aapt resource value: 0x7F05000D
+			public static int ua_ic_notification_button_follow = 2131034125;
 			
-			// aapt resource value: 0x7F07000E
-			public static int ua_ic_close = 2131165198;
+			// aapt resource value: 0x7F05000E
+			public static int ua_ic_notification_button_happy = 2131034126;
 			
-			// aapt resource value: 0x7F07000F
-			public static int ua_ic_close_white = 2131165199;
+			// aapt resource value: 0x7F05000F
+			public static int ua_ic_notification_button_info = 2131034127;
 			
-			// aapt resource value: 0x7F070010
-			public static int ua_ic_image_placeholder = 2131165200;
+			// aapt resource value: 0x7F050010
+			public static int ua_ic_notification_button_open_browser = 2131034128;
 			
-			// aapt resource value: 0x7F070011
-			public static int ua_ic_notification_button_accept = 2131165201;
+			// aapt resource value: 0x7F050011
+			public static int ua_ic_notification_button_remind = 2131034129;
 			
-			// aapt resource value: 0x7F070012
-			public static int ua_ic_notification_button_add = 2131165202;
+			// aapt resource value: 0x7F050012
+			public static int ua_ic_notification_button_sad = 2131034130;
 			
-			// aapt resource value: 0x7F070013
-			public static int ua_ic_notification_button_book = 2131165203;
+			// aapt resource value: 0x7F050013
+			public static int ua_ic_notification_button_save = 2131034131;
 			
-			// aapt resource value: 0x7F070014
-			public static int ua_ic_notification_button_cart = 2131165204;
+			// aapt resource value: 0x7F050014
+			public static int ua_ic_notification_button_search = 2131034132;
 			
-			// aapt resource value: 0x7F070015
-			public static int ua_ic_notification_button_copy = 2131165205;
+			// aapt resource value: 0x7F050015
+			public static int ua_ic_notification_button_send = 2131034133;
 			
-			// aapt resource value: 0x7F070016
-			public static int ua_ic_notification_button_decline = 2131165206;
+			// aapt resource value: 0x7F050016
+			public static int ua_ic_notification_button_share = 2131034134;
 			
-			// aapt resource value: 0x7F070017
-			public static int ua_ic_notification_button_download = 2131165207;
+			// aapt resource value: 0x7F050017
+			public static int ua_ic_notification_button_thumbs_down = 2131034135;
 			
-			// aapt resource value: 0x7F070018
-			public static int ua_ic_notification_button_event = 2131165208;
+			// aapt resource value: 0x7F050018
+			public static int ua_ic_notification_button_thumbs_up = 2131034136;
 			
-			// aapt resource value: 0x7F070019
-			public static int ua_ic_notification_button_follow = 2131165209;
+			// aapt resource value: 0x7F050019
+			public static int ua_ic_notification_button_unfollow = 2131034137;
 			
-			// aapt resource value: 0x7F07001A
-			public static int ua_ic_notification_button_happy = 2131165210;
+			// aapt resource value: 0x7F05001A
+			public static int ua_ic_urbanairship_notification = 2131034138;
 			
-			// aapt resource value: 0x7F07001B
-			public static int ua_ic_notification_button_info = 2131165211;
-			
-			// aapt resource value: 0x7F07001C
-			public static int ua_ic_notification_button_open_browser = 2131165212;
-			
-			// aapt resource value: 0x7F07001D
-			public static int ua_ic_notification_button_remind = 2131165213;
-			
-			// aapt resource value: 0x7F07001E
-			public static int ua_ic_notification_button_sad = 2131165214;
-			
-			// aapt resource value: 0x7F07001F
-			public static int ua_ic_notification_button_save = 2131165215;
-			
-			// aapt resource value: 0x7F070020
-			public static int ua_ic_notification_button_search = 2131165216;
-			
-			// aapt resource value: 0x7F070021
-			public static int ua_ic_notification_button_send = 2131165217;
-			
-			// aapt resource value: 0x7F070022
-			public static int ua_ic_notification_button_share = 2131165218;
-			
-			// aapt resource value: 0x7F070023
-			public static int ua_ic_notification_button_thumbs_down = 2131165219;
-			
-			// aapt resource value: 0x7F070024
-			public static int ua_ic_notification_button_thumbs_up = 2131165220;
-			
-			// aapt resource value: 0x7F070025
-			public static int ua_ic_notification_button_unfollow = 2131165221;
-			
-			// aapt resource value: 0x7F070026
-			public static int ua_ic_urbanairship_notification = 2131165222;
-			
-			// aapt resource value: 0x7F070027
-			public static int ua_item_mc_background = 2131165223;
+			// aapt resource value: 0x7F05001B
+			public static int ua_item_mc_background = 2131034139;
 			
 			static Drawable()
 			{
@@ -427,218 +254,125 @@ namespace AirshipBindings.NETStandard
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7F080000
-			public static int action0 = 2131230720;
+			// aapt resource value: 0x7F060000
+			public static int always_allow = 2131099648;
 			
-			// aapt resource value: 0x7F080005
-			public static int actions = 2131230725;
+			// aapt resource value: 0x7F060001
+			public static int banner = 2131099649;
 			
-			// aapt resource value: 0x7F080001
-			public static int action_container = 2131230721;
+			// aapt resource value: 0x7F060002
+			public static int banner_content = 2131099650;
 			
-			// aapt resource value: 0x7F080002
-			public static int action_divider = 2131230722;
+			// aapt resource value: 0x7F060003
+			public static int banner_pull = 2131099651;
 			
-			// aapt resource value: 0x7F080003
-			public static int action_image = 2131230723;
+			// aapt resource value: 0x7F060004
+			public static int body = 2131099652;
 			
-			// aapt resource value: 0x7F080004
-			public static int action_text = 2131230724;
+			// aapt resource value: 0x7F060005
+			public static int buttons = 2131099653;
 			
-			// aapt resource value: 0x7F080006
-			public static int always_allow = 2131230726;
+			// aapt resource value: 0x7F060006
+			public static int channel_capture_title = 2131099654;
 			
-			// aapt resource value: 0x7F080007
-			public static int async = 2131230727;
+			// aapt resource value: 0x7F060007
+			public static int channel_id = 2131099655;
 			
-			// aapt resource value: 0x7F080008
-			public static int banner = 2131230728;
+			// aapt resource value: 0x7F060008
+			public static int channel_information = 2131099656;
 			
-			// aapt resource value: 0x7F080009
-			public static int banner_content = 2131230729;
+			// aapt resource value: 0x7F060009
+			public static int checkbox = 2131099657;
 			
-			// aapt resource value: 0x7F08000A
-			public static int banner_pull = 2131230730;
+			// aapt resource value: 0x7F06000A
+			public static int compatibility_mode = 2131099658;
 			
-			// aapt resource value: 0x7F08000B
-			public static int blocking = 2131230731;
+			// aapt resource value: 0x7F06000B
+			public static int container = 2131099659;
 			
-			// aapt resource value: 0x7F08000C
-			public static int body = 2131230732;
+			// aapt resource value: 0x7F06000C
+			public static int content_holder = 2131099660;
 			
-			// aapt resource value: 0x7F08000D
-			public static int buttons = 2131230733;
+			// aapt resource value: 0x7F06000D
+			public static int copy_button = 2131099661;
 			
-			// aapt resource value: 0x7F08000E
-			public static int cancel_action = 2131230734;
+			// aapt resource value: 0x7F06000E
+			public static int date = 2131099662;
 			
-			// aapt resource value: 0x7F08000F
-			public static int channel_capture_title = 2131230735;
+			// aapt resource value: 0x7F06000F
+			public static int delete = 2131099663;
 			
-			// aapt resource value: 0x7F080010
-			public static int channel_id = 2131230736;
+			// aapt resource value: 0x7F060010
+			public static int dismiss = 2131099664;
 			
-			// aapt resource value: 0x7F080011
-			public static int channel_information = 2131230737;
+			// aapt resource value: 0x7F060011
+			public static int error = 2131099665;
 			
-			// aapt resource value: 0x7F080012
-			public static int checkbox = 2131230738;
+			// aapt resource value: 0x7F060012
+			public static int error_message = 2131099666;
 			
-			// aapt resource value: 0x7F080013
-			public static int chronometer = 2131230739;
+			// aapt resource value: 0x7F060013
+			public static int footer = 2131099667;
 			
-			// aapt resource value: 0x7F080014
-			public static int close_button = 2131230740;
+			// aapt resource value: 0x7F060014
+			public static int footer_holder = 2131099668;
 			
-			// aapt resource value: 0x7F080015
-			public static int compatibility_mode = 2131230741;
+			// aapt resource value: 0x7F060015
+			public static int heading = 2131099669;
 			
-			// aapt resource value: 0x7F080016
-			public static int container = 2131230742;
+			// aapt resource value: 0x7F060016
+			public static int image = 2131099670;
 			
-			// aapt resource value: 0x7F080017
-			public static int content_holder = 2131230743;
+			// aapt resource value: 0x7F060017
+			public static int mark_read = 2131099671;
 			
-			// aapt resource value: 0x7F080018
-			public static int copy_button = 2131230744;
+			// aapt resource value: 0x7F060018
+			public static int media = 2131099672;
 			
-			// aapt resource value: 0x7F080019
-			public static int date = 2131230745;
+			// aapt resource value: 0x7F060019
+			public static int message_container = 2131099673;
 			
-			// aapt resource value: 0x7F08001A
-			public static int delete = 2131230746;
+			// aapt resource value: 0x7F06001A
+			public static int message_list_container = 2131099674;
 			
-			// aapt resource value: 0x7F08001B
-			public static int dismiss = 2131230747;
+			// aapt resource value: 0x7F06001B
+			public static int modal = 2131099675;
 			
-			// aapt resource value: 0x7F08001C
-			public static int end_padder = 2131230748;
+			// aapt resource value: 0x7F06001C
+			public static int modal_content = 2131099676;
 			
-			// aapt resource value: 0x7F08001D
-			public static int error = 2131230749;
+			// aapt resource value: 0x7F06001D
+			public static int never_allow = 2131099677;
 			
-			// aapt resource value: 0x7F08001E
-			public static int error_message = 2131230750;
+			// aapt resource value: 0x7F06001E
+			public static int open_button = 2131099678;
 			
-			// aapt resource value: 0x7F08001F
-			public static int footer = 2131230751;
+			// aapt resource value: 0x7F06001F
+			public static int progress = 2131099679;
 			
-			// aapt resource value: 0x7F080020
-			public static int footer_holder = 2131230752;
+			// aapt resource value: 0x7F060020
+			public static int retry_button = 2131099680;
 			
-			// aapt resource value: 0x7F080021
-			public static int forever = 2131230753;
+			// aapt resource value: 0x7F060021
+			public static int select_all = 2131099681;
 			
-			// aapt resource value: 0x7F080022
-			public static int heading = 2131230754;
+			// aapt resource value: 0x7F060022
+			public static int share_button = 2131099682;
 			
-			// aapt resource value: 0x7F080023
-			public static int icon = 2131230755;
+			// aapt resource value: 0x7F060023
+			public static int swipe_container = 2131099683;
 			
-			// aapt resource value: 0x7F080024
-			public static int icon_group = 2131230756;
+			// aapt resource value: 0x7F060024
+			public static int title = 2131099684;
 			
-			// aapt resource value: 0x7F080025
-			public static int image = 2131230757;
+			// aapt resource value: 0x7F060025
+			public static int ua_iam_banner_content_left_image = 2131099685;
 			
-			// aapt resource value: 0x7F080026
-			public static int info = 2131230758;
+			// aapt resource value: 0x7F060026
+			public static int ua_iam_modal_header_body_media = 2131099686;
 			
-			// aapt resource value: 0x7F080027
-			public static int italic = 2131230759;
-			
-			// aapt resource value: 0x7F080028
-			public static int line1 = 2131230760;
-			
-			// aapt resource value: 0x7F080029
-			public static int line3 = 2131230761;
-			
-			// aapt resource value: 0x7F08002A
-			public static int mark_read = 2131230762;
-			
-			// aapt resource value: 0x7F08002B
-			public static int media = 2131230763;
-			
-			// aapt resource value: 0x7F08002C
-			public static int media_actions = 2131230764;
-			
-			// aapt resource value: 0x7F08002D
-			public static int message_container = 2131230765;
-			
-			// aapt resource value: 0x7F08002E
-			public static int message_list_container = 2131230766;
-			
-			// aapt resource value: 0x7F08002F
-			public static int modal = 2131230767;
-			
-			// aapt resource value: 0x7F080030
-			public static int modal_content = 2131230768;
-			
-			// aapt resource value: 0x7F080031
-			public static int never_allow = 2131230769;
-			
-			// aapt resource value: 0x7F080032
-			public static int normal = 2131230770;
-			
-			// aapt resource value: 0x7F080033
-			public static int notification_background = 2131230771;
-			
-			// aapt resource value: 0x7F080034
-			public static int notification_main_column = 2131230772;
-			
-			// aapt resource value: 0x7F080035
-			public static int notification_main_column_container = 2131230773;
-			
-			// aapt resource value: 0x7F080036
-			public static int open_button = 2131230774;
-			
-			// aapt resource value: 0x7F080037
-			public static int progress = 2131230775;
-			
-			// aapt resource value: 0x7F080038
-			public static int retry_button = 2131230776;
-			
-			// aapt resource value: 0x7F080039
-			public static int right_icon = 2131230777;
-			
-			// aapt resource value: 0x7F08003A
-			public static int right_side = 2131230778;
-			
-			// aapt resource value: 0x7F08003B
-			public static int select_all = 2131230779;
-			
-			// aapt resource value: 0x7F08003C
-			public static int share_button = 2131230780;
-			
-			// aapt resource value: 0x7F08003D
-			public static int status_bar_latest_event_content = 2131230781;
-			
-			// aapt resource value: 0x7F08003E
-			public static int swipe_container = 2131230782;
-			
-			// aapt resource value: 0x7F08003F
-			public static int tag_transition_group = 2131230783;
-			
-			// aapt resource value: 0x7F080040
-			public static int text = 2131230784;
-			
-			// aapt resource value: 0x7F080041
-			public static int text2 = 2131230785;
-			
-			// aapt resource value: 0x7F080042
-			public static int time = 2131230786;
-			
-			// aapt resource value: 0x7F080043
-			public static int title = 2131230787;
-			
-			// aapt resource value: 0x7F080044
-			public static int ua_iam_banner_content_left_image = 2131230788;
-			
-			// aapt resource value: 0x7F080045
-			public static int ua_iam_modal_header_body_media = 2131230789;
-			
-			// aapt resource value: 0x7F080046
-			public static int web_view = 2131230790;
+			// aapt resource value: 0x7F060027
+			public static int web_view = 2131099687;
 			
 			static Id()
 			{
@@ -653,14 +387,8 @@ namespace AirshipBindings.NETStandard
 		public partial class Integer
 		{
 			
-			// aapt resource value: 0x7F090000
-			public static int cancel_button_image_alpha = 2131296256;
-			
-			// aapt resource value: 0x7F090001
-			public static int status_bar_notification_info_maxnum = 2131296257;
-			
-			// aapt resource value: 0x7F090002
-			public static int ua_iam_banner_animation_duration = 2131296258;
+			// aapt resource value: 0x7F070000
+			public static int ua_iam_banner_animation_duration = 2131165184;
 			
 			static Integer()
 			{
@@ -675,128 +403,80 @@ namespace AirshipBindings.NETStandard
 		public partial class Layout
 		{
 			
-			// aapt resource value: 0x7F0A0000
-			public static int notification_action = 2131361792;
+			// aapt resource value: 0x7F080000
+			public static int ua_activity_channel_capture = 2131230720;
 			
-			// aapt resource value: 0x7F0A0001
-			public static int notification_action_tombstone = 2131361793;
+			// aapt resource value: 0x7F080001
+			public static int ua_fragment_mc = 2131230721;
 			
-			// aapt resource value: 0x7F0A0002
-			public static int notification_media_action = 2131361794;
+			// aapt resource value: 0x7F080002
+			public static int ua_fragment_message = 2131230722;
 			
-			// aapt resource value: 0x7F0A0003
-			public static int notification_media_cancel_action = 2131361795;
+			// aapt resource value: 0x7F080003
+			public static int ua_fragment_message_list = 2131230723;
 			
-			// aapt resource value: 0x7F0A0004
-			public static int notification_template_big_media = 2131361796;
+			// aapt resource value: 0x7F080004
+			public static int ua_fragment_no_message_selected = 2131230724;
 			
-			// aapt resource value: 0x7F0A0005
-			public static int notification_template_big_media_custom = 2131361797;
+			// aapt resource value: 0x7F080005
+			public static int ua_iam_banner_bottom = 2131230725;
 			
-			// aapt resource value: 0x7F0A0006
-			public static int notification_template_big_media_narrow = 2131361798;
+			// aapt resource value: 0x7F080006
+			public static int ua_iam_banner_button = 2131230726;
 			
-			// aapt resource value: 0x7F0A0007
-			public static int notification_template_big_media_narrow_custom = 2131361799;
+			// aapt resource value: 0x7F080007
+			public static int ua_iam_banner_content_left_media = 2131230727;
 			
-			// aapt resource value: 0x7F0A0008
-			public static int notification_template_custom_big = 2131361800;
+			// aapt resource value: 0x7F080008
+			public static int ua_iam_banner_content_right_media = 2131230728;
 			
-			// aapt resource value: 0x7F0A0009
-			public static int notification_template_icon_group = 2131361801;
+			// aapt resource value: 0x7F080009
+			public static int ua_iam_banner_top = 2131230729;
 			
-			// aapt resource value: 0x7F0A000A
-			public static int notification_template_lines_media = 2131361802;
+			// aapt resource value: 0x7F08000A
+			public static int ua_iam_fullscreen_button = 2131230730;
 			
-			// aapt resource value: 0x7F0A000B
-			public static int notification_template_media = 2131361803;
+			// aapt resource value: 0x7F08000B
+			public static int ua_iam_fullscreen_header_body_media = 2131230731;
 			
-			// aapt resource value: 0x7F0A000C
-			public static int notification_template_media_custom = 2131361804;
+			// aapt resource value: 0x7F08000C
+			public static int ua_iam_fullscreen_header_media_body = 2131230732;
 			
-			// aapt resource value: 0x7F0A000D
-			public static int notification_template_part_chronometer = 2131361805;
+			// aapt resource value: 0x7F08000D
+			public static int ua_iam_fullscreen_media_header_body = 2131230733;
 			
-			// aapt resource value: 0x7F0A000E
-			public static int notification_template_part_time = 2131361806;
+			// aapt resource value: 0x7F08000E
+			public static int ua_iam_html = 2131230734;
 			
-			// aapt resource value: 0x7F0A000F
-			public static int ua_activity_channel_capture = 2131361807;
+			// aapt resource value: 0x7F08000F
+			public static int ua_iam_html_fullscreen = 2131230735;
 			
-			// aapt resource value: 0x7F0A0010
-			public static int ua_activity_landing_page = 2131361808;
+			// aapt resource value: 0x7F080010
+			public static int ua_iam_modal = 2131230736;
 			
-			// aapt resource value: 0x7F0A0011
-			public static int ua_fragment_mc = 2131361809;
+			// aapt resource value: 0x7F080011
+			public static int ua_iam_modal_button = 2131230737;
 			
-			// aapt resource value: 0x7F0A0012
-			public static int ua_fragment_message = 2131361810;
+			// aapt resource value: 0x7F080012
+			public static int ua_iam_modal_fullscreen = 2131230738;
 			
-			// aapt resource value: 0x7F0A0013
-			public static int ua_fragment_message_list = 2131361811;
+			// aapt resource value: 0x7F080013
+			public static int ua_iam_modal_header_body_media = 2131230739;
 			
-			// aapt resource value: 0x7F0A0014
-			public static int ua_fragment_no_message_selected = 2131361812;
+			// aapt resource value: 0x7F080014
+			public static int ua_iam_modal_header_media_body = 2131230740;
 			
-			// aapt resource value: 0x7F0A0015
-			public static int ua_iam_banner_bottom = 2131361813;
+			// aapt resource value: 0x7F080015
+			public static int ua_iam_modal_media_header_body = 2131230741;
 			
-			// aapt resource value: 0x7F0A0016
-			public static int ua_iam_banner_button = 2131361814;
+			// aapt resource value: 0x7F080016
+			public static int ua_item_mc = 2131230742;
 			
-			// aapt resource value: 0x7F0A0017
-			public static int ua_iam_banner_content_left_media = 2131361815;
+			// aapt resource value: 0x7F080017
+			public static int ua_item_mc_content = 2131230743;
 			
-			// aapt resource value: 0x7F0A0018
-			public static int ua_iam_banner_content_right_media = 2131361816;
-			
-			// aapt resource value: 0x7F0A0019
-			public static int ua_iam_banner_top = 2131361817;
-			
-			// aapt resource value: 0x7F0A001A
-			public static int ua_iam_fullscreen_button = 2131361818;
-			
-			// aapt resource value: 0x7F0A001B
-			public static int ua_iam_fullscreen_header_body_media = 2131361819;
-			
-			// aapt resource value: 0x7F0A001C
-			public static int ua_iam_fullscreen_header_media_body = 2131361820;
-			
-			// aapt resource value: 0x7F0A001D
-			public static int ua_iam_fullscreen_media_header_body = 2131361821;
-			
-			// aapt resource value: 0x7F0A001E
-			public static int ua_iam_html = 2131361822;
-			
-			// aapt resource value: 0x7F0A001F
-			public static int ua_iam_html_fullscreen = 2131361823;
-			
-			// aapt resource value: 0x7F0A0020
-			public static int ua_iam_modal = 2131361824;
-			
-			// aapt resource value: 0x7F0A0021
-			public static int ua_iam_modal_button = 2131361825;
-			
-			// aapt resource value: 0x7F0A0022
-			public static int ua_iam_modal_fullscreen = 2131361826;
-			
-			// aapt resource value: 0x7F0A0023
-			public static int ua_iam_modal_header_body_media = 2131361827;
-			
-			// aapt resource value: 0x7F0A0024
-			public static int ua_iam_modal_header_media_body = 2131361828;
-			
-			// aapt resource value: 0x7F0A0025
-			public static int ua_iam_modal_media_header_body = 2131361829;
-			
-			// aapt resource value: 0x7F0A0026
-			public static int ua_item_mc = 2131361830;
-			
-			// aapt resource value: 0x7F0A0027
-			public static int ua_item_mc_content = 2131361831;
-			
-			// aapt resource value: 0x7F0A0028
-			public static int ua_item_mc_icon_content = 2131361832;
+			// aapt resource value: 0x7F080018
+			public static int ua_item_mc_icon_content = 2131230744;
 			
 			static Layout()
 			{
@@ -811,8 +491,8 @@ namespace AirshipBindings.NETStandard
 		public partial class Menu
 		{
 			
-			// aapt resource value: 0x7F0B0000
-			public static int ua_mc_action_mode = 2131427328;
+			// aapt resource value: 0x7F090000
+			public static int ua_mc_action_mode = 2131296256;
 			
 			static Menu()
 			{
@@ -827,11 +507,11 @@ namespace AirshipBindings.NETStandard
 		public partial class Raw
 		{
 			
-			// aapt resource value: 0x7F0D0000
-			public static int ua_blank_favicon = 2131558400;
+			// aapt resource value: 0x7F0B0000
+			public static int ua_blank_favicon = 2131427328;
 			
-			// aapt resource value: 0x7F0D0001
-			public static int ua_native_bridge = 2131558401;
+			// aapt resource value: 0x7F0B0001
+			public static int ua_native_bridge = 2131427329;
 			
 			static Raw()
 			{
@@ -846,8 +526,8 @@ namespace AirshipBindings.NETStandard
 		public partial class Plurals
 		{
 			
-			// aapt resource value: 0x7F0C0000
-			public static int ua_selected_count = 2131492864;
+			// aapt resource value: 0x7F0A0000
+			public static int ua_selected_count = 2131361792;
 			
 			static Plurals()
 			{
@@ -862,182 +542,224 @@ namespace AirshipBindings.NETStandard
 		public partial class String
 		{
 			
-			// aapt resource value: 0x7F0E0000
-			public static int library_name = 2131623936;
+			// aapt resource value: 0x7F0C0000
+			public static int library_name = 2131492864;
 			
-			// aapt resource value: 0x7F0E0001
-			public static int status_bar_notification_info_overflow = 2131623937;
+			// aapt resource value: 0x7F0C0001
+			public static int ua_cancel = 2131492865;
 			
-			// aapt resource value: 0x7F0E0002
-			public static int ua_cancel = 2131623938;
+			// aapt resource value: 0x7F0C0002
+			public static int ua_channel_copy_toast = 2131492866;
 			
-			// aapt resource value: 0x7F0E0003
-			public static int ua_channel_copy_toast = 2131623939;
+			// aapt resource value: 0x7F0C0003
+			public static int ua_channel_id = 2131492867;
 			
-			// aapt resource value: 0x7F0E0004
-			public static int ua_channel_id = 2131623940;
+			// aapt resource value: 0x7F0C0004
+			public static int ua_channel_notification_ticker = 2131492868;
 			
-			// aapt resource value: 0x7F0E0005
-			public static int ua_channel_notification_ticker = 2131623941;
+			// aapt resource value: 0x7F0C0005
+			public static int ua_connection_error = 2131492869;
 			
-			// aapt resource value: 0x7F0E0006
-			public static int ua_connection_error = 2131623942;
+			// aapt resource value: 0x7F0C0006
+			public static int ua_content_error = 2131492870;
 			
-			// aapt resource value: 0x7F0E0007
-			public static int ua_content_error = 2131623943;
+			// aapt resource value: 0x7F0C0007
+			public static int ua_default_channel_description = 2131492871;
 			
-			// aapt resource value: 0x7F0E0008
-			public static int ua_default_channel_description = 2131623944;
+			// aapt resource value: 0x7F0C0008
+			public static int ua_default_channel_name = 2131492872;
 			
-			// aapt resource value: 0x7F0E0009
-			public static int ua_default_channel_name = 2131623945;
+			// aapt resource value: 0x7F0C0009
+			public static int ua_delete = 2131492873;
 			
-			// aapt resource value: 0x7F0E000A
-			public static int ua_delete = 2131623946;
+			// aapt resource value: 0x7F0C000A
+			public static int ua_emoji_happy = 2131492874;
 			
-			// aapt resource value: 0x7F0E000B
-			public static int ua_emoji_happy = 2131623947;
+			// aapt resource value: 0x7F0C000B
+			public static int ua_emoji_sad = 2131492875;
 			
-			// aapt resource value: 0x7F0E000C
-			public static int ua_emoji_sad = 2131623948;
+			// aapt resource value: 0x7F0C000C
+			public static int ua_emoji_thumbs_down = 2131492876;
 			
-			// aapt resource value: 0x7F0E000D
-			public static int ua_emoji_thumbs_down = 2131623949;
+			// aapt resource value: 0x7F0C000D
+			public static int ua_emoji_thumbs_up = 2131492877;
 			
-			// aapt resource value: 0x7F0E000E
-			public static int ua_emoji_thumbs_up = 2131623950;
+			// aapt resource value: 0x7F0C000E
+			public static int ua_empty_message_list = 2131492878;
 			
-			// aapt resource value: 0x7F0E000F
-			public static int ua_empty_message_list = 2131623951;
+			// aapt resource value: 0x7F0C000F
+			public static int ua_low_priority_channel_description = 2131492879;
 			
-			// aapt resource value: 0x7F0E0010
-			public static int ua_mark_read = 2131623952;
+			// aapt resource value: 0x7F0C0010
+			public static int ua_low_priority_channel_id = 2131492880;
 			
-			// aapt resource value: 0x7F0E0011
-			public static int ua_mc_failed_to_load = 2131623953;
+			// aapt resource value: 0x7F0C0011
+			public static int ua_low_priority_channel_name = 2131492881;
 			
-			// aapt resource value: 0x7F0E0012
-			public static int ua_mc_no_longer_available = 2131623954;
+			// aapt resource value: 0x7F0C0012
+			public static int ua_mark_read = 2131492882;
 			
-			// aapt resource value: 0x7F0E0013
-			public static int ua_message_center_title = 2131623955;
+			// aapt resource value: 0x7F0C0013
+			public static int ua_mc_failed_to_load = 2131492883;
 			
-			// aapt resource value: 0x7F0E0014
-			public static int ua_message_not_selected = 2131623956;
+			// aapt resource value: 0x7F0C0014
+			public static int ua_mc_no_longer_available = 2131492884;
 			
-			// aapt resource value: 0x7F0E0015
-			public static int ua_notification_button_accept = 2131623957;
+			// aapt resource value: 0x7F0C0015
+			public static int ua_message_center_title = 2131492885;
 			
-			// aapt resource value: 0x7F0E0016
-			public static int ua_notification_button_add = 2131623958;
+			// aapt resource value: 0x7F0C0016
+			public static int ua_message_not_selected = 2131492886;
 			
-			// aapt resource value: 0x7F0E0017
-			public static int ua_notification_button_add_to_calendar = 2131623959;
+			// aapt resource value: 0x7F0C0017
+			public static int ua_min_priority_channel_description = 2131492887;
 			
-			// aapt resource value: 0x7F0E0018
-			public static int ua_notification_button_book_now = 2131623960;
+			// aapt resource value: 0x7F0C0018
+			public static int ua_min_priority_channel_id = 2131492888;
 			
-			// aapt resource value: 0x7F0E0019
-			public static int ua_notification_button_buy_now = 2131623961;
+			// aapt resource value: 0x7F0C0019
+			public static int ua_min_priority_channel_name = 2131492889;
 			
-			// aapt resource value: 0x7F0E001A
-			public static int ua_notification_button_copy = 2131623962;
+			// aapt resource value: 0x7F0C001A
+			public static int ua_news_channel_description = 2131492890;
 			
-			// aapt resource value: 0x7F0E001B
-			public static int ua_notification_button_decline = 2131623963;
+			// aapt resource value: 0x7F0C001B
+			public static int ua_news_channel_id = 2131492891;
 			
-			// aapt resource value: 0x7F0E001C
-			public static int ua_notification_button_dislike = 2131623964;
+			// aapt resource value: 0x7F0C001C
+			public static int ua_news_channel_name = 2131492892;
 			
-			// aapt resource value: 0x7F0E001D
-			public static int ua_notification_button_download = 2131623965;
+			// aapt resource value: 0x7F0C001D
+			public static int ua_notification_button_accept = 2131492893;
 			
-			// aapt resource value: 0x7F0E001E
-			public static int ua_notification_button_follow = 2131623966;
+			// aapt resource value: 0x7F0C001E
+			public static int ua_notification_button_add = 2131492894;
 			
-			// aapt resource value: 0x7F0E001F
-			public static int ua_notification_button_less_like = 2131623967;
+			// aapt resource value: 0x7F0C001F
+			public static int ua_notification_button_add_to_calendar = 2131492895;
 			
-			// aapt resource value: 0x7F0E0020
-			public static int ua_notification_button_like = 2131623968;
+			// aapt resource value: 0x7F0C0020
+			public static int ua_notification_button_book_now = 2131492896;
 			
-			// aapt resource value: 0x7F0E0021
-			public static int ua_notification_button_more_like = 2131623969;
+			// aapt resource value: 0x7F0C0021
+			public static int ua_notification_button_buy_now = 2131492897;
 			
-			// aapt resource value: 0x7F0E0022
-			public static int ua_notification_button_no = 2131623970;
+			// aapt resource value: 0x7F0C0022
+			public static int ua_notification_button_copy = 2131492898;
 			
-			// aapt resource value: 0x7F0E0023
-			public static int ua_notification_button_opt_in = 2131623971;
+			// aapt resource value: 0x7F0C0023
+			public static int ua_notification_button_decline = 2131492899;
 			
-			// aapt resource value: 0x7F0E0024
-			public static int ua_notification_button_opt_out = 2131623972;
+			// aapt resource value: 0x7F0C0024
+			public static int ua_notification_button_dislike = 2131492900;
 			
-			// aapt resource value: 0x7F0E0025
-			public static int ua_notification_button_rate_now = 2131623973;
+			// aapt resource value: 0x7F0C0025
+			public static int ua_notification_button_download = 2131492901;
 			
-			// aapt resource value: 0x7F0E0026
-			public static int ua_notification_button_remind = 2131623974;
+			// aapt resource value: 0x7F0C0026
+			public static int ua_notification_button_follow = 2131492902;
 			
-			// aapt resource value: 0x7F0E0027
-			public static int ua_notification_button_save = 2131623975;
+			// aapt resource value: 0x7F0C0027
+			public static int ua_notification_button_less_like = 2131492903;
 			
-			// aapt resource value: 0x7F0E0028
-			public static int ua_notification_button_search = 2131623976;
+			// aapt resource value: 0x7F0C0028
+			public static int ua_notification_button_like = 2131492904;
 			
-			// aapt resource value: 0x7F0E0029
-			public static int ua_notification_button_send_info = 2131623977;
+			// aapt resource value: 0x7F0C0029
+			public static int ua_notification_button_more_like = 2131492905;
 			
-			// aapt resource value: 0x7F0E002A
-			public static int ua_notification_button_share = 2131623978;
+			// aapt resource value: 0x7F0C002A
+			public static int ua_notification_button_no = 2131492906;
 			
-			// aapt resource value: 0x7F0E002B
-			public static int ua_notification_button_shop_now = 2131623979;
+			// aapt resource value: 0x7F0C002B
+			public static int ua_notification_button_opt_in = 2131492907;
 			
-			// aapt resource value: 0x7F0E002C
-			public static int ua_notification_button_tell_me_more = 2131623980;
+			// aapt resource value: 0x7F0C002C
+			public static int ua_notification_button_opt_out = 2131492908;
 			
-			// aapt resource value: 0x7F0E002D
-			public static int ua_notification_button_unfollow = 2131623981;
+			// aapt resource value: 0x7F0C002D
+			public static int ua_notification_button_rate_now = 2131492909;
 			
-			// aapt resource value: 0x7F0E002E
-			public static int ua_notification_button_yes = 2131623982;
+			// aapt resource value: 0x7F0C002E
+			public static int ua_notification_button_remind = 2131492910;
 			
-			// aapt resource value: 0x7F0E002F
-			public static int ua_ok = 2131623983;
+			// aapt resource value: 0x7F0C002F
+			public static int ua_notification_button_save = 2131492911;
 			
-			// aapt resource value: 0x7F0E0030
-			public static int ua_open = 2131623984;
+			// aapt resource value: 0x7F0C0030
+			public static int ua_notification_button_search = 2131492912;
 			
-			// aapt resource value: 0x7F0E0031
-			public static int ua_rate_app_action_default_body = 2131623985;
+			// aapt resource value: 0x7F0C0031
+			public static int ua_notification_button_send_info = 2131492913;
 			
-			// aapt resource value: 0x7F0E0032
-			public static int ua_rate_app_action_default_rate_negative_button = 2131623986;
+			// aapt resource value: 0x7F0C0032
+			public static int ua_notification_button_share = 2131492914;
 			
-			// aapt resource value: 0x7F0E0033
-			public static int ua_rate_app_action_default_rate_positive_button = 2131623987;
+			// aapt resource value: 0x7F0C0033
+			public static int ua_notification_button_shop_now = 2131492915;
 			
-			// aapt resource value: 0x7F0E0034
-			public static int ua_rate_app_action_default_title = 2131623988;
+			// aapt resource value: 0x7F0C0034
+			public static int ua_notification_button_tell_me_more = 2131492916;
 			
-			// aapt resource value: 0x7F0E0035
-			public static int ua_rate_app_action_generic_display_name = 2131623989;
+			// aapt resource value: 0x7F0C0035
+			public static int ua_notification_button_unfollow = 2131492917;
 			
-			// aapt resource value: 0x7F0E0036
-			public static int ua_refresh = 2131623990;
+			// aapt resource value: 0x7F0C0036
+			public static int ua_notification_button_yes = 2131492918;
 			
-			// aapt resource value: 0x7F0E0037
-			public static int ua_retry_button = 2131623991;
+			// aapt resource value: 0x7F0C0037
+			public static int ua_ok = 2131492919;
 			
-			// aapt resource value: 0x7F0E0038
-			public static int ua_select_all = 2131623992;
+			// aapt resource value: 0x7F0C0038
+			public static int ua_open = 2131492920;
 			
-			// aapt resource value: 0x7F0E0039
-			public static int ua_select_none = 2131623993;
+			// aapt resource value: 0x7F0C0039
+			public static int ua_rate_app_action_default_body = 2131492921;
 			
-			// aapt resource value: 0x7F0E003A
-			public static int ua_share_dialog_title = 2131623994;
+			// aapt resource value: 0x7F0C003A
+			public static int ua_rate_app_action_default_rate_negative_button = 2131492922;
+			
+			// aapt resource value: 0x7F0C003B
+			public static int ua_rate_app_action_default_rate_positive_button = 2131492923;
+			
+			// aapt resource value: 0x7F0C003C
+			public static int ua_rate_app_action_default_title = 2131492924;
+			
+			// aapt resource value: 0x7F0C003D
+			public static int ua_rate_app_action_generic_display_name = 2131492925;
+			
+			// aapt resource value: 0x7F0C003E
+			public static int ua_refresh = 2131492926;
+			
+			// aapt resource value: 0x7F0C003F
+			public static int ua_retry_button = 2131492927;
+			
+			// aapt resource value: 0x7F0C0040
+			public static int ua_select_all = 2131492928;
+			
+			// aapt resource value: 0x7F0C0041
+			public static int ua_select_none = 2131492929;
+			
+			// aapt resource value: 0x7F0C0042
+			public static int ua_service_channel_description = 2131492930;
+			
+			// aapt resource value: 0x7F0C0043
+			public static int ua_service_channel_id = 2131492931;
+			
+			// aapt resource value: 0x7F0C0044
+			public static int ua_service_channel_name = 2131492932;
+			
+			// aapt resource value: 0x7F0C0045
+			public static int ua_share_dialog_title = 2131492933;
+			
+			// aapt resource value: 0x7F0C0046
+			public static int ua_urgent_channel_description = 2131492934;
+			
+			// aapt resource value: 0x7F0C0047
+			public static int ua_urgent_channel_id = 2131492935;
+			
+			// aapt resource value: 0x7F0C0048
+			public static int ua_urgent_channel_name = 2131492936;
 			
 			static String()
 			{
@@ -1052,329 +774,290 @@ namespace AirshipBindings.NETStandard
 		public partial class Style
 		{
 			
-			// aapt resource value: 0x7F0F0000
-			public static int Base_Widget_UrbanAirship_MessageCenter_Item_CheckBox = 2131689472;
+			// aapt resource value: 0x7F0D0000
+			public static int Base_Widget_UrbanAirship_MessageCenter_Item_CheckBox = 2131558400;
 			
-			// aapt resource value: 0x7F0F0001
-			public static int Base_Widget_UrbanAirship_MessageCenter_Item_Container = 2131689473;
+			// aapt resource value: 0x7F0D0001
+			public static int Base_Widget_UrbanAirship_MessageCenter_Item_Container = 2131558401;
 			
-			// aapt resource value: 0x7F0F0002
-			public static int Base_Widget_UrbanAirship_MessageCenter_Item_Date = 2131689474;
+			// aapt resource value: 0x7F0D0002
+			public static int Base_Widget_UrbanAirship_MessageCenter_Item_Date = 2131558402;
 			
-			// aapt resource value: 0x7F0F0003
-			public static int Base_Widget_UrbanAirship_MessageCenter_Item_Icon = 2131689475;
+			// aapt resource value: 0x7F0D0003
+			public static int Base_Widget_UrbanAirship_MessageCenter_Item_Icon = 2131558403;
 			
-			// aapt resource value: 0x7F0F0004
-			public static int Base_Widget_UrbanAirship_MessageCenter_Item_Title = 2131689476;
+			// aapt resource value: 0x7F0D0004
+			public static int Base_Widget_UrbanAirship_MessageCenter_Item_Title = 2131558404;
 			
-			// aapt resource value: 0x7F0F0005
-			public static int MessageCenter = 2131689477;
+			// aapt resource value: 0x7F0D0005
+			public static int MessageCenter = 2131558405;
 			
-			// aapt resource value: 0x7F0F0006
-			public static int MessageCenter_EmptyMessage_TextAppearance = 2131689478;
+			// aapt resource value: 0x7F0D0006
+			public static int MessageCenter_EmptyMessage_TextAppearance = 2131558406;
 			
-			// aapt resource value: 0x7F0F0007
-			public static int MessageCenter_Item_Date_TextAppearance = 2131689479;
+			// aapt resource value: 0x7F0D0007
+			public static int MessageCenter_Item_Date_TextAppearance = 2131558407;
 			
-			// aapt resource value: 0x7F0F0008
-			public static int MessageCenter_Item_Title_TextAppearance = 2131689480;
+			// aapt resource value: 0x7F0D0008
+			public static int MessageCenter_Item_Title_TextAppearance = 2131558408;
 			
-			// aapt resource value: 0x7F0F0009
-			public static int MessageCenter_MessageNotSelected_TextAppearance = 2131689481;
+			// aapt resource value: 0x7F0D0009
+			public static int MessageCenter_MessageNotSelected_TextAppearance = 2131558409;
 			
-			// aapt resource value: 0x7F0F000A
-			public static int TextAppearance_Compat_Notification = 2131689482;
+			// aapt resource value: 0x7F0D000A
+			public static int UrbanAirship = 2131558410;
 			
-			// aapt resource value: 0x7F0F000B
-			public static int TextAppearance_Compat_Notification_Info = 2131689483;
+			// aapt resource value: 0x7F0D000B
+			public static int UrbanAirship_HelperActivity = 2131558411;
 			
-			// aapt resource value: 0x7F0F000C
-			public static int TextAppearance_Compat_Notification_Info_Media = 2131689484;
+			// aapt resource value: 0x7F0D000C
+			public static int UrbanAirship_InAppBanner = 2131558412;
 			
-			// aapt resource value: 0x7F0F000D
-			public static int TextAppearance_Compat_Notification_Line2 = 2131689485;
+			// aapt resource value: 0x7F0D000D
+			public static int UrbanAirship_InAppBanner_Body = 2131558413;
 			
-			// aapt resource value: 0x7F0F000E
-			public static int TextAppearance_Compat_Notification_Line2_Media = 2131689486;
+			// aapt resource value: 0x7F0D000E
+			public static int UrbanAirship_InAppBanner_Button = 2131558414;
 			
-			// aapt resource value: 0x7F0F000F
-			public static int TextAppearance_Compat_Notification_Media = 2131689487;
+			// aapt resource value: 0x7F0D000F
+			public static int UrbanAirship_InAppBanner_ButtonLayout = 2131558415;
 			
-			// aapt resource value: 0x7F0F0010
-			public static int TextAppearance_Compat_Notification_Time = 2131689488;
+			// aapt resource value: 0x7F0D0010
+			public static int UrbanAirship_InAppBanner_Heading = 2131558416;
 			
-			// aapt resource value: 0x7F0F0011
-			public static int TextAppearance_Compat_Notification_Time_Media = 2131689489;
+			// aapt resource value: 0x7F0D0011
+			public static int UrbanAirship_InAppBanner_Layout = 2131558417;
 			
-			// aapt resource value: 0x7F0F0012
-			public static int TextAppearance_Compat_Notification_Title = 2131689490;
+			// aapt resource value: 0x7F0D0012
+			public static int UrbanAirship_InAppBanner_Layout_Bottom = 2131558418;
 			
-			// aapt resource value: 0x7F0F0013
-			public static int TextAppearance_Compat_Notification_Title_Media = 2131689491;
+			// aapt resource value: 0x7F0D0013
+			public static int UrbanAirship_InAppBanner_Layout_Top = 2131558419;
 			
-			// aapt resource value: 0x7F0F0014
-			public static int UrbanAirship = 2131689492;
+			// aapt resource value: 0x7F0D0014
+			public static int UrbanAirship_InAppBanner_MediaView = 2131558420;
 			
-			// aapt resource value: 0x7F0F0015
-			public static int UrbanAirship_HelperActivity = 2131689493;
+			// aapt resource value: 0x7F0D0015
+			public static int UrbanAirship_InAppBanner_MediaView_Left = 2131558421;
 			
-			// aapt resource value: 0x7F0F0016
-			public static int UrbanAirship_InAppBanner = 2131689494;
+			// aapt resource value: 0x7F0D0016
+			public static int UrbanAirship_InAppBanner_MediaView_Right = 2131558422;
 			
-			// aapt resource value: 0x7F0F0017
-			public static int UrbanAirship_InAppBanner_Body = 2131689495;
+			// aapt resource value: 0x7F0D0017
+			public static int UrbanAirship_InAppBanner_Pull = 2131558423;
 			
-			// aapt resource value: 0x7F0F0018
-			public static int UrbanAirship_InAppBanner_Button = 2131689496;
+			// aapt resource value: 0x7F0D0018
+			public static int UrbanAirship_InAppBanner_Pull_Bottom = 2131558424;
 			
-			// aapt resource value: 0x7F0F0019
-			public static int UrbanAirship_InAppBanner_ButtonLayout = 2131689497;
+			// aapt resource value: 0x7F0D0019
+			public static int UrbanAirship_InAppBanner_Pull_Top = 2131558425;
 			
-			// aapt resource value: 0x7F0F001A
-			public static int UrbanAirship_InAppBanner_Heading = 2131689498;
+			// aapt resource value: 0x7F0D001A
+			public static int UrbanAirship_InAppFullscreen = 2131558426;
 			
-			// aapt resource value: 0x7F0F001B
-			public static int UrbanAirship_InAppBanner_Layout = 2131689499;
+			// aapt resource value: 0x7F0D001B
+			public static int UrbanAirship_InAppFullscreen_Activity = 2131558427;
 			
-			// aapt resource value: 0x7F0F001C
-			public static int UrbanAirship_InAppBanner_Layout_Bottom = 2131689500;
+			// aapt resource value: 0x7F0D001C
+			public static int UrbanAirship_InAppFullscreen_Body = 2131558428;
 			
-			// aapt resource value: 0x7F0F001D
-			public static int UrbanAirship_InAppBanner_Layout_Top = 2131689501;
+			// aapt resource value: 0x7F0D001D
+			public static int UrbanAirship_InAppFullscreen_Body_HeaderBodyMedia = 2131558429;
 			
-			// aapt resource value: 0x7F0F001E
-			public static int UrbanAirship_InAppBanner_MediaView = 2131689502;
+			// aapt resource value: 0x7F0D001E
+			public static int UrbanAirship_InAppFullscreen_Body_HeaderMediaBody = 2131558430;
 			
-			// aapt resource value: 0x7F0F001F
-			public static int UrbanAirship_InAppBanner_MediaView_Left = 2131689503;
+			// aapt resource value: 0x7F0D001F
+			public static int UrbanAirship_InAppFullscreen_Body_MediaHeaderBody = 2131558431;
 			
-			// aapt resource value: 0x7F0F0020
-			public static int UrbanAirship_InAppBanner_MediaView_Right = 2131689504;
+			// aapt resource value: 0x7F0D0020
+			public static int UrbanAirship_InAppFullscreen_Button = 2131558432;
 			
-			// aapt resource value: 0x7F0F0021
-			public static int UrbanAirship_InAppBanner_Pull = 2131689505;
+			// aapt resource value: 0x7F0D0021
+			public static int UrbanAirship_InAppFullscreen_ButtonLayout = 2131558433;
 			
-			// aapt resource value: 0x7F0F0022
-			public static int UrbanAirship_InAppBanner_Pull_Bottom = 2131689506;
+			// aapt resource value: 0x7F0D0022
+			public static int UrbanAirship_InAppFullscreen_DismissButton = 2131558434;
 			
-			// aapt resource value: 0x7F0F0023
-			public static int UrbanAirship_InAppBanner_Pull_Top = 2131689507;
+			// aapt resource value: 0x7F0D0023
+			public static int UrbanAirship_InAppFullscreen_DismissButtonHolder = 2131558435;
 			
-			// aapt resource value: 0x7F0F0024
-			public static int UrbanAirship_InAppFullscreen = 2131689508;
+			// aapt resource value: 0x7F0D0024
+			public static int UrbanAirship_InAppFullscreen_Footer = 2131558436;
 			
-			// aapt resource value: 0x7F0F0025
-			public static int UrbanAirship_InAppFullscreen_Activity = 2131689509;
+			// aapt resource value: 0x7F0D0025
+			public static int UrbanAirship_InAppFullscreen_FooterHolder = 2131558437;
 			
-			// aapt resource value: 0x7F0F0026
-			public static int UrbanAirship_InAppFullscreen_Body = 2131689510;
+			// aapt resource value: 0x7F0D0026
+			public static int UrbanAirship_InAppFullscreen_Heading = 2131558438;
 			
-			// aapt resource value: 0x7F0F0027
-			public static int UrbanAirship_InAppFullscreen_Body_HeaderBodyMedia = 2131689511;
+			// aapt resource value: 0x7F0D0027
+			public static int UrbanAirship_InAppFullscreen_Heading_HeaderBodyMedia = 2131558439;
 			
-			// aapt resource value: 0x7F0F0028
-			public static int UrbanAirship_InAppFullscreen_Body_HeaderMediaBody = 2131689512;
+			// aapt resource value: 0x7F0D0028
+			public static int UrbanAirship_InAppFullscreen_Heading_HeaderMediaBody = 2131558440;
 			
-			// aapt resource value: 0x7F0F0029
-			public static int UrbanAirship_InAppFullscreen_Body_MediaHeaderBody = 2131689513;
+			// aapt resource value: 0x7F0D0029
+			public static int UrbanAirship_InAppFullscreen_Heading_MediaHeaderBody = 2131558441;
 			
-			// aapt resource value: 0x7F0F002A
-			public static int UrbanAirship_InAppFullscreen_Button = 2131689514;
+			// aapt resource value: 0x7F0D002A
+			public static int UrbanAirship_InAppFullscreen_Layout = 2131558442;
 			
-			// aapt resource value: 0x7F0F002B
-			public static int UrbanAirship_InAppFullscreen_ButtonLayout = 2131689515;
+			// aapt resource value: 0x7F0D002B
+			public static int UrbanAirship_InAppFullscreen_Layout_HeaderBodyMedia = 2131558443;
 			
-			// aapt resource value: 0x7F0F002C
-			public static int UrbanAirship_InAppFullscreen_DismissButton = 2131689516;
+			// aapt resource value: 0x7F0D002C
+			public static int UrbanAirship_InAppFullscreen_Layout_HeaderMediaBody = 2131558444;
 			
-			// aapt resource value: 0x7F0F002D
-			public static int UrbanAirship_InAppFullscreen_DismissButtonHolder = 2131689517;
+			// aapt resource value: 0x7F0D002D
+			public static int UrbanAirship_InAppFullscreen_Layout_MediaHeaderBody = 2131558445;
 			
-			// aapt resource value: 0x7F0F002E
-			public static int UrbanAirship_InAppFullscreen_Footer = 2131689518;
+			// aapt resource value: 0x7F0D002E
+			public static int UrbanAirship_InAppFullscreen_MediaView = 2131558446;
 			
-			// aapt resource value: 0x7F0F002F
-			public static int UrbanAirship_InAppFullscreen_FooterHolder = 2131689519;
+			// aapt resource value: 0x7F0D002F
+			public static int UrbanAirship_InAppFullscreen_MediaView_HeaderBodyMedia = 2131558447;
 			
-			// aapt resource value: 0x7F0F0030
-			public static int UrbanAirship_InAppFullscreen_Heading = 2131689520;
+			// aapt resource value: 0x7F0D0030
+			public static int UrbanAirship_InAppFullscreen_MediaView_HeaderMediaBody = 2131558448;
 			
-			// aapt resource value: 0x7F0F0031
-			public static int UrbanAirship_InAppFullscreen_Heading_HeaderBodyMedia = 2131689521;
+			// aapt resource value: 0x7F0D0031
+			public static int UrbanAirship_InAppFullscreen_MediaView_MediaHeaderBody = 2131558449;
 			
-			// aapt resource value: 0x7F0F0032
-			public static int UrbanAirship_InAppFullscreen_Heading_HeaderMediaBody = 2131689522;
+			// aapt resource value: 0x7F0D0032
+			public static int UrbanAirship_InAppFullscreen_ScrollView = 2131558450;
 			
-			// aapt resource value: 0x7F0F0033
-			public static int UrbanAirship_InAppFullscreen_Heading_MediaHeaderBody = 2131689523;
+			// aapt resource value: 0x7F0D0033
+			public static int UrbanAirship_InAppHtml = 2131558451;
 			
-			// aapt resource value: 0x7F0F0034
-			public static int UrbanAirship_InAppFullscreen_Layout = 2131689524;
+			// aapt resource value: 0x7F0D0034
+			public static int UrbanAirship_InAppHtml_Activity = 2131558452;
 			
-			// aapt resource value: 0x7F0F0035
-			public static int UrbanAirship_InAppFullscreen_Layout_HeaderBodyMedia = 2131689525;
+			// aapt resource value: 0x7F0D0035
+			public static int UrbanAirship_InAppHtml_Activity_Fullscreen = 2131558453;
 			
-			// aapt resource value: 0x7F0F0036
-			public static int UrbanAirship_InAppFullscreen_Layout_HeaderMediaBody = 2131689526;
+			// aapt resource value: 0x7F0D0036
+			public static int UrbanAirship_InAppHtml_Content = 2131558454;
 			
-			// aapt resource value: 0x7F0F0037
-			public static int UrbanAirship_InAppFullscreen_Layout_MediaHeaderBody = 2131689527;
+			// aapt resource value: 0x7F0D0037
+			public static int UrbanAirship_InAppHtml_Content_Fullscreen = 2131558455;
 			
-			// aapt resource value: 0x7F0F0038
-			public static int UrbanAirship_InAppFullscreen_MediaView = 2131689528;
+			// aapt resource value: 0x7F0D0038
+			public static int UrbanAirship_InAppHtml_DismissButton = 2131558456;
 			
-			// aapt resource value: 0x7F0F0039
-			public static int UrbanAirship_InAppFullscreen_MediaView_HeaderBodyMedia = 2131689529;
+			// aapt resource value: 0x7F0D0039
+			public static int UrbanAirship_InAppHtml_Layout = 2131558457;
 			
-			// aapt resource value: 0x7F0F003A
-			public static int UrbanAirship_InAppFullscreen_MediaView_HeaderMediaBody = 2131689530;
+			// aapt resource value: 0x7F0D003A
+			public static int UrbanAirship_InAppHtml_Layout_Fullscreen = 2131558458;
 			
-			// aapt resource value: 0x7F0F003B
-			public static int UrbanAirship_InAppFullscreen_MediaView_MediaHeaderBody = 2131689531;
+			// aapt resource value: 0x7F0D003B
+			public static int UrbanAirship_InAppHtml_Progress = 2131558459;
 			
-			// aapt resource value: 0x7F0F003C
-			public static int UrbanAirship_InAppFullscreen_ScrollView = 2131689532;
+			// aapt resource value: 0x7F0D003C
+			public static int UrbanAirship_InAppHtml_WebView = 2131558460;
 			
-			// aapt resource value: 0x7F0F003D
-			public static int UrbanAirship_InAppHtml = 2131689533;
+			// aapt resource value: 0x7F0D003D
+			public static int UrbanAirship_InAppModal = 2131558461;
 			
-			// aapt resource value: 0x7F0F003E
-			public static int UrbanAirship_InAppHtml_Activity = 2131689534;
+			// aapt resource value: 0x7F0D003E
+			public static int UrbanAirship_InAppModal_Activity = 2131558462;
 			
-			// aapt resource value: 0x7F0F003F
-			public static int UrbanAirship_InAppHtml_Activity_Fullscreen = 2131689535;
+			// aapt resource value: 0x7F0D003F
+			public static int UrbanAirship_InAppModal_Activity_Fullscreen = 2131558463;
 			
-			// aapt resource value: 0x7F0F0040
-			public static int UrbanAirship_InAppHtml_Content = 2131689536;
+			// aapt resource value: 0x7F0D0040
+			public static int UrbanAirship_InAppModal_Body = 2131558464;
 			
-			// aapt resource value: 0x7F0F0041
-			public static int UrbanAirship_InAppHtml_Content_Fullscreen = 2131689537;
+			// aapt resource value: 0x7F0D0041
+			public static int UrbanAirship_InAppModal_Body_HeaderBodyMedia = 2131558465;
 			
-			// aapt resource value: 0x7F0F0042
-			public static int UrbanAirship_InAppHtml_DismissButton = 2131689538;
+			// aapt resource value: 0x7F0D0042
+			public static int UrbanAirship_InAppModal_Body_HeaderMediaBody = 2131558466;
 			
-			// aapt resource value: 0x7F0F0043
-			public static int UrbanAirship_InAppHtml_Layout = 2131689539;
+			// aapt resource value: 0x7F0D0043
+			public static int UrbanAirship_InAppModal_Body_MediaHeaderBody = 2131558467;
 			
-			// aapt resource value: 0x7F0F0044
-			public static int UrbanAirship_InAppHtml_Layout_Fullscreen = 2131689540;
+			// aapt resource value: 0x7F0D0044
+			public static int UrbanAirship_InAppModal_Button = 2131558468;
 			
-			// aapt resource value: 0x7F0F0045
-			public static int UrbanAirship_InAppHtml_Progress = 2131689541;
+			// aapt resource value: 0x7F0D0045
+			public static int UrbanAirship_InAppModal_ButtonLayout = 2131558469;
 			
-			// aapt resource value: 0x7F0F0046
-			public static int UrbanAirship_InAppHtml_WebView = 2131689542;
+			// aapt resource value: 0x7F0D0046
+			public static int UrbanAirship_InAppModal_Content = 2131558470;
 			
-			// aapt resource value: 0x7F0F0047
-			public static int UrbanAirship_InAppModal = 2131689543;
+			// aapt resource value: 0x7F0D0047
+			public static int UrbanAirship_InAppModal_Content_HeaderBodyMedia = 2131558471;
 			
-			// aapt resource value: 0x7F0F0048
-			public static int UrbanAirship_InAppModal_Activity = 2131689544;
+			// aapt resource value: 0x7F0D0048
+			public static int UrbanAirship_InAppModal_Content_HeaderMediaBody = 2131558472;
 			
-			// aapt resource value: 0x7F0F0049
-			public static int UrbanAirship_InAppModal_Activity_Fullscreen = 2131689545;
+			// aapt resource value: 0x7F0D0049
+			public static int UrbanAirship_InAppModal_Content_MediaHeaderBody = 2131558473;
 			
-			// aapt resource value: 0x7F0F004A
-			public static int UrbanAirship_InAppModal_Body = 2131689546;
+			// aapt resource value: 0x7F0D004A
+			public static int UrbanAirship_InAppModal_DismissButton = 2131558474;
 			
-			// aapt resource value: 0x7F0F004B
-			public static int UrbanAirship_InAppModal_Body_HeaderBodyMedia = 2131689547;
+			// aapt resource value: 0x7F0D004B
+			public static int UrbanAirship_InAppModal_DismissButton_Fullscreen = 2131558475;
 			
-			// aapt resource value: 0x7F0F004C
-			public static int UrbanAirship_InAppModal_Body_HeaderMediaBody = 2131689548;
+			// aapt resource value: 0x7F0D004C
+			public static int UrbanAirship_InAppModal_Footer = 2131558476;
 			
-			// aapt resource value: 0x7F0F004D
-			public static int UrbanAirship_InAppModal_Body_MediaHeaderBody = 2131689549;
+			// aapt resource value: 0x7F0D004D
+			public static int UrbanAirship_InAppModal_FooterHolder = 2131558477;
 			
-			// aapt resource value: 0x7F0F004E
-			public static int UrbanAirship_InAppModal_Button = 2131689550;
+			// aapt resource value: 0x7F0D004E
+			public static int UrbanAirship_InAppModal_Heading = 2131558478;
 			
-			// aapt resource value: 0x7F0F004F
-			public static int UrbanAirship_InAppModal_ButtonLayout = 2131689551;
+			// aapt resource value: 0x7F0D004F
+			public static int UrbanAirship_InAppModal_Heading_HeaderBodyMedia = 2131558479;
 			
-			// aapt resource value: 0x7F0F0050
-			public static int UrbanAirship_InAppModal_Content = 2131689552;
+			// aapt resource value: 0x7F0D0050
+			public static int UrbanAirship_InAppModal_Heading_HeaderMediaBody = 2131558480;
 			
-			// aapt resource value: 0x7F0F0051
-			public static int UrbanAirship_InAppModal_Content_HeaderBodyMedia = 2131689553;
+			// aapt resource value: 0x7F0D0051
+			public static int UrbanAirship_InAppModal_Heading_MediaHeaderBody = 2131558481;
 			
-			// aapt resource value: 0x7F0F0052
-			public static int UrbanAirship_InAppModal_Content_HeaderMediaBody = 2131689554;
+			// aapt resource value: 0x7F0D0052
+			public static int UrbanAirship_InAppModal_Layout = 2131558482;
 			
-			// aapt resource value: 0x7F0F0053
-			public static int UrbanAirship_InAppModal_Content_MediaHeaderBody = 2131689555;
+			// aapt resource value: 0x7F0D0053
+			public static int UrbanAirship_InAppModal_Layout_Fullscreen = 2131558483;
 			
-			// aapt resource value: 0x7F0F0054
-			public static int UrbanAirship_InAppModal_DismissButton = 2131689556;
+			// aapt resource value: 0x7F0D0054
+			public static int UrbanAirship_InAppModal_MediaView = 2131558484;
 			
-			// aapt resource value: 0x7F0F0055
-			public static int UrbanAirship_InAppModal_DismissButton_Fullscreen = 2131689557;
+			// aapt resource value: 0x7F0D0055
+			public static int UrbanAirship_InAppModal_MediaView_HeaderBodyMedia = 2131558485;
 			
-			// aapt resource value: 0x7F0F0056
-			public static int UrbanAirship_InAppModal_Footer = 2131689558;
+			// aapt resource value: 0x7F0D0056
+			public static int UrbanAirship_InAppModal_MediaView_HeaderMediaBody = 2131558486;
 			
-			// aapt resource value: 0x7F0F0057
-			public static int UrbanAirship_InAppModal_FooterHolder = 2131689559;
+			// aapt resource value: 0x7F0D0057
+			public static int UrbanAirship_InAppModal_MediaView_MediaHeaderBody = 2131558487;
 			
-			// aapt resource value: 0x7F0F0058
-			public static int UrbanAirship_InAppModal_Heading = 2131689560;
+			// aapt resource value: 0x7F0D0058
+			public static int UrbanAirship_InAppModal_ScrollView = 2131558488;
 			
-			// aapt resource value: 0x7F0F0059
-			public static int UrbanAirship_InAppModal_Heading_HeaderBodyMedia = 2131689561;
+			// aapt resource value: 0x7F0D0059
+			public static int UrbanAirship_RateAppActivity = 2131558489;
 			
-			// aapt resource value: 0x7F0F005A
-			public static int UrbanAirship_InAppModal_Heading_HeaderMediaBody = 2131689562;
+			// aapt resource value: 0x7F0D005A
+			public static int Widget_UrbanAirship_MessageCenter_Item_CheckBox = 2131558490;
 			
-			// aapt resource value: 0x7F0F005B
-			public static int UrbanAirship_InAppModal_Heading_MediaHeaderBody = 2131689563;
+			// aapt resource value: 0x7F0D005B
+			public static int Widget_UrbanAirship_MessageCenter_Item_Container = 2131558491;
 			
-			// aapt resource value: 0x7F0F005C
-			public static int UrbanAirship_InAppModal_Layout = 2131689564;
+			// aapt resource value: 0x7F0D005C
+			public static int Widget_UrbanAirship_MessageCenter_Item_Date = 2131558492;
 			
-			// aapt resource value: 0x7F0F005D
-			public static int UrbanAirship_InAppModal_Layout_Fullscreen = 2131689565;
+			// aapt resource value: 0x7F0D005D
+			public static int Widget_UrbanAirship_MessageCenter_Item_Icon = 2131558493;
 			
-			// aapt resource value: 0x7F0F005E
-			public static int UrbanAirship_InAppModal_MediaView = 2131689566;
-			
-			// aapt resource value: 0x7F0F005F
-			public static int UrbanAirship_InAppModal_MediaView_HeaderBodyMedia = 2131689567;
-			
-			// aapt resource value: 0x7F0F0060
-			public static int UrbanAirship_InAppModal_MediaView_HeaderMediaBody = 2131689568;
-			
-			// aapt resource value: 0x7F0F0061
-			public static int UrbanAirship_InAppModal_MediaView_MediaHeaderBody = 2131689569;
-			
-			// aapt resource value: 0x7F0F0062
-			public static int UrbanAirship_InAppModal_ScrollView = 2131689570;
-			
-			// aapt resource value: 0x7F0F0063
-			public static int UrbanAirship_LandingPageActivity = 2131689571;
-			
-			// aapt resource value: 0x7F0F0064
-			public static int UrbanAirship_RateAppActivity = 2131689572;
-			
-			// aapt resource value: 0x7F0F0065
-			public static int Widget_Compat_NotificationActionContainer = 2131689573;
-			
-			// aapt resource value: 0x7F0F0066
-			public static int Widget_Compat_NotificationActionText = 2131689574;
-			
-			// aapt resource value: 0x7F0F0067
-			public static int Widget_UrbanAirship_MessageCenter_Item_CheckBox = 2131689575;
-			
-			// aapt resource value: 0x7F0F0068
-			public static int Widget_UrbanAirship_MessageCenter_Item_Container = 2131689576;
-			
-			// aapt resource value: 0x7F0F0069
-			public static int Widget_UrbanAirship_MessageCenter_Item_Date = 2131689577;
-			
-			// aapt resource value: 0x7F0F006A
-			public static int Widget_UrbanAirship_MessageCenter_Item_Icon = 2131689578;
-			
-			// aapt resource value: 0x7F0F006B
-			public static int Widget_UrbanAirship_MessageCenter_Item_Title = 2131689579;
+			// aapt resource value: 0x7F0D005E
+			public static int Widget_UrbanAirship_MessageCenter_Item_Title = 2131558494;
 			
 			static Style()
 			{
@@ -1389,72 +1072,18 @@ namespace AirshipBindings.NETStandard
 		public partial class Styleable
 		{
 			
-			// aapt resource value: { 0x7F030001,0x7F030002,0x7F030003,0x7F030004,0x7F030005,0x7F030006 }
-			public static int[] FontFamily = new int[] {
+			// aapt resource value: { 0x7F030000,0x7F030001,0x7F030002,0x7F030003,0x7F030004,0x7F030005,0x7F030006,0x7F030007,0x7F030009,0x7F03000A }
+			public static int[] MessageCenter = new int[] {
+					2130903040,
 					2130903041,
 					2130903042,
 					2130903043,
 					2130903044,
 					2130903045,
-					2130903046};
-			
-			// aapt resource value: { 0x1010532,0x1010533,0x101053F,0x7F030000,0x7F030007,0x7F030008 }
-			public static int[] FontFamilyFont = new int[] {
-					16844082,
-					16844083,
-					16844095,
-					2130903040,
+					2130903046,
 					2130903047,
-					2130903048};
-			
-			// aapt resource value: 0
-			public static int FontFamilyFont_android_font = 0;
-			
-			// aapt resource value: 2
-			public static int FontFamilyFont_android_fontStyle = 2;
-			
-			// aapt resource value: 1
-			public static int FontFamilyFont_android_fontWeight = 1;
-			
-			// aapt resource value: 3
-			public static int FontFamilyFont_font = 3;
-			
-			// aapt resource value: 4
-			public static int FontFamilyFont_fontStyle = 4;
-			
-			// aapt resource value: 5
-			public static int FontFamilyFont_fontWeight = 5;
-			
-			// aapt resource value: 0
-			public static int FontFamily_fontProviderAuthority = 0;
-			
-			// aapt resource value: 1
-			public static int FontFamily_fontProviderCerts = 1;
-			
-			// aapt resource value: 2
-			public static int FontFamily_fontProviderFetchStrategy = 2;
-			
-			// aapt resource value: 3
-			public static int FontFamily_fontProviderFetchTimeout = 3;
-			
-			// aapt resource value: 4
-			public static int FontFamily_fontProviderPackage = 4;
-			
-			// aapt resource value: 5
-			public static int FontFamily_fontProviderQuery = 5;
-			
-			// aapt resource value: { 0x7F030009,0x7F03000A,0x7F03000B,0x7F03000C,0x7F03000D,0x7F03000E,0x7F03000F,0x7F030010,0x7F030012,0x7F030013 }
-			public static int[] MessageCenter = new int[] {
 					2130903049,
-					2130903050,
-					2130903051,
-					2130903052,
-					2130903053,
-					2130903054,
-					2130903055,
-					2130903056,
-					2130903058,
-					2130903059};
+					2130903050};
 			
 			// aapt resource value: 0
 			public static int MessageCenter_messageCenterDividerColor = 0;
@@ -1486,23 +1115,23 @@ namespace AirshipBindings.NETStandard
 			// aapt resource value: 9
 			public static int MessageCenter_messageNotSelectedTextAppearance = 9;
 			
-			// aapt resource value: { 0x7F030015 }
+			// aapt resource value: { 0x7F03000C }
 			public static int[] States = new int[] {
-					2130903061};
+					2130903052};
 			
 			// aapt resource value: 0
 			public static int States_ua_state_highlighted = 0;
 			
-			// aapt resource value: { 0x7F030011 }
+			// aapt resource value: { 0x7F030008 }
 			public static int[] Theme = new int[] {
-					2130903057};
+					2130903048};
 			
 			// aapt resource value: 0
 			public static int Theme_messageCenterStyle = 0;
 			
-			// aapt resource value: { 0x7F030014 }
+			// aapt resource value: { 0x7F03000B }
 			public static int[] UAWebView = new int[] {
-					2130903060};
+					2130903051};
 			
 			// aapt resource value: 0
 			public static int UAWebView_mixed_content_mode = 0;
@@ -1518,11 +1147,11 @@ namespace AirshipBindings.NETStandard
 			// aapt resource value: 0
 			public static int UrbanAirshipActionButton_android_label = 0;
 			
-			// aapt resource value: { 0x7F030016,0x7F030019,0x7F03001A }
+			// aapt resource value: { 0x7F03000D,0x7F030010,0x7F030011 }
 			public static int[] UrbanAirshipInAppButtonLayout = new int[] {
-					2130903062,
-					2130903065,
-					2130903066};
+					2130903053,
+					2130903056,
+					2130903057};
 			
 			// aapt resource value: 0
 			public static int UrbanAirshipInAppButtonLayout_urbanAirshipButtonLayoutResourceId = 0;
@@ -1533,10 +1162,10 @@ namespace AirshipBindings.NETStandard
 			// aapt resource value: 2
 			public static int UrbanAirshipInAppButtonLayout_urbanAirshipStackedSpaceHeight = 2;
 			
-			// aapt resource value: { 0x7F030017,0x7F030018 }
+			// aapt resource value: { 0x7F03000E,0x7F03000F }
 			public static int[] UrbanAirshipLayout = new int[] {
-					2130903063,
-					2130903064};
+					2130903054,
+					2130903055};
 			
 			// aapt resource value: 0
 			public static int UrbanAirshipLayout_urbanAirshipMaxHeight = 0;
@@ -1557,17 +1186,17 @@ namespace AirshipBindings.NETStandard
 		public partial class Xml
 		{
 			
-			// aapt resource value: 0x7F110000
-			public static int ua_default_actions = 2131820544;
+			// aapt resource value: 0x7F0F0000
+			public static int ua_default_actions = 2131689472;
 			
-			// aapt resource value: 0x7F110001
-			public static int ua_default_channels = 2131820545;
+			// aapt resource value: 0x7F0F0001
+			public static int ua_default_channels = 2131689473;
 			
-			// aapt resource value: 0x7F110003
-			public static int ua_notification_buttons = 2131820547;
+			// aapt resource value: 0x7F0F0003
+			public static int ua_notification_buttons = 2131689475;
 			
-			// aapt resource value: 0x7F110002
-			public static int ua_notification_button_overrides = 2131820546;
+			// aapt resource value: 0x7F0F0002
+			public static int ua_notification_button_overrides = 2131689474;
 			
 			static Xml()
 			{

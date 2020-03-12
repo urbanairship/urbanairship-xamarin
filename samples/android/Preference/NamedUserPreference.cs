@@ -3,9 +3,12 @@
 */
 
 using System;
-using Android.Support.V7.Preferences;
+
 using Android.Content;
 using Android.Util;
+
+using AndroidX.Preference;
+
 using UrbanAirship;
 
 namespace Sample.Preference

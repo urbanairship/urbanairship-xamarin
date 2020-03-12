@@ -10,10 +10,11 @@ using Android.Util;
 using UrbanAirship;
 using UrbanAirship.Push;
 using UrbanAirship.MessageCenter;
+using UrbanAirship.Channel;
 
 namespace Sample
 {
-    public class UrbanAirshipListener : Java.Lang.Object, IRegistrationListener, IPushListener, INotificationListener, MessageCenterClass.IOnShowMessageCenterListener
+    public class UrbanAirshipListener : Java.Lang.Object, IAirshipChannelListener, IPushTokenListener, IPushListener, INotificationListener, MessageCenterClass.IOnShowMessageCenterListener
     {
         private const string TAG = "UrbanAirshipReceiver";
 
@@ -82,7 +83,8 @@ namespace Sample
                     Intent intent = new Intent()
                         .SetPackage(context.PackageName)
                         .SetAction(MessageCenterClass.MessageDataScheme)
-                        .SetClass(context, typeof(MainActivity));
+                        .SetClass(context, typeof(MainActivity))
+                        .AddFlags(ActivityFlags.NewTask);
 
                     if (messageId != null)
                     {

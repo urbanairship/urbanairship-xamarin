@@ -30,7 +30,7 @@ namespace UrbanAirship.NETStandard
             get; set;
         }
 
-        Push.TagEditor EditDeviceTags();
+        Channel.TagEditor EditDeviceTags();
 
         void AddCustomEvent(Analytics.CustomEvent customEvent);
 
@@ -48,8 +48,8 @@ namespace UrbanAirship.NETStandard
             get;
         }
 
-        Push.TagGroupsEditor EditNamedUserTagGroups();
+        Channel.TagGroupsEditor EditNamedUserTagGroups();
 
-        Push.TagGroupsEditor EditChannelTagGroups();
+        Channel.TagGroupsEditor EditChannelTagGroups();
     }
 }

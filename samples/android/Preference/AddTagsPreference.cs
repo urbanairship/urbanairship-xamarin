@@ -3,19 +3,17 @@
 */
 
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Text;
 
-using Android.App;
 using Android.Content;
 using Android.Content.Res;
 using Android.OS;
-using Android.Support.V7.Preferences;
 using Android.Util;
 using Android.Views;
 using Android.Views.InputMethods;
 using Android.Widget;
+
+using AndroidX.Preference;
 
 using UrbanAirship;
 
@@ -28,7 +26,7 @@ namespace Sample.Preference
 
         public AddTagsPreference(Context context, IAttributeSet attrs) : base(context, attrs)
         {
-            currentTags = new HashSet<string>(UAirship.Shared().PushManager.Tags);
+            currentTags = new HashSet<string>(UAirship.Shared().Channel.Tags);
         }
 
         public override Java.Lang.ICharSequence SummaryFormatted
@@ -67,7 +65,7 @@ namespace Sample.Preference
             currentTags.Clear();
             currentTags.UnionWith(addTags);
 
-            UAirship.Shared().PushManager.Tags = currentTags;
+            UAirship.Shared().Channel.EditTags().AddTags(currentTags).Apply();
 
             this.NotifyChanged();
         }

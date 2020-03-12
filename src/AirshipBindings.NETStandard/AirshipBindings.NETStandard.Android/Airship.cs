@@ -2,7 +2,6 @@
  Copyright Airship and Contributors
 */
 
-using System;
 using System.Collections.Generic;
 
 namespace UrbanAirship.NETStandard
@@ -36,7 +35,7 @@ namespace UrbanAirship.NETStandard
         {
             get
             {
-                return UAirship.Shared().PushManager.Tags;
+                return UAirship.Shared().Channel.Tags;
             }
         }
 
@@ -44,7 +43,7 @@ namespace UrbanAirship.NETStandard
         {
             get
             {
-                return UAirship.Shared().PushManager.ChannelId;
+                return UAirship.Shared().Channel.Id;
             }
         }
 
@@ -61,14 +60,14 @@ namespace UrbanAirship.NETStandard
             }
         }
 
-        public Push.TagEditor EditDeviceTags()
+        public Channel.TagEditor EditDeviceTags()
         {
-            return new Push.TagEditor(this.DeviceTagHelper);
+            return new Channel.TagEditor(this.DeviceTagHelper);
         }
 
         private void DeviceTagHelper(bool clear, string[] addTags, string[] removeTags)
         {
-            var editor = UAirship.Shared().PushManager.EditTags();
+            var editor = UAirship.Shared().Channel.EditTags();
 
             if (clear)
             {
@@ -134,7 +133,7 @@ namespace UrbanAirship.NETStandard
 
         public void DisplayMessageCenter()
         {
-            UAirship.Shared().Inbox.StartInboxActivity();
+            UAirship.Shared().MessageCenter.ShowMessageCenter();
         }
 
         public int MessageCenterUnreadCount
@@ -153,9 +152,9 @@ namespace UrbanAirship.NETStandard
             }
         }
 
-        public Push.TagGroupsEditor EditNamedUserTagGroups()
+        public Channel.TagGroupsEditor EditNamedUserTagGroups()
         {
-            return new Push.TagGroupsEditor((List<Push.TagGroupsEditor.TagOperation> payload) =>
+            return new Channel.TagGroupsEditor((List<Channel.TagGroupsEditor.TagOperation> payload) =>
             {
                 var editor = UAirship.Shared().NamedUser.EditTagGroups();
                 TagGroupHelper(payload, editor);
@@ -163,30 +162,30 @@ namespace UrbanAirship.NETStandard
             });
         }
 
-        public Push.TagGroupsEditor EditChannelTagGroups()
+        public Channel.TagGroupsEditor EditChannelTagGroups()
         {
-            return new Push.TagGroupsEditor((List<Push.TagGroupsEditor.TagOperation> payload) =>
+            return new Channel.TagGroupsEditor((List<Channel.TagGroupsEditor.TagOperation> payload) =>
             {
-                var editor = UAirship.Shared().PushManager.EditTagGroups();
+                var editor = UAirship.Shared().Channel.EditTagGroups();
                 TagGroupHelper(payload, editor);
                 editor.Apply();
             });
         }
 
-        private void TagGroupHelper(List<Push.TagGroupsEditor.TagOperation> payload, UrbanAirship.Push.TagGroupsEditor editor)
+        private void TagGroupHelper(List<Channel.TagGroupsEditor.TagOperation> payload, UrbanAirship.Channel.TagGroupsEditor editor)
         {
-            foreach (Push.TagGroupsEditor.TagOperation tagOperation in payload)
+            foreach (Channel.TagGroupsEditor.TagOperation tagOperation in payload)
             {
 
                 switch (tagOperation.operationType)
                 {
-                    case Push.TagGroupsEditor.OperationType.ADD:
+                    case Channel.TagGroupsEditor.OperationType.ADD:
                         editor.AddTags(tagOperation.group, tagOperation.tags);
                         break;
-                    case Push.TagGroupsEditor.OperationType.REMOVE:
+                    case Channel.TagGroupsEditor.OperationType.REMOVE:
                         editor.RemoveTags(tagOperation.group, tagOperation.tags);
                         break;
-                    case Push.TagGroupsEditor.OperationType.SET:
+                    case Channel.TagGroupsEditor.OperationType.SET:
                         editor.SetTags(tagOperation.group, tagOperation.tags);
                         break;
                     default:

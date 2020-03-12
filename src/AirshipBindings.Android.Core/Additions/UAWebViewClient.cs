@@ -3,6 +3,7 @@
 */
 
 using System;
+
 using UrbanAirship.Actions;
 
 namespace UrbanAirship.Widget

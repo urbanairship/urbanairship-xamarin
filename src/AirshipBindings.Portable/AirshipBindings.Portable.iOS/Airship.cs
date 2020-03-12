@@ -62,9 +62,9 @@ namespace UrbanAirship.Portable
             }
         }
 
-        public Push.TagEditor EditDeviceTags()
+        public Channel.TagEditor EditDeviceTags()
         {
-            return new Push.TagEditor(this.DeviceTagHelper);
+            return new Channel.TagEditor(this.DeviceTagHelper);
         }
 
         private void DeviceTagHelper(bool clear, string[] addTags, string[] removeTags)
@@ -168,44 +168,44 @@ namespace UrbanAirship.Portable
             }
         }
 
-        public Push.TagGroupsEditor EditNamedUserTagGroups()
+        public Channel.TagGroupsEditor EditNamedUserTagGroups()
         {
-            return new Push.TagGroupsEditor((List<Push.TagGroupsEditor.TagOperation> payload) =>
+            return new Channel.TagGroupsEditor((List<Channel.TagGroupsEditor.TagOperation> payload) =>
             {
                 TagGroupHelper(payload, true);
                 UAirship.NamedUser().UpdateTags();
             });
         }
 
-        public Push.TagGroupsEditor EditChannelTagGroups()
+        public Channel.TagGroupsEditor EditChannelTagGroups()
         {
-            return new Push.TagGroupsEditor((List<Push.TagGroupsEditor.TagOperation> payload) =>
+            return new Channel.TagGroupsEditor((List<Channel.TagGroupsEditor.TagOperation> payload) =>
             {
                 TagGroupHelper(payload, false);
                 UAirship.Push().UpdateRegistration();
             });
         }
 
-        private void TagGroupHelper(List<Push.TagGroupsEditor.TagOperation> operations, bool namedUser)
+        private void TagGroupHelper(List<Channel.TagGroupsEditor.TagOperation> operations, bool namedUser)
         {
-            var namedUserActions = new Dictionary<Push.TagGroupsEditor.OperationType, Action<string, string[]>>()
+            var namedUserActions = new Dictionary<Channel.TagGroupsEditor.OperationType, Action<string, string[]>>()
             {
-                { Push.TagGroupsEditor.OperationType.ADD, (group, t) => UAirship.NamedUser().AddTags(t, group) },
-                { Push.TagGroupsEditor.OperationType.REMOVE, (group, t) => UAirship.NamedUser().RemoveTags(t, group) },
-                { Push.TagGroupsEditor.OperationType.SET, (group, t) => UAirship.NamedUser().SetTags(t, group) }
+                { Channel.TagGroupsEditor.OperationType.ADD, (group, t) => UAirship.NamedUser().AddTags(t, group) },
+                { Channel.TagGroupsEditor.OperationType.REMOVE, (group, t) => UAirship.NamedUser().RemoveTags(t, group) },
+                { Channel.TagGroupsEditor.OperationType.SET, (group, t) => UAirship.NamedUser().SetTags(t, group) }
             };
-            var channelActions = new Dictionary<Push.TagGroupsEditor.OperationType, Action<string, string[]>>()
+            var channelActions = new Dictionary<Channel.TagGroupsEditor.OperationType, Action<string, string[]>>()
             {
-                { Push.TagGroupsEditor.OperationType.ADD, (group, t) => UAirship.Channel().AddTags(t, group) },
-                { Push.TagGroupsEditor.OperationType.REMOVE, (group, t) => UAirship.Channel().RemoveTags(t, group) },
-                { Push.TagGroupsEditor.OperationType.SET, (group, t) => UAirship.Channel().SetTags(t, group) }
+                { Channel.TagGroupsEditor.OperationType.ADD, (group, t) => UAirship.Channel().AddTags(t, group) },
+                { Channel.TagGroupsEditor.OperationType.REMOVE, (group, t) => UAirship.Channel().RemoveTags(t, group) },
+                { Channel.TagGroupsEditor.OperationType.SET, (group, t) => UAirship.Channel().SetTags(t, group) }
             };
 
             var actions = namedUser ? namedUserActions : channelActions;
 
-            foreach (Push.TagGroupsEditor.TagOperation operation in operations)
+            foreach (Channel.TagGroupsEditor.TagOperation operation in operations)
             {
-                if (!Enum.IsDefined(typeof(Push.TagGroupsEditor.OperationType), operation.operationType))
+                if (!Enum.IsDefined(typeof(Channel.TagGroupsEditor.OperationType), operation.operationType))
                 {
                     continue;
                 }

@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
    <metadata>
       <id>urbanairship.android.preference</id>
-      <version>10.1.1</version>
+      <version>12.2.0</version>
       <title>Airship Android SDK - Preference Module</title>
       <authors>Urban Airship, Inc.</authors>
       <projectUrl>https://github.com/urbanairship/urbanairship-xamarin</projectUrl>
@@ -11,12 +11,12 @@
 
       <dependencies>
          <group targetFramework="MonoAndroid">
-            <dependency id="urbanairship.android.core" version="10.1.1"/>
+            <dependency id="urbanairship.android.core" version="12.2.0"/>
          </group>
       </dependencies>
    </metadata>
 
    <files>
-     <file src="src/AirshipBindings.Android.Preference/bin/release/AirshipBindings.Preference.dll" target="lib/MonoAndroid41" />
+     <file src="src/AirshipBindings.Android.Preference/bin/release/AirshipBindings.Android.Preference.dll" target="lib/MonoAndroid41" />
    </files>
 </package>

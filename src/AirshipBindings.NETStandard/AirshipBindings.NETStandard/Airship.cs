@@ -67,9 +67,9 @@ namespace UrbanAirship.NETStandard
         /// <summary>
         /// Edit the device tags.
         /// </summary>
-        /// <returns>A <see cref="UrbanAirship.NETStandard.Push.TagEditor">TagEditor</see>
+        /// <returns>A <see cref="UrbanAirship.NETStandard.Channel.TagEditor">TagEditor</see>
         /// for editing device tags.</returns>
-        public Push.TagEditor EditDeviceTags()
+        public Channel.TagEditor EditDeviceTags()
         {
             throw new NotImplementedException(BaitWithoutSwitchMessage);
         }
@@ -126,9 +126,9 @@ namespace UrbanAirship.NETStandard
         /// <summary>
         /// Returns an editor for named user tag groups.
         /// </summary>
-        /// <returns>A <see cref="UrbanAirship.NETStandard.Push.TagGroupsEditor">TagGroupsEditor</see>
+        /// <returns>A <see cref="UrbanAirship.NETStandard.Channel.TagGroupsEditor">TagGroupsEditor</see>
         /// for named user tag groups.</returns>
-        public Push.TagGroupsEditor EditNamedUserTagGroups()
+        public Channel.TagGroupsEditor EditNamedUserTagGroups()
         {
             throw new NotImplementedException(BaitWithoutSwitchMessage);
         }
@@ -136,9 +136,9 @@ namespace UrbanAirship.NETStandard
         /// <summary>
         /// Returns an editor for channel tag groups.
         /// </summary>
-        /// <returns>A <see cref="UrbanAirship.NETStandard.Push.TagGroupsEditor">TagGroupsEditor</see>
+        /// <returns>A <see cref="UrbanAirship.NETStandard.Channel.TagGroupsEditor">TagGroupsEditor</see>
         /// for channel tag groups.</returns>
-        public Push.TagGroupsEditor EditChannelTagGroups()
+        public Channel.TagGroupsEditor EditChannelTagGroups()
         {
             throw new NotImplementedException(BaitWithoutSwitchMessage);
         }

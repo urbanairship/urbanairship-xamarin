@@ -2,8 +2,6 @@
  Copyright Airship and Contributors
 */
 
-using System;
-
 namespace UrbanAirship.RichPush
 {
 	public partial class RichPushMessage

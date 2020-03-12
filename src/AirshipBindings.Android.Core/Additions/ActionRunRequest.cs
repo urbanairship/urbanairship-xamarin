@@ -3,6 +3,7 @@
 */
 
 using System;
+
 using Android.OS;
 
 namespace UrbanAirship.Actions

@@ -10,19 +10,21 @@ using Android.Content;
 using Android.Runtime;
 using Android.Util;
 using Android.Views;
-using Android.Widget;
-using Android.Support.Design.Widget;
-using Android.Support.V4.Widget;
-using v4 = Android.Support.V4;
-using v7 = Android.Support.V7;
 using Android.OS;
+
+using AndroidX.AppCompat.App;
+using AndroidX.AppCompat.Widget;
+using AndroidX.Core.Content;
+using AndroidX.Core.View;
+using AndroidX.DrawerLayout.Widget;
+
+using Google.Android.Material.Navigation;
+using Google.Android.Material.Snackbar;
 
 using UrbanAirship.Google;
 using UrbanAirship;
 using UrbanAirship.RichPush;
 using UrbanAirship.MessageCenter;
-
-using Android.Support.V4.Content;
 
 namespace Sample
 {
@@ -36,7 +38,7 @@ namespace Sample
 	[IntentFilter(new string[] { "com.urbanairship.VIEW_RICH_PUSH_INBOX" }, Categories = new string[] { "android.intent.category.DEFAULT" })]
 	[IntentFilter(new string[] { "com.urbanairship.VIEW_RICH_PUSH_INBOX" }, Categories = new string[] { "android.intent.category.DEFAULT" },
 	              DataScheme= "message")]
-	public class MainActivity : v7.App.AppCompatActivity
+	public class MainActivity : AppCompatActivity
 	{
 		private const string Tag = "MainActivity";
 
@@ -59,12 +61,12 @@ namespace Sample
 			SetContentView(Resource.Layout.activity_main);
 
 			// Action bar
-			v7.Widget.Toolbar toolbar = (v7.Widget.Toolbar)FindViewById(Resource.Id.toolbar);
+			Toolbar toolbar = (Toolbar)FindViewById(Resource.Id.toolbar);
 			SetSupportActionBar(toolbar);
 
 			// App drawer
 			drawer = (DrawerLayout)FindViewById(Resource.Id.drawer_layout);
-			v7.App.ActionBarDrawerToggle toggle = new v7.App.ActionBarDrawerToggle(
+			ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
 				this, drawer, toolbar, Resource.String.navigation_drawer_open, Resource.String.navigation_drawer_open
 			);
 			drawer.AddDrawerListener(toggle);
@@ -116,7 +118,7 @@ namespace Sample
 
 			if (MessageCenterClass.MessageDataScheme == Intent.Action)
 			{
-				v4.App.Fragment fragment = Navigate(Resource.Id.nav_message_center);
+				AndroidX.Fragment.App.Fragment fragment = Navigate(Resource.Id.nav_message_center);
 				if (Intent.Data != null && Intent.Data.Scheme.ToLower() == MessageCenterClass.MessageDataScheme)
 				{
 					string messageId = Intent.Data.SchemeSpecificPart;
@@ -143,9 +145,9 @@ namespace Sample
 		public override void OnBackPressed()
 		{
 			DrawerLayout drawer = (DrawerLayout)FindViewById(Resource.Id.drawer_layout);
-			if (drawer.IsDrawerOpen(v4.View.GravityCompat.Start))
+			if (drawer.IsDrawerOpen(GravityCompat.Start))
 			{
-				drawer.CloseDrawer(v4.View.GravityCompat.Start);
+				drawer.CloseDrawer(GravityCompat.Start);
 			}
 			else if (currentNavPosition != Resource.Id.nav_home)
 			{
@@ -176,12 +178,12 @@ namespace Sample
 			return base.OnOptionsItemSelected(item);
 		}
 
-		private v4.App.Fragment Navigate(int id)
+		private AndroidX.Fragment.App.Fragment Navigate(int id)
 		{
 			currentNavPosition = id;
 			navigation.SetCheckedItem(id);
 
-			v4.App.Fragment fragment = SupportFragmentManager.FindFragmentByTag("content_frag" + id);
+			AndroidX.Fragment.App.Fragment fragment = SupportFragmentManager.FindFragmentByTag("content_frag" + id);
 
 			if (fragment != null)
 			{
@@ -217,7 +219,7 @@ namespace Sample
 						   .Replace(Resource.Id.content_frame, fragment, "content_frag" + id)
 						   .Commit();
 
-			drawer.CloseDrawer(v4.View.GravityCompat.Start);
+			drawer.CloseDrawer(GravityCompat.Start);
 
 			return fragment;
 		}
@@ -226,7 +228,7 @@ namespace Sample
 		private void UpdateUnreadCount()
 		{
 			int unreadCount = UAirship.Shared().Inbox.UnreadCount;
-			TextView view = (TextView)navigation.Menu.FindItem(Resource.Id.nav_message_center).ActionView;
+			AppCompatTextView view = (AppCompatTextView)navigation.Menu.FindItem(Resource.Id.nav_message_center).ActionView;
 
 			if (unreadCount > 0)
 			{

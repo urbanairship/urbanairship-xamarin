@@ -3,9 +3,9 @@
 */
 
 using System;
-using UrbanAirship;
-using Android.OS;
 using System.Collections.Generic;
+
+using Android.OS;
 
 namespace UrbanAirship.RichPush
 {

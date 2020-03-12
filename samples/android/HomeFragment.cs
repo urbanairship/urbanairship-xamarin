@@ -4,19 +4,20 @@
 
 using System;
 
-using Android.Support.V4.App;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
 
+using AndroidX.Fragment.App;
+
 using UrbanAirship;
 using UrbanAirship.Actions;
-using UrbanAirship.Push;
+using UrbanAirship.Channel;
 
 namespace Sample
 {
 
-    public class HomeFragment : Fragment, IRegistrationListener
+    public class HomeFragment : Fragment, IAirshipChannelListener
     {
         private TextView channelId;
         private Button shareButton;
@@ -36,7 +37,7 @@ namespace Sample
                 {
 
                     ActionRunRequest.CreateRequest(ClipboardAction.DefaultRegistryName)
-                                    .SetValue(UAirship.Shared().PushManager.ChannelId)
+                                    .SetValue(UAirship.Shared().Channel.Id)
                                     .Run((args, result) =>
                     {
                         Toast.MakeText(Context, GetString(Resource.String.toast_channel_clipboard), ToastLength.Short).Show();
@@ -49,7 +50,7 @@ namespace Sample
                 if (!string.IsNullOrEmpty(channelId.Text))
                 {
                     ActionRunRequest.CreateRequest(ShareAction.DefaultRegistryName)
-                                    .SetValue(UAirship.Shared().PushManager.ChannelId)
+                                    .SetValue(UAirship.Shared().Channel.Id)
                                     .Run();
                 }
             };
@@ -61,7 +62,7 @@ namespace Sample
         {
             base.OnResume();
 
-            UAirship.Shared().PushManager.AddRegistrationListener(this);
+            UAirship.Shared().Channel.AddChannelListener(this);
 
             RefreshChannelId();
         }
@@ -70,12 +71,12 @@ namespace Sample
         {
             base.OnPause();
 
-            UAirship.Shared().PushManager.RemoveRegistrationListener(this);
+            UAirship.Shared().Channel.RemoveChannelListener(this);
         }
 
         void RefreshChannelId()
         {
-            RefreshChannelId(UAirship.Shared().PushManager.ChannelId);
+            RefreshChannelId(UAirship.Shared().Channel.Id);
         }
 
         void RefreshChannelId(String channelIdString)
@@ -113,10 +114,6 @@ namespace Sample
                 {
                     RefreshChannelId(channelId);
                 });
-        }
-
-        public void OnPushTokenUpdated(string token)
-        {
         }
     }
 }

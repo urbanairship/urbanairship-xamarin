@@ -3,7 +3,6 @@
 */
 
 using System;
-using UrbanAirship;
 using System.Collections.Generic;
 
 namespace UrbanAirship.RichPush

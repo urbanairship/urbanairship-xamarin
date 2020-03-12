@@ -8,48 +8,48 @@ using System.Collections.Generic;
 
 namespace UrbanAirship.Portable
 {
-	public interface IAirship
-	{
-		bool UserNotificationsEnabled
-		{
-			get; set;
-		}
+    public interface IAirship
+    {
+        bool UserNotificationsEnabled
+        {
+            get; set;
+        }
 
-		IEnumerable<string> Tags
-		{
-			get;
-		}
+        IEnumerable<string> Tags
+        {
+            get;
+        }
 
-		string ChannelId
-		{
-			get;
-		}
+        string ChannelId
+        {
+            get;
+        }
 
-		string NamedUser
-		{
-			get; set;
-		}
+        string NamedUser
+        {
+            get; set;
+        }
 
-		Push.TagEditor EditDeviceTags();
+        Channel.TagEditor EditDeviceTags();
 
-		void AddCustomEvent(Analytics.CustomEvent customEvent);
+        void AddCustomEvent(Analytics.CustomEvent customEvent);
 
-		void AssociateIdentifier(string key, string identifier);
+        void AssociateIdentifier(string key, string identifier);
 
-		void DisplayMessageCenter();
+        void DisplayMessageCenter();
 
-		int MessageCenterUnreadCount
-		{
-			get;
-		}
+        int MessageCenterUnreadCount
+        {
+            get;
+        }
 
-		int MessageCenterCount
-		{
-			get;
-		}
+        int MessageCenterCount
+        {
+            get;
+        }
 
-		Push.TagGroupsEditor EditNamedUserTagGroups();
+        Channel.TagGroupsEditor EditNamedUserTagGroups();
 
-		Push.TagGroupsEditor EditChannelTagGroups();
-	}
+        Channel.TagGroupsEditor EditChannelTagGroups();
+    }
 }

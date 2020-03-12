@@ -3,6 +3,7 @@
 */
 
 using System;
+
 using Android.Widget;
 
 namespace UrbanAirship.MessageCenter
