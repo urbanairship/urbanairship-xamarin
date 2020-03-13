@@ -240,3 +240,11 @@ build.dependsOn(':docs:build',
     ':src:AirshipBindings.iOS.Location:build',
     ':src:AirshipBindings.iOS.NotificationContentExtension:build',
     ':src:AirshipBindings.iOS.NotificationServiceExtension:build' )
+
+
+
+task getVersion() {
+    doLast {
+        println airshipProperties.crossPlatformVersion
+    }
+}
