@@ -767,6 +767,7 @@ namespace UrbanAirship {
         void RemoveAttribute (string attribute);
 
         // + (instancetype)mutations;
+        [Static]
         [Export("mutations")]
         UAAttributeMutations Mutations ();
     }
