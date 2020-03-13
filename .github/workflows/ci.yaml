@@ -25,4 +25,4 @@ jobs:
           echo "$GOOGLE_SERVICES_JSON" > samples/android/Assets/google-services.json
 
       - name: Build
-        run: ./gradlew :samples:android:build
+        run: ./gradlew build
