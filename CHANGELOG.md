@@ -1,6 +1,6 @@
 # Airship Xamarin Changelog
 
-## Versions 12.0.0 - February 10, 2020
+## Version 12.0.0 - February 10, 2020
 Major release to support iOS SDK 13.1.
 
 ### Changes
@@ -20,7 +20,7 @@ Major release to support iOS SDK 13.1.
   - Fixed nupkg installations failing to link with missing symbol errors.
   - Fixed .NETStandard and PCL app crashes when adding a custom event (Airship.Instance.AddCustomEvent())
 
-## Versions 11.1.0 - December 9, 2019
+## Version 11.1.0 - December 9, 2019
 Patch release to fix a bug affecting loss of tags on iOS during app migration to iOS SDK 12.0.0.
 This patch release fixes the bug by combining previous tags with tags that have been set since the update
 to iOS SDK 12.0.0. Applications using iOS SDK 12.0.0 should update.
@@ -28,18 +28,18 @@ to iOS SDK 12.0.0. Applications using iOS SDK 12.0.0 should update.
 ### Changes
 - Update iOS SDK to 12.1.2
 
-## Versions 11.0.0 - October 28, 2019
+## Version 11.0.0 - October 28, 2019
 - Update iOS SDK to 12.0.0
 
-## Versions 10.1.1 – August 13, 2019
+## Version 10.1.1 – August 13, 2019
 - Update Android SDK to 10.1.1
 - Patch release to fix direct open reporting for notifications when an activity is resumed from the background
 
-## Versions 10.1.0  - July 11, 2019
+## Version 10.1.0  - July 11, 2019
 - Update iOS SDK to 11.1.0
 - Fixed problem with installation of new iOS LocationKit package.
 
-## Versions 10.0.0 - July 1, 2019
+## Version 10.0.0 - July 1, 2019
 - Update Android SDK to 10.0.2
 - Update iOS SDK to 11.0.0
 - Android GCM support has been removed. Please use FCM instead.
@@ -75,19 +75,19 @@ For more details, please email security@urbanairship.com.
 - Update iOS SDK to 10.0.3
 - Update Android SDK to 9.5.4
 
-## Version 9.3 - October 4, 2018
+## Version 9.3.0 - October 4, 2018
 - Update iOS SDK to 10.0.1
 - Android SDK version is still 9.5.2
 
-## Version 9.2 - September 24, 2018
+## Version 9.2.0 - September 24, 2018
 - Update iOS SDK to 9.4.0
 - Update Android SDK to 9.5.2
 
-## Version 9.1 - July 23, 2018
+## Version 9.1.0 - July 23, 2018
 - Update iOS SDK to 9.3.2
 - Updated Android SDK to 9.4.0
 
-## Version 9 - May 22, 2018
+## Version 9.0.0 - May 22, 2018
 - Updated iOS SDK to 9.1.0
 - Updated Android SDK to 9.2.0.
 - Split urbanairship package into iOS and Android packages. Also moved Android push providers into their own packages. `UrbanAirship` has been split into:
@@ -197,11 +197,11 @@ the structure of the iOS SDK and will help to make bindings more stable moving f
 ## Version 2.2.1 - July 6, 2016
 - Fixed native linking errors for missing UAWalletAction on iOS
 
-## Version 2.2 - June 2, 2016
+## Version 2.2.0 - June 2, 2016
 - Updated iOS Urban Airship SDK to 7.2.0
 - Updated Android Urban Airship SDK to 7.1.5
 
-## Version 2.1 - May 13, 2016
+## Version 2.1.0 - May 13, 2016
 - Updated iOS Urban Airship SDK to 7.1.2
 - Updated Android Urban Airship SDK to 7.1.3
 - Added NuGet package and shell component support
@@ -221,10 +221,10 @@ the structure of the iOS SDK and will help to make bindings more stable moving f
 ## Version 2.0.1 - Feb 17, 2016
  - Fixed Android not registering the GcmPushReceiver
 
-## Version 2.0 - Feb 11, 2016
+## Version 2.0.0 - Feb 11, 2016
  - Updated iOS Urban Airship SDK to 7.0.2
  - Updated Android Urban Airship SDK to 7.0.1
  - Added Default Message Center support
 
-## Version 1.0 - Nov 23, 2015
+## Version 1.0.0 - Nov 23, 2015
   - Initial release. Binds SDK 6.4.0
