@@ -58,6 +58,8 @@ jobs:
         run: ./gradlew build pkg
 
       - name: Publish Nuget
+        env:
+          NUGET_PRODUCTION_API_KEY: ${{ secrets.NUGET_PRODUCTION_API_KEY }}
         run: ./gradlew publishToProduction
 
       - name: Upload Docs
