@@ -11,6 +11,7 @@
 
       <dependencies>
          <group targetFramework="MonoAndroid">
+            <dependency id="Xamarin.AndroidX.Preference" version="1.0.0"/>
             <dependency id="urbanairship.android.core" version="12.2.0"/>
          </group>
       </dependencies>
