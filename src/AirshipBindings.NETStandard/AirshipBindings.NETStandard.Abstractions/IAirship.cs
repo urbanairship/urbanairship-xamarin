@@ -51,5 +51,7 @@ namespace UrbanAirship.NETStandard
         Channel.TagGroupsEditor EditNamedUserTagGroups();
 
         Channel.TagGroupsEditor EditChannelTagGroups();
+        
+        Attributes.AttributeEditor EditAttributes();
     }
 }
