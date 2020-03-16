@@ -1,7 +1,15 @@
 # Airship Xamarin Changelog
 
+## Version 13.0.0 - March 17, 2020
+Major release to support Android SDK 12.2.0 and cross-platform attributes.
+
+### Changes
+- Updated Android SDK to 12.2.0
+- Added string and number attribute support to Android, iOS and .NETStandard/PCL
+- Added sample content extension to ios-unified sample project
+
 ## Version 12.0.0 - February 10, 2020
-Major release to support iOS SDK 13.1.
+Major release to support iOS SDK 13.1.0.
 
 ### Changes
 - Updated iOS SDK to 13.1.0
@@ -14,7 +22,7 @@ Major release to support iOS SDK 13.1.
     - UrbanAirship.iOS.NotificationContentExtension
   - Renamed packages
     - UrbanAirship.iOS.locationkit -> UrbanAirship.iOS.location
-    - UrbanAirship.iOS.AppExtensions -> UrbanAirship.iOS.N otificationServicEextension
+    - UrbanAirship.iOS.AppExtensions -> UrbanAirship.iOS.NotificationServicEextension
   - Removed undefined constants from iOS bindings.
   - Changes handling of CustomEvent generics in .NETStandard and PCL libraries.
   - Fixed nupkg installations failing to link with missing symbol errors.
@@ -112,7 +120,7 @@ For more details, please email security@urbanairship.com.
 Note: Aside from SDK interface changes between 8.x and 9.x, iOS bindings have also
 changed in that they no longer implicitly convert methods into properties.
 Notably, accessors such as `UAirship.Push` and `UAirship.NamedUser` are now methods,
-e.g. `UAirship.Push()` and `UAirship.NamedUser()`. This more closely refelcts
+e.g. `UAirship.Push()` and `UAirship.NamedUser()`. This more closely reflects
 the structure of the iOS SDK and will help to make bindings more stable moving forward.
 
 ## Version 4.6.4 - January 12, 2018
