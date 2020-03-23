@@ -1,5 +1,12 @@
 # Airship Xamarin Changelog
 
+## Version 12.0.1 - March 23, 2020
+Patch addressing a regression in iOS SDK 13.1.0 causing channel tag loss
+when upgrading from iOS SDK versions prior to 13.0.1. Apps upgrading from xamarin plugin
+11.1.0 or below should avoid plugin version 12.0.0 in favor of version 12.0.1.
+
+- Updated iOS SDK to 13.1.1
+
 ## Version 12.0.0 - February 10, 2020
 Major release to support iOS SDK 13.1.
 
