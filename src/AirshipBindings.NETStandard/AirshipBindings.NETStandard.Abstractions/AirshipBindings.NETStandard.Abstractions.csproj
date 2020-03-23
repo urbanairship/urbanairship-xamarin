@@ -11,6 +11,7 @@
   <ItemGroup>
     <Folder Include="Channel\" />
     <Folder Include="Analytics\" />
+    <Folder Include="Attributes\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="..\..\SharedAssemblyInfo.CrossPlatform.cs">

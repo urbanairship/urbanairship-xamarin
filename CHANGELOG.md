@@ -1,12 +1,20 @@
 # Airship Xamarin Changelog
 
-## Version 13.0.0 - March 17, 2020
+## Version 13.0.0 - March 25, 2020
 Major release to support Android SDK 12.2.0 and cross-platform attributes.
 
 ### Changes
 - Updated Android SDK to 12.2.0
 - Added string and number attribute support to Android, iOS and .NETStandard/PCL
 - Added sample content extension to ios-unified sample project
+
+## Version 12.0.1 - March 23, 2020
+Patch addressing a regression in iOS SDK 13.1.0 causing channel tag loss
+when upgrading from iOS SDK versions prior to 13.0.1. Apps upgrading from xamarin plugin
+11.1.0 or below should avoid plugin version 12.0.0 in favor of version 12.0.1.
+
+### Changes
+- Updated iOS SDK to 13.1.1
 
 ## Version 12.0.0 - February 10, 2020
 Major release to support iOS SDK 13.1.0.

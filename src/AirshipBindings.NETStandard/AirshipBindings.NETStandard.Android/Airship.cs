@@ -3,6 +3,7 @@
 */
 
 using System.Collections.Generic;
+using UrbanAirship.NETStandard.Attributes;
 
 namespace UrbanAirship.NETStandard
 {
@@ -168,6 +169,49 @@ namespace UrbanAirship.NETStandard
             {
                 var editor = UAirship.Shared().Channel.EditTagGroups();
                 TagGroupHelper(payload, editor);
+                editor.Apply();
+            });
+        }
+
+        public AttributeEditor EditAttributes()
+        {
+            return new AttributeEditor((List<AttributeEditor.IAttributeOperation> operations) =>
+            {
+                var editor = UAirship.Shared().Channel.EditAttributes();
+
+                foreach (var operation in operations)
+                {
+                    if (operation is AttributeEditor.SetAttributeOperation<string> stringOperation)
+                    {
+                        editor.SetAttribute(stringOperation.key, stringOperation.value);
+                    }
+
+                    if (operation is AttributeEditor.SetAttributeOperation<int> intOperation)
+                    {
+                        editor.SetAttribute(intOperation.key, intOperation.value);
+                    }
+
+                    if (operation is AttributeEditor.SetAttributeOperation<long> longOperation)
+                    {
+                        editor.SetAttribute(longOperation.key, longOperation.value);
+                    }
+
+                    if (operation is AttributeEditor.SetAttributeOperation<float> floatOperation)
+                    {
+                        editor.SetAttribute(floatOperation.key, floatOperation.value);
+                    }
+
+                    if (operation is AttributeEditor.SetAttributeOperation<double> doubleOperation)
+                    {
+                        editor.SetAttribute(doubleOperation.key, doubleOperation.value);
+                    }
+
+                    if (operation is AttributeEditor.RemoveAttributeOperation removeOperation)
+                    {
+                        editor.RemoveAttribute(removeOperation.key);
+                    }
+                }
+
                 editor.Apply();
             });
         }

@@ -5,6 +5,7 @@
 using System;
 using System.Collections.Generic;
 using UrbanAirship.Portable.Analytics;
+using UrbanAirship.Portable.Attributes;
 
 namespace UrbanAirship.Portable
 {
@@ -183,6 +184,49 @@ namespace UrbanAirship.Portable
             {
                 TagGroupHelper(payload, false);
                 UAirship.Push().UpdateRegistration();
+            });
+        }
+
+        public AttributeEditor EditAttributes()
+        {
+            return new AttributeEditor((List<AttributeEditor.IAttributeOperation> operations) =>
+            {
+                var mutations = UAAttributeMutations.Mutations();
+
+                foreach (var operation in operations)
+                {
+                    if (operation is AttributeEditor.SetAttributeOperation<string> stringOperation)
+                    {
+                        mutations.SetString(stringOperation.value, stringOperation.key);
+                    }
+
+                    if (operation is AttributeEditor.SetAttributeOperation<int> intOperation)
+                    {
+                        mutations.SetNumber(intOperation.value, intOperation.key);
+                    }
+
+                    if (operation is AttributeEditor.SetAttributeOperation<long> longOperation)
+                    {
+                        mutations.SetNumber(longOperation.value, longOperation.key);
+                    }
+
+                    if (operation is AttributeEditor.SetAttributeOperation<float> floatOperation)
+                    {
+                        mutations.SetNumber(floatOperation.value, floatOperation.key);
+                    }
+
+                    if (operation is AttributeEditor.SetAttributeOperation<double> doubleOperation)
+                    {
+                        mutations.SetNumber(doubleOperation.value, doubleOperation.key);
+                    }
+
+                    if (operation is AttributeEditor.RemoveAttributeOperation removeOperation)
+                    {
+                        mutations.RemoveAttribute(removeOperation.key);
+                    }
+                }
+
+                UAirship.Channel().ApplyAttributeMutations(mutations);
             });
         }
 
