@@ -1,10 +1,10 @@
 # Airship Xamarin Changelog
 
-## Version 13.0.0 - March 25, 2020
-Major release to support Android SDK 12.2.0 and cross-platform attributes.
+## Version 13.0.0 - April 3, 2020
+Major release to support Android SDK 12.2.3 and cross-platform attributes.
 
 ### Changes
-- Updated Android SDK to 12.2.0
+- Updated Android SDK to 12.2.3
 - Added string and number attribute support to Android, iOS and .NETStandard/PCL
 - Added sample content extension to ios-unified sample project
 
