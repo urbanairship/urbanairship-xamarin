@@ -1,10 +1,12 @@
 # Airship Xamarin Changelog
 
 ## Version 13.0.0 - April 3, 2020
-Major release to support Android SDK 12.2.3 and cross-platform attributes.
+Major release to support Android SDK 12.2.3 and cross-platform attributes. Android platform
+now requires compatibility with Jetpack/AndroidX.
 
 ### Changes
 - Updated Android SDK to 12.2.3
+- Migrate Android bindings projects to use AndroidX
 - Added string and number attribute support to Android, iOS and .NETStandard/PCL
 - Added sample content extension to ios-unified sample project
 
