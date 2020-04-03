@@ -65,9 +65,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
     <TransformFile Include="Transforms\Metadata.xml" />
     <TransformFile Include="Transforms\EnumFields.xml" />
     <TransformFile Include="Transforms\EnumMethods.xml" />
@@ -83,9 +80,15 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Additions\" />
+    <Folder Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\SharedAssemblyInfo.Android.cs">
+      <Link>Properties\SharedAssemblyInfo.Android.cs</Link>
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.Bindings.targets" />
   <Import Project="packages\Xamarin.AndroidX.MultiDex.2.0.1\build\monoandroid90\Xamarin.AndroidX.MultiDex.targets" Condition="Exists('packages\Xamarin.AndroidX.MultiDex.2.0.1\build\monoandroid90\Xamarin.AndroidX.MultiDex.targets')" />

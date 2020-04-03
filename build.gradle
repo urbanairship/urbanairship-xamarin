@@ -163,6 +163,12 @@ task syncVersion {
             match: "AssemblyVersion (.*)]",
             replace: "AssemblyVersion (\"$airshipProperties.iosVersion\")]"
         )
+
+        ant.replaceregexp(
+            file: "$projectDir/src/SharedAssemblyInfo.Common.cs",
+            match: "UACrossPlatformVersion (.*)]",
+            replace: "UACrossPlatformVersion (\"$airshipProperties.crossPlatformVersion\")]"
+        )
     }
 }
 
