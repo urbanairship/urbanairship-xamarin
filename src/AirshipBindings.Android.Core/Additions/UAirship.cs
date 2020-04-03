@@ -6,6 +6,8 @@ using System;
 
 using Android.App;
 using Android.OS;
+using System.Reflection;
+using UrbanAirship.Analytics;
 
 [assembly: Permission(Name = "@PACKAGE_NAME@.permission.UA_DATA", ProtectionLevel=Android.Content.PM.Protection.Signature)]
 [assembly: UsesPermission(Name = "@PACKAGE_NAME@.permission.UA_DATA")]
@@ -18,6 +20,14 @@ namespace UrbanAirship
 {
 	public partial class UAirship
 	{
+		static UAirship()
+		{
+			UAirship.Shared(new AirshipReadyCallback((UAirship airship) =>
+			{
+				Version version = Assembly.GetExecutingAssembly().GetName().Version;
+				airship.Analytics.RegisterSDKExtension(AnalyticsClass.ExtensionXamarin, version.ToString());
+			}));
+		}
 		public static void TakeOff(Application application, Action<UAirship> callback)
 		{
 			TakeOff (application, new AirshipReadyCallback (callback));
