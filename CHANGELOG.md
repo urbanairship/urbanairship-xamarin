@@ -6,7 +6,7 @@ now requires compatibility with Jetpack/AndroidX.
 
 ### Changes
 - Updated Android SDK to 12.2.3
-- Migrate Android bindings projects to use AndroidX
+- Migrated Android bindings projects to use AndroidX
 - Added string and number attribute support to Android, iOS and .NETStandard/PCL
 - Added sample content extension to ios-unified sample project
 
