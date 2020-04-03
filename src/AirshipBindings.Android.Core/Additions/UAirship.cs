@@ -32,8 +32,6 @@ namespace UrbanAirship
 					UACrossPlatformVersionAttribute version = Assembly.GetExecutingAssembly().GetCustomAttributes(typeof(UACrossPlatformVersionAttribute), false)[0] as UACrossPlatformVersionAttribute;
 					airship.Analytics.RegisterSDKExtension(AnalyticsClass.ExtensionXamarin, version.Version.ToString());
 				}
-
-				//airship.Analytics.RegisterSDKExtension(AnalyticsClass.ExtensionXamarin, version.ToString());
 			}));
 		}
 		public static void TakeOff(Application application, Action<UAirship> callback)
