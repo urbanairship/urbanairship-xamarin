@@ -8,6 +8,9 @@
       <projectUrl>https://github.com/urbanairship/urbanairship-xamarin</projectUrl>
       <requireLicenseAcceptance>false</requireLicenseAcceptance>
       <description>Notification service extension support for iOS</description>
+      <dependencies>
+        <group targetFramework="Xamarin.iOS1.0" />
+      </dependencies>
    </metadata>
 
    <files>
