@@ -10,11 +10,13 @@
       <description>A .NET Standard Library for the Airship SDK.</description>
 
       <dependencies>
-         <group targetFramework="MonoAndroid">
+         <group targetFramework=".NETStandard2.0">
+         </group>
+         <group targetFramework="MonoAndroid4.1">
             <dependency id="urbanairship.android.core" version="12.2.3"/>
          </group>
 
-         <group targetFramework="Xamarin.iOS">
+         <group targetFramework="Xamarin.iOS1.0">
             <dependency id="urbanairship.ios.core" version="13.1.1"/>
             <dependency id="urbanairship.ios.automation" version="13.1.1"/>
             <dependency id="urbanairship.ios.extendedactions" version="13.1.1"/>

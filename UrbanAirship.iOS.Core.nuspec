@@ -8,6 +8,9 @@
       <projectUrl>https://github.com/urbanairship/urbanairship-xamarin</projectUrl>
       <requireLicenseAcceptance>false</requireLicenseAcceptance>
       <description>Core of Airship SDK</description>
+      <dependencies>
+        <group targetFramework="Xamarin.iOS1.0" />
+      </dependencies>
    </metadata>
 
    <files>

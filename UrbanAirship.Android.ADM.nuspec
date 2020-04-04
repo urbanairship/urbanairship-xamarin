@@ -8,14 +8,12 @@
       <projectUrl>https://github.com/urbanairship/urbanairship-xamarin</projectUrl>
       <requireLicenseAcceptance>false</requireLicenseAcceptance>
       <description>A full suite of mobile engagement tools for building next-generation apps</description>
-
       <dependencies>
-         <group targetFramework="MonoAndroid">
+         <group targetFramework="MonoAndroid4.1">
             <dependency id="urbanairship.android.core" version="12.2.3"/>
          </group>
       </dependencies>
    </metadata>
-
    <files>
      <file src="src/AirshipBindings.Android.ADM/bin/release/AirshipBindings.Android.ADM.dll" target="lib/MonoAndroid41" />
    </files>

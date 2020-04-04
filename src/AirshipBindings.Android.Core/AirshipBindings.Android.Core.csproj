@@ -94,7 +94,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Additions\RichPushMessage.cs" />
     <Compile Include="Additions\UAirship.cs" />
     <Compile Include="Additions\RichPushInbox.cs" />
@@ -108,6 +107,12 @@
     <Compile Include="Additions\ActionRunRequest.cs" />
     <Compile Include="Additions\ActionCompletionCallback.cs" />
     <Compile Include="Additions\UAWebViewClient.cs" />
+    <Compile Include="..\UACrossPlatformVersion.cs">
+      <Link>Properties\UACrossPlatformVersion.cs</Link>
+    </Compile>
+    <Compile Include="..\SharedAssemblyInfo.Common.cs">
+      <Link>Properties\SharedAssemblyInfo.Common.cs</Link>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <TransformFile Include="Transforms\EnumFields.xml" />

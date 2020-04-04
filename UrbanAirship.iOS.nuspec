@@ -10,7 +10,7 @@
       <description>A full suite of mobile engagement tools for building next-generation apps</description>
 
       <dependencies>
-         <group targetFramework="Xamarin.iOS">
+         <group>
             <dependency id="urbanairship.ios.core" version="13.1.1"/>
             <dependency id="urbanairship.ios.automation" version="13.1.1"/>
             <dependency id="urbanairship.ios.extendedactions" version="13.1.1"/>

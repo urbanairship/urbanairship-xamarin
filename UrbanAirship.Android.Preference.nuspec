@@ -10,7 +10,7 @@
       <description>A full suite of mobile engagement tools for building next-generation apps</description>
 
       <dependencies>
-         <group targetFramework="MonoAndroid">
+         <group targetFramework="MonoAndroid4.1">
             <dependency id="Xamarin.AndroidX.Preference" version="1.0.0"/>
             <dependency id="urbanairship.android.core" version="12.2.3"/>
          </group>
