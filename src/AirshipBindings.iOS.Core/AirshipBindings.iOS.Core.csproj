@@ -42,6 +42,12 @@
       <Link>Properties\SharedAssemblyInfo.iOS.cs</Link>
     </Compile>
     <Compile Include="Additions\UAirship.cs" />
+    <Compile Include="..\UACrossPlatformVersion.cs">
+      <Link>Properties\UACrossPlatformVersion.cs</Link>
+    </Compile>
+    <Compile Include="..\SharedAssemblyInfo.Common.cs">
+      <Link>Properties\SharedAssemblyInfo.Common.cs</Link>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ObjcBindingApiDefinition Include="ApiDefinitions.cs" />
