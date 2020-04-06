@@ -14,7 +14,7 @@
          </group>
 
          <group targetFramework="MonoAndroid4.1">
-            <dependency id="urbanairship.android.core" version="12.2.0"/>
+            <dependency id="urbanairship.android.core" version="12.2.3"/>
          </group>
 
          <group targetFramework="Xamarin.iOS1.0">
