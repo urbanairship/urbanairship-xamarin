@@ -126,7 +126,7 @@ namespace UrbanAirship.NETStandard
         /// <summary>
         /// Edit channel attributes.
         /// </summary>
-        /// <returns>An <see cref="UrbanAirship.Portable.Attributes.AttributeEditor">AttributeEditor</see>
+        /// <returns>An <see cref="UrbanAirship.NETStandard.Attributes.AttributeEditor">AttributeEditor</see>
         /// for channel attributes.</returns>
         public Attributes.AttributeEditor EditAttributes()
         {
