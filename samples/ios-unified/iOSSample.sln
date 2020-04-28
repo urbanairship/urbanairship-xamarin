@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample", "Sample.csproj", "{C6EB4686-06A0-4B33-AEDE-C42E5EC8CA50}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample", "Sample.ios.csproj", "{C6EB4686-06A0-4B33-AEDE-C42E5EC8CA50}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleServiceExtension", "SampleServiceExtension\SampleServiceExtension.csproj", "{DDF8FDE3-49D5-4FF9-BF92-730A0C2F6E0A}"
 EndProject
