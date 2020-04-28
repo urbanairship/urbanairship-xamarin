@@ -8,7 +8,7 @@
     <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <ProjectGuid>{3A31EBDD-6C46-4F7A-B453-85E0922F8C44}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>Sample</RootNamespace>
+    <RootNamespace>Sample.android</RootNamespace>
     <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
     <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
     <AndroidResgenClass>Resource</AndroidResgenClass>
