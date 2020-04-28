@@ -17,7 +17,7 @@ task build {
         }
 
         exec {
-            commandLine "${msbuild}", "/t:build", "/property:Configuration=${BuildConfiguration}", "iOSSample.sln"
+            commandLine "${msbuild}", "/t:build", "/property:Configuration=${BuildConfiguration}", "Sample.ios.csproj"
         }
     }
 }

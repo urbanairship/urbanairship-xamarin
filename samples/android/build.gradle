@@ -13,7 +13,7 @@ task build {
         }
 
         exec {
-            commandLine "${msbuild}", "/t:build", "/p:Configuration=${BuildConfiguration}", "Sample.csproj"
+            commandLine "${msbuild}", "/t:build", "/p:Configuration=${BuildConfiguration}", "Sample.android.csproj"
         }
     }
 }
