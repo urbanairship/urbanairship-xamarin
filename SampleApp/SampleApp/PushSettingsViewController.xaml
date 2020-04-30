@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage
+    Title="Push Settings"
+    xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="SampleApp.PushSettingsViewController">
+    <ContentPage.Content>
+        <TableView Intent="Settings">
+            <TableRoot>
+                <TableSection Title="PUSH SETTINGS">
+                    <SwitchCell Text="Push Enabled" OnChanged="SwitchCell_OnChanged" x:Name="enabledPushSwitch" Tapped="SwitchCell_OnChanged"/>
+                </TableSection>
+                <TableSection Title="DEVICE SETTINGS">
+                    <TextCell Text="Channel ID" x:Name="channelId" Tapped="CopyChannelID"/>
+                    <EntryCell Label="Named User" Keyboard="Text" Completed="AddNamedUser" x:Name="namedUser"/>
+                </TableSection>
+            </TableRoot>
+        </TableView>
+    </ContentPage.Content>
+</ContentPage>
