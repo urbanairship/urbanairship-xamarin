@@ -152,5 +152,13 @@ namespace UrbanAirship.NETStandard
         {
             throw new NotImplementedException(BaitWithoutSwitchMessage);
         }
+
+        /// <summary>
+        /// Registers event listener.
+        /// </summary>
+        public void RegisterEventListener(Action<string, Dictionary<string, string>> onEventReceived)
+        {
+            throw new NotImplementedException(BaitWithoutSwitchMessage);
+        }
     }
 }

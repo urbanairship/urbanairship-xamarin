@@ -2,14 +2,18 @@
  Copyright Airship and Contributors
 */
 
+using System;
 using System.Collections.Generic;
 using UrbanAirship.NETStandard.Attributes;
+using UrbanAirship.Actions;
+using UrbanAirship.NETStandard.Analytics;
 
 namespace UrbanAirship.NETStandard
 {
     public class Airship : IAirship
     {
         private static Airship sharedAirship = new Airship();
+        private DeepLinkListener deepLinkListener = new DeepLinkListener();
 
         public static Airship Instance
         {
@@ -237,5 +241,25 @@ namespace UrbanAirship.NETStandard
                 }
             }
         }
+
+        public void RegisterEventListener(Action<string, Dictionary<string, string>> onEventReceived)
+        {
+            UAirship.Shared().DeepLinkListener = deepLinkListener;
+            deepLinkListener.onEventReceived = onEventReceived;
+        }
+    }
+
+    public class DeepLinkListener : Java.Lang.Object, IDeepLinkListener
+
+    {
+        public Action<string, Dictionary<string, string>> onEventReceived;
+
+        public bool OnDeepLink(string deepLink)
+        {
+            DeepLinkEvent deepLinkEvent = new DeepLinkEvent(deepLink);
+            onEventReceived(deepLinkEvent.EventType, deepLinkEvent.EventData);
+
+            return true;
+        }    
     }
 }

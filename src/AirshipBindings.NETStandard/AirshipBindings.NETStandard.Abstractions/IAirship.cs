@@ -53,5 +53,7 @@ namespace UrbanAirship.NETStandard
         Channel.TagGroupsEditor EditChannelTagGroups();
         
         Attributes.AttributeEditor EditAttributes();
+
+        void RegisterEventListener(Action<string, Dictionary<string, string>> onEventReceived);
     }
 }
