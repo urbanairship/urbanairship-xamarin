@@ -250,7 +250,6 @@ namespace UrbanAirship.NETStandard
     }
 
     public class DeepLinkListener : Java.Lang.Object, IDeepLinkListener
-
     {
         public Action<string, Dictionary<string, string>> onEventReceived;
 
