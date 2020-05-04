@@ -12,8 +12,8 @@ set -euxo pipefail
 
 SCRIPT_NAME=`basename "$0"`
 SCRIPT_PATH=`dirname "$0"`;cd ${SCRIPT_PATH};SCRIPT_PATH="$(pwd)"
-IOS_SAMPLE_PATH="${SCRIPT_PATH}/../ios-unified";cd ${IOS_SAMPLE_PATH};IOS_SAMPLE_PATH="$(pwd)"
-ANDROID_SAMPLE_PATH="${SCRIPT_PATH}/../android";cd ${ANDROID_SAMPLE_PATH};ANDROID_SAMPLE_PATH="$(pwd)"
+IOS_SAMPLE_PATH="${SCRIPT_PATH}/../SampleApp.iOS";cd ${IOS_SAMPLE_PATH};IOS_SAMPLE_PATH="$(pwd)"
+ANDROID_SAMPLE_PATH="${SCRIPT_PATH}/../SampleApp.Android";cd ${ANDROID_SAMPLE_PATH};ANDROID_SAMPLE_PATH="$(pwd)"
 REPO_ROOT_PATH="${SCRIPT_PATH}/../..";cd ${REPO_ROOT_PATH};REPO_ROOT_PATH="$(pwd)"
 
 # default build options
@@ -64,11 +64,11 @@ if [ "$PLUGIN" = "true" ]; then
 fi
 if [ "$ANDROID" = "true" ]; then
   # build android samples and our android and iOS components
-  TARGETS="$TARGETS :samples:android:build"
+  TARGETS="$TARGETS :SampleApp:SampleApp.Android:build"
 fi
 if [ "$IOS" = "true" ]; then
   # build ios sample and our android and iOS components
-  TARGETS="$TARGETS :samples:ios-unified:build"
+  TARGETS="$TARGETS :SampleApp:SampleApp.iOS:build"
 fi
 
 # Execute CI Tasks

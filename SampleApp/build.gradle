@@ -1,4 +1,4 @@
 // Build the sample apps
 task build
-build.dependsOn(':sampleApp:SampleApp.Android:build',
-    ':sampleApp:SampleApp.iOS:build')
+build.dependsOn(':SampleApp:SampleApp.Android:build',
+    ':SampleApp:SampleApp.iOS:build')
