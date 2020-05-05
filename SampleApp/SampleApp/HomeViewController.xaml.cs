@@ -13,7 +13,11 @@ namespace SampleApp
         public HomeViewController()
         {
             InitializeComponent();
+        }
 
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
             refreshView();
         }
 
@@ -26,7 +30,6 @@ namespace SampleApp
                 do
                 {
                 } while (Airship.Instance.ChannelId == null);
-                MessagingCenter.Send(this, "ChannelUpdated");
                 refreshView();
 
                 return;
@@ -35,7 +38,6 @@ namespace SampleApp
             if (Airship.Instance.ChannelId != null)
             {
                 CrossClipboard.Current.SetText(Airship.Instance.ChannelId);
-
                 DisplayAlert("Alert", "Channel copied to clipboard!", "OK");
             }
         }

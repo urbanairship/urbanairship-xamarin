@@ -14,10 +14,6 @@ namespace SampleApp
         public PushSettingsViewController()
         {
             InitializeComponent();
-            //MessagingCenter.Subscribe<HomeViewController>(this, "ChannelUpdated", (sender) =>
-            //{
-            //    channelId.Detail = Airship.Instance.ChannelId;
-            //});
         }
 
         protected override void OnAppearing()

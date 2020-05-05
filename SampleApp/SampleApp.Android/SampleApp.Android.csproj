@@ -127,5 +127,8 @@
   <ItemGroup>
     <AndroidAsset Include="Assets\airshipconfig.properties" />
   </ItemGroup>
+  <ItemGroup>
+    <GoogleServicesJson Include="Assets\google-services.json" />
+  </ItemGroup>
  <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

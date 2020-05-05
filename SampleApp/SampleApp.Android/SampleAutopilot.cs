@@ -25,7 +25,6 @@ namespace Sample
             if (isFirstRun)
             {
                 sharedPreferences.Edit().PutBoolean(FirstRunKey, false).Apply();
-                airship.PushManager.UserNotificationsEnabled = true;
             }
 
             UrbanAirshipListener airshipListener = new UrbanAirshipListener();
