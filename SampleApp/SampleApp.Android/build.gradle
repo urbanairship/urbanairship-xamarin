@@ -9,13 +9,10 @@ task build {
     def BuildConfiguration=project.properties['build_configuration'] ?: "Release"
     doLast() {
         exec {
-            commandLine "mono", "$nugetExe", "restore"
-        }
-
-        exec {
             commandLine "${msbuild}", "/t:build", "/p:Configuration=${BuildConfiguration}", "SampleApp.Android.csproj"
         }
     }
 }
 
-build.dependsOn(':src:AirshipBindings.NETStandard:build')
+build.dependsOn(':SampleApp:build',
+    ':src:AirshipBindings.Android.FCM:build')

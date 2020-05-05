@@ -1,4 +1,17 @@
 // Build the sample apps
-task build
-build.dependsOn(':SampleApp:SampleApp.Android:build',
-    ':SampleApp:SampleApp.iOS:build')
+
+task clean(type: Delete) {
+    doLast() {
+        project.delete "SampleApp/bin"
+        project.delete "SampleApp/obj"
+    }
+}
+
+task build {
+    doLast() {
+     exec {
+         commandLine "mono", "$nugetExe", "restore", "SampleApp.sln"
+     }
+}
+}
+build.dependsOn(':src:AirshipBindings.NETStandard:build')
