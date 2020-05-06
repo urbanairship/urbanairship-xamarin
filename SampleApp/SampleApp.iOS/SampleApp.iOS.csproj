@@ -77,46 +77,40 @@
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">
       <Visible>false</Visible>
     </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon87.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon60.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon58.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon29.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon20.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-60%402x.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-60%403x.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-76.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-76%402x.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-83.5%402x.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-1024.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-Small-40%402x.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-Small-40.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-Small-40%402x-1.png" />
-    <ImageAsset Include="Assets.xcassets\Settings.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\HomeScreen.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\HomeScreen.imageset\Homescreen.png" />
-    <ImageAsset Include="Assets.xcassets\HomeScreen.imageset\Homescreen%402x.png" />
-    <ImageAsset Include="Assets.xcassets\HomeScreen.imageset\Homescreen%403x.png" />
-    <ImageAsset Include="Assets.xcassets\Settings.imageset\Settings.png" />
-    <ImageAsset Include="Assets.xcassets\Settings.imageset\Settings%402x.png" />
-    <ImageAsset Include="Assets.xcassets\Settings.imageset\Settings%403x.png" />
-    <ImageAsset Include="Assets.xcassets\Inbox.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\Inbox.imageset\Inbox.png" />
-    <ImageAsset Include="Assets.xcassets\Inbox.imageset\Inbox%402x.png" />
-    <ImageAsset Include="Assets.xcassets\Inbox.imageset\Inbox%403x.png" />
     <ImageAsset Include="Assets.xcassets\urbanairship_logo.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\urbanairship_logo.imageset\urbanairship_logo.png" />
-    <ImageAsset Include="Assets.xcassets\urbanairship_logo.imageset\urbanairship_logo-1.png" />
-    <ImageAsset Include="Assets.xcassets\urbanairship_logo.imageset\urbanairship_logo-2.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-App-20x20%402x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-App-20x20%403x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-29%402x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-29%403x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-App-40x40%402x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-App-40x40%403x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-App-60x60%402x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-App-60x60%403x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-App-20x20%401x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-App-20x20%402x-1.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-29%402x-1.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-App-40x40%401x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-App-40x40%402x-1.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-App-76x76%401x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-App-76x76%402x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-App-83.5x83.5%402x.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-App-60x60%402x-1.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon-App-60x60%403x-1.png" />
+    <ImageAsset Include="Assets.xcassets\urbanairship_logo.imageset\airshipMark-1.png" />
+    <ImageAsset Include="Assets.xcassets\urbanairship_logo.imageset\airshipMark-2.png" />
+    <ImageAsset Include="Assets.xcassets\urbanairship_logo.imageset\airshipMark.png" />
+    <ImageAsset Include="Assets.xcassets\inbox.imageset\baseline_inbox_black_24pt_1x.png" />
+    <ImageAsset Include="Assets.xcassets\inbox.imageset\baseline_inbox_black_24pt_2x.png" />
+    <ImageAsset Include="Assets.xcassets\inbox.imageset\baseline_inbox_black_24pt_3x.png" />
+    <ImageAsset Include="Assets.xcassets\inbox.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\settings.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\settings.imageset\outline_settings_black_24pt_1x.png" />
+    <ImageAsset Include="Assets.xcassets\settings.imageset\outline_settings_black_24pt_2x.png" />
+    <ImageAsset Include="Assets.xcassets\settings.imageset\outline_settings_black_24pt_3x.png" />
+    <ImageAsset Include="Assets.xcassets\home.imageset\baseline_home_black_24pt_1x.png" />
+    <ImageAsset Include="Assets.xcassets\home.imageset\baseline_home_black_24pt_2x.png" />
+    <ImageAsset Include="Assets.xcassets\home.imageset\baseline_home_black_24pt_3x.png" />
+    <ImageAsset Include="Assets.xcassets\home.imageset\Contents.json" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -153,9 +147,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Assets.xcassets\LaunchImage.imageset\" />
-    <Folder Include="Assets.xcassets\Settings.imageset\" />
-    <Folder Include="Assets.xcassets\HomeScreen.imageset\" />
-    <Folder Include="Assets.xcassets\Inbox.imageset\" />
     <Folder Include="Assets.xcassets\urbanairship_logo.imageset\" />
+    <Folder Include="Assets.xcassets\inbox.imageset\" />
+    <Folder Include="Assets.xcassets\settings.imageset\" />
+    <Folder Include="Assets.xcassets\home.imageset\" />
   </ItemGroup>
 </Project>
