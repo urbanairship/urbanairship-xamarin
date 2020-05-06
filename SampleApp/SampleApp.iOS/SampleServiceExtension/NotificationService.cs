@@ -1,4 +1,8 @@
-﻿using Foundation;
+﻿/*
+ Copyright Airship and Contributors
+*/
+
+using Foundation;
 using UrbanAirship;
 
 namespace SampleServiceExtension
