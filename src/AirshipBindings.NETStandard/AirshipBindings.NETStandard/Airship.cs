@@ -5,7 +5,6 @@
 using System;
 using System.Collections.Generic;
 
-
 namespace UrbanAirship.NETStandard
 {
     public class Airship : IAirship
@@ -149,14 +148,6 @@ namespace UrbanAirship.NETStandard
         /// <returns>A <see cref="UrbanAirship.NETStandard.Channel.TagGroupsEditor">TagGroupsEditor</see>
         /// for channel tag groups.</returns>
         public Channel.TagGroupsEditor EditChannelTagGroups()
-        {
-            throw new NotImplementedException(BaitWithoutSwitchMessage);
-        }
-
-        /// <summary>
-        /// Registers event listener.
-        /// </summary>
-        public void RegisterEventListener(Action<string, Dictionary<string, string>> onEventReceived)
         {
             throw new NotImplementedException(BaitWithoutSwitchMessage);
         }

@@ -10,10 +10,11 @@ using UrbanAirship.NETStandard.Attributes;
 
 namespace UrbanAirship.NETStandard
 {
-    public class Airship : IAirship
+    public delegate void DeepLinkHandler(string deepLink);
+
+    public class Airship : UADeepLinkDelegate, IAirship
     {
         private static Airship sharedAirship = new Airship();
-        private DeepLinkDelegate deepLinkDelegate = new DeepLinkDelegate();
 
         public static Airship Instance
         {
@@ -62,6 +63,22 @@ namespace UrbanAirship.NETStandard
             set
             {
                 UAirship.NamedUser().Identifier = value;
+            }
+        }
+
+        private DeepLinkHandler onDeepLinkReceived;
+        public event DeepLinkHandler OnDeepLinkReceived
+        {
+            add
+            {
+                onDeepLinkReceived += value;
+                UAirship.Shared().WeakDeepLinkDelegate = this;
+            }
+
+            remove
+            {
+                onDeepLinkReceived -= value;
+                UAirship.Shared().WeakDeepLinkDelegate = null;
             }
         }
 
@@ -262,21 +279,10 @@ namespace UrbanAirship.NETStandard
             }
         }
 
-        public void RegisterEventListener(Action <string, Dictionary<string, string>> onEventReceived)
-        {          
-            UAirship.Shared().WeakDeepLinkDelegate = deepLinkDelegate;
-            deepLinkDelegate.onEventReceived = onEventReceived;          
-        }       
-    }
-
-    public class DeepLinkDelegate: UADeepLinkDelegate
-    {
-        public Action<string, Dictionary<string, string>> onEventReceived;
-
         override public void ReceivedDeepLink(NSUrl url, Action completionHandler)
         {
-            DeepLinkEvent deepLinkEvent = new DeepLinkEvent(url.AbsoluteString);
-            onEventReceived(deepLinkEvent.EventType, deepLinkEvent.EventData);
+            var handler = onDeepLinkReceived;
+            handler(url.AbsoluteString);
             completionHandler();
         }
     }

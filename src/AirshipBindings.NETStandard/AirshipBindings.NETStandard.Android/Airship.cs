@@ -2,18 +2,17 @@
  Copyright Airship and Contributors
 */
 
-using System;
 using System.Collections.Generic;
 using UrbanAirship.NETStandard.Attributes;
 using UrbanAirship.Actions;
-using UrbanAirship.NETStandard.Analytics;
 
 namespace UrbanAirship.NETStandard
 {
-    public class Airship : IAirship
+    public delegate void DeepLinkHandler(string deepLink);
+
+    public class Airship : Java.Lang.Object, IDeepLinkListener, IAirship
     {
         private static Airship sharedAirship = new Airship();
-        private DeepLinkListener deepLinkListener = new DeepLinkListener();
 
         public static Airship Instance
         {
@@ -65,6 +64,22 @@ namespace UrbanAirship.NETStandard
             }
         }
 
+        private DeepLinkHandler onDeepLinkReceived;
+        public event DeepLinkHandler OnDeepLinkReceived
+        {
+            add
+            {
+                onDeepLinkReceived += value;
+                UAirship.Shared().DeepLinkListener = this;
+            }
+
+            remove
+            {
+                onDeepLinkReceived -= value;
+                UAirship.Shared().DeepLinkListener = null;
+            }
+        }
+        
         public Channel.TagEditor EditDeviceTags()
         {
             return new Channel.TagEditor(this.DeviceTagHelper);
@@ -242,23 +257,11 @@ namespace UrbanAirship.NETStandard
             }
         }
 
-        public void RegisterEventListener(Action<string, Dictionary<string, string>> onEventReceived)
-        {
-            UAirship.Shared().DeepLinkListener = deepLinkListener;
-            deepLinkListener.onEventReceived = onEventReceived;
-        }
-    }
-
-    public class DeepLinkListener : Java.Lang.Object, IDeepLinkListener
-    {
-        public Action<string, Dictionary<string, string>> onEventReceived;
-
         public bool OnDeepLink(string deepLink)
         {
-            DeepLinkEvent deepLinkEvent = new DeepLinkEvent(deepLink);
-            onEventReceived(deepLinkEvent.EventType, deepLinkEvent.EventData);
-
+            var handler = onDeepLinkReceived;
+            handler(deepLink);
             return true;
-        }    
+        }
     }
 }
