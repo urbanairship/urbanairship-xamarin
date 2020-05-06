@@ -112,11 +112,23 @@
       <SubType></SubType>
       <Generator></Generator>
     </AndroidResource>
-    <AndroidResource Include="Resources\values\colors.xml">
+    <AndroidResource Include="Resources\values\styles.xml">
       <SubType></SubType>
       <Generator></Generator>
     </AndroidResource>
-    <AndroidResource Include="Resources\values\styles.xml">
+    <AndroidResource Include="Resources\values\colors.axml">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\values\dimens.axml">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\values\strings.axml">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\values\styles.axml">
       <SubType></SubType>
       <Generator></Generator>
     </AndroidResource>

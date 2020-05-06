@@ -1,7 +1,8 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <TabbedPage
     xmlns:local="clr-namespace:SampleApp"
+    xmlns:resources="clr-namespace:SampleApp"
     xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="SampleApp.TabbedPageView">
-    <local:HomeViewController Title="Airship" IconImageSource="HomeScreen"/>
-    <local:PushSettingsViewController Title="Push Settings" IconImageSource="Settings"/>
+    <local:HomeViewController Title="{x:Static resources:AppResources.home_title}" IconImageSource="HomeScreen"/>
+    <local:PushSettingsViewController Title="{x:Static resources:AppResources.settings_title}" IconImageSource="Settings"/>
 </TabbedPage>

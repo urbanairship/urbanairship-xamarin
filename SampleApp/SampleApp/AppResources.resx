@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>2.0</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <data name="home_title" xml:space="preserve">
+        <value>HOME</value>
+    </data>
+    <data name="settings_title" xml:space="preserve">
+        <value>SETTINGS</value>
+    </data>
+    <data name="enable_push" xml:space="preserve">
+        <value>ENABLE PUSH</value>
+    </data>
+    <data name="push_settings_category_title" xml:space="preserve">
+        <value>PUSH SETTINGS</value>
+    </data>
+    <data name="device_settings_category_title" xml:space="preserve">
+        <value>DEVICE SETTINGS</value>
+    </data>
+    <data name="push_enabled_cell_title" xml:space="preserve">
+        <value>Push Enabled</value>
+    </data>
+    <data name="channel_id_cell_title" xml:space="preserve">
+        <value>Channel ID</value>
+    </data>
+    <data name="named_user_cell_title" xml:space="preserve">
+        <value>Named User</value>
+    </data>
+</root>

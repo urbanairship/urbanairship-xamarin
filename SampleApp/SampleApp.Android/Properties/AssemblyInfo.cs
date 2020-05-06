@@ -1,4 +1,8 @@
-﻿using System.Reflection;
+/*
+ Copyright Airship and Contributors
+*/
+
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using Android.App;
@@ -7,14 +11,20 @@ using Android.App;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("SampleApp.Android")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Sample Xamarin application")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Airship")]
 [assembly: AssemblyProduct("SampleApp.Android")]
-[assembly: AssemblyCopyright("Copyright ©  2014")]
+[assembly: AssemblyCopyright("Copyright Airship and Contributors")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 [assembly: ComVisible(false)]
+
+[assembly: Application(AllowBackup = true,
+                        Icon = "@mipmap/icon",
+                        Label = "@string/app_name",
+                        SupportsRtl = true,
+                        Theme = "@style/AppTheme")]
 
 // Version information for an assembly consists of the following four values:
 //
