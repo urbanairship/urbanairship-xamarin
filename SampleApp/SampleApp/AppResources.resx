@@ -36,4 +36,22 @@
     <data name="named_user_cell_title" xml:space="preserve">
         <value>Named User</value>
     </data>
-</root>
+    <data name="alert_title" xml:space="preserve">
+        <value>Alert</value>
+    </data>
+    <data name="alert_copied_channel_id" xml:space="preserve">
+        <value>Channel ID copied to clipboard!</value>
+    </data>
+    <data name="channel_id_cell_placeholder" xml:space="preserve">
+        <value>add your named user</value>
+    </data>
+    <data name="alert_named_user_added_successuflully" xml:space="preserve">
+        <value>Named user added successufully</value>
+    </data>
+    <data name="ok" xml:space="preserve">
+        <value>OK</value>
+    </data>
+    <data name="none" xml:space="preserve">
+        <value>None</value>
+    </data>
+  </root>

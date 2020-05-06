@@ -24,8 +24,8 @@ namespace SampleApp
         {
             base.OnAppearing();
             enabledPushSwitch.On = Airship.Instance.UserNotificationsEnabled;
-            channelId.Detail = Airship.Instance.ChannelId != null ? Airship.Instance.ChannelId : "None";
-            namedUser.Placeholder = Airship.Instance.NamedUser != null ? Airship.Instance.NamedUser : "add your named user";
+            channelId.Detail = Airship.Instance.ChannelId != null ? Airship.Instance.ChannelId : AppResources.none;
+            namedUser.Placeholder = Airship.Instance.NamedUser != null ? Airship.Instance.NamedUser : AppResources.channel_id_cell_placeholder;
         }
 
         void SwitchCell_OnChanged(object sender, EventArgs e)
@@ -38,7 +38,7 @@ namespace SampleApp
             if (Airship.Instance.ChannelId != null)
             {
                 CrossClipboard.Current.SetText(Airship.Instance.ChannelId);
-                DisplayAlert("Alert", "Channel copied to clipboard!", "OK");
+                DisplayAlert(AppResources.alert_title, AppResources.alert_copied_channel_id, AppResources.ok);
             }
         }
 
@@ -46,7 +46,7 @@ namespace SampleApp
         {
             Airship.Instance.NamedUser = namedUser.Text;
             namedUser.Placeholder = namedUser.Text;
-            DisplayAlert("Alert", "Named user added successufully", "OK");
+            DisplayAlert(AppResources.alert_title, AppResources.alert_named_user_added_successuflully, AppResources.ok);
         }
     }
 }

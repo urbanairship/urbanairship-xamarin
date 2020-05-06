@@ -42,7 +42,7 @@ namespace SampleApp
             if (Airship.Instance.ChannelId != null)
             {
                 CrossClipboard.Current.SetText(Airship.Instance.ChannelId);
-                DisplayAlert("Alert", "Channel ID copied to clipboard!", "OK");
+                DisplayAlert(AppResources.alert_title, AppResources.alert_copied_channel_id, AppResources.ok);
             }
         }
 

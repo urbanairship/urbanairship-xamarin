@@ -94,5 +94,41 @@ namespace SampleApp {
                 return ResourceManager.GetString("named_user_cell_title", resourceCulture);
             }
         }
+        
+        internal static string alert_title {
+            get {
+                return ResourceManager.GetString("alert_title", resourceCulture);
+            }
+        }
+        
+        internal static string alert_copied_channel_id {
+            get {
+                return ResourceManager.GetString("alert_copied_channel_id", resourceCulture);
+            }
+        }
+        
+        internal static string channel_id_cell_placeholder {
+            get {
+                return ResourceManager.GetString("channel_id_cell_placeholder", resourceCulture);
+            }
+        }
+        
+        internal static string alert_named_user_added_successuflully {
+            get {
+                return ResourceManager.GetString("alert_named_user_added_successuflully", resourceCulture);
+            }
+        }
+        
+        internal static string ok {
+            get {
+                return ResourceManager.GetString("ok", resourceCulture);
+            }
+        }
+        
+        internal static string none {
+            get {
+                return ResourceManager.GetString("none", resourceCulture);
+            }
+        }
     }
 }
