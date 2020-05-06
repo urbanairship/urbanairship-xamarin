@@ -10,7 +10,15 @@
                 </TableSection>
                 <TableSection Title="DEVICE SETTINGS">
                     <TextCell Text="Channel ID" x:Name="channelId" Tapped="CopyChannelID"/>
-                    <EntryCell Label="Named User" Keyboard="Text" Completed="AddNamedUser" x:Name="namedUser"/>
+                    <EntryCell Label="Named User" Completed="AddNamedUser" x:Name="namedUser">
+                        <EntryCell.Keyboard>
+                            <Keyboard x:FactoryMethod="Create">
+                                <x:Arguments>
+                                    <KeyboardFlags>CapitalizeNone</KeyboardFlags>
+                                </x:Arguments>
+                            </Keyboard>
+                        </EntryCell.Keyboard>
+                    </EntryCell>
                 </TableSection>
             </TableRoot>
         </TableView>

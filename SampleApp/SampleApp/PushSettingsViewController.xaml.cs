@@ -45,6 +45,7 @@ namespace SampleApp
         void AddNamedUser(object sender, EventArgs e)
         {
             Airship.Instance.NamedUser = namedUser.Text;
+            namedUser.Placeholder = namedUser.Text;
             DisplayAlert("Alert", "Named user added successufully", "OK");
         }
     }
