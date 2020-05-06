@@ -76,7 +76,10 @@ namespace UrbanAirship.NETStandard
             remove
             {
                 onDeepLinkReceived -= value;
-                UAirship.Shared().DeepLinkListener = null;
+                if (onDeepLinkReceived == null)
+                {
+                    UAirship.Shared().DeepLinkListener = null;
+                }
             }
         }
         
