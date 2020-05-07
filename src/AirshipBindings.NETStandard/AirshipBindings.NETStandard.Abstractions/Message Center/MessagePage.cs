@@ -13,11 +13,29 @@ namespace UrbanAirship.NETStandard.MessageCenter
     /// </summary>
     public partial class MessagePage : ContentPage
     {
+        private string messageId;
+
+        public static readonly BindableProperty MessageIdProperty = BindableProperty.Create(
+            propertyName: "MessageId",
+            returnType: typeof(string),
+            declaringType: typeof(MessagePage),
+            defaultValue: null,
+            defaultBindingMode: BindingMode.OneWay,
+            propertyChanged: null);
+
         /// <summary>
         /// Gets and sets the message ID.
         /// </summary>
         /// <value>The message ID.</value>
-        public string MessageId { get; set; }
+        public string MessageId {
+            get { return (string)GetValue(MessageIdProperty); }
+            set { SetValue(MessageIdProperty, value); }
+        }
+
+        /// <summary>
+        /// Event handler invoked when the message starts loading.
+        /// </summary>
+        public event EventHandler<MessageLoadStartedEventArgs> LoadStarted;
 
         /// <summary>
         /// Event handler invoked when the message has loaded.
@@ -25,7 +43,7 @@ namespace UrbanAirship.NETStandard.MessageCenter
         public event EventHandler<MessageLoadedEventArgs> Loaded;
 
         /// <summary>
-        /// Event handler invoked whe  the message load fails.
+        /// Event handler invoked when the message load fails.
         /// </summary>
         public event EventHandler<MessageLoadFailedEventArgs> LoadFailed;
 
@@ -37,11 +55,14 @@ namespace UrbanAirship.NETStandard.MessageCenter
         /// <summary>
         /// MessagePage constructor.
         /// </summary>
-        public MessagePage()
-        {
-        }
+        public MessagePage() { }
 
         //@cond IGNORE
+        public void OnRendererLoadStarted(string messageId)
+        {
+            LoadStarted?.Invoke(this, new MessageLoadStartedEventArgs(messageId));
+        }
+
         public void OnRendererLoaded(string messageId)
         {
             Loaded?.Invoke(this, new MessageLoadedEventArgs(messageId));
@@ -78,6 +99,25 @@ namespace UrbanAirship.NETStandard.MessageCenter
         /// The message failed to load.
         /// </summary>
         LoadFailed
+    }
+
+    /// <summary>
+    /// Arguments for the LoadStarted event.
+    /// </summary>
+    public class MessageLoadStartedEventArgs : EventArgs
+    {
+        /// <summary>
+        /// Gets the message ID.
+        /// </summary>
+        /// <value>The message ID.</value>
+        public string MessageId { get; private set; }
+
+        //@cond IGNORE
+        public MessageLoadStartedEventArgs(string messageId)
+        {
+            MessageId = messageId;
+        }
+        //@endcond
     }
 
     /// <summary>

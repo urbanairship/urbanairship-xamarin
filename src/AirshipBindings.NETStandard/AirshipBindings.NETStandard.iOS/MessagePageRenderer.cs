@@ -3,6 +3,7 @@
 */
 
 using System;
+using System.ComponentModel;
 using Foundation;
 using UIKit;
 using UrbanAirship.NETStandard.MessageCenter;
@@ -120,11 +121,24 @@ namespace UrbanAirship.NETStandard.iOS
 
             messagePage = e.NewElement as MessagePage;
             messageId = messagePage.MessageId;
+            messagePage.PropertyChanged += OnElementPropertyChanged;
 
             if (messageId != null)
             {
                 LoadMessage(messageId);
             }
+        }
+
+        private void OnElementPropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+           if (e.PropertyName.Equals(MessagePage.MessageIdProperty.PropertyName))
+           {
+                messageId = messagePage.MessageId;
+                if (messageId != null)
+                {
+                    LoadMessage(messageId);
+                }
+           }
         }
 
         private void LoadMessageBody(UAInboxMessage message)
@@ -139,6 +153,8 @@ namespace UrbanAirship.NETStandard.iOS
                 request.Headers = dict;
 
                 webView.LoadRequest(request);
+
+                messagePage.OnRendererLoadStarted(messageId);
             });
         }
     }

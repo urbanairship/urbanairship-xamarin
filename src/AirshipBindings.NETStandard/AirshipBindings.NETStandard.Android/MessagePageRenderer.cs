@@ -1,4 +1,5 @@
-﻿using Android.Content;
+﻿using System.ComponentModel;
+using Android.Content;
 using Android.Runtime;
 using Android.Views;
 using Android.Webkit;
@@ -114,8 +115,10 @@ namespace UrbanAirship.NETStandard.Android
                     messagePage.OnRendererLoadFailed(messageId, false, MessageFailureStatus.Unavailable);
                     return;
                 }
+
+                webView.LoadRichPushMessage(message);
+                messagePage.OnRendererLoadStarted(messageId);
             }
-            webView.LoadRichPushMessage(message);
         }
 
         protected override void OnElementChanged(ElementChangedEventArgs<Xamarin.Forms.Page> e)
@@ -130,7 +133,22 @@ namespace UrbanAirship.NETStandard.Android
             messagePage = e.NewElement as MessagePage;
             messageId = messagePage.MessageId;
 
-            LoadMessage(messageId);
+            if (messageId != null)
+            {
+                LoadMessage(messageId);
+            }
+        }
+
+        protected override void OnElementPropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName.Equals(MessagePage.MessageIdProperty.PropertyName))
+            {
+                messageId = messagePage.MessageId;
+                if (messageId != null)
+                {
+                    LoadMessage(messageId);
+                }
+            }
         }
 
         protected override void OnLayout(bool changed, int l, int t, int r, int b)
@@ -160,7 +178,9 @@ namespace UrbanAirship.NETStandard.Android
                 messagePage.OnRendererLoadFailed(messageId, false, MessageFailureStatus.Unavailable);
                 return;
             }
+
             webView.LoadRichPushMessage(message);
+            messagePage.OnRendererLoadStarted(messageId);
         }
     }
 }
