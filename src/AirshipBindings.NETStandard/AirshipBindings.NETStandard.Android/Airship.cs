@@ -4,10 +4,13 @@
 
 using System.Collections.Generic;
 using UrbanAirship.NETStandard.Attributes;
+using UrbanAirship.Actions;
 
 namespace UrbanAirship.NETStandard
 {
-    public class Airship : IAirship
+    public delegate void DeepLinkHandler(string deepLink);
+
+    public class Airship : Java.Lang.Object, IDeepLinkListener, IAirship
     {
         private static Airship sharedAirship = new Airship();
 
@@ -61,6 +64,25 @@ namespace UrbanAirship.NETStandard
             }
         }
 
+        private DeepLinkHandler onDeepLinkReceived;
+        public event DeepLinkHandler OnDeepLinkReceived
+        {
+            add
+            {
+                onDeepLinkReceived += value;
+                UAirship.Shared().DeepLinkListener = this;
+            }
+
+            remove
+            {
+                onDeepLinkReceived -= value;
+                if (onDeepLinkReceived == null)
+                {
+                    UAirship.Shared().DeepLinkListener = null;
+                }
+            }
+        }
+        
         public Channel.TagEditor EditDeviceTags()
         {
             return new Channel.TagEditor(this.DeviceTagHelper);
@@ -236,6 +258,13 @@ namespace UrbanAirship.NETStandard
                         break;
                 }
             }
+        }
+
+        public bool OnDeepLink(string deepLink)
+        {
+            var handler = onDeepLinkReceived;
+            handler(deepLink);
+            return true;
         }
     }
 }
