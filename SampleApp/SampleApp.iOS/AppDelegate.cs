@@ -126,6 +126,5 @@ namespace SampleApp.iOS
             NSNotificationCenter.DefaultCenter.PostNotificationName("channelIDUpdated", this);
         }
 
-
     }
 }
