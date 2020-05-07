@@ -84,6 +84,16 @@ namespace UrbanAirship.NETStandard
         }
 
         /// <summary>
+        /// track a screen for a specific app screen
+        /// </summary>
+        /// <param name="screen">The screen's identifier as an string
+        /// to add.</param>
+        public void trackScreen(string screen)
+        {
+            throw new NotImplementedException(BaitWithoutSwitchMessage);
+        }
+
+        /// <summary>
         /// Associate a custom identifier. Previous identifiers will be replaced by the new identifiers
         /// each time AssociateIdentifier is called. It is a set operation.
         /// </summary>

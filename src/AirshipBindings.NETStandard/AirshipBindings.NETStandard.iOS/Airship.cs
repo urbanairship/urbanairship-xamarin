@@ -163,6 +163,11 @@ namespace UrbanAirship.NETStandard
             UAirship.Analytics().AddEvent(uaEvent);
         }
 
+        public void TrackScreen(string screen)
+        {
+            UAirship.Analytics().TrackScreen(screen);
+        }
+
         public void AssociateIdentifier(string key, string identifier)
         {
             UAAssociatedIdentifiers identifiers = UAirship.Analytics().CurrentAssociatedDeviceIdentifiers();
