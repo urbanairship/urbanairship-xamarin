@@ -3,6 +3,7 @@
 */
 
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UrbanAirship.NETStandard.Analytics;
 using UrbanAirship.NETStandard.Attributes;
@@ -166,6 +167,35 @@ namespace UrbanAirship.NETStandard
             get
             {
                 return (int)UAMessageCenter.Shared().MessageList.MessageCount();
+            }
+        }
+
+        public List<Inbox.Message> InboxMessages
+        {
+            get
+            {
+                var messagesList = new List<Inbox.Message>();
+                var messages = UAMessageCenter.Shared().MessageList.Messages;
+                foreach (var message in messages)
+                {
+                    var extras = new Hashtable();
+                    foreach (var key in message.Extra.Keys)
+                    {
+                        extras.Add(key, message.Extra[key]);
+                    }
+
+                    var inboxMessage = new Inbox.Message(
+                        message.MessageID,
+                        message.Title,
+                        (long)message.MessageSent.SecondsSince1970 * 1000L,
+                        (long)message.MessageExpiration.SecondsSince1970 * 1000L,
+                        message.MessageURL.AbsoluteString,
+                        extras);
+
+                    messagesList.Add(inboxMessage);
+                }
+
+                return messagesList;
             }
         }
 

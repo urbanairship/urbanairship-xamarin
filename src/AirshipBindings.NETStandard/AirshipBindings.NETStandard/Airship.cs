@@ -123,6 +123,12 @@ namespace UrbanAirship.NETStandard
             private set { throw new NotImplementedException(BaitWithoutSwitchMessage); }
         }
 
+        public List<Inbox.Message> InboxMessages
+        {
+            get { throw new NotImplementedException(BaitWithoutSwitchMessage); }
+            private set { throw new NotImplementedException(BaitWithoutSwitchMessage); }
+        }
+
         /// <summary>
         /// Edit channel attributes.
         /// </summary>

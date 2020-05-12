@@ -2,7 +2,9 @@
  Copyright Airship and Contributors
 */
 
+using System;
 using System.Collections.Generic;
+using Java.Util;
 using UrbanAirship.NETStandard.Attributes;
 
 namespace UrbanAirship.NETStandard
@@ -150,6 +152,36 @@ namespace UrbanAirship.NETStandard
             get
             {
                 return UAirship.Shared().Inbox.Count;
+            }
+        }
+
+        public List<Inbox.Message> InboxMessages
+        {
+            get
+            {
+                var messagesList = new List<Inbox.Message>();
+                //var messages = UAirship.Shared().Inbox.GetMessages(new RichPush.RichPushInbox.Predicate(null));
+                var messages = UAirship.Shared().Inbox.Messages;
+                foreach (var message in messages)
+                {
+                    var extras = new System.Collections.Hashtable();
+                    foreach (var key in message.Extras.KeySet())
+                    {
+                        extras.Add(key, message.Extras.Get(key));
+                    }
+
+                    var inboxMessage = new Inbox.Message(
+                        message.MessageId,
+                        message.Title,
+                        message.SentDate.Time,
+                        (long)message.ExpirationDateMS,
+                        message.ListIconUrl,
+                        extras);
+
+                    messagesList.Add(inboxMessage);
+                }
+
+                return messagesList;
             }
         }
 
