@@ -88,7 +88,7 @@ namespace UrbanAirship.NETStandard
         /// </summary>
         /// <param name="screen">The screen's identifier as an string
         /// to add.</param>
-        public void trackScreen(string screen)
+        public void TrackScreen(string screen)
         {
             throw new NotImplementedException(BaitWithoutSwitchMessage);
         }
