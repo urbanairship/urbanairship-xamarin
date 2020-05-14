@@ -1,7 +1,7 @@
 ﻿using System.Reflection;
-using System.Runtime.CompilerServices;
-
-// Information about this assembly is defined by the following attributes. 
-// Change them to the values specific to your project.
+using UrbanAirship.NETStandard.MessageCenter;
+using Xamarin.Forms;
 
 [assembly: AssemblyTitle("AirshipBindings.NETStandard.Android")]
+[assembly: ExportRenderer(typeof(MessagePage), typeof(UrbanAirship.NETStandard.Android.MessagePageRenderer))]
+

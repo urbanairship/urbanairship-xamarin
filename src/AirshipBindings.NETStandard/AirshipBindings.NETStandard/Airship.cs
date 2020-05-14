@@ -5,7 +5,6 @@
 using System;
 using System.Collections.Generic;
 
-
 namespace UrbanAirship.NETStandard
 {
     public class Airship : IAirship

@@ -5,12 +5,15 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Foundation;
 using UrbanAirship.NETStandard.Analytics;
 using UrbanAirship.NETStandard.Attributes;
 
 namespace UrbanAirship.NETStandard
 {
-    public class Airship : IAirship
+    public delegate void DeepLinkHandler(string deepLink);
+
+    public class Airship : UADeepLinkDelegate, IAirship
     {
         private static Airship sharedAirship = new Airship();
 
@@ -61,6 +64,25 @@ namespace UrbanAirship.NETStandard
             set
             {
                 UAirship.NamedUser().Identifier = value;
+            }
+        }
+
+        private DeepLinkHandler onDeepLinkReceived;
+        public event DeepLinkHandler OnDeepLinkReceived
+        {
+            add
+            {
+                onDeepLinkReceived += value;
+                UAirship.Shared().WeakDeepLinkDelegate = this;
+            }
+
+            remove
+            {
+                onDeepLinkReceived -= value;
+                if (onDeepLinkReceived == null)
+                {
+                    UAirship.Shared().WeakDeepLinkDelegate = null;
+                }
             }
         }
 
@@ -288,6 +310,13 @@ namespace UrbanAirship.NETStandard
                 operation.tags.CopyTo(tagArray, 0);
                 actions[operation.operationType](operation.group, tagArray);
             }
+        }
+
+        override public void ReceivedDeepLink(NSUrl url, Action completionHandler)
+        {
+            var handler = onDeepLinkReceived;
+            handler(url.AbsoluteString);
+            completionHandler();
         }
     }
 }

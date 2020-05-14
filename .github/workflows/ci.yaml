@@ -22,7 +22,7 @@ jobs:
         env:
           GOOGLE_SERVICES_JSON: ${{ secrets.GOOGLE_SERVICES_JSON }}
         run: |
-          echo "$GOOGLE_SERVICES_JSON" > samples/android/Assets/google-services.json
+          echo "$GOOGLE_SERVICES_JSON" > SampleApp/SampleApp.Android/Assets/google-services.json
 
       - name: Build
         run: ./gradlew build pkg
