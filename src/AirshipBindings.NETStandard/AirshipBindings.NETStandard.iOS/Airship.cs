@@ -192,11 +192,11 @@ namespace UrbanAirship.NETStandard
             }
         }
 
-        public List<Inbox.Message> InboxMessages
+        public List<MessageCenter.Message> InboxMessages
         {
             get
             {
-                var messagesList = new List<Inbox.Message>();
+                var messagesList = new List<MessageCenter.Message>();
                 var messages = UAMessageCenter.Shared().MessageList.Messages;
                 foreach (var message in messages)
                 {
@@ -206,11 +206,31 @@ namespace UrbanAirship.NETStandard
                         extras.Add(key, message.Extra[key]);
                     }
 
-                    var inboxMessage = new Inbox.Message(
+                    DateTime? sentDate;
+                    if (message.MessageSent != null)
+                    {
+                        sentDate = FromNSDate(message.MessageSent);
+                    }
+                    else
+                    {
+                        sentDate = null;
+                    }
+
+                    DateTime? expirationDate;
+                    if (message.MessageExpiration != null)
+                    {
+                        expirationDate = FromNSDate(message.MessageExpiration);
+                    }
+                    else
+                    {
+                        expirationDate = null;
+                    }
+
+                    var inboxMessage = new MessageCenter.Message(
                         message.MessageID,
                         message.Title,
-                        (long)message.MessageSent.SecondsSince1970 * 1000L,
-                        (long)message.MessageExpiration.SecondsSince1970 * 1000L,
+                        sentDate,
+                        expirationDate,
                         message.MessageURL.AbsoluteString,
                         extras);
 
@@ -219,6 +239,12 @@ namespace UrbanAirship.NETStandard
 
                 return messagesList;
             }
+        }
+
+        private DateTime FromNSDate(NSDate date)
+        {
+            var epoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+            return epoch.AddSeconds(date.SecondsSince1970);
         }
 
         public Channel.TagGroupsEditor EditNamedUserTagGroups()

@@ -47,7 +47,7 @@ namespace UrbanAirship.NETStandard
             get;
         }
 
-        List<Inbox.Message> InboxMessages
+        List<MessageCenter.Message> InboxMessages
         {
             get;
         }

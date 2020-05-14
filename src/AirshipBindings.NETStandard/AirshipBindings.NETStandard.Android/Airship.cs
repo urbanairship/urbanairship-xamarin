@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using Java.Util;
 using UrbanAirship.NETStandard.Attributes;
 using UrbanAirship.Actions;
+using System;
 
 namespace UrbanAirship.NETStandard
 {
@@ -176,12 +177,11 @@ namespace UrbanAirship.NETStandard
             }
         }
 
-        public List<Inbox.Message> InboxMessages
+        public List<MessageCenter.Message> InboxMessages
         {
             get
             {
-                var messagesList = new List<Inbox.Message>();
-                //var messages = UAirship.Shared().Inbox.GetMessages(new RichPush.RichPushInbox.Predicate(null));
+                var messagesList = new List<MessageCenter.Message>();
                 var messages = UAirship.Shared().Inbox.Messages;
                 foreach (var message in messages)
                 {
@@ -191,11 +191,29 @@ namespace UrbanAirship.NETStandard
                         extras.Add(key, message.Extras.Get(key));
                     }
 
-                    var inboxMessage = new Inbox.Message(
+                    DateTime? sentDate;
+                    if (message.SentDate != null)
+                    {
+                        sentDate = FromDate(message.SentDate);
+                    } else
+                    {
+                        sentDate = null;
+                    }
+
+                    DateTime? expirationDate;
+                    if (message.ExpirationDate != null)
+                    {
+                        expirationDate = FromDate(message.ExpirationDate);
+                    } else
+                    {
+                        expirationDate = null;
+                    }
+
+                    var inboxMessage = new MessageCenter.Message(
                         message.MessageId,
                         message.Title,
-                        message.SentDate.Time,
-                        (long)message.ExpirationDateMS,
+                        sentDate,
+                        expirationDate,
                         message.ListIconUrl,
                         extras);
 
@@ -204,6 +222,12 @@ namespace UrbanAirship.NETStandard
 
                 return messagesList;
             }
+        }
+
+        private DateTime FromDate(Date date)
+        {
+            var epoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+            return epoch.AddMilliseconds(date.Time);
         }
 
         public Channel.TagGroupsEditor EditNamedUserTagGroups()
