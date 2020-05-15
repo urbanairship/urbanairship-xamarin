@@ -185,10 +185,10 @@ namespace UrbanAirship.NETStandard
                 var messages = UAirship.Shared().Inbox.Messages;
                 foreach (var message in messages)
                 {
-                    var extras = new System.Collections.Hashtable();
+                    var extras = new Dictionary<string, string>();
                     foreach (var key in message.Extras.KeySet())
                     {
-                        extras.Add(key, message.Extras.Get(key));
+                        extras.Add(key, message.Extras.Get(key).ToString());
                     }
 
                     DateTime? sentDate;

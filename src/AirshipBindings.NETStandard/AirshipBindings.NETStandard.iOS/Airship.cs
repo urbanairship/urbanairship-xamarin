@@ -3,7 +3,6 @@
 */
 
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using Foundation;
 using UrbanAirship.NETStandard.Analytics;
@@ -200,10 +199,10 @@ namespace UrbanAirship.NETStandard
                 var messages = UAMessageCenter.Shared().MessageList.Messages;
                 foreach (var message in messages)
                 {
-                    var extras = new Hashtable();
+                    var extras = new Dictionary<string, string>();
                     foreach (var key in message.Extra.Keys)
                     {
-                        extras.Add(key, message.Extra[key]);
+                        extras.Add(key.ToString(), message.Extra[key].ToString());
                     }
 
                     DateTime? sentDate;
