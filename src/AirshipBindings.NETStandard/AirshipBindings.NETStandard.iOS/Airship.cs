@@ -225,12 +225,19 @@ namespace UrbanAirship.NETStandard
                         expirationDate = null;
                     }
 
+                    string iconUrl = null;
+                    var icons = (NSDictionary)message.RawMessageObject.ValueForKey(new NSString("icons"));
+                    if (icons != null)
+                    {
+                        iconUrl = icons.ValueForKey(new NSString("list_icon")).ToString();
+                    }
+
                     var inboxMessage = new MessageCenter.Message(
                         message.MessageID,
                         message.Title,
                         sentDate,
                         expirationDate,
-                        message.MessageURL.AbsoluteString,
+                        iconUrl,
                         extras);
 
                     messagesList.Add(inboxMessage);
