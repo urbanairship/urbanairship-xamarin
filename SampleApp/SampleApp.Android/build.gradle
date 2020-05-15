@@ -1,0 +1,18 @@
+task clean(type: Delete) {
+    doLast() {
+        project.delete "bin"
+        project.delete "obj"
+    }
+}
+
+task build {
+    def BuildConfiguration=project.properties['build_configuration'] ?: "Release"
+    doLast() {
+        exec {
+            commandLine "${msbuild}", "/t:build", "/p:Configuration=${BuildConfiguration}", "SampleApp.Android.csproj"
+        }
+    }
+}
+
+build.dependsOn(':SampleApp:build',
+    ':src:AirshipBindings.Android.FCM:build')

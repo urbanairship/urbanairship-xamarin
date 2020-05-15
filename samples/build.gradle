@@ -1,4 +1,0 @@
-// Build the sample apps
-task build
-build.dependsOn(':samples:android:build',
-    ':samples:ios-unified:build')

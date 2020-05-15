@@ -222,4 +222,8 @@ local-nuget-feed/
 # UA native jars
 urbanairship*.aar
 
+# Google Services (e.g. APIs or Firebase)
 google-services.json
+
+# Airship
+airship.properties
