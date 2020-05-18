@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
    <metadata>
-      <id>urbanairship.android.fcm</id>
+      <id>urbanairship.android.automation</id>
       <version>13.1.0</version>
-      <title>Airship Android SDK - FCM Push Provider</title>
+      <title>Airship Android SDK</title>
       <authors>Urban Airship, Inc.</authors>
       <projectUrl>https://github.com/urbanairship/urbanairship-xamarin</projectUrl>
       <requireLicenseAcceptance>false</requireLicenseAcceptance>
@@ -11,14 +11,12 @@
 
       <dependencies>
          <group targetFramework="MonoAndroid4.1">
-            <dependency id="Xamarin.Firebase.Messaging" version="71.1740.0" />
-            <dependency id="Xamarin.GooglePlayServices.Base" version="71.1610.0" />
             <dependency id="urbanairship.android.core" version="13.1.0"/>
          </group>
       </dependencies>
    </metadata>
 
    <files>
-     <file src="src/AirshipBindings.Android.FCM/bin/release/AirshipBindings.Android.FCM.dll" target="lib/MonoAndroid41" />
+     <file src="src/AirshipBindings.Android.Automation/bin/release/AirshipBindings.Android.Automation.dll" target="lib/MonoAndroid41" />
    </files>
 </package>
