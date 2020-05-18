@@ -94,15 +94,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Additions\RichPushMessage.cs" />
     <Compile Include="Additions\UAirship.cs" />
-    <Compile Include="Additions\RichPushInbox.cs" />
     <Compile Include="..\SharedAssemblyInfo.Android.cs">
       <Link>Properties\SharedAssemblyInfo.Android.cs</Link>
     </Compile>
-    <Compile Include="Additions\RichPushUser.cs" />
     <Compile Include="Additions\PreferenceDataStore.cs" />
-    <Compile Include="Additions\MessageListFragment.cs" />
     <Compile Include="Additions\ActionRegistry.cs" />
     <Compile Include="Additions\ActionRunRequest.cs" />
     <Compile Include="Additions\ActionCompletionCallback.cs" />
@@ -123,10 +119,10 @@
     <Folder Include="Jars\" />
   </ItemGroup>
   <ItemGroup>
-    <LibraryProjectZip Include="Jars\urbanairship-core-12.2.3.aar" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <LibraryProjectZip Include="Jars\urbanairship-core-13.1.0.aar" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.Bindings.targets" />
   <Import Project="packages\Xamarin.AndroidX.Annotation.1.1.0\build\monoandroid90\Xamarin.AndroidX.Annotation.targets" Condition="Exists('packages\Xamarin.AndroidX.Annotation.1.1.0\build\monoandroid90\Xamarin.AndroidX.Annotation.targets')" />

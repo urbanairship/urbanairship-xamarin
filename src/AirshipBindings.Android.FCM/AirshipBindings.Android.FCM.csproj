@@ -213,7 +213,7 @@
     <Folder Include="Jars\" />
   </ItemGroup>
   <ItemGroup>
-    <LibraryProjectZip Include="Jars\urbanairship-fcm-12.2.3.aar" />
+    <LibraryProjectZip Include="Jars\urbanairship-fcm-13.1.0.aar" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AirshipBindings.Android.Core\AirshipBindings.Android.Core.csproj">

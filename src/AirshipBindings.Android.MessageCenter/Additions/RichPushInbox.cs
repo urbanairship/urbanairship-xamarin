@@ -7,9 +7,9 @@ using System.Collections.Generic;
 
 using Android.OS;
 
-namespace UrbanAirship.RichPush
+namespace UrbanAirship.MessageCenter
 {
-	public partial class RichPushInbox
+    public partial class Inbox
 	{
 		private Dictionary<Action, Listener> eventHandlers = new Dictionary<Action, Listener>();
 		public event Action OnInboxUpdated
@@ -41,7 +41,7 @@ namespace UrbanAirship.RichPush
 			return FetchMessages (looper, new FetchMessagesCallback (callback));
 		}
 
-		public IList<RichPushMessage> GetMessages(Func<RichPushMessage, bool> predicate) {
+		public IList<Message> GetMessages(Func<Message, bool> predicate) {
 			return GetMessages (new Predicate (predicate));
 		}
 
@@ -81,20 +81,25 @@ namespace UrbanAirship.RichPush
 
 		public class Predicate : Java.Lang.Object, IPredicate
 		{
-			Func<RichPushMessage, bool> predicate;
+			Func<Message, bool> predicate;
 
-			public Predicate(Func<RichPushMessage, bool> predicate)
+			public Predicate(Func<Message, bool> predicate)
 			{
 				this.predicate = predicate;
 			}
 
-			public bool Apply (RichPushMessage message) {
+			public bool Apply (Message message) {
 				if (predicate != null)
 				{
 					return predicate.Invoke (message);
 				}
 				return true;
 			}
-		}
+
+            public bool Apply(Java.Lang.Object p0)
+            {
+                throw new NotImplementedException();
+            }
+        }
 	}
 }
