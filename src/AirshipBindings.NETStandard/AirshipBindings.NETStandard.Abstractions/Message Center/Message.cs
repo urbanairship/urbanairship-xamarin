@@ -25,7 +25,7 @@ namespace UrbanAirship.NETStandard.MessageCenter
         public string Title { get; }
 
         /// <summary>
-        /// Gets message sent date.
+        /// Gets the message sent date.
         /// </summary>
         /// <value>The message sent date.</value>
         public DateTime? SentDate { get; }
