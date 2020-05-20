@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\AirshipBindings.NETStandard\packages\Xamarin.AndroidX.Migration.1.0.6\build\monoandroid90\Xamarin.AndroidX.Migration.props" Condition="Exists('..\AirshipBindings.NETStandard\packages\Xamarin.AndroidX.Migration.1.0.6\build\monoandroid90\Xamarin.AndroidX.Migration.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -54,28 +55,28 @@
       <HintPath>packages\Xamarin.AndroidX.Collection.1.1.0\lib\monoandroid90\Xamarin.AndroidX.Collection.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.AndroidX.Lifecycle.Common">
-      <HintPath>packages\Xamarin.AndroidX.Lifecycle.Common.2.1.0\lib\monoandroid90\Xamarin.AndroidX.Lifecycle.Common.dll</HintPath>
+      <HintPath>..\AirshipBindings.NETStandard\packages\Xamarin.AndroidX.Lifecycle.Common.2.2.0\lib\monoandroid90\Xamarin.AndroidX.Lifecycle.Common.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.AndroidX.Lifecycle.LiveData.Core">
-      <HintPath>packages\Xamarin.AndroidX.Lifecycle.LiveData.Core.2.1.0\lib\monoandroid90\Xamarin.AndroidX.Lifecycle.LiveData.Core.dll</HintPath>
+      <HintPath>..\AirshipBindings.NETStandard\packages\Xamarin.AndroidX.Lifecycle.LiveData.Core.2.2.0\lib\monoandroid90\Xamarin.AndroidX.Lifecycle.LiveData.Core.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.AndroidX.Lifecycle.Runtime">
-      <HintPath>packages\Xamarin.AndroidX.Lifecycle.Runtime.2.1.0\lib\monoandroid90\Xamarin.AndroidX.Lifecycle.Runtime.dll</HintPath>
+      <HintPath>..\AirshipBindings.NETStandard\packages\Xamarin.AndroidX.Lifecycle.Runtime.2.2.0\lib\monoandroid90\Xamarin.AndroidX.Lifecycle.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.AndroidX.Lifecycle.ViewModel">
-      <HintPath>packages\Xamarin.AndroidX.Lifecycle.ViewModel.2.1.0\lib\monoandroid90\Xamarin.AndroidX.Lifecycle.ViewModel.dll</HintPath>
+      <HintPath>..\AirshipBindings.NETStandard\packages\Xamarin.AndroidX.Lifecycle.ViewModel.2.2.0\lib\monoandroid90\Xamarin.AndroidX.Lifecycle.ViewModel.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.AndroidX.SavedState">
       <HintPath>packages\Xamarin.AndroidX.SavedState.1.0.0\lib\monoandroid90\Xamarin.AndroidX.SavedState.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.AndroidX.VersionedParcelable">
-      <HintPath>packages\Xamarin.AndroidX.VersionedParcelable.1.1.0\lib\monoandroid90\Xamarin.AndroidX.VersionedParcelable.dll</HintPath>
+      <HintPath>..\AirshipBindings.NETStandard\packages\Xamarin.AndroidX.VersionedParcelable.1.1.1\lib\monoandroid90\Xamarin.AndroidX.VersionedParcelable.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.AndroidX.Core">
-      <HintPath>packages\Xamarin.AndroidX.Core.1.1.0\lib\monoandroid90\Xamarin.AndroidX.Core.dll</HintPath>
+      <HintPath>..\AirshipBindings.NETStandard\packages\Xamarin.AndroidX.Core.1.2.0\lib\monoandroid90\Xamarin.AndroidX.Core.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.AndroidX.Activity">
-      <HintPath>packages\Xamarin.AndroidX.Activity.1.0.0\lib\monoandroid90\Xamarin.AndroidX.Activity.dll</HintPath>
+      <HintPath>..\AirshipBindings.NETStandard\packages\Xamarin.AndroidX.Activity.1.1.0\lib\monoandroid90\Xamarin.AndroidX.Activity.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.AndroidX.CustomView">
       <HintPath>packages\Xamarin.AndroidX.CustomView.1.0.0\lib\monoandroid90\Xamarin.AndroidX.CustomView.dll</HintPath>
@@ -87,10 +88,14 @@
       <HintPath>packages\Xamarin.AndroidX.ViewPager.1.0.0\lib\monoandroid90\Xamarin.AndroidX.ViewPager.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.AndroidX.Fragment">
-      <HintPath>packages\Xamarin.AndroidX.Fragment.1.1.0\lib\monoandroid90\Xamarin.AndroidX.Fragment.dll</HintPath>
+      <HintPath>..\AirshipBindings.NETStandard\packages\Xamarin.AndroidX.Fragment.1.2.4\lib\monoandroid90\Xamarin.AndroidX.Fragment.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.AndroidX.Interpolator">
       <HintPath>packages\Xamarin.AndroidX.Interpolator.1.0.0\lib\monoandroid90\Xamarin.AndroidX.Interpolator.dll</HintPath>
+    </Reference>
+    <Reference Include="Java.Interop" />
+    <Reference Include="Xamarin.AndroidX.Lifecycle.ViewModelSavedState">
+      <HintPath>..\AirshipBindings.NETStandard\packages\Xamarin.AndroidX.Lifecycle.ViewModelSavedState.2.2.0\lib\monoandroid90\Xamarin.AndroidX.Lifecycle.ViewModelSavedState.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -102,7 +107,7 @@
     <Compile Include="Additions\ActionRegistry.cs" />
     <Compile Include="Additions\ActionRunRequest.cs" />
     <Compile Include="Additions\ActionCompletionCallback.cs" />
-    <Compile Include="Additions\UAWebViewClient.cs" />
+    <Compile Include="Additions\AirshipWebViewClient.cs" />
     <Compile Include="..\UACrossPlatformVersion.cs">
       <Link>Properties\UACrossPlatformVersion.cs</Link>
     </Compile>
@@ -142,4 +147,14 @@
   <Import Project="packages\Xamarin.AndroidX.ViewPager.1.0.0\build\monoandroid90\Xamarin.AndroidX.ViewPager.targets" Condition="Exists('packages\Xamarin.AndroidX.ViewPager.1.0.0\build\monoandroid90\Xamarin.AndroidX.ViewPager.targets')" />
   <Import Project="packages\Xamarin.AndroidX.Fragment.1.1.0\build\monoandroid90\Xamarin.AndroidX.Fragment.targets" Condition="Exists('packages\Xamarin.AndroidX.Fragment.1.1.0\build\monoandroid90\Xamarin.AndroidX.Fragment.targets')" />
   <Import Project="packages\Xamarin.AndroidX.Interpolator.1.0.0\build\monoandroid90\Xamarin.AndroidX.Interpolator.targets" Condition="Exists('packages\Xamarin.AndroidX.Interpolator.1.0.0\build\monoandroid90\Xamarin.AndroidX.Interpolator.targets')" />
+  <Import Project="..\AirshipBindings.NETStandard\packages\Xamarin.AndroidX.Migration.1.0.6\build\monoandroid90\Xamarin.AndroidX.Migration.targets" Condition="Exists('..\AirshipBindings.NETStandard\packages\Xamarin.AndroidX.Migration.1.0.6\build\monoandroid90\Xamarin.AndroidX.Migration.targets')" />
+  <Import Project="..\AirshipBindings.NETStandard\packages\Xamarin.AndroidX.Lifecycle.Common.2.2.0\build\monoandroid90\Xamarin.AndroidX.Lifecycle.Common.targets" Condition="Exists('..\AirshipBindings.NETStandard\packages\Xamarin.AndroidX.Lifecycle.Common.2.2.0\build\monoandroid90\Xamarin.AndroidX.Lifecycle.Common.targets')" />
+  <Import Project="..\AirshipBindings.NETStandard\packages\Xamarin.AndroidX.Lifecycle.LiveData.Core.2.2.0\build\monoandroid90\Xamarin.AndroidX.Lifecycle.LiveData.Core.targets" Condition="Exists('..\AirshipBindings.NETStandard\packages\Xamarin.AndroidX.Lifecycle.LiveData.Core.2.2.0\build\monoandroid90\Xamarin.AndroidX.Lifecycle.LiveData.Core.targets')" />
+  <Import Project="..\AirshipBindings.NETStandard\packages\Xamarin.AndroidX.Lifecycle.Runtime.2.2.0\build\monoandroid90\Xamarin.AndroidX.Lifecycle.Runtime.targets" Condition="Exists('..\AirshipBindings.NETStandard\packages\Xamarin.AndroidX.Lifecycle.Runtime.2.2.0\build\monoandroid90\Xamarin.AndroidX.Lifecycle.Runtime.targets')" />
+  <Import Project="..\AirshipBindings.NETStandard\packages\Xamarin.AndroidX.Lifecycle.ViewModel.2.2.0\build\monoandroid90\Xamarin.AndroidX.Lifecycle.ViewModel.targets" Condition="Exists('..\AirshipBindings.NETStandard\packages\Xamarin.AndroidX.Lifecycle.ViewModel.2.2.0\build\monoandroid90\Xamarin.AndroidX.Lifecycle.ViewModel.targets')" />
+  <Import Project="..\AirshipBindings.NETStandard\packages\Xamarin.AndroidX.Lifecycle.ViewModelSavedState.2.2.0\build\monoandroid90\Xamarin.AndroidX.Lifecycle.ViewModelSavedState.targets" Condition="Exists('..\AirshipBindings.NETStandard\packages\Xamarin.AndroidX.Lifecycle.ViewModelSavedState.2.2.0\build\monoandroid90\Xamarin.AndroidX.Lifecycle.ViewModelSavedState.targets')" />
+  <Import Project="..\AirshipBindings.NETStandard\packages\Xamarin.AndroidX.VersionedParcelable.1.1.1\build\monoandroid90\Xamarin.AndroidX.VersionedParcelable.targets" Condition="Exists('..\AirshipBindings.NETStandard\packages\Xamarin.AndroidX.VersionedParcelable.1.1.1\build\monoandroid90\Xamarin.AndroidX.VersionedParcelable.targets')" />
+  <Import Project="..\AirshipBindings.NETStandard\packages\Xamarin.AndroidX.Core.1.2.0\build\monoandroid90\Xamarin.AndroidX.Core.targets" Condition="Exists('..\AirshipBindings.NETStandard\packages\Xamarin.AndroidX.Core.1.2.0\build\monoandroid90\Xamarin.AndroidX.Core.targets')" />
+  <Import Project="..\AirshipBindings.NETStandard\packages\Xamarin.AndroidX.Activity.1.1.0\build\monoandroid90\Xamarin.AndroidX.Activity.targets" Condition="Exists('..\AirshipBindings.NETStandard\packages\Xamarin.AndroidX.Activity.1.1.0\build\monoandroid90\Xamarin.AndroidX.Activity.targets')" />
+  <Import Project="..\AirshipBindings.NETStandard\packages\Xamarin.AndroidX.Fragment.1.2.4\build\monoandroid90\Xamarin.AndroidX.Fragment.targets" Condition="Exists('..\AirshipBindings.NETStandard\packages\Xamarin.AndroidX.Fragment.1.2.4\build\monoandroid90\Xamarin.AndroidX.Fragment.targets')" />
 </Project>

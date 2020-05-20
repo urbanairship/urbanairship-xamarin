@@ -1,10 +1,10 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
-<metadata>
-    <!--
-  This sample removes the class: android.support.v4.content.AsyncTaskLoader.LoadTask:
-  <remove-node path="/api/package[@name='android.support.v4.content']/class[@name='AsyncTaskLoader.LoadTask']" />
+﻿<metadata>
+
+  <!-- Remove ActionScheduleEdits and ActionScheduleInfo data getters-->
+  <remove-node path="/api/package[@name='com.urbanairship.automation']/interface[@name='ScheduleEdits']/method[@name='getData']" />
+  <remove-node path="/api/package[@name='com.urbanairship.automation']/interface[@name='ScheduleInfo']/method[@name='getData']" />
+  <remove-node path="/api/package[@name='com.urbanairship.automation']/class[@name='ActionScheduleEdits']/method[@name='getData']" />
+  <remove-node path="/api/package[@name='com.urbanairship.automation']/class[@name='ActionScheduleInfo']/method[@name='getData']" />
   
-  This sample removes the method: android.support.v4.content.CursorLoader.loadInBackground:
-  <remove-node path="/api/package[@name='android.support.v4.content']/class[@name='CursorLoader']/method[@name='loadInBackground']" />
-  -->
 </metadata>
+
