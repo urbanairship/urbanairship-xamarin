@@ -191,23 +191,8 @@ namespace UrbanAirship.NETStandard
                         extras.Add(key, message.Extras.Get(key).ToString());
                     }
 
-                    DateTime? sentDate;
-                    if (message.SentDate != null)
-                    {
-                        sentDate = FromDate(message.SentDate);
-                    } else
-                    {
-                        sentDate = null;
-                    }
-
-                    DateTime? expirationDate;
-                    if (message.ExpirationDate != null)
-                    {
-                        expirationDate = FromDate(message.ExpirationDate);
-                    } else
-                    {
-                        expirationDate = null;
-                    }
+                    DateTime? sentDate = FromDate(message.SentDate);
+                    DateTime? expirationDate = FromDate(message.ExpirationDate);
 
                     var inboxMessage = new MessageCenter.Message(
                         message.MessageId,
@@ -224,8 +209,12 @@ namespace UrbanAirship.NETStandard
             }
         }
 
-        private DateTime? FromDate(Date? date)
+        private DateTime? FromDate(Date date)
         {
+            if (date == null)
+            {
+                return null;
+            }
             var epoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
             return epoch.AddMilliseconds(date.Time);
         }

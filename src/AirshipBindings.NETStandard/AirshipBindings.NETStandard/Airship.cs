@@ -129,7 +129,6 @@ namespace UrbanAirship.NETStandard
         public List<MessageCenter.Message> InboxMessages
         {
             get { throw new NotImplementedException(BaitWithoutSwitchMessage); }
-            private set { throw new NotImplementedException(BaitWithoutSwitchMessage); }
         }
 
         /// <summary>

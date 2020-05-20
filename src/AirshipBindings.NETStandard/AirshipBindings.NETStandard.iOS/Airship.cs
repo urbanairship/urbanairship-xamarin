@@ -205,25 +205,8 @@ namespace UrbanAirship.NETStandard
                         extras.Add(key.ToString(), message.Extra[key].ToString());
                     }
 
-                    DateTime? sentDate;
-                    if (message.MessageSent != null)
-                    {
-                        sentDate = FromNSDate(message.MessageSent);
-                    }
-                    else
-                    {
-                        sentDate = null;
-                    }
-
-                    DateTime? expirationDate;
-                    if (message.MessageExpiration != null)
-                    {
-                        expirationDate = FromNSDate(message.MessageExpiration);
-                    }
-                    else
-                    {
-                        expirationDate = null;
-                    }
+                    DateTime? sentDate = FromNSDate(message.MessageSent);
+                    DateTime? expirationDate = FromNSDate(message.MessageExpiration);
 
                     string iconUrl = null;
                     var icons = (NSDictionary)message.RawMessageObject.ValueForKey(new NSString("icons"));
@@ -247,8 +230,12 @@ namespace UrbanAirship.NETStandard
             }
         }
 
-        private DateTime FromNSDate(NSDate date)
+        private DateTime? FromNSDate(NSDate date)
         {
+            if (date == null)
+            {
+                return null;
+            }
             var epoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
             return epoch.AddSeconds(date.SecondsSince1970);
         }
