@@ -15,7 +15,7 @@ namespace UrbanAirship.MessageCenter
 			GetAbsListViewAsync(new OnListViewReadyCallback(absListView));
 		}
 
-		internal class OnListViewReadyCallback : Java.Lang.Object
+		internal class OnListViewReadyCallback : Java.Lang.Object, IOnListViewReadyCallback
 		{
 			Action<AbsListView> onListViewReady;
 
