@@ -86,7 +86,7 @@ namespace UrbanAirship.NETStandard
         /// <summary>
         /// track a screen for a specific app screen
         /// </summary>
-        /// <param name="screen">The screen's identifier as an string
+        /// <param name="screen">The screen's identifier.
         /// to add.</param>
         public void TrackScreen(string screen)
         {
