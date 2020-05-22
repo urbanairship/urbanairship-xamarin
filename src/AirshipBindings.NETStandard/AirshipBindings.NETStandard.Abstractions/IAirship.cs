@@ -33,6 +33,8 @@ namespace UrbanAirship.NETStandard
 
         void AddCustomEvent(Analytics.CustomEvent customEvent);
 
+        void TrackScreen(string screen);
+
         void AssociateIdentifier(string key, string identifier);
 
         void DisplayMessageCenter();

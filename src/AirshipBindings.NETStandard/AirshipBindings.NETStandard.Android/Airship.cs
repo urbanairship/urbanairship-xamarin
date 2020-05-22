@@ -142,6 +142,11 @@ namespace UrbanAirship.NETStandard
             UAirship.Shared().Analytics.AddEvent(builder.Build());
         }
 
+        public void TrackScreen(string screen)
+        {
+            UAirship.Shared().Analytics.TrackScreen(screen);
+        }
+
         public void AssociateIdentifier(string key, string identifier)
         {
             if (identifier == null)
