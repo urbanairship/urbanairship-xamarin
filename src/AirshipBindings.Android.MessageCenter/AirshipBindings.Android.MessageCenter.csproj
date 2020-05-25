@@ -121,6 +121,9 @@
     <Folder Include="Properties\" />
     <Folder Include="Jars\" />
   </ItemGroup>
+  <ItemGroup>
+    <LibraryProjectZip Include="Jars\urbanairship-message-center-13.1.0.aar" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.Bindings.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

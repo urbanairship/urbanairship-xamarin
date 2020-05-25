@@ -65,6 +65,9 @@
       <Name>AirshipBindings.Android.Core</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <LibraryProjectZip Include="Jars\urbanairship-adm-13.1.0.aar" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.Bindings.targets" />
   <Import Project="packages\Xamarin.Build.Download.0.4.11\build\Xamarin.Build.Download.targets" Condition="Exists('packages\Xamarin.Build.Download.0.4.11\build\Xamarin.Build.Download.targets')" />
 </Project>
