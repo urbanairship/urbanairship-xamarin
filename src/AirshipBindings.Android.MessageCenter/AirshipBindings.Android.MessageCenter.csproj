@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -29,10 +29,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>portable</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
@@ -41,55 +39,55 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="Xamarin.AndroidX.Core">
-      <HintPath>..\AirshipBindings.Android.Core\packages\Xamarin.AndroidX.Core.1.1.0\lib\monoandroid90\Xamarin.AndroidX.Core.dll</HintPath>
+      <HintPath>packages\Xamarin.AndroidX.Core.1.1.0\lib\monoandroid90\Xamarin.AndroidX.Core.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.AndroidX.Loader">
-      <HintPath>..\AirshipBindings.Android.Core\packages\Xamarin.AndroidX.Loader.1.1.0\lib\monoandroid90\Xamarin.AndroidX.Loader.dll</HintPath>
+      <HintPath>packages\Xamarin.AndroidX.Loader.1.1.0\lib\monoandroid90\Xamarin.AndroidX.Loader.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.AndroidX.Activity">
-      <HintPath>..\AirshipBindings.Android.Core\packages\Xamarin.AndroidX.Activity.1.0.0\lib\monoandroid90\Xamarin.AndroidX.Activity.dll</HintPath>
+      <HintPath>packages\Xamarin.AndroidX.Activity.1.0.0\lib\monoandroid90\Xamarin.AndroidX.Activity.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.AndroidX.Fragment">
-      <HintPath>..\AirshipBindings.Android.Core\packages\Xamarin.AndroidX.Fragment.1.1.0\lib\monoandroid90\Xamarin.AndroidX.Fragment.dll</HintPath>
+      <HintPath>packages\Xamarin.AndroidX.Fragment.1.1.0\lib\monoandroid90\Xamarin.AndroidX.Fragment.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.AndroidX.ViewPager">
-      <HintPath>..\AirshipBindings.Android.Core\packages\Xamarin.AndroidX.ViewPager.1.0.0\lib\monoandroid90\Xamarin.AndroidX.ViewPager.dll</HintPath>
+      <HintPath>packages\Xamarin.AndroidX.ViewPager.1.0.0\lib\monoandroid90\Xamarin.AndroidX.ViewPager.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.AndroidX.Annotation">
-      <HintPath>..\AirshipBindings.Android.Core\packages\Xamarin.AndroidX.Annotation.1.1.0\lib\monoandroid90\Xamarin.AndroidX.Annotation.dll</HintPath>
+      <HintPath>packages\Xamarin.AndroidX.Annotation.1.1.0\lib\monoandroid90\Xamarin.AndroidX.Annotation.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.AndroidX.Collection">
-      <HintPath>..\AirshipBindings.Android.Core\packages\Xamarin.AndroidX.Collection.1.1.0\lib\monoandroid90\Xamarin.AndroidX.Collection.dll</HintPath>
+      <HintPath>packages\Xamarin.AndroidX.Collection.1.1.0\lib\monoandroid90\Xamarin.AndroidX.Collection.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.AndroidX.CustomView">
-      <HintPath>..\AirshipBindings.Android.Core\packages\Xamarin.AndroidX.CustomView.1.0.0\lib\monoandroid90\Xamarin.AndroidX.CustomView.dll</HintPath>
+      <HintPath>packages\Xamarin.AndroidX.CustomView.1.0.0\lib\monoandroid90\Xamarin.AndroidX.CustomView.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.AndroidX.SavedState">
-      <HintPath>..\AirshipBindings.Android.Core\packages\Xamarin.AndroidX.SavedState.1.0.0\lib\monoandroid90\Xamarin.AndroidX.SavedState.dll</HintPath>
+      <HintPath>packages\Xamarin.AndroidX.SavedState.1.0.0\lib\monoandroid90\Xamarin.AndroidX.SavedState.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.AndroidX.Interpolator">
-      <HintPath>..\AirshipBindings.Android.Core\packages\Xamarin.AndroidX.Interpolator.1.0.0\lib\monoandroid90\Xamarin.AndroidX.Interpolator.dll</HintPath>
+      <HintPath>packages\Xamarin.AndroidX.Interpolator.1.0.0\lib\monoandroid90\Xamarin.AndroidX.Interpolator.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.AndroidX.Arch.Core.Common">
-      <HintPath>..\AirshipBindings.Android.Core\packages\Xamarin.AndroidX.Arch.Core.Common.2.1.0\lib\monoandroid90\Xamarin.AndroidX.Arch.Core.Common.dll</HintPath>
+      <HintPath>packages\Xamarin.AndroidX.Arch.Core.Common.2.1.0\lib\monoandroid90\Xamarin.AndroidX.Arch.Core.Common.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.AndroidX.Lifecycle.Common">
-      <HintPath>..\AirshipBindings.Android.Core\packages\Xamarin.AndroidX.Lifecycle.Common.2.1.0\lib\monoandroid90\Xamarin.AndroidX.Lifecycle.Common.dll</HintPath>
+      <HintPath>packages\Xamarin.AndroidX.Lifecycle.Common.2.1.0\lib\monoandroid90\Xamarin.AndroidX.Lifecycle.Common.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.AndroidX.Arch.Core.Runtime">
-      <HintPath>..\AirshipBindings.Android.Core\packages\Xamarin.AndroidX.Arch.Core.Runtime.2.1.0\lib\monoandroid90\Xamarin.AndroidX.Arch.Core.Runtime.dll</HintPath>
+      <HintPath>packages\Xamarin.AndroidX.Arch.Core.Runtime.2.1.0\lib\monoandroid90\Xamarin.AndroidX.Arch.Core.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.AndroidX.Lifecycle.Runtime">
-      <HintPath>..\AirshipBindings.Android.Core\packages\Xamarin.AndroidX.Lifecycle.Runtime.2.1.0\lib\monoandroid90\Xamarin.AndroidX.Lifecycle.Runtime.dll</HintPath>
+      <HintPath>packages\Xamarin.AndroidX.Lifecycle.Runtime.2.1.0\lib\monoandroid90\Xamarin.AndroidX.Lifecycle.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.AndroidX.Lifecycle.ViewModel">
-      <HintPath>..\AirshipBindings.Android.Core\packages\Xamarin.AndroidX.Lifecycle.ViewModel.2.1.0\lib\monoandroid90\Xamarin.AndroidX.Lifecycle.ViewModel.dll</HintPath>
+      <HintPath>packages\Xamarin.AndroidX.Lifecycle.ViewModel.2.1.0\lib\monoandroid90\Xamarin.AndroidX.Lifecycle.ViewModel.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.AndroidX.VersionedParcelable">
-      <HintPath>..\AirshipBindings.Android.Core\packages\Xamarin.AndroidX.VersionedParcelable.1.1.0\lib\monoandroid90\Xamarin.AndroidX.VersionedParcelable.dll</HintPath>
+      <HintPath>packages\Xamarin.AndroidX.VersionedParcelable.1.1.0\lib\monoandroid90\Xamarin.AndroidX.VersionedParcelable.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.AndroidX.Lifecycle.LiveData.Core">
-      <HintPath>..\AirshipBindings.Android.Core\packages\Xamarin.AndroidX.Lifecycle.LiveData.Core.2.1.0\lib\monoandroid90\Xamarin.AndroidX.Lifecycle.LiveData.Core.dll</HintPath>
+      <HintPath>packages\Xamarin.AndroidX.Lifecycle.LiveData.Core.2.1.0\lib\monoandroid90\Xamarin.AndroidX.Lifecycle.LiveData.Core.dll</HintPath>
     </Reference>
     <Reference Include="System.Xml" />
   </ItemGroup>
@@ -98,9 +96,12 @@
     <Compile Include="Additions\Message.cs" />
     <Compile Include="Additions\Inbox.cs" />
     <Compile Include="Additions\MessageListFragment.cs" />
-    <Compile Include="Properties\UACrossPlatformVersion.cs" />
-    <Compile Include="Properties\SharedAssemblyInfo.Common.cs" />
-    <Compile Include="Properties\SharedAssemblyInfo.Android.cs" />
+    <Compile Include="..\SharedAssemblyInfo.Android.cs">
+      <Link>Properties\SharedAssemblyInfo.Android.cs</Link>
+    </Compile>
+    <Compile Include="..\SharedAssemblyInfo.Common.cs">
+      <Link>Properties\SharedAssemblyInfo.Common.cs</Link>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -111,13 +112,14 @@
     <TransformFile Include="Transforms\EnumMethods.xml" />
   </ItemGroup>
   <ItemGroup>
-    <LibraryProjectZip Include="Jars\urbanairship-message-center-13.1.0.aar" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\AirshipBindings.Android.Core\AirshipBindings.Android.Core.csproj">
       <Project>{98DC9E01-745C-4CEA-93A9-6546B349B8EE}</Project>
       <Name>AirshipBindings.Android.Core</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Properties\" />
+    <Folder Include="Jars\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.Bindings.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

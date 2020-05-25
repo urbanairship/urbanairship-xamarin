@@ -70,9 +70,6 @@
     <TransformFile Include="Transforms\EnumMethods.xml" />
   </ItemGroup>
   <ItemGroup>
-    <LibraryProjectZip Include="Jars\urbanairship-accengage-13.1.0.aar" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\AirshipBindings.Android.Core\AirshipBindings.Android.Core.csproj">
       <Project>{98DC9E01-745C-4CEA-93A9-6546B349B8EE}</Project>
       <Name>AirshipBindings.Android.Core</Name>
@@ -81,6 +78,7 @@
   <ItemGroup>
     <Folder Include="Additions\" />
     <Folder Include="Properties\" />
+    <Folder Include="Jars\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
