@@ -820,7 +820,7 @@ namespace UrbanAirship {
 
         // - (nonnull UAAction *)actionForSituation:(UASituation)situation;
         [Export("actionForSituation:")]
-        UAAction Action (UASituation situation);
+        UAAction ActionForSituation (UASituation situation);
     }
 
     // @interface UAActionResult : NSObject
@@ -2133,12 +2133,12 @@ namespace UrbanAirship {
         // + (nonnull instancetype)notificationWithNotificationInfo: (nonnull NSDictionary *)notificationInfo;
         [Static]
         [Export("notificationWithNotificationInfo:")]
-        UANotificationContent Notification (NSDictionary notificationInfo);
+        UANotificationContent NotificationWithNotificationInfo (NSDictionary notificationInfo);
 
         // + (nonnull instancetype)notificationWithUNNotification: (nonnull UNNotification *)notification;
         [Static]
         [Export("notificationWithUNNotification:")]
-        UANotificationContent Notification (UNNotification notification);
+        UANotificationContent NotificationWithUNNotification (UNNotification notification);
     }
 
     // @interface UANotificationResponse : NSObject
@@ -2854,7 +2854,7 @@ namespace UrbanAirship {
         // + (nonnull NSDateFormatter *)ISODateFormatterUTCWithDelimiter;
         [Static]
         [Export("ISODateFormatterUTCWithDelimiter")]
-        NSDateFormatter ISODateFormatterUTC ();
+        NSDateFormatter ISODateFormatterUTCWithDelimiter ();
 
         // + (nullable NSDate *)parseISO8601DateFromString:(nonnull NSString *)timestamp;
         [Static]
