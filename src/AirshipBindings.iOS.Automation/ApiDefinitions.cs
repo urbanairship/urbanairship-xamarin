@@ -1,6 +1,7 @@
 /*
  Copyright Airship and Contributors
 */
+using CoreFoundation;
 using CoreGraphics;
 using Foundation;
 using ObjCRuntime;
@@ -67,6 +68,14 @@ namespace UrbanAirship {
         // extern NSString *const UACancelSchedulesActionAll
         [Field("UACancelSchedulesActionAll", "__Internal")]
         NSString UACancelSchedulesActionAll { get; }
+
+        // extern NSString *const UACancelSchedulesActionDefaultRegistryAlias
+        [Field("UACancelSchedulesActionDefaultRegistryAlias", "__Internal")]
+        NSString UACancelSchedulesActionDefaultRegistryAlias { get; }
+
+        // extern NSString *const UACancelSchedulesActionDefaultRegistryName
+        [Field("UACancelSchedulesActionDefaultRegistryName", "__Internal")]
+        NSString UACancelSchedulesActionDefaultRegistryName { get; }
 
         // extern NSString *const UACancelSchedulesActionGroups
         [Field("UACancelSchedulesActionGroups", "__Internal")]
@@ -184,6 +193,10 @@ namespace UrbanAirship {
         [Field("UAInAppMessageDisplayBehaviorImmediate", "__Internal")]
         NSString UAInAppMessageDisplayBehaviorImmediate { get; }
 
+        // extern NSString *const UAInAppMessageDisplayCoordinatorIsReadyKey
+        [Field("UAInAppMessageDisplayCoordinatorIsReadyKey", "__Internal")]
+        NSString UAInAppMessageDisplayCoordinatorIsReadyKey { get; }
+
         // extern NSString *const UAInAppMessageDurationKey
         [Field("UAInAppMessageDurationKey", "__Internal")]
         NSString UAInAppMessageDurationKey { get; }
@@ -248,6 +261,14 @@ namespace UrbanAirship {
         [Field("UAInAppMessageURLKey", "__Internal")]
         NSString UAInAppMessageURLKey { get; }
 
+        // extern NSString *const _Nonnull UALandingPageActionDefaultRegistryAlias
+        [Field("UALandingPageActionDefaultRegistryAlias", "__Internal")]
+        NSString UALandingPageActionDefaultRegistryAlias { get; }
+
+        // extern NSString *const _Nonnull UALandingPageActionDefaultRegistryName
+        [Field("UALandingPageActionDefaultRegistryName", "__Internal")]
+        NSString UALandingPageActionDefaultRegistryName { get; }
+
         // extern NSString *const _Nonnull UALandingPageAspectLockKey
         [Field("UALandingPageAspectLockKey", "__Internal")]
         NSString UALandingPageAspectLockKey { get; }
@@ -311,6 +332,14 @@ namespace UrbanAirship {
         // extern NSString *const _Nonnull UAModalTextStyleKey
         [Field("UAModalTextStyleKey", "__Internal")]
         NSString UAModalTextStyleKey { get; }
+
+        // extern NSString *const UAScheduleActionDefaultRegistryAlias
+        [Field("UAScheduleActionDefaultRegistryAlias", "__Internal")]
+        NSString UAScheduleActionDefaultRegistryAlias { get; }
+
+        // extern NSString *const UAScheduleActionDefaultRegistryName
+        [Field("UAScheduleActionDefaultRegistryName", "__Internal")]
+        NSString UAScheduleActionDefaultRegistryName { get; }
 
         // extern NSString *const _Nonnull UAScheduleDelayAppStateBackgroundName
         [Field("UAScheduleDelayAppStateBackgroundName", "__Internal")]
@@ -423,17 +452,43 @@ namespace UrbanAirship {
         // extern NSString *const _Nonnull UATextAdditonalPaddingKey
         [Field("UATextAdditonalPaddingKey", "__Internal")]
         NSString UATextAdditonalPaddingKey { get; }
+
+        // extern NSString *const kUACancelSchedulesActionDefaultRegistryAlias
+        [Field("kUACancelSchedulesActionDefaultRegistryAlias", "__Internal")]
+        [Obsolete("Deprecated – to be removed in SDK version 14.0. Please use UACancelSchedulesActionDefaultRegistryAlias.")]
+        NSString kUACancelSchedulesActionDefaultRegistryAlias { get; }
+
+        // extern NSString *const kUACancelSchedulesActionDefaultRegistryName
+        [Field("kUACancelSchedulesActionDefaultRegistryName", "__Internal")]
+        [Obsolete("Deprecated – to be removed in SDK version 14.0. Please use UACancelSchedulesActionDefaultRegistryName.")]
+        NSString kUACancelSchedulesActionDefaultRegistryName { get; }
+
+        // extern DEPRECATED_MSG_ATTRIBUTE( "Deprecated – to be removed in SDK version 14.0. Please use " "UALandingPageActionDefaultRegistryAlias.") NSString *const kUALandingPageActionDefaultRegistryAlias
+        [Field("kUALandingPageActionDefaultRegistryAlias", "__Internal")]
+        [Obsolete("Deprecated – to be removed in SDK version 14.0. Please use UALandingPageActionDefaultRegistryAlias.")]
+        NSString kUALandingPageActionDefaultRegistryAlias { get; }
+
+        // extern DEPRECATED_MSG_ATTRIBUTE( "Deprecated – to be removed in SDK version 14.0. Please use " "UALandingPageActionDefaultRegistryName.") NSString *const kUALandingPageActionDefaultRegistryName
+        [Field("kUALandingPageActionDefaultRegistryName", "__Internal")]
+        [Obsolete("Deprecated – to be removed in SDK version 14.0. Please use UALandingPageActionDefaultRegistryName.")]
+        NSString kUALandingPageActionDefaultRegistryName { get; }
+
+        // extern NSString *const kUAScheduleActionDefaultRegistryAlias
+        [Field("kUAScheduleActionDefaultRegistryAlias", "__Internal")]
+        [Obsolete("Deprecated – to be removed in SDK version 14.0. Please use UAScheduleActionDefaultRegistryAlias.")]
+        NSString kUAScheduleActionDefaultRegistryAlias { get; }
+
+        // extern NSString *const kUAScheduleActionDefaultRegistryName
+        [Field("kUAScheduleActionDefaultRegistryName", "__Internal")]
+        [Obsolete("Deprecated – to be removed in SDK version 14.0. Please use UAScheduleActionDefaultRegistryName.")]
+        NSString kUAScheduleActionDefaultRegistryName { get; }
+
     }
 
     // @interface UAActionAutomation : UAComponent
     [BaseType(typeof(UAComponent))]
     interface UAActionAutomation
     {
-        // + (null_unspecified instancetype)shared;
-        [Static]
-        [Export("shared")]
-        [New]
-        UAActionAutomation Shared ();
 
         // - (void)scheduleActions:(nonnull UAActionScheduleInfo *)scheduleInfo completionHandler: (nullable void (^)(UASchedule *_Nullable))completionHandler;
         [Export("scheduleActions:completionHandler:")]
@@ -476,7 +531,7 @@ namespace UrbanAirship {
     [BaseType(typeof(UAScheduleEditsBuilder))]
     interface UAActionScheduleEditsBuilder
     {
-        // @property (readwrite, strong, nonatomic, nullable) NSDictionary *actions;
+        // @property (nonatomic, strong, readwrite, nullable) NSDictionary *actions;
         [NullAllowed, Export("actions", ArgumentSemantic.Strong)]
         NSDictionary Actions { get; set; }
 
@@ -486,7 +541,7 @@ namespace UrbanAirship {
     [BaseType(typeof(UAScheduleEdits))]
     interface UAActionScheduleEdits
     {
-        // @property (readonly, nonatomic, nullable) NSDictionary *actions;
+        // @property (nonatomic, readonly, nullable) NSDictionary *actions;
         [NullAllowed, Export("actions")]
         NSDictionary Actions { get; }
 
@@ -500,11 +555,11 @@ namespace UrbanAirship {
     [BaseType(typeof(UAScheduleInfoBuilder))]
     interface UAActionScheduleInfoBuilder
     {
-        // @property (readwrite, copy, nonatomic, nullable) NSString *group;
+        // @property (nonatomic, copy, readwrite, nullable) NSString *group;
         [NullAllowed, Export("group")]
         string Group { get; set; }
 
-        // @property (readwrite, strong, nonatomic, nullable) NSDictionary *actions;
+        // @property (nonatomic, strong, readwrite, nullable) NSDictionary *actions;
         [NullAllowed, Export("actions", ArgumentSemantic.Strong)]
         NSDictionary Actions { get; set; }
 
@@ -514,11 +569,11 @@ namespace UrbanAirship {
     [BaseType(typeof(UAScheduleInfo))]
     interface UAActionScheduleInfo
     {
-        // @property (readonly, nonatomic, nullable) NSString *group;
+        // @property (nonatomic, readonly, nullable) NSString *group;
         [NullAllowed, Export("group")]
         string Group { get; }
 
-        // @property (readonly, nonatomic, nullable) NSDictionary *actions;
+        // @property (nonatomic, readonly, nullable) NSDictionary *actions;
         [NullAllowed, Export("actions")]
         NSDictionary Actions { get; }
 
@@ -556,35 +611,35 @@ namespace UrbanAirship {
     [BaseType(typeof(NSObject))]
     interface UAInAppMessageBuilder
     {
-        // @property (readwrite, copy, nonatomic, nullable) NSString *identifier;
+        // @property (nonatomic, copy, readwrite, nullable) NSString *identifier;
         [NullAllowed, Export("identifier")]
         string Identifier { get; set; }
 
-        // @property (readwrite, copy, nonatomic, nullable) NSString *name;
+        // @property (nonatomic, copy, readwrite, nullable) NSString *name;
         [NullAllowed, Export("name")]
         string Name { get; set; }
 
-        // @property (readwrite, strong, nonatomic, nullable) UAInAppMessageDisplayContent *displayContent;
+        // @property (nonatomic, strong, readwrite, nullable) UAInAppMessageDisplayContent *displayContent;
         [NullAllowed, Export("displayContent", ArgumentSemantic.Strong)]
         UAInAppMessageDisplayContent DisplayContent { get; set; }
 
-        // @property (readwrite, copy, nonatomic, nullable) NSDictionary *extras;
+        // @property (nonatomic, copy, readwrite, nullable) NSDictionary *extras;
         [NullAllowed, Export("extras", ArgumentSemantic.Copy)]
         NSDictionary Extras { get; set; }
 
-        // @property (readwrite, copy, nonatomic, nullable) NSDictionary *actions;
+        // @property (nonatomic, copy, readwrite, nullable) NSDictionary *actions;
         [NullAllowed, Export("actions", ArgumentSemantic.Copy)]
         NSDictionary Actions { get; set; }
 
-        // @property (readwrite, strong, nonatomic, nullable) UAInAppMessageAudience *audience;
+        // @property (nonatomic, strong, readwrite, nullable) UAInAppMessageAudience *audience;
         [NullAllowed, Export("audience", ArgumentSemantic.Strong)]
         UAInAppMessageAudience Audience { get; set; }
 
-        // @property (readwrite, copy, nonatomic, nullable) NSString *displayBehavior;
+        // @property (nonatomic, copy, readwrite, nullable) NSString *displayBehavior;
         [NullAllowed, Export("displayBehavior")]
         string DisplayBehavior { get; set; }
 
-        // @property (assign, readwrite, nonatomic) BOOL isReportingEnabled;
+        // @property (nonatomic, assign, unsafe_unretained, readwrite) BOOL isReportingEnabled;
         [Export("isReportingEnabled")]
         bool IsReportingEnabled { get; set; }
 
@@ -597,39 +652,39 @@ namespace UrbanAirship {
     [BaseType(typeof(NSObject))]
     interface UAInAppMessage
     {
-        // @property (readonly, nonatomic) NSString *_Nonnull identifier;
+        // @property (nonatomic, readonly) NSString *_Nonnull identifier;
         [Export("identifier")]
         string Identifier { get; }
 
-        // @property (readonly, copy, nonatomic, nullable) NSString *name;
+        // @property (nonatomic, copy, readonly, nullable) NSString *name;
         [NullAllowed, Export("name")]
         string Name { get; }
 
-        // @property (readonly, nonatomic) UAInAppMessageDisplayType displayType;
+        // @property (nonatomic, readonly) UAInAppMessageDisplayType displayType;
         [Export("displayType")]
         UAInAppMessageDisplayType DisplayType { get; }
 
-        // @property (readonly, nonatomic) UAInAppMessageDisplayContent *_Nonnull displayContent;
+        // @property (nonatomic, readonly) UAInAppMessageDisplayContent *_Nonnull displayContent;
         [Export("displayContent")]
         UAInAppMessageDisplayContent DisplayContent { get; }
 
-        // @property (readonly, nonatomic, nullable) NSDictionary *extras;
+        // @property (nonatomic, readonly, nullable) NSDictionary *extras;
         [NullAllowed, Export("extras")]
         NSDictionary Extras { get; }
 
-        // @property (readonly, nonatomic, nullable) NSDictionary *actions;
+        // @property (nonatomic, readonly, nullable) NSDictionary *actions;
         [NullAllowed, Export("actions")]
         NSDictionary Actions { get; }
 
-        // @property (readonly, nonatomic, nullable) UAInAppMessageAudience *audience;
+        // @property (nonatomic, readonly, nullable) UAInAppMessageAudience *audience;
         [NullAllowed, Export("audience")]
         UAInAppMessageAudience Audience { get; }
 
-        // @property (readonly, copy, nonatomic) NSString *_Nonnull displayBehavior;
+        // @property (nonatomic, copy, readonly) NSString *_Nonnull displayBehavior;
         [Export("displayBehavior")]
         string DisplayBehavior { get; }
 
-        // @property (readonly, assign, nonatomic) BOOL isReportingEnabled;
+        // @property (nonatomic, assign, unsafe_unretained, readonly) BOOL isReportingEnabled;
         [Export("isReportingEnabled")]
         bool IsReportingEnabled { get; }
 
@@ -674,7 +729,7 @@ namespace UrbanAirship {
 
     interface IUAInAppMessageAdapterProtocol { }
 
-    // @protocol UAInAppMessageCachePolicyDelegate <NSObject> /** * Return cache policy for caching assets on schedule * * @param message The message for which the assets will or won't be cached * @return `YES` requests the Asset Manager to cache the message's assets when the message is scheduled. * * @note If unimplemented, the message's assets will not be cached when the message is scheduled. */ - (BOOL)shouldCacheOnSchedule:(UAInAppMessage *)message; /** * Return cache policy for retaining cached assets after display * * @param message The message for which the assets will or won't be cached * @return `YES` requests the Asset Manager to persist the caching of the message's assets when * the message has finished displaying. * * @note If unimplemented, the message's assets will not be persisted when the message has finished displaying. */ - (BOOL)shouldPersistCacheAfterDisplay:(UAInAppMessage *)message; @end
+    // @protocol UAInAppMessageCachePolicyDelegate <NSObject>
     [Protocol, Model]
     [BaseType(typeof(NSObject))]
     interface UAInAppMessageCachePolicyDelegate
@@ -693,7 +748,7 @@ namespace UrbanAirship {
 
     interface IUAInAppMessageCachePolicyDelegate { }
 
-    // @protocol UAInAppMessagePrepareAssetsDelegate <NSObject> /** * Extend assets for this message when the message is scheduled * * @note This method is intended to allow the app to fetch URLs that the SDK may not be able to fetch. * It also covers the case where the Asset Manager can't decode the message (Custom message type). * * @note If implemented, the message WILL NOT display until the completionHandler is called. * * @param message The message for which the assets can be extended * @param assets Assets instance for caching assets * @param completionHandler The completion handler to call when asset fetching is complete. */ - (void)onSchedule:(UAInAppMessage *)message assets:(UAInAppMessageAssets *)assets completionHandler:(void (^)(UAInAppMessagePrepareResult))completionHandler; /** * Extend assets for this message when the message is prepared * * @note This method is intended to allow the app to fetch URLs that the SDK may not be able to fetch. * It also covers the case where the Asset Manager can't decode the message (Custom message type). * * @note If implemented, the message WILL NOT display until the completionHandler is called. * * @param message The message for which the assets can be extended * @param assets Assets instance for caching assets * @param completionHandler The completion handler to call when asset fetching is complete. */ - (void)onPrepare:(UAInAppMessage *)message assets:(UAInAppMessageAssets *)assets completionHandler:(void (^)(UAInAppMessagePrepareResult))completionHandler; @end
+    // @protocol UAInAppMessagePrepareAssetsDelegate <NSObject>
     [Protocol, Model]
     [BaseType(typeof(NSObject))]
     interface UAInAppMessagePrepareAssetsDelegate
@@ -712,18 +767,18 @@ namespace UrbanAirship {
 
     interface IUAInAppMessagePrepareAssetsDelegate { }
 
-    // @interface UAInAppMessageAssetManager : NSObject /** * In-app messaging prepare assets delegate. */ @property (nonatomic, strong) id<UAInAppMessagePrepareAssetsDelegate> prepareAssetsDelegate; /** * In-app messaging cache policy delegate. */ @property (nonatomic, weak) id<UAInAppMessageCachePolicyDelegate> cachePolicyDelegate; @end
+    // @interface UAInAppMessageAssetManager : NSObject
     [BaseType(typeof(NSObject))]
     interface UAInAppMessageAssetManager
     {
-        // @property (readwrite, strong, nonatomic) id<UAInAppMessagePrepareAssetsDelegate> _Nonnull prepareAssetsDelegate;
+        // @property (nonatomic, strong, readwrite) id<UAInAppMessagePrepareAssetsDelegate> _Nonnull prepareAssetsDelegate;
         [Export("prepareAssetsDelegate", ArgumentSemantic.Strong)]
         NSObject WeakPrepareAssetsDelegate { get; set; }
 
         [Wrap("WeakPrepareAssetsDelegate")]
         IUAInAppMessagePrepareAssetsDelegate PrepareAssetsDelegate { get; set; }
 
-        // @property (readwrite, nonatomic) id<UAInAppMessageCachePolicyDelegate> _Nullable cachePolicyDelegate;
+        // @property (nonatomic, weak, readwrite) id<UAInAppMessageCachePolicyDelegate> _Nullable cachePolicyDelegate;
         [NullAllowed, Export("cachePolicyDelegate", ArgumentSemantic.Assign)]
         NSObject WeakCachePolicyDelegate { get; set; }
 
@@ -752,27 +807,27 @@ namespace UrbanAirship {
     [BaseType(typeof(NSObject))]
     interface UAInAppMessageAudienceBuilder
     {
-        // @property (readwrite, strong, nonatomic, nullable) NSNumber *notificationsOptIn;
+        // @property (nonatomic, strong, readwrite, nullable) NSNumber *notificationsOptIn;
         [NullAllowed, Export("notificationsOptIn", ArgumentSemantic.Strong)]
         NSNumber NotificationsOptIn { get; set; }
 
-        // @property (readwrite, strong, nonatomic, nullable) NSNumber *locationOptIn;
+        // @property (nonatomic, strong, readwrite, nullable) NSNumber *locationOptIn;
         [NullAllowed, Export("locationOptIn", ArgumentSemantic.Strong)]
         NSNumber LocationOptIn { get; set; }
 
-        // @property (readwrite, copy, nonatomic, nullable) NSArray<NSString *> *languageTags;
+        // @property (nonatomic, copy, readwrite, nullable) NSArray<NSString *> *languageTags;
         [NullAllowed, Export("languageTags", ArgumentSemantic.Copy)]
         string[] LanguageTags { get; set; }
 
-        // @property (readwrite, strong, nonatomic, nullable) UAInAppMessageTagSelector *tagSelector;
+        // @property (nonatomic, strong, readwrite, nullable) UAInAppMessageTagSelector *tagSelector;
         [NullAllowed, Export("tagSelector", ArgumentSemantic.Strong)]
         UAInAppMessageTagSelector TagSelector { get; set; }
 
-        // @property (readwrite, strong, nonatomic, nullable) UAJSONPredicate *versionPredicate;
+        // @property (nonatomic, strong, readwrite, nullable) UAJSONPredicate *versionPredicate;
         [NullAllowed, Export("versionPredicate", ArgumentSemantic.Strong)]
         UAJSONPredicate VersionPredicate { get; set; }
 
-        // @property (assign, readwrite, nonatomic) UAInAppMessageAudienceMissBehaviorType missBehavior;
+        // @property (nonatomic, assign, unsafe_unretained, readwrite) UAInAppMessageAudienceMissBehaviorType missBehavior;
         [Export("missBehavior", ArgumentSemantic.Assign)]
         UAInAppMessageAudienceMissBehaviorType MissBehavior { get; set; }
 
@@ -785,27 +840,27 @@ namespace UrbanAirship {
     [BaseType(typeof(NSObject))]
     interface UAInAppMessageAudience
     {
-        // @property (readonly, nonatomic, nullable) NSNumber *notificationsOptIn;
+        // @property (nonatomic, readonly, nullable) NSNumber *notificationsOptIn;
         [NullAllowed, Export("notificationsOptIn")]
         NSNumber NotificationsOptIn { get; }
 
-        // @property (readonly, nonatomic, nullable) NSNumber *locationOptIn;
+        // @property (nonatomic, readonly, nullable) NSNumber *locationOptIn;
         [NullAllowed, Export("locationOptIn")]
         NSNumber LocationOptIn { get; }
 
-        // @property (readonly, nonatomic, nullable) NSArray<NSString *> *languageIDs;
+        // @property (nonatomic, readonly, nullable) NSArray<NSString *> *languageIDs;
         [NullAllowed, Export("languageIDs")]
         string[] LanguageIDs { get; }
 
-        // @property (readonly, nonatomic, nullable) UAInAppMessageTagSelector *tagSelector;
+        // @property (nonatomic, readonly, nullable) UAInAppMessageTagSelector *tagSelector;
         [NullAllowed, Export("tagSelector")]
         UAInAppMessageTagSelector TagSelector { get; }
 
-        // @property (readonly, nonatomic, nullable) UAJSONPredicate *versionPredicate;
+        // @property (nonatomic, readonly, nullable) UAJSONPredicate *versionPredicate;
         [NullAllowed, Export("versionPredicate")]
         UAJSONPredicate VersionPredicate { get; }
 
-        // @property (readonly, nonatomic) UAInAppMessageAudienceMissBehaviorType missBehavior;
+        // @property (nonatomic, readonly) UAInAppMessageAudienceMissBehaviorType missBehavior;
         [Export("missBehavior")]
         UAInAppMessageAudienceMissBehaviorType MissBehavior { get; }
 
@@ -820,7 +875,7 @@ namespace UrbanAirship {
     [BaseType(typeof(NSObject))]
     interface UAInAppMessageBannerAdapter : IUAInAppMessageAdapterProtocol
     {
-        // @property (readwrite, strong, nonatomic, nullable) UAInAppMessageBannerStyle *style;
+        // @property (nonatomic, strong, readwrite, nullable) UAInAppMessageBannerStyle *style;
         [NullAllowed, Export("style", ArgumentSemantic.Strong)]
         UAInAppMessageBannerStyle Style { get; set; }
 
@@ -830,51 +885,51 @@ namespace UrbanAirship {
     [BaseType(typeof(NSObject))]
     interface UAInAppMessageBannerDisplayContentBuilder
     {
-        // @property (readwrite, strong, nonatomic, nullable) UAInAppMessageTextInfo *heading;
+        // @property (nonatomic, strong, readwrite, nullable) UAInAppMessageTextInfo *heading;
         [NullAllowed, Export("heading", ArgumentSemantic.Strong)]
         UAInAppMessageTextInfo Heading { get; set; }
 
-        // @property (readwrite, strong, nonatomic, nullable) UAInAppMessageTextInfo *body;
+        // @property (nonatomic, strong, readwrite, nullable) UAInAppMessageTextInfo *body;
         [NullAllowed, Export("body", ArgumentSemantic.Strong)]
         UAInAppMessageTextInfo Body { get; set; }
 
-        // @property (readwrite, strong, nonatomic, nullable) UAInAppMessageMediaInfo *media;
+        // @property (nonatomic, strong, readwrite, nullable) UAInAppMessageMediaInfo *media;
         [NullAllowed, Export("media", ArgumentSemantic.Strong)]
         UAInAppMessageMediaInfo Media { get; set; }
 
-        // @property (readwrite, copy, nonatomic, nullable) NSArray<UAInAppMessageButtonInfo *> *buttons;
+        // @property (nonatomic, copy, readwrite, nullable) NSArray<UAInAppMessageButtonInfo *> *buttons;
         [NullAllowed, Export("buttons", ArgumentSemantic.Copy)]
         UAInAppMessageButtonInfo[] Buttons { get; set; }
 
-        // @property (assign, readwrite, nonatomic) UAInAppMessageButtonLayoutType buttonLayout;
+        // @property (nonatomic, assign, unsafe_unretained, readwrite) UAInAppMessageButtonLayoutType buttonLayout;
         [Export("buttonLayout", ArgumentSemantic.Assign)]
         UAInAppMessageButtonLayoutType ButtonLayout { get; set; }
 
-        // @property (assign, readwrite, nonatomic) UAInAppMessageBannerPlacementType placement;
+        // @property (nonatomic, assign, unsafe_unretained, readwrite) UAInAppMessageBannerPlacementType placement;
         [Export("placement", ArgumentSemantic.Assign)]
         UAInAppMessageBannerPlacementType Placement { get; set; }
 
-        // @property (assign, readwrite, nonatomic) UAInAppMessageBannerContentLayoutType contentLayout;
+        // @property (nonatomic, assign, unsafe_unretained, readwrite) UAInAppMessageBannerContentLayoutType contentLayout;
         [Export("contentLayout", ArgumentSemantic.Assign)]
         UAInAppMessageBannerContentLayoutType ContentLayout { get; set; }
 
-        // @property (assign, readwrite, nonatomic) NSTimeInterval durationSeconds;
+        // @property (nonatomic, assign, unsafe_unretained, readwrite) NSTimeInterval durationSeconds;
         [Export("durationSeconds", ArgumentSemantic.Assign)]
         double DurationSeconds { get; set; }
 
-        // @property (readwrite, strong, nonatomic) UIColor *_Nonnull backgroundColor;
+        // @property (nonatomic, strong, readwrite) UIColor *_Nonnull backgroundColor;
         [Export("backgroundColor", ArgumentSemantic.Strong)]
         UIColor BackgroundColor { get; set; }
 
-        // @property (readwrite, strong, nonatomic) UIColor *_Nonnull dismissButtonColor;
+        // @property (nonatomic, strong, readwrite) UIColor *_Nonnull dismissButtonColor;
         [Export("dismissButtonColor", ArgumentSemantic.Strong)]
         UIColor DismissButtonColor { get; set; }
 
-        // @property (assign, readwrite, nonatomic) CGFloat borderRadiusPoints;
+        // @property (nonatomic, assign, unsafe_unretained, readwrite) CGFloat borderRadiusPoints;
         [Export("borderRadiusPoints", ArgumentSemantic.Assign)]
         nfloat BorderRadiusPoints { get; set; }
 
-        // @property (readwrite, copy, nonatomic, nullable) NSDictionary *actions;
+        // @property (nonatomic, copy, readwrite, nullable) NSDictionary *actions;
         [NullAllowed, Export("actions", ArgumentSemantic.Copy)]
         NSDictionary Actions { get; set; }
 
@@ -887,51 +942,51 @@ namespace UrbanAirship {
     [BaseType(typeof(UAInAppMessageDisplayContent))]
     interface UAInAppMessageBannerDisplayContent
     {
-        // @property (readonly, nonatomic, nullable) UAInAppMessageTextInfo *heading;
+        // @property (nonatomic, readonly, nullable) UAInAppMessageTextInfo *heading;
         [NullAllowed, Export("heading")]
         UAInAppMessageTextInfo Heading { get; }
 
-        // @property (readonly, nonatomic, nullable) UAInAppMessageTextInfo *body;
+        // @property (nonatomic, readonly, nullable) UAInAppMessageTextInfo *body;
         [NullAllowed, Export("body")]
         UAInAppMessageTextInfo Body { get; }
 
-        // @property (readonly, nonatomic, nullable) UAInAppMessageMediaInfo *media;
+        // @property (nonatomic, readonly, nullable) UAInAppMessageMediaInfo *media;
         [NullAllowed, Export("media")]
         UAInAppMessageMediaInfo Media { get; }
 
-        // @property (readonly, nonatomic) NSArray<UAInAppMessageButtonInfo *> *_Nonnull buttons;
+        // @property (nonatomic, readonly) NSArray<UAInAppMessageButtonInfo *> *_Nonnull buttons;
         [Export("buttons")]
         UAInAppMessageButtonInfo[] Buttons { get; }
 
-        // @property (readonly, nonatomic) UAInAppMessageButtonLayoutType buttonLayout;
+        // @property (nonatomic, readonly) UAInAppMessageButtonLayoutType buttonLayout;
         [Export("buttonLayout")]
         UAInAppMessageButtonLayoutType ButtonLayout { get; }
 
-        // @property (readonly, nonatomic) UAInAppMessageBannerPlacementType placement;
+        // @property (nonatomic, readonly) UAInAppMessageBannerPlacementType placement;
         [Export("placement")]
         UAInAppMessageBannerPlacementType Placement { get; }
 
-        // @property (readonly, nonatomic) UAInAppMessageBannerContentLayoutType contentLayout;
+        // @property (nonatomic, readonly) UAInAppMessageBannerContentLayoutType contentLayout;
         [Export("contentLayout")]
         UAInAppMessageBannerContentLayoutType ContentLayout { get; }
 
-        // @property (readonly, nonatomic) NSTimeInterval durationSeconds;
+        // @property (nonatomic, readonly) NSTimeInterval durationSeconds;
         [Export("durationSeconds")]
         double DurationSeconds { get; }
 
-        // @property (readonly, nonatomic) UIColor *_Nonnull backgroundColor;
+        // @property (nonatomic, readonly) UIColor *_Nonnull backgroundColor;
         [Export("backgroundColor")]
         UIColor BackgroundColor { get; }
 
-        // @property (readonly, nonatomic) UIColor *_Nonnull dismissButtonColor;
+        // @property (nonatomic, readonly) UIColor *_Nonnull dismissButtonColor;
         [Export("dismissButtonColor")]
         UIColor DismissButtonColor { get; }
 
-        // @property (readonly, assign, nonatomic) CGFloat borderRadiusPoints;
+        // @property (nonatomic, assign, unsafe_unretained, readonly) CGFloat borderRadiusPoints;
         [Export("borderRadiusPoints", ArgumentSemantic.Assign)]
         nfloat BorderRadiusPoints { get; }
 
-        // @property (readonly, nonatomic, nullable) NSDictionary *actions;
+        // @property (nonatomic, readonly, nullable) NSDictionary *actions;
         [NullAllowed, Export("actions")]
         NSDictionary Actions { get; }
 
@@ -951,27 +1006,27 @@ namespace UrbanAirship {
     [BaseType(typeof(NSObject))]
     interface UAInAppMessageBannerStyle : IUAInAppMessageStyleProtocol
     {
-        // @property (readwrite, strong, nonatomic, nullable) UAPadding *additionalPadding;
+        // @property (nonatomic, strong, readwrite, nullable) UAPadding *additionalPadding;
         [NullAllowed, Export("additionalPadding", ArgumentSemantic.Strong)]
         UAPadding AdditionalPadding { get; set; }
 
-        // @property (readwrite, strong, nonatomic, nullable) UAInAppMessageTextStyle *headerStyle;
+        // @property (nonatomic, strong, readwrite, nullable) UAInAppMessageTextStyle *headerStyle;
         [NullAllowed, Export("headerStyle", ArgumentSemantic.Strong)]
         UAInAppMessageTextStyle HeaderStyle { get; set; }
 
-        // @property (readwrite, strong, nonatomic, nullable) UAInAppMessageTextStyle *bodyStyle;
+        // @property (nonatomic, strong, readwrite, nullable) UAInAppMessageTextStyle *bodyStyle;
         [NullAllowed, Export("bodyStyle", ArgumentSemantic.Strong)]
         UAInAppMessageTextStyle BodyStyle { get; set; }
 
-        // @property (readwrite, strong, nonatomic, nullable) UAInAppMessageButtonStyle *buttonStyle;
+        // @property (nonatomic, strong, readwrite, nullable) UAInAppMessageButtonStyle *buttonStyle;
         [NullAllowed, Export("buttonStyle", ArgumentSemantic.Strong)]
         UAInAppMessageButtonStyle ButtonStyle { get; set; }
 
-        // @property (readwrite, strong, nonatomic, nullable) UAInAppMessageMediaStyle *mediaStyle;
+        // @property (nonatomic, strong, readwrite, nullable) UAInAppMessageMediaStyle *mediaStyle;
         [NullAllowed, Export("mediaStyle", ArgumentSemantic.Strong)]
         UAInAppMessageMediaStyle MediaStyle { get; set; }
 
-        // @property (readwrite, strong, nonatomic, nullable) NSNumber *maxWidth;
+        // @property (nonatomic, strong, readwrite, nullable) NSNumber *maxWidth;
         [NullAllowed, Export("maxWidth", ArgumentSemantic.Strong)]
         NSNumber MaxWidth { get; set; }
 
@@ -981,31 +1036,31 @@ namespace UrbanAirship {
     [BaseType(typeof(NSObject))]
     interface UAInAppMessageButtonInfoBuilder
     {
-        // @property (readwrite, strong, nonatomic, nullable) UAInAppMessageTextInfo *label;
+        // @property (nonatomic, strong, readwrite, nullable) UAInAppMessageTextInfo *label;
         [NullAllowed, Export("label", ArgumentSemantic.Strong)]
         UAInAppMessageTextInfo Label { get; set; }
 
-        // @property (readwrite, copy, nonatomic, nullable) NSString *identifier;
+        // @property (nonatomic, copy, readwrite, nullable) NSString *identifier;
         [NullAllowed, Export("identifier")]
         string Identifier { get; set; }
 
-        // @property (assign, readwrite, nonatomic) UAInAppMessageButtonInfoBehaviorType behavior;
+        // @property (nonatomic, assign, unsafe_unretained, readwrite) UAInAppMessageButtonInfoBehaviorType behavior;
         [Export("behavior", ArgumentSemantic.Assign)]
         UAInAppMessageButtonInfoBehaviorType Behavior { get; set; }
 
-        // @property (assign, readwrite, nonatomic) CGFloat borderRadiusPoints;
+        // @property (nonatomic, assign, unsafe_unretained, readwrite) CGFloat borderRadiusPoints;
         [Export("borderRadiusPoints", ArgumentSemantic.Assign)]
         nfloat BorderRadiusPoints { get; set; }
 
-        // @property (readwrite, strong, nonatomic) UIColor *_Nonnull backgroundColor;
+        // @property (nonatomic, strong, readwrite) UIColor *_Nonnull backgroundColor;
         [Export("backgroundColor", ArgumentSemantic.Strong)]
         UIColor BackgroundColor { get; set; }
 
-        // @property (readwrite, strong, nonatomic) UIColor *_Nonnull borderColor;
+        // @property (nonatomic, strong, readwrite) UIColor *_Nonnull borderColor;
         [Export("borderColor", ArgumentSemantic.Strong)]
         UIColor BorderColor { get; set; }
 
-        // @property (readwrite, copy, nonatomic, nullable) NSDictionary *actions;
+        // @property (nonatomic, copy, readwrite, nullable) NSDictionary *actions;
         [NullAllowed, Export("actions", ArgumentSemantic.Copy)]
         NSDictionary Actions { get; set; }
 
@@ -1018,31 +1073,31 @@ namespace UrbanAirship {
     [BaseType(typeof(NSObject))]
     interface UAInAppMessageButtonInfo
     {
-        // @property (readonly, nonatomic) UAInAppMessageTextInfo *_Nonnull label;
+        // @property (nonatomic, readonly) UAInAppMessageTextInfo *_Nonnull label;
         [Export("label")]
         UAInAppMessageTextInfo Label { get; }
 
-        // @property (readonly, nonatomic) NSString *_Nonnull identifier;
+        // @property (nonatomic, readonly) NSString *_Nonnull identifier;
         [Export("identifier")]
         string Identifier { get; }
 
-        // @property (readonly, nonatomic) UAInAppMessageButtonInfoBehaviorType behavior;
+        // @property (nonatomic, readonly) UAInAppMessageButtonInfoBehaviorType behavior;
         [Export("behavior")]
         UAInAppMessageButtonInfoBehaviorType Behavior { get; }
 
-        // @property (readonly, nonatomic) CGFloat borderRadiusPoints;
+        // @property (nonatomic, readonly) CGFloat borderRadiusPoints;
         [Export("borderRadiusPoints")]
         nfloat BorderRadiusPoints { get; }
 
-        // @property (readonly, nonatomic) UIColor *_Nonnull backgroundColor;
+        // @property (nonatomic, readonly) UIColor *_Nonnull backgroundColor;
         [Export("backgroundColor")]
         UIColor BackgroundColor { get; }
 
-        // @property (readonly, nonatomic) UIColor *_Nonnull borderColor;
+        // @property (nonatomic, readonly) UIColor *_Nonnull borderColor;
         [Export("borderColor")]
         UIColor BorderColor { get; }
 
-        // @property (readonly, nonatomic, nullable) NSDictionary *actions;
+        // @property (nonatomic, readonly, nullable) NSDictionary *actions;
         [NullAllowed, Export("actions")]
         NSDictionary Actions { get; }
 
@@ -1062,27 +1117,27 @@ namespace UrbanAirship {
     [BaseType(typeof(NSObject))]
     interface UAInAppMessageButtonStyle
     {
-        // @property (readwrite, strong, nonatomic, nullable) UAPadding *additionalPadding;
+        // @property (nonatomic, strong, readwrite, nullable) UAPadding *additionalPadding;
         [NullAllowed, Export("additionalPadding", ArgumentSemantic.Strong)]
         UAPadding AdditionalPadding { get; set; }
 
-        // @property (readwrite, strong, nonatomic, nullable) UAInAppMessageTextStyle *buttonTextStyle;
+        // @property (nonatomic, strong, readwrite, nullable) UAInAppMessageTextStyle *buttonTextStyle;
         [NullAllowed, Export("buttonTextStyle", ArgumentSemantic.Strong)]
         UAInAppMessageTextStyle ButtonTextStyle { get; set; }
 
-        // @property (readwrite, strong, nonatomic, nullable) NSNumber *buttonHeight;
+        // @property (nonatomic, strong, readwrite, nullable) NSNumber *buttonHeight;
         [NullAllowed, Export("buttonHeight", ArgumentSemantic.Strong)]
         NSNumber ButtonHeight { get; set; }
 
-        // @property (readwrite, strong, nonatomic, nullable) NSNumber *stackedButtonSpacing;
+        // @property (nonatomic, strong, readwrite, nullable) NSNumber *stackedButtonSpacing;
         [NullAllowed, Export("stackedButtonSpacing", ArgumentSemantic.Strong)]
         NSNumber StackedButtonSpacing { get; set; }
 
-        // @property (readwrite, strong, nonatomic, nullable) NSNumber *separatedButtonSpacing;
+        // @property (nonatomic, strong, readwrite, nullable) NSNumber *separatedButtonSpacing;
         [NullAllowed, Export("separatedButtonSpacing", ArgumentSemantic.Strong)]
         NSNumber SeparatedButtonSpacing { get; set; }
 
-        // @property (readwrite, strong, nonatomic, nullable) NSNumber *borderWidth;
+        // @property (nonatomic, strong, readwrite, nullable) NSNumber *borderWidth;
         [NullAllowed, Export("borderWidth", ArgumentSemantic.Strong)]
         NSNumber BorderWidth { get; set; }
 
@@ -1101,7 +1156,7 @@ namespace UrbanAirship {
     [BaseType(typeof(UAInAppMessageDisplayContent))]
     interface UAInAppMessageCustomDisplayContent
     {
-        // @property (readonly, nonatomic) NSDictionary *_Nonnull value;
+        // @property (nonatomic, readonly) NSDictionary *_Nonnull value;
         [Export("value")]
         NSDictionary Value { get; }
 
@@ -1115,18 +1170,14 @@ namespace UrbanAirship {
     [BaseType(typeof(NSObject))]
     interface UAInAppMessageDefaultDisplayCoordinator : IUAInAppMessageDisplayCoordinator
     {
-        // @property (readonly, nonatomic) BOOL isReady;
+        // @property (nonatomic, readonly) BOOL isReady;
         [Export("isReady")]
         bool IsReady { get; }
 
-        // @property (assign, readwrite, nonatomic) NSTimeInterval displayInterval;
+        // @property (nonatomic, assign, unsafe_unretained, readwrite) NSTimeInterval displayInterval;
         [Export("displayInterval", ArgumentSemantic.Assign)]
         double DisplayInterval { get; set; }
 
-        // + (instancetype)coordinator;
-        [Static]
-        [Export("coordinator")]
-        UAInAppMessageDefaultDisplayCoordinator Coordinator ();
     }
 
     // @interface UAInAppMessageDefaultPrepareAssetsDelegate : NSObject <UAInAppMessagePrepareAssetsDelegate> @end
@@ -1140,7 +1191,7 @@ namespace UrbanAirship {
     [BaseType(typeof(NSObject))]
     interface UAInAppMessageDisplayContent
     {
-        // @property (readonly, nonatomic) UAInAppMessageDisplayType displayType;
+        // @property (nonatomic, readonly) UAInAppMessageDisplayType displayType;
         [Export("displayType")]
         UAInAppMessageDisplayType DisplayType { get; }
 
@@ -1154,7 +1205,7 @@ namespace UrbanAirship {
     [BaseType(typeof(NSObject))]
     interface UAInAppMessageDisplayCoordinator
     {
-        // @property (readonly, nonatomic) BOOL isReady;
+        // @property (nonatomic, readonly) BOOL isReady;
         [Export("isReady")]
         bool IsReady { get; }
 
@@ -1173,7 +1224,7 @@ namespace UrbanAirship {
     [BaseType(typeof(NSObject))]
     interface UAInAppMessageFullScreenAdapter : IUAInAppMessageAdapterProtocol
     {
-        // @property (readwrite, strong, nonatomic, nullable) UAInAppMessageFullScreenStyle *style;
+        // @property (nonatomic, strong, readwrite, nullable) UAInAppMessageFullScreenStyle *style;
         [NullAllowed, Export("style", ArgumentSemantic.Strong)]
         UAInAppMessageFullScreenStyle Style { get; set; }
 
@@ -1183,39 +1234,39 @@ namespace UrbanAirship {
     [BaseType(typeof(NSObject))]
     interface UAInAppMessageFullScreenDisplayContentBuilder
     {
-        // @property (readwrite, strong, nonatomic, nullable) UAInAppMessageTextInfo *heading;
+        // @property (nonatomic, strong, readwrite, nullable) UAInAppMessageTextInfo *heading;
         [NullAllowed, Export("heading", ArgumentSemantic.Strong)]
         UAInAppMessageTextInfo Heading { get; set; }
 
-        // @property (readwrite, strong, nonatomic, nullable) UAInAppMessageTextInfo *body;
+        // @property (nonatomic, strong, readwrite, nullable) UAInAppMessageTextInfo *body;
         [NullAllowed, Export("body", ArgumentSemantic.Strong)]
         UAInAppMessageTextInfo Body { get; set; }
 
-        // @property (readwrite, strong, nonatomic, nullable) UAInAppMessageMediaInfo *media;
+        // @property (nonatomic, strong, readwrite, nullable) UAInAppMessageMediaInfo *media;
         [NullAllowed, Export("media", ArgumentSemantic.Strong)]
         UAInAppMessageMediaInfo Media { get; set; }
 
-        // @property (readwrite, strong, nonatomic, nullable) UAInAppMessageButtonInfo *footer;
+        // @property (nonatomic, strong, readwrite, nullable) UAInAppMessageButtonInfo *footer;
         [NullAllowed, Export("footer", ArgumentSemantic.Strong)]
         UAInAppMessageButtonInfo Footer { get; set; }
 
-        // @property (readwrite, copy, nonatomic, nullable) NSArray<UAInAppMessageButtonInfo *> *buttons;
+        // @property (nonatomic, copy, readwrite, nullable) NSArray<UAInAppMessageButtonInfo *> *buttons;
         [NullAllowed, Export("buttons", ArgumentSemantic.Copy)]
         UAInAppMessageButtonInfo[] Buttons { get; set; }
 
-        // @property (assign, readwrite, nonatomic) UAInAppMessageButtonLayoutType buttonLayout;
+        // @property (nonatomic, assign, unsafe_unretained, readwrite) UAInAppMessageButtonLayoutType buttonLayout;
         [Export("buttonLayout", ArgumentSemantic.Assign)]
         UAInAppMessageButtonLayoutType ButtonLayout { get; set; }
 
-        // @property (assign, readwrite, nonatomic) UAInAppMessageFullScreenContentLayoutType contentLayout;
+        // @property (nonatomic, assign, unsafe_unretained, readwrite) UAInAppMessageFullScreenContentLayoutType contentLayout;
         [Export("contentLayout", ArgumentSemantic.Assign)]
         UAInAppMessageFullScreenContentLayoutType ContentLayout { get; set; }
 
-        // @property (readwrite, strong, nonatomic) UIColor *_Nonnull backgroundColor;
+        // @property (nonatomic, strong, readwrite) UIColor *_Nonnull backgroundColor;
         [Export("backgroundColor", ArgumentSemantic.Strong)]
         UIColor BackgroundColor { get; set; }
 
-        // @property (readwrite, strong, nonatomic) UIColor *_Nonnull dismissButtonColor;
+        // @property (nonatomic, strong, readwrite) UIColor *_Nonnull dismissButtonColor;
         [Export("dismissButtonColor", ArgumentSemantic.Strong)]
         UIColor DismissButtonColor { get; set; }
 
@@ -1228,39 +1279,39 @@ namespace UrbanAirship {
     [BaseType(typeof(UAInAppMessageDisplayContent))]
     interface UAInAppMessageFullScreenDisplayContent
     {
-        // @property (readonly, nonatomic, nullable) UAInAppMessageTextInfo *heading;
+        // @property (nonatomic, readonly, nullable) UAInAppMessageTextInfo *heading;
         [NullAllowed, Export("heading")]
         UAInAppMessageTextInfo Heading { get; }
 
-        // @property (readonly, nonatomic, nullable) UAInAppMessageTextInfo *body;
+        // @property (nonatomic, readonly, nullable) UAInAppMessageTextInfo *body;
         [NullAllowed, Export("body")]
         UAInAppMessageTextInfo Body { get; }
 
-        // @property (readonly, nonatomic, nullable) UAInAppMessageMediaInfo *media;
+        // @property (nonatomic, readonly, nullable) UAInAppMessageMediaInfo *media;
         [NullAllowed, Export("media")]
         UAInAppMessageMediaInfo Media { get; }
 
-        // @property (readonly, nonatomic, nullable) UAInAppMessageButtonInfo *footer;
+        // @property (nonatomic, readonly, nullable) UAInAppMessageButtonInfo *footer;
         [NullAllowed, Export("footer")]
         UAInAppMessageButtonInfo Footer { get; }
 
-        // @property (readonly, nonatomic) NSArray<UAInAppMessageButtonInfo *> *_Nonnull buttons;
+        // @property (nonatomic, readonly) NSArray<UAInAppMessageButtonInfo *> *_Nonnull buttons;
         [Export("buttons")]
         UAInAppMessageButtonInfo[] Buttons { get; }
 
-        // @property (readonly, nonatomic) UAInAppMessageButtonLayoutType buttonLayout;
+        // @property (nonatomic, readonly) UAInAppMessageButtonLayoutType buttonLayout;
         [Export("buttonLayout")]
         UAInAppMessageButtonLayoutType ButtonLayout { get; }
 
-        // @property (readonly, nonatomic) UAInAppMessageFullScreenContentLayoutType contentLayout;
+        // @property (nonatomic, readonly) UAInAppMessageFullScreenContentLayoutType contentLayout;
         [Export("contentLayout")]
         UAInAppMessageFullScreenContentLayoutType ContentLayout { get; }
 
-        // @property (readonly, nonatomic) UIColor *_Nonnull backgroundColor;
+        // @property (nonatomic, readonly) UIColor *_Nonnull backgroundColor;
         [Export("backgroundColor")]
         UIColor BackgroundColor { get; }
 
-        // @property (readonly, nonatomic) UIColor *_Nonnull dismissButtonColor;
+        // @property (nonatomic, readonly) UIColor *_Nonnull dismissButtonColor;
         [Export("dismissButtonColor")]
         UIColor DismissButtonColor { get; }
 
@@ -1280,23 +1331,23 @@ namespace UrbanAirship {
     [BaseType(typeof(NSObject))]
     interface UAInAppMessageFullScreenStyle : IUAInAppMessageStyleProtocol
     {
-        // @property (readwrite, strong, nonatomic, nullable) NSString *dismissIconResource;
+        // @property (nonatomic, strong, readwrite, nullable) NSString *dismissIconResource;
         [NullAllowed, Export("dismissIconResource")]
         string DismissIconResource { get; set; }
 
-        // @property (readwrite, strong, nonatomic, nullable) UAInAppMessageTextStyle *headerStyle;
+        // @property (nonatomic, strong, readwrite, nullable) UAInAppMessageTextStyle *headerStyle;
         [NullAllowed, Export("headerStyle", ArgumentSemantic.Strong)]
         UAInAppMessageTextStyle HeaderStyle { get; set; }
 
-        // @property (readwrite, strong, nonatomic, nullable) UAInAppMessageTextStyle *bodyStyle;
+        // @property (nonatomic, strong, readwrite, nullable) UAInAppMessageTextStyle *bodyStyle;
         [NullAllowed, Export("bodyStyle", ArgumentSemantic.Strong)]
         UAInAppMessageTextStyle BodyStyle { get; set; }
 
-        // @property (readwrite, strong, nonatomic, nullable) UAInAppMessageButtonStyle *buttonStyle;
+        // @property (nonatomic, strong, readwrite, nullable) UAInAppMessageButtonStyle *buttonStyle;
         [NullAllowed, Export("buttonStyle", ArgumentSemantic.Strong)]
         UAInAppMessageButtonStyle ButtonStyle { get; set; }
 
-        // @property (readwrite, strong, nonatomic, nullable) UAInAppMessageMediaStyle *mediaStyle;
+        // @property (nonatomic, strong, readwrite, nullable) UAInAppMessageMediaStyle *mediaStyle;
         [NullAllowed, Export("mediaStyle", ArgumentSemantic.Strong)]
         UAInAppMessageMediaStyle MediaStyle { get; set; }
 
@@ -1306,7 +1357,7 @@ namespace UrbanAirship {
     [BaseType(typeof(NSObject))]
     interface UAInAppMessageHTMLAdapter : IUAInAppMessageAdapterProtocol
     {
-        // @property (readwrite, strong, nonatomic, nullable) UAInAppMessageHTMLStyle *style;
+        // @property (nonatomic, strong, readwrite, nullable) UAInAppMessageHTMLStyle *style;
         [NullAllowed, Export("style", ArgumentSemantic.Strong)]
         UAInAppMessageHTMLStyle Style { get; set; }
 
@@ -1316,39 +1367,39 @@ namespace UrbanAirship {
     [BaseType(typeof(NSObject))]
     interface UAInAppMessageHTMLDisplayContentBuilder
     {
-        // @property (readwrite, copy, nonatomic, nullable) NSString *url;
+        // @property (nonatomic, copy, readwrite, nullable) NSString *url;
         [NullAllowed, Export("url")]
         string Url { get; set; }
 
-        // @property (readwrite, strong, nonatomic) UIColor *_Nonnull backgroundColor;
+        // @property (nonatomic, strong, readwrite) UIColor *_Nonnull backgroundColor;
         [Export("backgroundColor", ArgumentSemantic.Strong)]
         UIColor BackgroundColor { get; set; }
 
-        // @property (readwrite, strong, nonatomic) UIColor *_Nonnull dismissButtonColor;
+        // @property (nonatomic, strong, readwrite) UIColor *_Nonnull dismissButtonColor;
         [Export("dismissButtonColor", ArgumentSemantic.Strong)]
         UIColor DismissButtonColor { get; set; }
 
-        // @property (assign, readwrite, nonatomic) CGFloat borderRadiusPoints;
+        // @property (nonatomic, assign, unsafe_unretained, readwrite) CGFloat borderRadiusPoints;
         [Export("borderRadiusPoints", ArgumentSemantic.Assign)]
         nfloat BorderRadiusPoints { get; set; }
 
-        // @property (assign, readwrite, nonatomic) BOOL allowFullScreenDisplay;
+        // @property (nonatomic, assign, unsafe_unretained, readwrite) BOOL allowFullScreenDisplay;
         [Export("allowFullScreenDisplay")]
         bool AllowFullScreenDisplay { get; set; }
 
-        // @property (assign, readwrite, nonatomic) CGFloat height;
+        // @property (nonatomic, assign, unsafe_unretained, readwrite) CGFloat height;
         [Export("height", ArgumentSemantic.Assign)]
         nfloat Height { get; set; }
 
-        // @property (assign, readwrite, nonatomic) CGFloat width;
+        // @property (nonatomic, assign, unsafe_unretained, readwrite) CGFloat width;
         [Export("width", ArgumentSemantic.Assign)]
         nfloat Width { get; set; }
 
-        // @property (assign, readwrite, nonatomic) BOOL aspectLock;
+        // @property (nonatomic, assign, unsafe_unretained, readwrite) BOOL aspectLock;
         [Export("aspectLock")]
         bool AspectLock { get; set; }
 
-        // @property (assign, readwrite, nonatomic) BOOL requiresConnectivity;
+        // @property (nonatomic, assign, unsafe_unretained, readwrite) BOOL requiresConnectivity;
         [Export("requiresConnectivity")]
         bool RequiresConnectivity { get; set; }
 
@@ -1361,39 +1412,39 @@ namespace UrbanAirship {
     [BaseType(typeof(UAInAppMessageDisplayContent))]
     interface UAInAppMessageHTMLDisplayContent
     {
-        // @property (readonly, nonatomic) NSString *_Nonnull url;
+        // @property (nonatomic, readonly) NSString *_Nonnull url;
         [Export("url")]
         string Url { get; }
 
-        // @property (readonly, nonatomic) UIColor *_Nonnull backgroundColor;
+        // @property (nonatomic, readonly) UIColor *_Nonnull backgroundColor;
         [Export("backgroundColor")]
         UIColor BackgroundColor { get; }
 
-        // @property (readonly, nonatomic) UIColor *_Nonnull dismissButtonColor;
+        // @property (nonatomic, readonly) UIColor *_Nonnull dismissButtonColor;
         [Export("dismissButtonColor")]
         UIColor DismissButtonColor { get; }
 
-        // @property (readonly, nonatomic) CGFloat borderRadiusPoints;
+        // @property (nonatomic, readonly) CGFloat borderRadiusPoints;
         [Export("borderRadiusPoints")]
         nfloat BorderRadiusPoints { get; }
 
-        // @property (readonly, nonatomic) BOOL allowFullScreenDisplay;
+        // @property (nonatomic, readonly) BOOL allowFullScreenDisplay;
         [Export("allowFullScreenDisplay")]
         bool AllowFullScreenDisplay { get; }
 
-        // @property (readonly, nonatomic) CGFloat height;
+        // @property (nonatomic, readonly) CGFloat height;
         [Export("height")]
         nfloat Height { get; }
 
-        // @property (readonly, nonatomic) CGFloat width;
+        // @property (nonatomic, readonly) CGFloat width;
         [Export("width")]
         nfloat Width { get; }
 
-        // @property (readonly, nonatomic) BOOL aspectLock;
+        // @property (nonatomic, readonly) BOOL aspectLock;
         [Export("aspectLock")]
         bool AspectLock { get; }
 
-        // @property (readonly, nonatomic) BOOL requireConnectivity;
+        // @property (nonatomic, readonly) BOOL requireConnectivity;
         [Export("requireConnectivity")]
         bool RequireConnectivity { get; }
 
@@ -1413,23 +1464,23 @@ namespace UrbanAirship {
     [BaseType(typeof(NSObject))]
     interface UAInAppMessageHTMLStyle : IUAInAppMessageStyleProtocol
     {
-        // @property (readwrite, strong, nonatomic) UAPadding *_Nonnull additionalPadding;
+        // @property (nonatomic, strong, readwrite) UAPadding *_Nonnull additionalPadding;
         [Export("additionalPadding", ArgumentSemantic.Strong)]
         UAPadding AdditionalPadding { get; set; }
 
-        // @property (readwrite, strong, nonatomic, nullable) NSString *dismissIconResource;
+        // @property (nonatomic, strong, readwrite, nullable) NSString *dismissIconResource;
         [NullAllowed, Export("dismissIconResource")]
         string DismissIconResource { get; set; }
 
-        // @property (readwrite, strong, nonatomic, nullable) NSNumber *maxWidth;
+        // @property (nonatomic, strong, readwrite, nullable) NSNumber *maxWidth;
         [NullAllowed, Export("maxWidth", ArgumentSemantic.Strong)]
         NSNumber MaxWidth { get; set; }
 
-        // @property (readwrite, strong, nonatomic, nullable) NSNumber *maxHeight;
+        // @property (nonatomic, strong, readwrite, nullable) NSNumber *maxHeight;
         [NullAllowed, Export("maxHeight", ArgumentSemantic.Strong)]
         NSNumber MaxHeight { get; set; }
 
-        // @property (assign, readwrite, nonatomic) BOOL hideDismissIcon;
+        // @property (nonatomic, assign, unsafe_unretained, readwrite) BOOL hideDismissIcon;
         [Export("hideDismissIcon")]
         bool HideDismissIcon { get; set; }
 
@@ -1439,14 +1490,10 @@ namespace UrbanAirship {
     [BaseType(typeof(NSObject))]
     interface UAInAppMessageImmediateDisplayCoordinator : IUAInAppMessageDisplayCoordinator
     {
-        // @property (readonly, nonatomic) BOOL isReady;
+        // @property (nonatomic, readonly) BOOL isReady;
         [Export("isReady")]
         bool IsReady { get; }
 
-        // + (instancetype)coordinator;
-        [Static]
-        [Export("coordinator")]
-        UAInAppMessageImmediateDisplayCoordinator Coordinator ();
     }
 
     // @protocol UAInAppMessagingDelegate <NSObject>
@@ -1483,21 +1530,15 @@ namespace UrbanAirship {
     [BaseType(typeof(UAComponent))]
     interface UAInAppMessageManager
     {
-        // + (null_unspecified instancetype)shared;
-        [Static]
-        [Export("shared")]
-        [New]
-        UAInAppMessageManager Shared ();
-
-        // @property (getter=isEnabled, assign, readwrite, nonatomic) BOOL enabled;
+        // @property (nonatomic, assign, unsafe_unretained, readwrite, getter=isEnabled) BOOL enabled;
         [Export("enabled")]
-        bool Enabled { [Bind("isEnabled")] get; set; }
+        bool Enabled { get; set; }
 
-        // @property (getter=isPaused, assign, readwrite, nonatomic) BOOL paused;
+        // @property (nonatomic, assign, unsafe_unretained, readwrite, getter=isPaused) BOOL paused;
         [Export("paused")]
-        bool Paused { [Bind("isPaused")] get; set; }
+        bool Paused { get; set; }
 
-        // @property (readwrite, nonatomic) id<UAInAppMessagingDelegate> _Nullable delegate;
+        // @property (nonatomic, weak, readwrite) id<UAInAppMessagingDelegate> _Nullable delegate;
         [NullAllowed, Export("delegate", ArgumentSemantic.Assign)]
         NSObject WeakDelegate { get; set; }
 
@@ -1505,11 +1546,11 @@ namespace UrbanAirship {
         [NullAllowed]
         IUAInAppMessagingDelegate Delegate { get; set; }
 
-        // @property (assign, readwrite, nonatomic) NSTimeInterval displayInterval;
+        // @property (nonatomic, assign, unsafe_unretained, readwrite) NSTimeInterval displayInterval;
         [Export("displayInterval", ArgumentSemantic.Assign)]
         double DisplayInterval { get; set; }
 
-        // @property (readonly, strong, nonatomic) UAInAppMessageAssetManager *_Nonnull assetManager;
+        // @property (nonatomic, strong, readonly) UAInAppMessageAssetManager *_Nonnull assetManager;
         [Export("assetManager", ArgumentSemantic.Strong)]
         UAInAppMessageAssetManager AssetManager { get; }
 
@@ -1570,15 +1611,15 @@ namespace UrbanAirship {
     [BaseType(typeof(NSObject))]
     interface UAInAppMessageMediaInfo
     {
-        // @property (readonly, nonatomic) NSString *_Nonnull url;
+        // @property (nonatomic, readonly) NSString *_Nonnull url;
         [Export("url")]
         string Url { get; }
 
-        // @property (readonly, nonatomic) UAInAppMessageMediaInfoType type;
+        // @property (nonatomic, readonly) UAInAppMessageMediaInfoType type;
         [Export("type")]
         UAInAppMessageMediaInfoType Type { get; }
 
-        // @property (readonly, nonatomic) NSString *_Nonnull contentDescription;
+        // @property (nonatomic, readonly) NSString *_Nonnull contentDescription;
         [Export("contentDescription")]
         string ContentDescription { get; }
 
@@ -1592,7 +1633,7 @@ namespace UrbanAirship {
     [BaseType(typeof(NSObject))]
     interface UAInAppMessageMediaStyle
     {
-        // @property (readwrite, strong, nonatomic, nullable) UAPadding *additionalPadding;
+        // @property (nonatomic, strong, readwrite, nullable) UAPadding *additionalPadding;
         [NullAllowed, Export("additionalPadding", ArgumentSemantic.Strong)]
         UAPadding AdditionalPadding { get; set; }
 
@@ -1611,7 +1652,7 @@ namespace UrbanAirship {
     [BaseType(typeof(NSObject))]
     interface UAInAppMessageModalAdapter : IUAInAppMessageAdapterProtocol
     {
-        // @property (readwrite, strong, nonatomic, nullable) UAInAppMessageModalStyle *style;
+        // @property (nonatomic, strong, readwrite, nullable) UAInAppMessageModalStyle *style;
         [NullAllowed, Export("style", ArgumentSemantic.Strong)]
         UAInAppMessageModalStyle Style { get; set; }
 
@@ -1621,47 +1662,47 @@ namespace UrbanAirship {
     [BaseType(typeof(NSObject))]
     interface UAInAppMessageModalDisplayContentBuilder
     {
-        // @property (readwrite, strong, nonatomic, nullable) UAInAppMessageTextInfo *heading;
+        // @property (nonatomic, strong, readwrite, nullable) UAInAppMessageTextInfo *heading;
         [NullAllowed, Export("heading", ArgumentSemantic.Strong)]
         UAInAppMessageTextInfo Heading { get; set; }
 
-        // @property (readwrite, strong, nonatomic, nullable) UAInAppMessageTextInfo *body;
+        // @property (nonatomic, strong, readwrite, nullable) UAInAppMessageTextInfo *body;
         [NullAllowed, Export("body", ArgumentSemantic.Strong)]
         UAInAppMessageTextInfo Body { get; set; }
 
-        // @property (readwrite, strong, nonatomic, nullable) UAInAppMessageMediaInfo *media;
+        // @property (nonatomic, strong, readwrite, nullable) UAInAppMessageMediaInfo *media;
         [NullAllowed, Export("media", ArgumentSemantic.Strong)]
         UAInAppMessageMediaInfo Media { get; set; }
 
-        // @property (readwrite, strong, nonatomic, nullable) UAInAppMessageButtonInfo *footer;
+        // @property (nonatomic, strong, readwrite, nullable) UAInAppMessageButtonInfo *footer;
         [NullAllowed, Export("footer", ArgumentSemantic.Strong)]
         UAInAppMessageButtonInfo Footer { get; set; }
 
-        // @property (readwrite, copy, nonatomic, nullable) NSArray<UAInAppMessageButtonInfo *> *buttons;
+        // @property (nonatomic, copy, readwrite, nullable) NSArray<UAInAppMessageButtonInfo *> *buttons;
         [NullAllowed, Export("buttons", ArgumentSemantic.Copy)]
         UAInAppMessageButtonInfo[] Buttons { get; set; }
 
-        // @property (assign, readwrite, nonatomic) UAInAppMessageButtonLayoutType buttonLayout;
+        // @property (nonatomic, assign, unsafe_unretained, readwrite) UAInAppMessageButtonLayoutType buttonLayout;
         [Export("buttonLayout", ArgumentSemantic.Assign)]
         UAInAppMessageButtonLayoutType ButtonLayout { get; set; }
 
-        // @property (assign, readwrite, nonatomic) UAInAppMessageModalContentLayoutType contentLayout;
+        // @property (nonatomic, assign, unsafe_unretained, readwrite) UAInAppMessageModalContentLayoutType contentLayout;
         [Export("contentLayout", ArgumentSemantic.Assign)]
         UAInAppMessageModalContentLayoutType ContentLayout { get; set; }
 
-        // @property (readwrite, strong, nonatomic) UIColor *_Nonnull backgroundColor;
+        // @property (nonatomic, strong, readwrite) UIColor *_Nonnull backgroundColor;
         [Export("backgroundColor", ArgumentSemantic.Strong)]
         UIColor BackgroundColor { get; set; }
 
-        // @property (readwrite, strong, nonatomic) UIColor *_Nonnull dismissButtonColor;
+        // @property (nonatomic, strong, readwrite) UIColor *_Nonnull dismissButtonColor;
         [Export("dismissButtonColor", ArgumentSemantic.Strong)]
         UIColor DismissButtonColor { get; set; }
 
-        // @property (assign, readwrite, nonatomic) CGFloat borderRadiusPoints;
+        // @property (nonatomic, assign, unsafe_unretained, readwrite) CGFloat borderRadiusPoints;
         [Export("borderRadiusPoints", ArgumentSemantic.Assign)]
         nfloat BorderRadiusPoints { get; set; }
 
-        // @property (assign, readwrite, nonatomic) BOOL allowFullScreenDisplay;
+        // @property (nonatomic, assign, unsafe_unretained, readwrite) BOOL allowFullScreenDisplay;
         [Export("allowFullScreenDisplay")]
         bool AllowFullScreenDisplay { get; set; }
 
@@ -1674,47 +1715,47 @@ namespace UrbanAirship {
     [BaseType(typeof(UAInAppMessageDisplayContent))]
     interface UAInAppMessageModalDisplayContent
     {
-        // @property (readonly, nonatomic, nullable) UAInAppMessageTextInfo *heading;
+        // @property (nonatomic, readonly, nullable) UAInAppMessageTextInfo *heading;
         [NullAllowed, Export("heading")]
         UAInAppMessageTextInfo Heading { get; }
 
-        // @property (readonly, nonatomic, nullable) UAInAppMessageTextInfo *body;
+        // @property (nonatomic, readonly, nullable) UAInAppMessageTextInfo *body;
         [NullAllowed, Export("body")]
         UAInAppMessageTextInfo Body { get; }
 
-        // @property (readonly, nonatomic, nullable) UAInAppMessageMediaInfo *media;
+        // @property (nonatomic, readonly, nullable) UAInAppMessageMediaInfo *media;
         [NullAllowed, Export("media")]
         UAInAppMessageMediaInfo Media { get; }
 
-        // @property (readonly, nonatomic, nullable) UAInAppMessageButtonInfo *footer;
+        // @property (nonatomic, readonly, nullable) UAInAppMessageButtonInfo *footer;
         [NullAllowed, Export("footer")]
         UAInAppMessageButtonInfo Footer { get; }
 
-        // @property (readonly, nonatomic) NSArray<UAInAppMessageButtonInfo *> *_Nonnull buttons;
+        // @property (nonatomic, readonly) NSArray<UAInAppMessageButtonInfo *> *_Nonnull buttons;
         [Export("buttons")]
         UAInAppMessageButtonInfo[] Buttons { get; }
 
-        // @property (readonly, nonatomic) UAInAppMessageButtonLayoutType buttonLayout;
+        // @property (nonatomic, readonly) UAInAppMessageButtonLayoutType buttonLayout;
         [Export("buttonLayout")]
         UAInAppMessageButtonLayoutType ButtonLayout { get; }
 
-        // @property (readonly, nonatomic) UAInAppMessageModalContentLayoutType contentLayout;
+        // @property (nonatomic, readonly) UAInAppMessageModalContentLayoutType contentLayout;
         [Export("contentLayout")]
         UAInAppMessageModalContentLayoutType ContentLayout { get; }
 
-        // @property (readonly, nonatomic) UIColor *_Nonnull backgroundColor;
+        // @property (nonatomic, readonly) UIColor *_Nonnull backgroundColor;
         [Export("backgroundColor")]
         UIColor BackgroundColor { get; }
 
-        // @property (readonly, nonatomic) UIColor *_Nonnull dismissButtonColor;
+        // @property (nonatomic, readonly) UIColor *_Nonnull dismissButtonColor;
         [Export("dismissButtonColor")]
         UIColor DismissButtonColor { get; }
 
-        // @property (readonly, assign, nonatomic) CGFloat borderRadiusPoints;
+        // @property (nonatomic, assign, unsafe_unretained, readonly) CGFloat borderRadiusPoints;
         [Export("borderRadiusPoints", ArgumentSemantic.Assign)]
         nfloat BorderRadiusPoints { get; }
 
-        // @property (readonly, nonatomic) BOOL allowFullScreenDisplay;
+        // @property (nonatomic, readonly) BOOL allowFullScreenDisplay;
         [Export("allowFullScreenDisplay")]
         bool AllowFullScreenDisplay { get; }
 
@@ -1734,35 +1775,35 @@ namespace UrbanAirship {
     [BaseType(typeof(NSObject))]
     interface UAInAppMessageModalStyle : IUAInAppMessageStyleProtocol
     {
-        // @property (readwrite, strong, nonatomic) UAPadding *_Nonnull additionalPadding;
+        // @property (nonatomic, strong, readwrite) UAPadding *_Nonnull additionalPadding;
         [Export("additionalPadding", ArgumentSemantic.Strong)]
         UAPadding AdditionalPadding { get; set; }
 
-        // @property (readwrite, strong, nonatomic, nullable) NSString *dismissIconResource;
+        // @property (nonatomic, strong, readwrite, nullable) NSString *dismissIconResource;
         [NullAllowed, Export("dismissIconResource")]
         string DismissIconResource { get; set; }
 
-        // @property (readwrite, strong, nonatomic, nullable) NSNumber *maxWidth;
+        // @property (nonatomic, strong, readwrite, nullable) NSNumber *maxWidth;
         [NullAllowed, Export("maxWidth", ArgumentSemantic.Strong)]
         NSNumber MaxWidth { get; set; }
 
-        // @property (readwrite, strong, nonatomic, nullable) NSNumber *maxHeight;
+        // @property (nonatomic, strong, readwrite, nullable) NSNumber *maxHeight;
         [NullAllowed, Export("maxHeight", ArgumentSemantic.Strong)]
         NSNumber MaxHeight { get; set; }
 
-        // @property (readwrite, strong, nonatomic, nullable) UAInAppMessageTextStyle *headerStyle;
+        // @property (nonatomic, strong, readwrite, nullable) UAInAppMessageTextStyle *headerStyle;
         [NullAllowed, Export("headerStyle", ArgumentSemantic.Strong)]
         UAInAppMessageTextStyle HeaderStyle { get; set; }
 
-        // @property (readwrite, strong, nonatomic, nullable) UAInAppMessageTextStyle *bodyStyle;
+        // @property (nonatomic, strong, readwrite, nullable) UAInAppMessageTextStyle *bodyStyle;
         [NullAllowed, Export("bodyStyle", ArgumentSemantic.Strong)]
         UAInAppMessageTextStyle BodyStyle { get; set; }
 
-        // @property (readwrite, strong, nonatomic, nullable) UAInAppMessageButtonStyle *buttonStyle;
+        // @property (nonatomic, strong, readwrite, nullable) UAInAppMessageButtonStyle *buttonStyle;
         [NullAllowed, Export("buttonStyle", ArgumentSemantic.Strong)]
         UAInAppMessageButtonStyle ButtonStyle { get; set; }
 
-        // @property (readwrite, strong, nonatomic, nullable) UAInAppMessageMediaStyle *mediaStyle;
+        // @property (nonatomic, strong, readwrite, nullable) UAInAppMessageMediaStyle *mediaStyle;
         [NullAllowed, Export("mediaStyle", ArgumentSemantic.Strong)]
         UAInAppMessageMediaStyle MediaStyle { get; set; }
 
@@ -1772,11 +1813,11 @@ namespace UrbanAirship {
     [BaseType(typeof(NSObject))]
     interface UAInAppMessageResolution
     {
-        // @property (readonly, nonatomic, nullable) UAInAppMessageButtonInfo *buttonInfo;
+        // @property (nonatomic, readonly, nullable) UAInAppMessageButtonInfo *buttonInfo;
         [NullAllowed, Export("buttonInfo")]
         UAInAppMessageButtonInfo ButtonInfo { get; }
 
-        // @property (readonly, nonatomic) UAInAppMessageResolutionType type;
+        // @property (nonatomic, readonly) UAInAppMessageResolutionType type;
         [Export("type")]
         UAInAppMessageResolutionType Type { get; }
 
@@ -1819,7 +1860,7 @@ namespace UrbanAirship {
     [BaseType(typeof(NSObject))]
     interface UAInAppMessageSceneManager
     {
-        // @property (readwrite, nonatomic) id<UAInAppMessageSceneDelegate> _Nullable delegate;
+        // @property (nonatomic, weak, readwrite) id<UAInAppMessageSceneDelegate> _Nullable delegate;
         [NullAllowed, Export("delegate", ArgumentSemantic.Assign)]
         NSObject WeakDelegate { get; set; }
 
@@ -1842,7 +1883,7 @@ namespace UrbanAirship {
     [BaseType(typeof(UAScheduleEditsBuilder))]
     interface UAInAppMessageScheduleEditsBuilder
     {
-        // @property (readwrite, strong, nonatomic, nullable) UAInAppMessage *message;
+        // @property (nonatomic, strong, readwrite, nullable) UAInAppMessage *message;
         [NullAllowed, Export("message", ArgumentSemantic.Strong)]
         UAInAppMessage Message { get; set; }
 
@@ -1852,7 +1893,7 @@ namespace UrbanAirship {
     [BaseType(typeof(UAScheduleEdits))]
     interface UAInAppMessageScheduleEdits
     {
-        // @property (readwrite, strong, nonatomic, nullable) UAInAppMessage *message;
+        // @property (nonatomic, strong, readwrite, nullable) UAInAppMessage *message;
         [NullAllowed, Export("message", ArgumentSemantic.Strong)]
         UAInAppMessage Message { get; set; }
 
@@ -1866,7 +1907,7 @@ namespace UrbanAirship {
     [BaseType(typeof(UAScheduleInfoBuilder))]
     interface UAInAppMessageScheduleInfoBuilder
     {
-        // @property (readwrite, strong, nonatomic, nullable) UAInAppMessage *message;
+        // @property (nonatomic, strong, readwrite, nullable) UAInAppMessage *message;
         [NullAllowed, Export("message", ArgumentSemantic.Strong)]
         UAInAppMessage Message { get; set; }
 
@@ -1876,7 +1917,7 @@ namespace UrbanAirship {
     [BaseType(typeof(UAScheduleInfo))]
     interface UAInAppMessageScheduleInfo
     {
-        // @property (readonly, nonatomic) UAInAppMessage *_Nonnull message;
+        // @property (nonatomic, readonly) UAInAppMessage *_Nonnull message;
         [Export("message")]
         UAInAppMessage Message { get; }
 
@@ -1947,27 +1988,27 @@ namespace UrbanAirship {
     [BaseType(typeof(NSObject))]
     interface UAInAppMessageTextInfoBuilder
     {
-        // @property (readwrite, copy, nonatomic, nullable) NSString *text;
+        // @property (nonatomic, copy, readwrite, nullable) NSString *text;
         [NullAllowed, Export("text")]
         string Text { get; set; }
 
-        // @property (readwrite, strong, nonatomic) UIColor *_Nonnull color;
+        // @property (nonatomic, strong, readwrite) UIColor *_Nonnull color;
         [Export("color", ArgumentSemantic.Strong)]
         UIColor Color { get; set; }
 
-        // @property (assign, readwrite, nonatomic) CGFloat sizePoints;
+        // @property (nonatomic, assign, unsafe_unretained, readwrite) CGFloat sizePoints;
         [Export("sizePoints", ArgumentSemantic.Assign)]
         nfloat SizePoints { get; set; }
 
-        // @property (assign, readwrite, nonatomic) UAInAppMessageTextInfoAlignmentType alignment;
+        // @property (nonatomic, assign, unsafe_unretained, readwrite) UAInAppMessageTextInfoAlignmentType alignment;
         [Export("alignment", ArgumentSemantic.Assign)]
         UAInAppMessageTextInfoAlignmentType Alignment { get; set; }
 
-        // @property (assign, readwrite, nonatomic) UAInAppMessageTextInfoStyleType style;
+        // @property (nonatomic, assign, unsafe_unretained, readwrite) UAInAppMessageTextInfoStyleType style;
         [Export("style", ArgumentSemantic.Assign)]
         UAInAppMessageTextInfoStyleType Style { get; set; }
 
-        // @property (readwrite, copy, nonatomic, nullable) NSArray<NSString *> *fontFamilies;
+        // @property (nonatomic, copy, readwrite, nullable) NSArray<NSString *> *fontFamilies;
         [NullAllowed, Export("fontFamilies", ArgumentSemantic.Copy)]
         string[] FontFamilies { get; set; }
 
@@ -1980,27 +2021,27 @@ namespace UrbanAirship {
     [BaseType(typeof(NSObject))]
     interface UAInAppMessageTextInfo
     {
-        // @property (readonly, nonatomic, nullable) NSString *text;
+        // @property (nonatomic, readonly, nullable) NSString *text;
         [NullAllowed, Export("text")]
         string Text { get; }
 
-        // @property (readonly, nonatomic, nullable) UIColor *color;
+        // @property (nonatomic, readonly, nullable) UIColor *color;
         [NullAllowed, Export("color")]
         UIColor Color { get; }
 
-        // @property (readonly, nonatomic) CGFloat sizePoints;
+        // @property (nonatomic, readonly) CGFloat sizePoints;
         [Export("sizePoints")]
         nfloat SizePoints { get; }
 
-        // @property (readonly, nonatomic) UAInAppMessageTextInfoAlignmentType alignment;
+        // @property (nonatomic, readonly) UAInAppMessageTextInfoAlignmentType alignment;
         [Export("alignment")]
         UAInAppMessageTextInfoAlignmentType Alignment { get; }
 
-        // @property (readonly, nonatomic) UAInAppMessageTextInfoStyleType style;
+        // @property (nonatomic, readonly) UAInAppMessageTextInfoStyleType style;
         [Export("style")]
         UAInAppMessageTextInfoStyleType Style { get; }
 
-        // @property (readonly, nonatomic, nullable) NSArray<NSString *> *fontFamilies;
+        // @property (nonatomic, readonly, nullable) NSArray<NSString *> *fontFamilies;
         [NullAllowed, Export("fontFamilies")]
         string[] FontFamilies { get; }
 
@@ -2020,15 +2061,15 @@ namespace UrbanAirship {
     [BaseType(typeof(NSObject))]
     interface UAInAppMessageTextStyle
     {
-        // @property (readwrite, strong, nonatomic, nullable) UAPadding *additionalPadding;
+        // @property (nonatomic, strong, readwrite, nullable) UAPadding *additionalPadding;
         [NullAllowed, Export("additionalPadding", ArgumentSemantic.Strong)]
         UAPadding AdditionalPadding { get; set; }
 
-        // @property (readwrite, strong, nonatomic, nullable) NSNumber *letterSpacing;
+        // @property (nonatomic, strong, readwrite, nullable) NSNumber *letterSpacing;
         [NullAllowed, Export("letterSpacing", ArgumentSemantic.Strong)]
         NSNumber LetterSpacing { get; set; }
 
-        // @property (readwrite, strong, nonatomic, nullable) NSNumber *lineSpacing;
+        // @property (nonatomic, strong, readwrite, nullable) NSNumber *lineSpacing;
         [NullAllowed, Export("lineSpacing", ArgumentSemantic.Strong)]
         NSNumber LineSpacing { get; set; }
 
@@ -2064,11 +2105,11 @@ namespace UrbanAirship {
     [BaseType(typeof(UAAction))]
     interface UALandingPageAction
     {
-        // @property (assign, readwrite, nonatomic, nullable) NSNumber *borderRadiusPoints;
+        // @property (nonatomic, assign, unsafe_unretained, readwrite, nullable) NSNumber *borderRadiusPoints;
         [NullAllowed, Export("borderRadiusPoints", ArgumentSemantic.Assign)]
         NSNumber BorderRadiusPoints { get; set; }
 
-        // @property (readwrite, nonatomic) id<UALandingPageBuilderExtender> _Nullable builderExtender;
+        // @property (nonatomic, weak, readwrite) id<UALandingPageBuilderExtender> _Nullable builderExtender;
         [NullAllowed, Export("builderExtender")]
         UALandingPageBuilderExtender BuilderExtender { get; set; }
 
@@ -2078,70 +2119,65 @@ namespace UrbanAirship {
     [BaseType(typeof(NSObject))]
     interface UALegacyInAppMessage
     {
-        // @property (readonly, nonatomic) NSDictionary *_Nonnull payload;
+        // @property (nonatomic, readonly) NSDictionary *_Nonnull payload;
         [Export("payload")]
         NSDictionary Payload { get; }
 
-        // @property (readwrite, copy, nonatomic, nullable) NSString *identifier;
+        // @property (nonatomic, copy, readwrite, nullable) NSString *identifier;
         [NullAllowed, Export("identifier")]
         string Identifier { get; set; }
 
-        // @property (readwrite, strong, nonatomic) NSDate *_Nonnull expiry;
+        // @property (nonatomic, strong, readwrite) NSDate *_Nonnull expiry;
         [Export("expiry", ArgumentSemantic.Strong)]
         NSDate Expiry { get; set; }
 
-        // @property (readwrite, copy, nonatomic, nullable) NSDictionary *extra;
+        // @property (nonatomic, copy, readwrite, nullable) NSDictionary *extra;
         [NullAllowed, Export("extra", ArgumentSemantic.Copy)]
         NSDictionary Extra { get; set; }
 
-        // @property (assign, readwrite, nonatomic) UALegacyInAppMessageDisplayType displayType;
+        // @property (nonatomic, assign, unsafe_unretained, readwrite) UALegacyInAppMessageDisplayType displayType;
         [Export("displayType", ArgumentSemantic.Assign)]
         UALegacyInAppMessageDisplayType DisplayType { get; set; }
 
-        // @property (readwrite, copy, nonatomic, nullable) NSString *alert;
+        // @property (nonatomic, copy, readwrite, nullable) NSString *alert;
         [NullAllowed, Export("alert")]
         string Alert { get; set; }
 
-        // @property (assign, readwrite, nonatomic) UALegacyInAppMessagePosition position;
+        // @property (nonatomic, assign, unsafe_unretained, readwrite) UALegacyInAppMessagePosition position;
         [Export("position", ArgumentSemantic.Assign)]
         UALegacyInAppMessagePosition Position { get; set; }
 
-        // @property (assign, readwrite, nonatomic) NSTimeInterval duration;
+        // @property (nonatomic, assign, unsafe_unretained, readwrite) NSTimeInterval duration;
         [Export("duration", ArgumentSemantic.Assign)]
         double Duration { get; set; }
 
-        // @property (readwrite, strong, nonatomic, nullable) UIColor *primaryColor;
+        // @property (nonatomic, strong, readwrite, nullable) UIColor *primaryColor;
         [NullAllowed, Export("primaryColor", ArgumentSemantic.Strong)]
         UIColor PrimaryColor { get; set; }
 
-        // @property (readwrite, strong, nonatomic, nullable) UIColor *secondaryColor;
+        // @property (nonatomic, strong, readwrite, nullable) UIColor *secondaryColor;
         [NullAllowed, Export("secondaryColor", ArgumentSemantic.Strong)]
         UIColor SecondaryColor { get; set; }
 
-        // @property (readwrite, copy, nonatomic, nullable) NSString *buttonGroup;
+        // @property (nonatomic, copy, readwrite, nullable) NSString *buttonGroup;
         [NullAllowed, Export("buttonGroup")]
         string ButtonGroup { get; set; }
 
-        // @property (readwrite, copy, nonatomic, nullable) NSDictionary *buttonActions;
+        // @property (nonatomic, copy, readwrite, nullable) NSDictionary *buttonActions;
         [NullAllowed, Export("buttonActions", ArgumentSemantic.Copy)]
         NSDictionary ButtonActions { get; set; }
 
-        // @property (readwrite, copy, nonatomic, nullable) NSDictionary *onClick;
+        // @property (nonatomic, copy, readwrite, nullable) NSDictionary *onClick;
         [NullAllowed, Export("onClick", ArgumentSemantic.Copy)]
         NSDictionary OnClick { get; set; }
 
-        // @property (readonly, nonatomic, nullable) NSArray *notificationActions;
+        // @property (nonatomic, readonly, nullable) NSArray *notificationActions;
         [NullAllowed, Export("notificationActions")]
         NSObject[] NotificationActions { get; }
 
-        // @property (readonly, nonatomic, nullable) UANotificationCategory *buttonCategory;
+        // @property (nonatomic, readonly, nullable) UANotificationCategory *buttonCategory;
         [NullAllowed, Export("buttonCategory")]
         UANotificationCategory ButtonCategory { get; }
-
-        // + (instancetype)message;
-        [Static]
-        [Export("message")]
-        UALegacyInAppMessage Message ();
 
         // + (nullable instancetype)messageWithPayload:(nonnull NSDictionary *)payload;
         [Static]
@@ -2189,17 +2225,11 @@ namespace UrbanAirship {
     [BaseType(typeof(UAComponent))]
     interface UALegacyInAppMessaging : IUALegacyInAppMessageFactoryDelegate
     {
-        // + (null_unspecified instancetype)shared;
-        [Static]
-        [Export("shared")]
-        [New]
-        UALegacyInAppMessaging Shared ();
-
-        // @property (assign, readwrite, nonatomic) BOOL displayASAPEnabled;
+        // @property (nonatomic, assign, unsafe_unretained, readwrite) BOOL displayASAPEnabled;
         [Export("displayASAPEnabled")]
         bool DisplayASAPEnabled { get; set; }
 
-        // @property (readwrite, nonatomic) id<UALegacyInAppMessageFactoryDelegate> _Nullable factoryDelegate;
+        // @property (nonatomic, weak, readwrite) id<UALegacyInAppMessageFactoryDelegate> _Nullable factoryDelegate;
         [NullAllowed, Export("factoryDelegate", ArgumentSemantic.Assign)]
         NSObject WeakFactoryDelegate { get; set; }
 
@@ -2217,15 +2247,15 @@ namespace UrbanAirship {
     [BaseType(typeof(NSObject))]
     interface UASchedule
     {
-        // @property (readonly, nonatomic) NSString *_Nonnull identifier;
+        // @property (nonatomic, readonly) NSString *_Nonnull identifier;
         [Export("identifier")]
         string Identifier { get; }
 
-        // @property (readonly, nonatomic) UAScheduleInfo *_Nonnull info;
+        // @property (nonatomic, readonly) UAScheduleInfo *_Nonnull info;
         [Export("info")]
         UAScheduleInfo Info { get; }
 
-        // @property (readonly, nonatomic, nullable) NSDictionary *metadata;
+        // @property (nonatomic, readonly, nullable) NSDictionary *metadata;
         [NullAllowed, Export("metadata")]
         NSDictionary Metadata { get; }
 
@@ -2245,23 +2275,23 @@ namespace UrbanAirship {
     [BaseType(typeof(NSObject))]
     interface UAScheduleDelayBuilder
     {
-        // @property (assign, readwrite, nonatomic) NSTimeInterval seconds;
+        // @property (nonatomic, assign, unsafe_unretained, readwrite) NSTimeInterval seconds;
         [Export("seconds", ArgumentSemantic.Assign)]
         double Seconds { get; set; }
 
-        // @property (readwrite, copy, nonatomic, nullable) NSArray *screens;
+        // @property (nonatomic, copy, readwrite, nullable) NSArray *screens;
         [NullAllowed, Export("screens", ArgumentSemantic.Copy)]
         NSObject[] Screens { get; set; }
 
-        // @property (readwrite, copy, nonatomic, nullable) NSString *regionID;
+        // @property (nonatomic, copy, readwrite, nullable) NSString *regionID;
         [NullAllowed, Export("regionID")]
         string RegionID { get; set; }
 
-        // @property (assign, readwrite, nonatomic) UAScheduleDelayAppState appState;
+        // @property (nonatomic, assign, unsafe_unretained, readwrite) UAScheduleDelayAppState appState;
         [Export("appState", ArgumentSemantic.Assign)]
         UAScheduleDelayAppState AppState { get; set; }
 
-        // @property (readwrite, copy, nonatomic, nullable) NSArray<UAScheduleTrigger *> *cancellationTriggers;
+        // @property (nonatomic, copy, readwrite, nullable) NSArray<UAScheduleTrigger *> *cancellationTriggers;
         [NullAllowed, Export("cancellationTriggers", ArgumentSemantic.Copy)]
         UAScheduleTrigger[] CancellationTriggers { get; set; }
 
@@ -2271,27 +2301,27 @@ namespace UrbanAirship {
     [BaseType(typeof(NSObject))]
     interface UAScheduleDelay
     {
-        // @property (readonly, nonatomic) BOOL isValid;
+        // @property (nonatomic, readonly) BOOL isValid;
         [Export("isValid")]
         bool IsValid { get; }
 
-        // @property (readonly, nonatomic) NSTimeInterval seconds;
+        // @property (nonatomic, readonly) NSTimeInterval seconds;
         [Export("seconds")]
         double Seconds { get; }
 
-        // @property (readonly, nonatomic, nullable) NSArray *screens;
+        // @property (nonatomic, readonly, nullable) NSArray *screens;
         [NullAllowed, Export("screens")]
         NSObject[] Screens { get; }
 
-        // @property (readonly, nonatomic, nullable) NSString *regionID;
+        // @property (nonatomic, readonly, nullable) NSString *regionID;
         [NullAllowed, Export("regionID")]
         string RegionID { get; }
 
-        // @property (readonly, nonatomic) UAScheduleDelayAppState appState;
+        // @property (nonatomic, readonly) UAScheduleDelayAppState appState;
         [Export("appState")]
         UAScheduleDelayAppState AppState { get; }
 
-        // @property (readonly, nonatomic) NSArray<UAScheduleTrigger *> *_Nonnull cancellationTriggers;
+        // @property (nonatomic, readonly) NSArray<UAScheduleTrigger *> *_Nonnull cancellationTriggers;
         [Export("cancellationTriggers")]
         UAScheduleTrigger[] CancellationTriggers { get; }
 
@@ -2315,27 +2345,27 @@ namespace UrbanAirship {
     [BaseType(typeof(NSObject))]
     interface UAScheduleEditsBuilder
     {
-        // @property (readwrite, strong, nonatomic, nullable) NSNumber *priority;
+        // @property (nonatomic, strong, readwrite, nullable) NSNumber *priority;
         [NullAllowed, Export("priority", ArgumentSemantic.Strong)]
         NSNumber Priority { get; set; }
 
-        // @property (readwrite, strong, nonatomic, nullable) NSNumber *limit;
+        // @property (nonatomic, strong, readwrite, nullable) NSNumber *limit;
         [NullAllowed, Export("limit", ArgumentSemantic.Strong)]
         NSNumber Limit { get; set; }
 
-        // @property (readwrite, strong, nonatomic, nullable) NSDate *start;
+        // @property (nonatomic, strong, readwrite, nullable) NSDate *start;
         [NullAllowed, Export("start", ArgumentSemantic.Strong)]
         NSDate Start { get; set; }
 
-        // @property (readwrite, strong, nonatomic, nullable) NSDate *end;
+        // @property (nonatomic, strong, readwrite, nullable) NSDate *end;
         [NullAllowed, Export("end", ArgumentSemantic.Strong)]
         NSDate End { get; set; }
 
-        // @property (readwrite, strong, nonatomic, nullable) NSNumber *editGracePeriod;
+        // @property (nonatomic, strong, readwrite, nullable) NSNumber *editGracePeriod;
         [NullAllowed, Export("editGracePeriod", ArgumentSemantic.Strong)]
         NSNumber EditGracePeriod { get; set; }
 
-        // @property (readwrite, strong, nonatomic, nullable) NSNumber *interval;
+        // @property (nonatomic, strong, readwrite, nullable) NSNumber *interval;
         [NullAllowed, Export("interval", ArgumentSemantic.Strong)]
         NSNumber Interval { get; set; }
 
@@ -2345,27 +2375,27 @@ namespace UrbanAirship {
     [BaseType(typeof(NSObject))]
     interface UAScheduleEdits
     {
-        // @property (readonly, nonatomic, nullable) NSNumber *priority;
+        // @property (nonatomic, readonly, nullable) NSNumber *priority;
         [NullAllowed, Export("priority")]
         NSNumber Priority { get; }
 
-        // @property (readonly, nonatomic, nullable) NSNumber *limit;
+        // @property (nonatomic, readonly, nullable) NSNumber *limit;
         [NullAllowed, Export("limit")]
         NSNumber Limit { get; }
 
-        // @property (readonly, nonatomic, nullable) NSDate *start;
+        // @property (nonatomic, readonly, nullable) NSDate *start;
         [NullAllowed, Export("start")]
         NSDate Start { get; }
 
-        // @property (readonly, nonatomic, nullable) NSDate *end;
+        // @property (nonatomic, readonly, nullable) NSDate *end;
         [NullAllowed, Export("end")]
         NSDate End { get; }
 
-        // @property (readonly, nonatomic, nullable) NSNumber *editGracePeriod;
+        // @property (nonatomic, readonly, nullable) NSNumber *editGracePeriod;
         [NullAllowed, Export("editGracePeriod")]
         NSNumber EditGracePeriod { get; }
 
-        // @property (readonly, nonatomic, nullable) NSNumber *interval;
+        // @property (nonatomic, readonly, nullable) NSNumber *interval;
         [NullAllowed, Export("interval")]
         NSNumber Interval { get; }
 
@@ -2375,35 +2405,35 @@ namespace UrbanAirship {
     [BaseType(typeof(NSObject))]
     interface UAScheduleInfoBuilder
     {
-        // @property (assign, readwrite, nonatomic) NSInteger priority;
+        // @property (nonatomic, assign, unsafe_unretained, readwrite) NSInteger priority;
         [Export("priority", ArgumentSemantic.Assign)]
         nint Priority { get; set; }
 
-        // @property (assign, readwrite, nonatomic) NSUInteger limit;
+        // @property (nonatomic, assign, unsafe_unretained, readwrite) NSUInteger limit;
         [Export("limit")]
         nuint Limit { get; set; }
 
-        // @property (readwrite, copy, nonatomic, nullable) NSArray<UAScheduleTrigger *> *triggers;
+        // @property (nonatomic, copy, readwrite, nullable) NSArray<UAScheduleTrigger *> *triggers;
         [NullAllowed, Export("triggers", ArgumentSemantic.Copy)]
         UAScheduleTrigger[] Triggers { get; set; }
 
-        // @property (readwrite, strong, nonatomic, nullable) NSDate *start;
+        // @property (nonatomic, strong, readwrite, nullable) NSDate *start;
         [NullAllowed, Export("start", ArgumentSemantic.Strong)]
         NSDate Start { get; set; }
 
-        // @property (readwrite, strong, nonatomic, nullable) NSDate *end;
+        // @property (nonatomic, strong, readwrite, nullable) NSDate *end;
         [NullAllowed, Export("end", ArgumentSemantic.Strong)]
         NSDate End { get; set; }
 
-        // @property (readwrite, strong, nonatomic, nullable) UAScheduleDelay *delay;
+        // @property (nonatomic, strong, readwrite, nullable) UAScheduleDelay *delay;
         [NullAllowed, Export("delay", ArgumentSemantic.Strong)]
         UAScheduleDelay Delay { get; set; }
 
-        // @property (assign, readwrite, nonatomic) NSTimeInterval editGracePeriod;
+        // @property (nonatomic, assign, unsafe_unretained, readwrite) NSTimeInterval editGracePeriod;
         [Export("editGracePeriod", ArgumentSemantic.Assign)]
         double EditGracePeriod { get; set; }
 
-        // @property (assign, readwrite, nonatomic) NSTimeInterval interval;
+        // @property (nonatomic, assign, unsafe_unretained, readwrite) NSTimeInterval interval;
         [Export("interval", ArgumentSemantic.Assign)]
         double Interval { get; set; }
 
@@ -2413,39 +2443,39 @@ namespace UrbanAirship {
     [BaseType(typeof(NSObject))]
     interface UAScheduleInfo
     {
-        // @property (readonly, nonatomic) NSInteger priority;
+        // @property (nonatomic, readonly) NSInteger priority;
         [Export("priority")]
         nint Priority { get; }
 
-        // @property (readonly, nonatomic) NSArray<UAScheduleTrigger *> *_Nonnull triggers;
+        // @property (nonatomic, readonly) NSArray<UAScheduleTrigger *> *_Nonnull triggers;
         [Export("triggers")]
         UAScheduleTrigger[] Triggers { get; }
 
-        // @property (readonly, nonatomic) NSUInteger limit;
+        // @property (nonatomic, readonly) NSUInteger limit;
         [Export("limit")]
         nuint Limit { get; }
 
-        // @property (readonly, nonatomic, nullable) NSDate *start;
+        // @property (nonatomic, readonly, nullable) NSDate *start;
         [NullAllowed, Export("start")]
         NSDate Start { get; }
 
-        // @property (readonly, nonatomic, nullable) NSDate *end;
+        // @property (nonatomic, readonly, nullable) NSDate *end;
         [NullAllowed, Export("end")]
         NSDate End { get; }
 
-        // @property (readonly, nonatomic, nullable) UAScheduleDelay *delay;
+        // @property (nonatomic, readonly, nullable) UAScheduleDelay *delay;
         [NullAllowed, Export("delay")]
         UAScheduleDelay Delay { get; }
 
-        // @property (readonly, nonatomic) NSTimeInterval editGracePeriod;
+        // @property (nonatomic, readonly) NSTimeInterval editGracePeriod;
         [Export("editGracePeriod")]
         double EditGracePeriod { get; }
 
-        // @property (readonly, nonatomic) NSTimeInterval interval;
+        // @property (nonatomic, readonly) NSTimeInterval interval;
         [Export("interval")]
         double Interval { get; }
 
-        // @property (readonly, nonatomic) BOOL isValid;
+        // @property (nonatomic, readonly) BOOL isValid;
         [Export("isValid")]
         bool IsValid { get; }
 
@@ -2458,11 +2488,11 @@ namespace UrbanAirship {
     [BaseType(typeof(NSObject))]
     interface UAScheduleTrigger
     {
-        // @property (readonly, nonatomic) UAScheduleTriggerType type;
+        // @property (nonatomic, readonly) UAScheduleTriggerType type;
         [Export("type")]
         UAScheduleTriggerType Type { get; }
 
-        // @property (readonly, nonatomic) NSNumber *_Nonnull goal;
+        // @property (nonatomic, readonly) NSNumber *_Nonnull goal;
         [Export("goal")]
         NSNumber Goal { get; }
 

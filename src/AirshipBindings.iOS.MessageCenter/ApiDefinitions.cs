@@ -1,6 +1,7 @@
 /*
  Copyright Airship and Contributors
 */
+using CoreFoundation;
 using CoreGraphics;
 using Foundation;
 using ObjCRuntime;
@@ -24,6 +25,14 @@ namespace UrbanAirship {
         [Field("UAInboxMessageListWillUpdateNotification", "__Internal")]
         NSString UAInboxMessageListWillUpdateNotification { get; }
 
+        // extern NSString *const _Nonnull UAMessageCenterMessageLoadErrorDomain
+        [Field("UAMessageCenterMessageLoadErrorDomain", "__Internal")]
+        NSString UAMessageCenterMessageLoadErrorDomain { get; }
+
+        // extern NSString *const _Nonnull UAMessageCenterMessageLoadErrorHTTPStatusKey
+        [Field("UAMessageCenterMessageLoadErrorHTTPStatusKey", "__Internal")]
+        NSString UAMessageCenterMessageLoadErrorHTTPStatusKey { get; }
+
         // extern NSString *const UAMessageDataScheme
         [Field("UAMessageDataScheme", "__Internal")]
         NSString UAMessageDataScheme { get; }
@@ -42,23 +51,121 @@ namespace UrbanAirship {
 
     }
 
+    // @interface UADefaultMessageCenterListViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate>
+    [BaseType(typeof(UIViewController))]
+    interface UADefaultMessageCenterListViewController : IUITableViewDelegate, IUITableViewDataSource, IUIScrollViewDelegate
+    {
+        // @property (nonatomic, strong, readwrite) UAMessageCenterStyle *_Nonnull style;
+        [Export("style", ArgumentSemantic.Strong)]
+        UAMessageCenterStyle Style { get; set; }
+
+        // @property (nonatomic, strong, readwrite) NSPredicate *_Nonnull filter;
+        [Export("filter", ArgumentSemantic.Strong)]
+        NSPredicate Filter { get; set; }
+
+        // @property (nonatomic, weak, readwrite) id<UAMessageCenterListViewDelegate> _Nullable delegate;
+        [NullAllowed, Export("delegate", ArgumentSemantic.Assign)]
+        NSObject WeakDelegate { get; set; }
+
+        [Wrap("WeakDelegate")]
+        [NullAllowed]
+        IUAMessageCenterListViewDelegate Delegate { get; set; }
+
+        // @property (nonatomic, strong, readwrite, nullable) NSIndexPath *selectedIndexPath;
+        [NullAllowed, Export("selectedIndexPath", ArgumentSemantic.Strong)]
+        IndexPath SelectedIndexPath { get; set; }
+
+        // @property (nonatomic, copy, readwrite, nullable) NSString *selectedMessageID;
+        [NullAllowed, Export("selectedMessageID")]
+        string SelectedMessageID { get; set; }
+
+    }
+
+    // @interface UADefaultMessageCenterMessageViewController : UIViewController
+    [BaseType(typeof(UIViewController))]
+    interface UADefaultMessageCenterMessageViewController
+    {
+        // @property (nonatomic, weak, readwrite, nullable) id<UAMessageCenterMessageViewDelegate> delegate;
+        [NullAllowed, Export("delegate", ArgumentSemantic.Assign)]
+        NSObject WeakDelegate { get; set; }
+
+        [Wrap("WeakDelegate")]
+        [NullAllowed]
+        IUAMessageCenterMessageViewDelegate Delegate { get; set; }
+
+        // @property (nonatomic, readonly, nullable) UAInboxMessage *message;
+        [NullAllowed, Export("message")]
+        UAInboxMessage Message { get; }
+
+        // @property (nonatomic, assign, unsafe_unretained, readwrite) BOOL disableMessageLinkPreviewAndCallouts;
+        [Export("disableMessageLinkPreviewAndCallouts")]
+        bool DisableMessageLinkPreviewAndCallouts { get; set; }
+
+        // - (void)loadMessageForID:(nullable NSString *)messageID;
+        [Export("loadMessageForID:")]
+        void LoadMessage ([NullAllowed] string messageID);
+
+        // - (void)clearMessage;
+        [Export("clearMessage")]
+        void ClearMessage ();
+    }
+
+    // @interface UADefaultMessageCenterSplitViewController : UISplitViewController <UAMessageCenterListViewDelegate, UAMessageCenterMessageViewDelegate>
+    [BaseType(typeof(UISplitViewController))]
+    interface UADefaultMessageCenterSplitViewController : IUAMessageCenterListViewDelegate, IUAMessageCenterMessageViewDelegate
+    {
+        // @property (nonatomic, strong, readwrite) NSPredicate *_Nonnull filter;
+        [Export("filter", ArgumentSemantic.Strong)]
+        NSPredicate Filter { get; set; }
+
+        // @property (nonatomic, strong, readwrite) UAMessageCenterStyle *_Nonnull style;
+        [Export("style", ArgumentSemantic.Strong)]
+        UAMessageCenterStyle Style { get; set; }
+
+        // @property (nonatomic, readonly) UADefaultMessageCenterListViewController *_Nonnull listViewController;
+        [Export("listViewController")]
+        UADefaultMessageCenterListViewController ListViewController { get; }
+
+        // @property (nonatomic, readonly) UADefaultMessageCenterMessageViewController *_Nonnull messageViewController;
+        [Export("messageViewController")]
+        UADefaultMessageCenterMessageViewController MessageViewController { get; }
+
+        // @property (nonatomic, assign, unsafe_unretained, readwrite) BOOL disableMessageLinkPreviewAndCallouts;
+        [Export("disableMessageLinkPreviewAndCallouts")]
+        bool DisableMessageLinkPreviewAndCallouts { get; set; }
+
+        // - (void)displayMessageForID:(nonnull NSString *)messageID;
+        [Export("displayMessageForID:")]
+        void DisplayMessage (string messageID);
+    }
+
+    // @interface UADefaultMessageCenterSplitViewDelegate : NSObject <UISplitViewControllerDelegate>
+    [BaseType(typeof(NSObject))]
+    interface UADefaultMessageCenterSplitViewDelegate : IUISplitViewControllerDelegate
+    {
+
+        // - (instancetype)initWithListViewController:(UADefaultMessageCenterListViewController *)listViewController;
+        [Export("initWithListViewController:")]
+        IntPtr Constructor (UADefaultMessageCenterListViewController listViewController);
+    }
+
     // @interface UADefaultMessageCenterUI : NSObject <UAMessageCenterDisplayDelegate>
     [BaseType(typeof(NSObject))]
     interface UADefaultMessageCenterUI : IUAMessageCenterDisplayDelegate
     {
-        // @property (readwrite, strong, nonatomic) NSString *_Nonnull title;
+        // @property (nonatomic, copy, readwrite) NSString *_Nonnull title;
         [Export("title")]
         string Title { get; set; }
 
-        // @property (readwrite, strong, nonatomic) UAMessageCenterStyle *_Nonnull style;
+        // @property (nonatomic, strong, readwrite) UAMessageCenterStyle *_Nonnull style;
         [Export("style", ArgumentSemantic.Strong)]
         UAMessageCenterStyle Style { get; set; }
 
-        // @property (readwrite, strong, nonatomic) NSPredicate *_Nonnull filter;
+        // @property (nonatomic, strong, readwrite) NSPredicate *_Nonnull filter;
         [Export("filter", ArgumentSemantic.Strong)]
         NSPredicate Filter { get; set; }
 
-        // @property (assign, readwrite, nonatomic) BOOL disableMessageLinkPreviewAndCallouts;
+        // @property (nonatomic, assign, unsafe_unretained, readwrite) BOOL disableMessageLinkPreviewAndCallouts;
         [Export("disableMessageLinkPreviewAndCallouts")]
         bool DisableMessageLinkPreviewAndCallouts { get; set; }
 
@@ -71,51 +178,51 @@ namespace UrbanAirship {
     [BaseType(typeof(NSObject))]
     interface UAInboxMessage
     {
-        // @property (readonly, nonatomic) NSString *_Nonnull messageID;
+        // @property (nonatomic, readonly) NSString *_Nonnull messageID;
         [Export("messageID")]
         string MessageID { get; }
 
-        // @property (readonly, nonatomic) NSURL *_Nonnull messageBodyURL;
+        // @property (nonatomic, readonly) NSURL *_Nonnull messageBodyURL;
         [Export("messageBodyURL")]
         NSUrl MessageBodyURL { get; }
 
-        // @property (readonly, nonatomic) NSURL *_Nonnull messageURL;
+        // @property (nonatomic, readonly) NSURL *_Nonnull messageURL;
         [Export("messageURL")]
         NSUrl MessageURL { get; }
 
-        // @property (readonly, nonatomic) NSString *_Nonnull contentType;
+        // @property (nonatomic, readonly) NSString *_Nonnull contentType;
         [Export("contentType")]
         string ContentType { get; }
 
-        // @property (readonly, nonatomic) BOOL unread;
+        // @property (nonatomic, readonly) BOOL unread;
         [Export("unread")]
         bool Unread { get; }
 
-        // @property (readonly, nonatomic) BOOL deleted;
+        // @property (nonatomic, readonly) BOOL deleted;
         [Export("deleted")]
         bool Deleted { get; }
 
-        // @property (readonly, nonatomic) NSDate *_Nonnull messageSent;
+        // @property (nonatomic, readonly) NSDate *_Nonnull messageSent;
         [Export("messageSent")]
         NSDate MessageSent { get; }
 
-        // @property (readonly, nonatomic, nullable) NSDate *messageExpiration;
+        // @property (nonatomic, readonly, nullable) NSDate *messageExpiration;
         [NullAllowed, Export("messageExpiration")]
         NSDate MessageExpiration { get; }
 
-        // @property (readonly, nonatomic) NSString *_Nonnull title;
+        // @property (nonatomic, readonly) NSString *_Nonnull title;
         [Export("title")]
         string Title { get; }
 
-        // @property (readonly, nonatomic) NSDictionary *_Nonnull extra;
+        // @property (nonatomic, readonly) NSDictionary *_Nonnull extra;
         [Export("extra")]
         NSDictionary Extra { get; }
 
-        // @property (readonly, nonatomic) NSDictionary *_Nonnull rawMessageObject;
+        // @property (nonatomic, readonly) NSDictionary *_Nonnull rawMessageObject;
         [Export("rawMessageObject")]
         NSDictionary RawMessageObject { get; }
 
-        // @property (readonly, nonatomic) UAInboxMessageList *_Nullable messageList;
+        // @property (nonatomic, weak, readonly) UAInboxMessageList *_Nullable messageList;
         [NullAllowed, Export("messageList")]
         UAInboxMessageList MessageList { get; }
 
@@ -136,19 +243,19 @@ namespace UrbanAirship {
     [BaseType(typeof(NSObject))]
     interface UAInboxMessageList
     {
-        // @property (readonly, strong, nonatomic) NSArray<UAInboxMessage *> *_Nonnull messages;
-        [Export("messages", ArgumentSemantic.Strong)]
+        // @property (nonatomic, copy, readonly) NSArray<UAInboxMessage *> *_Nonnull messages;
+        [Export("messages", ArgumentSemantic.Copy)]
         UAInboxMessage[] Messages { get; }
 
-        // @property (assign, readwrite, atomic) NSInteger unreadCount;
+        // @property (atomic, assign, unsafe_unretained, readwrite) NSInteger unreadCount;
         [Export("unreadCount", ArgumentSemantic.Assign)]
         nint UnreadCount { get; set; }
 
-        // @property (readonly, atomic) BOOL isRetrieving;
+        // @property (atomic, readonly) BOOL isRetrieving;
         [Export("isRetrieving")]
         bool IsRetrieving { get; }
 
-        // @property (readonly, atomic) BOOL isBatchUpdating;
+        // @property (atomic, readonly) BOOL isBatchUpdating;
         [Export("isBatchUpdating")]
         bool IsBatchUpdating { get; }
 
@@ -223,7 +330,7 @@ namespace UrbanAirship {
         // - (void)displayMessageCenterAnimated:(BOOL)animated;
         [Abstract]
         [Export("displayMessageCenterAnimated:")]
-        void DisplayMessageCenter (bool animated);
+        void DisplayMessageCenterAnimated (bool animated);
 
         // - (void)dismissMessageCenterAnimated:(BOOL)animated;
         [Abstract]
@@ -237,28 +344,22 @@ namespace UrbanAirship {
     [BaseType(typeof(UAComponent))]
     interface UAMessageCenter
     {
-        // + (null_unspecified instancetype)shared;
-        [Static]
-        [Export("shared")]
-        [New]
-        UAMessageCenter Shared ();
-
-        // @property (readwrite, nonatomic) id<UAMessageCenterDisplayDelegate> displayDelegate;
+        // @property (nonatomic, weak, readwrite) id<UAMessageCenterDisplayDelegate> displayDelegate;
         [Export("displayDelegate", ArgumentSemantic.Assign)]
         NSObject WeakDisplayDelegate { get; set; }
 
         [Wrap("WeakDisplayDelegate")]
         IUAMessageCenterDisplayDelegate DisplayDelegate { get; set; }
 
-        // @property (readonly, nonatomic) UADefaultMessageCenterUI *defaultUI;
+        // @property (nonatomic, readonly) UADefaultMessageCenterUI *defaultUI;
         [Export("defaultUI")]
         UADefaultMessageCenterUI DefaultUI { get; }
 
-        // @property (readonly, nonatomic) UAInboxMessageList *messageList;
+        // @property (nonatomic, readonly) UAInboxMessageList *messageList;
         [Export("messageList")]
         UAInboxMessageList MessageList { get; }
 
-        // @property (readonly, nonatomic) UAUser *user;
+        // @property (nonatomic, readonly) UAUser *user;
         [Export("user")]
         UAUser User { get; }
 
@@ -309,23 +410,23 @@ namespace UrbanAirship {
     [BaseType(typeof(UITableViewCell))]
     interface UAMessageCenterListCell
     {
-        // @property (readwrite, strong, nonatomic) UAMessageCenterStyle *style;
+        // @property (nonatomic, strong, readwrite) UAMessageCenterStyle *style;
         [Export("style", ArgumentSemantic.Strong)]
         UAMessageCenterStyle Style { get; set; }
 
-        // @property (readwrite, nonatomic) UILabel *date;
+        // @property (nonatomic, weak, readwrite) UILabel *date;
         [Export("date")]
         UILabel Date { get; set; }
 
-        // @property (readwrite, nonatomic) UILabel *title;
+        // @property (nonatomic, weak, readwrite) UILabel *title;
         [Export("title")]
         UILabel Title { get; set; }
 
-        // @property (readwrite, nonatomic) UIView *unreadIndicator;
+        // @property (nonatomic, weak, readwrite) UIView *unreadIndicator;
         [Export("unreadIndicator")]
         UIView UnreadIndicator { get; set; }
 
-        // @property (readwrite, nonatomic) UIImageView *listIconView;
+        // @property (nonatomic, weak, readwrite) UIImageView *listIconView;
         [Export("listIconView")]
         UIImageView ListIconView { get; set; }
 
@@ -336,21 +437,22 @@ namespace UrbanAirship {
 
     // @interface UAMessageCenterListViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, UISplitViewControllerDelegate>
     [BaseType(typeof(UIViewController))]
+    [Obsolete("Deprecated – to be removed in SDK version 14.0. Instead use UADefaultMessageCenterListViewController.")]
     interface UAMessageCenterListViewController : IUITableViewDelegate, IUITableViewDataSource, IUIScrollViewDelegate, IUISplitViewControllerDelegate
     {
-        // @property (readwrite, strong, nonatomic) UAMessageCenterStyle *style;
+        // @property (nonatomic, strong, readwrite) UAMessageCenterStyle *style;
         [Export("style", ArgumentSemantic.Strong)]
         UAMessageCenterStyle Style { get; set; }
 
-        // @property (readwrite, strong, nonatomic) NSPredicate *filter;
+        // @property (nonatomic, strong, readwrite) NSPredicate *filter;
         [Export("filter", ArgumentSemantic.Strong)]
         NSPredicate Filter { get; set; }
 
-        // @property (readwrite, strong, nonatomic) UIViewController<UAMessageCenterMessageViewProtocol> *messageViewController;
+        // @property (nonatomic, strong, readwrite) UIViewController<UAMessageCenterMessageViewProtocol> *messageViewController;
         [Export("messageViewController", ArgumentSemantic.Strong)]
         UAMessageCenterMessageViewProtocol MessageViewController { get; set; }
 
-        // @property (readwrite, copy, nonatomic) void (^)(BOOL) closeBlock;
+        // @property (nonatomic, copy, readwrite) void (^)(BOOL) closeBlock;
         [Export("closeBlock", ArgumentSemantic.Copy)]
         Action CloseBlock { get; set; }
 
@@ -367,23 +469,73 @@ namespace UrbanAirship {
         IntPtr Constructor (string nibNameOrNil, NSBundle nibBundleOrNil, UISplitViewController splitViewController);
     }
 
+    // @protocol UAMessageCenterListViewDelegate <NSObject>
+    [Protocol, Model]
+    [BaseType(typeof(NSObject))]
+    interface UAMessageCenterListViewDelegate
+    {
+
+        // - (BOOL)shouldClearSelectionOnViewWillAppear;
+        [Abstract]
+        [Export("shouldClearSelectionOnViewWillAppear")]
+        NSObject ShouldClearSelectionOnViewWillAppear ();
+
+        // - (void)didSelectMessageWithID:(nullable NSString *)messageID;
+        [Abstract]
+        [Export("didSelectMessageWithID:")]
+        void DidSelectMessage (NSObject messageID);
+    }
+
+    interface IUAMessageCenterListViewDelegate { }
+
     // @interface UAMessageCenterMessageViewController : UIViewController <UAMessageCenterMessageViewProtocol>
     [BaseType(typeof(UIViewController))]
+    [Obsolete("Deprecated – to be removed in SDK version 14.0. Instead use UADefaultMessageCenterMessageViewController.")]
     interface UAMessageCenterMessageViewController : IUAMessageCenterMessageViewProtocol
     {
 
     }
 
+    // @protocol UAMessageCenterMessageViewDelegate <NSObject>
+    [Protocol, Model]
+    [BaseType(typeof(NSObject))]
+    interface UAMessageCenterMessageViewDelegate
+    {
+
+        // - (void)messageLoadStarted:(nonnull NSString *)messageID;
+        [Abstract]
+        [Export("messageLoadStarted:")]
+        void MessageLoadStarted (string messageID);
+
+        // - (void)messageLoadSucceeded:(nonnull NSString *)messageID;
+        [Abstract]
+        [Export("messageLoadSucceeded:")]
+        void MessageLoadSucceeded (string messageID);
+
+        // - (void)messageLoadFailed:(nonnull NSString *)messageID error:(nonnull NSError *)error;
+        [Abstract]
+        [Export("messageLoadFailed:error:")]
+        void MessageLoadFailed (string messageID, NSError error);
+
+        // - (void)messageClosed:(nonnull NSString *)messageID;
+        [Abstract]
+        [Export("messageClosed:")]
+        void MessageClosed (string messageID);
+    }
+
+    interface IUAMessageCenterMessageViewDelegate { }
+
     // @protocol UAMessageCenterMessageViewProtocol
     [Protocol, Model]
     [BaseType(typeof(NSObject))]
+    [Obsolete("Deprecated – to be removed in SDK version 14.0. Instead use the UAMessageCenterMessageViewController directly.")]
     interface UAMessageCenterMessageViewProtocol
     {
-        // @property (readonly, strong, nonatomic) UAInboxMessage *_Nonnull message;
+        // @property (nonatomic, strong, readonly) UAInboxMessage *_Nonnull message;
         [Export("message", ArgumentSemantic.Strong)]
         UAInboxMessage Message { get; }
 
-        // @property (readwrite, copy, nonatomic) void (^_Nonnull)(BOOL) closeBlock;
+        // @property (nonatomic, copy, readwrite) void (^_Nonnull)(BOOL) closeBlock;
         [Export("closeBlock", ArgumentSemantic.Copy)]
         Action CloseBlock { get; set; }
 
@@ -398,6 +550,13 @@ namespace UrbanAirship {
     }
 
     interface IUAMessageCenterMessageViewProtocol { }
+
+    // @interface UAMessageCenterModuleLoader : NSObject <UAModuleLoader, UAMessageCenterModuleLoaderFactory>
+    [BaseType(typeof(NSObject))]
+    interface UAMessageCenterModuleLoader : IUAModuleLoader, IUAMessageCenterModuleLoaderFactory
+    {
+
+    }
 
     // @interface UAMessageCenterNativeBridgeExtension : NSObject <UANativeBridgeExtensionDelegate>
     [BaseType(typeof(NSObject))]
@@ -419,133 +578,130 @@ namespace UrbanAirship {
 
     // @interface UAMessageCenterSplitViewController : UISplitViewController
     [BaseType(typeof(UISplitViewController))]
+    [Obsolete("Deprecated – to be removed in SDK version 14.0. Instead use UADefaultMessageCenterSplitViewController.")]
     interface UAMessageCenterSplitViewController
     {
-        // @property (readwrite, strong, nonatomic) NSPredicate *filter;
+        // @property (nonatomic, strong, readwrite) NSPredicate *filter;
         [Export("filter", ArgumentSemantic.Strong)]
         NSPredicate Filter { get; set; }
 
-        // @property (readwrite, strong, nonatomic) UAMessageCenterStyle *style;
+        // @property (nonatomic, strong, readwrite) UAMessageCenterStyle *style;
         [Export("style", ArgumentSemantic.Strong)]
         UAMessageCenterStyle Style { get; set; }
 
-        // @property (readonly, nonatomic) UAMessageCenterListViewController *listViewController;
+        // @property (nonatomic, readonly) UAMessageCenterListViewController *listViewController;
         [Export("listViewController")]
         UAMessageCenterListViewController ListViewController { get; }
+
     }
 
     // @interface UAMessageCenterStyle : NSObject
     [BaseType(typeof(NSObject))]
     interface UAMessageCenterStyle
     {
-        // @property (readwrite, strong, nonatomic) UIFont *titleFont;
+        // @property (nonatomic, strong, readwrite) UIFont *titleFont;
         [Export("titleFont", ArgumentSemantic.Strong)]
         UIFont TitleFont { get; set; }
 
-        // @property (readwrite, strong, nonatomic) UIColor *titleColor;
+        // @property (nonatomic, strong, readwrite) UIColor *titleColor;
         [Export("titleColor", ArgumentSemantic.Strong)]
         UIColor TitleColor { get; set; }
 
-        // @property (readwrite, strong, nonatomic) UIColor *tintColor;
+        // @property (nonatomic, strong, readwrite) UIColor *tintColor;
         [Export("tintColor", ArgumentSemantic.Strong)]
         UIColor TintColor { get; set; }
 
-        // @property (readwrite, strong, nonatomic) UIColor *navigationBarColor;
+        // @property (nonatomic, strong, readwrite) UIColor *navigationBarColor;
         [Export("navigationBarColor", ArgumentSemantic.Strong)]
         UIColor NavigationBarColor { get; set; }
 
-        // @property (assign, readwrite, nonatomic) BOOL navigationBarOpaque;
+        // @property (nonatomic, assign, unsafe_unretained, readwrite) BOOL navigationBarOpaque;
         [Export("navigationBarOpaque")]
         bool NavigationBarOpaque { get; set; }
 
-        // @property (assign, readwrite, nonatomic) UANavigationBarStyle navigationBarStyle;
+        // @property (nonatomic, assign, unsafe_unretained, readwrite) UANavigationBarStyle navigationBarStyle;
         [Export("navigationBarStyle", ArgumentSemantic.Assign)]
         UANavigationBarStyle NavigationBarStyle { get; set; }
 
-        // @property (readwrite, strong, nonatomic) UIColor *listColor;
+        // @property (nonatomic, strong, readwrite) UIColor *listColor;
         [Export("listColor", ArgumentSemantic.Strong)]
         UIColor ListColor { get; set; }
 
-        // @property (readwrite, strong, nonatomic) UIColor *refreshTintColor;
+        // @property (nonatomic, strong, readwrite) UIColor *refreshTintColor;
         [Export("refreshTintColor", ArgumentSemantic.Strong)]
         UIColor RefreshTintColor { get; set; }
 
-        // @property (assign, readwrite, nonatomic) BOOL iconsEnabled;
+        // @property (nonatomic, assign, unsafe_unretained, readwrite) BOOL iconsEnabled;
         [Export("iconsEnabled")]
         bool IconsEnabled { get; set; }
 
-        // @property (readwrite, strong, nonatomic) UIImage *placeholderIcon;
+        // @property (nonatomic, strong, readwrite) UIImage *placeholderIcon;
         [Export("placeholderIcon", ArgumentSemantic.Strong)]
         UIImage PlaceholderIcon { get; set; }
 
-        // @property (readwrite, strong, nonatomic) UIFont *cellTitleFont;
+        // @property (nonatomic, strong, readwrite) UIFont *cellTitleFont;
         [Export("cellTitleFont", ArgumentSemantic.Strong)]
         UIFont CellTitleFont { get; set; }
 
-        // @property (readwrite, strong, nonatomic) UIFont *cellDateFont;
+        // @property (nonatomic, strong, readwrite) UIFont *cellDateFont;
         [Export("cellDateFont", ArgumentSemantic.Strong)]
         UIFont CellDateFont { get; set; }
 
-        // @property (readwrite, strong, nonatomic) UIColor *cellColor;
+        // @property (nonatomic, strong, readwrite) UIColor *cellColor;
         [Export("cellColor", ArgumentSemantic.Strong)]
         UIColor CellColor { get; set; }
 
-        // @property (readwrite, strong, nonatomic) UIColor *cellHighlightedColor;
+        // @property (nonatomic, strong, readwrite) UIColor *cellHighlightedColor;
         [Export("cellHighlightedColor", ArgumentSemantic.Strong)]
         UIColor CellHighlightedColor { get; set; }
 
-        // @property (readwrite, strong, nonatomic) UIColor *cellTitleColor;
+        // @property (nonatomic, strong, readwrite) UIColor *cellTitleColor;
         [Export("cellTitleColor", ArgumentSemantic.Strong)]
         UIColor CellTitleColor { get; set; }
 
-        // @property (readwrite, strong, nonatomic) UIColor *cellTitleHighlightedColor;
+        // @property (nonatomic, strong, readwrite) UIColor *cellTitleHighlightedColor;
         [Export("cellTitleHighlightedColor", ArgumentSemantic.Strong)]
         UIColor CellTitleHighlightedColor { get; set; }
 
-        // @property (readwrite, strong, nonatomic) UIColor *cellDateColor;
+        // @property (nonatomic, strong, readwrite) UIColor *cellDateColor;
         [Export("cellDateColor", ArgumentSemantic.Strong)]
         UIColor CellDateColor { get; set; }
 
-        // @property (readwrite, strong, nonatomic) UIColor *cellDateHighlightedColor;
+        // @property (nonatomic, strong, readwrite) UIColor *cellDateHighlightedColor;
         [Export("cellDateHighlightedColor", ArgumentSemantic.Strong)]
         UIColor CellDateHighlightedColor { get; set; }
 
-        // @property (readwrite, strong, nonatomic) UIColor *cellSeparatorColor;
+        // @property (nonatomic, strong, readwrite) UIColor *cellSeparatorColor;
         [Export("cellSeparatorColor", ArgumentSemantic.Strong)]
         UIColor CellSeparatorColor { get; set; }
 
-        // @property (readwrite, strong, nonatomic) UIColor *cellTintColor;
+        // @property (nonatomic, strong, readwrite) UIColor *cellTintColor;
         [Export("cellTintColor", ArgumentSemantic.Strong)]
         UIColor CellTintColor { get; set; }
 
-        // @property (readwrite, strong, nonatomic) UIColor *unreadIndicatorColor;
+        // @property (nonatomic, strong, readwrite) UIColor *unreadIndicatorColor;
         [Export("unreadIndicatorColor", ArgumentSemantic.Strong)]
         UIColor UnreadIndicatorColor { get; set; }
 
-        // @property (readwrite, strong, nonatomic) UIColor *selectAllButtonTitleColor;
+        // @property (nonatomic, strong, readwrite) UIColor *selectAllButtonTitleColor;
         [Export("selectAllButtonTitleColor", ArgumentSemantic.Strong)]
         UIColor SelectAllButtonTitleColor { get; set; }
 
-        // @property (readwrite, strong, nonatomic) UIColor *deleteButtonTitleColor;
+        // @property (nonatomic, strong, readwrite) UIColor *deleteButtonTitleColor;
         [Export("deleteButtonTitleColor", ArgumentSemantic.Strong)]
         UIColor DeleteButtonTitleColor { get; set; }
 
-        // @property (readwrite, strong, nonatomic) UIColor *markAsReadButtonTitleColor;
+        // @property (nonatomic, strong, readwrite) UIColor *markAsReadButtonTitleColor;
         [Export("markAsReadButtonTitleColor", ArgumentSemantic.Strong)]
         UIColor MarkAsReadButtonTitleColor { get; set; }
 
-        // @property (readwrite, strong, nonatomic) UIColor *editButtonTitleColor;
+        // @property (nonatomic, strong, readwrite) UIColor *editButtonTitleColor;
         [Export("editButtonTitleColor", ArgumentSemantic.Strong)]
         UIColor EditButtonTitleColor { get; set; }
 
-        // @property (readwrite, strong, nonatomic) UIColor *cancelButtonTitleColor;
+        // @property (nonatomic, strong, readwrite) UIColor *cancelButtonTitleColor;
         [Export("cancelButtonTitleColor", ArgumentSemantic.Strong)]
         UIColor CancelButtonTitleColor { get; set; }
-
-        // + (instancetype)style;
-        [Static]
-        [Export("style")]
-        UAMessageCenterStyle Style ();
 
         // + (instancetype)styleWithContentsOfFile:(NSString *)path;
         [Static]
@@ -557,6 +713,11 @@ namespace UrbanAirship {
     [BaseType(typeof(NSObject))]
     interface UAUser
     {
+
+        // - (void)getUserData:(nonnull void (^)(UAUserData *_Nonnull))completionHandler queue:(nullable dispatch_queue_t)queue;
+        [Export("getUserData:queue:")]
+        void GetUserData (Action<UAUserData> completionHandler, [NullAllowed] DispatchQueue queue);
+
         // - (void)getUserData:(nonnull void (^)(UAUserData *_Nonnull))completionHandler;
         [Export("getUserData:")]
         void GetUserData (Action<UAUserData> completionHandler);
@@ -571,11 +732,11 @@ namespace UrbanAirship {
     [BaseType(typeof(NSObject))]
     interface UAUserData
     {
-        // @property (readonly, copy, nonatomic) NSString *_Nonnull username;
+        // @property (nonatomic, copy, readonly) NSString *_Nonnull username;
         [Export("username")]
         string Username { get; }
 
-        // @property (readonly, copy, nonatomic) NSString *_Nonnull password;
+        // @property (nonatomic, copy, readonly) NSString *_Nonnull password;
         [Export("password")]
         string Password { get; }
 

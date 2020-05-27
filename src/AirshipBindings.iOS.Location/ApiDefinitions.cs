@@ -1,9 +1,14 @@
 /*
  Copyright Airship and Contributors
 */
-using CoreLocation;
+using CoreFoundation;
+using CoreGraphics;
 using Foundation;
 using ObjCRuntime;
+using System;
+using UIKit;
+using UserNotifications;
+using WebKit;
 
 namespace UrbanAirship {
 
@@ -109,27 +114,21 @@ namespace UrbanAirship {
 
     // @interface UALocation : UAComponent <UALocationProvider>
     [BaseType(typeof(UAComponent))]
-    interface UALocation
+    interface UALocation : IUALocationProvider
     {
-        // + (null_unspecified instancetype)shared;
-        [Static]
-        [Export("shared")]
-        [New]
-        UALocation Shared ();
-
-        // @property (getter=isAutoRequestAuthorizationEnabled, assign, readwrite, nonatomic) BOOL autoRequestAuthorizationEnabled;
+        // @property (nonatomic, assign, unsafe_unretained, readwrite, getter=isAutoRequestAuthorizationEnabled) BOOL autoRequestAuthorizationEnabled;
         [Export("autoRequestAuthorizationEnabled")]
-        bool AutoRequestAuthorizationEnabled { [Bind("isAutoRequestAuthorizationEnabled")] get; set; }
+        bool AutoRequestAuthorizationEnabled { get; set; }
 
-        // @property (getter=isLocationUpdatesEnabled, assign, readwrite, nonatomic) BOOL locationUpdatesEnabled;
+        // @property (nonatomic, assign, unsafe_unretained, readwrite, getter=isLocationUpdatesEnabled) BOOL locationUpdatesEnabled;
         [Export("locationUpdatesEnabled")]
-        bool LocationUpdatesEnabled { [Bind("isLocationUpdatesEnabled")] get; set; }
+        bool LocationUpdatesEnabled { get; set; }
 
-        // @property (getter=isBackgroundLocationUpdatesAllowed, assign, readwrite, nonatomic) BOOL backgroundLocationUpdatesAllowed;
+        // @property (nonatomic, assign, unsafe_unretained, readwrite, getter=isBackgroundLocationUpdatesAllowed) BOOL backgroundLocationUpdatesAllowed;
         [Export("backgroundLocationUpdatesAllowed")]
-        bool BackgroundLocationUpdatesAllowed { [Bind("isBackgroundLocationUpdatesAllowed")] get; set; }
+        bool BackgroundLocationUpdatesAllowed { get; set; }
 
-        // @property (readwrite, nonatomic, nullable) id<UALocationDelegate> delegate;
+        // @property (nonatomic, weak, readwrite, nullable) id<UALocationDelegate> delegate;
         [NullAllowed, Export("delegate", ArgumentSemantic.Assign)]
         NSObject WeakDelegate { get; set; }
 
@@ -137,7 +136,7 @@ namespace UrbanAirship {
         [NullAllowed]
         IUALocationDelegate Delegate { get; set; }
 
-        // @property (readonly, nonatomic, nullable) CLLocation *lastLocation;
+        // @property (nonatomic, readonly, nullable) CLLocation *lastLocation;
         [NullAllowed, Export("lastLocation")]
         CLLocation LastLocation { get; }
 
@@ -154,19 +153,19 @@ namespace UrbanAirship {
     [BaseType(typeof(NSObject))]
     interface UALocationInfo
     {
-        // @property (readonly, nonatomic) double latitude;
+        // @property (nonatomic, readonly) double latitude;
         [Export("latitude")]
         double Latitude { get; }
 
-        // @property (readonly, nonatomic) double longitude;
+        // @property (nonatomic, readonly) double longitude;
         [Export("longitude")]
         double Longitude { get; }
 
-        // @property (readonly, nonatomic) double horizontalAccuracy;
+        // @property (nonatomic, readonly) double horizontalAccuracy;
         [Export("horizontalAccuracy")]
         double HorizontalAccuracy { get; }
 
-        // @property (readonly, nonatomic) double verticalAccuracy;
+        // @property (nonatomic, readonly) double verticalAccuracy;
         [Export("verticalAccuracy")]
         double VerticalAccuracy { get; }
 
