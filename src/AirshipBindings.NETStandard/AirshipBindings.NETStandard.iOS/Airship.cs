@@ -196,6 +196,55 @@ namespace UrbanAirship.NETStandard
             }
         }
 
+        public List<MessageCenter.Message> InboxMessages
+        {
+            get
+            {
+                var messagesList = new List<MessageCenter.Message>();
+                var messages = UAMessageCenter.Shared().MessageList.Messages;
+                foreach (var message in messages)
+                {
+                    var extras = new Dictionary<string, string>();
+                    foreach (var key in message.Extra.Keys)
+                    {
+                        extras.Add(key.ToString(), message.Extra[key].ToString());
+                    }
+
+                    DateTime? sentDate = FromNSDate(message.MessageSent);
+                    DateTime? expirationDate = FromNSDate(message.MessageExpiration);
+
+                    string iconUrl = null;
+                    var icons = (NSDictionary)message.RawMessageObject.ValueForKey(new NSString("icons"));
+                    if (icons != null)
+                    {
+                        iconUrl = icons.ValueForKey(new NSString("list_icon")).ToString();
+                    }
+
+                    var inboxMessage = new MessageCenter.Message(
+                        message.MessageID,
+                        message.Title,
+                        sentDate,
+                        expirationDate,
+                        iconUrl,
+                        extras);
+
+                    messagesList.Add(inboxMessage);
+                }
+
+                return messagesList;
+            }
+        }
+
+        private DateTime? FromNSDate(NSDate date)
+        {
+            if (date == null)
+            {
+                return null;
+            }
+            var epoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+            return epoch.AddSeconds(date.SecondsSince1970);
+        }
+
         public Channel.TagGroupsEditor EditNamedUserTagGroups()
         {
             return new Channel.TagGroupsEditor((List<Channel.TagGroupsEditor.TagOperation> payload) =>

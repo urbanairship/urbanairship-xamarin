@@ -49,6 +49,11 @@ namespace UrbanAirship.NETStandard
             get;
         }
 
+        List<MessageCenter.Message> InboxMessages
+        {
+            get;
+        }
+
         Channel.TagGroupsEditor EditNamedUserTagGroups();
 
         Channel.TagGroupsEditor EditChannelTagGroups();

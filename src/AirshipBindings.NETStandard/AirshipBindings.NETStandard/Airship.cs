@@ -133,6 +133,15 @@ namespace UrbanAirship.NETStandard
         }
 
         /// <summary>
+        /// Get the list of messages contained in the messages center.
+        /// </summary>
+        /// <value>The list of message.</value>
+        public List<MessageCenter.Message> InboxMessages
+        {
+            get { throw new NotImplementedException(BaitWithoutSwitchMessage); }
+        }
+
+        /// <summary>
         /// Edit channel attributes.
         /// </summary>
         /// <returns>An <see cref="UrbanAirship.NETStandard.Attributes.AttributeEditor">AttributeEditor</see>
