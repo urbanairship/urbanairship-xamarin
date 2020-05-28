@@ -102,11 +102,6 @@
     <Folder Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Xamarin.Forms">
-      <Version>4.6.0.800</Version>
-    </PackageReference>
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\AirshipBindings.Android.Core\AirshipBindings.Android.Core.csproj">
       <Project>{98DC9E01-745C-4CEA-93A9-6546B349B8EE}</Project>
       <Name>AirshipBindings.Android.Core</Name>
@@ -131,7 +126,4 @@
   <Target Name="AfterBuild">
   </Target>
   -->
-  <Import Project="packages\Xamarin.AndroidX.CardView.1.0.0\build\monoandroid90\Xamarin.AndroidX.CardView.targets" Condition="Exists('packages\Xamarin.AndroidX.CardView.1.0.0\build\monoandroid90\Xamarin.AndroidX.CardView.targets')" />
-  <Import Project="packages\Xamarin.AndroidX.DocumentFile.1.0.1\build\monoandroid90\Xamarin.AndroidX.DocumentFile.targets" Condition="Exists('packages\Xamarin.AndroidX.DocumentFile.1.0.1\build\monoandroid90\Xamarin.AndroidX.DocumentFile.targets')" />
-  <Import Project="packages\Xamarin.AndroidX.Lifecycle.LiveData.2.1.0\build\monoandroid90\Xamarin.AndroidX.Lifecycle.LiveData.targets" Condition="Exists('packages\Xamarin.AndroidX.Lifecycle.LiveData.2.1.0\build\monoandroid90\Xamarin.AndroidX.Lifecycle.LiveData.targets')" />
-</Project>
+ </Project>

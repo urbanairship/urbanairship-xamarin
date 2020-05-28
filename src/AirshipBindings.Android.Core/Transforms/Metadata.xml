@@ -18,7 +18,7 @@
   <attr path="/api/package[@name='com.urbanairship.reactive']" name="managedName">UrbanAirship.Reactive</attr>
   <attr path="/api/package[@name='com.urbanairship.remotedata']" name="managedName">UrbanAirship.RemoteData</attr>
   <attr path="/api/package[@name='com.urbanairship.util']" name="managedName">UrbanAirship.Util</attr>
-  <attr path="/api/package[@name='com.urbanairship.wallet']" name="managedName">UrbanAirship.Wallet</attr>m
+  <attr path="/api/package[@name='com.urbanairship.wallet']" name="managedName">UrbanAirship.Wallet</attr>
   <attr path="/api/package[@name='com.urbanairship.webkit']" name="managedName">UrbanAirship.Webkit</attr>
 
   <remove-node path="/api/package[@name='com.urbanairship.http']" />
