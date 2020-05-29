@@ -3,7 +3,6 @@
   <attr path="/api/package[@name='com.urbanairship.automation']" name="managedName">UrbanAirship.Automation</attr>
   <attr path="/api/package[@name='com.urbanairship.automation.actions']" name="managedName">UrbanAirship.Automation.Actions</attr>
   <attr path="/api/package[@name='com.urbanairship.iam']" name="managedName">UrbanAirship.Iam</attr>
-  <attr path="/api/package[@name='com.urbanairship.iam']" name="managedName">UrbanAirship.Iam</attr>
   <attr path="/api/package[@name='com.urbanairship.iam.assets']" name="managedName">UrbanAirship.Iam.Assets</attr>
   <attr path="/api/package[@name='com.urbanairship.iam.banner']" name="managedName">UrbanAirship.Iam.Banner</attr>
   <attr path="/api/package[@name='com.urbanairship.iam.custom']" name="managedName">UrbanAirship.Iam.Custom</attr>
