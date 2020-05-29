@@ -9,6 +9,9 @@
                 <Image Source="urbanairship_logo"/>
             </StackLayout>
             <Button Text="{x:Static resources:AppResources.enable_push}" Clicked="OnButtonClicked" x:Name="enablePushButton"/>
+            <Button Text="{x:Static resources:AppResources.enable_push}" Clicked="MessageCenterBtnClicked" x:Name="displayMessageCenterButton"/>
+            <Button Text="{x:Static resources:AppResources.enable_push}" Clicked="DisplayMessageBtnClicked" x:Name="displayMessageButton"/>
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -103,6 +103,15 @@ namespace UrbanAirship.NETStandard
         }
 
         /// <summary>
+        /// Displays a specific message.
+        /// </summary>
+        /// <param name="messageId">The identifier for the message to display.</param>
+        public void DisplayMessage(string messageId)
+        {
+            throw new NotImplementedException(BaitWithoutSwitchMessage);
+        }
+
+        /// <summary>
         /// Get the message center unread count.
         /// </summary>
         /// <value>The message center unread count.</value>

@@ -175,6 +175,13 @@ namespace UrbanAirship.NETStandard
             UAMessageCenter.Shared().Display();
         }
 
+        public void DisplayMessage(string messageId)
+        {
+            UAMessageCenter.Shared().DisplayMessage(messageId);
+        }
+
+       
+
         public int MessageCenterUnreadCount
         {
             get

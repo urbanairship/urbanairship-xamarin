@@ -5,6 +5,7 @@
 using System.Collections.Generic;
 using UrbanAirship.NETStandard.Attributes;
 using UrbanAirship.Actions;
+using UrbanAirship.RichPush;
 
 namespace UrbanAirship.NETStandard
 {
@@ -82,6 +83,18 @@ namespace UrbanAirship.NETStandard
                 }
             }
         }
+
+        private InboxHandler onInboxUpdated;
+        public event InboxHandler OnInboxUpdated
+        {
+            add
+            {
+                onInboxUpdated += value;
+                UAirship.Shared().Inbox.AddListener(this)
+            }
+        }
+
+
         
         public Channel.TagEditor EditDeviceTags()
         {
@@ -157,6 +170,21 @@ namespace UrbanAirship.NETStandard
         public void DisplayMessageCenter()
         {
             UAirship.Shared().MessageCenter.ShowMessageCenter();
+        }
+
+        public void DisplayMessage(string messageId)
+        {
+            UAirship.Shared().MessageCenter.ShowMessageCenter(messageId);
+        }
+
+        public void AddListener(string eventName)
+        {
+            UAirship.Shared().Inbox.AddListener(listener);
+        }
+            
+        public void RemoveListener(RichPushInbox.IListener listener)
+        {
+            UAirship.Shared().Inbox.RemoveListener(listener);
         }
 
         public int MessageCenterUnreadCount
