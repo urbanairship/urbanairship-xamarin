@@ -91,6 +91,7 @@ namespace UrbanAirship {
     [Native]
     public enum UANotificationCategoryOptions : ulong
     {
+        None = 0,
         CustomDismissAction = (1 << 0),
         AllowInCarPlay = (1 << 1),
         AllowAnnouncement = (1 << 4)
@@ -105,7 +106,7 @@ namespace UrbanAirship {
     [Native]
     public enum UANotificationOptions : ulong
     {
-        UANotificationOptionNone = 0,
+        None = 0,
         Badge = (1 << 0),
         Sound = (1 << 1),
         Alert = (1 << 2),

@@ -1,7 +1,6 @@
 /*
  Copyright Airship and Contributors
 */
-using CoreFoundation;
 using CoreGraphics;
 using Foundation;
 using ObjCRuntime;
