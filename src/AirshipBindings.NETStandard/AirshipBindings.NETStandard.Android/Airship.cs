@@ -10,8 +10,9 @@ using UrbanAirship.RichPush;
 namespace UrbanAirship.NETStandard
 {
     public delegate void DeepLinkHandler(string deepLink);
+    public delegate void InboxHandler();
 
-    public class Airship : Java.Lang.Object, IDeepLinkListener, IAirship
+    public class Airship : Java.Lang.Object, IDeepLinkListener, IAirship, RichPushInbox.IListener
     {
         private static Airship sharedAirship = new Airship();
 
@@ -84,18 +85,27 @@ namespace UrbanAirship.NETStandard
             }
         }
 
-        private InboxHandler onInboxUpdated;
-        public event InboxHandler OnInboxUpdated
+        private InboxHandler onInboxUpdatedReceived;
+        public event InboxHandler OnInboxUpdatedReceived
         {
             add
             {
-                onInboxUpdated += value;
-                UAirship.Shared().Inbox.AddListener(this)
+                onInboxUpdatedReceived += value;
+                UAirship.Shared().Inbox.RemoveListener(this);
+            }
+
+            remove
+            {
+                onInboxUpdatedReceived -= value;
+                if (onInboxUpdatedReceived == null)
+                {
+                    UAirship.Shared().Inbox.AddListener(null);
+                }
             }
         }
 
 
-        
+
         public Channel.TagEditor EditDeviceTags()
         {
             return new Channel.TagEditor(this.DeviceTagHelper);
@@ -175,16 +185,6 @@ namespace UrbanAirship.NETStandard
         public void DisplayMessage(string messageId)
         {
             UAirship.Shared().MessageCenter.ShowMessageCenter(messageId);
-        }
-
-        public void AddListener(string eventName)
-        {
-            UAirship.Shared().Inbox.AddListener(listener);
-        }
-            
-        public void RemoveListener(RichPushInbox.IListener listener)
-        {
-            UAirship.Shared().Inbox.RemoveListener(listener);
         }
 
         public int MessageCenterUnreadCount
@@ -293,6 +293,12 @@ namespace UrbanAirship.NETStandard
             var handler = onDeepLinkReceived;
             handler(deepLink);
             return true;
+        }
+
+        public void OnInboxUpdated()
+        {
+            var handler = onInboxUpdatedReceived;
+            handler();
         }
     }
 }
