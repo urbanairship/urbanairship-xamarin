@@ -67,7 +67,7 @@ namespace UrbanAirship.NETStandard.Android
             }
         }
 
-        private Message message;
+        private UrbanAirship.MessageCenter.Message message;
         private ICancelable fetchMessageRequest;
         private MessageWebView webView;
         private MessagePage messagePage;

@@ -278,21 +278,9 @@
       <Project>{7EC93B05-E253-4363-9A42-2A4942F6410C}</Project>
       <Name>AirshipBindings.Android.Automation</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\AirshipBindings.Android.Location\AirshipBindings.Android.Location.csproj">
-      <Project>{C97471AA-4D4F-43DA-B7D6-6A66B92C529C}</Project>
-      <Name>AirshipBindings.Android.Location</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\AirshipBindings.Android.Core\AirshipBindings.Android.Core.csproj">
       <Project>{98DC9E01-745C-4CEA-93A9-6546B349B8EE}</Project>
       <Name>AirshipBindings.Android.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\AirshipBindings.Android.MessageCenter\AirshipBindings.Android.MessageCenter.csproj">
-      <Project>{986507BE-5C63-4E62-B41E-7BE3FA2DB7C3}</Project>
-      <Name>AirshipBindings.Android.MessageCenter</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\AirshipBindings.Android.Automation\AirshipBindings.Android.Automation.csproj">
-      <Project>{7EC93B05-E253-4363-9A42-2A4942F6410C}</Project>
-      <Name>AirshipBindings.Android.Automation</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\AirshipBindings.Android.Location\AirshipBindings.Android.Location.csproj">
       <Project>{C97471AA-4D4F-43DA-B7D6-6A66B92C529C}</Project>

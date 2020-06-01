@@ -188,7 +188,7 @@ namespace UrbanAirship.NETStandard
             get
             {
                 var messagesList = new List<MessageCenter.Message>();
-                var messages = UAirship.Shared().Inbox.Messages;
+                var messages = MessageCenterClass.Shared().Inbox.Messages;
                 foreach (var message in messages)
                 {
                     var extras = new Dictionary<string, string>();

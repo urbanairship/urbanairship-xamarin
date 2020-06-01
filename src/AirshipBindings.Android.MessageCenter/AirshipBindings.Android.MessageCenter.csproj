@@ -90,6 +90,27 @@
       <HintPath>packages\Xamarin.AndroidX.Lifecycle.LiveData.Core.2.1.0\lib\monoandroid90\Xamarin.AndroidX.Lifecycle.LiveData.Core.dll</HintPath>
     </Reference>
     <Reference Include="System.Xml" />
+    <Reference Include="Xamarin.AndroidX.Fragment">
+      <HintPath>..\AirshipBindings.Android.Core\packages\Xamarin.AndroidX.Fragment.1.2.4\lib\monoandroid90\Xamarin.AndroidX.Fragment.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.AndroidX.Lifecycle.ViewModel">
+      <HintPath>..\AirshipBindings.Android.Core\packages\Xamarin.AndroidX.Lifecycle.ViewModel.2.2.0\lib\monoandroid90\Xamarin.AndroidX.Lifecycle.ViewModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.AndroidX.Lifecycle.Common">
+      <HintPath>..\AirshipBindings.Android.Core\packages\Xamarin.AndroidX.Lifecycle.Common.2.2.0\lib\monoandroid90\Xamarin.AndroidX.Lifecycle.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.AndroidX.Lifecycle.LiveData.Core">
+      <HintPath>..\AirshipBindings.Android.Core\packages\Xamarin.AndroidX.Lifecycle.LiveData.Core.2.2.0\lib\monoandroid90\Xamarin.AndroidX.Lifecycle.LiveData.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.AndroidX.Lifecycle.Runtime">
+      <HintPath>..\AirshipBindings.Android.Core\packages\Xamarin.AndroidX.Lifecycle.Runtime.2.2.0\lib\monoandroid90\Xamarin.AndroidX.Lifecycle.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.AndroidX.Lifecycle.ViewModelSavedState">
+      <HintPath>..\AirshipBindings.Android.Core\packages\Xamarin.AndroidX.Lifecycle.ViewModelSavedState.2.2.0\lib\monoandroid90\Xamarin.AndroidX.Lifecycle.ViewModelSavedState.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.AndroidX.VersionedParcelable">
+      <HintPath>..\AirshipBindings.Android.Core\packages\Xamarin.AndroidX.VersionedParcelable.1.1.1\lib\monoandroid90\Xamarin.AndroidX.VersionedParcelable.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Additions\User.cs" />
