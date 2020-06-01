@@ -72,7 +72,7 @@ namespace UrbanAirship {
 
         // @property (nonatomic, strong, readwrite, nullable) NSIndexPath *selectedIndexPath;
         [NullAllowed, Export("selectedIndexPath", ArgumentSemantic.Strong)]
-        IndexPath SelectedIndexPath { get; set; }
+        NSIndexPath SelectedIndexPath { get; set; }
 
         // @property (nonatomic, copy, readwrite, nullable) NSString *selectedMessageID;
         [NullAllowed, Export("selectedMessageID")]
