@@ -213,13 +213,13 @@
     <Folder Include="Jars\" />
   </ItemGroup>
   <ItemGroup>
-    <LibraryProjectZip Include="Jars\urbanairship-fcm-12.2.3.aar" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\AirshipBindings.Android.Core\AirshipBindings.Android.Core.csproj">
       <Project>{98DC9E01-745C-4CEA-93A9-6546B349B8EE}</Project>
       <Name>AirshipBindings.Android.Core</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <LibraryProjectZip Include="Jars\urbanairship-fcm-13.1.0.aar" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.Bindings.targets" />
   <Import Project="packages\Xamarin.GooglePlayServices.Basement.71.1620.0\build\MonoAndroid90\Xamarin.GooglePlayServices.Basement.targets" Condition="Exists('packages\Xamarin.GooglePlayServices.Basement.71.1620.0\build\MonoAndroid90\Xamarin.GooglePlayServices.Basement.targets')" />

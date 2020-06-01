@@ -7,6 +7,7 @@ using Java.Util;
 using UrbanAirship.NETStandard.Attributes;
 using UrbanAirship.Actions;
 using System;
+using UrbanAirship.MessageCenter;
 
 namespace UrbanAirship.NETStandard
 {
@@ -84,7 +85,7 @@ namespace UrbanAirship.NETStandard
                 }
             }
         }
-        
+
         public Channel.TagEditor EditDeviceTags()
         {
             return new Channel.TagEditor(this.DeviceTagHelper);
@@ -163,14 +164,14 @@ namespace UrbanAirship.NETStandard
 
         public void DisplayMessageCenter()
         {
-            UAirship.Shared().MessageCenter.ShowMessageCenter();
+            MessageCenterClass.Shared().ShowMessageCenter();
         }
 
         public int MessageCenterUnreadCount
         {
             get
             {
-                return UAirship.Shared().Inbox.UnreadCount;
+                return MessageCenterClass.Shared().Inbox.UnreadCount;
             }
         }
 
@@ -178,7 +179,7 @@ namespace UrbanAirship.NETStandard
         {
             get
             {
-                return UAirship.Shared().Inbox.Count;
+                return MessageCenterClass.Shared().Inbox.Count;
             }
         }
 
@@ -187,7 +188,7 @@ namespace UrbanAirship.NETStandard
             get
             {
                 var messagesList = new List<MessageCenter.Message>();
-                var messages = UAirship.Shared().Inbox.Messages;
+                var messages = MessageCenterClass.Shared().Inbox.Messages;
                 foreach (var message in messages)
                 {
                     var extras = new Dictionary<string, string>();
