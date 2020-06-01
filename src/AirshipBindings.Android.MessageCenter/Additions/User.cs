@@ -5,9 +5,9 @@
 using System;
 using System.Collections.Generic;
 
-namespace UrbanAirship.RichPush
+namespace UrbanAirship.MessageCenter
 {
-	public partial class RichPushUser
+	public partial class User
 	{
 		private Dictionary<Action<bool>, Listener> eventHandlers = new Dictionary<Action<bool>, Listener>();
 		public event Action<bool> OnUserUpdated

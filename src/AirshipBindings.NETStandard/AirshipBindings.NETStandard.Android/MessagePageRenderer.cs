@@ -4,21 +4,22 @@ using Android.Runtime;
 using Android.Views;
 using Android.Webkit;
 using Android.Widget;
-using UrbanAirship.NETStandard.MessageCenter;
-using UrbanAirship.RichPush;
-using UrbanAirship.Widget;
+using UrbanAirship.MessageCenter;
+using UrbanAirship.MessageCenter.WebKit;
+
 using Xamarin.Forms.Platform.Android;
+using UrbanAirship.NETStandard.MessageCenter;
 
 namespace UrbanAirship.NETStandard.Android
 {
-    public class MessagePageRenderer : PageRenderer, RichPushInbox.IFetchMessagesCallback
+    public class MessagePageRenderer : PageRenderer, Inbox.IFetchMessagesCallback
     {
-        private class MessageWebViewClient : UAWebViewClient
+        private class WebViewClient : MessageWebViewClient
         {
             private MessagePageRenderer renderer;
             private bool error = false;
 
-            public MessageWebViewClient(MessagePageRenderer messagePageRenderer)
+            public WebViewClient(MessagePageRenderer messagePageRenderer)
             {
                 renderer = messagePageRenderer;
             }
@@ -56,7 +57,7 @@ namespace UrbanAirship.NETStandard.Android
                 }
             }
 
-            public override void OnClose(WebView webView)
+            protected override void OnClose(WebView webView)
             {
                 base.OnClose(webView);
                 if (renderer.message != null)
@@ -66,9 +67,9 @@ namespace UrbanAirship.NETStandard.Android
             }
         }
 
-        private RichPushMessage message;
+        private UrbanAirship.MessageCenter.Message message;
         private ICancelable fetchMessageRequest;
-        private UAWebView webView;
+        private MessageWebView webView;
         private MessagePage messagePage;
         private WebViewClient webViewClient;
         private string messageId;
@@ -76,8 +77,8 @@ namespace UrbanAirship.NETStandard.Android
 
         public MessagePageRenderer(Context context) : base(context)
         {
-            webView = new UAWebView(Context);
-            webViewClient = new MessageWebViewClient(this);
+            webView = new MessageWebView(Context);
+            webViewClient = new WebViewClient(this);
 
             var fl = new FrameLayout(Context);
             fl.LayoutParameters = new LayoutParams(LayoutParams.MatchParent, LayoutParams.MatchParent);
@@ -103,10 +104,10 @@ namespace UrbanAirship.NETStandard.Android
 
         private void StartLoading(string messageId)
         {
-            this.message = UAirship.Shared().Inbox.GetMessage(messageId);
+            this.message = MessageCenterClass.Shared().Inbox.GetMessage(messageId);
             if (message == null)
             {
-                fetchMessageRequest = UAirship.Shared().Inbox.FetchMessages(this);
+                fetchMessageRequest = MessageCenterClass.Shared().Inbox.FetchMessages(this);
             }
             else
             {
@@ -116,7 +117,7 @@ namespace UrbanAirship.NETStandard.Android
                     return;
                 }
 
-                webView.LoadRichPushMessage(message);
+                webView.LoadMessage(message);
                 messagePage.OnRendererLoadStarted(messageId);
             }
         }
@@ -165,9 +166,9 @@ namespace UrbanAirship.NETStandard.Android
             }
         }
 
-        void RichPushInbox.IFetchMessagesCallback.OnFinished(bool success)
+        void Inbox.IFetchMessagesCallback.OnFinished(bool success)
         {
-            message = UAirship.Shared().Inbox.GetMessage(messageId);
+            message = MessageCenterClass.Shared().Inbox.GetMessage(messageId);
             if (!success)
             {
                 messagePage.OnRendererLoadFailed(messageId, true, MessageFailureStatus.FetchFailed);
@@ -179,7 +180,7 @@ namespace UrbanAirship.NETStandard.Android
                 return;
             }
 
-            webView.LoadRichPushMessage(message);
+            webView.LoadMessage(message);
             messagePage.OnRendererLoadStarted(messageId);
         }
     }

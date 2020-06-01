@@ -7,33 +7,19 @@
   <attr path="/api/package[@name='com.urbanairship.app']" name="managedName">UrbanAirship.App</attr>
   <attr path="/api/package[@name='com.urbanairship.channel']" name="managedName">UrbanAirship.Channel</attr>
   <attr path="/api/package[@name='com.urbanairship.google']" name="managedName">UrbanAirship.Google</attr>
-  <attr path="/api/package[@name='com.urbanairship.iam']" name="managedName">UrbanAirship.Iam</attr>
-  <attr path="/api/package[@name='com.urbanairship.iam.assets']" name="managedName">UrbanAirship.Iam.Assets</attr>
-  <attr path="/api/package[@name='com.urbanairship.iam.banner']" name="managedName">UrbanAirship.Iam.Banner</attr>
-  <attr path="/api/package[@name='com.urbanairship.iam.custom']" name="managedName">UrbanAirship.Iam.Custom</attr>
-  <attr path="/api/package[@name='com.urbanairship.iam.fullscreen']" name="managedName">UrbanAirship.Iam.FullScreen</attr>
-  <attr path="/api/package[@name='com.urbanairship.iam.html']" name="managedName">UrbanAirship.Iam.Html</attr>
-  <attr path="/api/package[@name='com.urbanairship.iam.images']" name="managedName">UrbanAirship.Iam.Images</attr>
-  <attr path="/api/package[@name='com.urbanairship.iam.modal']" name="managedName">UrbanAirship.Iam.Modal</attr>
-  <attr path="/api/package[@name='com.urbanairship.iam.tags']" name="managedName">UrbanAirship.Iam.Tags</attr>
-  <attr path="/api/package[@name='com.urbanairship.iam.view']" name="managedName">UrbanAirship.Iam.View</attr>
   <attr path="/api/package[@name='com.urbanairship.images']" name="managedName">UrbanAirship.Images</attr>
   <attr path="/api/package[@name='com.urbanairship.job']" name="managedName">UrbanAirship.Job</attr>
   <attr path="/api/package[@name='com.urbanairship.json']" name="managedName">UrbanAirship.Json</attr>
   <attr path="/api/package[@name='com.urbanairship.json.matchers']" name="managedName">UrbanAirship.Json.Matchers</attr>
   <attr path="/api/package[@name='com.urbanairship.js']" name="managedName">UrbanAirship.Js</attr>
   <attr path="/api/package[@name='com.urbanairship.locale']" name="managedName">UrbanAirship.Locale</attr>
-  <attr path="/api/package[@name='com.urbanairship.location']" name="managedName">UrbanAirship.Location</attr>
   <attr path="/api/package[@name='com.urbanairship.push']" name="managedName">UrbanAirship.Push</attr>
   <attr path="/api/package[@name='com.urbanairship.push.notifications']" name="managedName">UrbanAirship.Push.Notifications</attr>
   <attr path="/api/package[@name='com.urbanairship.reactive']" name="managedName">UrbanAirship.Reactive</attr>
   <attr path="/api/package[@name='com.urbanairship.remotedata']" name="managedName">UrbanAirship.RemoteData</attr>
-  <attr path="/api/package[@name='com.urbanairship.richpush']" name="managedName">UrbanAirship.RichPush</attr>
-  <attr path="/api/package[@name='com.urbanairship.widget']" name="managedName">UrbanAirship.Widget</attr>
-  <attr path="/api/package[@name='com.urbanairship.messagecenter']" name="managedName">UrbanAirship.MessageCenter</attr>
   <attr path="/api/package[@name='com.urbanairship.util']" name="managedName">UrbanAirship.Util</attr>
-  <attr path="/api/package[@name='com.urbanairship.wallet']" name="managedName">UrbanAirship.Wallet</attr>m
-  <attr path="/api/package[@name='com.urbanairship.automation']" name="managedName">UrbanAirship.Automation</attr>
+  <attr path="/api/package[@name='com.urbanairship.wallet']" name="managedName">UrbanAirship.Wallet</attr>
+  <attr path="/api/package[@name='com.urbanairship.webkit']" name="managedName">UrbanAirship.Webkit</attr>
 
   <remove-node path="/api/package[@name='com.urbanairship.http']" />
   <remove-node path="/api/package[@name='com.urbanairship.job']/class[@name='Job']" />
@@ -42,9 +28,7 @@
 	
   <!-- Class naming conflicts with namespace -->
   <attr path="/api/package[@name='com.urbanairship.analytics']/class[@name='Analytics']" name="managedName">AnalyticsClass</attr>
-  <attr path="/api/package[@name='com.urbanairship.automation']/class[@name='Automation']" name="managedName">AutomationClass</attr>
-  <attr path="/api/package[@name='com.urbanairship.messagecenter']/class[@name='MessageCenter']" name="managedName">MessageCenterClass</attr>
-  
+   
   <!--- Non public parent classes -->
   <attr path="/api/package[@name='com.urbanairship.actions.tags']/class[@name='BaseTagsAction']" name="visibility">public</attr>
 
@@ -52,13 +36,7 @@
   <attr path="/api/package[@name='com.urbanairship.analytics']/class[@name='RetailEventTemplate']/field[@name='RETAIL_EVENT_TEMPLATE']" name="managedName">TemplateName</attr>
   <attr path="/api/package[@name='com.urbanairship.analytics']/class[@name='AccountEventTemplate']/field[@name='ACCOUNT_EVENT_TEMPLATE']" name="managedName">TemplateName</attr>
   <attr path="/api/package[@name='com.urbanairship.analytics']/class[@name='MediaEventTemplate']/field[@name='MEDIA_EVENT_TEMPLATE']" name="managedName">TemplateName</attr>
-
-  <!-- Remove ActionScheduleEdits and ActionScheduleInfo data getters-->
-  <remove-node path="/api/package[@name='com.urbanairship.automation']/interface[@name='ScheduleEdits']/method[@name='getData']" />
-  <remove-node path="/api/package[@name='com.urbanairship.automation']/interface[@name='ScheduleInfo']/method[@name='getData']" />
-  <remove-node path="/api/package[@name='com.urbanairship.automation']/class[@name='ActionScheduleEdits']/method[@name='getData']" />
-  <remove-node path="/api/package[@name='com.urbanairship.automation']/class[@name='ActionScheduleInfo']/method[@name='getData']" />
-
+  
   <!-- Remove remote config package to prevent public/protected conflicts-->
   <remove-node path="/api/package[@name='com.urbanairship.remoteconfig']" />
  
@@ -66,8 +44,5 @@
   <remove-node path="/api/package[@name='com.urbanairship.analytics.data']" />
   <remove-node path="/api/package[@name='com.urbanairship.modules']" />
  
-  <!-- Remove after started erroring when changed AndroidClassParser to "class-parse"-->
-  <remove-node path="/api/package[@name='com.urbanairship.richpush']/class[@name='RichPushInbox.SentAtRichPushMessageComparator']" /> 
-
 </metadata>
 

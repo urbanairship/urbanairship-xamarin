@@ -3,8 +3,11 @@
 */
 
 using System.Collections.Generic;
+using Java.Util;
 using UrbanAirship.NETStandard.Attributes;
 using UrbanAirship.Actions;
+using System;
+using UrbanAirship.MessageCenter;
 
 namespace UrbanAirship.NETStandard
 {
@@ -82,7 +85,7 @@ namespace UrbanAirship.NETStandard
                 }
             }
         }
-        
+
         public Channel.TagEditor EditDeviceTags()
         {
             return new Channel.TagEditor(this.DeviceTagHelper);
@@ -142,6 +145,11 @@ namespace UrbanAirship.NETStandard
             UAirship.Shared().Analytics.AddEvent(builder.Build());
         }
 
+        public void TrackScreen(string screen)
+        {
+            UAirship.Shared().Analytics.TrackScreen(screen);
+        }
+
         public void AssociateIdentifier(string key, string identifier)
         {
             if (identifier == null)
@@ -156,14 +164,14 @@ namespace UrbanAirship.NETStandard
 
         public void DisplayMessageCenter()
         {
-            UAirship.Shared().MessageCenter.ShowMessageCenter();
+            MessageCenterClass.Shared().ShowMessageCenter();
         }
 
         public int MessageCenterUnreadCount
         {
             get
             {
-                return UAirship.Shared().Inbox.UnreadCount;
+                return MessageCenterClass.Shared().Inbox.UnreadCount;
             }
         }
 
@@ -171,8 +179,50 @@ namespace UrbanAirship.NETStandard
         {
             get
             {
-                return UAirship.Shared().Inbox.Count;
+                return MessageCenterClass.Shared().Inbox.Count;
             }
+        }
+
+        public List<MessageCenter.Message> InboxMessages
+        {
+            get
+            {
+                var messagesList = new List<MessageCenter.Message>();
+                var messages = MessageCenterClass.Shared().Inbox.Messages;
+                foreach (var message in messages)
+                {
+                    var extras = new Dictionary<string, string>();
+                    foreach (var key in message.Extras.KeySet())
+                    {
+                        extras.Add(key, message.Extras.Get(key).ToString());
+                    }
+
+                    DateTime? sentDate = FromDate(message.SentDate);
+                    DateTime? expirationDate = FromDate(message.ExpirationDate);
+
+                    var inboxMessage = new MessageCenter.Message(
+                        message.MessageId,
+                        message.Title,
+                        sentDate,
+                        expirationDate,
+                        message.ListIconUrl,
+                        extras);
+
+                    messagesList.Add(inboxMessage);
+                }
+
+                return messagesList;
+            }
+        }
+
+        private DateTime? FromDate(Date date)
+        {
+            if (date == null)
+            {
+                return null;
+            }
+            var epoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
+            return epoch.AddMilliseconds(date.Time);
         }
 
         public Channel.TagGroupsEditor EditNamedUserTagGroups()

@@ -60,13 +60,13 @@
     <Folder Include="Jars\" />
   </ItemGroup>
   <ItemGroup>
-    <LibraryProjectZip Include="Jars\urbanairship-adm-12.2.3.aar" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\AirshipBindings.Android.Core\AirshipBindings.Android.Core.csproj">
       <Project>{98DC9E01-745C-4CEA-93A9-6546B349B8EE}</Project>
       <Name>AirshipBindings.Android.Core</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <LibraryProjectZip Include="Jars\urbanairship-adm-13.1.0.aar" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.Bindings.targets" />
   <Import Project="packages\Xamarin.Build.Download.0.4.11\build\Xamarin.Build.Download.targets" Condition="Exists('packages\Xamarin.Build.Download.0.4.11\build\Xamarin.Build.Download.targets')" />

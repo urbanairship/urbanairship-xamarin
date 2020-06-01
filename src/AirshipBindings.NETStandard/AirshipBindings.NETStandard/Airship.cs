@@ -84,6 +84,16 @@ namespace UrbanAirship.NETStandard
         }
 
         /// <summary>
+        /// track a screen for a specific app screen
+        /// </summary>
+        /// <param name="screen">The screen's identifier.
+        /// to add.</param>
+        public void TrackScreen(string screen)
+        {
+            throw new NotImplementedException(BaitWithoutSwitchMessage);
+        }
+
+        /// <summary>
         /// Associate a custom identifier. Previous identifiers will be replaced by the new identifiers
         /// each time AssociateIdentifier is called. It is a set operation.
         /// </summary>
@@ -120,6 +130,15 @@ namespace UrbanAirship.NETStandard
         {
             get { throw new NotImplementedException(BaitWithoutSwitchMessage); }
             private set { throw new NotImplementedException(BaitWithoutSwitchMessage); }
+        }
+
+        /// <summary>
+        /// Get the list of messages contained in the messages center.
+        /// </summary>
+        /// <value>The list of message.</value>
+        public List<MessageCenter.Message> InboxMessages
+        {
+            get { throw new NotImplementedException(BaitWithoutSwitchMessage); }
         }
 
         /// <summary>
