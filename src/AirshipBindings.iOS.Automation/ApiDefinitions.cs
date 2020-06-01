@@ -68,6 +68,14 @@ namespace UrbanAirship {
         [Field("UACancelSchedulesActionAll", "__Internal")]
         NSString UACancelSchedulesActionAll { get; }
 
+        // extern NSString *const UACancelSchedulesActionDefaultRegistryAlias
+        [Field("UACancelSchedulesActionDefaultRegistryAlias", "__Internal")]
+        NSString UACancelSchedulesActionDefaultRegistryAlias { get; }
+
+        // extern NSString *const UACancelSchedulesActionDefaultRegistryName
+        [Field("UACancelSchedulesActionDefaultRegistryName", "__Internal")]
+        NSString UACancelSchedulesActionDefaultRegistryName { get; }
+
         // extern NSString *const UACancelSchedulesActionGroups
         [Field("UACancelSchedulesActionGroups", "__Internal")]
         NSString UACancelSchedulesActionGroups { get; }
@@ -248,6 +256,14 @@ namespace UrbanAirship {
         [Field("UAInAppMessageURLKey", "__Internal")]
         NSString UAInAppMessageURLKey { get; }
 
+        // extern NSString *const _Nonnull UALandingPageActionDefaultRegistryAlias
+        [Field("UALandingPageActionDefaultRegistryAlias", "__Internal")]
+        NSString UALandingPageActionDefaultRegistryAlias { get; }
+
+        // extern NSString *const _Nonnull UALandingPageActionDefaultRegistryName
+        [Field("UALandingPageActionDefaultRegistryName", "__Internal")]
+        NSString UALandingPageActionDefaultRegistryName { get; }
+
         // extern NSString *const _Nonnull UALandingPageAspectLockKey
         [Field("UALandingPageAspectLockKey", "__Internal")]
         NSString UALandingPageAspectLockKey { get; }
@@ -311,6 +327,14 @@ namespace UrbanAirship {
         // extern NSString *const _Nonnull UAModalTextStyleKey
         [Field("UAModalTextStyleKey", "__Internal")]
         NSString UAModalTextStyleKey { get; }
+
+        // extern NSString *const UAScheduleActionDefaultRegistryAlias
+        [Field("UAScheduleActionDefaultRegistryAlias", "__Internal")]
+        NSString UAScheduleActionDefaultRegistryAlias { get; }
+
+        // extern NSString *const UAScheduleActionDefaultRegistryName
+        [Field("UAScheduleActionDefaultRegistryName", "__Internal")]
+        NSString UAScheduleActionDefaultRegistryName { get; }
 
         // extern NSString *const _Nonnull UAScheduleDelayAppStateBackgroundName
         [Field("UAScheduleDelayAppStateBackgroundName", "__Internal")]
@@ -423,6 +447,37 @@ namespace UrbanAirship {
         // extern NSString *const _Nonnull UATextAdditonalPaddingKey
         [Field("UATextAdditonalPaddingKey", "__Internal")]
         NSString UATextAdditonalPaddingKey { get; }
+
+        // extern NSString *const kUACancelSchedulesActionDefaultRegistryAlias
+        [Field("kUACancelSchedulesActionDefaultRegistryAlias", "__Internal")]
+        [Obsolete("Deprecated – to be removed in SDK version 14.0. Please use UACancelSchedulesActionDefaultRegistryAlias.")]
+        NSString kUACancelSchedulesActionDefaultRegistryAlias { get; }
+
+        // extern NSString *const kUACancelSchedulesActionDefaultRegistryName
+        [Field("kUACancelSchedulesActionDefaultRegistryName", "__Internal")]
+        [Obsolete("Deprecated – to be removed in SDK version 14.0. Please use UACancelSchedulesActionDefaultRegistryName.")]
+        NSString kUACancelSchedulesActionDefaultRegistryName { get; }
+
+        // extern DEPRECATED_MSG_ATTRIBUTE( "Deprecated – to be removed in SDK version 14.0. Please use " "UALandingPageActionDefaultRegistryAlias.") NSString *const kUALandingPageActionDefaultRegistryAlias
+        [Field("kUALandingPageActionDefaultRegistryAlias", "__Internal")]
+        [Obsolete("Deprecated – to be removed in SDK version 14.0. Please use UALandingPageActionDefaultRegistryAlias.")]
+        NSString kUALandingPageActionDefaultRegistryAlias { get; }
+
+        // extern DEPRECATED_MSG_ATTRIBUTE( "Deprecated – to be removed in SDK version 14.0. Please use " "UALandingPageActionDefaultRegistryName.") NSString *const kUALandingPageActionDefaultRegistryName
+        [Field("kUALandingPageActionDefaultRegistryName", "__Internal")]
+        [Obsolete("Deprecated – to be removed in SDK version 14.0. Please use UALandingPageActionDefaultRegistryName.")]
+        NSString kUALandingPageActionDefaultRegistryName { get; }
+
+        // extern NSString *const kUAScheduleActionDefaultRegistryAlias
+        [Field("kUAScheduleActionDefaultRegistryAlias", "__Internal")]
+        [Obsolete("Deprecated – to be removed in SDK version 14.0. Please use UAScheduleActionDefaultRegistryAlias.")]
+        NSString kUAScheduleActionDefaultRegistryAlias { get; }
+
+        // extern NSString *const kUAScheduleActionDefaultRegistryName
+        [Field("kUAScheduleActionDefaultRegistryName", "__Internal")]
+        [Obsolete("Deprecated – to be removed in SDK version 14.0. Please use UAScheduleActionDefaultRegistryName.")]
+        NSString kUAScheduleActionDefaultRegistryName { get; }
+
     }
 
     // @interface UAActionAutomation : UAComponent
@@ -2147,7 +2202,8 @@ namespace UrbanAirship {
         [Static]
         [Export("messageWithPayload:")]
         [return: NullAllowed]
-        UALegacyInAppMessage Message (NSDictionary payload);
+        UALegacyInAppMessage Message (NSDictionary payload);        // + (null_unspecified instancetype)shared;
+
 
         // - (BOOL)isEqualToMessage:(nullable UALegacyInAppMessage *)message;
         [Export("isEqualToMessage:")]

@@ -24,6 +24,14 @@ namespace UrbanAirship {
         [Field("UAInboxMessageListWillUpdateNotification", "__Internal")]
         NSString UAInboxMessageListWillUpdateNotification { get; }
 
+        // extern NSString *const _Nonnull UAMessageCenterMessageLoadErrorDomain
+        [Field("UAMessageCenterMessageLoadErrorDomain", "__Internal")]
+        NSString UAMessageCenterMessageLoadErrorDomain { get; }
+
+        // extern NSString *const _Nonnull UAMessageCenterMessageLoadErrorHTTPStatusKey
+        [Field("UAMessageCenterMessageLoadErrorHTTPStatusKey", "__Internal")]
+        NSString UAMessageCenterMessageLoadErrorHTTPStatusKey { get; }
+
         // extern NSString *const UAMessageDataScheme
         [Field("UAMessageDataScheme", "__Internal")]
         NSString UAMessageDataScheme { get; }
@@ -40,6 +48,104 @@ namespace UrbanAirship {
         [Field("UAUserCreatedNotification", "__Internal")]
         NSString UAUserCreatedNotification { get; }
 
+    }
+
+    // @interface UADefaultMessageCenterListViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate>
+    [BaseType(typeof(UIViewController))]
+    interface UADefaultMessageCenterListViewController : IUITableViewDelegate, IUITableViewDataSource, IUIScrollViewDelegate
+    {
+        // @property (nonatomic, strong, readwrite) UAMessageCenterStyle *_Nonnull style;
+        [Export("style", ArgumentSemantic.Strong)]
+        UAMessageCenterStyle Style { get; set; }
+
+        // @property (nonatomic, strong, readwrite) NSPredicate *_Nonnull filter;
+        [Export("filter", ArgumentSemantic.Strong)]
+        NSPredicate Filter { get; set; }
+
+        // @property (nonatomic, weak, readwrite) id<UAMessageCenterListViewDelegate> _Nullable delegate;
+        [NullAllowed, Export("delegate", ArgumentSemantic.Assign)]
+        NSObject WeakDelegate { get; set; }
+
+        [Wrap("WeakDelegate")]
+        [NullAllowed]
+        IUAMessageCenterListViewDelegate Delegate { get; set; }
+
+        // @property (nonatomic, strong, readwrite, nullable) NSIndexPath *selectedIndexPath;
+        [NullAllowed, Export("selectedIndexPath", ArgumentSemantic.Strong)]
+        IndexPath SelectedIndexPath { get; set; }
+
+        // @property (nonatomic, copy, readwrite, nullable) NSString *selectedMessageID;
+        [NullAllowed, Export("selectedMessageID")]
+        string SelectedMessageID { get; set; }
+
+    }
+
+    // @interface UADefaultMessageCenterMessageViewController : UIViewController
+    [BaseType(typeof(UIViewController))]
+    interface UADefaultMessageCenterMessageViewController
+    {
+        // @property (nonatomic, weak, readwrite, nullable) id<UAMessageCenterMessageViewDelegate> delegate;
+        [NullAllowed, Export("delegate", ArgumentSemantic.Assign)]
+        NSObject WeakDelegate { get; set; }
+
+        [Wrap("WeakDelegate")]
+        [NullAllowed]
+        IUAMessageCenterMessageViewDelegate Delegate { get; set; }
+
+        // @property (nonatomic, readonly, nullable) UAInboxMessage *message;
+        [NullAllowed, Export("message")]
+        UAInboxMessage Message { get; }
+
+        // @property (nonatomic, assign, unsafe_unretained, readwrite) BOOL disableMessageLinkPreviewAndCallouts;
+        [Export("disableMessageLinkPreviewAndCallouts")]
+        bool DisableMessageLinkPreviewAndCallouts { get; set; }
+
+        // - (void)loadMessageForID:(nullable NSString *)messageID;
+        [Export("loadMessageForID:")]
+        void LoadMessage ([NullAllowed] string messageID);
+
+        // - (void)clearMessage;
+        [Export("clearMessage")]
+        void ClearMessage ();
+    }
+
+    // @interface UADefaultMessageCenterSplitViewController : UISplitViewController <UAMessageCenterListViewDelegate, UAMessageCenterMessageViewDelegate>
+    [BaseType(typeof(UISplitViewController))]
+    interface UADefaultMessageCenterSplitViewController : IUAMessageCenterListViewDelegate, IUAMessageCenterMessageViewDelegate
+    {
+        // @property (nonatomic, strong, readwrite) NSPredicate *_Nonnull filter;
+        [Export("filter", ArgumentSemantic.Strong)]
+        NSPredicate Filter { get; set; }
+
+        // @property (nonatomic, strong, readwrite) UAMessageCenterStyle *_Nonnull style;
+        [Export("style", ArgumentSemantic.Strong)]
+        UAMessageCenterStyle Style { get; set; }
+
+        // @property (nonatomic, readonly) UADefaultMessageCenterListViewController *_Nonnull listViewController;
+        [Export("listViewController")]
+        UADefaultMessageCenterListViewController ListViewController { get; }
+
+        // @property (nonatomic, readonly) UADefaultMessageCenterMessageViewController *_Nonnull messageViewController;
+        [Export("messageViewController")]
+        UADefaultMessageCenterMessageViewController MessageViewController { get; }
+
+        // @property (nonatomic, assign, unsafe_unretained, readwrite) BOOL disableMessageLinkPreviewAndCallouts;
+        [Export("disableMessageLinkPreviewAndCallouts")]
+        bool DisableMessageLinkPreviewAndCallouts { get; set; }
+
+        // - (void)displayMessageForID:(nonnull NSString *)messageID;
+        [Export("displayMessageForID:")]
+        void DisplayMessage (string messageID);
+    }
+
+    // @interface UADefaultMessageCenterSplitViewDelegate : NSObject <UISplitViewControllerDelegate>
+    [BaseType(typeof(NSObject))]
+    interface UADefaultMessageCenterSplitViewDelegate : IUISplitViewControllerDelegate
+    {
+
+        // - (instancetype)initWithListViewController:(UADefaultMessageCenterListViewController *)listViewController;
+        [Export("initWithListViewController:")]
+        IntPtr Constructor (UADefaultMessageCenterListViewController listViewController);
     }
 
     // @interface UADefaultMessageCenterUI : NSObject <UAMessageCenterDisplayDelegate>
@@ -336,6 +442,7 @@ namespace UrbanAirship {
 
     // @interface UAMessageCenterListViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, UISplitViewControllerDelegate>
     [BaseType(typeof(UIViewController))]
+    [Obsolete("Deprecated – to be removed in SDK version 14.0. Instead use UADefaultMessageCenterListViewController.")]
     interface UAMessageCenterListViewController : IUITableViewDelegate, IUITableViewDataSource, IUIScrollViewDelegate, IUISplitViewControllerDelegate
     {
         // @property (readwrite, strong, nonatomic) UAMessageCenterStyle *style;
@@ -367,16 +474,66 @@ namespace UrbanAirship {
         IntPtr Constructor (string nibNameOrNil, NSBundle nibBundleOrNil, UISplitViewController splitViewController);
     }
 
+    // @protocol UAMessageCenterListViewDelegate <NSObject>
+    [Protocol, Model]
+    [BaseType(typeof(NSObject))]
+    interface UAMessageCenterListViewDelegate
+    {
+
+        // - (BOOL)shouldClearSelectionOnViewWillAppear;
+        [Abstract]
+        [Export("shouldClearSelectionOnViewWillAppear")]
+        NSObject ShouldClearSelectionOnViewWillAppear ();
+
+        // - (void)didSelectMessageWithID:(nullable NSString *)messageID;
+        [Abstract]
+        [Export("didSelectMessageWithID:")]
+        void DidSelectMessage (NSObject messageID);
+    }
+
+    interface IUAMessageCenterListViewDelegate { }
+
     // @interface UAMessageCenterMessageViewController : UIViewController <UAMessageCenterMessageViewProtocol>
     [BaseType(typeof(UIViewController))]
+    [Obsolete("Deprecated – to be removed in SDK version 14.0. Instead use UADefaultMessageCenterMessageViewController.")]
     interface UAMessageCenterMessageViewController : IUAMessageCenterMessageViewProtocol
     {
 
     }
 
+    // @protocol UAMessageCenterMessageViewDelegate <NSObject>
+    [Protocol, Model]
+    [BaseType(typeof(NSObject))]
+    interface UAMessageCenterMessageViewDelegate
+    {
+
+        // - (void)messageLoadStarted:(nonnull NSString *)messageID;
+        [Abstract]
+        [Export("messageLoadStarted:")]
+        void MessageLoadStarted (string messageID);
+
+        // - (void)messageLoadSucceeded:(nonnull NSString *)messageID;
+        [Abstract]
+        [Export("messageLoadSucceeded:")]
+        void MessageLoadSucceeded (string messageID);
+
+        // - (void)messageLoadFailed:(nonnull NSString *)messageID error:(nonnull NSError *)error;
+        [Abstract]
+        [Export("messageLoadFailed:error:")]
+        void MessageLoadFailed (string messageID, NSError error);
+
+        // - (void)messageClosed:(nonnull NSString *)messageID;
+        [Abstract]
+        [Export("messageClosed:")]
+        void MessageClosed (string messageID);
+    }
+
+    interface IUAMessageCenterMessageViewDelegate { }
+
     // @protocol UAMessageCenterMessageViewProtocol
     [Protocol, Model]
     [BaseType(typeof(NSObject))]
+    [Obsolete("Deprecated – to be removed in SDK version 14.0. Instead use the UAMessageCenterMessageViewController directly.")]
     interface UAMessageCenterMessageViewProtocol
     {
         // @property (readonly, strong, nonatomic) UAInboxMessage *_Nonnull message;
@@ -419,6 +576,7 @@ namespace UrbanAirship {
 
     // @interface UAMessageCenterSplitViewController : UISplitViewController
     [BaseType(typeof(UISplitViewController))]
+    [Obsolete("Deprecated – to be removed in SDK version 14.0. Instead use UADefaultMessageCenterSplitViewController.")]
     interface UAMessageCenterSplitViewController
     {
         // @property (readwrite, strong, nonatomic) NSPredicate *filter;
