@@ -85,8 +85,8 @@ task createLocalFeed {
 }
 createLocalFeed.dependsOn('pkg')
 
-// Sync the version with the version declared in the airship.properties file.
-task syncVersion {
+// Sync the nuspec and shared assembly versions with the version declared in the airship.properties file.
+task syncRootVersion {
     doLast() {
 
         def androidNugetVersion = airshipProperties.androidVersion
@@ -167,6 +167,21 @@ task syncVersion {
         )
     }
 }
+
+// Sync subproject versions with the version declared in the airship.properties file.
+task syncVersion
+syncVersion.dependsOn('syncRootVersion')
+syncVersion.dependsOn(':src:AirshipBindings.Android.ADM:syncVersion',
+    ':src:AirshipBindings.Android.ADM:syncVersion',
+    ':src:AirshipBindings.Android.Core:syncVersion',
+    ':src:AirshipBindings.Android.FCM:syncVersion',
+    ':src:AirshipBindings.Android.Preference:syncVersion',
+    ':src:AirshipBindings.Android.Accengage:syncVersion',
+    ':src:AirshipBindings.Android.MessageCenter:syncVersion',
+    ':src:AirshipBindings.Android.Automation:syncVersion',
+    ':src:AirshipBindings.Android.Location:syncVersion',
+    ':src:AirshipBindings.iOS.common:syncVersion',
+ )
 
 class PublishTask extends DefaultTask {
     @InputDirectory
