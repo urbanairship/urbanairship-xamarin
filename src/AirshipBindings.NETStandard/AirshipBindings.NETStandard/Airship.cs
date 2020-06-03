@@ -36,6 +36,26 @@ namespace UrbanAirship.NETStandard
         }
 
         /// <summary>
+        /// Indicates whether data collection is enabled.
+        /// </summary>
+        /// <value><c>true</c> if data collection is enabled; otherwise, <c>false</c>.</value>
+        public bool DataCollectionEnabled
+        {
+            get { throw new NotImplementedException(BaitWithoutSwitchMessage); }
+            set { throw new NotImplementedException(BaitWithoutSwitchMessage); }
+        }
+
+        /// <summary>
+        /// Indicates whether push token registration is enabled.
+        /// </summary>
+        /// <value><c>true</c> if push token registration is enabled; otherwise, <c>false</c>.</value>
+        public bool PushTokenRegistrationEnabled
+        {
+            get { throw new NotImplementedException(BaitWithoutSwitchMessage); }
+            set { throw new NotImplementedException(BaitWithoutSwitchMessage); }
+        }
+
+        /// <summary>
         /// Gets the tags currently set for the device.
         /// </summary>
         /// <value>The tags.</value>
