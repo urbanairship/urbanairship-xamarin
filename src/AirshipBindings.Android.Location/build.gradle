@@ -37,9 +37,12 @@ task syncVersion  {
                 url.withInputStream{
                     i -> path.withOutputStream{ it << i }
                 }
-                // Edit the csproj file to reflect this update
+                // Edit the csproj file to reflect this version
                 updateCsproj()
             }
+        } else {
+            // Edit the csproj file to reflect this version
+            updateCsproj()
         }
     }
 }

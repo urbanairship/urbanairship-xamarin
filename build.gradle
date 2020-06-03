@@ -239,6 +239,18 @@ task clean(type: Delete) {
     }
 }
 
+clean.dependsOn(':src:AirshipBindings.Android.ADM:clean',
+    ':src:AirshipBindings.Android.ADM:clean',
+    ':src:AirshipBindings.Android.Core:clean',
+    ':src:AirshipBindings.Android.FCM:clean',
+    ':src:AirshipBindings.Android.Preference:clean',
+    ':src:AirshipBindings.Android.Accengage:clean',
+    ':src:AirshipBindings.Android.MessageCenter:clean',
+    ':src:AirshipBindings.Android.Automation:clean',
+    ':src:AirshipBindings.Android.Location:clean',
+    ':src:AirshipBindings.iOS.common:clean',
+ )
+
 // Build the plugin
 task build
 build.mustRunAfter('clean')
