@@ -14,6 +14,16 @@ namespace UrbanAirship.NETStandard
             get; set;
         }
 
+        bool DataCollectionEnabled
+        {
+            get; set;
+        }
+
+        bool PushTokenRegistrationEnabled
+        {
+            get; set;
+        }
+
         IEnumerable<string> Tags
         {
             get;

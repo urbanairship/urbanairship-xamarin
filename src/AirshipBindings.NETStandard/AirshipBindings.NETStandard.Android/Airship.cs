@@ -38,6 +38,32 @@ namespace UrbanAirship.NETStandard
             }
         }
 
+        public bool DataCollectionEnabled
+        {
+            get
+            {
+                return UAirship.Shared().DataCollectionEnabled;
+            }
+
+            set
+            {
+                UAirship.Shared().DataCollectionEnabled = value;
+            }
+        }
+
+        public bool PushTokenRegistrationEnabled
+        {
+            get
+            {
+                return UAirship.Shared().PushManager.PushTokenRegistrationEnabled;
+            }
+
+            set
+            {
+                UAirship.Shared().PushManager.PushTokenRegistrationEnabled = value;
+            }
+        }
+
         public IEnumerable<string> Tags
         {
             get
