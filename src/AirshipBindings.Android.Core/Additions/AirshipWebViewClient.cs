@@ -6,9 +6,9 @@ using System;
 
 using UrbanAirship.Actions;
 
-namespace UrbanAirship.Widget
+namespace UrbanAirship.Webkit
 {
-	public partial class UAWebViewClient
+	public partial class AirshipWebViewClient
 	{
 		public virtual void SetActionCompletionCallback(Action<ActionArguments, ActionResult> callback)
 		{

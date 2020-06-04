@@ -36,6 +36,26 @@ namespace UrbanAirship.NETStandard
         }
 
         /// <summary>
+        /// Indicates whether data collection is enabled.
+        /// </summary>
+        /// <value><c>true</c> if data collection is enabled; otherwise, <c>false</c>.</value>
+        public bool DataCollectionEnabled
+        {
+            get { throw new NotImplementedException(BaitWithoutSwitchMessage); }
+            set { throw new NotImplementedException(BaitWithoutSwitchMessage); }
+        }
+
+        /// <summary>
+        /// Indicates whether push token registration is enabled.
+        /// </summary>
+        /// <value><c>true</c> if push token registration is enabled; otherwise, <c>false</c>.</value>
+        public bool PushTokenRegistrationEnabled
+        {
+            get { throw new NotImplementedException(BaitWithoutSwitchMessage); }
+            set { throw new NotImplementedException(BaitWithoutSwitchMessage); }
+        }
+
+        /// <summary>
         /// Gets the tags currently set for the device.
         /// </summary>
         /// <value>The tags.</value>
@@ -79,6 +99,16 @@ namespace UrbanAirship.NETStandard
         /// <param name="customEvent">The <see cref="UrbanAirship.NETStandard.Analytics.CustomEvent">CustomEvent</see>
         /// to add.</param>
         public void AddCustomEvent(Analytics.CustomEvent customEvent)
+        {
+            throw new NotImplementedException(BaitWithoutSwitchMessage);
+        }
+
+        /// <summary>
+        /// track a screen for a specific app screen
+        /// </summary>
+        /// <param name="screen">The screen's identifier.
+        /// to add.</param>
+        public void TrackScreen(string screen)
         {
             throw new NotImplementedException(BaitWithoutSwitchMessage);
         }
@@ -132,6 +162,15 @@ namespace UrbanAirship.NETStandard
         }
 
         /// <summary>
+        /// Get the list of messages contained in the messages center.
+        /// </summary>
+        /// <value>The list of message.</value>
+        public List<MessageCenter.Message> InboxMessages
+        {
+            get { throw new NotImplementedException(BaitWithoutSwitchMessage); }
+        }
+
+        /// <summary>
         /// Edit channel attributes.
         /// </summary>
         /// <returns>An <see cref="UrbanAirship.NETStandard.Attributes.AttributeEditor">AttributeEditor</see>
@@ -159,6 +198,25 @@ namespace UrbanAirship.NETStandard
         public Channel.TagGroupsEditor EditChannelTagGroups()
         {
             throw new NotImplementedException(BaitWithoutSwitchMessage);
+        }
+
+        /// <summary>
+        /// Add/remove the deep link event listener.
+        /// </summary>
+        /// <value>The deep link event listener.</value>
+        public delegate void DeepLinkHandler(string deepLink);
+
+        public event DeepLinkHandler OnDeepLinkReceived
+        {
+            add
+            {
+                throw new NotImplementedException(BaitWithoutSwitchMessage);
+            }
+
+            remove
+            {
+                throw new NotImplementedException(BaitWithoutSwitchMessage);
+            }
         }
     }
 }
