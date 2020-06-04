@@ -2202,8 +2202,7 @@ namespace UrbanAirship {
         [Static]
         [Export("messageWithPayload:")]
         [return: NullAllowed]
-        UALegacyInAppMessage Message (NSDictionary payload);        // + (null_unspecified instancetype)shared;
-
+        UALegacyInAppMessage Message (NSDictionary payload);
 
         // - (BOOL)isEqualToMessage:(nullable UALegacyInAppMessage *)message;
         [Export("isEqualToMessage:")]
