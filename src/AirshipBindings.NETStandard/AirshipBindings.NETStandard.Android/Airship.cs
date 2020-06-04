@@ -6,13 +6,16 @@ using System.Collections.Generic;
 using Java.Util;
 using UrbanAirship.NETStandard.Attributes;
 using UrbanAirship.Actions;
+using UrbanAirship.Channel;
 using System;
 
 namespace UrbanAirship.NETStandard
 {
+    public delegate void ChannelHandler(string channelId);
+
     public delegate void DeepLinkHandler(string deepLink);
 
-    public class Airship : Java.Lang.Object, IDeepLinkListener, IAirship
+    public class Airship : Java.Lang.Object, IDeepLinkListener, IAirshipChannelListener, IAirship
     {
         private static Airship sharedAirship = new Airship();
 
@@ -63,6 +66,48 @@ namespace UrbanAirship.NETStandard
             set
             {
                 UAirship.Shared().NamedUser.Id = value;
+            }
+        }
+
+        private ChannelHandler onChannelCreation;
+        public event ChannelHandler OnChannelCreation
+        {
+            add
+            {
+                Console.WriteLine("onChannelCreationAdd");
+                onChannelCreation += value;
+                UAirship.Shared().AirshipChannelListener = this;
+            }
+
+            remove
+            {
+                Console.WriteLine("onChannelCreationRemove");
+                onChannelCreation -= value;
+                if (onChannelCreation == null)
+                {
+                    UAirship.Shared().AirshipChannelListener = null;
+                }
+            }
+        }
+
+        private ChannelHandler onChannelUpdate;
+        public event ChannelHandler OnChannelUpdate
+        {
+            add
+            {
+                Console.WriteLine("onChannelUpdateAdd");
+                onChannelUpdate += value;
+                UAirship.Shared().AirshipChannelListener = this;
+            }
+
+            remove
+            {
+                Console.WriteLine("onChannelUpdatedRemove");
+                onChannelUpdate -= value;
+                if (onChannelUpdate == null)
+                {
+                    UAirship.Shared().AirshipChannelListener = null;
+                }
             }
         }
 
@@ -314,6 +359,20 @@ namespace UrbanAirship.NETStandard
             var handler = onDeepLinkReceived;
             handler(deepLink);
             return true;
+        }
+
+        public string OnChannelCreated(string channelId)
+        {
+            var handler = onChannelCreation;
+            handler(channelId);
+            return channelId;
+        }
+
+        public string OnChannelUpdated(string channelId)
+        {
+            var handler = onChannelUpdate;
+            handler(channelId);
+            return channelId;
         }
     }
 }
