@@ -85,21 +85,21 @@ namespace UrbanAirship.NETStandard
             }
         }
 
-        private InboxHandler onInboxUpdatedReceived;
-        public event InboxHandler OnInboxUpdatedReceived
+        private InboxHandler onMessageCenterUpdated;
+        public event InboxHandler OnMessageCenterUpdated
         {
             add
             {
-                onInboxUpdatedReceived += value;
-                UAirship.Shared().Inbox.RemoveListener(this);
+                onMessageCenterUpdated += value;
+                UAirship.Shared().Inbox.AddListener(this);
             }
 
             remove
             {
-                onInboxUpdatedReceived -= value;
-                if (onInboxUpdatedReceived == null)
+                onMessageCenterUpdated -= value;
+                if (onMessageCenterUpdated == null)
                 {
-                    UAirship.Shared().Inbox.AddListener(null);
+                    UAirship.Shared().Inbox.RemoveListener(null);
                 }
             }
         }
@@ -297,7 +297,7 @@ namespace UrbanAirship.NETStandard
 
         public void OnInboxUpdated()
         {
-            var handler = onInboxUpdatedReceived;
+            var handler = onMessageCenterUpdated;
             handler();
         }
     }

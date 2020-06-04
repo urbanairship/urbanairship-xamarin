@@ -11,6 +11,7 @@ using UrbanAirship.NETStandard.Attributes;
 namespace UrbanAirship.NETStandard
 {
     public delegate void DeepLinkHandler(string deepLink);
+    public delegate void InboxHandler();
 
     public class Airship : UADeepLinkDelegate, IAirship
     {
@@ -81,6 +82,25 @@ namespace UrbanAirship.NETStandard
                 if (onDeepLinkReceived == null)
                 {
                     UAirship.Shared().WeakDeepLinkDelegate = null;
+                }
+            }
+        }
+
+        private InboxHandler onMessageCenterUpdated;
+        public event InboxHandler OnMessageCenterUpdated
+        {
+            add
+            {
+                onMessageCenterUpdated += value;
+            
+            }
+
+            remove
+            {
+                onMessageCenterUpdated -= value;
+                if (onMessageCenterUpdated == null)
+                {
+                    
                 }
             }
         }
