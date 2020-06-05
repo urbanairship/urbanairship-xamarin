@@ -70,6 +70,8 @@ namespace UrbanAirship.NETStandard
         
         Attributes.AttributeEditor EditAttributes();
 
+        Attributes.AttributeEditor EditChannelAttributes();
+
         Attributes.AttributeEditor EditNamedUserAttributes();
     }
 }

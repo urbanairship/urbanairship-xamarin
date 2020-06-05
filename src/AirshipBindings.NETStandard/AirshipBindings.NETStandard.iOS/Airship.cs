@@ -291,6 +291,11 @@ namespace UrbanAirship.NETStandard
 
         public AttributeEditor EditAttributes()
         {
+            return EditChannelAttributes();
+        }
+
+        public AttributeEditor EditChannelAttributes()
+        {
             return new AttributeEditor((List<AttributeEditor.IAttributeOperation> operations) =>
             {
                 var mutations = UAAttributeMutations.Mutations();
@@ -345,7 +350,7 @@ namespace UrbanAirship.NETStandard
             }
         }
 
-            private void TagGroupHelper(List<Channel.TagGroupsEditor.TagOperation> operations, bool namedUser)
+        private void TagGroupHelper(List<Channel.TagGroupsEditor.TagOperation> operations, bool namedUser)
         {
             var namedUserActions = new Dictionary<Channel.TagGroupsEditor.OperationType, Action<string, string[]>>()
             {

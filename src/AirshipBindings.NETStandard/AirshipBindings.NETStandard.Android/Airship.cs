@@ -273,6 +273,11 @@ namespace UrbanAirship.NETStandard
 
         public AttributeEditor EditAttributes()
         {
+            return EditChannelAttributes();
+        }
+
+        public AttributeEditor EditChannelAttributes()
+        {
             return new AttributeEditor((List<AttributeEditor.IAttributeOperation> operations) =>
             {
                 var editor = UAirship.Shared().Channel.EditAttributes();
