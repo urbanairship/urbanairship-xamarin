@@ -261,6 +261,21 @@ namespace UrbanAirship.NETStandard
             }
         }
 
+        private NSDate FromDateTime(DateTime dateTime)
+        {
+            if (dateTime == null)
+            {
+                return null;
+            }
+
+            if (dateTime.Kind == DateTimeKind.Unspecified)
+            {
+                dateTime = DateTime.SpecifyKind(dateTime, DateTimeKind.Utc);
+            }
+
+            return (NSDate)dateTime;
+        }
+
         private DateTime? FromNSDate(NSDate date)
         {
             if (date == null)
@@ -320,6 +335,12 @@ namespace UrbanAirship.NETStandard
                     if (operation is AttributeEditor.SetAttributeOperation<double> doubleOperation)
                     {
                         mutations.SetNumber(doubleOperation.value, doubleOperation.key);
+                    }
+
+                    if (operation is AttributeEditor.SetAttributeOperation<DateTime> dateOperation)
+                    {
+                        NSDate date = FromDateTime(dateOperation.value);
+                        mutations.SetDate(date, dateOperation.key);
                     }
 
                     if (operation is AttributeEditor.RemoveAttributeOperation removeOperation)
