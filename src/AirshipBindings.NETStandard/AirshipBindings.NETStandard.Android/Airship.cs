@@ -6,19 +6,15 @@ using System.Collections.Generic;
 using Java.Util;
 using UrbanAirship.NETStandard.Attributes;
 using UrbanAirship.Actions;
-<<<<<<< HEAD
-using UrbanAirship.RichPush;
-=======
 using System;
 using UrbanAirship.MessageCenter;
->>>>>>> 43a1dddb54a64aa6b8228fc5af970332ab969d41
 
 namespace UrbanAirship.NETStandard
 {
     public delegate void DeepLinkHandler(string deepLink);
     public delegate void InboxHandler();
 
-    public class Airship : Java.Lang.Object, IDeepLinkListener, IAirship, RichPushInbox.IListener
+    public class Airship : Java.Lang.Object, IDeepLinkListener, IAirship, IInboxListener
     {
         private static Airship sharedAirship = new Airship();
 
@@ -123,7 +119,7 @@ namespace UrbanAirship.NETStandard
             add
             {
                 onMessageCenterUpdated += value;
-                UAirship.Shared().Inbox.AddListener(this);
+                MessageCenterClass.Shared().Inbox.AddListener(this);
             }
 
             remove
@@ -131,7 +127,7 @@ namespace UrbanAirship.NETStandard
                 onMessageCenterUpdated -= value;
                 if (onMessageCenterUpdated == null)
                 {
-                    UAirship.Shared().Inbox.RemoveListener(null);
+                    MessageCenterClass.Shared().Inbox.RemoveListener(null);
                 }
             }
         }
@@ -219,7 +215,7 @@ namespace UrbanAirship.NETStandard
 
         public void DisplayMessage(string messageId)
         {
-            UAirship.Shared().MessageCenter.ShowMessageCenter(messageId);
+            MessageCenterClass.Shared().ShowMessageCenter(messageId);
         }
 
         public int MessageCenterUnreadCount
