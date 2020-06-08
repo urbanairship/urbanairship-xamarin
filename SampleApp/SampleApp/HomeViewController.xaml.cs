@@ -59,25 +59,12 @@ namespace SampleApp
 
         void refreshView()
         {
-            Airship.InboxHandler inboxHandler = new Airship.InboxHandler();
-            Airship.Instance.OnMessageCenterUpdated += inboxHandler;
-            Console.WriteLine("Listener set !");
             if (Airship.Instance.UserNotificationsEnabled &&  Airship.Instance.ChannelId != null)
             {
                 enablePushButton.Text = Airship.Instance.ChannelId;
                 displayMessageCenterButton.Text = "Display Message Center";
                 displayMessageButton.Text = "Display Message Hello!";
             }
-        }
-
-        static void OnDeepLinkReceived(string s)
-        {
-            Console.WriteLine(s);
-        }
-
-        public static void OnMessageReceived()
-        {
-            Console.WriteLine("New message received !");
         }
     }
 }

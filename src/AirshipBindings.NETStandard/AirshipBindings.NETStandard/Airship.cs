@@ -7,6 +7,9 @@ using System.Collections.Generic;
 
 namespace UrbanAirship.NETStandard
 {
+    public delegate void DeepLinkHandler(string deepLink);
+    public delegate void InboxHandler();
+
     public class Airship : IAirship
     {
         private const string BaitWithoutSwitchMessage = "The empty .NET Standard implementation for Airship was loaded. Check that you have added the urbanairship.netstandard package to each of your platform-specific projects.";   
@@ -204,8 +207,6 @@ namespace UrbanAirship.NETStandard
         /// Add/remove the deep link event listener.
         /// </summary>
         /// <value>The deep link event listener.</value>
-        public delegate void DeepLinkHandler(string deepLink);
-
         public event DeepLinkHandler OnDeepLinkReceived
         {
             add
@@ -223,8 +224,6 @@ namespace UrbanAirship.NETStandard
         /// Add/remove the Inbox updated event listener.
         /// </summary>
         /// <value>The Inbox updated listener.</value>
-        public delegate void InboxHandler();
-
         public event InboxHandler OnMessageCenterUpdated
         {
             add

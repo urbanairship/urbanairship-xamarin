@@ -418,11 +418,6 @@ namespace UrbanAirship {
         [Obsolete("Deprecated – to be removed in SDK version 14.0. Please use UAFetchDeviceInfoActionDefaultRegistryName.")]
         NSString kUAFetchDeviceInfoActionDefaultRegistryName { get; }
 
-        // extern DEPRECATED_MSG_ATTRIBUTE( "Deprecated – to be removed in SDK version 14.0.") NSString *const kUAInteractionMCRAP
-        [Field("kUAInteractionMCRAP", "__Internal")]
-        [Obsolete("Deprecated – to be removed in SDK version 14.0.")]
-        NSString kUAInteractionMCRAP { get; }
-
         // extern DEPRECATED_MSG_ATTRIBUTE( "Deprecated – to be removed in SDK version 14.0. Please use " "UAOpenExternalURLActionDefaultRegistryAlias.") NSString *const kUAOpenExternalURLActionDefaultRegistryAlias
         [Field("kUAOpenExternalURLActionDefaultRegistryAlias", "__Internal")]
         [Obsolete("Deprecated – to be removed in SDK version 14.0. Please use UAOpenExternalURLActionDefaultRegistryAlias.")]
