@@ -125,8 +125,8 @@ task syncRootVersion {
 
         // handle urbanairship.android.core dependencies
         ant.replaceregexp(
-            match: "<dependency id=\"urbanairship.android.core\" version=\".*\"/>",
-            replace: "<dependency id=\"urbanairship.android.core\" version=\"$androidNugetVersion\"/>",
+            match: "<dependency id=\"urbanairship.android(.*)\" version=\".*\"/>",
+            replace: "<dependency id=\"urbanairship.android\\1\" version=\"$androidNugetVersion\"/>",
             flags: "g"
         ) {
             fileset(dir: "$projectDir", includes: "UrbanAirship*.nuspec")
