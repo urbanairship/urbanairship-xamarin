@@ -218,5 +218,24 @@ namespace UrbanAirship.NETStandard
                 throw new NotImplementedException(BaitWithoutSwitchMessage);
             }
         }
+
+        /// <summary>
+        /// Add/remove the Inbox updated event listener.
+        /// </summary>
+        /// <value>The Inbox updated listener.</value>
+        public delegate void InboxHandler();
+
+        public event InboxHandler OnMessageCenterUpdated
+        {
+            add
+            {
+                throw new NotImplementedException(BaitWithoutSwitchMessage);
+            }
+
+            remove
+            {
+                throw new NotImplementedException(BaitWithoutSwitchMessage);
+            }
+        }
     }
 }
