@@ -18,7 +18,5 @@ task build {
     }
 }
 
-build.dependsOn(':SampleApp:build',
-    ':src:AirshipBindings.iOS.NotificationContentExtension:build',
-    ':src:AirshipBindings.iOS.NotificationServiceExtension:build')
+build.dependsOn(':SampleApp:build')
 
