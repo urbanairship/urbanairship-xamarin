@@ -296,7 +296,7 @@ namespace UrbanAirship.NETStandard
             });
         }
 
-        private void ApplyAttributesOperations(AttributeEditor editor, List<AttributeEditor.IAttributeOperation> operations)
+        private void ApplyAttributesOperations(UrbanAirship.Channel.AttributeEditor editor, List<AttributeEditor.IAttributeOperation> operations)
         {
             foreach (var operation in operations)
             {
