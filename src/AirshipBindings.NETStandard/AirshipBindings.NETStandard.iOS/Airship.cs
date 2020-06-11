@@ -15,7 +15,21 @@ namespace UrbanAirship.NETStandard
 
     public class Airship : UADeepLinkDelegate, IAirship
     {
+
         private static Airship sharedAirship = new Airship();
+
+        static Airship()
+        {
+            Instance.Initialize();
+        }
+
+        private void Initialize()
+        {
+            NSNotificationCenter.DefaultCenter.AddObserver(aName: (NSString)"UAInboxMessageListUpdatedNotification", (notification) =>
+            {
+                Console.WriteLine("Listener Set");
+            });
+        }
 
         public static Airship Instance
         {
@@ -117,17 +131,13 @@ namespace UrbanAirship.NETStandard
         {
             add
             {
-                onMessageCenterUpdated += value;
-            
+               onMessageCenterUpdated += value;
+             
             }
 
             remove
             {
                 onMessageCenterUpdated -= value;
-                if (onMessageCenterUpdated == null)
-                {
-                    
-                }
             }
         }
 
