@@ -14,5 +14,4 @@ task build {
     }
 }
 
-build.dependsOn(':SampleApp:build',
-    ':src:AirshipBindings.Android.FCM:build')
+build.dependsOn(':SampleApp:build')

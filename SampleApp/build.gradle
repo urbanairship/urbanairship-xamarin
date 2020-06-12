@@ -14,4 +14,4 @@ task build {
      }
 }
 }
-build.dependsOn(':src:AirshipBindings.NETStandard:build')
+build.dependsOn(':pkg')

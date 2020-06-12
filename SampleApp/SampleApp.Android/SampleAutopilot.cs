@@ -28,7 +28,7 @@ namespace Sample
             }
 
             UrbanAirshipListener airshipListener = new UrbanAirshipListener();
-            airship.PushManager.SetNotificationListener(airshipListener);
+            airship.PushManager.NotificationListener = airshipListener;
             airship.PushManager.AddPushListener(airshipListener);
             airship.PushManager.AddPushTokenListener(airshipListener);
             airship.Channel.AddChannelListener(airshipListener);
