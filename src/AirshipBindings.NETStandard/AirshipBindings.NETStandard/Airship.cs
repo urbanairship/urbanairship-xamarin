@@ -167,6 +167,7 @@ namespace UrbanAirship.NETStandard
         /// </summary>
         /// <returns>An <see cref="UrbanAirship.NETStandard.Attributes.AttributeEditor">AttributeEditor</see>
         /// for channel attributes.</returns>
+        [Obsolete("This method is deprecated, use EditChannelAttributes() instead.")]
         public Attributes.AttributeEditor EditAttributes()
         {
             throw new NotImplementedException(BaitWithoutSwitchMessage);
