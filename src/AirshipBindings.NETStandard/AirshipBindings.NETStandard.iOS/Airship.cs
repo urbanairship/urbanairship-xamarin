@@ -123,7 +123,6 @@ namespace UrbanAirship.NETStandard
                 {
                     Console.WriteLine("Listener Set");
                 });
-
             }
 
             remove
