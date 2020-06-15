@@ -241,6 +241,17 @@ namespace UrbanAirship.NETStandard
             }
         }
 
+        private Date FromDateTime(DateTime dateTime)
+        {
+            if (dateTime == null)
+            {
+                return null;
+            }
+
+            long epochSeconds = new DateTimeOffset(dateTime).ToUnixTimeSeconds();
+            return new Date(epochSeconds * 1000);
+        }
+
         private DateTime? FromDate(Date date)
         {
             if (date == null)
@@ -323,6 +334,12 @@ namespace UrbanAirship.NETStandard
                 if (operation is AttributeEditor.SetAttributeOperation<double> doubleOperation)
                 {
                     editor.SetAttribute(doubleOperation.key, doubleOperation.value);
+                }
+                    
+                if (operation is AttributeEditor.SetAttributeOperation<DateTime> dateOperation)
+                {
+                    Date date = FromDateTime(dateOperation.value);
+                    editor.SetAttribute(dateOperation.key, date);
                 }
 
                 if (operation is AttributeEditor.RemoveAttributeOperation removeOperation)
