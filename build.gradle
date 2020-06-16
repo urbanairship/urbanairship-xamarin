@@ -171,17 +171,6 @@ task syncRootVersion {
 // Sync subproject versions with the version declared in the airship.properties file.
 task syncVersion
 syncVersion.dependsOn('syncRootVersion')
-syncVersion.dependsOn(':src:AirshipBindings.Android.ADM:syncVersion',
-    ':src:AirshipBindings.Android.ADM:syncVersion',
-    ':src:AirshipBindings.Android.Core:syncVersion',
-    ':src:AirshipBindings.Android.FCM:syncVersion',
-    ':src:AirshipBindings.Android.Preference:syncVersion',
-    ':src:AirshipBindings.Android.Accengage:syncVersion',
-    ':src:AirshipBindings.Android.MessageCenter:syncVersion',
-    ':src:AirshipBindings.Android.Automation:syncVersion',
-    ':src:AirshipBindings.Android.Location:syncVersion',
-    ':src:AirshipBindings.iOS.common:syncVersion',
- )
 
 class PublishTask extends DefaultTask {
     @InputDirectory
@@ -239,42 +228,10 @@ task clean(type: Delete) {
     }
 }
 
-clean.dependsOn(':src:AirshipBindings.Android.ADM:clean',
-    ':src:AirshipBindings.Android.ADM:clean',
-    ':src:AirshipBindings.Android.Core:clean',
-    ':src:AirshipBindings.Android.FCM:clean',
-    ':src:AirshipBindings.Android.Preference:clean',
-    ':src:AirshipBindings.Android.Accengage:clean',
-    ':src:AirshipBindings.Android.MessageCenter:clean',
-    ':src:AirshipBindings.Android.Automation:clean',
-    ':src:AirshipBindings.Android.Location:clean',
-    ':src:AirshipBindings.iOS.common:clean',
- )
-
 // Build the plugin
 task build
 build.mustRunAfter('clean')
 build.dependsOn('syncVersion')
-build.dependsOn(':docs:build',
-    ':src:AirshipBindings.Android.ADM:build',
-    ':src:AirshipBindings.Android.Core:build',
-    ':src:AirshipBindings.Android.FCM:build',
-    ':src:AirshipBindings.Android.Preference:build',
-    ':src:AirshipBindings.Android.Accengage:build',
-    ':src:AirshipBindings.Android.MessageCenter:build',
-    ':src:AirshipBindings.Android.Automation:build',
-    ':src:AirshipBindings.Android.Location:build',
-    ':src:AirshipBindings.NETStandard:build',
-    ':src:AirshipBindings.iOS.Core:build',
-    ':src:AirshipBindings.iOS.Accengage:build',
-    ':src:AirshipBindings.iOS.Automation:build',
-    ':src:AirshipBindings.iOS.ExtendedActions:build',
-    ':src:AirshipBindings.iOS.MessageCenter:build',
-    ':src:AirshipBindings.iOS.Location:build',
-    ':src:AirshipBindings.iOS.NotificationContentExtension:build',
-    ':src:AirshipBindings.iOS.NotificationServiceExtension:build' )
-
-
 
 task getVersion() {
     doLast {
