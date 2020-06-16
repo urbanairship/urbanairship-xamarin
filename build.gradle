@@ -171,6 +171,7 @@ task syncRootVersion {
 // Sync subproject versions with the version declared in the airship.properties file.
 task syncVersion
 syncVersion.dependsOn('syncRootVersion')
+syncVersion.mustRunAfter('clean')
 
 class PublishTask extends DefaultTask {
     @InputDirectory
@@ -224,12 +225,16 @@ publishToProduction.dependsOn('pkg')
 // Clean all
 task clean(type: Delete) {
     doLast() {
-        project.delete "$buildDir"
+        project.delete(files("$buildDir"))
     }
 }
 
 // Build the plugin
-task build
+task build() {
+    doFirst {
+        mkdir project.buildDir
+    }
+}
 build.mustRunAfter('clean')
 build.dependsOn('syncVersion')
 
