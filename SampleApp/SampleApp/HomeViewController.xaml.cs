@@ -62,8 +62,6 @@ namespace SampleApp
             if (Airship.Instance.UserNotificationsEnabled &&  Airship.Instance.ChannelId != null)
             {
                 enablePushButton.Text = Airship.Instance.ChannelId;
-                displayMessageCenterButton.Text = "Display Message Center";
-                displayMessageButton.Text = "Display Message Hello!";
             }
         }
     }
