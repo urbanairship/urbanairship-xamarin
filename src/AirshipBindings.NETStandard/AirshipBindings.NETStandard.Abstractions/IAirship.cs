@@ -14,6 +14,16 @@ namespace UrbanAirship.NETStandard
             get; set;
         }
 
+        bool DataCollectionEnabled
+        {
+            get; set;
+        }
+
+        bool PushTokenRegistrationEnabled
+        {
+            get; set;
+        }
+
         IEnumerable<string> Tags
         {
             get;
@@ -59,5 +69,9 @@ namespace UrbanAirship.NETStandard
         Channel.TagGroupsEditor EditChannelTagGroups();
         
         Attributes.AttributeEditor EditAttributes();
+
+        Attributes.AttributeEditor EditChannelAttributes();
+
+        Attributes.AttributeEditor EditNamedUserAttributes();
     }
 }

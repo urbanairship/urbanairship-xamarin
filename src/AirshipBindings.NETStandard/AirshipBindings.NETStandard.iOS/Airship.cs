@@ -37,6 +37,32 @@ namespace UrbanAirship.NETStandard
             }
         }
 
+        public bool DataCollectionEnabled
+        {
+            get
+            {
+                return UAirship.Shared().DataCollectionEnabled;
+            }
+
+            set
+            {
+                UAirship.Shared().DataCollectionEnabled = value;
+            }
+        }
+
+        public bool PushTokenRegistrationEnabled
+        {
+            get
+            {
+                return UAirship.Push().PushTokenRegistrationEnabled;
+            }
+
+            set
+            {
+                UAirship.Push().PushTokenRegistrationEnabled = value;
+            }
+        }
+
         public IEnumerable<string> Tags
         {
             get
@@ -251,6 +277,21 @@ namespace UrbanAirship.NETStandard
             }
         }
 
+        private NSDate FromDateTime(DateTime dateTime)
+        {
+            if (dateTime == null)
+            {
+                return null;
+            }
+
+            if (dateTime.Kind == DateTimeKind.Unspecified)
+            {
+                dateTime = DateTime.SpecifyKind(dateTime, DateTimeKind.Utc);
+            }
+
+            return (NSDate)dateTime;
+        }
+
         private DateTime? FromNSDate(NSDate date)
         {
             if (date == null)
@@ -281,45 +322,69 @@ namespace UrbanAirship.NETStandard
 
         public AttributeEditor EditAttributes()
         {
+            return EditChannelAttributes();
+        }
+
+        public AttributeEditor EditChannelAttributes()
+        {
             return new AttributeEditor((List<AttributeEditor.IAttributeOperation> operations) =>
             {
                 var mutations = UAAttributeMutations.Mutations();
-
-                foreach (var operation in operations)
-                {
-                    if (operation is AttributeEditor.SetAttributeOperation<string> stringOperation)
-                    {
-                        mutations.SetString(stringOperation.value, stringOperation.key);
-                    }
-
-                    if (operation is AttributeEditor.SetAttributeOperation<int> intOperation)
-                    {
-                        mutations.SetNumber(intOperation.value, intOperation.key);
-                    }
-
-                    if (operation is AttributeEditor.SetAttributeOperation<long> longOperation)
-                    {
-                        mutations.SetNumber(longOperation.value, longOperation.key);
-                    }
-
-                    if (operation is AttributeEditor.SetAttributeOperation<float> floatOperation)
-                    {
-                        mutations.SetNumber(floatOperation.value, floatOperation.key);
-                    }
-
-                    if (operation is AttributeEditor.SetAttributeOperation<double> doubleOperation)
-                    {
-                        mutations.SetNumber(doubleOperation.value, doubleOperation.key);
-                    }
-
-                    if (operation is AttributeEditor.RemoveAttributeOperation removeOperation)
-                    {
-                        mutations.RemoveAttribute(removeOperation.key);
-                    }
-                }
-
+                ApplyAttributesOperations(mutations, operations);
                 UAirship.Channel().ApplyAttributeMutations(mutations);
             });
+        }
+
+        public AttributeEditor EditNamedUserAttributes()
+        {
+            return new AttributeEditor((List<AttributeEditor.IAttributeOperation> operations) =>
+            {
+                var mutations = UAAttributeMutations.Mutations();
+                ApplyAttributesOperations(mutations, operations);
+                UAirship.NamedUser().ApplyAttributeMutations(mutations);
+            });
+        }
+
+        private void ApplyAttributesOperations(UAAttributeMutations mutations, List<AttributeEditor.IAttributeOperation> operations)
+        {
+            foreach (var operation in operations)
+            {
+                if (operation is AttributeEditor.SetAttributeOperation<string> stringOperation)
+                {
+                    mutations.SetString(stringOperation.value, stringOperation.key);
+                }
+
+                if (operation is AttributeEditor.SetAttributeOperation<int> intOperation)
+                {
+                    mutations.SetNumber(intOperation.value, intOperation.key);
+                }
+
+                if (operation is AttributeEditor.SetAttributeOperation<long> longOperation)
+                {
+                    mutations.SetNumber(longOperation.value, longOperation.key);
+                }
+
+                if (operation is AttributeEditor.SetAttributeOperation<float> floatOperation)
+                {
+                    mutations.SetNumber(floatOperation.value, floatOperation.key);
+                }
+
+                if (operation is AttributeEditor.SetAttributeOperation<double> doubleOperation)
+                {
+                    mutations.SetNumber(doubleOperation.value, doubleOperation.key);
+                }
+
+                if (operation is AttributeEditor.SetAttributeOperation<DateTime> dateOperation)
+                {
+                    NSDate date = FromDateTime(dateOperation.value);
+                    mutations.SetDate(date, dateOperation.key);
+                }
+
+                if (operation is AttributeEditor.RemoveAttributeOperation removeOperation)
+                {
+                    mutations.RemoveAttribute(removeOperation.key);
+                }
+            }
         }
 
         private void TagGroupHelper(List<Channel.TagGroupsEditor.TagOperation> operations, bool namedUser)

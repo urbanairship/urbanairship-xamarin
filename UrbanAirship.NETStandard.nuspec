@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
    <metadata>
       <id>urbanairship.netstandard</id>
-      <version>13.0.0</version>
+      <version>13.1.0</version>
       <title>Airship SDK .NET Standard Library</title>
       <authors>Urban Airship, Inc.</authors>
       <projectUrl>https://github.com/urbanairship/urbanairship-xamarin</projectUrl>
@@ -13,14 +13,17 @@
          <group targetFramework=".NETStandard2.0">
          </group>
          <group targetFramework="MonoAndroid4.1">
-            <dependency id="urbanairship.android.core" version="12.2.3"/>
+            <dependency id="urbanairship.android.core" version="13.1.0"/>
+            <dependency id="urbanairship.android.messagecenter" version="13.1.0"/>
+            <dependency id="urbanairship.android.automation" version="13.1.0"/>
+            <dependency id="urbanairship.android.location" version="13.1.0"/>
          </group>
 
          <group targetFramework="Xamarin.iOS1.0">
-            <dependency id="urbanairship.ios.core" version="13.1.1"/>
-            <dependency id="urbanairship.ios.automation" version="13.1.1"/>
-            <dependency id="urbanairship.ios.extendedactions" version="13.1.1"/>
-            <dependency id="urbanairship.ios.messagecenter" version="13.1.1"/>
+            <dependency id="urbanairship.ios.core" version="13.3.2"/>
+            <dependency id="urbanairship.ios.automation" version="13.3.2"/>
+            <dependency id="urbanairship.ios.extendedactions" version="13.3.2"/>
+            <dependency id="urbanairship.ios.messagecenter" version="13.3.2"/>
          </group>
       </dependencies>
    </metadata>

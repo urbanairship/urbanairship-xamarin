@@ -8,6 +8,7 @@ using UrbanAirship.NETStandard.Attributes;
 using UrbanAirship.Actions;
 using UrbanAirship.Channel;
 using System;
+using UrbanAirship.MessageCenter;
 
 namespace UrbanAirship.NETStandard
 {
@@ -37,6 +38,32 @@ namespace UrbanAirship.NETStandard
             set
             {
                 UAirship.Shared().PushManager.UserNotificationsEnabled = value;
+            }
+        }
+
+        public bool DataCollectionEnabled
+        {
+            get
+            {
+                return UAirship.Shared().DataCollectionEnabled;
+            }
+
+            set
+            {
+                UAirship.Shared().DataCollectionEnabled = value;
+            }
+        }
+
+        public bool PushTokenRegistrationEnabled
+        {
+            get
+            {
+                return UAirship.Shared().PushManager.PushTokenRegistrationEnabled;
+            }
+
+            set
+            {
+                UAirship.Shared().PushManager.PushTokenRegistrationEnabled = value;
             }
         }
 
@@ -129,7 +156,7 @@ namespace UrbanAirship.NETStandard
                 }
             }
         }
-        
+
         public Channel.TagEditor EditDeviceTags()
         {
             return new Channel.TagEditor(this.DeviceTagHelper);
@@ -208,14 +235,14 @@ namespace UrbanAirship.NETStandard
 
         public void DisplayMessageCenter()
         {
-            UAirship.Shared().MessageCenter.ShowMessageCenter();
+            MessageCenterClass.Shared().ShowMessageCenter();
         }
 
         public int MessageCenterUnreadCount
         {
             get
             {
-                return UAirship.Shared().Inbox.UnreadCount;
+                return MessageCenterClass.Shared().Inbox.UnreadCount;
             }
         }
 
@@ -223,7 +250,7 @@ namespace UrbanAirship.NETStandard
         {
             get
             {
-                return UAirship.Shared().Inbox.Count;
+                return MessageCenterClass.Shared().Inbox.Count;
             }
         }
 
@@ -232,7 +259,7 @@ namespace UrbanAirship.NETStandard
             get
             {
                 var messagesList = new List<MessageCenter.Message>();
-                var messages = UAirship.Shared().Inbox.Messages;
+                var messages = MessageCenterClass.Shared().Inbox.Messages;
                 foreach (var message in messages)
                 {
                     var extras = new Dictionary<string, string>();
@@ -257,6 +284,17 @@ namespace UrbanAirship.NETStandard
 
                 return messagesList;
             }
+        }
+
+        private Date FromDateTime(DateTime dateTime)
+        {
+            if (dateTime == null)
+            {
+                return null;
+            }
+
+            long epochSeconds = new DateTimeOffset(dateTime).ToUnixTimeSeconds();
+            return new Date(epochSeconds * 1000);
         }
 
         private DateTime? FromDate(Date date)
@@ -291,45 +329,69 @@ namespace UrbanAirship.NETStandard
 
         public AttributeEditor EditAttributes()
         {
+            return EditChannelAttributes();
+        }
+
+        public AttributeEditor EditChannelAttributes()
+        {
             return new AttributeEditor((List<AttributeEditor.IAttributeOperation> operations) =>
             {
                 var editor = UAirship.Shared().Channel.EditAttributes();
-
-                foreach (var operation in operations)
-                {
-                    if (operation is AttributeEditor.SetAttributeOperation<string> stringOperation)
-                    {
-                        editor.SetAttribute(stringOperation.key, stringOperation.value);
-                    }
-
-                    if (operation is AttributeEditor.SetAttributeOperation<int> intOperation)
-                    {
-                        editor.SetAttribute(intOperation.key, intOperation.value);
-                    }
-
-                    if (operation is AttributeEditor.SetAttributeOperation<long> longOperation)
-                    {
-                        editor.SetAttribute(longOperation.key, longOperation.value);
-                    }
-
-                    if (operation is AttributeEditor.SetAttributeOperation<float> floatOperation)
-                    {
-                        editor.SetAttribute(floatOperation.key, floatOperation.value);
-                    }
-
-                    if (operation is AttributeEditor.SetAttributeOperation<double> doubleOperation)
-                    {
-                        editor.SetAttribute(doubleOperation.key, doubleOperation.value);
-                    }
-
-                    if (operation is AttributeEditor.RemoveAttributeOperation removeOperation)
-                    {
-                        editor.RemoveAttribute(removeOperation.key);
-                    }
-                }
-
+                ApplyAttributesOperations(editor, operations);
                 editor.Apply();
             });
+        }
+
+        public AttributeEditor EditNamedUserAttributes()
+        {
+            return new AttributeEditor((List<AttributeEditor.IAttributeOperation> operations) =>
+            {
+                var editor = UAirship.Shared().NamedUser.EditAttributes();
+                ApplyAttributesOperations(editor, operations);
+                editor.Apply();
+            });
+        }
+
+        private void ApplyAttributesOperations(UrbanAirship.Channel.AttributeEditor editor, List<AttributeEditor.IAttributeOperation> operations)
+        {
+            foreach (var operation in operations)
+            {
+                if (operation is AttributeEditor.SetAttributeOperation<string> stringOperation)
+                {
+                    editor.SetAttribute(stringOperation.key, stringOperation.value);
+                }
+
+                if (operation is AttributeEditor.SetAttributeOperation<int> intOperation)
+                {
+                    editor.SetAttribute(intOperation.key, intOperation.value);
+                }
+
+                if (operation is AttributeEditor.SetAttributeOperation<long> longOperation)
+                {
+                    editor.SetAttribute(longOperation.key, longOperation.value);
+                }
+
+                if (operation is AttributeEditor.SetAttributeOperation<float> floatOperation)
+                {
+                    editor.SetAttribute(floatOperation.key, floatOperation.value);
+                }
+
+                if (operation is AttributeEditor.SetAttributeOperation<double> doubleOperation)
+                {
+                    editor.SetAttribute(doubleOperation.key, doubleOperation.value);
+                }
+                    
+                if (operation is AttributeEditor.SetAttributeOperation<DateTime> dateOperation)
+                {
+                    Date date = FromDateTime(dateOperation.value);
+                    editor.SetAttribute(dateOperation.key, date);
+                }
+
+                if (operation is AttributeEditor.RemoveAttributeOperation removeOperation)
+                {
+                    editor.RemoveAttribute(removeOperation.key);
+                }
+            }
         }
 
         private void TagGroupHelper(List<Channel.TagGroupsEditor.TagOperation> payload, UrbanAirship.Channel.TagGroupsEditor editor)

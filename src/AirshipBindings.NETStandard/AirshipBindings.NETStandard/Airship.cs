@@ -36,6 +36,26 @@ namespace UrbanAirship.NETStandard
         }
 
         /// <summary>
+        /// Indicates whether data collection is enabled.
+        /// </summary>
+        /// <value><c>true</c> if data collection is enabled; otherwise, <c>false</c>.</value>
+        public bool DataCollectionEnabled
+        {
+            get { throw new NotImplementedException(BaitWithoutSwitchMessage); }
+            set { throw new NotImplementedException(BaitWithoutSwitchMessage); }
+        }
+
+        /// <summary>
+        /// Indicates whether push token registration is enabled.
+        /// </summary>
+        /// <value><c>true</c> if push token registration is enabled; otherwise, <c>false</c>.</value>
+        public bool PushTokenRegistrationEnabled
+        {
+            get { throw new NotImplementedException(BaitWithoutSwitchMessage); }
+            set { throw new NotImplementedException(BaitWithoutSwitchMessage); }
+        }
+
+        /// <summary>
         /// Gets the tags currently set for the device.
         /// </summary>
         /// <value>The tags.</value>
@@ -143,10 +163,32 @@ namespace UrbanAirship.NETStandard
 
         /// <summary>
         /// Edit channel attributes.
+        /// Deprecated : use <see cref="EditChannelAttributes">EditChannelAttributes()</see> instead.
         /// </summary>
         /// <returns>An <see cref="UrbanAirship.NETStandard.Attributes.AttributeEditor">AttributeEditor</see>
         /// for channel attributes.</returns>
+        [Obsolete("This method is deprecated, use EditChannelAttributes() instead.")]
         public Attributes.AttributeEditor EditAttributes()
+        {
+            throw new NotImplementedException(BaitWithoutSwitchMessage);
+        }
+
+        /// <summary>
+        /// Edit channel attributes.
+        /// </summary>
+        /// <returns>An <see cref="UrbanAirship.NETStandard.Attributes.AttributeEditor">AttributeEditor</see>
+        /// for channel attributes.</returns>
+        public Attributes.AttributeEditor EditChannelAttributes()
+        {
+            throw new NotImplementedException(BaitWithoutSwitchMessage);
+        }
+
+        /// <summary>
+        /// Edit named user attributes.
+        /// </summary>
+        /// <returns>An <see cref="UrbanAirship.NETStandard.Attributes.AttributeEditor">AttributeEditor</see>
+        /// for named user attributes.</returns>
+        public Attributes.AttributeEditor EditNamedUserAttributes()
         {
             throw new NotImplementedException(BaitWithoutSwitchMessage);
         }
