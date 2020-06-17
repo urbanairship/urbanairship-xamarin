@@ -170,5 +170,56 @@ namespace UrbanAirship.NETStandard
         {
             throw new NotImplementedException(BaitWithoutSwitchMessage);
         }
+
+        /// <summary>
+        /// Add/remove the deep link event listener.
+        /// </summary>
+        /// <value>The deep link event listener.</value>
+        public delegate void DeepLinkHandler(string deepLink);
+
+        public event DeepLinkHandler OnDeepLinkReceived
+        {
+            add
+            {
+                throw new NotImplementedException(BaitWithoutSwitchMessage);
+            }
+
+            remove
+            {
+                throw new NotImplementedException(BaitWithoutSwitchMessage);
+            }
+        }
+
+        /// <summary>
+        /// Add/remove the channel creation and update event listener.
+        /// </summary>
+        /// <value>The deep link event listener.</value>
+        public delegate void ChannelHandler(string channelId);
+
+        public event ChannelHandler OnChannelCreation
+        {
+            add
+            {
+                throw new NotImplementedException(BaitWithoutSwitchMessage);
+            }
+
+            remove
+            {
+                throw new NotImplementedException(BaitWithoutSwitchMessage);
+            }
+        }
+
+        public event ChannelHandler OnChannelUpdate
+        {
+            add
+            {
+                throw new NotImplementedException(BaitWithoutSwitchMessage);
+            }
+
+            remove
+            {
+                throw new NotImplementedException(BaitWithoutSwitchMessage);
+            }
+        }
     }
 }

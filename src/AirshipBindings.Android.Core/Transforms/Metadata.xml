@@ -44,7 +44,8 @@
   <attr path="/api/package[@name='com.urbanairship.analytics']/class[@name='Analytics']" name="managedName">AnalyticsClass</attr>
   <attr path="/api/package[@name='com.urbanairship.automation']/class[@name='Automation']" name="managedName">AutomationClass</attr>
   <attr path="/api/package[@name='com.urbanairship.messagecenter']/class[@name='MessageCenter']" name="managedName">MessageCenterClass</attr>
-  
+  <attr path="/api/package[@name='com.urbanairship.channel']/class[@name='AttributeEditor']" name="managedName">AirshipAttributeEditor</attr>
+    
   <!--- Non public parent classes -->
   <attr path="/api/package[@name='com.urbanairship.actions.tags']/class[@name='BaseTagsAction']" name="visibility">public</attr>
 

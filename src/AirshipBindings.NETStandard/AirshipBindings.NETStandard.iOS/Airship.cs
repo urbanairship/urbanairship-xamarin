@@ -66,6 +66,22 @@ namespace UrbanAirship.NETStandard
             }
         }
 
+        public void OnChannelCreation()
+        {
+            NSNotificationCenter.DefaultCenter.AddObserver(new NSString("com.urbanairship.channel.channel_created"), (channelId) =>
+            {
+                Console.WriteLine(channelId);
+            });
+        }
+
+        public void OnChannelUpdated()
+        {
+            NSNotificationCenter.DefaultCenter.AddObserver(new NSString("com.urbanairship.channel.channel_updated"), (channelId) =>
+            {
+                Console.WriteLine(channelId);
+            });
+        }
+
         private DeepLinkHandler onDeepLinkReceived;
         public event DeepLinkHandler OnDeepLinkReceived
         {

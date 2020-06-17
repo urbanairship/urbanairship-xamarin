@@ -76,7 +76,7 @@ namespace UrbanAirship.NETStandard
             {
                 Console.WriteLine("onChannelCreationAdd");
                 onChannelCreation += value;
-                UAirship.Shared().AirshipChannelListener = this;
+                UAirship.Shared().Channel.AddChannelListener(this);
             }
 
             remove
@@ -85,7 +85,7 @@ namespace UrbanAirship.NETStandard
                 onChannelCreation -= value;
                 if (onChannelCreation == null)
                 {
-                    UAirship.Shared().AirshipChannelListener = null;
+                    UAirship.Shared().Channel.RemoveChannelListener(this);
                 }
             }
         }
@@ -97,7 +97,7 @@ namespace UrbanAirship.NETStandard
             {
                 Console.WriteLine("onChannelUpdateAdd");
                 onChannelUpdate += value;
-                UAirship.Shared().AirshipChannelListener = this;
+                UAirship.Shared().Channel.AddChannelListener(this);
             }
 
             remove
@@ -106,7 +106,7 @@ namespace UrbanAirship.NETStandard
                 onChannelUpdate -= value;
                 if (onChannelUpdate == null)
                 {
-                    UAirship.Shared().AirshipChannelListener = null;
+                    UAirship.Shared().Channel.RemoveChannelListener(this);
                 }
             }
         }
@@ -361,18 +361,16 @@ namespace UrbanAirship.NETStandard
             return true;
         }
 
-        public string OnChannelCreated(string channelId)
+        public void OnChannelCreated(string channelId)
         {
             var handler = onChannelCreation;
             handler(channelId);
-            return channelId;
         }
 
-        public string OnChannelUpdated(string channelId)
+        public void OnChannelUpdated(string channelId)
         {
             var handler = onChannelUpdate;
             handler(channelId);
-            return channelId;
         }
     }
 }
