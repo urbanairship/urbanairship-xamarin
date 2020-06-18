@@ -241,6 +241,17 @@ namespace UrbanAirship.NETStandard
             }
         }
 
+        private Date FromDateTime(DateTime dateTime)
+        {
+            if (dateTime == null)
+            {
+                return null;
+            }
+
+            long epochSeconds = new DateTimeOffset(dateTime).ToUnixTimeSeconds();
+            return new Date(epochSeconds * 1000);
+        }
+
         private DateTime? FromDate(Date date)
         {
             if (date == null)
@@ -273,45 +284,69 @@ namespace UrbanAirship.NETStandard
 
         public AttributeEditor EditAttributes()
         {
+            return EditChannelAttributes();
+        }
+
+        public AttributeEditor EditChannelAttributes()
+        {
             return new AttributeEditor((List<AttributeEditor.IAttributeOperation> operations) =>
             {
                 var editor = UAirship.Shared().Channel.EditAttributes();
-
-                foreach (var operation in operations)
-                {
-                    if (operation is AttributeEditor.SetAttributeOperation<string> stringOperation)
-                    {
-                        editor.SetAttribute(stringOperation.key, stringOperation.value);
-                    }
-
-                    if (operation is AttributeEditor.SetAttributeOperation<int> intOperation)
-                    {
-                        editor.SetAttribute(intOperation.key, intOperation.value);
-                    }
-
-                    if (operation is AttributeEditor.SetAttributeOperation<long> longOperation)
-                    {
-                        editor.SetAttribute(longOperation.key, longOperation.value);
-                    }
-
-                    if (operation is AttributeEditor.SetAttributeOperation<float> floatOperation)
-                    {
-                        editor.SetAttribute(floatOperation.key, floatOperation.value);
-                    }
-
-                    if (operation is AttributeEditor.SetAttributeOperation<double> doubleOperation)
-                    {
-                        editor.SetAttribute(doubleOperation.key, doubleOperation.value);
-                    }
-
-                    if (operation is AttributeEditor.RemoveAttributeOperation removeOperation)
-                    {
-                        editor.RemoveAttribute(removeOperation.key);
-                    }
-                }
-
+                ApplyAttributesOperations(editor, operations);
                 editor.Apply();
             });
+        }
+
+        public AttributeEditor EditNamedUserAttributes()
+        {
+            return new AttributeEditor((List<AttributeEditor.IAttributeOperation> operations) =>
+            {
+                var editor = UAirship.Shared().NamedUser.EditAttributes();
+                ApplyAttributesOperations(editor, operations);
+                editor.Apply();
+            });
+        }
+
+        private void ApplyAttributesOperations(UrbanAirship.Channel.AttributeEditor editor, List<AttributeEditor.IAttributeOperation> operations)
+        {
+            foreach (var operation in operations)
+            {
+                if (operation is AttributeEditor.SetAttributeOperation<string> stringOperation)
+                {
+                    editor.SetAttribute(stringOperation.key, stringOperation.value);
+                }
+
+                if (operation is AttributeEditor.SetAttributeOperation<int> intOperation)
+                {
+                    editor.SetAttribute(intOperation.key, intOperation.value);
+                }
+
+                if (operation is AttributeEditor.SetAttributeOperation<long> longOperation)
+                {
+                    editor.SetAttribute(longOperation.key, longOperation.value);
+                }
+
+                if (operation is AttributeEditor.SetAttributeOperation<float> floatOperation)
+                {
+                    editor.SetAttribute(floatOperation.key, floatOperation.value);
+                }
+
+                if (operation is AttributeEditor.SetAttributeOperation<double> doubleOperation)
+                {
+                    editor.SetAttribute(doubleOperation.key, doubleOperation.value);
+                }
+                    
+                if (operation is AttributeEditor.SetAttributeOperation<DateTime> dateOperation)
+                {
+                    Date date = FromDateTime(dateOperation.value);
+                    editor.SetAttribute(dateOperation.key, date);
+                }
+
+                if (operation is AttributeEditor.RemoveAttributeOperation removeOperation)
+                {
+                    editor.RemoveAttribute(removeOperation.key);
+                }
+            }
         }
 
         private void TagGroupHelper(List<Channel.TagGroupsEditor.TagOperation> payload, UrbanAirship.Channel.TagGroupsEditor editor)

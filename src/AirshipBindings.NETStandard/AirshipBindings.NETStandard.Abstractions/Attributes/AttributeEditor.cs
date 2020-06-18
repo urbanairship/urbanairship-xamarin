@@ -80,6 +80,18 @@ namespace UrbanAirship.NETStandard.Attributes
         }
 
         /// <summary>
+        /// Sets a date attribute.
+        /// </summary>
+        /// <returns>The attribute editor.</returns>
+        /// <param name="key">The attribute key.</param>
+        /// <param name="value">The attribute value.</param>
+        public AttributeEditor SetAttribute(string key, DateTime value)
+        {
+            operations.Add(new SetAttributeOperation<DateTime>(key, value));
+            return this;
+        }
+
+        /// <summary>
         /// Removes an attribute.
         /// </summary>
         /// <returns>The attribute editor.</returns>
