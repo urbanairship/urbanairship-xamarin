@@ -1,48 +1,11 @@
-def updateCsproj() {
-    def csprojFile = "$projectDir/AirshipBindings.Android.FCM.csproj"
-
-    def fileName = ""
-    new File("$projectDir/Jars").eachFileRecurse {
-        fileName += it.name
-    }
-
-    ant.replaceregexp(file: csprojFile, match: 'urbanairship-fcm-.*aar', replace: fileName)
+ext {
+    xamarinModuleName = "AirshipBindings.Android.FCM"
+    androidSdkModuleName = "urbanairship-fcm"
 }
 
-task syncVersion  {
-    doLast() {
-        def filename = "urbanairship-fcm-${airshipProperties.androidVersion}.aar"
-        def jarDirectory = new File("$projectDir/Jars")
-        if ( jarDirectory.exists() ) {
-            // Remove aar files that aren't the correct version
-            project.delete fileTree("$projectDir/Jars") {
-                include '*.aar'
-                exclude filename
-            }
-        } else {
-            // create Jars directory
-            jarDirectory.mkdirs()
-        }
+apply from: "../../common-build.gradle"
 
-        def path = new File("$projectDir/Jars/$filename")
-        if ( !path.exists() ) {
-           // Download aar
-            def url = new URL("https://bintray.com/urbanairship/android/download_file?file_path=com%2Furbanairship%2Fandroid%2Furbanairship-fcm%2F${airshipProperties.androidVersion}%2F$filename")
-            HttpURLConnection huc = (HttpURLConnection) url.openConnection()
-            huc.setRequestMethod("GET")
-            huc.connect();
-            if (huc.getResponseCode() / 100 != 2) {
-                println("Issue downloading version ${airshipProperties.androidVersion}. Maintaining previous version.")
-            } else {
-                url.withInputStream{
-                    i -> path.withOutputStream{ it << i }
-                }
-                // Edit the csproj file to reflect this update
-                updateCsproj()
-            }
-        }
-    }
-}
+task syncVersion dependsOn syncVersionAndroid
 
 task clean {
     doLast() {
