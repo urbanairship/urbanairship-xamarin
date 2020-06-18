@@ -1,6 +1,9 @@
 ext {
     pod = 'UrbanAirship-iOS-SDK'
+    iosSdkModuleName = 'AirshipNotificationContentExtension'
 }
+
+apply from: "../../common-build.gradle"
 
 task clean(type: Delete) {
     doLast() {

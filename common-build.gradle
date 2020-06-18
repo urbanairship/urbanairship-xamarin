@@ -47,3 +47,133 @@ task syncVersionAndroid  {
     }
 }
 
+task generateIOSBindings {
+    doLast() {
+        // Only generate bindings for iOS projects
+        if ( !project.hasProperty('iosSdkModuleName') ) {
+            return
+        }
+
+        println("Updating bindings for ${iosSdkModuleName} module.")
+
+        // clone iOS SDK at specified version, if it doesn't already exist
+        println("Using iOS SDK version ${airshipProperties.iosVersion}")
+        def tmpDir = System.getProperty("java.io.tmpdir")
+        def iosTempRepo = new File("${tmpDir}/ios-library-for-xamboni")
+        iosTempRepo.deleteOnExit()
+
+        boolean cloneRepo = false
+        if ( !iosTempRepo.exists() ) {
+            // cloned repo doesn't exist, so clone it
+            cloneRepo = true
+        } else {
+            // cloned repo exists, so check if it is the right version
+            def out = new ByteArrayOutputStream()
+            exec {
+                commandLine "git", "-C", "${iosTempRepo}", "tag", "--points-at", "HEAD"
+                standardOutput = out
+            }
+            def currentRepoHead = out.toString().replaceAll("\\s","")
+            if ( currentRepoHead == airshipProperties.iosVersion ) {
+                cloneRepo = false
+            } else {
+                iosTempRepo.deleteDir()
+                cloneRepo = true
+            }
+        }
+
+        // actually clone the repo, if necessary
+        if (cloneRepo) {
+            exec {
+                commandLine "git", "clone", "--branch", "${airshipProperties.iosVersion}", "https://github.com/urbanairship/ios-library", "${iosTempRepo}"
+            }
+        }
+
+        // SourceKitten
+        println "Running Sourcekitten"
+
+        // get path to the module's source
+        def moduleSourcePath = ""
+        if ( iosSdkModuleName.endsWith("Extension") ) {
+            moduleSourcePath="AirshipExtensions/${iosSdkModuleName}/Source"
+        } else {
+            moduleSourcePath="Airship/${iosSdkModuleName}/Source"
+        }
+
+        // get path to the module's header
+        def moduleHeader = ""
+        if ( iosSdkModuleName == "AirshipCore" ) {
+            moduleHeader = "${moduleSourcePath}/Common/${iosSdkModuleName}.h"
+        } else {
+            moduleHeader ="${moduleSourcePath}/${iosSdkModuleName}.h"
+        }
+
+        // get path to the SDK
+        def out = new ByteArrayOutputStream()
+        exec {
+            commandLine "xcrun", "--show-sdk-path", "--sdk", "iphonesimulator"
+            standardOutput = out
+        }
+        def sdkPath = out.toString().replaceAll("\\s","")
+
+        // arguments for the sourcekitten command
+        def skArgs = [ "doc",
+                       "--objc",
+                       moduleHeader,
+                       "--",
+                       "-x",
+                       "objective-c",
+                       "-isysroot", sdkPath,
+                       "-I", "${iosTempRepo}",
+                       "-I", "${iosTempRepo}/Airship/AirshipCore/Source/common",
+                       "-I", "${iosTempRepo}/Airship/AirshipCore/Source/ios",
+                       "-I", "${iosTempRepo}/${moduleSourcePath}",
+                       "-fmodules",
+                       "-D", "UA_USE_MODULE_IMPORT=0" ]
+
+        // manually add all folders in the module's Source directory, as I could not figure out how to get "-I ${iosTempRepo}/Airship/${MODULE_NAME}/Source/**"" to work
+        out.reset()
+        exec {
+            workingDir iosTempRepo
+            commandLine "find", moduleSourcePath, "-type", "d", "-mindepth", "1"
+            standardOutput = out
+        }
+        def moduleFolders = out.toString().split('\n')
+        moduleFolders.each {
+            skArgs.addAll("-I", "${iosTempRepo}/${it}");
+        }
+
+        def skOutput = "${iosTempRepo}/sourcekitten_parse.${iosSdkModuleName}.json"
+
+        // run SourceKitten
+        exec {
+            workingDir iosTempRepo
+            executable "sourcekitten"
+            args skArgs
+            standardOutput new FileOutputStream(skOutput)
+        }
+
+        // Xamboni
+        println "Running Xamboni"
+
+        def xamboniTempRepo = new File("${tmpDir}/xamboni")
+        xamboniTempRepo.deleteOnExit()
+
+        boolean cloneXamboniRepo = false
+        if ( !xamboniTempRepo.exists() ) {
+            cloneXamboniRepo = true
+        }
+
+        if (cloneXamboniRepo) {
+            exec {
+                commandLine "git", "clone", "git@github.com:urbanairship/xamboni.git", "${xamboniTempRepo}"
+            }
+        }
+
+        // run Xamboni
+        exec {
+            workingDir xamboniTempRepo
+            commandLine "python", "xamboni.py", "--module=${iosSdkModuleName}", "--sk_output=${skOutput}", "--output_dir=${projectDir}"
+        }
+    }
+}
