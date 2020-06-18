@@ -85,8 +85,8 @@ task createLocalFeed {
 }
 createLocalFeed.dependsOn('pkg')
 
-// Sync the version with the version declared in the airship.properties file.
-task syncVersion {
+// Sync the nuspec and shared assembly versions with the version declared in the airship.properties file.
+task syncRootVersion {
     doLast() {
 
         def androidNugetVersion = airshipProperties.androidVersion
@@ -125,8 +125,8 @@ task syncVersion {
 
         // handle urbanairship.android.core dependencies
         ant.replaceregexp(
-            match: "<dependency id=\"urbanairship.android.core\" version=\".*\"/>",
-            replace: "<dependency id=\"urbanairship.android.core\" version=\"$androidNugetVersion\"/>",
+            match: "<dependency id=\"urbanairship.android(.*)\" version=\".*\"/>",
+            replace: "<dependency id=\"urbanairship.android\\1\" version=\"$androidNugetVersion\"/>",
             flags: "g"
         ) {
             fileset(dir: "$projectDir", includes: "UrbanAirship*.nuspec")
@@ -167,6 +167,22 @@ task syncVersion {
         )
     }
 }
+
+// Sync subproject versions with the version declared in the airship.properties file.
+task syncVersion
+syncVersion.mustRunAfter('clean')
+syncVersion.dependsOn('syncRootVersion')
+syncVersion.dependsOn(':src:AirshipBindings.Android.ADM:syncVersion',
+    ':src:AirshipBindings.Android.ADM:syncVersion',
+    ':src:AirshipBindings.Android.Core:syncVersion',
+    ':src:AirshipBindings.Android.FCM:syncVersion',
+    ':src:AirshipBindings.Android.Preference:syncVersion',
+    ':src:AirshipBindings.Android.Accengage:syncVersion',
+    ':src:AirshipBindings.Android.MessageCenter:syncVersion',
+    ':src:AirshipBindings.Android.Automation:syncVersion',
+    ':src:AirshipBindings.Android.Location:syncVersion',
+    ':src:AirshipBindings.iOS.common:syncVersion',
+ )
 
 class PublishTask extends DefaultTask {
     @InputDirectory
@@ -220,12 +236,28 @@ publishToProduction.dependsOn('pkg')
 // Clean all
 task clean(type: Delete) {
     doLast() {
-        project.delete "$buildDir"
+        project.delete(files("$buildDir"))
     }
 }
 
+clean.dependsOn(':src:AirshipBindings.Android.ADM:clean',
+    ':src:AirshipBindings.Android.ADM:clean',
+    ':src:AirshipBindings.Android.Core:clean',
+    ':src:AirshipBindings.Android.FCM:clean',
+    ':src:AirshipBindings.Android.Preference:clean',
+    ':src:AirshipBindings.Android.Accengage:clean',
+    ':src:AirshipBindings.Android.MessageCenter:clean',
+    ':src:AirshipBindings.Android.Automation:clean',
+    ':src:AirshipBindings.Android.Location:clean',
+    ':src:AirshipBindings.iOS.common:clean',
+ )
+
 // Build the plugin
-task build
+task build() {
+    doFirst {
+        mkdir project.buildDir
+    }
+}
 build.mustRunAfter('clean')
 build.dependsOn('syncVersion')
 build.dependsOn(':docs:build',
@@ -246,8 +278,6 @@ build.dependsOn(':docs:build',
     ':src:AirshipBindings.iOS.Location:build',
     ':src:AirshipBindings.iOS.NotificationContentExtension:build',
     ':src:AirshipBindings.iOS.NotificationServiceExtension:build' )
-
-
 
 task getVersion() {
     doLast {
