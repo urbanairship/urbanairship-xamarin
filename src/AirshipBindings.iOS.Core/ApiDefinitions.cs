@@ -2821,7 +2821,7 @@ namespace UrbanAirship {
 
         // @property (readonly, getter=isInProduction, atomic) BOOL inProduction;
         [Export("inProduction")]
-        bool InProduction { [Bind("isInProduction")] get;}
+        bool InProduction { [Bind("isInProduction")] get; }
 
         // @property (readonly, atomic) NSDictionary *_Nonnull customConfig;
         [Export("customConfig")]
