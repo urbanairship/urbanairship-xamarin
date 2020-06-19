@@ -12,7 +12,6 @@ using UrbanAirship.MessageCenter;
 namespace UrbanAirship.NETStandard
 {
     public delegate void DeepLinkHandler(string deepLink);
-    public delegate void InboxHandler();
 
     public class Airship : Java.Lang.Object, IDeepLinkListener, IAirship, IInboxListener
     {

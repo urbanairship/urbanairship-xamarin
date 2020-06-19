@@ -38,7 +38,7 @@ namespace SampleApp
             Console.WriteLine("onDeepLinkReceived. Deep link = " + s);
         }
 
-        static void OnMessageCenterUpdated()
+        static void OnMessageCenterUpdated(object sender, EventArgs e)
         {
             Console.WriteLine("onMessageCenterUpdated");
         }

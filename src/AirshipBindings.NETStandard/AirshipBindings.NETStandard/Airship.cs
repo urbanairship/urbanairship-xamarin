@@ -8,7 +8,6 @@ using System.Collections.Generic;
 namespace UrbanAirship.NETStandard
 {
     public delegate void DeepLinkHandler(string deepLink);
-    public delegate void InboxHandler();
 
     public class Airship : IAirship
     {

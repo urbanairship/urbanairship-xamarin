@@ -11,7 +11,6 @@ using UrbanAirship.NETStandard.Attributes;
 namespace UrbanAirship.NETStandard
 {
     public delegate void DeepLinkHandler(string deepLink);
-    public delegate void InboxHandler();
 
     public class Airship : UADeepLinkDelegate, IAirship
     {
