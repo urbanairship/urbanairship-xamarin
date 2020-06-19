@@ -2,6 +2,7 @@
  Copyright Airship and Contributors
 */
 
+using System;
 using System.Collections.Generic;
 
 
@@ -69,5 +70,7 @@ namespace UrbanAirship.NETStandard
         Channel.TagGroupsEditor EditChannelTagGroups();
         
         Attributes.AttributeEditor EditAttributes();
+
+        event EventHandler OnMessageCenterUpdated;
     }
 }
