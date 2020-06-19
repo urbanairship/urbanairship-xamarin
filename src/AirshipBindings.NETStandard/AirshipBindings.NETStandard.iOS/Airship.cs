@@ -113,30 +113,28 @@ namespace UrbanAirship.NETStandard
             }
         }
 
-        private Boolean addedInboxListener = false;
         private EventHandler onMessageCenterUpdated;
         public event EventHandler OnMessageCenterUpdated
         {
             add
             {
-                onMessageCenterUpdated += value;
-                if (!addedInboxListener)
+                if (onMessageCenterUpdated == null)
                 {
                     NSNotificationCenter.DefaultCenter.AddObserver(aName: (NSString)"com.urbanairship.notification.message_list_updated", (notification) =>
                     {
                         Console.WriteLine("Listener Set");
                     });
-                    addedInboxListener = true;
+                    onMessageCenterUpdated += value;
                 }
+
             }
 
             remove
             {
-                onMessageCenterUpdated -= value;
-                if (onMessageCenterUpdated == null)
+                if (onMessageCenterUpdated != null)
                 {
                     NSNotificationCenter.DefaultCenter.RemoveObserver(this);
-                    addedInboxListener = false;
+                    onMessageCenterUpdated -= value;
                 }
             }
         }

@@ -113,27 +113,24 @@ namespace UrbanAirship.NETStandard
             }
         }
 
-        private Boolean addedInboxListener = false;
         private EventHandler onMessageCenterUpdated;
         public event EventHandler OnMessageCenterUpdated
         {
             add
             {
-                onMessageCenterUpdated += value;
-                if (!addedInboxListener)
+                if (onMessageCenterUpdated == null)
                 {
                     MessageCenterClass.Shared().Inbox.AddListener(this);
-                    addedInboxListener = true;
+                    onMessageCenterUpdated += value;
                 }
             }
 
             remove
             {
-                onMessageCenterUpdated -= value;
-                if (onMessageCenterUpdated == null)
+                if (onMessageCenterUpdated != null)
                 {
                     MessageCenterClass.Shared().Inbox.RemoveListener(this);
-                    addedInboxListener = false;
+                    onMessageCenterUpdated -= value;
                 }
             }
         }
