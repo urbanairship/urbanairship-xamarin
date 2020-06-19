@@ -373,8 +373,6 @@ namespace UrbanAirship.NETStandard
 
         public void OnInboxUpdated()
         {
-            var handler = onMessageCenterUpdated;
-            handler();
         }
     }
 }

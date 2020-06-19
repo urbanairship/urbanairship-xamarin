@@ -224,7 +224,7 @@ namespace UrbanAirship.NETStandard
         /// Add/remove the Inbox updated event listener.
         /// </summary>
         /// <value>The Inbox updated listener.</value>
-        public event InboxHandler OnMessageCenterUpdated
+        public event EventHandler OnMessageCenterUpdated
         {
             add
             {
