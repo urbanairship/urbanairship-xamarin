@@ -15,7 +15,24 @@ namespace UrbanAirship.NETStandard
     public class Airship : UADeepLinkDelegate, IAirship
     {
 
-        private static Airship sharedAirship = new Airship();
+        private static Airship sharedAirship;
+
+        private static Airship()
+        {
+            sharedAirship = new Airship();
+            sharedAirship.Init();
+        }
+
+        private void Init()
+        {
+            //Adding Inbox updated Listener
+            NSNotificationCenter.DefaultCenter.AddObserver(aName: (NSString)"com.urbanairship.notification.message_list_updated", (notification) =>
+            {
+                Console.WriteLine("Listener Set");
+            });
+        }
+
+        public event EventHandler onMessageCenterUpdated;
 
         public static Airship Instance
         {
@@ -108,32 +125,6 @@ namespace UrbanAirship.NETStandard
                 if (onDeepLinkReceived == null)
                 {
                     UAirship.Shared().WeakDeepLinkDelegate = null;
-                }
-            }
-        }
-
-        private EventHandler onMessageCenterUpdated;
-        public event EventHandler OnMessageCenterUpdated
-        {
-            add
-            {
-                if (onMessageCenterUpdated == null)
-                {
-                    NSNotificationCenter.DefaultCenter.AddObserver(aName: (NSString)"com.urbanairship.notification.message_list_updated", (notification) =>
-                    {
-                        Console.WriteLine("Listener Set");
-                    });
-                    onMessageCenterUpdated += value;
-                }
-
-            }
-
-            remove
-            {
-                if (onMessageCenterUpdated != null)
-                {
-                    NSNotificationCenter.DefaultCenter.RemoveObserver(this);
-                    onMessageCenterUpdated -= value;
                 }
             }
         }
