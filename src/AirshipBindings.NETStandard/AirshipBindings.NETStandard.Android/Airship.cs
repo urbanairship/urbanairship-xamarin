@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using Java.Util;
 using UrbanAirship.NETStandard.Attributes;
 using UrbanAirship.Actions;
-using UrbanAirship.Channel;
 using System;
 using UrbanAirship.MessageCenter;
 
@@ -16,7 +15,7 @@ namespace UrbanAirship.NETStandard
 
     public delegate void DeepLinkHandler(string deepLink);
 
-    public class Airship : Java.Lang.Object, IDeepLinkListener, IAirshipChannelListener, IAirship
+    public class Airship : Java.Lang.Object, IDeepLinkListener, UrbanAirship.Channel.IAirshipChannelListener, IAirship
     {
         private static Airship sharedAirship = new Airship();
 
