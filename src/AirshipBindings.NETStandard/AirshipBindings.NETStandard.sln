@@ -19,11 +19,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirshipBindings.iOS.Extende
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirshipBindings.iOS.MessageCenter", "..\AirshipBindings.iOS.MessageCenter\AirshipBindings.iOS.MessageCenter.csproj", "{AC22EEC5-DCA6-49D3-8B37-533B5565E2CF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirshipBindings.Android.MessageCenter", "..\AirshipBindings.Android.MessageCenter\AirshipBindings.Android.MessageCenter.csproj", "{986507BE-5C63-4E62-B41E-7BE3FA2DB7C3}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirshipBindings.Android.Automation", "..\AirshipBindings.Android.Automation\AirshipBindings.Android.Automation.csproj", "{7EC93B05-E253-4363-9A42-2A4942F6410C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirshipBindings.Android.Location", "..\AirshipBindings.Android.Location\AirshipBindings.Android.Location.csproj", "{C97471AA-4D4F-43DA-B7D6-6A66B92C529C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirshipBindings.Android.MessageCenter", "..\AirshipBindings.Android.MessageCenter\AirshipBindings.Android.MessageCenter.csproj", "{986507BE-5C63-4E62-B41E-7BE3FA2DB7C3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -67,10 +67,6 @@ Global
 		{AC22EEC5-DCA6-49D3-8B37-533B5565E2CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AC22EEC5-DCA6-49D3-8B37-533B5565E2CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AC22EEC5-DCA6-49D3-8B37-533B5565E2CF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{986507BE-5C63-4E62-B41E-7BE3FA2DB7C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{986507BE-5C63-4E62-B41E-7BE3FA2DB7C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{986507BE-5C63-4E62-B41E-7BE3FA2DB7C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{986507BE-5C63-4E62-B41E-7BE3FA2DB7C3}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7EC93B05-E253-4363-9A42-2A4942F6410C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{7EC93B05-E253-4363-9A42-2A4942F6410C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7EC93B05-E253-4363-9A42-2A4942F6410C}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -79,5 +75,9 @@ Global
 		{C97471AA-4D4F-43DA-B7D6-6A66B92C529C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C97471AA-4D4F-43DA-B7D6-6A66B92C529C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C97471AA-4D4F-43DA-B7D6-6A66B92C529C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{986507BE-5C63-4E62-B41E-7BE3FA2DB7C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{986507BE-5C63-4E62-B41E-7BE3FA2DB7C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{986507BE-5C63-4E62-B41E-7BE3FA2DB7C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{986507BE-5C63-4E62-B41E-7BE3FA2DB7C3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
