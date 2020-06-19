@@ -21,6 +21,12 @@
     <data name="enable_push" xml:space="preserve">
         <value>ENABLE PUSH</value>
     </data>
+    <data name="display_message_center" xml:space="preserve">
+        <value>DISPLAY MESSAGE CENTER</value>
+    </data>
+    <data name="display_message" xml:space="preserve">
+        <value>DISPLAY MESSAGE HELLO</value>
+    </data>
     <data name="push_settings_category_title" xml:space="preserve">
         <value>PUSH SETTINGS</value>
     </data>

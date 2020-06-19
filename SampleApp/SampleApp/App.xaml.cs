@@ -23,6 +23,7 @@ namespace SampleApp
         {
             Airship.Instance.OnDeepLinkReceived += OnDeepLinkReceived;
             Airship.Instance.OnMessageCenterUpdated += OnMessageCenterUpdated;
+            Airship.Instance.OnMessageCenterUpdated += OnMessageCenterUpdated;
         }
 
         protected override void OnSleep()

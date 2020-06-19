@@ -65,6 +65,18 @@ namespace SampleApp {
             }
         }
         
+        internal static string display_message_center {
+            get {
+                return ResourceManager.GetString("display_message_center", resourceCulture);
+            }
+        }
+        
+        internal static string display_message {
+            get {
+                return ResourceManager.GetString("display_message", resourceCulture);
+            }
+        }
+        
         internal static string push_settings_category_title {
             get {
                 return ResourceManager.GetString("push_settings_category_title", resourceCulture);

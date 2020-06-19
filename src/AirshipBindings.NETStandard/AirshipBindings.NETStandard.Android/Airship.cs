@@ -15,17 +15,21 @@ namespace UrbanAirship.NETStandard
 
     public class Airship : Java.Lang.Object, IDeepLinkListener, IAirship, IInboxListener
     {
-        private static Airship sharedAirship;
-
-        private static Airship()
+        private static Lazy<Airship> sharedAirship = new Lazy<Airship>(() =>
         {
-            sharedAirship = new Airship();
-            sharedAirship.Init();
-        }
+            Airship instance = new Airship();
+            instance.Init();
+            return instance;
+        });
 
         private void Init()
         {
             //Adding Inbox updated listener
+            EventHandler handler = OnMessageCenterUpdated;
+            if (handler != null)
+            {
+                handler(this, EventArgs.Empty);
+            }
             MessageCenterClass.Shared().Inbox.AddListener(this);
         }
 
@@ -35,7 +39,7 @@ namespace UrbanAirship.NETStandard
         {
             get
             {
-                return sharedAirship;
+                return sharedAirship.Value;
             }
         }
 
