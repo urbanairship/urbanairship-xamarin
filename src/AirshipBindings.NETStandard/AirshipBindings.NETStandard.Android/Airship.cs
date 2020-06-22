@@ -25,11 +25,6 @@ namespace UrbanAirship.NETStandard
         private void Init()
         {
             //Adding Inbox updated listener
-            EventHandler handler = OnMessageCenterUpdated;
-            if (handler != null)
-            {
-                handler(this, EventArgs.Empty);
-            }
             MessageCenterClass.Shared().Inbox.AddListener(this);
         }
 
@@ -403,6 +398,12 @@ namespace UrbanAirship.NETStandard
 
         public void OnInboxUpdated()
         {
+            //Adding Inbox updated listener
+            EventHandler handler = OnMessageCenterUpdated;
+            if (handler != null)
+            {
+                handler(this, EventArgs.Empty);
+            }
         }
     }
 }
