@@ -2756,7 +2756,7 @@ namespace UrbanAirship {
     {
         // @property (readonly, getter=isAutomaticSetupEnabled, atomic) BOOL automaticSetupEnabled;
         [Export("automaticSetupEnabled")]
-        bool AutomaticSetupEnabled { get; }
+        bool AutomaticSetupEnabled { [Bind("isAutomaticSetupEnabled")] get; }
 
         // @property (readonly, atomic) NSArray<NSString *> *_Nonnull whitelist;
         [Export("whitelist")]
@@ -2764,7 +2764,7 @@ namespace UrbanAirship {
 
         // @property (readonly, getter=isAnalyticsEnabled, atomic) BOOL analyticsEnabled;
         [Export("analyticsEnabled")]
-        bool AnalyticsEnabled { get; }
+        bool AnalyticsEnabled { [Bind("isAnalyticsEnabled")] get; }
 
         // @property (readonly, atomic) NSString *_Nonnull messageCenterStyleConfig;
         [Export("messageCenterStyleConfig")]
@@ -2784,15 +2784,15 @@ namespace UrbanAirship {
 
         // @property (readonly, getter=isChannelCaptureEnabled, atomic) BOOL channelCaptureEnabled;
         [Export("channelCaptureEnabled")]
-        bool ChannelCaptureEnabled { get; }
+        bool ChannelCaptureEnabled { [Bind("isChannelCaptureEnabled")] get; }
 
         // @property (readonly, getter=isOpenURLWhitelistingEnabled, atomic) BOOL openURLWhitelistingEnabled;
         [Export("openURLWhitelistingEnabled")]
-        bool OpenURLWhitelistingEnabled { get; }
+        bool OpenURLWhitelistingEnabled { [Bind("isOpenURLWhitelistingEnabled")] get; }
 
         // @property (readonly, getter=isChannelCreationDelayEnabled, atomic) BOOL channelCreationDelayEnabled;
         [Export("channelCreationDelayEnabled")]
-        bool ChannelCreationDelayEnabled { get; }
+        bool ChannelCreationDelayEnabled { [Bind("isChannelCreationDelayEnabled")] get; }
 
         // @property (readonly, atomic) BOOL requestAuthorizationToUseNotifications;
         [Export("requestAuthorizationToUseNotifications")]
@@ -2800,7 +2800,7 @@ namespace UrbanAirship {
 
         // @property (readonly, getter=isDataCollectionOptInEnabled, atomic) BOOL dataCollectionOptInEnabled;
         [Export("dataCollectionOptInEnabled")]
-        bool DataCollectionOptInEnabled { get; }
+        bool DataCollectionOptInEnabled { [Bind("isDataCollectionOptInEnabled")] get; }
 
         // @property (readonly, atomic, nonnull) NSString *appKey;
         [Export("appKey")]
@@ -2816,7 +2816,7 @@ namespace UrbanAirship {
 
         // @property (readonly, getter=isInProduction, atomic) BOOL inProduction;
         [Export("inProduction")]
-        bool InProduction { get; }
+        bool InProduction { [Bind("isInProduction")] get; }
 
         // @property (readonly, atomic) NSDictionary *_Nonnull customConfig;
         [Export("customConfig")]
