@@ -10,8 +10,6 @@
             </StackLayout>
             <Button Text="{x:Static resources:AppResources.enable_push}" Clicked="OnButtonClicked" x:Name="enablePushButton"/>
             <Button Text="{x:Static resources:AppResources.display_message_center}" Clicked="MessageCenterBtnClicked" x:Name="displayMessageCenterButton"/>
-            <Button Text="{x:Static resources:AppResources.display_message}" Clicked="DisplayMessageBtnClicked" x:Name="displayMessageButton"/>
-
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

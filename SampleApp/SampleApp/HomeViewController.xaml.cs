@@ -52,11 +52,6 @@ namespace SampleApp
          
         }
 
-        void DisplayMessageBtnClicked(object sender, EventArgs e)
-        {
-            Airship.Instance.DisplayMessage("-QmRithfSWagBusjmaRcEw");
-        }
-
         void refreshView()
         {
             if (Airship.Instance.UserNotificationsEnabled &&  Airship.Instance.ChannelId != null)
