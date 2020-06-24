@@ -143,14 +143,14 @@ task generateIOSBindings {
             skArgs.addAll("-I", "${iosTempRepo}/${it}");
         }
 
-        def skOutput = "${iosTempRepo}/sourcekitten_parse.${iosSdkModuleName}.json"
+        def skParse = "${iosTempRepo}/sourcekitten_parse.${iosSdkModuleName}.json"
 
         // run SourceKitten
         exec {
             workingDir iosTempRepo
             executable "sourcekitten"
             args skArgs
-            standardOutput new FileOutputStream(skOutput)
+            standardOutput new FileOutputStream(skParse)
         }
 
         // Xamboni
@@ -173,7 +173,7 @@ task generateIOSBindings {
         // run Xamboni
         exec {
             workingDir xamboniTempRepo
-            commandLine "python", "xamboni.py", "--module=${iosSdkModuleName}", "--sk_output=${skOutput}", "--output_dir=${projectDir}"
+            commandLine "python", "xamboni.py", "--module=${iosSdkModuleName}", "--sourcekitten_parse=${skParse}", "--output_dir=${projectDir}"
         }
     }
 }
