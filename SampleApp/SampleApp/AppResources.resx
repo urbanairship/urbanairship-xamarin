@@ -18,6 +18,9 @@
     <data name="settings_title" xml:space="preserve">
         <value>SETTINGS</value>
     </data>
+    <data name="message_center_title" xml:space="preserve">
+        <value>MESSAGE CENTER</value>
+    </data>
     <data name="enable_push" xml:space="preserve">
         <value>ENABLE PUSH</value>
     </data>
