@@ -10,22 +10,37 @@ using System;
 using UrbanAirship.MessageCenter;
 
 namespace UrbanAirship.NETStandard
-{
-    public delegate void ChannelHandler(string channelId);
-
+{ 
     public delegate void DeepLinkHandler(string deepLink);
 
-    public class Airship : Java.Lang.Object, IDeepLinkListener, UrbanAirship.Channel.IAirshipChannelListener, IAirship
+    public class Airship : Java.Lang.Object, IDeepLinkListener, IAirship, UrbanAirship.Channel.IAirshipChannelListener
     {
-        private static Airship sharedAirship = new Airship();
+
+        public delegate void ChannelHandler(string channelId);
+
+        private static Lazy<Airship> sharedAirship = new Lazy<Airship>(() =>
+        {
+            Airship instance = new Airship();
+            instance.Init();
+            return instance;
+        });
+
+        private void Init()
+        {
+            UAirship.Shared().Channel.AddChannelListener(this);
+        }
 
         public static Airship Instance
         {
             get
             {
-                return sharedAirship;
+                return sharedAirship.Value;
             }
         }
+
+        public event ChannelHandler onChannelCreation;
+
+        public event ChannelHandler onChannelUpdate;
 
         public bool UserNotificationsEnabled
         {
@@ -92,48 +107,6 @@ namespace UrbanAirship.NETStandard
             set
             {
                 UAirship.Shared().NamedUser.Id = value;
-            }
-        }
-
-        private ChannelHandler onChannelCreation;
-        public event ChannelHandler OnChannelCreation
-        {
-            add
-            {
-                Console.WriteLine("onChannelCreationAdd");
-                onChannelCreation += value;
-                UAirship.Shared().Channel.AddChannelListener(this);
-            }
-
-            remove
-            {
-                Console.WriteLine("onChannelCreationRemove");
-                onChannelCreation -= value;
-                if (onChannelCreation == null)
-                {
-                    UAirship.Shared().Channel.RemoveChannelListener(this);
-                }
-            }
-        }
-
-        private ChannelHandler onChannelUpdate;
-        public event ChannelHandler OnChannelUpdate
-        {
-            add
-            {
-                Console.WriteLine("onChannelUpdateAdd");
-                onChannelUpdate += value;
-                UAirship.Shared().Channel.AddChannelListener(this);
-            }
-
-            remove
-            {
-                Console.WriteLine("onChannelUpdatedRemove");
-                onChannelUpdate -= value;
-                if (onChannelUpdate == null)
-                {
-                    UAirship.Shared().Channel.RemoveChannelListener(this);
-                }
             }
         }
 
