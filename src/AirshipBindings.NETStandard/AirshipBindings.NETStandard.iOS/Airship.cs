@@ -14,13 +14,26 @@ namespace UrbanAirship.NETStandard
 
     public class Airship : UADeepLinkDelegate, IAirship
     {
-        private static Airship sharedAirship = new Airship();
+        private static Lazy<Airship> sharedAirship = new Lazy<Airship>(() =>
+        {
+            Airship instance = new Airship();
+            instance.Init();
+            return instance;
+        });
+
+        private void Init()
+        {
+            NSNotificationCenter.DefaultCenter.AddObserver(aName: (NSString)"com.urbanairship.channel.channel_created", (channelId) =>
+            {
+                Console.WriteLine(channelId);
+            });
+        }
 
         public static Airship Instance
         {
             get
             {
-                return sharedAirship;
+                return sharedAirship.Value;
             }
         }
 
@@ -90,22 +103,6 @@ namespace UrbanAirship.NETStandard
             {
                 UAirship.NamedUser().Identifier = value;
             }
-        }
-
-        public void OnChannelCreation()
-        {
-            NSNotificationCenter.DefaultCenter.AddObserver(new NSString("com.urbanairship.channel.channel_created"), (channelId) =>
-            {
-                Console.WriteLine(channelId);
-            });
-        }
-
-        public void OnChannelUpdated()
-        {
-            NSNotificationCenter.DefaultCenter.AddObserver(new NSString("com.urbanairship.channel.channel_updated"), (channelId) =>
-            {
-                Console.WriteLine(channelId);
-            });
         }
 
         private DeepLinkHandler onDeepLinkReceived;
