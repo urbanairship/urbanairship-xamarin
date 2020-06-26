@@ -99,6 +99,15 @@ task processIOSSDK {
 
         def skParse = "${cloneIOSSDK.iosRepoPath}/sourcekitten_parse.${iosSdkModuleName}.json"
 
+        try {
+            exec {
+                executable "which"
+                args "sourcekitten"
+            }
+        } catch(Exception e) {
+            throw new GradleException("ERROR: You must have sourcekitten installed. Run 'brew install sourcekitten'")
+        }
+
         // run SourceKitten
         exec {
             workingDir cloneIOSSDK.iosRepoPath
