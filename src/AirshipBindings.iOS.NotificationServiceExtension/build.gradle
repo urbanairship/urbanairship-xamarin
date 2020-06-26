@@ -3,7 +3,7 @@ ext {
     iosSdkModuleName = 'AirshipNotificationServiceExtension'
 }
 
-apply from: "../../common-build.gradle"
+apply from: "../../ios-common-build.gradle"
 
 task clean(type: Delete) {
     doLast() {

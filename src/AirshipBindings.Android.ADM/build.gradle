@@ -3,7 +3,7 @@ ext {
     androidSdkModuleName = "urbanairship-adm"
 }
 
-apply from: "../../common-build.gradle"
+apply from: "../../android-common-build.gradle"
 
 task syncVersion dependsOn syncVersionAndroid
 
