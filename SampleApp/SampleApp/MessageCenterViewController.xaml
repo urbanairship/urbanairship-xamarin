@@ -1,7 +1,16 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage
+    Title="{x:Static resources:AppResources.message_center_title}"
+    xmlns:resources="clr-namespace:SampleApp"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="SampleApp.MessageCenterViewController">
     <ContentPage.Content>
+        <ListView x:Name="listView" ItemSelected="listView_ItemSelected">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ImageCell Text="{Binding Title}" Detail="{Binding SentDate, StringFormat='{0:MMMM dd, yyyy}'}" ImageSource=""/>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </ContentPage.Content>
 </ContentPage>
