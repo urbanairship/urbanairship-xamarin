@@ -126,8 +126,6 @@ task generateIOSBindings {
         println("Updating bindings for ${iosSdkModuleName} module.")
 
         // Xamboni
-        println "Running Xamboni"
-
         def tmpDir = System.getProperty("java.io.tmpdir")
         def xamboniTempRepo = new File("${tmpDir}/xamboni")
         xamboniTempRepo.deleteOnExit()
@@ -138,12 +136,16 @@ task generateIOSBindings {
         }
 
         if (cloneXamboniRepo) {
+            println("Cloning Xamboni repo")
             exec {
                 commandLine "git", "clone", "git@github.com:urbanairship/xamboni.git", "${xamboniTempRepo}"
             }
+        } else {
+            println("Using existing clone of Xamboni repo")
         }
 
-        // run Xamboni
+        println "Running Xamboni"
+
         exec {
             workingDir xamboniTempRepo
             commandLine "python", "xamboni.py", "--module=${iosSdkModuleName}", "--sourcekitten_parse=${processIOSSDK.skParse}", "--output_dir=${projectDir}"
