@@ -235,10 +235,10 @@ namespace UrbanAirship.NETStandard
         /// <summary>
         /// Add/remove the channel creation and update event listener.
         /// </summary>
-        /// <value>The deep link event listener.</value>
+        /// <value>The channel event listener.</value>
         public delegate void ChannelHandler(string channelId);
 
-        public event ChannelHandler OnChannelCreation
+        public event EventHandler OnChannelCreation
         {
             add
             {
@@ -251,7 +251,7 @@ namespace UrbanAirship.NETStandard
             }
         }
 
-        public event ChannelHandler OnChannelUpdate
+        public event EventHandler OnChannelUpdate
         {
             add
             {

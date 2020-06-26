@@ -2,6 +2,7 @@
  Copyright Airship and Contributors
 */
 
+using System;
 using System.Collections.Generic;
 
 
@@ -73,5 +74,9 @@ namespace UrbanAirship.NETStandard
         Attributes.AttributeEditor EditChannelAttributes();
 
         Attributes.AttributeEditor EditNamedUserAttributes();
+
+        event EventHandler OnChannelCreation;
+
+        event EventHandler OnChannelUpdate;
     }
 }

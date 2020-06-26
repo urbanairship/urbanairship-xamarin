@@ -27,7 +27,16 @@ namespace UrbanAirship.NETStandard
             {
                 Console.WriteLine(channelId);
             });
+
+            NSNotificationCenter.DefaultCenter.AddObserver(aName: (NSString)"com.urbanairship.channel.channel_updated", (channelId) =>
+            {
+                Console.WriteLine(channelId);
+            });
         }
+
+        public event EventHandler OnChannelCreation;
+
+        public event EventHandler OnChannelUpdate;
 
         public static Airship Instance
         {

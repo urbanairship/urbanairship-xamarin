@@ -38,9 +38,9 @@ namespace UrbanAirship.NETStandard
             }
         }
 
-        public event ChannelHandler onChannelCreation;
+        public event EventHandler<ChannelEventArgs> OnChannelCreation;
 
-        public event ChannelHandler onChannelUpdate;
+        public event EventHandler<ChannelEventArgs> OnChannelUpdate;
 
         public bool UserNotificationsEnabled
         {
@@ -397,14 +397,24 @@ namespace UrbanAirship.NETStandard
 
         public void OnChannelCreated(string channelId)
         {
-            var handler = onChannelCreation;
-            handler(channelId);
+            OnChannelCreation?.Invoke(this, new ChannelEventArgs(channelId));
         }
 
         public void OnChannelUpdated(string channelId)
         {
-            var handler = onChannelUpdate;
-            handler(channelId);
+            OnChannelUpdate?.Invoke(this, new ChannelEventArgs(channelId));
         }
+    }
+
+    public class ChannelEventArgs: EventArgs
+    {
+
+        public string ChannelId { get; private set; }
+
+        public ChannelEventArgs(string channelId)
+        {
+            ChannelId = channelId;
+        }
+
     }
 }
