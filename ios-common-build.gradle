@@ -28,12 +28,12 @@ task cloneIOSSDK {
 
         // actually clone the repo, if necessary
         if (cloneRepo) {
-            println("Cloning ios-library")
+            println("Cloning ios-library to ${iosTempRepo}")
             exec {
                 commandLine "git", "clone", "-c", "advice.detachedHead=false", "--branch", "${airshipProperties.iosVersion}", "https://github.com/urbanairship/ios-library", "${iosTempRepo}"
             }
         } else {
-            println("Using existing clone of ios-library")
+            println("Using existing clone of ios-library @ ${iosTempRepo}")
         }
 
         cloneIOSSDK.ext.iosRepoPath = iosTempRepo
@@ -136,12 +136,12 @@ task generateIOSBindings {
         }
 
         if (cloneXamboniRepo) {
-            println("Cloning Xamboni repo")
+            println("Cloning Xamboni repo to ${xamboniTempRepo}")
             exec {
                 commandLine "git", "clone", "git@github.com:urbanairship/xamboni.git", "${xamboniTempRepo}"
             }
         } else {
-            println("Using existing clone of Xamboni repo")
+            println("Using existing clone of Xamboni repo @ ${xamboniTempRepo}")
         }
 
         println "Running Xamboni"
@@ -152,3 +152,17 @@ task generateIOSBindings {
         }
     }
 }
+
+generateIOSBindings.mustRunAfter('clean')
+
+task cleanClonedRepos(type: Delete) {
+    doLast() {
+        def tmpDir = System.getProperty("java.io.tmpdir")
+        def iosTempRepo = new File("${tmpDir}/ios-library-for-xamboni")
+        def xamboniTempRepo = new File("${tmpDir}/xamboni")
+
+        project.delete(files(iosTempRepo, xamboniTempRepo))
+    }
+}
+
+rootProject.clean.dependsOn cleanClonedRepos
