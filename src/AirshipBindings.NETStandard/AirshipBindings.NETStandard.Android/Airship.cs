@@ -93,8 +93,8 @@ namespace UrbanAirship.NETStandard
             }
         }
 
-        private DeepLinkHandler onDeepLinkReceived;
-        public event DeepLinkHandler OnDeepLinkReceived
+        private EventHandler<DeepLinkEventArgs> onDeepLinkReceived;
+        public event EventHandler<DeepLinkEventArgs> OnDeepLinkReceived
         {
             add
             {
@@ -373,9 +373,11 @@ namespace UrbanAirship.NETStandard
 
         public bool OnDeepLink(string deepLink)
         {
-            var handler = onDeepLinkReceived;
-            handler(deepLink);
-            return true;
+            if (onDeepLinkReceived != null) {
+                onDeepLinkReceived(this, new DeepLinkEventArgs(deepLink));
+                return true;
+            }
+            return false;
         }
     }
 }
