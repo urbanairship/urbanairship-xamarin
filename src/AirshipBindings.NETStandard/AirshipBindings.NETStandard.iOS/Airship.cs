@@ -232,8 +232,6 @@ namespace UrbanAirship.NETStandard
             UAMessageCenter.Shared().DisplayMessage(messageId);
         }
 
-       
-
         public int MessageCenterUnreadCount
         {
             get

@@ -49,7 +49,6 @@ namespace SampleApp
         void MessageCenterBtnClicked(object sender, EventArgs e)
         {
             Airship.Instance.DisplayMessageCenter();
-         
         }
 
         void refreshView()
