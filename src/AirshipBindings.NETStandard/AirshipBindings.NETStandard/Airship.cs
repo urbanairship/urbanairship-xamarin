@@ -217,9 +217,7 @@ namespace UrbanAirship.NETStandard
         /// Add/remove the deep link event listener.
         /// </summary>
         /// <value>The deep link event listener.</value>
-        public delegate void DeepLinkHandler(string deepLink);
-
-        public event DeepLinkHandler OnDeepLinkReceived
+        public event EventHandler<DeepLinkEventArgs> OnDeepLinkReceived
         {
             add
             {
