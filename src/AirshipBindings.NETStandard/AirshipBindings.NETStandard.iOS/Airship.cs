@@ -10,8 +10,6 @@ using UrbanAirship.NETStandard.Attributes;
 
 namespace UrbanAirship.NETStandard
 {
-    public delegate void DeepLinkHandler(string deepLink);
-
     public class Airship : UADeepLinkDelegate, IAirship
     {
 
@@ -113,8 +111,8 @@ namespace UrbanAirship.NETStandard
             }
         }
 
-        private DeepLinkHandler onDeepLinkReceived;
-        public event DeepLinkHandler OnDeepLinkReceived
+        private EventHandler<DeepLinkEventArgs> onDeepLinkReceived;
+        public event EventHandler<DeepLinkEventArgs> OnDeepLinkReceived
         {
             add
             {
@@ -429,8 +427,7 @@ namespace UrbanAirship.NETStandard
 
         override public void ReceivedDeepLink(NSUrl url, Action completionHandler)
         {
-            var handler = onDeepLinkReceived;
-            handler(url.AbsoluteString);
+            onDeepLinkReceived?.Invoke(this, new DeepLinkEventArgs(url.AbsoluteString));
             completionHandler();
         }
     }
