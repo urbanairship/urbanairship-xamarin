@@ -262,7 +262,6 @@ namespace UrbanAirship.NETStandard
         /// Add/remove the channel creation and update event listener.
         /// </summary>
         /// <value>The channel event listener.</value>
-        public delegate void ChannelHandler(string channelId);
 
         public event EventHandler<ChannelEventArgs> OnChannelCreation
         {

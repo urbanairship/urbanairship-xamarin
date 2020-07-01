@@ -16,8 +16,6 @@ namespace UrbanAirship.NETStandard
     public class Airship : Java.Lang.Object, IDeepLinkListener, IAirship, IInboxListener, UrbanAirship.Channel.IAirshipChannelListener
     {
 
-        public delegate void ChannelHandler(string channelId);
-
         private static Lazy<Airship> sharedAirship = new Lazy<Airship>(() =>
         {
             Airship instance = new Airship();
