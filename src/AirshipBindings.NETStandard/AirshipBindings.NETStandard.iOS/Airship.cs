@@ -34,9 +34,9 @@ namespace UrbanAirship.NETStandard
             });
         }
 
-        public event EventHandler OnChannelCreation;
+        public event EventHandler<ChannelEventArgs> OnChannelCreation;
 
-        public event EventHandler OnChannelUpdate;
+        public event EventHandler<ChannelEventArgs> OnChannelUpdate;
 
         public static Airship Instance
         {

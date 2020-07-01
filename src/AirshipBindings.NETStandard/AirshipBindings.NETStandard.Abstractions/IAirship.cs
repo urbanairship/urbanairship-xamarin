@@ -75,8 +75,20 @@ namespace UrbanAirship.NETStandard
 
         Attributes.AttributeEditor EditNamedUserAttributes();
 
-        event EventHandler OnChannelCreation;
+        event EventHandler<ChannelEventArgs> OnChannelCreation;
 
-        event EventHandler OnChannelUpdate;
+        event EventHandler<ChannelEventArgs> OnChannelUpdate;
+    }
+
+    public class ChannelEventArgs : EventArgs
+    {
+
+        public string ChannelId { get; private set; }
+
+        public ChannelEventArgs(string channelId)
+        {
+            ChannelId = channelId;
+        }
+
     }
 }

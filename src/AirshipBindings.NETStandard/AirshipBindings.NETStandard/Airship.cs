@@ -238,7 +238,7 @@ namespace UrbanAirship.NETStandard
         /// <value>The channel event listener.</value>
         public delegate void ChannelHandler(string channelId);
 
-        public event EventHandler OnChannelCreation
+        public event EventHandler<ChannelEventArgs> OnChannelCreation
         {
             add
             {
@@ -251,7 +251,7 @@ namespace UrbanAirship.NETStandard
             }
         }
 
-        public event EventHandler OnChannelUpdate
+        public event EventHandler<ChannelEventArgs> OnChannelUpdate
         {
             add
             {

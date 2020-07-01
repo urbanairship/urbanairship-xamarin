@@ -405,16 +405,4 @@ namespace UrbanAirship.NETStandard
             OnChannelUpdate?.Invoke(this, new ChannelEventArgs(channelId));
         }
     }
-
-    public class ChannelEventArgs: EventArgs
-    {
-
-        public string ChannelId { get; private set; }
-
-        public ChannelEventArgs(string channelId)
-        {
-            ChannelId = channelId;
-        }
-
-    }
 }
