@@ -33,3 +33,49 @@ task build {
 }
 
 build.dependsOn('carthageUpdate')
+
+task carthageCheckout {
+    dependsOn 'syncVersion'
+    doLast() {
+        exec {
+            workingDir "$rootDir"
+            commandLine "carthage", "checkout"
+        }
+    }
+}
+
+task checkoutXamboni {
+    doLast() {
+        // Xamboni
+        def tmpDir = System.getProperty("java.io.tmpdir")
+        def xamboniTempRepo = new File("${tmpDir}/xamboni")
+        xamboniTempRepo.deleteOnExit()
+
+        boolean cloneXamboniRepo = false
+        if ( !xamboniTempRepo.exists() ) {
+            cloneXamboniRepo = true
+        }
+
+        if (cloneXamboniRepo) {
+            println("Cloning Xamboni repo to ${xamboniTempRepo}")
+            exec {
+                commandLine "git", "clone", "git@github.com:urbanairship/xamboni.git", "${xamboniTempRepo}"
+            }
+        } else {
+            println("Using existing clone of Xamboni repo @ ${xamboniTempRepo}")
+        }
+
+        checkoutXamboni.ext.repoPath = xamboniTempRepo
+    }
+}
+
+task cleanXamboniRepo(type: Delete) {
+    doLast() {
+        def tmpDir = System.getProperty("java.io.tmpdir")
+        def xamboniTempRepo = new File("${tmpDir}/xamboni")
+
+        project.delete(files(xamboniTempRepo))
+    }
+}
+
+rootProject.clean.dependsOn(project.cleanXamboniRepo)

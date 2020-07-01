@@ -3,7 +3,7 @@ ext {
     androidSdkModuleName = "urbanairship-accengage"
 }
 
-apply from: "../../android-common-build.gradle"
+apply from: "../android-common-build.gradle"
 
 task syncVersion dependsOn syncVersionAndroid
 
