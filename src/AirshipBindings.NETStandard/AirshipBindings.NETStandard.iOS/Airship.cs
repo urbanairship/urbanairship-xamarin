@@ -22,14 +22,16 @@ namespace UrbanAirship.NETStandard
 
         private void Init()
         {
-            NSNotificationCenter.DefaultCenter.AddObserver(aName: (NSString)"com.urbanairship.channel.channel_created", (channelId) =>
+            NSNotificationCenter.DefaultCenter.AddObserver(aName: (NSString)"com.urbanairship.channel.channel_created", (NSNotification notification) =>
             {
-                Console.WriteLine(channelId);
+                string channelID = notification.UserInfo["com.urbanairship.channel.identifier"].ToString() ;
+                OnChannelCreation?.Invoke(this, new ChannelEventArgs(channelID));
             });
 
-            NSNotificationCenter.DefaultCenter.AddObserver(aName: (NSString)"com.urbanairship.channel.channel_updated", (channelId) =>
+            NSNotificationCenter.DefaultCenter.AddObserver(aName: (NSString)"com.urbanairship.channel.channel_updated", (NSNotification notification) =>
             {
-                Console.WriteLine(channelId);
+                string channelID = notification.UserInfo["com.urbanairship.channel.identifier"].ToString();
+                OnChannelCreation?.Invoke(this, new ChannelEventArgs(channelID));
             });
 
             //Adding Inbox updated Listener
