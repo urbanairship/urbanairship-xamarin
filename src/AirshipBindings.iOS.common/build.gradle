@@ -49,20 +49,13 @@ task checkoutXamboni {
         // Xamboni
         def tmpDir = System.getProperty("java.io.tmpdir")
         def xamboniTempRepo = new File("${tmpDir}/xamboni")
+        project.delete(files(xamboniTempRepo))
+
         xamboniTempRepo.deleteOnExit()
 
-        boolean cloneXamboniRepo = false
-        if ( !xamboniTempRepo.exists() ) {
-            cloneXamboniRepo = true
-        }
-
-        if (cloneXamboniRepo) {
-            println("Cloning Xamboni repo to ${xamboniTempRepo}")
-            exec {
-                commandLine "git", "clone", "git@github.com:urbanairship/xamboni.git", "${xamboniTempRepo}"
-            }
-        } else {
-            println("Using existing clone of Xamboni repo @ ${xamboniTempRepo}")
+        println("Cloning Xamboni repo")
+        exec {
+            commandLine "git", "clone", "git@github.com:urbanairship/xamboni.git", "${xamboniTempRepo}"
         }
 
         checkoutXamboni.ext.repoPath = xamboniTempRepo
