@@ -13,15 +13,28 @@ namespace UrbanAirship.NETStandard
 {
     public delegate void DeepLinkHandler(string deepLink);
 
-    public class Airship : Java.Lang.Object, IDeepLinkListener, IAirship
+    public class Airship : Java.Lang.Object, IDeepLinkListener, IAirship, IInboxListener
     {
-        private static Airship sharedAirship = new Airship();
+        private static Lazy<Airship> sharedAirship = new Lazy<Airship>(() =>
+        {
+            Airship instance = new Airship();
+            instance.Init();
+            return instance;
+        });
+
+        private void Init()
+        {
+            //Adding Inbox updated listener
+            MessageCenterClass.Shared().Inbox.AddListener(this);
+        }
+
+        public event EventHandler OnMessageCenterUpdated;
 
         public static Airship Instance
         {
             get
             {
-                return sharedAirship;
+                return sharedAirship.Value;
             }
         }
 
@@ -191,6 +204,11 @@ namespace UrbanAirship.NETStandard
         public void DisplayMessageCenter()
         {
             MessageCenterClass.Shared().ShowMessageCenter();
+        }
+
+        public void DisplayMessage(string messageId)
+        {
+            MessageCenterClass.Shared().ShowMessageCenter(messageId);
         }
 
         public int MessageCenterUnreadCount
@@ -378,6 +396,12 @@ namespace UrbanAirship.NETStandard
                 return true;
             }
             return false;
+        }
+
+        public void OnInboxUpdated()
+        {
+            //Adding Inbox updated listener
+            OnMessageCenterUpdated?.Invoke(this, EventArgs.Empty);
         }
     }
 }

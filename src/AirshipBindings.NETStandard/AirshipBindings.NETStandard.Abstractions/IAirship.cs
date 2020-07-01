@@ -82,6 +82,8 @@ namespace UrbanAirship.NETStandard
         
         Attributes.AttributeEditor EditAttributes();
 
+        event EventHandler OnMessageCenterUpdated;
+      
         Attributes.AttributeEditor EditChannelAttributes();
 
         Attributes.AttributeEditor EditNamedUserAttributes();

@@ -12,13 +12,34 @@ namespace UrbanAirship.NETStandard
 {
     public class Airship : UADeepLinkDelegate, IAirship
     {
-        private static Airship sharedAirship = new Airship();
+
+        private static Lazy<Airship> sharedAirship = new Lazy<Airship>(() =>
+        {
+            Airship instance = new Airship();
+            instance.Init();
+            return instance;
+        });
+
+        private void Init()
+        {
+            //Adding Inbox updated Listener
+            NSNotificationCenter.DefaultCenter.AddObserver(aName: (NSString)"com.urbanairship.notification.message_list_updated", (notification) =>
+            {
+                EventHandler handler = OnMessageCenterUpdated;
+                if (handler != null)
+                {
+                    handler(this, EventArgs.Empty);
+                }
+            });
+        }
+
+        public event EventHandler OnMessageCenterUpdated;
 
         public static Airship Instance
         {
             get
             {
-                return sharedAirship;
+                return sharedAirship.Value;
             }
         }
 
@@ -202,6 +223,11 @@ namespace UrbanAirship.NETStandard
         public void DisplayMessageCenter()
         {
             UAMessageCenter.Shared().Display();
+        }
+
+        public void DisplayMessage(string messageId)
+        {
+            UAMessageCenter.Shared().DisplayMessage(messageId);
         }
 
         public int MessageCenterUnreadCount
