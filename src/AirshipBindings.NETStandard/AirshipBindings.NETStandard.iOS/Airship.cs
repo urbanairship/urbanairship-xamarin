@@ -10,10 +10,9 @@ using UrbanAirship.NETStandard.Attributes;
 
 namespace UrbanAirship.NETStandard
 {
-    public delegate void DeepLinkHandler(string deepLink);
-
     public class Airship : UADeepLinkDelegate, IAirship
     {
+        
         private static Lazy<Airship> sharedAirship = new Lazy<Airship>(() =>
         {
             Airship instance = new Airship();
@@ -32,11 +31,22 @@ namespace UrbanAirship.NETStandard
             {
                 Console.WriteLine(channelId);
             });
+            //Adding Inbox updated Listener
+            NSNotificationCenter.DefaultCenter.AddObserver(aName: (NSString)"com.urbanairship.notification.message_list_updated", (notification) =>
+            {
+                EventHandler handler = OnMessageCenterUpdated;
+                if (handler != null)
+                {
+                    handler(this, EventArgs.Empty);
+                }
+            });
         }
 
         public event EventHandler<ChannelEventArgs> OnChannelCreation;
 
         public event EventHandler<ChannelEventArgs> OnChannelUpdate;
+
+        public event EventHandler OnMessageCenterUpdated;
 
         public static Airship Instance
         {
@@ -114,8 +124,8 @@ namespace UrbanAirship.NETStandard
             }
         }
 
-        private DeepLinkHandler onDeepLinkReceived;
-        public event DeepLinkHandler OnDeepLinkReceived
+        private EventHandler<DeepLinkEventArgs> onDeepLinkReceived;
+        public event EventHandler<DeepLinkEventArgs> OnDeepLinkReceived
         {
             add
             {
@@ -226,6 +236,11 @@ namespace UrbanAirship.NETStandard
         public void DisplayMessageCenter()
         {
             UAMessageCenter.Shared().Display();
+        }
+
+        public void DisplayMessage(string messageId)
+        {
+            UAMessageCenter.Shared().DisplayMessage(messageId);
         }
 
         public int MessageCenterUnreadCount
@@ -425,8 +440,7 @@ namespace UrbanAirship.NETStandard
 
         override public void ReceivedDeepLink(NSUrl url, Action completionHandler)
         {
-            var handler = onDeepLinkReceived;
-            handler(url.AbsoluteString);
+            onDeepLinkReceived?.Invoke(this, new DeepLinkEventArgs(url.AbsoluteString));
             completionHandler();
         }
     }

@@ -46,6 +46,11 @@ namespace SampleApp
             }
         }
 
+        void MessageCenterBtnClicked(object sender, EventArgs e)
+        {
+            Airship.Instance.DisplayMessageCenter();
+        }
+
         void refreshView()
         {
             if (Airship.Instance.UserNotificationsEnabled &&  Airship.Instance.ChannelId != null)

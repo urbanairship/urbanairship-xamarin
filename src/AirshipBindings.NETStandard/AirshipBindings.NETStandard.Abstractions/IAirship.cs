@@ -8,6 +8,15 @@ using System.Collections.Generic;
 
 namespace UrbanAirship.NETStandard
 {
+    public class DeepLinkEventArgs: EventArgs
+    {
+        public string DeepLink { get; internal set; }
+        public DeepLinkEventArgs(string deepLink)
+        {
+            DeepLink = deepLink;
+        }
+    }
+
     public interface IAirship
     {
         bool UserNotificationsEnabled
@@ -40,6 +49,8 @@ namespace UrbanAirship.NETStandard
             get; set;
         }
 
+        event EventHandler<DeepLinkEventArgs> OnDeepLinkReceived;
+
         Channel.TagEditor EditDeviceTags();
 
         void AddCustomEvent(Analytics.CustomEvent customEvent);
@@ -71,6 +82,8 @@ namespace UrbanAirship.NETStandard
         
         Attributes.AttributeEditor EditAttributes();
 
+        event EventHandler OnMessageCenterUpdated;
+      
         Attributes.AttributeEditor EditChannelAttributes();
 
         Attributes.AttributeEditor EditNamedUserAttributes();

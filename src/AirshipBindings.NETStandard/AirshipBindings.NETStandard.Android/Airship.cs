@@ -13,7 +13,7 @@ namespace UrbanAirship.NETStandard
 { 
     public delegate void DeepLinkHandler(string deepLink);
 
-    public class Airship : Java.Lang.Object, IDeepLinkListener, IAirship, UrbanAirship.Channel.IAirshipChannelListener
+    public class Airship : Java.Lang.Object, IDeepLinkListener, IAirship, IInboxListener, UrbanAirship.Channel.IAirshipChannelListener
     {
 
         public delegate void ChannelHandler(string channelId);
@@ -28,7 +28,16 @@ namespace UrbanAirship.NETStandard
         private void Init()
         {
             UAirship.Shared().Channel.AddChannelListener(this);
+            
+            //Adding Inbox updated listener
+            MessageCenterClass.Shared().Inbox.AddListener(this);
         }
+
+        public event EventHandler<ChannelEventArgs> OnChannelCreation;
+
+        public event EventHandler<ChannelEventArgs> OnChannelUpdate;
+
+        public event EventHandler OnMessageCenterUpdated;
 
         public static Airship Instance
         {
@@ -37,10 +46,6 @@ namespace UrbanAirship.NETStandard
                 return sharedAirship.Value;
             }
         }
-
-        public event EventHandler<ChannelEventArgs> OnChannelCreation;
-
-        public event EventHandler<ChannelEventArgs> OnChannelUpdate;
 
         public bool UserNotificationsEnabled
         {
@@ -110,8 +115,8 @@ namespace UrbanAirship.NETStandard
             }
         }
 
-        private DeepLinkHandler onDeepLinkReceived;
-        public event DeepLinkHandler OnDeepLinkReceived
+        private EventHandler<DeepLinkEventArgs> onDeepLinkReceived;
+        public event EventHandler<DeepLinkEventArgs> OnDeepLinkReceived
         {
             add
             {
@@ -208,6 +213,11 @@ namespace UrbanAirship.NETStandard
         public void DisplayMessageCenter()
         {
             MessageCenterClass.Shared().ShowMessageCenter();
+        }
+
+        public void DisplayMessage(string messageId)
+        {
+            MessageCenterClass.Shared().ShowMessageCenter(messageId);
         }
 
         public int MessageCenterUnreadCount
@@ -390,9 +400,17 @@ namespace UrbanAirship.NETStandard
 
         public bool OnDeepLink(string deepLink)
         {
-            var handler = onDeepLinkReceived;
-            handler(deepLink);
-            return true;
+            if (onDeepLinkReceived != null) {
+                onDeepLinkReceived(this, new DeepLinkEventArgs(deepLink));
+                return true;
+            }
+            return false;
+        }
+
+        public void OnInboxUpdated()
+        {
+            //Adding Inbox updated listener
+            OnMessageCenterUpdated?.Invoke(this, EventArgs.Empty);
         }
 
         public void OnChannelCreated(string channelId)

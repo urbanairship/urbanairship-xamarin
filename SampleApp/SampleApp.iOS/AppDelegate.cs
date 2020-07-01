@@ -14,7 +14,6 @@ using CoreFoundation;
 using Sample;
 
 using UrbanAirship;
-using Xamarin.Forms;
 
 namespace SampleApp.iOS
 {
@@ -28,6 +27,10 @@ namespace SampleApp.iOS
 
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
+            global::Xamarin.Forms.Forms.Init();
+            LoadApplication(new App());
+            base.FinishedLaunching(app, options);
+
             this.FailIfSimulator();
 
             // Set log level for debugging config loading (optional)
@@ -73,10 +76,7 @@ namespace SampleApp.iOS
                 //FIXME: Find a way to call the refreshView from the HomeViewController
             });
 
-            global::Xamarin.Forms.Forms.Init();
-            LoadApplication(new App());
-
-            return base.FinishedLaunching(app, options);
+            return true;
         }
 
         private void FailIfSimulator()
