@@ -31,6 +31,7 @@ namespace UrbanAirship.NETStandard
             {
                 Console.WriteLine(channelId);
             });
+
             //Adding Inbox updated Listener
             NSNotificationCenter.DefaultCenter.AddObserver(aName: (NSString)"com.urbanairship.notification.message_list_updated", (notification) =>
             {
