@@ -10,11 +10,12 @@ using System;
 using UrbanAirship.MessageCenter;
 
 namespace UrbanAirship.NETStandard
-{
+{ 
     public delegate void DeepLinkHandler(string deepLink);
 
-    public class Airship : Java.Lang.Object, IDeepLinkListener, IAirship, IInboxListener
+    public class Airship : Java.Lang.Object, IDeepLinkListener, IAirship, IInboxListener, UrbanAirship.Channel.IAirshipChannelListener
     {
+
         private static Lazy<Airship> sharedAirship = new Lazy<Airship>(() =>
         {
             Airship instance = new Airship();
@@ -24,9 +25,15 @@ namespace UrbanAirship.NETStandard
 
         private void Init()
         {
+            UAirship.Shared().Channel.AddChannelListener(this);
+            
             //Adding Inbox updated listener
             MessageCenterClass.Shared().Inbox.AddListener(this);
         }
+
+        public event EventHandler<ChannelEventArgs> OnChannelCreation;
+
+        public event EventHandler<ChannelEventArgs> OnChannelUpdate;
 
         public event EventHandler OnMessageCenterUpdated;
 
@@ -402,6 +409,16 @@ namespace UrbanAirship.NETStandard
         {
             //Adding Inbox updated listener
             OnMessageCenterUpdated?.Invoke(this, EventArgs.Empty);
+        }
+
+        public void OnChannelCreated(string channelId)
+        {
+            OnChannelCreation?.Invoke(this, new ChannelEventArgs(channelId));
+        }
+
+        public void OnChannelUpdated(string channelId)
+        {
+            OnChannelUpdate?.Invoke(this, new ChannelEventArgs(channelId));
         }
     }
 }

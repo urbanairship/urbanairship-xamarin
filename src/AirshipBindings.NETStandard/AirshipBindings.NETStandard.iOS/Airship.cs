@@ -12,7 +12,7 @@ namespace UrbanAirship.NETStandard
 {
     public class Airship : UADeepLinkDelegate, IAirship
     {
-
+        
         private static Lazy<Airship> sharedAirship = new Lazy<Airship>(() =>
         {
             Airship instance = new Airship();
@@ -22,6 +22,18 @@ namespace UrbanAirship.NETStandard
 
         private void Init()
         {
+            NSNotificationCenter.DefaultCenter.AddObserver(aName: (NSString)"com.urbanairship.channel.channel_created", (NSNotification notification) =>
+            {
+                string channelID = notification.UserInfo["com.urbanairship.channel.identifier"].ToString() ;
+                OnChannelCreation?.Invoke(this, new ChannelEventArgs(channelID));
+            });
+
+            NSNotificationCenter.DefaultCenter.AddObserver(aName: (NSString)"com.urbanairship.channel.channel_updated", (NSNotification notification) =>
+            {
+                string channelID = notification.UserInfo["com.urbanairship.channel.identifier"].ToString();
+                OnChannelCreation?.Invoke(this, new ChannelEventArgs(channelID));
+            });
+
             //Adding Inbox updated Listener
             NSNotificationCenter.DefaultCenter.AddObserver(aName: (NSString)"com.urbanairship.notification.message_list_updated", (notification) =>
             {
@@ -32,6 +44,10 @@ namespace UrbanAirship.NETStandard
                 }
             });
         }
+
+        public event EventHandler<ChannelEventArgs> OnChannelCreation;
+
+        public event EventHandler<ChannelEventArgs> OnChannelUpdate;
 
         public event EventHandler OnMessageCenterUpdated;
 

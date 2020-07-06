@@ -257,5 +257,36 @@ namespace UrbanAirship.NETStandard
                 throw new NotImplementedException(BaitWithoutSwitchMessage);
             }
         }
+
+        /// <summary>
+        /// Add/remove the channel creation and update event listener.
+        /// </summary>
+        /// <value>The channel event listener.</value>
+
+        public event EventHandler<ChannelEventArgs> OnChannelCreation
+        {
+            add
+            {
+                throw new NotImplementedException(BaitWithoutSwitchMessage);
+            }
+
+            remove
+            {
+                throw new NotImplementedException(BaitWithoutSwitchMessage);
+            }
+        }
+
+        public event EventHandler<ChannelEventArgs> OnChannelUpdate
+        {
+            add
+            {
+                throw new NotImplementedException(BaitWithoutSwitchMessage);
+            }
+
+            remove
+            {
+                throw new NotImplementedException(BaitWithoutSwitchMessage);
+            }
+        }
     }
 }

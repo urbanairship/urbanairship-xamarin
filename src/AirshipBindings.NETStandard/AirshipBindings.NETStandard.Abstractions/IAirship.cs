@@ -8,6 +8,17 @@ using System.Collections.Generic;
 
 namespace UrbanAirship.NETStandard
 {
+
+    public class ChannelEventArgs : EventArgs
+    {
+        public string ChannelId { get; private set; }
+
+        public ChannelEventArgs(string channelId)
+        {
+            ChannelId = channelId;
+        }
+    }
+
     public class DeepLinkEventArgs: EventArgs
     {
         public string DeepLink { get; internal set; }
@@ -48,6 +59,10 @@ namespace UrbanAirship.NETStandard
         {
             get; set;
         }
+
+        event EventHandler<ChannelEventArgs> OnChannelCreation;
+
+        event EventHandler<ChannelEventArgs> OnChannelUpdate;
 
         event EventHandler<DeepLinkEventArgs> OnDeepLinkReceived;
 
