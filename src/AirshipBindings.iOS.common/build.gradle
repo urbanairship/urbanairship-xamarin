@@ -43,32 +43,3 @@ task carthageCheckout {
         }
     }
 }
-
-task checkoutXamboni {
-    doLast() {
-        // Xamboni
-        def tmpDir = System.getProperty("java.io.tmpdir")
-        def xamboniTempRepo = new File("${tmpDir}/xamboni")
-        project.delete(files(xamboniTempRepo))
-
-        xamboniTempRepo.deleteOnExit()
-
-        println("Cloning Xamboni repo")
-        exec {
-            commandLine "git", "clone", "git@github.com:urbanairship/xamboni.git", "${xamboniTempRepo}"
-        }
-
-        checkoutXamboni.ext.repoPath = xamboniTempRepo
-    }
-}
-
-task cleanXamboniRepo(type: Delete) {
-    doLast() {
-        def tmpDir = System.getProperty("java.io.tmpdir")
-        def xamboniTempRepo = new File("${tmpDir}/xamboni")
-
-        project.delete(files(xamboniTempRepo))
-    }
-}
-
-rootProject.clean.dependsOn(project.cleanXamboniRepo)

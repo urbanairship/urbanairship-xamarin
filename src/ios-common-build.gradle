@@ -85,13 +85,19 @@ processIOSSDK.mustRunAfter('clean')
 
 task generateIOSBindings {
     dependsOn 'processIOSSDK'
-    dependsOn ':src:AirshipBindings.iOS.common:checkoutXamboni'
     doLast() {
         println("Generating bindings for ${iosSdkModuleName} module.")
 
+        def xamboniScript = "xamboni.py"
+        def xamboniDir = new File ("${rootDir}/xamboni")
+        def xamboniFile = new File (xamboniDir, xamboniScript)
+        if (!xamboniFile.exists()) {
+            throw new GradleException("ERROR: Cannot find ${xamboniFile}. Please run 'git submodule update --init --recursive'")
+        }
+
         exec {
-            workingDir project(':src:AirshipBindings.iOS.common').checkoutXamboni.repoPath
-            commandLine "python", "xamboni.py", "--module=${iosSdkModuleName}", "--sourcekitten_parse=${processIOSSDK.skParse}", "--output_dir=${projectDir}"
+            workingDir xamboniDir
+            commandLine "python", xamboniScript, "--module=${iosSdkModuleName}", "--sourcekitten_parse=${processIOSSDK.skParse}", "--output_dir=${projectDir}"
         }
     }
 }
