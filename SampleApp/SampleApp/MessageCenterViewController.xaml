@@ -5,12 +5,24 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="SampleApp.MessageCenterViewController">
     <ContentPage.Content>
-        <ListView x:Name="listView" ItemSelected="listView_ItemSelected" RowHeight="70">
+        <ListView x:Name="listView" ItemSelected="listView_ItemSelected" RowHeight="90">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
                         <StackLayout Orientation="Horizontal" Padding="20">
                             <StackLayout>
+                                <BoxView x:Name="isReadIndicator"
+                                     CornerRadius="7"
+                                     WidthRequest="14" HeightRequest="14">
+                                    <BoxView.Triggers>
+                                        <DataTrigger TargetType="BoxView" Binding="{Binding Unread}" Value="true">
+                                            <Setter Property="BackgroundColor" Value="Green" />
+                                        </DataTrigger>
+                                        <DataTrigger TargetType="BoxView" Binding="{Binding Unread}" Value="false">
+                                            <Setter Property="BackgroundColor" Value="Blue" />
+                                        </DataTrigger>
+                                    </BoxView.Triggers>
+                                </BoxView>
                                 <Label Text="{Binding Title}"/>
                                 <Label Text="{Binding SentDate, StringFormat='{0:MMMM dd, yyyy, hh:mm}'}" TextColor="Gray"/>
                             </StackLayout>
