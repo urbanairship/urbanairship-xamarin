@@ -33,3 +33,13 @@ task build {
 }
 
 build.dependsOn('carthageUpdate')
+
+task carthageCheckout {
+    dependsOn 'syncVersion'
+    doLast() {
+        exec {
+            workingDir "$rootDir"
+            commandLine "carthage", "checkout"
+        }
+    }
+}

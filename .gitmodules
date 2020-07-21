@@ -1,0 +1,3 @@
+[submodule "xamboni"]
+	path = xamboni
+	url = git@github.com:urbanairship/xamboni.git
