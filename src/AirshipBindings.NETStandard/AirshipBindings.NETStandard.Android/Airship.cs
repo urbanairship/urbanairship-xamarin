@@ -256,6 +256,7 @@ namespace UrbanAirship.NETStandard
                         message.Title,
                         sentDate,
                         expirationDate,
+                        message.IsRead,
                         message.ListIconUrl,
                         extras);
 

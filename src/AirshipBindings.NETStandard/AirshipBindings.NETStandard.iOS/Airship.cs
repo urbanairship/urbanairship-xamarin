@@ -291,6 +291,7 @@ namespace UrbanAirship.NETStandard
                         message.Title,
                         sentDate,
                         expirationDate,
+                        message.Unread,
                         iconUrl,
                         extras);
 

@@ -37,6 +37,12 @@ namespace UrbanAirship.NETStandard.MessageCenter
         public DateTime? ExpirationDate { get; }
 
         /// <summary>
+        /// Gets the unread status boolean value.
+        /// </summary>
+        /// <value>The unread status.</value>
+        public bool Unread { get; }
+
+        /// <summary>
         /// Gets the message icon url.
         /// </summary>
         /// <value>The message icon url.</value>
@@ -51,12 +57,13 @@ namespace UrbanAirship.NETStandard.MessageCenter
         /// <summary>
         /// Initializes a new instance of the <see cref="Message"/> class.
         /// </summary>
-        public Message(string messageId, string title, DateTime? sentDate, DateTime? expirationDate, string iconUrl, Dictionary<string, string> extras)
+        public Message(string messageId, string title, DateTime? sentDate, DateTime? expirationDate, bool unread, string iconUrl, Dictionary<string, string> extras)
         {
             this.MessageId = messageId;
             this.Title = title;
             this.SentDate = sentDate;
             this.ExpirationDate = expirationDate;
+            this.Unread = unread;
             this.IconUrl = iconUrl;
             this.Extras = extras;
         }
