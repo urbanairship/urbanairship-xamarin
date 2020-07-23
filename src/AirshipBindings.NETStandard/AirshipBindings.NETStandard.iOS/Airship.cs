@@ -12,18 +12,10 @@ namespace UrbanAirship.NETStandard
 {
     public class Airship : UADeepLinkDelegate, IAirship
     {
-
-        public Airship()
-        {
-            Console.WriteLine("YODA's EARS");
-        }
-
-
         private static Lazy<Airship> sharedAirship = new Lazy<Airship>(() =>
         {
             Airship instance = new Airship();
             instance.Init();
-            Console.WriteLine("EAT SAUSAGES");
             return instance;
         });
 
@@ -282,7 +274,7 @@ namespace UrbanAirship.NETStandard
                         iconUrl = icons.ValueForKey(new NSString("list_icon")).ToString();
                     }
 
-                    var inboxMessage = new MessageCenter.Message(
+                    var inboxMessage = new MessageCenter.Message(   
                         message.MessageID,
                         message.Title,
                         sentDate,

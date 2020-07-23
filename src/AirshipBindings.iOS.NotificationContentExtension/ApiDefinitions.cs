@@ -1,6 +1,7 @@
 /*
  Copyright Airship and Contributors
 */
+using CoreFoundation;
 using CoreGraphics;
 using Foundation;
 using ObjCRuntime;
@@ -14,16 +15,11 @@ namespace UrbanAirship {
     [Static]
     partial interface Constants
     {
-
-
     }
 
     // @interface UAContentExtensionViewController : UIViewController
     [BaseType(typeof(UIViewController))]
     interface UAContentExtensionViewController
     {
-
     }
-
-
 }

@@ -13,22 +13,15 @@ namespace UrbanAirship.NETStandard
 { 
     public class Airship : Java.Lang.Object, IDeepLinkListener, IAirship, IInboxListener, UrbanAirship.Channel.IAirshipChannelListener
     {
-        public Airship()
-        {
-            Console.WriteLine("YODA's HAIR");
-        }
-
         private static Lazy<Airship> sharedAirship = new Lazy<Airship>(() =>
         {
             Airship instance = new Airship();
             instance.Init();
-            Console.WriteLine("EAT SAUSAGES");
             return instance;
         });
 
         private void Init()
         {
-            Console.WriteLine("EAT PEARS");
             UAirship.Shared().Channel.AddChannelListener(this);
             
             //Adding Inbox updated listener
