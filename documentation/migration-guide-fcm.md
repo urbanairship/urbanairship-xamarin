@@ -12,6 +12,6 @@ Migration Steps:
 - [Import your GCM project as a Firebase project](https://developers.google.com/cloud-messaging/android/android-migrate-fcm#import-your-gcm-project-as-a-firebase-project).
 - In your Android app, replace the `UrbanAirship` package with the new `urbanairship.android.core` and `urbanairship.android.fcm` packages.
 
-See also the [Android SDK FCM Migration Guide](https://github.com/urbanairship/android-library/blob/master/documentation/migration/migration-guide-fcm.md).
+See also the [Android SDK FCM Migration Guide](https://github.com/urbanairship/android-library/blob/main/documentation/migration/migration-guide-fcm.md).
 
 More information on Xamarin SDK can be found in our [Xamarin Platform Guide](https://docs.urbanairship.com/platform/xamarin/).
