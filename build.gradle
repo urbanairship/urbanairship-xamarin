@@ -254,7 +254,6 @@ clean.dependsOn(':src:AirshipBindings.Android.ADM:clean',
 
 task preBuild() {
   doFirst() {
-      project.logger.lifecycle('my message visible by default')
       mkdir project.buildDir
   }
 }

@@ -274,7 +274,7 @@ namespace UrbanAirship.NETStandard
                         iconUrl = icons.ValueForKey(new NSString("list_icon")).ToString();
                     }
 
-                    var inboxMessage = new MessageCenter.Message(   
+                    var inboxMessage = new MessageCenter.Message(
                         message.MessageID,
                         message.Title,
                         sentDate,
