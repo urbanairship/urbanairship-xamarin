@@ -52,10 +52,6 @@ namespace UrbanAirship {
     [BaseType(typeof(UIViewController))]
     interface UADefaultMessageCenterListViewController : IUITableViewDelegate, IUITableViewDataSource, IUIScrollViewDelegate
     {
-        // @property (nonatomic, strong, readwrite) UAMessageCenterStyle *_Nonnull messageCenterStyle;
-        [Export("messageCenterStyle", ArgumentSemantic.Strong)]
-        UAMessageCenterStyle MessageCenterStyle { get; set; }
-
         // @property(nonatomic, strong) UAMessageCenterStyle *style
         [Export("messageCenterStyle", ArgumentSemantic.Strong)]
         UAMessageCenterStyle Style { get; set; }
@@ -118,10 +114,6 @@ namespace UrbanAirship {
         [Export("filter", ArgumentSemantic.Strong)]
         NSPredicate Filter { get; set; }
 
-        // @property (nonatomic, strong, readwrite) UAMessageCenterStyle *_Nonnull messageCenterStyle;
-        [Export("messageCenterStyle", ArgumentSemantic.Strong)]
-        UAMessageCenterStyle MessageCenterStyle { get; set; }
-
         // @property(nonatomic, strong) UAMessageCenterStyle *style
         [Export("messageCenterStyle", ArgumentSemantic.Strong)]
         UAMessageCenterStyle Style { get; set; }
@@ -159,10 +151,6 @@ namespace UrbanAirship {
         // @property (nonatomic, copy, readwrite) NSString *_Nonnull title;
         [Export("title")]
         string Title { get; set; }
-
-        // @property (nonatomic, strong, readwrite) UAMessageCenterStyle *_Nonnull messageCenterStyle;
-        [Export("messageCenterStyle", ArgumentSemantic.Strong)]
-        UAMessageCenterStyle MessageCenterStyle { get; set; }
 
         // @property(nonatomic, strong) UAMessageCenterStyle *style
         [Export("messageCenterStyle", ArgumentSemantic.Strong)]
@@ -418,10 +406,6 @@ namespace UrbanAirship {
     [BaseType(typeof(UITableViewCell))]
     interface UAMessageCenterListCell
     {
-        // @property (nonatomic, strong, readwrite) UAMessageCenterStyle *messageCenterStyle;
-        [Export("messageCenterStyle", ArgumentSemantic.Strong)]
-        UAMessageCenterStyle MessageCenterStyle { get; set; }
-
         // @property(nonatomic, strong) UAMessageCenterStyle *style
         [Export("messageCenterStyle", ArgumentSemantic.Strong)]
         UAMessageCenterStyle Style { get; set; }
@@ -452,10 +436,6 @@ namespace UrbanAirship {
     [BaseType(typeof(UIViewController))]
     interface UAMessageCenterListViewController : IUITableViewDelegate, IUITableViewDataSource, IUIScrollViewDelegate, IUISplitViewControllerDelegate
     {
-        // @property (nonatomic, strong, readwrite) UAMessageCenterStyle *messageCenterStyle;
-        [Export("messageCenterStyle", ArgumentSemantic.Strong)]
-        UAMessageCenterStyle MessageCenterStyle { get; set; }
-
         // @property(nonatomic, strong) UAMessageCenterStyle *style
         [Export("messageCenterStyle", ArgumentSemantic.Strong)]
         UAMessageCenterStyle Style { get; set; }
@@ -588,10 +568,6 @@ namespace UrbanAirship {
         // @property (nonatomic, strong, readwrite) NSPredicate *filter;
         [Export("filter", ArgumentSemantic.Strong)]
         NSPredicate Filter { get; set; }
-
-        // @property (nonatomic, strong, readwrite) UAMessageCenterStyle *messageCenterStyle;
-        [Export("messageCenterStyle", ArgumentSemantic.Strong)]
-        UAMessageCenterStyle MessageCenterStyle { get; set; }
 
         // @property(nonatomic, strong) UAMessageCenterStyle *style
         [Export("messageCenterStyle", ArgumentSemantic.Strong)]
