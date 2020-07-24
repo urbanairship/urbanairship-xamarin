@@ -1,6 +1,6 @@
 # Airship Xamarin Changelog
 
-## Version 13.1.0 - July 23, 2020
+## Version 13.1.0 - July 24, 2020
 Minor release adding Date and NamedUser attributes as well as 
 MessageCenter and Deep Link event support to the .NETStandard libraries,
 and providing a new Xamarin Forms based sample app.
