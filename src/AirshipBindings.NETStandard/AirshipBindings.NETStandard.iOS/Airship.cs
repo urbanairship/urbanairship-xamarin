@@ -54,8 +54,34 @@ namespace UrbanAirship.NETStandard
 
         public event EventHandler<ChannelEventArgs> OnChannelUpdate;
 
-        public event EventHandler<DeepLinkEventArgs> OnDeepLinkReceived;
+        private EventHandler<DeepLinkEventArgs> onDeepLinkReceived;
+        public event EventHandler<DeepLinkEventArgs> OnDeepLinkReceived
+        {
+            add
+            {
+                if (onDeepLinkReceived != null)
+                {
+                    onDeepLinkReceived += value;
+                } else
+                {
+                    onDeepLinkReceived = value;
+                }
 
+                UAirship.Shared().WeakDeepLinkDelegate = this;
+            }
+            remove
+            {
+                if (onDeepLinkReceived != null)
+                {
+                    onDeepLinkReceived -= value;
+                }
+
+                if (onDeepLinkReceived == null)
+                {
+                    UAirship.Shared().WeakDeepLinkDelegate = null;
+                }
+            }
+        }
         public event EventHandler OnMessageCenterUpdated;
 
         public static Airship Instance
@@ -431,7 +457,7 @@ namespace UrbanAirship.NETStandard
 
         override public void ReceivedDeepLink(NSUrl url, Action completionHandler)
         {
-            OnDeepLinkReceived?.Invoke(this, new DeepLinkEventArgs(url.AbsoluteString));
+            onDeepLinkReceived?.Invoke(this, new DeepLinkEventArgs(url.AbsoluteString));
             completionHandler();
         }
     }

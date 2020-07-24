@@ -34,7 +34,35 @@ namespace UrbanAirship.NETStandard
 
         public event EventHandler<ChannelEventArgs> OnChannelUpdate;
 
-        public event EventHandler<DeepLinkEventArgs> OnDeepLinkReceived;
+        private EventHandler<DeepLinkEventArgs> onDeepLinkReceived;
+        public event EventHandler<DeepLinkEventArgs> OnDeepLinkReceived
+        {
+            add
+            {
+                if (onDeepLinkReceived != null)
+                {
+                    onDeepLinkReceived += value;
+                } else
+                {
+                    onDeepLinkReceived = value;
+                }
+
+                UAirship.Shared().DeepLinkListener = this;
+            }
+
+            remove
+            {
+                if (onDeepLinkReceived != null)
+                {
+                    onDeepLinkReceived -= value;
+                }
+
+                if (onDeepLinkReceived == null)
+                {
+                    UAirship.Shared().DeepLinkListener = null;
+                }
+            }
+        }
 
         public event EventHandler OnMessageCenterUpdated;
 
@@ -380,8 +408,8 @@ namespace UrbanAirship.NETStandard
 
         public bool OnDeepLink(string deepLink)
         {
-            if (OnDeepLinkReceived != null) {
-                OnDeepLinkReceived(this, new DeepLinkEventArgs(deepLink));
+            if (onDeepLinkReceived != null) {
+                onDeepLinkReceived(this, new DeepLinkEventArgs(deepLink));
                 return true;
             }
 
