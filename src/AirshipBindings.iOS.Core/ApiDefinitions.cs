@@ -1021,6 +1021,7 @@ namespace UrbanAirship {
 
         // + (null_unspecified instancetype)shared;
         [Static]
+        [New]
         [Export("shared")]
         UAAnalytics Shared ();
 
@@ -1195,6 +1196,7 @@ namespace UrbanAirship {
 
         // + (null_unspecified instancetype)shared;
         [Static]
+        [New]
         [Export("shared")]
         UAChannel Shared ();
 
@@ -1306,6 +1308,7 @@ namespace UrbanAirship {
     {
         // + (null_unspecified instancetype)shared;
         [Static]
+        [New]
         [Export("shared")]
         UAComponent Shared ();
     }
@@ -1987,6 +1990,7 @@ namespace UrbanAirship {
 
         // + (null_unspecified instancetype)shared;
         [Static]
+        [New]
         [Export("shared")]
         UANamedUser Shared ();
 
@@ -2580,6 +2584,7 @@ namespace UrbanAirship {
 
         // + (null_unspecified instancetype)shared;
         [Static]
+        [New]
         [Export("shared")]
         UAPush Shared ();
 

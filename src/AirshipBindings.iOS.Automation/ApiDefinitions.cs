@@ -488,6 +488,7 @@ namespace UrbanAirship {
     {
         // + (null_unspecified instancetype)shared;
         [Static]
+        [New]
         [Export("shared")]
         UAActionAutomation Shared ();
 
@@ -1548,6 +1549,7 @@ namespace UrbanAirship {
 
         // + (null_unspecified instancetype)shared;
         [Static]
+        [New]
         [Export("shared")]
         UAInAppMessageManager Shared ();
 
@@ -2226,6 +2228,7 @@ namespace UrbanAirship {
 
         // + (null_unspecified instancetype)shared;
         [Static]
+        [New]
         [Export("shared")]
         UALegacyInAppMessaging Shared ();
 

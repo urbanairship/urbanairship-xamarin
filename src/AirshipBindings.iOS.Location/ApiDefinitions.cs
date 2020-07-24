@@ -133,6 +133,7 @@ namespace UrbanAirship {
 
         // + (null_unspecified instancetype)shared;
         [Static]
+        [New]
         [Export("shared")]
         UALocation Shared ();
 

@@ -57,7 +57,7 @@ namespace UrbanAirship {
         UAMessageCenterStyle MessageCenterStyle { get; set; }
 
         // @property(nonatomic, strong) UAMessageCenterStyle *style
-        [Export("style", ArgumentSemantic.Strong)]
+        [Export("messageCenterStyle", ArgumentSemantic.Strong)]
         UAMessageCenterStyle Style { get; set; }
 
         // @property (nonatomic, strong, readwrite) NSPredicate *_Nonnull filter;
@@ -123,7 +123,7 @@ namespace UrbanAirship {
         UAMessageCenterStyle MessageCenterStyle { get; set; }
 
         // @property(nonatomic, strong) UAMessageCenterStyle *style
-        [Export("style", ArgumentSemantic.Strong)]
+        [Export("messageCenterStyle", ArgumentSemantic.Strong)]
         UAMessageCenterStyle Style { get; set; }
 
         // @property (nonatomic, readonly) UADefaultMessageCenterListViewController *_Nonnull listViewController;
@@ -165,7 +165,7 @@ namespace UrbanAirship {
         UAMessageCenterStyle MessageCenterStyle { get; set; }
 
         // @property(nonatomic, strong) UAMessageCenterStyle *style
-        [Export("style", ArgumentSemantic.Strong)]
+        [Export("messageCenterStyle", ArgumentSemantic.Strong)]
         UAMessageCenterStyle Style { get; set; }
 
         // @property (nonatomic, strong, readwrite) NSPredicate *_Nonnull filter;
@@ -369,6 +369,7 @@ namespace UrbanAirship {
 
         // + (null_unspecified instancetype)shared;
         [Static]
+        [New]
         [Export("shared")]
         UAMessageCenter Shared ();
 
@@ -422,7 +423,7 @@ namespace UrbanAirship {
         UAMessageCenterStyle MessageCenterStyle { get; set; }
 
         // @property(nonatomic, strong) UAMessageCenterStyle *style
-        [Export("style", ArgumentSemantic.Strong)]
+        [Export("messageCenterStyle", ArgumentSemantic.Strong)]
         UAMessageCenterStyle Style { get; set; }
 
         // @property (nonatomic, weak, readwrite) UILabel *date;
@@ -456,7 +457,7 @@ namespace UrbanAirship {
         UAMessageCenterStyle MessageCenterStyle { get; set; }
 
         // @property(nonatomic, strong) UAMessageCenterStyle *style
-        [Export("style", ArgumentSemantic.Strong)]
+        [Export("messageCenterStyle", ArgumentSemantic.Strong)]
         UAMessageCenterStyle Style { get; set; }
 
         // @property (nonatomic, strong, readwrite) NSPredicate *filter;
@@ -593,7 +594,7 @@ namespace UrbanAirship {
         UAMessageCenterStyle MessageCenterStyle { get; set; }
 
         // @property(nonatomic, strong) UAMessageCenterStyle *style
-        [Export("style", ArgumentSemantic.Strong)]
+        [Export("messageCenterStyle", ArgumentSemantic.Strong)]
         UAMessageCenterStyle Style { get; set; }
 
         // @property (nonatomic, readonly) UAMessageCenterListViewController *listViewController;
