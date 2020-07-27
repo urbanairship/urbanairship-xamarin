@@ -26,8 +26,6 @@ namespace UrbanAirship.NETStandard
             
             //Adding Inbox updated listener
             MessageCenterClass.Shared().Inbox.AddListener(this);
-
-            UAirship.Shared().DeepLinkListener = this;
         }
 
         public event EventHandler<ChannelEventArgs> OnChannelCreation;
@@ -39,23 +37,13 @@ namespace UrbanAirship.NETStandard
         {
             add
             {
-                if (onDeepLinkReceived != null)
-                {
-                    onDeepLinkReceived += value;
-                } else
-                {
-                    onDeepLinkReceived = value;
-                }
-
+                onDeepLinkReceived += value;
                 UAirship.Shared().DeepLinkListener = this;
             }
 
             remove
             {
-                if (onDeepLinkReceived != null)
-                {
-                    onDeepLinkReceived -= value;
-                }
+                onDeepLinkReceived -= value;
 
                 if (onDeepLinkReceived == null)
                 {

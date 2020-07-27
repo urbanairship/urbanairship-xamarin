@@ -42,12 +42,6 @@ namespace UrbanAirship.NETStandard
                     handler(this, EventArgs.Empty);
                 }
             });
-
-            NSNotificationCenter.DefaultCenter.AddObserver(aName: (NSString)"com.urbanairship.airship_ready", (notification) =>
-            {
-                UAirship.Shared().WeakDeepLinkDelegate = this;
-            });
-
         }
 
         public event EventHandler<ChannelEventArgs> OnChannelCreation;
@@ -59,22 +53,12 @@ namespace UrbanAirship.NETStandard
         {
             add
             {
-                if (onDeepLinkReceived != null)
-                {
-                    onDeepLinkReceived += value;
-                } else
-                {
-                    onDeepLinkReceived = value;
-                }
-
+                onDeepLinkReceived += value;
                 UAirship.Shared().WeakDeepLinkDelegate = this;
             }
             remove
             {
-                if (onDeepLinkReceived != null)
-                {
-                    onDeepLinkReceived -= value;
-                }
+                onDeepLinkReceived -= value;
 
                 if (onDeepLinkReceived == null)
                 {
