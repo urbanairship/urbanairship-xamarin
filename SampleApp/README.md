@@ -5,7 +5,7 @@ This cross-platform sample application allows you to experiment with the Airship
 ## Resources
 
 - [Xamarin Platform Doc](http://docs.urbanairship.com/platform/xamarin.html)
-- [Getting Started](GettingStarted.md)
+- [Getting Started](../GettingStarted.md)
 
 
 ### Building
