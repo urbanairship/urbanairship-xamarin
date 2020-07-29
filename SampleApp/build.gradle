@@ -7,11 +7,16 @@ task clean(type: Delete) {
     }
 }
 
-task build {
+task restore {
+    dependsOn rootProject.pkg
     doLast() {
-     exec {
-         commandLine "mono", "$nugetExe", "restore", "SampleApp.sln"
-     }
+        exec {
+            commandLine "mono", "$nugetExe", "restore", "SampleApp.sln"
+        }
+    }
 }
+
+task build {
+    dependsOn ':SampleApp:SampleApp.iOS:build'
+    dependsOn ':SampleApp:SampleApp.Android:build'
 }
-build.dependsOn(':pkg')
