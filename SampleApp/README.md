@@ -1,4 +1,4 @@
-# Airship Xamarin Sample App
+# Airship Xamarin Cross-Platform Sample App
 
 This cross-platform sample application allows you to experiment with the Airship SDK. It is written using our NETStandard library.
 
@@ -6,7 +6,6 @@ This cross-platform sample application allows you to experiment with the Airship
 
 - [Xamarin Platform Doc](http://docs.urbanairship.com/platform/xamarin.html)
 - [Getting Started](../GettingStarted.md)
-
 
 ### Building
 
