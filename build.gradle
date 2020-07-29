@@ -252,13 +252,16 @@ clean.dependsOn(':src:AirshipBindings.Android.ADM:clean',
     ':src:AirshipBindings.iOS.common:clean',
  )
 
-// Build the plugin
-task build() {
-    doFirst {
-        mkdir project.buildDir
-    }
+task preBuild() {
+  doFirst() {
+      mkdir project.buildDir
+  }
 }
+
+// Build the plugin
+task build()
 build.mustRunAfter('clean')
+build.dependsOn('preBuild')
 build.dependsOn('syncVersion')
 build.dependsOn(':docs:build',
     ':src:AirshipBindings.Android.ADM:build',

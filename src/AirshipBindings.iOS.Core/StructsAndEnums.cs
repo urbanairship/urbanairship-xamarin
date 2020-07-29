@@ -83,6 +83,7 @@ namespace UrbanAirship {
     [Native]
     public enum UANotificationActionOptions : ulong
     {
+        None = 0,
         AuthenticationRequired = (1 << 0),
         Destructive = (1 << 1),
         Foreground = (1 << 2)
@@ -154,6 +155,4 @@ namespace UrbanAirship {
         OpenURL = 1 << 1,
         All = JavaScriptInterface | OpenURL
     }
-
-
 }

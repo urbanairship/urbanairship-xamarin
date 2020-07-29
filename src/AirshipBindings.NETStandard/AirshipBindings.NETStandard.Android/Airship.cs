@@ -11,11 +11,8 @@ using UrbanAirship.MessageCenter;
 
 namespace UrbanAirship.NETStandard
 { 
-    public delegate void DeepLinkHandler(string deepLink);
-
     public class Airship : Java.Lang.Object, IDeepLinkListener, IAirship, IInboxListener, UrbanAirship.Channel.IAirshipChannelListener
     {
-
         private static Lazy<Airship> sharedAirship = new Lazy<Airship>(() =>
         {
             Airship instance = new Airship();
@@ -34,6 +31,26 @@ namespace UrbanAirship.NETStandard
         public event EventHandler<ChannelEventArgs> OnChannelCreation;
 
         public event EventHandler<ChannelEventArgs> OnChannelUpdate;
+
+        private EventHandler<DeepLinkEventArgs> onDeepLinkReceived;
+        public event EventHandler<DeepLinkEventArgs> OnDeepLinkReceived
+        {
+            add
+            {
+                onDeepLinkReceived += value;
+                UAirship.Shared().DeepLinkListener = this;
+            }
+
+            remove
+            {
+                onDeepLinkReceived -= value;
+
+                if (onDeepLinkReceived == null)
+                {
+                    UAirship.Shared().DeepLinkListener = null;
+                }
+            }
+        }
 
         public event EventHandler OnMessageCenterUpdated;
 
@@ -110,25 +127,6 @@ namespace UrbanAirship.NETStandard
             set
             {
                 UAirship.Shared().NamedUser.Id = value;
-            }
-        }
-
-        private EventHandler<DeepLinkEventArgs> onDeepLinkReceived;
-        public event EventHandler<DeepLinkEventArgs> OnDeepLinkReceived
-        {
-            add
-            {
-                onDeepLinkReceived += value;
-                UAirship.Shared().DeepLinkListener = this;
-            }
-
-            remove
-            {
-                onDeepLinkReceived -= value;
-                if (onDeepLinkReceived == null)
-                {
-                    UAirship.Shared().DeepLinkListener = null;
-                }
             }
         }
 
@@ -403,6 +401,7 @@ namespace UrbanAirship.NETStandard
                 onDeepLinkReceived(this, new DeepLinkEventArgs(deepLink));
                 return true;
             }
+
             return false;
         }
 

@@ -1,6 +1,7 @@
 /*
  Copyright Airship and Contributors
 */
+using CoreFoundation;
 using CoreGraphics;
 using Foundation;
 using ObjCRuntime;
@@ -14,59 +15,55 @@ namespace UrbanAirship {
     [Static]
     partial interface Constants
     {
-
-
     }
 
     // @interface UAMediaAttachmentContent : NSObject
     [BaseType(typeof(NSObject))]
     interface UAMediaAttachmentContent
     {
-        // @property (readonly, nonatomic) NSString *body;
+        // @property (nonatomic, readonly) NSString *body;
         [Export("body")]
         string Body { get; }
 
-        // @property (readonly, nonatomic) NSString *title;
+        // @property (nonatomic, readonly) NSString *title;
         [Export("title")]
         string Title { get; }
 
-        // @property (readonly, nonatomic) NSString *subtitle;
+        // @property (nonatomic, readonly) NSString *subtitle;
         [Export("subtitle")]
         string Subtitle { get; }
-
     }
 
     // @interface UAMediaAttachmentURL : NSObject
     [BaseType(typeof(NSObject))]
     interface UAMediaAttachmentURL
     {
-        // @property (readonly, nonatomic) NSString *urlID;
+        // @property (nonatomic, readonly) NSString *urlID;
         [Export("urlID")]
         string UrlID { get; }
 
-        // @property (readonly, nonatomic) NSURL *url;
+        // @property (nonatomic, readonly) NSURL *url;
         [Export("url")]
         NSUrl Url { get; }
-
     }
 
     // @interface UAMediaAttachmentPayload : NSObject
     [BaseType(typeof(NSObject))]
     interface UAMediaAttachmentPayload
     {
-        // @property (readonly, nonatomic) NSMutableArray *urls;
+        // @property (nonatomic, readonly) NSMutableArray *urls;
         [Export("urls")]
         NSMutableArray Urls { get; }
 
-        // @property (readonly, nonatomic) NSDictionary *options;
+        // @property (nonatomic, readonly) NSDictionary *options;
         [Export("options")]
         NSDictionary Options { get; }
 
-        // @property (readonly, nonatomic) UAMediaAttachmentContent *content;
+        // @property (nonatomic, readonly) UAMediaAttachmentContent *content;
         [Export("content")]
         UAMediaAttachmentContent Content { get; }
 
-        // @property (readonly, nonatomic) NSString *thumbnailID;
+        // @property (nonatomic, readonly) NSString *thumbnailID;
         [Export("thumbnailID")]
         string ThumbnailID { get; }
 
@@ -80,11 +77,8 @@ namespace UrbanAirship {
     [BaseType(typeof(UNNotificationServiceExtension))]
     interface UANotificationServiceExtension
     {
-
         // - (NSString *)uniformTypeIdentifierForData:(NSData *)data;
         [Export("uniformTypeIdentifierForData:")]
         string UniformTypeIdentifier (NSData data);
     }
-
-
 }

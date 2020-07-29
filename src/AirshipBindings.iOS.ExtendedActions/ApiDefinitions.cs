@@ -1,6 +1,7 @@
 /*
  Copyright Airship and Contributors
 */
+using CoreFoundation;
 using CoreGraphics;
 using Foundation;
 using ObjCRuntime;
@@ -47,7 +48,6 @@ namespace UrbanAirship {
         [Field("kUARateAppActionDefaultRegistryName", "__Internal")]
         [Obsolete("Deprecated – to be removed in SDK version 14.0. Please use UARateAppActionDefaultRegistryName.")]
         NSString kUARateAppActionDefaultRegistryName { get; }
-
     }
 
     // @interface UAExtendedActionsResources : NSObject
@@ -72,6 +72,4 @@ namespace UrbanAirship {
         [Export("rateAppPromptTimestamps")]
         NSObject[] RateAppPromptTimestamps ();
     }
-
-
 }

@@ -1,5 +1,16 @@
 # Airship Xamarin Changelog
 
+## Version 13.1.0 - July 28, 2020
+Minor release adding Date and NamedUser attributes as well as 
+MessageCenter and Deep Link event support to the .NETStandard libraries,
+and providing a new Xamarin Forms based sample app.
+
+- Updated Android SDK to 13.3.2
+- Updated iOS SDK to 13.5.2
+- Added Message Center and Deep Link events to the .NETStandard library 
+- Added Date and Named user attributes support to the .NETStandard library
+- New sample app written using Xamarin Forms.
+
 ## Version 13.0.0 - April 3, 2020
 Major release to support Android SDK 12.2.3 and cross-platform attributes. Android platform
 now requires compatibility with Jetpack/AndroidX.

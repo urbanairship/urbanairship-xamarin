@@ -13,17 +13,17 @@
          <group targetFramework=".NETStandard2.0">
          </group>
          <group targetFramework="MonoAndroid4.1">
-            <dependency id="urbanairship.android.core" version="13.1.0"/>
-            <dependency id="urbanairship.android.messagecenter" version="13.1.0"/>
-            <dependency id="urbanairship.android.automation" version="13.1.0"/>
-            <dependency id="urbanairship.android.location" version="13.1.0"/>
+            <dependency id="urbanairship.android.core" version="13.3.2"/>
+            <dependency id="urbanairship.android.messagecenter" version="13.3.2"/>
+            <dependency id="urbanairship.android.automation" version="13.3.2"/>
+            <dependency id="urbanairship.android.location" version="13.3.2"/>
          </group>
 
          <group targetFramework="Xamarin.iOS1.0">
-            <dependency id="urbanairship.ios.core" version="13.3.2"/>
-            <dependency id="urbanairship.ios.automation" version="13.3.2"/>
-            <dependency id="urbanairship.ios.extendedactions" version="13.3.2"/>
-            <dependency id="urbanairship.ios.messagecenter" version="13.3.2"/>
+            <dependency id="urbanairship.ios.core" version="13.5.2"/>
+            <dependency id="urbanairship.ios.automation" version="13.5.2"/>
+            <dependency id="urbanairship.ios.extendedactions" version="13.5.2"/>
+            <dependency id="urbanairship.ios.messagecenter" version="13.5.2"/>
          </group>
       </dependencies>
    </metadata>

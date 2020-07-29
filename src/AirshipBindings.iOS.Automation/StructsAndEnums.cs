@@ -161,6 +161,4 @@ namespace UrbanAirship {
         ActiveSession = 8,
         Version = 9
     }
-
-
 }

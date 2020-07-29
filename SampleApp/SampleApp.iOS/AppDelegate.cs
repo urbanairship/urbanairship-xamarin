@@ -27,12 +27,6 @@ namespace SampleApp.iOS
 
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
-            global::Xamarin.Forms.Forms.Init();
-            LoadApplication(new App());
-            base.FinishedLaunching(app, options);
-
-            this.FailIfSimulator();
-
             // Set log level for debugging config loading (optional)
             // It will be set to the value in the loaded config upon takeOff
             UAirship.SetLogLevel(UALogLevel.Trace);
@@ -43,9 +37,11 @@ namespace SampleApp.iOS
 
             if (!config.Validate())
             {
-                this.ShowInvalidConfigAlert();
-                return true;
+                throw new RuntimeException("The AirshipConfig.plist must be a part of the app bundle and " +
+                    "include a valid appkey and secret for the selected production level.");
             }
+
+            WarnIfSimulator();
 
             // Bootstrap the Airship SDK
             UAirship.TakeOff(config);
@@ -76,48 +72,25 @@ namespace SampleApp.iOS
                 //FIXME: Find a way to call the refreshView from the HomeViewController
             });
 
-            return true;
+            InitFormsApp();
+
+            return base.FinishedLaunching(app, options);
         }
 
-        private void FailIfSimulator()
+        private void InitFormsApp ()
         {
+            global::Xamarin.Forms.Forms.Init();
+            LoadApplication(new App());
+        }
 
+        private void WarnIfSimulator()
+        {
             if (Runtime.Arch != Arch.SIMULATOR)
             {
                 return;
             }
 
-            Console.WriteLine("You will not be able to receive push notifications in the simulator.");
-
-            if (NSUserDefaults.StandardUserDefaults.BoolForKey("ua-simulator-warning-disabled"))
-            {
-                return;
-            }
-
-            UIAlertController alertController = UIAlertController.Create(title: "Notice", message: "You will not be able " +
-                                                                         "to receive push notifications in the simulator.",
-                                                                         preferredStyle: UIAlertControllerStyle.Alert);
-
-            UIAlertAction cancelAction = UIAlertAction.Create(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: null);
-            alertController.AddAction(cancelAction);
-
-            DispatchTime delay = new DispatchTime(DispatchTime.Now, 500000000);
-
-            DispatchQueue.MainQueue.DispatchAfter(delay, () =>
-            {
-                Window.RootViewController.PresentViewController(alertController, true, null);
-            });
-        }
-
-        private void ShowInvalidConfigAlert()
-        {
-            UIAlertController alertController = UIAlertController.Create(title: "Invalid AirshipConfig.plist",
-                                                                         message: "The AirshipConfig.plist must be a part " +
-                                                                         "of the app bundle and include a valid appkey and " +
-                                                                         "secret for the selected production level.",
-                                                                         preferredStyle: UIAlertControllerStyle.Alert);
-
-            Window.RootViewController.PresentViewController(alertController, true, null);
+            Console.WriteLine("WARNING: You will not be able to receive push notifications in the simulator.");
         }
 
         [Export("registrationSucceededForChannelID:deviceToken:")]

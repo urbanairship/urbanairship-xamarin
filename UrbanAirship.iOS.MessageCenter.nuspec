@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
    <metadata>
       <id>urbanairship.ios.messagecenter</id>
-      <version>13.3.2</version>
+      <version>13.5.2</version>
       <title>Airship iOS SDK - MessageCenter</title>
       <authors>Urban Airship, Inc.</authors>
       <projectUrl>https://github.com/urbanairship/urbanairship-xamarin</projectUrl>

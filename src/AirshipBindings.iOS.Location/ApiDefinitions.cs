@@ -10,8 +10,6 @@ namespace UrbanAirship {
     [Static]
     partial interface Constants
     {
-
-
         // extern NSString * const UAAnalyticsValueNone
         [Field("UAAnalyticsValueNone", "__Internal")]
         NSString UAAnalyticsValueNone { get; }
@@ -83,7 +81,6 @@ namespace UrbanAirship {
         // extern UALocationServiceProviderType *const UALocationServiceProviderUnknown
         [Field("UALocationServiceProviderUnknown", "__Internal")]
         NSString UALocationServiceProviderUnknown { get; }
-
     }
 
     // @protocol UALocationDelegate <NSObject>
@@ -91,7 +88,6 @@ namespace UrbanAirship {
     [BaseType(typeof(NSObject))]
     interface UALocationDelegate
     {
-
         // - (void)locationUpdatesStarted;
         [Export("locationUpdatesStarted")]
         void LocationUpdatesStarted ();
@@ -111,25 +107,19 @@ namespace UrbanAirship {
     [BaseType(typeof(UAComponent))]
     interface UALocation
     {
-        // + (null_unspecified instancetype)shared;
-        [Static]
-        [Export("shared")]
-        [New]
-        UALocation Shared ();
-
-        // @property (getter=isAutoRequestAuthorizationEnabled, assign, readwrite, nonatomic) BOOL autoRequestAuthorizationEnabled;
+        // @property (nonatomic, assign, unsafe_unretained, readwrite, getter=isAutoRequestAuthorizationEnabled) BOOL autoRequestAuthorizationEnabled;
         [Export("autoRequestAuthorizationEnabled")]
         bool AutoRequestAuthorizationEnabled { [Bind("isAutoRequestAuthorizationEnabled")] get; set; }
 
-        // @property (getter=isLocationUpdatesEnabled, assign, readwrite, nonatomic) BOOL locationUpdatesEnabled;
+        // @property (nonatomic, assign, unsafe_unretained, readwrite, getter=isLocationUpdatesEnabled) BOOL locationUpdatesEnabled;
         [Export("locationUpdatesEnabled")]
         bool LocationUpdatesEnabled { [Bind("isLocationUpdatesEnabled")] get; set; }
 
-        // @property (getter=isBackgroundLocationUpdatesAllowed, assign, readwrite, nonatomic) BOOL backgroundLocationUpdatesAllowed;
+        // @property (nonatomic, assign, unsafe_unretained, readwrite, getter=isBackgroundLocationUpdatesAllowed) BOOL backgroundLocationUpdatesAllowed;
         [Export("backgroundLocationUpdatesAllowed")]
         bool BackgroundLocationUpdatesAllowed { [Bind("isBackgroundLocationUpdatesAllowed")] get; set; }
 
-        // @property (readwrite, nonatomic, nullable) id<UALocationDelegate> delegate;
+        // @property (nonatomic, weak, readwrite, nullable) id<UALocationDelegate> delegate;
         [NullAllowed, Export("delegate", ArgumentSemantic.Assign)]
         NSObject WeakDelegate { get; set; }
 
@@ -137,9 +127,15 @@ namespace UrbanAirship {
         [NullAllowed]
         IUALocationDelegate Delegate { get; set; }
 
-        // @property (readonly, nonatomic, nullable) CLLocation *lastLocation;
+        // @property (nonatomic, readonly, nullable) CLLocation *lastLocation;
         [NullAllowed, Export("lastLocation")]
         CLLocation LastLocation { get; }
+
+        // + (null_unspecified instancetype)shared;
+        [Static]
+        [New]
+        [Export("shared")]
+        UALocation Shared ();
 
         // - (BOOL)isLocationOptedIn;
         [Export("isLocationOptedIn")]
@@ -154,19 +150,19 @@ namespace UrbanAirship {
     [BaseType(typeof(NSObject))]
     interface UALocationInfo
     {
-        // @property (readonly, nonatomic) double latitude;
+        // @property (nonatomic, readonly) double latitude;
         [Export("latitude")]
         double Latitude { get; }
 
-        // @property (readonly, nonatomic) double longitude;
+        // @property (nonatomic, readonly) double longitude;
         [Export("longitude")]
         double Longitude { get; }
 
-        // @property (readonly, nonatomic) double horizontalAccuracy;
+        // @property (nonatomic, readonly) double horizontalAccuracy;
         [Export("horizontalAccuracy")]
         double HorizontalAccuracy { get; }
 
-        // @property (readonly, nonatomic) double verticalAccuracy;
+        // @property (nonatomic, readonly) double verticalAccuracy;
         [Export("verticalAccuracy")]
         double VerticalAccuracy { get; }
 
@@ -180,7 +176,6 @@ namespace UrbanAirship {
     [BaseType(typeof(UAEvent))]
     interface UALocationEvent
     {
-
         // + (nonnull UALocationEvent *) locationEventWithInfo:(nonnull UALocationInfo *)info providerType:(nullable UALocationServiceProviderType *)providerType desiredAccuracy:(nullable NSNumber *)desiredAccuracy distanceFilter:(nullable NSNumber *)distanceFilter;
         [Static]
         [Export("locationEventWithInfo:providerType:desiredAccuracy:distanceFilter:")]
@@ -201,6 +196,4 @@ namespace UrbanAirship {
         [Export("standardLocationEventWithInfo:providerType:desiredAccuracy:distanceFilter:")]
         UALocationEvent StandardLocationEvent (UALocationInfo info, [NullAllowed] string providerType, [NullAllowed] NSNumber desiredAccuracy, [NullAllowed] NSNumber distanceFilter);
     }
-
-
 }

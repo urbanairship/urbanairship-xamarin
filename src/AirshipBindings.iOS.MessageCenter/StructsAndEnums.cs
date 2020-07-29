@@ -21,6 +21,4 @@ namespace UrbanAirship {
         Default = 0,
         Black = 1
     }
-
-
 }
