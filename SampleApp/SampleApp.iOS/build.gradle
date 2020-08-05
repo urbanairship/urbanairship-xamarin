@@ -18,5 +18,5 @@ task build {
     }
 }
 
-build.dependsOn(':SampleApp:build')
-
+build.dependsOn(':pkg')
+build.dependsOn(':SampleApp:restore')

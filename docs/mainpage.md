@@ -15,5 +15,5 @@ within shared codebases (e.g., a Xamarin Forms app).
 Use NuGet to install the urbanairship.netstandard package.
 Detailed instructions can be found in the [Getting started guide](http://docs.urbanairship.com/platform/xamarin.html#installation).
 
-Both Android and iOS example apps are provided in the `samples/` directory on
-[Github](https://github.com/urbanairship/xamarin-component).
+A cross-platform sample app is provided in the `SampleApp` directory on
+[Github](https://github.com/urbanairship/urbanairship-xamarin/tree/main/SampleApp).
