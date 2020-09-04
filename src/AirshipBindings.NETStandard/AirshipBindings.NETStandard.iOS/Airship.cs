@@ -244,6 +244,34 @@ namespace UrbanAirship.NETStandard
             UAMessageCenter.Shared().DisplayMessage(messageId);
         }
 
+        public void MarkMessageRead(string messageId)
+        {
+            var messages = UAMessageCenter.Shared().MessageList.Messages;
+            foreach (var message in messages)
+            {
+                if (message.MessageID == messageId)
+                {
+                    message.MarkMessageRead(null);
+                    Console.WriteLine("Message read !");
+                }
+            }
+        }
+
+        public void DeleteMessage(string messageId)
+        {
+            var toDelete = new UAInboxMessage[1];
+            var messages = UAMessageCenter.Shared().MessageList.Messages;
+            foreach (var message in messages)
+            {
+                if (message.MessageID == messageId)
+                {
+                    toDelete[0] = message;
+                    UAMessageCenter.Shared().MessageList.MarkMessagesDeleted(toDelete, null);
+                    Console.WriteLine("Message deleted !");
+                }
+            }
+        }
+
         public int MessageCenterUnreadCount
         {
             get

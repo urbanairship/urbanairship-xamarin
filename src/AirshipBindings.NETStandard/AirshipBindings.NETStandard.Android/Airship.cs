@@ -216,6 +216,16 @@ namespace UrbanAirship.NETStandard
             MessageCenterClass.Shared().ShowMessageCenter(messageId);
         }
 
+        public void MarkMessageRead(string messageId)
+        {
+            MessageCenterClass.Shared().Inbox.GetMessage(messageId).MarkRead();
+        }
+
+        public void DeleteMessage(string messageId)
+        {
+            MessageCenterClass.Shared().Inbox.GetMessage(messageId).Delete();
+        }
+
         public int MessageCenterUnreadCount
         {
             get
