@@ -252,7 +252,6 @@ namespace UrbanAirship.NETStandard
                 if (message.MessageID == messageId)
                 {
                     message.MarkMessageRead(null);
-                    Console.WriteLine("Message read !");
                 }
             }
         }
@@ -267,7 +266,7 @@ namespace UrbanAirship.NETStandard
                 {
                     toDelete[0] = message;
                     UAMessageCenter.Shared().MessageList.MarkMessagesDeleted(toDelete, null);
-                    Console.WriteLine("Message deleted !");
+                
                 }
             }
         }

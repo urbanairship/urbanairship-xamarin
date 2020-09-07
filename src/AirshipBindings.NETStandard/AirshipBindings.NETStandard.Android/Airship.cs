@@ -218,12 +218,20 @@ namespace UrbanAirship.NETStandard
 
         public void MarkMessageRead(string messageId)
         {
-            MessageCenterClass.Shared().Inbox.GetMessage(messageId).MarkRead();
+            var toRead = new List<String>
+            {
+                messageId
+            };
+            MessageCenterClass.Shared().Inbox.MarkMessagesRead(toRead);
         }
 
         public void DeleteMessage(string messageId)
         {
-            MessageCenterClass.Shared().Inbox.GetMessage(messageId).Delete();
+            var toDelete = new List<String>
+            {
+                messageId
+            };
+            MessageCenterClass.Shared().Inbox.DeleteMessages(toDelete);
         }
 
         public int MessageCenterUnreadCount
