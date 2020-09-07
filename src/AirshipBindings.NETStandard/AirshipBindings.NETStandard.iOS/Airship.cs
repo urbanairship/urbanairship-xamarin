@@ -266,7 +266,6 @@ namespace UrbanAirship.NETStandard
                 {
                     toDelete[0] = message;
                     UAMessageCenter.Shared().MessageList.MarkMessagesDeleted(toDelete, null);
-                
                 }
             }
         }
