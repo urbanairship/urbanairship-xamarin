@@ -259,15 +259,8 @@ namespace UrbanAirship.NETStandard
         public void DeleteMessage(string messageId)
         {
             var toDelete = new UAInboxMessage[1];
-            var messages = UAMessageCenter.Shared().MessageList.Messages;
-            foreach (var message in messages)
-            {
-                if (message.MessageID == messageId)
-                {
-                    toDelete[0] = message;
-                    UAMessageCenter.Shared().MessageList.MarkMessagesDeleted(toDelete, null);
-                }
-            }
+            toDelete[0] = UAMessageCenter.Shared().MessageList.Message(messageId);
+            UAMessageCenter.Shared().MessageList.MarkMessagesDeleted(toDelete, null);
         }
 
         public int MessageCenterUnreadCount
