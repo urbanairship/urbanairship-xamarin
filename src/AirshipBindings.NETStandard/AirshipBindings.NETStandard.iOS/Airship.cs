@@ -246,14 +246,9 @@ namespace UrbanAirship.NETStandard
 
         public void MarkMessageRead(string messageId)
         {
-            var messages = UAMessageCenter.Shared().MessageList.Messages;
-            foreach (var message in messages)
-            {
-                if (message.MessageID == messageId)
-                {
-                    message.MarkMessageRead(null);
-                }
-            }
+            var toRead = new UAInboxMessage[1];
+            toRead[0] = UAMessageCenter.Shared().MessageList.Message(messageId);
+            UAMessageCenter.Shared().MessageList.MarkMessagesRead(toRead, null);
         }
 
         public void DeleteMessage(string messageId)
