@@ -42,6 +42,7 @@
     <Compile Include="..\SharedAssemblyInfo.iOS.cs">
       <Link>Properties\SharedAssemblyInfo.iOS.cs</Link>
     </Compile>
+    <Compile Include="AirshipLocation.cs" />
   </ItemGroup>
   <ItemGroup>
     <ObjcBindingApiDefinition Include="ApiDefinitions.cs" />

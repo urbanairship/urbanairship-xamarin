@@ -48,6 +48,7 @@
     <Compile Include="..\SharedAssemblyInfo.Common.cs">
       <Link>Properties\SharedAssemblyInfo.Common.cs</Link>
     </Compile>
+    <Compile Include="AirshipCore.cs" />
   </ItemGroup>
   <ItemGroup>
     <ObjcBindingApiDefinition Include="ApiDefinitions.cs" />
