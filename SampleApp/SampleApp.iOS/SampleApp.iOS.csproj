@@ -89,6 +89,9 @@
     <PackageReference Include="urbanairship.ios">
       <Version>13.5.2</Version>
     </PackageReference>
+    <PackageReference Include="urbanairship.netstandard">
+      <Version>14.0.0</Version>
+    </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>

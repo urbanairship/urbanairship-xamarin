@@ -1,5 +1,14 @@
 # Airship Xamarin Changelog
 
+## Version 14.0.0 - Sept 22, 2020
+Major release to support iOS SDK 14.1.1 & Android SDK 14.0.0.
+
+### Changes
+Starting with SDK 14, all landing page and external urls are tested against a URL allow list. The easiest way to go back to 13.x behavior is to add the wildcard symbol `*` to the array under the URLAllowListScopeOpenURL key in your AirshipConfig.plist for iOS, and `urlAllowListScopeOpenUrl = *` to the airshipconfig.properties on Android. Config for `whitelist` has been removed and replaced with:
+-  iOS: `URLAllowList`, Android: `urlAllowList`
+-  iOS: `URLAllowListScopeOpenURL`, Android: `urlAllowListScopeOpenUrl`
+-  iOS: `URLAllowListScopeJavaScriptInterface`, Android: `urlAllowListScopeJavaScriptInterface`
+
 ## Version 13.1.0 - July 28, 2020
 Minor release adding Date and NamedUser attributes as well as 
 MessageCenter and Deep Link event support to the .NETStandard libraries,
