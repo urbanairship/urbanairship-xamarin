@@ -6,4 +6,4 @@ using UrbanAirship.Attributes;
 // Change them to the values specific to your project.
 
 // Cross-platform version of the plugin
-[assembly: UACrossPlatformVersion ("13.1.0")]
+[assembly: UACrossPlatformVersion ("14.0.0")]
