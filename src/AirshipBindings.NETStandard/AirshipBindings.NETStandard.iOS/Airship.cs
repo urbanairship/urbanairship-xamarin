@@ -15,12 +15,16 @@ namespace UrbanAirship.NETStandard
         private static Lazy<Airship> sharedAirship = new Lazy<Airship>(() =>
         {
             Airship instance = new Airship();
-            instance.Init();
+            instance.Initialize();
             return instance;
         });
 
-        private void Init()
+        private void Initialize()
         {
+            // Load unreferenced modules
+            AirshipAutomation.Init();
+            AirshipExtendedActions.Init();
+
             NSNotificationCenter.DefaultCenter.AddObserver(aName: (NSString)"com.urbanairship.channel.channel_created", (NSNotification notification) =>
             {
                 string channelID = notification.UserInfo["com.urbanairship.channel.identifier"].ToString();
