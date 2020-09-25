@@ -89,7 +89,7 @@ task generateIOSBindings {
         println("Generating bindings for ${iosSdkModuleName} module.")
 
         def xamboniScript = "xamboni.py"
-        def xamboniDir = new File ("${rootDir}/xamboni")
+        def xamboniDir = new File ("${rootDir}/src/xamboni")
         def xamboniFile = new File (xamboniDir, xamboniScript)
         if (!xamboniFile.exists()) {
             throw new GradleException("ERROR: Cannot find ${xamboniFile}. Please run 'git submodule update --init --recursive'")

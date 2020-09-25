@@ -227,3 +227,6 @@ google-services.json
 
 # Airship
 airship.properties
+
+# Xamboni
+src/xamboni/
