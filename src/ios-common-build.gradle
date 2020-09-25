@@ -40,8 +40,7 @@ task processIOSSDK {
                        "objective-c",
                        "-isysroot", sdkPath,
                        "-I", "${carthageCheckoutPath}",
-                       "-I", "${carthageCheckoutPath}/Airship/AirshipCore/Source/common",
-                       "-I", "${carthageCheckoutPath}/Airship/AirshipCore/Source/ios",
+                       "-I", "${carthageCheckoutPath}/Airship/AirshipCore/Source/Public",
                        "-I", "${carthageCheckoutPath}/${moduleSourcePath}",
                        "-fmodules",
                        "-D", "UA_USE_MODULE_IMPORT=0" ]
