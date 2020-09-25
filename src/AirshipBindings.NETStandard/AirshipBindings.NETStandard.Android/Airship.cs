@@ -216,6 +216,24 @@ namespace UrbanAirship.NETStandard
             MessageCenterClass.Shared().ShowMessageCenter(messageId);
         }
 
+        public void MarkMessageRead(string messageId)
+        {
+            var toRead = new List<String>
+            {
+                messageId
+            };
+            MessageCenterClass.Shared().Inbox.MarkMessagesRead(toRead);
+        }
+
+        public void DeleteMessage(string messageId)
+        {
+            var toDelete = new List<String>
+            {
+                messageId
+            };
+            MessageCenterClass.Shared().Inbox.DeleteMessages(toDelete);
+        }
+
         public int MessageCenterUnreadCount
         {
             get

@@ -144,6 +144,24 @@ namespace UrbanAirship.NETStandard
         }
 
         /// <summary>
+        /// Mark a specific message as read
+        /// </summary>
+        /// <param name="messageId">The identifier for the message to mark as read.</param>
+        public void MarkMessageRead(string messageId)
+        {
+            throw new NotImplementedException(BaitWithoutSwitchMessage);
+        }
+
+        /// <summary>
+        /// Delete a specific message
+        /// </summary>
+        /// <param name="messageId">The identifier for the message to delete.</param>
+        public void DeleteMessage(string messageId)
+        {
+            throw new NotImplementedException(BaitWithoutSwitchMessage);
+        }
+
+        /// <summary>
         /// Get the message center unread count.
         /// </summary>
         /// <value>The message center unread count.</value>
