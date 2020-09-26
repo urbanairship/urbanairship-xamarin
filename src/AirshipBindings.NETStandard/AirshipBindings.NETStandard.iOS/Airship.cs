@@ -197,6 +197,7 @@ namespace UrbanAirship.NETStandard
 
             if (customEvent.PropertyList != null)
             {
+                NSDictionary propertyDictionary = new NSDictionary();
                 foreach (var property in customEvent.PropertyList)
                 {
                     if (string.IsNullOrEmpty(property.name))
@@ -206,20 +207,24 @@ namespace UrbanAirship.NETStandard
 
                     if (property is CustomEvent.Property<string> stringProperty)
                     {
-                        uaEvent.SetStringProperty(stringProperty.value, stringProperty.name);
+                        propertyDictionary.SetValueForKey((NSString)stringProperty.value, (NSString)stringProperty.name);
                     }
                     else if (property is CustomEvent.Property<double> doubleProperty)
                     {
-                        uaEvent.SetNumberProperty(doubleProperty.value, doubleProperty.name);
+                        propertyDictionary.SetValueForKey((NSNumber)doubleProperty.value, (NSString)doubleProperty.name);
                     }
                     else if (property is CustomEvent.Property<bool> boolProperty)
                     {
-                        uaEvent.SetBoolProperty(boolProperty.value, boolProperty.name);
+                        propertyDictionary.SetValueForKey((NSNumber)boolProperty.value, (NSString)boolProperty.name);
                     }
                     else if (property is CustomEvent.Property<string[]> stringArrayProperty)
                     {
-                        uaEvent.SetStringArrayProperty(stringArrayProperty.value, stringArrayProperty.name);
+                        propertyDictionary.SetValueForKey(NSArray.FromObjects(stringArrayProperty.value), (NSString)stringArrayProperty.name);
                     }
+                }
+                if (propertyDictionary.Count > 0)
+                {
+                    uaEvent.Properties = propertyDictionary;
                 }
             }
 

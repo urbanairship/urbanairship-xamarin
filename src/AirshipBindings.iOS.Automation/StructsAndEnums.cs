@@ -17,14 +17,6 @@ namespace UrbanAirship {
     }
 
     [Native]
-    public enum UAInAppMessageAudienceMissBehaviorType : long
-    {
-        Cancel = 0,
-        Skip = 1,
-        Penalize = 2
-    }
-
-    [Native]
     public enum UAInAppMessageBannerPlacementType : long
     {
         Top = 0,
@@ -125,6 +117,20 @@ namespace UrbanAirship {
     public enum UALegacyInAppMessageDisplayType : long
     {
         Banner = 0
+    }
+
+    [Native]
+    public enum UAScheduleActionErrorCode : long
+    {
+        InvalidJSON = 0
+    }
+
+    [Native]
+    public enum UAScheduleAudienceMissBehaviorType : long
+    {
+        Cancel = 0,
+        Skip = 1,
+        Penalize = 2
     }
 
     [Native]

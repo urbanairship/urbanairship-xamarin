@@ -52,9 +52,9 @@ namespace UrbanAirship {
     [BaseType(typeof(UIViewController))]
     interface UADefaultMessageCenterListViewController : IUITableViewDelegate, IUITableViewDataSource, IUIScrollViewDelegate
     {
-        // @property(nonatomic, strong) UAMessageCenterStyle *style
+        // @property (nonatomic, strong, readwrite) UAMessageCenterStyle *_Nonnull messageCenterStyle;
         [Export("messageCenterStyle", ArgumentSemantic.Strong)]
-        UAMessageCenterStyle Style { get; set; }
+        UAMessageCenterStyle MessageCenterStyle { get; set; }
 
         // @property (nonatomic, strong, readwrite) NSPredicate *_Nonnull filter;
         [Export("filter", ArgumentSemantic.Strong)]
@@ -114,9 +114,9 @@ namespace UrbanAirship {
         [Export("filter", ArgumentSemantic.Strong)]
         NSPredicate Filter { get; set; }
 
-        // @property(nonatomic, strong) UAMessageCenterStyle *style
+        // @property (nonatomic, strong, readwrite) UAMessageCenterStyle *_Nonnull messageCenterStyle;
         [Export("messageCenterStyle", ArgumentSemantic.Strong)]
-        UAMessageCenterStyle Style { get; set; }
+        UAMessageCenterStyle MessageCenterStyle { get; set; }
 
         // @property (nonatomic, readonly) UADefaultMessageCenterListViewController *_Nonnull listViewController;
         [Export("listViewController")]
@@ -152,9 +152,9 @@ namespace UrbanAirship {
         [Export("title")]
         string Title { get; set; }
 
-        // @property(nonatomic, strong) UAMessageCenterStyle *style
+        // @property (nonatomic, strong, readwrite) UAMessageCenterStyle *_Nonnull messageCenterStyle;
         [Export("messageCenterStyle", ArgumentSemantic.Strong)]
-        UAMessageCenterStyle Style { get; set; }
+        UAMessageCenterStyle MessageCenterStyle { get; set; }
 
         // @property (nonatomic, strong, readwrite) NSPredicate *_Nonnull filter;
         [Export("filter", ArgumentSemantic.Strong)]
@@ -359,7 +359,7 @@ namespace UrbanAirship {
         [Static]
         [New]
         [Export("shared")]
-        UAMessageCenter Shared ();
+        UAMessageCenter Shared();
 
         // - (void)display:(BOOL)animated;
         [Export("display:")]
@@ -406,9 +406,9 @@ namespace UrbanAirship {
     [BaseType(typeof(UITableViewCell))]
     interface UAMessageCenterListCell
     {
-        // @property(nonatomic, strong) UAMessageCenterStyle *style
+        // @property (nonatomic, strong, readwrite) UAMessageCenterStyle *messageCenterStyle;
         [Export("messageCenterStyle", ArgumentSemantic.Strong)]
-        UAMessageCenterStyle Style { get; set; }
+        UAMessageCenterStyle MessageCenterStyle { get; set; }
 
         // @property (nonatomic, weak, readwrite) UILabel *date;
         [Export("date")]
@@ -431,40 +431,6 @@ namespace UrbanAirship {
         void SetData (UAInboxMessage message);
     }
 
-    // @interface UAMessageCenterListViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate, UISplitViewControllerDelegate>
-    [Obsolete("Deprecated – to be removed in SDK version 14.0. Instead use UADefaultMessageCenterListViewController.")]
-    [BaseType(typeof(UIViewController))]
-    interface UAMessageCenterListViewController : IUITableViewDelegate, IUITableViewDataSource, IUIScrollViewDelegate, IUISplitViewControllerDelegate
-    {
-        // @property(nonatomic, strong) UAMessageCenterStyle *style
-        [Export("messageCenterStyle", ArgumentSemantic.Strong)]
-        UAMessageCenterStyle Style { get; set; }
-
-        // @property (nonatomic, strong, readwrite) NSPredicate *filter;
-        [Export("filter", ArgumentSemantic.Strong)]
-        NSPredicate Filter { get; set; }
-
-        // @property (nonatomic, strong, readwrite) UIViewController<UAMessageCenterMessageViewProtocol> *messageViewController;
-        [Export("messageViewController", ArgumentSemantic.Strong)]
-        UAMessageCenterMessageViewProtocol MessageViewController { get; set; }
-
-        // @property (nonatomic, copy, readwrite) void (^)(BOOL) closeBlock;
-        [Export("closeBlock", ArgumentSemantic.Copy)]
-        Action CloseBlock { get; set; }
-
-        // - (void)displayMessageForID:(NSString *)messageID;
-        [Export("displayMessageForID:")]
-        void DisplayMessage (string messageID);
-
-        // - (void)displayMessageForID:(NSString *)messageID onError:(void (^)(void))completion;
-        [Export("displayMessageForID:onError:")]
-        void DisplayMessage (string messageID, Action completion);
-
-        // - (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil splitViewController:(UISplitViewController *)splitViewController;
-        [Export("initWithNibName:bundle:splitViewController:")]
-        IntPtr Constructor (string nibNameOrNil, NSBundle nibBundleOrNil, UISplitViewController splitViewController);
-    }
-
     // @protocol UAMessageCenterListViewDelegate <NSObject>
     [Protocol, Model]
     [BaseType(typeof(NSObject))]
@@ -482,13 +448,6 @@ namespace UrbanAirship {
     }
 
     interface IUAMessageCenterListViewDelegate { }
-
-    // @interface UAMessageCenterMessageViewController : UIViewController <UAMessageCenterMessageViewProtocol>
-    [Obsolete("Deprecated – to be removed in SDK version 14.0. Instead use UADefaultMessageCenterMessageViewController.")]
-    [BaseType(typeof(UIViewController))]
-    interface UAMessageCenterMessageViewController : IUAMessageCenterMessageViewProtocol
-    {
-    }
 
     // @protocol UAMessageCenterMessageViewDelegate <NSObject>
     [Protocol, Model]
@@ -518,32 +477,6 @@ namespace UrbanAirship {
 
     interface IUAMessageCenterMessageViewDelegate { }
 
-    // @protocol UAMessageCenterMessageViewProtocol
-    [Protocol, Model]
-    [Obsolete("Deprecated – to be removed in SDK version 14.0. Instead use the UAMessageCenterMessageViewController directly.")]
-    [BaseType(typeof(NSObject))]
-    interface UAMessageCenterMessageViewProtocol
-    {
-        // @property (nonatomic, strong, readonly) UAInboxMessage *_Nonnull message;
-        [Export("message", ArgumentSemantic.Strong)]
-        UAInboxMessage Message { get; }
-
-        // @property (nonatomic, copy, readwrite) void (^_Nonnull)(BOOL) closeBlock;
-        [Export("closeBlock", ArgumentSemantic.Copy)]
-        Action CloseBlock { get; set; }
-
-        // - (void)loadMessageForID:(nullable NSString *)messageID onlyIfChanged:(BOOL)onlyIfChanged onError:(nullable void (^)(void))errorCompletion;
-        [Abstract]
-        [Export("loadMessageForID:onlyIfChanged:onError:")]
-        void LoadMessage ([NullAllowed] string messageID, bool onlyIfChanged, [NullAllowed] Action errorCompletion);
-
-        // - (void)setLoadingIndicatorView:(nonnull UIView *)loadingIndicatorView animations:(nonnull void (^)(void))animations;
-        [Export("setLoadingIndicatorView:animations:")]
-        void SetLoadingIndicatorView (UIView loadingIndicatorView, Action animations);
-    }
-
-    interface IUAMessageCenterMessageViewProtocol { }
-
     // @interface UAMessageCenterNativeBridgeExtension : NSObject <UANativeBridgeExtensionDelegate>
     [BaseType(typeof(NSObject))]
     interface UAMessageCenterNativeBridgeExtension : IUANativeBridgeExtensionDelegate
@@ -558,24 +491,6 @@ namespace UrbanAirship {
         [Static]
         [Export("bundle")]
         NSBundle Bundle ();
-    }
-
-    // @interface UAMessageCenterSplitViewController : UISplitViewController
-    [Obsolete("Deprecated – to be removed in SDK version 14.0. Instead use UADefaultMessageCenterSplitViewController.")]
-    [BaseType(typeof(UISplitViewController))]
-    interface UAMessageCenterSplitViewController
-    {
-        // @property (nonatomic, strong, readwrite) NSPredicate *filter;
-        [Export("filter", ArgumentSemantic.Strong)]
-        NSPredicate Filter { get; set; }
-
-        // @property(nonatomic, strong) UAMessageCenterStyle *style
-        [Export("messageCenterStyle", ArgumentSemantic.Strong)]
-        UAMessageCenterStyle Style { get; set; }
-
-        // @property (nonatomic, readonly) UAMessageCenterListViewController *listViewController;
-        [Export("listViewController")]
-        UAMessageCenterListViewController ListViewController { get; }
     }
 
     // @interface UAMessageCenterStyle : NSObject

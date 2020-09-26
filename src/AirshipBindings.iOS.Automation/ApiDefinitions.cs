@@ -15,14 +15,6 @@ namespace UrbanAirship {
     [Static]
     partial interface Constants
     {
-        // extern NSString *const _Nonnull UAActionScheduleInfoActionsKey
-        [Field("UAActionScheduleInfoActionsKey", "__Internal")]
-        NSString UAActionScheduleInfoActionsKey { get; }
-
-        // extern const NSUInteger UAAutomationScheduleLimit
-        [Field("UAAutomationScheduleLimit", "__Internal")]
-        nuint UAAutomationScheduleLimit { get; }
-
         // extern NSString *const _Nonnull UABannerAdditionalPaddingKey
         [Field("UABannerAdditionalPaddingKey", "__Internal")]
         NSString UABannerAdditionalPaddingKey { get; }
@@ -231,10 +223,6 @@ namespace UrbanAirship {
         [Field("UAInAppMessageHeadingKey", "__Internal")]
         NSString UAInAppMessageHeadingKey { get; }
 
-        // extern const NSUInteger UAInAppMessageIDLimit
-        [Field("UAInAppMessageIDLimit", "__Internal")]
-        nuint UAInAppMessageIDLimit { get; }
-
         // extern NSString *const UAInAppMessageMediaKey
         [Field("UAInAppMessageMediaKey", "__Internal")]
         NSString UAInAppMessageMediaKey { get; }
@@ -375,13 +363,9 @@ namespace UrbanAirship {
         [Field("UAScheduleDelaySecondsKey", "__Internal")]
         NSString UAScheduleDelaySecondsKey { get; }
 
-        // extern NSString *const _Nonnull UAScheduleInfoInAppMessageKey
-        [Field("UAScheduleInfoInAppMessageKey", "__Internal")]
-        NSString UAScheduleInfoInAppMessageKey { get; }
-
-        // extern const NSUInteger UAScheduleInfoMaxTriggers
-        [Field("UAScheduleInfoMaxTriggers", "__Internal")]
-        nuint UAScheduleInfoMaxTriggers { get; }
+        // extern const NSUInteger UAScheduleMaxTriggers
+        [Field("UAScheduleMaxTriggers", "__Internal")]
+        nuint UAScheduleMaxTriggers { get; }
 
         // extern NSString *const _Nonnull UAScheduleTriggerActiveSessionName
         [Field("UAScheduleTriggerActiveSessionName", "__Internal")]
@@ -450,143 +434,20 @@ namespace UrbanAirship {
         // extern NSString *const _Nonnull UATextAdditonalPaddingKey
         [Field("UATextAdditonalPaddingKey", "__Internal")]
         NSString UATextAdditonalPaddingKey { get; }
-
-        // extern NSString *const kUACancelSchedulesActionDefaultRegistryAlias
-        [Field("kUACancelSchedulesActionDefaultRegistryAlias", "__Internal")]
-        [Obsolete("Deprecated – to be removed in SDK version 14.0. Please use UACancelSchedulesActionDefaultRegistryAlias.")]
-        NSString kUACancelSchedulesActionDefaultRegistryAlias { get; }
-
-        // extern NSString *const kUACancelSchedulesActionDefaultRegistryName
-        [Field("kUACancelSchedulesActionDefaultRegistryName", "__Internal")]
-        [Obsolete("Deprecated – to be removed in SDK version 14.0. Please use UACancelSchedulesActionDefaultRegistryName.")]
-        NSString kUACancelSchedulesActionDefaultRegistryName { get; }
-
-        // extern DEPRECATED_MSG_ATTRIBUTE( "Deprecated – to be removed in SDK version 14.0. Please use " "UALandingPageActionDefaultRegistryAlias.") NSString *const kUALandingPageActionDefaultRegistryAlias
-        [Field("kUALandingPageActionDefaultRegistryAlias", "__Internal")]
-        [Obsolete("Deprecated – to be removed in SDK version 14.0. Please use UALandingPageActionDefaultRegistryAlias.")]
-        NSString kUALandingPageActionDefaultRegistryAlias { get; }
-
-        // extern DEPRECATED_MSG_ATTRIBUTE( "Deprecated – to be removed in SDK version 14.0. Please use " "UALandingPageActionDefaultRegistryName.") NSString *const kUALandingPageActionDefaultRegistryName
-        [Field("kUALandingPageActionDefaultRegistryName", "__Internal")]
-        [Obsolete("Deprecated – to be removed in SDK version 14.0. Please use UALandingPageActionDefaultRegistryName.")]
-        NSString kUALandingPageActionDefaultRegistryName { get; }
-
-        // extern NSString *const kUAScheduleActionDefaultRegistryAlias
-        [Field("kUAScheduleActionDefaultRegistryAlias", "__Internal")]
-        [Obsolete("Deprecated – to be removed in SDK version 14.0. Please use UAScheduleActionDefaultRegistryAlias.")]
-        NSString kUAScheduleActionDefaultRegistryAlias { get; }
-
-        // extern NSString *const kUAScheduleActionDefaultRegistryName
-        [Field("kUAScheduleActionDefaultRegistryName", "__Internal")]
-        [Obsolete("Deprecated – to be removed in SDK version 14.0. Please use UAScheduleActionDefaultRegistryName.")]
-        NSString kUAScheduleActionDefaultRegistryName { get; }
     }
 
-    // @interface UAActionAutomation : UAComponent
-    [BaseType(typeof(UAComponent))]
-    interface UAActionAutomation
+    // @interface UAActionSchedule : UASchedule
+    [BaseType(typeof(UASchedule))]
+    interface UAActionSchedule
     {
-        // + (null_unspecified instancetype)shared;
-        [Static]
-        [New]
-        [Export("shared")]
-        UAActionAutomation Shared ();
-
-        // - (void)scheduleActions:(nonnull UAActionScheduleInfo *)scheduleInfo completionHandler: (nullable void (^)(UASchedule *_Nullable))completionHandler;
-        [Export("scheduleActions:completionHandler:")]
-        void ScheduleActions (UAActionScheduleInfo scheduleInfo, [NullAllowed] Action completionHandler);
-
-        // - (void)scheduleActions:(nonnull UAActionScheduleInfo *)scheduleInfo metadata:(nonnull NSDictionary *)metadata completionHandler: (nullable void (^)(UASchedule *_Nullable))completionHandler;
-        [Export("scheduleActions:metadata:completionHandler:")]
-        void ScheduleActions (UAActionScheduleInfo scheduleInfo, NSDictionary metadata, [NullAllowed] Action completionHandler);
-
-        // - (void)cancelScheduleWithID:(nonnull NSString *)identifier;
-        [Export("cancelScheduleWithID:")]
-        void CancelSchedule (string identifier);
-
-        // - (void)cancelSchedulesWithGroup:(nonnull NSString *)group;
-        [Export("cancelSchedulesWithGroup:")]
-        void CancelSchedules (string group);
-
-        // - (void)cancelAll;
-        [Export("cancelAll")]
-        void CancelAll ();
-
-        // - (void)getScheduleWithID:(nonnull NSString *)identifier completionHandler: (nonnull void (^)(UASchedule *_Nullable))completionHandler;
-        [Export("getScheduleWithID:completionHandler:")]
-        void GetSchedule (string identifier, Action<UASchedule> completionHandler);
-
-        // - (void)getSchedules: (nonnull void (^)(NSArray<UASchedule *> *_Nonnull))completionHandler;
-        [Export("getSchedules:")]
-        void GetSchedules (UASchedule[] completionHandler);
-
-        // - (void)getSchedulesWithGroup:(nonnull NSString *)group completionHandler: (nonnull void (^)(NSArray<UASchedule *> *_Nonnull)) completionHandler;
-        [Export("getSchedulesWithGroup:completionHandler:")]
-        void GetSchedules (string group, UASchedule[] completionHandler);
-
-        // - (void)editScheduleWithID:(nonnull NSString *)identifier edits:(nonnull UAActionScheduleEdits *)edits completionHandler: (nonnull void (^)(UASchedule *_Nullable))completionHandler;
-        [Export("editScheduleWithID:edits:completionHandler:")]
-        void EditSchedule (string identifier, UAActionScheduleEdits edits, Action<UASchedule> completionHandler);
-    }
-
-    // @interface UAActionScheduleEditsBuilder : UAScheduleEditsBuilder
-    [BaseType(typeof(UAScheduleEditsBuilder))]
-    interface UAActionScheduleEditsBuilder
-    {
-        // @property (nonatomic, strong, readwrite, nullable) NSDictionary *actions;
-        [NullAllowed, Export("actions", ArgumentSemantic.Strong)]
-        NSDictionary Actions { get; set; }
-    }
-
-    // @interface UAActionScheduleEdits : UAScheduleEdits
-    [BaseType(typeof(UAScheduleEdits))]
-    interface UAActionScheduleEdits
-    {
-        // @property (nonatomic, readonly, nullable) NSDictionary *actions;
-        [NullAllowed, Export("actions")]
+        // @property (nonatomic, readonly) NSDictionary *_Nonnull actions;
+        [Export("actions")]
         NSDictionary Actions { get; }
 
-        // + (nonnull instancetype)editsWithBuilderBlock: (nonnull void (^)(UAActionScheduleEditsBuilder *_Nonnull))builderBlock;
+        // + (nonnull instancetype) scheduleWithActions:(nonnull NSDictionary *)actions builderBlock: (nonnull void (^)(UAScheduleBuilder *_Nonnull))builderBlock;
         [Static]
-        [Export("editsWithBuilderBlock:")]
-        UAActionScheduleEdits Edits (Action<UAActionScheduleEditsBuilder> builderBlock);
-    }
-
-    // @interface UAActionScheduleInfoBuilder : UAScheduleInfoBuilder
-    [BaseType(typeof(UAScheduleInfoBuilder))]
-    interface UAActionScheduleInfoBuilder
-    {
-        // @property (nonatomic, copy, readwrite, nullable) NSString *group;
-        [NullAllowed, Export("group")]
-        string Group { get; set; }
-
-        // @property (nonatomic, strong, readwrite, nullable) NSDictionary *actions;
-        [NullAllowed, Export("actions", ArgumentSemantic.Strong)]
-        NSDictionary Actions { get; set; }
-    }
-
-    // @interface UAActionScheduleInfo : UAScheduleInfo
-    [BaseType(typeof(UAScheduleInfo))]
-    interface UAActionScheduleInfo
-    {
-        // @property (nonatomic, readonly, nullable) NSString *group;
-        [NullAllowed, Export("group")]
-        string Group { get; }
-
-        // @property (nonatomic, readonly, nullable) NSDictionary *actions;
-        [NullAllowed, Export("actions")]
-        NSDictionary Actions { get; }
-
-        // + (nonnull instancetype)scheduleInfoWithBuilderBlock: (nonnull void (^)(UAActionScheduleInfoBuilder *_Nonnull))builderBlock;
-        [Static]
-        [Export("scheduleInfoWithBuilderBlock:")]
-        UAActionScheduleInfo ScheduleInfo (Action<UAActionScheduleInfoBuilder> builderBlock);
-
-        // + (nullable instancetype)scheduleInfoWithJSON:(nonnull id)json error:(NSError *_Nullable *_Nullable) error;
-        [Static]
-        [Export("scheduleInfoWithJSON:error:")]
-        [return: NullAllowed]
-        UAActionScheduleInfo ScheduleInfo (NSObject json, [NullAllowed] out NSError error);
+        [Export("scheduleWithActions:builderBlock:")]
+        UAActionSchedule Schedule (NSDictionary actions, Action<UAScheduleBuilder> builderBlock);
     }
 
     // @interface UAAutomationResources : NSObject
@@ -605,14 +466,85 @@ namespace UrbanAirship {
     {
     }
 
+    // @interface UAInAppAutomation : UAComponent
+    [BaseType(typeof(UAComponent))]
+    interface UAInAppAutomation
+    {
+        // + (null_unspecified instancetype)shared;
+        [Static]
+        [New]
+        [Export("shared")]
+        UAInAppAutomation Shared();
+
+        // @property (nonatomic, assign, unsafe_unretained, readwrite, getter=isEnabled) BOOL enabled;
+        [Export("enabled")]
+        bool Enabled { [Bind("isEnabled")] get; set; }
+
+        // @property (nonatomic, assign, unsafe_unretained, readwrite, getter=isPaused) BOOL paused;
+        [Export("paused")]
+        bool Paused { [Bind("isPaused")] get; set; }
+
+        // @property (nonatomic, strong, readonly) UAInAppMessageManager *_Nonnull inAppMessageManager;
+        [Export("inAppMessageManager", ArgumentSemantic.Strong)]
+        UAInAppMessageManager InAppMessageManager { get; }
+
+        // - (void)schedule:(nonnull UASchedule *)schedule completionHandler:(nonnull void (^)(BOOL))completionHandler;
+        [Export("schedule:completionHandler:")]
+        void Schedule (UASchedule schedule, Action<bool> completionHandler);
+
+        // - (void)scheduleMultiple:(nonnull NSArray<UASchedule *> *)schedules completionHandler:(nonnull void (^)(BOOL))completionHandler;
+        [Export("scheduleMultiple:completionHandler:")]
+        void ScheduleMultiple (UASchedule[] schedules, Action<bool> completionHandler);
+
+        // - (void)cancelScheduleWithID:(nonnull NSString *)scheduleID completionHandler:(nullable void (^)(BOOL))completionHandler;
+        [Export("cancelScheduleWithID:completionHandler:")]
+        void CancelSchedule (string scheduleID, [NullAllowed] Action completionHandler);
+
+        // - (void)cancelSchedulesWithGroup:(nonnull NSString *)group completionHandler:(nullable void (^)(BOOL))completionHandler;
+        [Export("cancelSchedulesWithGroup:completionHandler:")]
+        void CancelSchedules (string group, [NullAllowed] Action completionHandler);
+
+        // - (void)cancelActionSchedulesWithGroup:(nonnull NSString *)group completionHandler: (nullable void (^)(BOOL))completionHandler;
+        [Export("cancelActionSchedulesWithGroup:completionHandler:")]
+        void CancelActionSchedules (string group, [NullAllowed] Action completionHandler);
+
+        // - (void)cancelMessageSchedulesWithGroup:(nonnull NSString *)group completionHandler: (nullable void (^)(BOOL))completionHandler;
+        [Export("cancelMessageSchedulesWithGroup:completionHandler:")]
+        void CancelMessageSchedules (string group, [NullAllowed] Action completionHandler);
+
+        // - (void)getActionScheduleWithID:(nonnull NSString *)identifier completionHandler:(nonnull void (^)(UAActionSchedule *_Nullable)) completionHandler;
+        [Export("getActionScheduleWithID:completionHandler:")]
+        void GetActionSchedule (string identifier, Action<UAActionSchedule> completionHandler);
+
+        // - (void)getActionSchedulesWithGroup:(nonnull NSString *)group completionHandler: (nonnull void (^)(NSArray<UAActionSchedule *> *_Nonnull)) completionHandler;
+        [Export("getActionSchedulesWithGroup:completionHandler:")]
+        void GetActionSchedules (string group, UAActionSchedule[] completionHandler);
+
+        // - (void)getActionSchedules: (nonnull void (^)(NSArray<UAActionSchedule *> *_Nonnull))completionHandler;
+        [Export("getActionSchedules:")]
+        void GetActionSchedules (UAActionSchedule[] completionHandler);
+
+        // - (void)getMessageScheduleWithID:(nonnull NSString *)identifier completionHandler: (nonnull void (^)(UAInAppMessageSchedule *_Nullable)) completionHandler;
+        [Export("getMessageScheduleWithID:completionHandler:")]
+        void GetMessageSchedule (string identifier, Action<UAInAppMessageSchedule> completionHandler);
+
+        // - (void)getMessageSchedulesWithGroup:(nonnull NSString *)group completionHandler: (nonnull void (^)(NSArray<UAInAppMessageSchedule *> *_Nonnull))completionHandler;
+        [Export("getMessageSchedulesWithGroup:completionHandler:")]
+        void GetMessageSchedules (string group, UAInAppMessageSchedule[] completionHandler);
+
+        // - (void)getMessageSchedules: (nonnull void (^)(NSArray<UAInAppMessageSchedule *> *_Nonnull)) completionHandler;
+        [Export("getMessageSchedules:")]
+        void GetMessageSchedules (UAInAppMessageSchedule[] completionHandler);
+
+        // - (void)editScheduleWithID:(nonnull NSString *)identifier edits:(nonnull UAScheduleEdits *)edits completionHandler:(nullable void (^)(BOOL))completionHandler;
+        [Export("editScheduleWithID:edits:completionHandler:")]
+        void EditSchedule (string identifier, UAScheduleEdits edits, [NullAllowed] Action completionHandler);
+    }
+
     // @interface UAInAppMessageBuilder : NSObject
     [BaseType(typeof(NSObject))]
     interface UAInAppMessageBuilder
     {
-        // @property (nonatomic, copy, readwrite, nullable) NSString *identifier;
-        [NullAllowed, Export("identifier")]
-        string Identifier { get; set; }
-
         // @property (nonatomic, copy, readwrite, nullable) NSString *name;
         [NullAllowed, Export("name")]
         string Name { get; set; }
@@ -628,10 +560,6 @@ namespace UrbanAirship {
         // @property (nonatomic, copy, readwrite, nullable) NSDictionary *actions;
         [NullAllowed, Export("actions", ArgumentSemantic.Copy)]
         NSDictionary Actions { get; set; }
-
-        // @property (nonatomic, strong, readwrite, nullable) UAInAppMessageAudience *audience;
-        [NullAllowed, Export("audience", ArgumentSemantic.Strong)]
-        UAInAppMessageAudience Audience { get; set; }
 
         // @property (nonatomic, copy, readwrite, nullable) NSString *displayBehavior;
         [NullAllowed, Export("displayBehavior")]
@@ -650,10 +578,6 @@ namespace UrbanAirship {
     [BaseType(typeof(NSObject))]
     interface UAInAppMessage
     {
-        // @property (nonatomic, readonly) NSString *_Nonnull identifier;
-        [Export("identifier")]
-        string Identifier { get; }
-
         // @property (nonatomic, copy, readonly, nullable) NSString *name;
         [NullAllowed, Export("name")]
         string Name { get; }
@@ -673,10 +597,6 @@ namespace UrbanAirship {
         // @property (nonatomic, readonly, nullable) NSDictionary *actions;
         [NullAllowed, Export("actions")]
         NSDictionary Actions { get; }
-
-        // @property (nonatomic, readonly, nullable) UAInAppMessageAudience *audience;
-        [NullAllowed, Export("audience")]
-        UAInAppMessageAudience Audience { get; }
 
         // @property (nonatomic, copy, readonly) NSString *_Nonnull displayBehavior;
         [Export("displayBehavior")]
@@ -794,74 +714,6 @@ namespace UrbanAirship {
         // - (BOOL)isCached:(nonnull NSURL *)assetURL;
         [Export("isCached:")]
         bool IsCached (NSUrl assetURL);
-    }
-
-    // @interface UAInAppMessageAudienceBuilder : NSObject
-    [BaseType(typeof(NSObject))]
-    interface UAInAppMessageAudienceBuilder
-    {
-        // @property (nonatomic, strong, readwrite, nullable) NSNumber *notificationsOptIn;
-        [NullAllowed, Export("notificationsOptIn", ArgumentSemantic.Strong)]
-        NSNumber NotificationsOptIn { get; set; }
-
-        // @property (nonatomic, strong, readwrite, nullable) NSNumber *locationOptIn;
-        [NullAllowed, Export("locationOptIn", ArgumentSemantic.Strong)]
-        NSNumber LocationOptIn { get; set; }
-
-        // @property (nonatomic, copy, readwrite, nullable) NSArray<NSString *> *languageTags;
-        [NullAllowed, Export("languageTags", ArgumentSemantic.Copy)]
-        string[] LanguageTags { get; set; }
-
-        // @property (nonatomic, strong, readwrite, nullable) UAInAppMessageTagSelector *tagSelector;
-        [NullAllowed, Export("tagSelector", ArgumentSemantic.Strong)]
-        UAInAppMessageTagSelector TagSelector { get; set; }
-
-        // @property (nonatomic, strong, readwrite, nullable) UAJSONPredicate *versionPredicate;
-        [NullAllowed, Export("versionPredicate", ArgumentSemantic.Strong)]
-        UAJSONPredicate VersionPredicate { get; set; }
-
-        // @property (nonatomic, assign, unsafe_unretained, readwrite) UAInAppMessageAudienceMissBehaviorType missBehavior;
-        [Export("missBehavior", ArgumentSemantic.Assign)]
-        UAInAppMessageAudienceMissBehaviorType MissBehavior { get; set; }
-
-        // - (BOOL)isValid;
-        [Export("isValid")]
-        bool IsValid ();
-    }
-
-    // @interface UAInAppMessageAudience : NSObject
-    [BaseType(typeof(NSObject))]
-    interface UAInAppMessageAudience
-    {
-        // @property (nonatomic, readonly, nullable) NSNumber *notificationsOptIn;
-        [NullAllowed, Export("notificationsOptIn")]
-        NSNumber NotificationsOptIn { get; }
-
-        // @property (nonatomic, readonly, nullable) NSNumber *locationOptIn;
-        [NullAllowed, Export("locationOptIn")]
-        NSNumber LocationOptIn { get; }
-
-        // @property (nonatomic, readonly, nullable) NSArray<NSString *> *languageIDs;
-        [NullAllowed, Export("languageIDs")]
-        string[] LanguageIDs { get; }
-
-        // @property (nonatomic, readonly, nullable) UAInAppMessageTagSelector *tagSelector;
-        [NullAllowed, Export("tagSelector")]
-        UAInAppMessageTagSelector TagSelector { get; }
-
-        // @property (nonatomic, readonly, nullable) UAJSONPredicate *versionPredicate;
-        [NullAllowed, Export("versionPredicate")]
-        UAJSONPredicate VersionPredicate { get; }
-
-        // @property (nonatomic, readonly) UAInAppMessageAudienceMissBehaviorType missBehavior;
-        [Export("missBehavior")]
-        UAInAppMessageAudienceMissBehaviorType MissBehavior { get; }
-
-        // + (nullable instancetype)audienceWithBuilderBlock: (nonnull void (^)(UAInAppMessageAudienceBuilder *_Nonnull))builderBlock;
-        [Static]
-        [Export("audienceWithBuilderBlock:")]
-        [return: NullAllowed]
-        UAInAppMessageAudience Audience (Action<UAInAppMessageAudienceBuilder> builderBlock);
     }
 
     // @interface UAInAppMessageBannerAdapter : NSObject <UAInAppMessageAdapterProtocol>
@@ -1519,18 +1371,10 @@ namespace UrbanAirship {
 
     interface IUAInAppMessagingDelegate { }
 
-    // @interface UAInAppMessageManager : UAComponent
-    [BaseType(typeof(UAComponent))]
+    // @interface UAInAppMessageManager : NSObject
+    [BaseType(typeof(NSObject))]
     interface UAInAppMessageManager
     {
-        // @property (nonatomic, assign, unsafe_unretained, readwrite, getter=isEnabled) BOOL enabled;
-        [Export("enabled")]
-        bool Enabled { [Bind("isEnabled")] get; set; }
-
-        // @property (nonatomic, assign, unsafe_unretained, readwrite, getter=isPaused) BOOL paused;
-        [Export("paused")]
-        bool Paused { [Bind("isPaused")] get; set; }
-
         // @property (nonatomic, weak, readwrite) id<UAInAppMessagingDelegate> _Nullable delegate;
         [NullAllowed, Export("delegate", ArgumentSemantic.Assign)]
         NSObject WeakDelegate { get; set; }
@@ -1547,63 +1391,9 @@ namespace UrbanAirship {
         [Export("assetManager", ArgumentSemantic.Strong)]
         UAInAppMessageAssetManager AssetManager { get; }
 
-        // + (null_unspecified instancetype)shared;
-        [Static]
-        [New]
-        [Export("shared")]
-        UAInAppMessageManager Shared ();
-
         // - (void)setFactoryBlock:(nonnull id<UAInAppMessageAdapterProtocol> _Nonnull (^)( UAInAppMessage *_Nonnull))factory forDisplayType:(UAInAppMessageDisplayType)displayType;
         [Export("setFactoryBlock:forDisplayType:")]
         void SetFactoryBlock (Action<UAInAppMessage> factory, UAInAppMessageDisplayType displayType);
-
-        // - (void)scheduleMessageWithScheduleInfo: (nonnull UAInAppMessageScheduleInfo *)scheduleInfo completionHandler:(nonnull void (^)(UASchedule *_Nonnull)) completionHandler;
-        [Export("scheduleMessageWithScheduleInfo:completionHandler:")]
-        void ScheduleMessage (UAInAppMessageScheduleInfo scheduleInfo, Action<UASchedule> completionHandler);
-
-        // - (void)scheduleMessageWithScheduleInfo: (nonnull UAInAppMessageScheduleInfo *)scheduleInfo metadata:(nullable NSDictionary *)metadata completionHandler:(nonnull void (^)(UASchedule *_Nonnull)) completionHandler;
-        [Export("scheduleMessageWithScheduleInfo:metadata:completionHandler:")]
-        void ScheduleMessage (UAInAppMessageScheduleInfo scheduleInfo, [NullAllowed] NSDictionary metadata, Action<UASchedule> completionHandler);
-
-        // - (void)scheduleMessagesWithScheduleInfo: (nonnull NSArray<UAInAppMessageScheduleInfo *> *)scheduleInfos metadata:(nullable NSDictionary *)metadata completionHandler: (nonnull void (^)(NSArray<UASchedule *> *_Nonnull)) completionHandler;
-        [Export("scheduleMessagesWithScheduleInfo:metadata:completionHandler:")]
-        void ScheduleMessages (UAInAppMessageScheduleInfo[] scheduleInfos, [NullAllowed] NSDictionary metadata, UASchedule[] completionHandler);
-
-        // - (void)cancelScheduleWithID:(nonnull NSString *)scheduleID;
-        [Export("cancelScheduleWithID:")]
-        void CancelSchedule (string scheduleID);
-
-        // - (void)cancelScheduleWithID:(nonnull NSString *)scheduleID completionHandler: (nullable void (^)(UASchedule *_Nullable))completionHandler;
-        [Export("cancelScheduleWithID:completionHandler:")]
-        void CancelSchedule (string scheduleID, [NullAllowed] Action completionHandler);
-
-        // - (void)cancelMessagesWithID:(nonnull NSString *)identifier;
-        [Export("cancelMessagesWithID:")]
-        void CancelMessages (string identifier);
-
-        // - (void)cancelMessagesWithID:(nonnull NSString *)identifier completionHandler: (nullable void (^)(NSArray<UASchedule *> *_Nonnull)) completionHandler;
-        [Export("cancelMessagesWithID:completionHandler:")]
-        void CancelMessages (string identifier, [NullAllowed] UASchedule[] completionHandler);
-
-        // - (void)getScheduleWithID:(nonnull NSString *)identifier completionHandler: (nonnull void (^)(UASchedule *_Nullable))completionHandler;
-        [Export("getScheduleWithID:completionHandler:")]
-        void GetSchedule (string identifier, Action<UASchedule> completionHandler);
-
-        // - (void)getSchedulesWithMessageID:(nonnull NSString *)messageID completionHandler: (nonnull void (^)(NSArray<UASchedule *> *_Nonnull)) completionHandler;
-        [Export("getSchedulesWithMessageID:completionHandler:")]
-        void GetSchedules (string messageID, UASchedule[] completionHandler);
-
-        // - (void)getAllSchedules: (nonnull void (^)(NSArray<UASchedule *> *_Nonnull))completionHandler;
-        [Export("getAllSchedules:")]
-        void GetAllSchedules (UASchedule[] completionHandler);
-
-        // - (void)editScheduleWithID:(nonnull NSString *)identifier edits:(nonnull UAInAppMessageScheduleEdits *)edits completionHandler: (nonnull void (^)(UASchedule *_Nullable))completionHandler;
-        [Export("editScheduleWithID:edits:completionHandler:")]
-        void EditSchedule (string identifier, UAInAppMessageScheduleEdits edits, Action<UASchedule> completionHandler);
-
-        // - (void)checkAudience:(nonnull UAInAppMessageAudience *)audience completionHandler: (nonnull void (^)(BOOL, NSError *_Nullable))completionHandler;
-        [Export("checkAudience:completionHandler:")]
-        void CheckAudience (UAInAppMessageAudience audience, Action<bool, NSError> completionHandler);
     }
 
     // @interface UAInAppMessageMediaInfo : NSObject
@@ -1875,57 +1665,18 @@ namespace UrbanAirship {
         UIWindowScene Scene (UAInAppMessage message);
     }
 
-    // @interface UAInAppMessageScheduleEditsBuilder : UAScheduleEditsBuilder
-    [BaseType(typeof(UAScheduleEditsBuilder))]
-    interface UAInAppMessageScheduleEditsBuilder
-    {
-        // @property (nonatomic, strong, readwrite, nullable) UAInAppMessage *message;
-        [NullAllowed, Export("message", ArgumentSemantic.Strong)]
-        UAInAppMessage Message { get; set; }
-    }
-
-    // @interface UAInAppMessageScheduleEdits : UAScheduleEdits
-    [BaseType(typeof(UAScheduleEdits))]
-    interface UAInAppMessageScheduleEdits
-    {
-        // @property (nonatomic, strong, readwrite, nullable) UAInAppMessage *message;
-        [NullAllowed, Export("message", ArgumentSemantic.Strong)]
-        UAInAppMessage Message { get; set; }
-
-        // + (nonnull instancetype)editsWithBuilderBlock: (nonnull void (^)(UAInAppMessageScheduleEditsBuilder *_Nonnull)) builderBlock;
-        [Static]
-        [Export("editsWithBuilderBlock:")]
-        UAInAppMessageScheduleEdits Edits (Action<UAInAppMessageScheduleEditsBuilder> builderBlock);
-    }
-
-    // @interface UAInAppMessageScheduleInfoBuilder : UAScheduleInfoBuilder
-    [BaseType(typeof(UAScheduleInfoBuilder))]
-    interface UAInAppMessageScheduleInfoBuilder
-    {
-        // @property (nonatomic, strong, readwrite, nullable) UAInAppMessage *message;
-        [NullAllowed, Export("message", ArgumentSemantic.Strong)]
-        UAInAppMessage Message { get; set; }
-    }
-
-    // @interface UAInAppMessageScheduleInfo : UAScheduleInfo
-    [BaseType(typeof(UAScheduleInfo))]
-    interface UAInAppMessageScheduleInfo
+    // @interface UAInAppMessageSchedule : UASchedule
+    [BaseType(typeof(UASchedule))]
+    interface UAInAppMessageSchedule
     {
         // @property (nonatomic, readonly) UAInAppMessage *_Nonnull message;
         [Export("message")]
         UAInAppMessage Message { get; }
 
-        // + (nullable instancetype)scheduleInfoWithBuilderBlock: (nonnull void (^)(UAInAppMessageScheduleInfoBuilder *_Nonnull))builderBlock;
+        // + (nonnull instancetype) scheduleWithMessage:(nonnull UAInAppMessage *)message builderBlock: (nonnull void (^)(UAScheduleBuilder *_Nonnull))builderBlock;
         [Static]
-        [Export("scheduleInfoWithBuilderBlock:")]
-        [return: NullAllowed]
-        UAInAppMessageScheduleInfo ScheduleInfo (Action<UAInAppMessageScheduleInfoBuilder> builderBlock);
-
-        // + (nullable NSString *)parseMessageID:(nonnull id)json;
-        [Static]
-        [Export("parseMessageID:")]
-        [return: NullAllowed]
-        string ParseMessageID (NSObject json);
+        [Export("scheduleWithMessage:builderBlock:")]
+        UAInAppMessageSchedule Schedule (UAInAppMessage message, Action<UAScheduleBuilder> builderBlock);
     }
 
     // @protocol UAInAppMessageStyleProtocol <NSObject>
@@ -1946,35 +1697,6 @@ namespace UrbanAirship {
     }
 
     interface IUAInAppMessageStyleProtocol { }
-
-    // @interface UAInAppMessageTagSelector : NSObject
-    [BaseType(typeof(NSObject))]
-    interface UAInAppMessageTagSelector
-    {
-        // + (nonnull instancetype) and:(nonnull NSArray<UAInAppMessageTagSelector *> *)selectors;
-        [Static]
-        [Export("and:")]
-        UAInAppMessageTagSelector And (UAInAppMessageTagSelector[] selectors);
-
-        // + (nonnull instancetype) or:(nonnull NSArray<UAInAppMessageTagSelector *> *)selectors;
-        [Static]
-        [Export("or:")]
-        UAInAppMessageTagSelector Or (UAInAppMessageTagSelector[] selectors);
-
-        // + (nonnull instancetype)not:(nonnull UAInAppMessageTagSelector *)selector;
-        [Static]
-        [Export("not:")]
-        UAInAppMessageTagSelector Not (UAInAppMessageTagSelector selector);
-
-        // + (nonnull instancetype)tag:(nonnull NSString *)tag;
-        [Static]
-        [Export("tag:")]
-        UAInAppMessageTagSelector Tag (string tag);
-
-        // - (BOOL)apply:(nonnull NSArray<NSString *> *)tags;
-        [Export("apply:")]
-        bool Apply (string[] tags);
-    }
 
     // @interface UAInAppMessageTextInfoBuilder : NSObject
     [BaseType(typeof(NSObject))]
@@ -2081,9 +1803,9 @@ namespace UrbanAirship {
     [BaseType(typeof(NSObject))]
     interface UALandingPageBuilderExtender
     {
-        // - (void)extendScheduleInfoBuilder: (nonnull UAInAppMessageScheduleInfoBuilder *)builder;
-        [Export("extendScheduleInfoBuilder:")]
-        void ExtendScheduleInfoBuilder (UAInAppMessageScheduleInfoBuilder builder);
+        // - (void)extendScheduleBuilder:(nonnull UAScheduleBuilder *)builder;
+        [Export("extendScheduleBuilder:")]
+        void ExtendScheduleBuilder (UAScheduleBuilder builder);
 
         // - (void)extendMessageBuilder:(nonnull UAInAppMessageBuilder *)builder;
         [Export("extendMessageBuilder:")]
@@ -2190,10 +1912,10 @@ namespace UrbanAirship {
     [BaseType(typeof(NSObject))]
     interface UALegacyInAppMessageFactoryDelegate
     {
-        // - (nonnull UAInAppMessageScheduleInfo *)scheduleInfoForMessage: (nonnull UALegacyInAppMessage *)message;
+        // - (nonnull UASchedule *)scheduleForMessage: (nonnull UALegacyInAppMessage *)message;
         [Abstract]
-        [Export("scheduleInfoForMessage:")]
-        UAInAppMessageScheduleInfo ScheduleInfo (UALegacyInAppMessage message);
+        [Export("scheduleForMessage:")]
+        UASchedule Schedule (UALegacyInAppMessage message);
     }
 
     interface IUALegacyInAppMessageFactoryDelegate { }
@@ -2203,9 +1925,9 @@ namespace UrbanAirship {
     [BaseType(typeof(NSObject))]
     interface UALegacyInAppMessageBuilderExtender
     {
-        // - (void)extendScheduleInfoBuilder: (nonnull UAInAppMessageScheduleInfoBuilder *)builder message:(nonnull UALegacyInAppMessage *)message;
-        [Export("extendScheduleInfoBuilder:message:")]
-        void ExtendScheduleInfoBuilder (UAInAppMessageScheduleInfoBuilder builder, UALegacyInAppMessage message);
+        // - (void)extendScheduleBuilder:(nonnull UAScheduleBuilder *)builder message:(nonnull UALegacyInAppMessage *)message;
+        [Export("extendScheduleBuilder:message:")]
+        void ExtendScheduleBuilder (UAScheduleBuilder builder, UALegacyInAppMessage message);
 
         // - (void)extendMessageBuilder:(nonnull UAInAppMessageBuilder *)builder message:(nonnull UALegacyInAppMessage *)message;
         [Export("extendMessageBuilder:message:")]
@@ -2226,19 +1948,72 @@ namespace UrbanAirship {
         [NullAllowed, Export("factoryDelegate", ArgumentSemantic.Assign)]
         NSObject WeakFactoryDelegate { get; set; }
 
-        // + (null_unspecified instancetype)shared;
-        [Static]
-        [New]
-        [Export("shared")]
-        UALegacyInAppMessaging Shared ();
-
         [Wrap("WeakFactoryDelegate")]
         [NullAllowed]
         IUALegacyInAppMessageFactoryDelegate FactoryDelegate { get; set; }
 
+        // + (null_unspecified instancetype)shared;
+        [Static]
+        [New]
+        [Export("shared")]
+        UALegacyInAppMessaging Shared();
+
         // @property(nonatomic, weak) id<UALegacyInAppMessageBuilderExtender> builderExtender
         [NullAllowed, Export("builderExtender")]
         UALegacyInAppMessageBuilderExtender BuilderExtender { get; set; }
+    }
+
+    // @interface UAScheduleBuilder : NSObject
+    [BaseType(typeof(NSObject))]
+    interface UAScheduleBuilder
+    {
+        // @property (nonatomic, copy, readwrite) NSString *_Nonnull identifier;
+        [Export("identifier")]
+        string Identifier { get; set; }
+
+        // @property (nonatomic, copy, readwrite, nullable) NSDictionary *metadata;
+        [NullAllowed, Export("metadata", ArgumentSemantic.Copy)]
+        NSDictionary Metadata { get; set; }
+
+        // @property (nonatomic, assign, unsafe_unretained, readwrite) NSInteger priority;
+        [Export("priority", ArgumentSemantic.Assign)]
+        nint Priority { get; set; }
+
+        // @property (nonatomic, assign, unsafe_unretained, readwrite) NSUInteger limit;
+        [Export("limit")]
+        nuint Limit { get; set; }
+
+        // @property (nonatomic, copy, readwrite, nullable) NSArray<UAScheduleTrigger *> *triggers;
+        [NullAllowed, Export("triggers", ArgumentSemantic.Copy)]
+        UAScheduleTrigger[] Triggers { get; set; }
+
+        // @property (nonatomic, strong, readwrite, nullable) NSDate *start;
+        [NullAllowed, Export("start", ArgumentSemantic.Strong)]
+        NSDate Start { get; set; }
+
+        // @property (nonatomic, strong, readwrite, nullable) NSDate *end;
+        [NullAllowed, Export("end", ArgumentSemantic.Strong)]
+        NSDate End { get; set; }
+
+        // @property (nonatomic, strong, readwrite, nullable) UAScheduleDelay *delay;
+        [NullAllowed, Export("delay", ArgumentSemantic.Strong)]
+        UAScheduleDelay Delay { get; set; }
+
+        // @property (nonatomic, assign, unsafe_unretained, readwrite) NSTimeInterval interval;
+        [Export("interval", ArgumentSemantic.Assign)]
+        double Interval { get; set; }
+
+        // @property (nonatomic, copy, readwrite, nullable) NSString *group;
+        [NullAllowed, Export("group")]
+        string Group { get; set; }
+
+        // @property (nonatomic, assign, unsafe_unretained, readwrite) NSTimeInterval editGracePeriod;
+        [Export("editGracePeriod", ArgumentSemantic.Assign)]
+        double EditGracePeriod { get; set; }
+
+        // @property (nonatomic, strong, readwrite, nullable) UAScheduleAudience *audience;
+        [NullAllowed, Export("audience", ArgumentSemantic.Strong)]
+        UAScheduleAudience Audience { get; set; }
     }
 
     // @interface UASchedule : NSObject
@@ -2249,13 +2024,53 @@ namespace UrbanAirship {
         [Export("identifier")]
         string Identifier { get; }
 
-        // @property (nonatomic, readonly) UAScheduleInfo *_Nonnull info;
-        [Export("info")]
-        UAScheduleInfo Info { get; }
+        // @property (nonatomic, readonly) NSString *_Nonnull group;
+        [Export("group")]
+        string Group { get; }
 
-        // @property (nonatomic, readonly, nullable) NSDictionary *metadata;
-        [NullAllowed, Export("metadata")]
+        // @property (nonatomic, readonly) NSDictionary *_Nonnull metadata;
+        [Export("metadata")]
         NSDictionary Metadata { get; }
+
+        // @property (nonatomic, readonly) NSInteger priority;
+        [Export("priority")]
+        nint Priority { get; }
+
+        // @property (nonatomic, readonly) NSArray<UAScheduleTrigger *> *_Nonnull triggers;
+        [Export("triggers")]
+        UAScheduleTrigger[] Triggers { get; }
+
+        // @property (nonatomic, readonly, nullable) UAScheduleAudience *audience;
+        [NullAllowed, Export("audience")]
+        UAScheduleAudience Audience { get; }
+
+        // @property (nonatomic, readonly) NSUInteger limit;
+        [Export("limit")]
+        nuint Limit { get; }
+
+        // @property (nonatomic, readonly, nullable) NSDate *start;
+        [NullAllowed, Export("start")]
+        NSDate Start { get; }
+
+        // @property (nonatomic, readonly, nullable) NSDate *end;
+        [NullAllowed, Export("end")]
+        NSDate End { get; }
+
+        // @property (nonatomic, readonly, nullable) UAScheduleDelay *delay;
+        [NullAllowed, Export("delay")]
+        UAScheduleDelay Delay { get; }
+
+        // @property (nonatomic, readonly) NSTimeInterval editGracePeriod;
+        [Export("editGracePeriod")]
+        double EditGracePeriod { get; }
+
+        // @property (nonatomic, readonly) NSTimeInterval interval;
+        [Export("interval")]
+        double Interval { get; }
+
+        // @property (nonatomic, readonly) BOOL isValid;
+        [Export("isValid")]
+        bool IsValid { get; }
 
         // - (BOOL)isEqualToSchedule:(nullable UASchedule *)schedule;
         [Export("isEqualToSchedule:")]
@@ -2266,6 +2081,74 @@ namespace UrbanAirship {
     [BaseType(typeof(UAAction))]
     interface UAScheduleAction
     {
+    }
+
+    // @interface UAScheduleAudienceBuilder : NSObject
+    [BaseType(typeof(NSObject))]
+    interface UAScheduleAudienceBuilder
+    {
+        // @property (nonatomic, strong, readwrite, nullable) NSNumber *notificationsOptIn;
+        [NullAllowed, Export("notificationsOptIn", ArgumentSemantic.Strong)]
+        NSNumber NotificationsOptIn { get; set; }
+
+        // @property (nonatomic, strong, readwrite, nullable) NSNumber *locationOptIn;
+        [NullAllowed, Export("locationOptIn", ArgumentSemantic.Strong)]
+        NSNumber LocationOptIn { get; set; }
+
+        // @property (nonatomic, copy, readwrite, nullable) NSArray<NSString *> *languageTags;
+        [NullAllowed, Export("languageTags", ArgumentSemantic.Copy)]
+        string[] LanguageTags { get; set; }
+
+        // @property (nonatomic, strong, readwrite, nullable) UATagSelector *tagSelector;
+        [NullAllowed, Export("tagSelector", ArgumentSemantic.Strong)]
+        UATagSelector TagSelector { get; set; }
+
+        // @property (nonatomic, strong, readwrite, nullable) UAJSONPredicate *versionPredicate;
+        [NullAllowed, Export("versionPredicate", ArgumentSemantic.Strong)]
+        UAJSONPredicate VersionPredicate { get; set; }
+
+        // @property (nonatomic, assign, unsafe_unretained, readwrite) UAScheduleAudienceMissBehaviorType missBehavior;
+        [Export("missBehavior", ArgumentSemantic.Assign)]
+        UAScheduleAudienceMissBehaviorType MissBehavior { get; set; }
+
+        // - (BOOL)isValid;
+        [Export("isValid")]
+        bool IsValid ();
+    }
+
+    // @interface UAScheduleAudience : NSObject
+    [BaseType(typeof(NSObject))]
+    interface UAScheduleAudience
+    {
+        // @property (nonatomic, readonly, nullable) NSNumber *notificationsOptIn;
+        [NullAllowed, Export("notificationsOptIn")]
+        NSNumber NotificationsOptIn { get; }
+
+        // @property (nonatomic, readonly, nullable) NSNumber *locationOptIn;
+        [NullAllowed, Export("locationOptIn")]
+        NSNumber LocationOptIn { get; }
+
+        // @property (nonatomic, readonly, nullable) NSArray<NSString *> *languageIDs;
+        [NullAllowed, Export("languageIDs")]
+        string[] LanguageIDs { get; }
+
+        // @property (nonatomic, readonly, nullable) UATagSelector *tagSelector;
+        [NullAllowed, Export("tagSelector")]
+        UATagSelector TagSelector { get; }
+
+        // @property (nonatomic, readonly, nullable) UAJSONPredicate *versionPredicate;
+        [NullAllowed, Export("versionPredicate")]
+        UAJSONPredicate VersionPredicate { get; }
+
+        // @property (nonatomic, readonly) UAScheduleAudienceMissBehaviorType missBehavior;
+        [Export("missBehavior")]
+        UAScheduleAudienceMissBehaviorType MissBehavior { get; }
+
+        // + (nullable instancetype)audienceWithBuilderBlock: (nonnull void (^)(UAScheduleAudienceBuilder *_Nonnull))builderBlock;
+        [Static]
+        [Export("audienceWithBuilderBlock:")]
+        [return: NullAllowed]
+        UAScheduleAudience Audience (Action<UAScheduleAudienceBuilder> builderBlock);
     }
 
     // @interface UAScheduleDelayBuilder : NSObject
@@ -2357,13 +2240,21 @@ namespace UrbanAirship {
         [NullAllowed, Export("end", ArgumentSemantic.Strong)]
         NSDate End { get; set; }
 
-        // @property (nonatomic, strong, readwrite, nullable) NSNumber *editGracePeriod;
-        [NullAllowed, Export("editGracePeriod", ArgumentSemantic.Strong)]
-        NSNumber EditGracePeriod { get; set; }
-
         // @property (nonatomic, strong, readwrite, nullable) NSNumber *interval;
         [NullAllowed, Export("interval", ArgumentSemantic.Strong)]
         NSNumber Interval { get; set; }
+
+        // @property (nonatomic, copy, readwrite, nullable) NSDictionary *metadata;
+        [NullAllowed, Export("metadata", ArgumentSemantic.Copy)]
+        NSDictionary Metadata { get; set; }
+
+        // @property (nonatomic, strong, readwrite) NSNumber *_Nonnull editGracePeriod;
+        [Export("editGracePeriod", ArgumentSemantic.Strong)]
+        NSNumber EditGracePeriod { get; set; }
+
+        // @property (nonatomic, strong, readwrite, nullable) UAScheduleAudience *audience;
+        [NullAllowed, Export("audience", ArgumentSemantic.Strong)]
+        UAScheduleAudience Audience { get; set; }
     }
 
     // @interface UAScheduleEdits : NSObject
@@ -2386,100 +2277,41 @@ namespace UrbanAirship {
         [NullAllowed, Export("end")]
         NSDate End { get; }
 
-        // @property (nonatomic, readonly, nullable) NSNumber *editGracePeriod;
-        [NullAllowed, Export("editGracePeriod")]
-        NSNumber EditGracePeriod { get; }
+        // @property (nonatomic, readonly, nullable) NSDictionary *metadata;
+        [NullAllowed, Export("metadata")]
+        NSDictionary Metadata { get; }
 
         // @property (nonatomic, readonly, nullable) NSNumber *interval;
         [NullAllowed, Export("interval")]
         NSNumber Interval { get; }
+
+        // @property (nonatomic, readonly, nullable) NSNumber *editGracePeriod;
+        [NullAllowed, Export("editGracePeriod")]
+        NSNumber EditGracePeriod { get; }
+
+        // @property (nonatomic, readonly, nullable) UAScheduleAudience *audience;
+        [NullAllowed, Export("audience")]
+        UAScheduleAudience Audience { get; }
+
+        // + (nonnull instancetype) editsWithMessage:(nonnull UAInAppMessage *)message builderBlock: (nonnull void (^)(UAScheduleEditsBuilder *_Nonnull))builderBlock;
+        [Static]
+        [Export("editsWithMessage:builderBlock:")]
+        UAScheduleEdits Edits (UAInAppMessage message, Action<UAScheduleEditsBuilder> builderBlock);
+
+        // + (nonnull instancetype) editsWithActions:(nonnull NSDictionary *)actions builderBlock: (nonnull void (^)(UAScheduleEditsBuilder *_Nonnull))builderBlock;
+        [Static]
+        [Export("editsWithActions:builderBlock:")]
+        UAScheduleEdits Edits (NSDictionary actions, Action<UAScheduleEditsBuilder> builderBlock);
+
+        // + (nonnull instancetype)editsWithBuilderBlock: (nonnull void (^)(UAScheduleEditsBuilder *_Nonnull))builderBlock;
+        [Static]
+        [Export("editsWithBuilderBlock:")]
+        UAScheduleEdits Edits (Action<UAScheduleEditsBuilder> builderBlock);
     }
 
-    // @interface UAScheduleInfoBuilder : NSObject
+    // @interface UAScheduleTrigger : NSObject <NSSecureCoding>
     [BaseType(typeof(NSObject))]
-    interface UAScheduleInfoBuilder
-    {
-        // @property (nonatomic, assign, unsafe_unretained, readwrite) NSInteger priority;
-        [Export("priority", ArgumentSemantic.Assign)]
-        nint Priority { get; set; }
-
-        // @property (nonatomic, assign, unsafe_unretained, readwrite) NSUInteger limit;
-        [Export("limit")]
-        nuint Limit { get; set; }
-
-        // @property (nonatomic, copy, readwrite, nullable) NSArray<UAScheduleTrigger *> *triggers;
-        [NullAllowed, Export("triggers", ArgumentSemantic.Copy)]
-        UAScheduleTrigger[] Triggers { get; set; }
-
-        // @property (nonatomic, strong, readwrite, nullable) NSDate *start;
-        [NullAllowed, Export("start", ArgumentSemantic.Strong)]
-        NSDate Start { get; set; }
-
-        // @property (nonatomic, strong, readwrite, nullable) NSDate *end;
-        [NullAllowed, Export("end", ArgumentSemantic.Strong)]
-        NSDate End { get; set; }
-
-        // @property (nonatomic, strong, readwrite, nullable) UAScheduleDelay *delay;
-        [NullAllowed, Export("delay", ArgumentSemantic.Strong)]
-        UAScheduleDelay Delay { get; set; }
-
-        // @property (nonatomic, assign, unsafe_unretained, readwrite) NSTimeInterval editGracePeriod;
-        [Export("editGracePeriod", ArgumentSemantic.Assign)]
-        double EditGracePeriod { get; set; }
-
-        // @property (nonatomic, assign, unsafe_unretained, readwrite) NSTimeInterval interval;
-        [Export("interval", ArgumentSemantic.Assign)]
-        double Interval { get; set; }
-    }
-
-    // @interface UAScheduleInfo : NSObject
-    [BaseType(typeof(NSObject))]
-    interface UAScheduleInfo
-    {
-        // @property (nonatomic, readonly) NSInteger priority;
-        [Export("priority")]
-        nint Priority { get; }
-
-        // @property (nonatomic, readonly) NSArray<UAScheduleTrigger *> *_Nonnull triggers;
-        [Export("triggers")]
-        UAScheduleTrigger[] Triggers { get; }
-
-        // @property (nonatomic, readonly) NSUInteger limit;
-        [Export("limit")]
-        nuint Limit { get; }
-
-        // @property (nonatomic, readonly, nullable) NSDate *start;
-        [NullAllowed, Export("start")]
-        NSDate Start { get; }
-
-        // @property (nonatomic, readonly, nullable) NSDate *end;
-        [NullAllowed, Export("end")]
-        NSDate End { get; }
-
-        // @property (nonatomic, readonly, nullable) UAScheduleDelay *delay;
-        [NullAllowed, Export("delay")]
-        UAScheduleDelay Delay { get; }
-
-        // @property (nonatomic, readonly) NSTimeInterval editGracePeriod;
-        [Export("editGracePeriod")]
-        double EditGracePeriod { get; }
-
-        // @property (nonatomic, readonly) NSTimeInterval interval;
-        [Export("interval")]
-        double Interval { get; }
-
-        // @property (nonatomic, readonly) BOOL isValid;
-        [Export("isValid")]
-        bool IsValid { get; }
-
-        // - (BOOL)isEqualToScheduleInfo:(nullable UAScheduleInfo *)scheduleInfo;
-        [Export("isEqualToScheduleInfo:")]
-        bool IsEqualToScheduleInfo ([NullAllowed] UAScheduleInfo scheduleInfo);
-    }
-
-    // @interface UAScheduleTrigger : NSObject
-    [BaseType(typeof(NSObject))]
-    interface UAScheduleTrigger
+    interface UAScheduleTrigger : INSSecureCoding
     {
         // @property (nonatomic, readonly) UAScheduleTriggerType type;
         [Export("type")]
@@ -2548,5 +2380,34 @@ namespace UrbanAirship {
         // - (BOOL)isEqualToTrigger:(nullable UAScheduleTrigger *)trigger;
         [Export("isEqualToTrigger:")]
         bool IsEqualToTrigger ([NullAllowed] UAScheduleTrigger trigger);
+    }
+
+    // @interface UATagSelector : NSObject
+    [BaseType(typeof(NSObject))]
+    interface UATagSelector
+    {
+        // + (nonnull instancetype)and:(nonnull NSArray<UATagSelector *> *)selectors;
+        [Static]
+        [Export("and:")]
+        UATagSelector And (UATagSelector[] selectors);
+
+        // + (nonnull instancetype)or:(nonnull NSArray<UATagSelector *> *)selectors;
+        [Static]
+        [Export("or:")]
+        UATagSelector Or (UATagSelector[] selectors);
+
+        // + (nonnull instancetype)not:(nonnull UATagSelector *)selector;
+        [Static]
+        [Export("not:")]
+        UATagSelector Not (UATagSelector selector);
+
+        // + (nonnull instancetype)tag:(nonnull NSString *)tag;
+        [Static]
+        [Export("tag:")]
+        UATagSelector Tag (string tag);
+
+        // - (BOOL)apply:(nonnull NSArray<NSString *> *)tags;
+        [Export("apply:")]
+        bool Apply (string[] tags);
     }
 }
