@@ -5,6 +5,9 @@ on:
     tags:
       - "[0-9]+.[0-9]+.[0-9]+*"
 
+env:
+  DEVELOPER_DIR: /Applications/Xcode_12.app
+
 jobs:
   release:
     runs-on: macOS-latest
