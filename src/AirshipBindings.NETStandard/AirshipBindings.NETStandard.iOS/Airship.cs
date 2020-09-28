@@ -5,6 +5,8 @@
 using System;
 using System.Collections.Generic;
 using Foundation;
+using UrbanAirship;
+using UrbanAirship.NETStandard;
 using UrbanAirship.NETStandard.Analytics;
 using UrbanAirship.NETStandard.Attributes;
 
@@ -467,6 +469,45 @@ namespace UrbanAirship.NETStandard
         {
             onDeepLinkReceived?.Invoke(this, new DeepLinkEventArgs(url.AbsoluteString));
             completionHandler();
+        }
+
+        public bool InAppAutomationEnabled
+        {
+            get
+            {
+                return UAInAppAutomation.Shared().Enabled;
+            }
+
+            set
+            {
+                UAInAppAutomation.Shared().Enabled = value;
+            }
+        }
+
+        public bool InAppAutomationPaused
+        {
+            get
+            {
+                return UAInAppAutomation.Shared().Paused;
+            }
+
+            set
+            {
+                UAInAppAutomation.Shared().Paused = value;
+            }
+        }
+
+        public TimeSpan InAppAutomationDisplayInterval
+        {
+            get
+            {
+                return TimeSpan.FromSeconds(UAInAppAutomation.Shared().InAppMessageManager.DisplayInterval);
+            }
+
+            set
+            {
+                UAInAppAutomation.Shared().InAppMessageManager.DisplayInterval = value.Seconds;
+            }
         }
     }
 }

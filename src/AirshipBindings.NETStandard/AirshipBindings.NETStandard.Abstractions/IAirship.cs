@@ -102,5 +102,20 @@ namespace UrbanAirship.NETStandard
         Attributes.AttributeEditor EditChannelAttributes();
 
         Attributes.AttributeEditor EditNamedUserAttributes();
+
+        bool InAppAutomationEnabled
+        {
+            get; set;
+        }
+
+        bool InAppAutomationPaused
+        {
+            get; set;
+        }
+
+        TimeSpan InAppAutomationDisplayInterval
+        {
+            get; set;
+        }
     }
 }

@@ -4,10 +4,13 @@
 
 using System.Collections.Generic;
 using Java.Util;
+using Java.Util.Concurrent;
 using UrbanAirship.NETStandard.Attributes;
 using UrbanAirship.Actions;
 using System;
+using UrbanAirship;
 using UrbanAirship.MessageCenter;
+using UrbanAirship.Automation;
 
 namespace UrbanAirship.NETStandard
 { 
@@ -410,6 +413,45 @@ namespace UrbanAirship.NETStandard
                     default:
                         break;
                 }
+            }
+        }
+
+        public bool InAppAutomationEnabled
+        {
+            get
+            {
+                return InAppAutomation.Shared().Enabled;
+            }
+
+            set
+            {
+                InAppAutomation.Shared().Enabled = value;
+            }
+        }
+
+        public bool InAppAutomationPaused
+        {
+            get
+            {
+                return InAppAutomation.Shared().Paused;
+            }
+
+            set
+            {
+                InAppAutomation.Shared().Paused = value;
+            }
+        }
+
+        public TimeSpan InAppAutomationDisplayInterval
+        {
+            get
+            {
+                return TimeSpan.FromMilliseconds(InAppAutomation.Shared().InAppMessageManager.DisplayInterval);
+            }
+
+            set
+            {
+                InAppAutomation.Shared().InAppMessageManager.SetDisplayInterval(value.Milliseconds, TimeUnit.Milliseconds);
             }
         }
 
