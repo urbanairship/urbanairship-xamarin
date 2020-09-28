@@ -137,6 +137,12 @@ namespace UrbanAirship {
         [NullAllowed, Export("lastLocation")]
         CLLocation LastLocation { get; }
 
+        // + (null_unspecified instancetype)shared;
+        [Static]
+        [New]
+        [Export("shared")]
+        UALocation Shared ();
+
         // - (BOOL)isLocationOptedIn;
         [Export("isLocationOptedIn")]
         bool IsLocationOptedIn ();
