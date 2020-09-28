@@ -12,6 +12,7 @@
       <dependencies>
          <group targetFramework="MonoAndroid4.1">
             <dependency id="urbanairship.android.core" version="14.0.1"/>
+            <dependency id="Xamarin.AndroidX.Room.Runtime" version="2.2.5"/>
          </group>
       </dependencies>
    </metadata>
