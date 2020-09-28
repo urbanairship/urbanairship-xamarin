@@ -22,7 +22,7 @@ task carthageUpdate {
     doLast() {
         exec {
             workingDir "$rootDir"
-            commandLine "carthage", "update"
+            commandLine "./wcarthage",  "update", "--platform iOS"
         }
     }
 }
@@ -39,7 +39,7 @@ task carthageCheckout {
     doLast() {
         exec {
             workingDir "$rootDir"
-            commandLine "carthage", "checkout"
+            commandLine "./wcarthage", "checkout"
         }
     }
 }

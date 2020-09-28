@@ -15,6 +15,10 @@ namespace UrbanAirship {
     [Static]
     partial interface Constants
     {
+        // extern NSString *const _Nonnull UAAPIClientErrorDomain
+        [Field("UAAPIClientErrorDomain", "__Internal")]
+        NSString UAAPIClientErrorDomain { get; }
+
         // extern NSString *const _Nonnull UAActionMetadataForegroundPresentationKey
         [Field("UAActionMetadataForegroundPresentationKey", "__Internal")]
         NSString UAActionMetadataForegroundPresentationKey { get; }
@@ -67,13 +71,113 @@ namespace UrbanAirship {
         [Field("UAAssociatedIdentifiersMaxCount", "__Internal")]
         nuint UAAssociatedIdentifiersMaxCount { get; }
 
-        // extern NSString *const UAChannelCaptureActionDefaultRegistryAlias
-        [Field("UAChannelCaptureActionDefaultRegistryAlias", "__Internal")]
-        NSString UAChannelCaptureActionDefaultRegistryAlias { get; }
+        // extern NSString *const UAAttributeAccountCreation
+        [Field("UAAttributeAccountCreation", "__Internal")]
+        NSString UAAttributeAccountCreation { get; }
 
-        // extern NSString *const UAChannelCaptureActionDefaultRegistryName
-        [Field("UAChannelCaptureActionDefaultRegistryName", "__Internal")]
-        NSString UAChannelCaptureActionDefaultRegistryName { get; }
+        // extern NSString *const UAAttributeActionKey
+        [Field("UAAttributeActionKey", "__Internal")]
+        NSString UAAttributeActionKey { get; }
+
+        // extern NSString *const UAAttributeAdvertisingId
+        [Field("UAAttributeAdvertisingId", "__Internal")]
+        NSString UAAttributeAdvertisingId { get; }
+
+        // extern NSString *const UAAttributeAge
+        [Field("UAAttributeAge", "__Internal")]
+        NSString UAAttributeAge { get; }
+
+        // extern NSString *const UAAttributeBirthdate
+        [Field("UAAttributeBirthdate", "__Internal")]
+        NSString UAAttributeBirthdate { get; }
+
+        // extern NSString *const UAAttributeCity
+        [Field("UAAttributeCity", "__Internal")]
+        NSString UAAttributeCity { get; }
+
+        // extern NSString *const UAAttributeCompany
+        [Field("UAAttributeCompany", "__Internal")]
+        NSString UAAttributeCompany { get; }
+
+        // extern NSString *const UAAttributeCountry
+        [Field("UAAttributeCountry", "__Internal")]
+        NSString UAAttributeCountry { get; }
+
+        // extern NSString *const UAAttributeEmail
+        [Field("UAAttributeEmail", "__Internal")]
+        NSString UAAttributeEmail { get; }
+
+        // extern NSString *const UAAttributeFirstName
+        [Field("UAAttributeFirstName", "__Internal")]
+        NSString UAAttributeFirstName { get; }
+
+        // extern NSString *const UAAttributeFullName
+        [Field("UAAttributeFullName", "__Internal")]
+        NSString UAAttributeFullName { get; }
+
+        // extern NSString *const UAAttributeGender
+        [Field("UAAttributeGender", "__Internal")]
+        NSString UAAttributeGender { get; }
+
+        // extern NSString *const UAAttributeHomePhone
+        [Field("UAAttributeHomePhone", "__Internal")]
+        NSString UAAttributeHomePhone { get; }
+
+        // extern NSString *const UAAttributeLastName
+        [Field("UAAttributeLastName", "__Internal")]
+        NSString UAAttributeLastName { get; }
+
+        // extern NSString *const UAAttributeLoyaltyTier
+        [Field("UAAttributeLoyaltyTier", "__Internal")]
+        NSString UAAttributeLoyaltyTier { get; }
+
+        // extern NSString *const UAAttributeMobilePhone
+        [Field("UAAttributeMobilePhone", "__Internal")]
+        NSString UAAttributeMobilePhone { get; }
+
+        // extern NSString *const UAAttributeNameKey
+        [Field("UAAttributeNameKey", "__Internal")]
+        NSString UAAttributeNameKey { get; }
+
+        // extern NSString *const UAAttributePayloadKey
+        [Field("UAAttributePayloadKey", "__Internal")]
+        NSString UAAttributePayloadKey { get; }
+
+        // extern NSString *const UAAttributeRegion
+        [Field("UAAttributeRegion", "__Internal")]
+        NSString UAAttributeRegion { get; }
+
+        // extern NSString *const UAAttributeRemoveActionKey
+        [Field("UAAttributeRemoveActionKey", "__Internal")]
+        NSString UAAttributeRemoveActionKey { get; }
+
+        // extern NSString *const UAAttributeSetActionKey
+        [Field("UAAttributeSetActionKey", "__Internal")]
+        NSString UAAttributeSetActionKey { get; }
+
+        // extern NSString *const UAAttributeTimestampKey
+        [Field("UAAttributeTimestampKey", "__Internal")]
+        NSString UAAttributeTimestampKey { get; }
+
+        // extern NSString *const UAAttributeTitle
+        [Field("UAAttributeTitle", "__Internal")]
+        NSString UAAttributeTitle { get; }
+
+        // extern NSString *const UAAttributeUsername
+        [Field("UAAttributeUsername", "__Internal")]
+        NSString UAAttributeUsername { get; }
+
+        // extern NSString *const UAAttributeValueKey
+        [Field("UAAttributeValueKey", "__Internal")]
+        NSString UAAttributeValueKey { get; }
+
+        // extern NSString *const UAAttributeWorkPhone
+        [Field("UAAttributeWorkPhone", "__Internal")]
+        NSString UAAttributeWorkPhone { get; }
+
+        // extern NSString *const UAAttributeZipCode
+        [Field("UAAttributeZipCode", "__Internal")]
+        NSString UAAttributeZipCode { get; }
 
         // extern NSString *const UAChannelCreatedEvent
         [Field("UAChannelCreatedEvent", "__Internal")]
@@ -291,6 +395,10 @@ namespace UrbanAirship {
         [Field("UARegionEventMinLongitude", "__Internal")]
         double UARegionEventMinLongitude { get; }
 
+        // extern NSString *const _Nonnull UARegionIDKey
+        [Field("UARegionIDKey", "__Internal")]
+        NSString UARegionIDKey { get; }
+
         // extern NSString *const UARemoteDataMetadataCountryKey
         [Field("UARemoteDataMetadataCountryKey", "__Internal")]
         NSString UARemoteDataMetadataCountryKey { get; }
@@ -338,236 +446,6 @@ namespace UrbanAirship {
         // extern NSString *const _Nonnull UAirshipTakeOffBackgroundThreadException
         [Field("UAirshipTakeOffBackgroundThreadException", "__Internal")]
         NSString UAirshipTakeOffBackgroundThreadException { get; }
-
-        // extern DEPRECATED_MSG_ATTRIBUTE( "Deprecated – to be removed in SDK version 14.0. Please use " "UAAddCustomEventActionDefaultRegistryName.") NSString *const kUAAddCustomEventActionDefaultRegistryName
-        [Field("kUAAddCustomEventActionDefaultRegistryName", "__Internal")]
-        [Obsolete("Deprecated – to be removed in SDK version 14.0. Please use UAAddCustomEventActionDefaultRegistryName.")]
-        NSString kUAAddCustomEventActionDefaultRegistryName { get; }
-
-        // extern NSString *const kUAAddTagsActionDefaultRegistryAlias
-        [Field("kUAAddTagsActionDefaultRegistryAlias", "__Internal")]
-        [Obsolete("Deprecated – to be removed in SDK version 14.0. Please use UAAddTagsActionDefaultRegistryAlias.")]
-        NSString kUAAddTagsActionDefaultRegistryAlias { get; }
-
-        // extern NSString *const kUAAddTagsActionDefaultRegistryName
-        [Field("kUAAddTagsActionDefaultRegistryName", "__Internal")]
-        [Obsolete("Deprecated – to be removed in SDK version 14.0. Please use UAAddTagsActionDefaultRegistryName.")]
-        NSString kUAAddTagsActionDefaultRegistryName { get; }
-
-        // extern NSString *const kUAChannelCaptureActionDefaultRegistryAlias
-        [Field("kUAChannelCaptureActionDefaultRegistryAlias", "__Internal")]
-        [Obsolete("Deprecated – to be removed in SDK version 14.0. Please use UAChannelCaptureActionDefaultRegistryAlias.")]
-        NSString kUAChannelCaptureActionDefaultRegistryAlias { get; }
-
-        // extern NSString *const kUAChannelCaptureActionDefaultRegistryName
-        [Field("kUAChannelCaptureActionDefaultRegistryName", "__Internal")]
-        [Obsolete("Deprecated – to be removed in SDK version 14.0. Please use UAChannelCaptureActionDefaultRegistryName.")]
-        NSString kUAChannelCaptureActionDefaultRegistryName { get; }
-
-        // extern DEPRECATED_MSG_ATTRIBUTE( "Deprecated – to be removed in SDK version 14.0.") NSString *const kUACircularRegionKey
-        [Field("kUACircularRegionKey", "__Internal")]
-        [Obsolete("Deprecated – to be removed in SDK version 14.0.")]
-        NSString kUACircularRegionKey { get; }
-
-        // extern DEPRECATED_MSG_ATTRIBUTE( "Deprecated – to be removed in SDK version 14.0.") NSString *const kUACircularRegionRadiusKey
-        [Field("kUACircularRegionRadiusKey", "__Internal")]
-        [Obsolete("Deprecated – to be removed in SDK version 14.0.")]
-        NSString kUACircularRegionRadiusKey { get; }
-
-        // extern DEPRECATED_MSG_ATTRIBUTE( "Deprecated – to be removed in SDK version 14.0. Please use " "UAConnectionTypeCell.") NSString *const kUAConnectionTypeCell
-        [Field("kUAConnectionTypeCell", "__Internal")]
-        [Obsolete("Deprecated – to be removed in SDK version 14.0. Please use UAConnectionTypeCell.")]
-        NSString kUAConnectionTypeCell { get; }
-
-        // extern DEPRECATED_MSG_ATTRIBUTE( "Deprecated – to be removed in SDK version 14.0. Please use " "UAConnectionTypeNone.") NSString *const kUAConnectionTypeNone
-        [Field("kUAConnectionTypeNone", "__Internal")]
-        [Obsolete("Deprecated – to be removed in SDK version 14.0. Please use UAConnectionTypeNone.")]
-        NSString kUAConnectionTypeNone { get; }
-
-        // extern DEPRECATED_MSG_ATTRIBUTE( "Deprecated – to be removed in SDK version 14.0. Please use " "UAConnectionTypeCell.") NSString *const kUAConnectionTypeWifi
-        [Field("kUAConnectionTypeWifi", "__Internal")]
-        [Obsolete("Deprecated – to be removed in SDK version 14.0. Please use UAConnectionTypeCell.")]
-        NSString kUAConnectionTypeWifi { get; }
-
-        // extern NSString *const kUADeepLinkActionDefaultRegistryAlias
-        [Field("kUADeepLinkActionDefaultRegistryAlias", "__Internal")]
-        [Obsolete("Deprecated – to be removed in SDK version 14.0. Please use UADeepLinkActionDefaultRegistryAlias.")]
-        NSString kUADeepLinkActionDefaultRegistryAlias { get; }
-
-        // extern NSString *const kUADeepLinkActionDefaultRegistryName
-        [Field("kUADeepLinkActionDefaultRegistryName", "__Internal")]
-        [Obsolete("Deprecated – to be removed in SDK version 14.0. Please use UADeepLinkActionDefaultRegistryName.")]
-        NSString kUADeepLinkActionDefaultRegistryName { get; }
-
-        // extern NSString *const kUAEnableFeatureActionDefaultRegistryAlias
-        [Field("kUAEnableFeatureActionDefaultRegistryAlias", "__Internal")]
-        [Obsolete("Deprecated – to be removed in SDK version 14.0. Please use UAEnableFeatureActionDefaultRegistryAlias.")]
-        NSString kUAEnableFeatureActionDefaultRegistryAlias { get; }
-
-        // extern NSString *const kUAEnableFeatureActionDefaultRegistryName
-        [Field("kUAEnableFeatureActionDefaultRegistryName", "__Internal")]
-        [Obsolete("Deprecated – to be removed in SDK version 14.0. Please use UAEnableFeatureActionDefaultRegistryName.")]
-        NSString kUAEnableFeatureActionDefaultRegistryName { get; }
-
-        // extern NSString *const kUAFetchDeviceInfoActionDefaultRegistryAlias
-        [Field("kUAFetchDeviceInfoActionDefaultRegistryAlias", "__Internal")]
-        [Obsolete("Deprecated – to be removed in SDK version 14.0. Please use UAFetchDeviceInfoActionDefaultRegistryAlias.")]
-        NSString kUAFetchDeviceInfoActionDefaultRegistryAlias { get; }
-
-        // extern NSString *const kUAFetchDeviceInfoActionDefaultRegistryName
-        [Field("kUAFetchDeviceInfoActionDefaultRegistryName", "__Internal")]
-        [Obsolete("Deprecated – to be removed in SDK version 14.0. Please use UAFetchDeviceInfoActionDefaultRegistryName.")]
-        NSString kUAFetchDeviceInfoActionDefaultRegistryName { get; }
-
-        // extern DEPRECATED_MSG_ATTRIBUTE( "Deprecated – to be removed in SDK version 14.0.") NSString *const kUAInteractionMCRAP
-        [Field("kUAInteractionMCRAP", "__Internal")]
-        [Obsolete("Deprecated – to be removed in SDK version 14.0.")]
-        NSString kUAInteractionMCRAP { get; }
-
-        // extern DEPRECATED_MSG_ATTRIBUTE( "Deprecated – to be removed in SDK version 14.0. Please use " "UAOpenExternalURLActionDefaultRegistryAlias.") NSString *const kUAOpenExternalURLActionDefaultRegistryAlias
-        [Field("kUAOpenExternalURLActionDefaultRegistryAlias", "__Internal")]
-        [Obsolete("Deprecated – to be removed in SDK version 14.0. Please use UAOpenExternalURLActionDefaultRegistryAlias.")]
-        NSString kUAOpenExternalURLActionDefaultRegistryAlias { get; }
-
-        // extern DEPRECATED_MSG_ATTRIBUTE( "Deprecated – to be removed in SDK version 14.0. Please use " "UAOpenExternalURLActionDefaultRegistryName.") NSString *const kUAOpenExternalURLActionDefaultRegistryName
-        [Field("kUAOpenExternalURLActionDefaultRegistryName", "__Internal")]
-        [Obsolete("Deprecated – to be removed in SDK version 14.0. Please use UAOpenExternalURLActionDefaultRegistryName.")]
-        NSString kUAOpenExternalURLActionDefaultRegistryName { get; }
-
-        // extern NSString *const kUAPasteboardActionDefaultRegistryAlias
-        [Field("kUAPasteboardActionDefaultRegistryAlias", "__Internal")]
-        [Obsolete("Deprecated – to be removed in SDK version 14.0. Please use UAPasteboardActionDefaultRegistryAlias.")]
-        NSString kUAPasteboardActionDefaultRegistryAlias { get; }
-
-        // extern NSString *const kUAPasteboardActionDefaultRegistryName
-        [Field("kUAPasteboardActionDefaultRegistryName", "__Internal")]
-        [Obsolete("Deprecated – to be removed in SDK version 14.0. Please use UAPasteboardActionDefaultRegistryName.")]
-        NSString kUAPasteboardActionDefaultRegistryName { get; }
-
-        // extern DEPRECATED_MSG_ATTRIBUTE( "Deprecated – to be removed in SDK version 14.0.") NSString *const kUAProximityRegionIDKey
-        [Field("kUAProximityRegionIDKey", "__Internal")]
-        [Obsolete("Deprecated – to be removed in SDK version 14.0.")]
-        NSString kUAProximityRegionIDKey { get; }
-
-        // extern DEPRECATED_MSG_ATTRIBUTE( "Deprecated – to be removed in SDK version 14.0.") NSString *const kUAProximityRegionKey
-        [Field("kUAProximityRegionKey", "__Internal")]
-        [Obsolete("Deprecated – to be removed in SDK version 14.0.")]
-        NSString kUAProximityRegionKey { get; }
-
-        // extern DEPRECATED_MSG_ATTRIBUTE( "Deprecated – to be removed in SDK version 14.0.") NSString *const kUAProximityRegionMajorKey
-        [Field("kUAProximityRegionMajorKey", "__Internal")]
-        [Obsolete("Deprecated – to be removed in SDK version 14.0.")]
-        NSString kUAProximityRegionMajorKey { get; }
-
-        // extern DEPRECATED_MSG_ATTRIBUTE( "Deprecated – to be removed in SDK version 14.0.") NSString *const kUAProximityRegionMinorKey
-        [Field("kUAProximityRegionMinorKey", "__Internal")]
-        [Obsolete("Deprecated – to be removed in SDK version 14.0.")]
-        NSString kUAProximityRegionMinorKey { get; }
-
-        // extern DEPRECATED_MSG_ATTRIBUTE( "Deprecated – to be removed in SDK version 14.0.") NSString *const kUAProximityRegionRSSIKey
-        [Field("kUAProximityRegionRSSIKey", "__Internal")]
-        [Obsolete("Deprecated – to be removed in SDK version 14.0.")]
-        NSString kUAProximityRegionRSSIKey { get; }
-
-        // extern DEPRECATED_MSG_ATTRIBUTE( "Deprecated – to be removed in SDK version 14.0.") NSString *const kUARegionBoundaryEventEnterValue
-        [Field("kUARegionBoundaryEventEnterValue", "__Internal")]
-        [Obsolete("Deprecated – to be removed in SDK version 14.0.")]
-        NSString kUARegionBoundaryEventEnterValue { get; }
-
-        // extern DEPRECATED_MSG_ATTRIBUTE( "Deprecated – to be removed in SDK version 14.0.") NSString *const kUARegionBoundaryEventExitValue
-        [Field("kUARegionBoundaryEventExitValue", "__Internal")]
-        [Obsolete("Deprecated – to be removed in SDK version 14.0.")]
-        NSString kUARegionBoundaryEventExitValue { get; }
-
-        // extern DEPRECATED_MSG_ATTRIBUTE( "Deprecated – to be removed in SDK version 14.0.") NSString *const kUARegionBoundaryEventKey
-        [Field("kUARegionBoundaryEventKey", "__Internal")]
-        [Obsolete("Deprecated – to be removed in SDK version 14.0.")]
-        NSString kUARegionBoundaryEventKey { get; }
-
-        // extern const NSUInteger kUARegionEventMaxCharacters
-        [Field("kUARegionEventMaxCharacters", "__Internal")]
-        [Obsolete("Deprecated – to be removed in SDK version 14.0. Please use UARegionEventMaxCharacters.")]
-        nuint kUARegionEventMaxCharacters { get; }
-
-        // extern const double kUARegionEventMaxLatitude
-        [Field("kUARegionEventMaxLatitude", "__Internal")]
-        [Obsolete("Deprecated – to be removed in SDK version 14.0. Please use UARegionEventMaxLatitude.")]
-        double kUARegionEventMaxLatitude { get; }
-
-        // extern const double kUARegionEventMaxLongitude
-        [Field("kUARegionEventMaxLongitude", "__Internal")]
-        [Obsolete("Deprecated – to be removed in SDK version 14.0. Please use UARegionEventMaxLongitude.")]
-        double kUARegionEventMaxLongitude { get; }
-
-        // extern const NSUInteger kUARegionEventMinCharacters
-        [Field("kUARegionEventMinCharacters", "__Internal")]
-        [Obsolete("Deprecated – to be removed in SDK version 14.0. Please use UARegionEventMinCharacters.")]
-        nuint kUARegionEventMinCharacters { get; }
-
-        // extern const double kUARegionEventMinLatitude
-        [Field("kUARegionEventMinLatitude", "__Internal")]
-        [Obsolete("Deprecated – to be removed in SDK version 14.0. Please use UARegionEventMinLatitude.")]
-        double kUARegionEventMinLatitude { get; }
-
-        // extern const double kUARegionEventMinLongitude
-        [Field("kUARegionEventMinLongitude", "__Internal")]
-        [Obsolete("Deprecated – to be removed in SDK version 14.0. Please use UARegionEventMinLongitude.")]
-        double kUARegionEventMinLongitude { get; }
-
-        // extern DEPRECATED_MSG_ATTRIBUTE( "Deprecated – to be removed in SDK version 14.0.") NSString *const kUARegionEventType
-        [Field("kUARegionEventType", "__Internal")]
-        [Obsolete("Deprecated – to be removed in SDK version 14.0.")]
-        NSString kUARegionEventType { get; }
-
-        // extern DEPRECATED_MSG_ATTRIBUTE( "Deprecated – to be removed in SDK version 14.0.") NSString *const kUARegionIDKey
-        [Field("kUARegionIDKey", "__Internal")]
-        [Obsolete("Deprecated – to be removed in SDK version 14.0.")]
-        NSString kUARegionIDKey { get; }
-
-        // extern DEPRECATED_MSG_ATTRIBUTE( "Deprecated – to be removed in SDK version 14.0.") NSString *const kUARegionLatitudeKey
-        [Field("kUARegionLatitudeKey", "__Internal")]
-        [Obsolete("Deprecated – to be removed in SDK version 14.0.")]
-        NSString kUARegionLatitudeKey { get; }
-
-        // extern DEPRECATED_MSG_ATTRIBUTE( "Deprecated – to be removed in SDK version 14.0.") NSString *const kUARegionLongitudeKey
-        [Field("kUARegionLongitudeKey", "__Internal")]
-        [Obsolete("Deprecated – to be removed in SDK version 14.0.")]
-        NSString kUARegionLongitudeKey { get; }
-
-        // extern DEPRECATED_MSG_ATTRIBUTE( "Deprecated – to be removed in SDK version 14.0.") NSString *const kUARegionSourceKey
-        [Field("kUARegionSourceKey", "__Internal")]
-        [Obsolete("Deprecated – to be removed in SDK version 14.0.")]
-        NSString kUARegionSourceKey { get; }
-
-        // extern NSString *const kUARemoveTagsActionDefaultRegistryAlias
-        [Field("kUARemoveTagsActionDefaultRegistryAlias", "__Internal")]
-        [Obsolete("Deprecated – to be removed in SDK version 14.0. Please use UARemoveTagsActionDefaultRegistryAlias.")]
-        NSString kUARemoveTagsActionDefaultRegistryAlias { get; }
-
-        // extern NSString *const kUARemoveTagsActionDefaultRegistryName
-        [Field("kUARemoveTagsActionDefaultRegistryName", "__Internal")]
-        [Obsolete("Deprecated – to be removed in SDK version 14.0. Please use UARemoveTagsActionDefaultRegistryName.")]
-        NSString kUARemoveTagsActionDefaultRegistryName { get; }
-
-        // extern NSString *const kUAShareActionDefaultRegistryAlias
-        [Field("kUAShareActionDefaultRegistryAlias", "__Internal")]
-        [Obsolete("Deprecated – to be removed in SDK version 14.0. Please use UAShareActionDefaultRegistryAlias.")]
-        NSString kUAShareActionDefaultRegistryAlias { get; }
-
-        // extern NSString *const kUAShareActionDefaultRegistryName
-        [Field("kUAShareActionDefaultRegistryName", "__Internal")]
-        [Obsolete("Deprecated – to be removed in SDK version 14.0. Please use UAShareActionDefaultRegistryName.")]
-        NSString kUAShareActionDefaultRegistryName { get; }
-
-        // extern NSString *const kUAWalletActionDefaultRegistryAlias
-        [Field("kUAWalletActionDefaultRegistryAlias", "__Internal")]
-        [Obsolete("Deprecated – to be removed in SDK version 14.0. Please use UAWalletActionDefaultRegistryAlias.")]
-        NSString kUAWalletActionDefaultRegistryAlias { get; }
-
-        // extern NSString *const kUAWalletActionDefaultRegistryName
-        [Field("kUAWalletActionDefaultRegistryName", "__Internal")]
-        [Obsolete("Deprecated – to be removed in SDK version 14.0. Please use UAWalletActionDefaultRegistryName.")]
-        NSString kUAWalletActionDefaultRegistryName { get; }
 
         // extern UALogLevel uaLogLevel
         [Field("uaLogLevel", "__Internal")]
@@ -819,7 +697,7 @@ namespace UrbanAirship {
 
         // - (nonnull UAAction *)actionForSituation:(UASituation)situation;
         [Export("actionForSituation:")]
-        UAAction ActionForSituation (UASituation situation);
+        UAAction ActionForSituation(UASituation situation);
     }
 
     // @interface UAActionResult : NSObject
@@ -1021,7 +899,6 @@ namespace UrbanAirship {
 
         // + (null_unspecified instancetype)shared;
         [Static]
-        [New]
         [Export("shared")]
         UAAnalytics Shared ();
 
@@ -1159,6 +1036,12 @@ namespace UrbanAirship {
         void RemoveAttribute (string attribute);
     }
 
+    // @interface UAAttributes : NSObject /** * Title attribute. */ extern NSString * const UAAttributeTitle; /** * First name attribute. */ extern NSString * const UAAttributeFirstName; /** * Last name attribute. */ extern NSString * const UAAttributeLastName; /** * Full name attribute. */ extern NSString * const UAAttributeFullName; /** * Gender attribute. */ extern NSString * const UAAttributeGender; /** * Zip code attribute. */ extern NSString * const UAAttributeZipCode; /** * City attribute. */ extern NSString * const UAAttributeCity; /** * Region attribute. */ extern NSString * const UAAttributeRegion; /** * Country attribute. */ extern NSString * const UAAttributeCountry; /** * Birthdate attribute. */ extern NSString * const UAAttributeBirthdate; /** * Age attribute. */ extern NSString * const UAAttributeAge; /** * Mobile phone attribute. */ extern NSString * const UAAttributeMobilePhone; /** * Home phone attribute. */ extern NSString * const UAAttributeHomePhone; /** * Work phone attribute. */ extern NSString * const UAAttributeWorkPhone; /** * Loyalty tier attribute. */ extern NSString * const UAAttributeLoyaltyTier; /** * Company attribute. */ extern NSString * const UAAttributeCompany; /** * Username attribute. */ extern NSString * const UAAttributeUsername; /** * Account creation attribute. */ extern NSString * const UAAttributeAccountCreation; /** * Email attribute. */ extern NSString * const UAAttributeEmail; /** * Advertising id attribute. */ extern NSString * const UAAttributeAdvertisingId; @end
+    [BaseType(typeof(NSObject))]
+    interface UAAttributes
+    {
+    }
+
     // @interface UABespokeCloseView : UIView
     [BaseType(typeof(UIView))]
     interface UABespokeCloseView
@@ -1196,7 +1079,6 @@ namespace UrbanAirship {
 
         // + (null_unspecified instancetype)shared;
         [Static]
-        [New]
         [Export("shared")]
         UAChannel Shared ();
 
@@ -1245,33 +1127,9 @@ namespace UrbanAirship {
     [BaseType(typeof(NSObject))]
     interface UAChannelCapture
     {
-        // - (void)enable:(NSTimeInterval)duration;
-        [Export("enable:")]
-        void Enable (double duration);
-
-        // - (void)disable;
-        [Export("disable")]
-        void Disable ();
-    }
-
-    // @interface UAChannelCaptureAction : UAAction
-    [BaseType(typeof(UAAction))]
-    interface UAChannelCaptureAction
-    {
-        // + (nonnull instancetype)action;
-        [Static]
-        [Export("action")]
-        UAChannelCaptureAction Action ();
-
-        // + (nonnull instancetype)actionWithBlock:(nonnull UAActionBlock)actionBlock acceptingArguments: (nullable UAActionPredicate)predicateBlock;
-        [Static]
-        [Export("actionWithBlock:acceptingArguments:")]
-        UAChannelCaptureAction Action (UAActionBlock actionBlock, [NullAllowed] UAActionPredicate predicateBlock);
-
-        // + (nonnull instancetype)actionWithBlock:(nonnull UAActionBlock)actionBlock;
-        [Static]
-        [Export("actionWithBlock:")]
-        UAChannelCaptureAction Action (UAActionBlock actionBlock);
+        // @property (nonatomic, assign, unsafe_unretained, readwrite) BOOL enabled;
+        [Export("enabled")]
+        bool Enabled { get; set; }
     }
 
     // @interface UACircularRegion : NSObject
@@ -1308,7 +1166,6 @@ namespace UrbanAirship {
     {
         // + (null_unspecified instancetype)shared;
         [Static]
-        [New]
         [Export("shared")]
         UAComponent Shared ();
     }
@@ -1365,9 +1222,17 @@ namespace UrbanAirship {
         [Export("automaticSetupEnabled")]
         bool AutomaticSetupEnabled { [Bind("isAutomaticSetupEnabled")] get; set; }
 
-        // @property (nonatomic, copy, readwrite) NSArray<NSString *> *_Nonnull whitelist;
-        [Export("whitelist", ArgumentSemantic.Copy)]
-        string[] Whitelist { get; set; }
+        // @property (nonatomic, copy, readwrite) NSArray<NSString *> *_Nonnull URLAllowList;
+        [Export("URLAllowList", ArgumentSemantic.Copy)]
+        string[] URLAllowList { get; set; }
+
+        // @property (nonatomic, copy, readwrite) NSArray<NSString *> *_Nonnull URLAllowListScopeJavaScriptInterface;
+        [Export("URLAllowListScopeJavaScriptInterface", ArgumentSemantic.Copy)]
+        string[] URLAllowListScopeJavaScriptInterface { get; set; }
+
+        // @property (nonatomic, copy, readwrite) NSArray<NSString *> *_Nonnull URLAllowListScopeOpenURL;
+        [Export("URLAllowListScopeOpenURL", ArgumentSemantic.Copy)]
+        string[] URLAllowListScopeOpenURL { get; set; }
 
         // @property (nonatomic, copy, readwrite) NSString *_Nonnull itunesID;
         [Export("itunesID")]
@@ -1396,10 +1261,6 @@ namespace UrbanAirship {
         // @property (nonatomic, assign, unsafe_unretained, readwrite, getter=isChannelCaptureEnabled) BOOL channelCaptureEnabled;
         [Export("channelCaptureEnabled")]
         bool ChannelCaptureEnabled { [Bind("isChannelCaptureEnabled")] get; set; }
-
-        // @property (nonatomic, assign, unsafe_unretained, readwrite, getter=isOpenURLWhitelistingEnabled) BOOL openURLWhitelistingEnabled;
-        [Export("openURLWhitelistingEnabled")]
-        bool OpenURLWhitelistingEnabled { [Bind("isOpenURLWhitelistingEnabled")] get; set; }
 
         // @property (nonatomic, assign, unsafe_unretained, readwrite, getter=isChannelCreationDelayEnabled) BOOL channelCreationDelayEnabled;
         [Export("channelCreationDelayEnabled")]
@@ -1496,33 +1357,9 @@ namespace UrbanAirship {
         [Export("eventWithName:value:")]
         UACustomEvent Event (string eventName, [NullAllowed] NSNumber eventValue);
 
-        // - (void)setInteractionFromMessageCenterMessage:(nonnull NSString *)messageID;
-        [Export("setInteractionFromMessageCenterMessage:")]
-        void SetInteraction (string messageID);
-
-        // - (void)setBoolProperty:(BOOL)value forKey:(nonnull NSString *)key;
-        [Export("setBoolProperty:forKey:")]
-        [Obsolete("Deprecated – to be removed in SDK version 14.0. Instead use the properties property of UACustomEvent.")]
-        void SetBoolProperty (bool value, string key);
-
-        // - (void)setStringProperty:(nonnull NSString *)value forKey:(nonnull NSString *)key;
-        [Export("setStringProperty:forKey:")]
-        [Obsolete("Deprecated – to be removed in SDK version 14.0. Instead use the properties property of UACustomEvent.")]
-        void SetStringProperty (string value, string key);
-
-        // - (void)setNumberProperty:(nonnull NSNumber *)value forKey:(nonnull NSString *)key;
-        [Export("setNumberProperty:forKey:")]
-        [Obsolete("Deprecated – to be removed in SDK version 14.0. Instead use the properties property of UACustomEvent.")]
-        void SetNumberProperty (NSNumber value, string key);
-
         // - (void)track;
         [Export("track")]
         void Track ();
-
-        // - (void)setStringArrayProperty:(nonnull NSArray<NSString *> *)value forKey:(nonnull NSString *)key;
-        [Export("setStringArrayProperty:forKey:")]
-        [Obsolete("Deprecated – to be removed in SDK version 14.0. Instead use the properties property of UACustomEvent.")]
-        void SetStringArrayProperty (string[] value, string key);
     }
 
     // @interface UADeepLinkAction : UAOpenExternalURLAction
@@ -1588,6 +1425,10 @@ namespace UrbanAirship {
         // @property (nonatomic, readonly) NSString *_Nonnull eventType;
         [Export("eventType")]
         string EventType { get; }
+
+        // @property (nonatomic, copy, readwrite) NSDictionary *_Nonnull eventData;
+        [Export("eventData", ArgumentSemantic.Copy)]
+        NSDictionary EventData { get; set; }
 
         // - (BOOL)isValid;
         [Export("isValid")]
@@ -1851,12 +1692,12 @@ namespace UrbanAirship {
         string Build ();
     }
 
-    // @interface UALocaleManager : NSObject /** * The currentLocale. Setting the currentLocale to nil reverts the locale to the current user’s chosen system locale. */ @property (nonatomic, strong, nullable) NSLocale *currentLocale; /** * Clear the locale. Reverts the locale to the current user’s chosen system locale. */ - (void)clearLocale; @end
+    // @interface UALocaleManager : NSObject /** * The currentLocale. Setting the currentLocale to nil reverts the locale to the current user’s chosen system locale. */ @property (nonatomic, strong, null_resettable) NSLocale *currentLocale; /** * Clear the locale. Reverts the locale to the current user’s chosen system locale. */ - (void)clearLocale; @end
     [BaseType(typeof(NSObject))]
     interface UALocaleManager
     {
-        // @property (nonatomic, strong, readwrite, nullable) NSLocale *currentLocale;
-        [NullAllowed, Export("currentLocale", ArgumentSemantic.Strong)]
+        // @property (nonatomic, strong, readwrite, null_resettable) NSLocale *currentLocale;
+        [Export("currentLocale", ArgumentSemantic.Strong)]
         NSLocale CurrentLocale { get; set; }
 
         // - (void)clearLocale;
@@ -1990,7 +1831,6 @@ namespace UrbanAirship {
 
         // + (null_unspecified instancetype)shared;
         [Static]
-        [New]
         [Export("shared")]
         UANamedUser Shared ();
 
@@ -2144,6 +1984,16 @@ namespace UrbanAirship {
         [Export("createCategory:actions:hiddenPreviewsBodyPlaceholder:")]
         [return: NullAllowed]
         UANotificationCategory CreateCategory (string categoryId, NSObject[] actionDefinitions, string hiddenPreviewsBodyPlaceholder);
+
+        // + (nonnull NSSet *)defaultCategories;
+        [Static]
+        [Export("defaultCategories")]
+        NSSet DefaultCategories ();
+
+        // + (nonnull NSSet *)defaultCategoriesWithRequireAuth:(BOOL)requireAuth;
+        [Static]
+        [Export("defaultCategoriesWithRequireAuth:")]
+        NSSet DefaultCategories (bool requireAuth);
     }
 
     // @interface UANotificationCategory : NSObject
@@ -2407,12 +2257,12 @@ namespace UrbanAirship {
     {
         // - (void)registrationSucceededForChannelID:(nonnull NSString *)channelID deviceToken:(nonnull NSString *)deviceToken;
         [Export("registrationSucceededForChannelID:deviceToken:")]
-        [Obsolete("Deprecated – to be removed in SDK version 14.0. Please use the UAChannelUpdatedEvent NSNotification.")]
+        [Obsolete("Deprecated – to be removed in SDK version 15.0. Please use the UAChannelUpdatedEvent NSNotification.")]
         void RegistrationSucceeded (string channelID, string deviceToken);
 
         // - (void)registrationFailed;
         [Export("registrationFailed")]
-        [Obsolete("Deprecated – to be removed in SDK version 14.0. Please use the UAChannelRegistrationFailedEvent NSNotification.")]
+        [Obsolete("Deprecated – to be removed in SDK version 15.0. Please use the UAChannelRegistrationFailedEvent NSNotification.")]
         void RegistrationFailed ();
 
         // - (void) notificationRegistrationFinishedWithAuthorizedSettings: (UAAuthorizedNotificationSettings)authorizedSettings categories: (nonnull NSSet< UANotificationCategory *> *)categories status: (UAAuthorizationStatus) status;
@@ -2455,11 +2305,6 @@ namespace UrbanAirship {
         [Export("receivedNotificationResponse:completionHandler:")]
         void ReceivedNotificationResponse (UANotificationResponse notificationResponse, Action completionHandler);
 
-        // - (UNNotificationPresentationOptions)presentationOptionsForNotification: (nonnull UNNotification *)notification;
-        [Export("presentationOptionsForNotification:")]
-        [Obsolete("Deprecated - to be removed in SDK version 14.0. Please use extendPresentationOptions:notification:")]
-        UNNotificationPresentationOptions PresentationOptions (UNNotification notification);
-
         // - (UNNotificationPresentationOptions) extendPresentationOptions:(UNNotificationPresentationOptions)options notification:(nonnull UNNotification *)notification;
         [Export("extendPresentationOptions:notification:")]
         UNNotificationPresentationOptions ExtendPresentationOptions (UNNotificationPresentationOptions options, UNNotification notification);
@@ -2491,14 +2336,13 @@ namespace UrbanAirship {
         [Export("userPushNotificationsEnabledByDefault")]
         bool UserPushNotificationsEnabledByDefault { get; set; }
 
+        // @property (nonatomic, assign, unsafe_unretained, readwrite) BOOL extendedPushNotificationPermissionEnabled;
+        [Export("extendedPushNotificationPermissionEnabled")]
+        bool ExtendedPushNotificationPermissionEnabled { get; set; }
+
         // @property (nonatomic, copy, readonly, nullable) NSString *deviceToken;
         [NullAllowed, Export("deviceToken")]
         string DeviceToken { get; }
-
-        // @property (nonatomic, copy, readonly, nullable) NSString *channelID;
-        [Obsolete("Deprecated – to be removed in SDK version 14.0. Please use the identifier property on UAChannel.")]
-        [NullAllowed, Export("channelID")]
-        string ChannelID { get; }
 
         // @property (nonatomic, assign, unsafe_unretained, readwrite) UANotificationOptions notificationOptions;
         [Export("notificationOptions", ArgumentSemantic.Assign)]
@@ -2560,16 +2404,6 @@ namespace UrbanAirship {
         [Export("autobadgeEnabled")]
         bool AutobadgeEnabled { [Bind("isAutobadgeEnabled")] get; set; }
 
-        // @property (nonatomic, copy, readwrite) DEPRECATED_MSG_ATTRIBUTE("Deprecated – to be removed in SDK version 14.0. " "Please use the equivalent property on UAChannel.") NSArray<NSString *> *tags;
-        [Obsolete("Deprecated – to be removed in SDK version 14.0. Please use the equivalent property on UAChannel.")]
-        [Export("tags", ArgumentSemantic.Copy)]
-        string[] Tags { get; set; }
-
-        // @property (nonatomic, assign, unsafe_unretained, readwrite, getter=isChannelTagRegistrationEnabled) BOOL channelTagRegistrationEnabled;
-        [Obsolete("Deprecated – to be removed in SDK version 14.0. Please use the equivalent property on UAChannel.")]
-        [Export("channelTagRegistrationEnabled")]
-        bool ChannelTagRegistrationEnabled { [Bind("isChannelTagRegistrationEnabled")] get; set; }
-
         // @property (nonatomic, copy, readonly, nullable) NSDictionary *quietTime;
         [NullAllowed, Export("quietTime", ArgumentSemantic.Copy)]
         NSDictionary QuietTime { get; }
@@ -2584,7 +2418,6 @@ namespace UrbanAirship {
 
         // + (null_unspecified instancetype)shared;
         [Static]
-        [New]
         [Export("shared")]
         UAPush Shared ();
 
@@ -2596,49 +2429,9 @@ namespace UrbanAirship {
         [Export("enableUserPushNotifications:")]
         void EnableUserPushNotifications (Action<bool> completionHandler);
 
-        // - (void)addTag:(nonnull NSString *)tag;
-        [Export("addTag:")]
-        [Obsolete("Deprecated – to be removed in SDK version 14.0. Please use the equivalent method on UAChannel.")]
-        void AddTag (string tag);
-
-        // - (void)addTags:(nonnull NSArray<NSString *> *)tags;
-        [Export("addTags:")]
-        [Obsolete("Deprecated – to be removed in SDK version 14.0. Please use the equivalent method on UAChannel.")]
-        void AddTags (string[] tags);
-
-        // - (void)removeTag:(nonnull NSString *)tag;
-        [Export("removeTag:")]
-        [Obsolete("Deprecated – to be removed in SDK version 14.0. Please use the equivalent method on UAChannel.")]
-        void RemoveTag (string tag);
-
-        // - (void)removeTags:(nonnull NSArray<NSString *> *)tags;
-        [Export("removeTags:")]
-        [Obsolete("Deprecated – to be removed in SDK version 14.0. Please use the equivalent method on UAChannel.")]
-        void RemoveTags (string[] tags);
-
-        // - (void)addTags:(nonnull NSArray<NSString *> *)tags group:(nonnull NSString *)tagGroupID;
-        [Export("addTags:group:")]
-        [Obsolete("Deprecated – to be removed in SDK version 14.0. Please use the equivalent method on UAChannel.")]
-        void AddTags (string[] tags, string tagGroupID);
-
-        // - (void)removeTags:(nonnull NSArray<NSString *> *)tags group:(nonnull NSString *)tagGroupID;
-        [Export("removeTags:group:")]
-        [Obsolete("Deprecated – to be removed in SDK version 14.0. Please use the equivalent method on UAChannel.")]
-        void RemoveTags (string[] tags, string tagGroupID);
-
-        // - (void)setTags:(nonnull NSArray<NSString *> *)tags group:(nonnull NSString *)tagGroupID;
-        [Export("setTags:group:")]
-        [Obsolete("Deprecated – to be removed in SDK version 14.0. Please use the equivalent method on UAChannel.")]
-        void SetTags (string[] tags, string tagGroupID);
-
         // - (void)setQuietTimeStartHour:(NSUInteger)startHour startMinute:(NSUInteger)startMinute endHour:(NSUInteger)endHour endMinute:(NSUInteger)endMinute;
         [Export("setQuietTimeStartHour:startMinute:endHour:endMinute:")]
         void SetQuietTimeStartHour (nuint startHour, nuint startMinute, nuint endHour, nuint endMinute);
-
-        // - (void)enableChannelCreation;
-        [Export("enableChannelCreation")]
-        [Obsolete("Deprecated – to be removed in SDK version 14.0. Please use the equivalent method on UAChannel.")]
-        void EnableChannelCreation ();
 
         // - (void)updateRegistration;
         [Export("updateRegistration")]
@@ -2885,9 +2678,17 @@ namespace UrbanAirship {
         [Export("automaticSetupEnabled")]
         bool AutomaticSetupEnabled { [Bind("isAutomaticSetupEnabled")] get; }
 
-        // @property (atomic, readonly) NSArray<NSString *> *_Nonnull whitelist;
-        [Export("whitelist")]
-        string[] Whitelist { get; }
+        // @property (atomic, readonly) NSArray<NSString *> *_Nonnull URLAllowList;
+        [Export("URLAllowList")]
+        string[] URLAllowList { get; }
+
+        // @property (atomic, readonly) NSArray<NSString *> *_Nonnull URLAllowListScopeJavaScriptInterface;
+        [Export("URLAllowListScopeJavaScriptInterface")]
+        string[] URLAllowListScopeJavaScriptInterface { get; }
+
+        // @property (atomic, readonly) NSArray<NSString *> *_Nonnull URLAllowListScopeOpenURL;
+        [Export("URLAllowListScopeOpenURL")]
+        string[] URLAllowListScopeOpenURL { get; }
 
         // @property (atomic, readonly, getter=isAnalyticsEnabled) BOOL analyticsEnabled;
         [Export("analyticsEnabled")]
@@ -2912,10 +2713,6 @@ namespace UrbanAirship {
         // @property (atomic, readonly, getter=isChannelCaptureEnabled) BOOL channelCaptureEnabled;
         [Export("channelCaptureEnabled")]
         bool ChannelCaptureEnabled { [Bind("isChannelCaptureEnabled")] get; }
-
-        // @property (atomic, readonly, getter=isOpenURLWhitelistingEnabled) BOOL openURLWhitelistingEnabled;
-        [Export("openURLWhitelistingEnabled")]
-        bool OpenURLWhitelistingEnabled { [Bind("isOpenURLWhitelistingEnabled")] get; }
 
         // @property (atomic, readonly, getter=isChannelCreationDelayEnabled) BOOL channelCreationDelayEnabled;
         [Export("channelCreationDelayEnabled")]
@@ -3001,6 +2798,52 @@ namespace UrbanAirship {
         UATextInputNotificationAction Action (string identifier, string title, string textInputButtonTitle, string textInputPlaceholder, UANotificationActionOptions options);
     }
 
+    // @protocol UAURLAllowListDelegate <NSObject>
+    [Protocol, Model]
+    [BaseType(typeof(NSObject))]
+    interface UAURLAllowListDelegate
+    {
+        // - (BOOL)allowURL:(nonnull NSURL *)URL scope:(UAURLAllowListScope)scope;
+        [Export("allowURL:scope:")]
+        bool AllowURL (NSUrl URL, UAURLAllowListScope scope);
+    }
+
+    interface IUAURLAllowListDelegate { }
+
+    // @interface UAURLAllowList : NSObject
+    [BaseType(typeof(NSObject))]
+    interface UAURLAllowList
+    {
+        // @property (nonatomic, weak, readwrite, nullable) id<UAURLAllowListDelegate> delegate;
+        [NullAllowed, Export("delegate", ArgumentSemantic.Assign)]
+        NSObject WeakDelegate { get; set; }
+
+        [Wrap("WeakDelegate")]
+        [NullAllowed]
+        IUAURLAllowListDelegate Delegate { get; set; }
+
+        // + (nonnull instancetype)allowListWithConfig:(nonnull UARuntimeConfig *)config;
+        [Static]
+        [Export("allowListWithConfig:")]
+        UAURLAllowList AllowList (UARuntimeConfig config);
+
+        // - (BOOL)addEntry:(nonnull NSString *)patternString;
+        [Export("addEntry:")]
+        bool AddEntry (string patternString);
+
+        // - (BOOL)addEntry:(nonnull NSString *)patternString scope:(UAURLAllowListScope)scope;
+        [Export("addEntry:scope:")]
+        bool AddEntry (string patternString, UAURLAllowListScope scope);
+
+        // - (BOOL)isAllowed:(nonnull NSURL *)URL;
+        [Export("isAllowed:")]
+        bool IsAllowed (NSUrl URL);
+
+        // - (BOOL)isAllowed:(nonnull NSURL *)URL scope:(UAURLAllowListScope)scope;
+        [Export("isAllowed:scope:")]
+        bool IsAllowed (NSUrl URL, UAURLAllowListScope scope);
+    }
+
     // @interface UAUtils : NSObject
     [BaseType(typeof(NSObject))]
     interface UAUtils
@@ -3031,6 +2874,12 @@ namespace UrbanAirship {
         [Export("authHeaderStringWithName:password:")]
         string AuthHeaderString (string username, string password);
 
+        // + (nullable NSString *)bundleShortVersionString;
+        [Static]
+        [Export("bundleShortVersionString")]
+        [return: NullAllowed]
+        string BundleShortVersionString ();
+
         // + (nonnull NSString *)pluralize:(int)count singularForm:(nonnull NSString *)singular pluralForm:(nonnull NSString *)plural;
         [Static]
         [Export("pluralize:singularForm:pluralForm:")]
@@ -3049,7 +2898,7 @@ namespace UrbanAirship {
         // + (nonnull NSDateFormatter *)ISODateFormatterUTCWithDelimiter;
         [Static]
         [Export("ISODateFormatterUTCWithDelimiter")]
-        NSDateFormatter ISODateFormatterUTCWithDelimiter ();
+        NSDateFormatter ISODateFormatterUTCWithDelimiter();
 
         // + (nullable NSDate *)parseISO8601DateFromString:(nonnull NSString *)timestamp;
         [Static]
@@ -3203,56 +3052,6 @@ namespace UrbanAirship {
     {
     }
 
-    // @protocol UAWhitelistDelegate <NSObject>
-    [Protocol, Model]
-    [BaseType(typeof(NSObject))]
-    interface UAWhitelistDelegate
-    {
-        // - (BOOL)acceptWhitelisting:(nonnull NSURL *)url scope:(UAWhitelistScope)scope;
-        [Export("acceptWhitelisting:scope:")]
-        bool AcceptWhitelisting (NSUrl url, UAWhitelistScope scope);
-    }
-
-    interface IUAWhitelistDelegate { }
-
-    // @interface UAWhitelist : NSObject
-    [BaseType(typeof(NSObject))]
-    interface UAWhitelist
-    {
-        // @property (nonatomic, assign, unsafe_unretained, readwrite, getter=isOpenURLWhitelistingEnabled) BOOL openURLWhitelistingEnabled;
-        [Export("openURLWhitelistingEnabled")]
-        bool OpenURLWhitelistingEnabled { [Bind("isOpenURLWhitelistingEnabled")] get; set; }
-
-        // @property (nonatomic, weak, readwrite, nullable) id<UAWhitelistDelegate> delegate;
-        [NullAllowed, Export("delegate", ArgumentSemantic.Assign)]
-        NSObject WeakDelegate { get; set; }
-
-        [Wrap("WeakDelegate")]
-        [NullAllowed]
-        IUAWhitelistDelegate Delegate { get; set; }
-
-        // + (nonnull instancetype)whitelistWithConfig:(nonnull UARuntimeConfig *)config;
-        [Static]
-        [Export("whitelistWithConfig:")]
-        UAWhitelist Whitelist (UARuntimeConfig config);
-
-        // - (BOOL)addEntry:(nonnull NSString *)patternString;
-        [Export("addEntry:")]
-        bool AddEntry (string patternString);
-
-        // - (BOOL)addEntry:(nonnull NSString *)patternString scope:(UAWhitelistScope)scope;
-        [Export("addEntry:scope:")]
-        bool AddEntry (string patternString, UAWhitelistScope scope);
-
-        // - (BOOL)isWhitelisted:(nonnull NSURL *)url;
-        [Export("isWhitelisted:")]
-        bool IsWhitelisted (NSUrl url);
-
-        // - (BOOL)isWhitelisted:(nonnull NSURL *)url scope:(UAWhitelistScope)scope;
-        [Export("isWhitelisted:scope:")]
-        bool IsWhitelisted (NSUrl url, UAWhitelistScope scope);
-    }
-
     // @protocol UADeepLinkDelegate <NSObject>
     [Protocol, Model]
     [BaseType(typeof(NSObject))]
@@ -3301,9 +3100,9 @@ namespace UrbanAirship {
         [NullAllowed]
         IUADeepLinkDelegate DeepLinkDelegate { get; set; }
 
-        // @property (nonatomic, strong, readonly) UAWhitelist *_Nonnull whitelist;
-        [Export("whitelist", ArgumentSemantic.Strong)]
-        UAWhitelist Whitelist { get; }
+        // @property (nonatomic, strong, readonly) UAURLAllowList *_Nonnull URLAllowList;
+        [Export("URLAllowList", ArgumentSemantic.Strong)]
+        UAURLAllowList URLAllowList { get; }
 
         // @property (nonatomic, strong, readonly) UAChannelCapture *_Nonnull channelCapture;
         [Export("channelCapture", ArgumentSemantic.Strong)]

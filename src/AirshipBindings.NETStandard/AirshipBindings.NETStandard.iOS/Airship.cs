@@ -15,12 +15,16 @@ namespace UrbanAirship.NETStandard
         private static Lazy<Airship> sharedAirship = new Lazy<Airship>(() =>
         {
             Airship instance = new Airship();
-            instance.Init();
+            instance.Initialize();
             return instance;
         });
 
-        private void Init()
+        private void Initialize()
         {
+            // Load unreferenced modules
+            AirshipAutomation.Init();
+            AirshipExtendedActions.Init();
+
             NSNotificationCenter.DefaultCenter.AddObserver(aName: (NSString)"com.urbanairship.channel.channel_created", (NSNotification notification) =>
             {
                 string channelID = notification.UserInfo["com.urbanairship.channel.identifier"].ToString();
@@ -30,7 +34,7 @@ namespace UrbanAirship.NETStandard
             NSNotificationCenter.DefaultCenter.AddObserver(aName: (NSString)"com.urbanairship.channel.channel_updated", (NSNotification notification) =>
             {
                 string channelID = notification.UserInfo["com.urbanairship.channel.identifier"].ToString();
-                OnChannelCreation?.Invoke(this, new ChannelEventArgs(channelID));
+                OnChannelUpdate?.Invoke(this, new ChannelEventArgs(channelID));
             });
 
             //Adding Inbox updated Listener
@@ -193,6 +197,7 @@ namespace UrbanAirship.NETStandard
 
             if (customEvent.PropertyList != null)
             {
+                NSDictionary propertyDictionary = new NSDictionary();
                 foreach (var property in customEvent.PropertyList)
                 {
                     if (string.IsNullOrEmpty(property.name))
@@ -202,20 +207,24 @@ namespace UrbanAirship.NETStandard
 
                     if (property is CustomEvent.Property<string> stringProperty)
                     {
-                        uaEvent.SetStringProperty(stringProperty.value, stringProperty.name);
+                        propertyDictionary.SetValueForKey((NSString)stringProperty.value, (NSString)stringProperty.name);
                     }
                     else if (property is CustomEvent.Property<double> doubleProperty)
                     {
-                        uaEvent.SetNumberProperty(doubleProperty.value, doubleProperty.name);
+                        propertyDictionary.SetValueForKey((NSNumber)doubleProperty.value, (NSString)doubleProperty.name);
                     }
                     else if (property is CustomEvent.Property<bool> boolProperty)
                     {
-                        uaEvent.SetBoolProperty(boolProperty.value, boolProperty.name);
+                        propertyDictionary.SetValueForKey((NSNumber)boolProperty.value, (NSString)boolProperty.name);
                     }
                     else if (property is CustomEvent.Property<string[]> stringArrayProperty)
                     {
-                        uaEvent.SetStringArrayProperty(stringArrayProperty.value, stringArrayProperty.name);
+                        propertyDictionary.SetValueForKey(NSArray.FromObjects(stringArrayProperty.value), (NSString)stringArrayProperty.name);
                     }
+                }
+                if (propertyDictionary.Count > 0)
+                {
+                    uaEvent.Properties = propertyDictionary;
                 }
             }
 
@@ -242,6 +251,20 @@ namespace UrbanAirship.NETStandard
         public void DisplayMessage(string messageId)
         {
             UAMessageCenter.Shared().DisplayMessage(messageId);
+        }
+
+        public void MarkMessageRead(string messageId)
+        {
+            var toRead = new UAInboxMessage[1];
+            toRead[0] = UAMessageCenter.Shared().MessageList.Message(messageId);
+            UAMessageCenter.Shared().MessageList.MarkMessagesRead(toRead, null);
+        }
+
+        public void DeleteMessage(string messageId)
+        {
+            var toDelete = new UAInboxMessage[1];
+            toDelete[0] = UAMessageCenter.Shared().MessageList.Message(messageId);
+            UAMessageCenter.Shared().MessageList.MarkMessagesDeleted(toDelete, null);
         }
 
         public int MessageCenterUnreadCount

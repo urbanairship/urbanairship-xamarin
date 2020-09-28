@@ -2,8 +2,14 @@
  Copyright Airship and Contributors
 */
 using CoreLocation;
+using CoreFoundation;
+using CoreGraphics;
 using Foundation;
 using ObjCRuntime;
+using System;
+using UIKit;
+using UserNotifications;
+using WebKit;
 
 namespace UrbanAirship {
 
@@ -131,12 +137,6 @@ namespace UrbanAirship {
         [NullAllowed, Export("lastLocation")]
         CLLocation LastLocation { get; }
 
-        // + (null_unspecified instancetype)shared;
-        [Static]
-        [New]
-        [Export("shared")]
-        UALocation Shared ();
-
         // - (BOOL)isLocationOptedIn;
         [Export("isLocationOptedIn")]
         bool IsLocationOptedIn ();
@@ -144,6 +144,10 @@ namespace UrbanAirship {
         // - (BOOL)isLocationDeniedOrRestricted;
         [Export("isLocationDeniedOrRestricted")]
         bool IsLocationDeniedOrRestricted ();
+
+        // - (BOOL)isLocationAccuracyReduced;
+        [Export("isLocationAccuracyReduced")]
+        bool IsLocationAccuracyReduced ();
     }
 
     // @interface UALocationInfo : NSObject
