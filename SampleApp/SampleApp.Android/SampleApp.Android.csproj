@@ -69,20 +69,17 @@
     <PackageReference Include="Xamarin.Forms">
       <Version>4.8.0.1451</Version>
     </PackageReference>
-    <PackageReference Include="urbanairship.android.core">
-      <Version>14.0.1</Version>
-    </PackageReference>
-    <PackageReference Include="urbanairship.android.automation">
+    <PackageReference Include="urbanairship.android.messagecenter">
       <Version>14.0.1</Version>
     </PackageReference>
     <PackageReference Include="urbanairship.android.fcm">
       <Version>14.0.1</Version>
     </PackageReference>
-    <PackageReference Include="urbanairship.android.messagecenter">
+    <PackageReference Include="urbanairship.android.core">
       <Version>14.0.1</Version>
     </PackageReference>
-    <PackageReference Include="urbanairship.netstandard">
-      <Version>14.0.0</Version>
+    <PackageReference Include="urbanairship.android.automation">
+      <Version>14.0.1</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>

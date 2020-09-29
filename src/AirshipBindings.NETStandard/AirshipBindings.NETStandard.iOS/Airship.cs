@@ -506,7 +506,7 @@ namespace UrbanAirship.NETStandard
 
             set
             {
-                UAInAppAutomation.Shared().InAppMessageManager.DisplayInterval = value.Seconds;
+                UAInAppAutomation.Shared().InAppMessageManager.DisplayInterval = value.TotalSeconds;
             }
         }
     }
