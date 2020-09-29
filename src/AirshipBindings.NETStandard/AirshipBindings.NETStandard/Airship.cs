@@ -277,10 +277,9 @@ namespace UrbanAirship.NETStandard
         }
 
         /// <summary>
-        /// Add/remove the channel creation and update event listener.
+        /// Add/remove the channel creation event listener.
         /// </summary>
-        /// <value>The channel event listener.</value>
-
+        /// <value>The channel creation event listener.</value>
         public event EventHandler<ChannelEventArgs> OnChannelCreation
         {
             add
@@ -294,6 +293,10 @@ namespace UrbanAirship.NETStandard
             }
         }
 
+        /// <summary>
+        /// Add/remove the channel update event listener.
+        /// </summary>
+        /// <value>The channel update event listener.</value>
         public event EventHandler<ChannelEventArgs> OnChannelUpdate
         {
             add
@@ -302,6 +305,57 @@ namespace UrbanAirship.NETStandard
             }
 
             remove
+            {
+                throw new NotImplementedException(BaitWithoutSwitchMessage);
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets whether In-App Automation is enabled.
+        /// </summary>
+        /// <value>Whether In-App Automation is enabled.</value>
+        public bool InAppAutomationEnabled
+        {
+            get
+            {
+                throw new NotImplementedException(BaitWithoutSwitchMessage);
+            }
+
+            set
+            {
+                throw new NotImplementedException(BaitWithoutSwitchMessage);
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets whether In-App Automation is paused.
+        /// </summary>
+        /// <value>Whether In-App Automation is paused.</value>
+        public bool InAppAutomationPaused
+        {
+            get
+            {
+                throw new NotImplementedException(BaitWithoutSwitchMessage);
+            }
+
+            set
+            {
+                throw new NotImplementedException(BaitWithoutSwitchMessage);
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the In-App Automation display interval.
+        /// </summary>
+        /// <value>The display interval.</value>
+        public TimeSpan InAppAutomationDisplayInterval
+        {
+            get
+            {
+                throw new NotImplementedException(BaitWithoutSwitchMessage);
+            }
+
+            set
             {
                 throw new NotImplementedException(BaitWithoutSwitchMessage);
             }

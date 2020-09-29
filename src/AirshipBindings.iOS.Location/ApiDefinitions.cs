@@ -2,8 +2,14 @@
  Copyright Airship and Contributors
 */
 using CoreLocation;
+using CoreFoundation;
+using CoreGraphics;
 using Foundation;
 using ObjCRuntime;
+using System;
+using UIKit;
+using UserNotifications;
+using WebKit;
 
 namespace UrbanAirship {
 
@@ -144,6 +150,10 @@ namespace UrbanAirship {
         // - (BOOL)isLocationDeniedOrRestricted;
         [Export("isLocationDeniedOrRestricted")]
         bool IsLocationDeniedOrRestricted ();
+
+        // - (BOOL)isLocationAccuracyReduced;
+        [Export("isLocationAccuracyReduced")]
+        bool IsLocationAccuracyReduced ();
     }
 
     // @interface UALocationInfo : NSObject

@@ -86,7 +86,7 @@
     <Reference Include="System.Core" />
     <Reference Include="Xamarin.iOS" />
     <Reference Include="AirshipBindings.iOS.NotificationContentExtension">
-      <HintPath>..\..\packages\urbanairship.ios.notificationcontentextension.13.1.1\lib\Xamarin.iOS10\AirshipBindings.iOS.NotificationContentExtension.dll</HintPath>
+      <HintPath>..\..\packages\urbanairship.ios.notificationcontentextension.14.1.2\lib\Xamarin.iOS10\AirshipBindings.iOS.NotificationContentExtension.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

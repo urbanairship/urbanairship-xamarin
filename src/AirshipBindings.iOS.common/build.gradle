@@ -22,7 +22,7 @@ task carthageUpdate {
     doLast() {
         exec {
             workingDir "$rootDir"
-            commandLine "./wcarthage",  "update"
+            commandLine "./wcarthage",  "update", "--platform iOS"
         }
     }
 }

@@ -5,6 +5,8 @@
 using System;
 using System.Collections.Generic;
 using Foundation;
+using UrbanAirship;
+using UrbanAirship.NETStandard;
 using UrbanAirship.NETStandard.Analytics;
 using UrbanAirship.NETStandard.Attributes;
 
@@ -197,6 +199,7 @@ namespace UrbanAirship.NETStandard
 
             if (customEvent.PropertyList != null)
             {
+                NSDictionary propertyDictionary = new NSDictionary();
                 foreach (var property in customEvent.PropertyList)
                 {
                     if (string.IsNullOrEmpty(property.name))
@@ -206,20 +209,24 @@ namespace UrbanAirship.NETStandard
 
                     if (property is CustomEvent.Property<string> stringProperty)
                     {
-                        uaEvent.SetStringProperty(stringProperty.value, stringProperty.name);
+                        propertyDictionary.SetValueForKey((NSString)stringProperty.value, (NSString)stringProperty.name);
                     }
                     else if (property is CustomEvent.Property<double> doubleProperty)
                     {
-                        uaEvent.SetNumberProperty(doubleProperty.value, doubleProperty.name);
+                        propertyDictionary.SetValueForKey((NSNumber)doubleProperty.value, (NSString)doubleProperty.name);
                     }
                     else if (property is CustomEvent.Property<bool> boolProperty)
                     {
-                        uaEvent.SetBoolProperty(boolProperty.value, boolProperty.name);
+                        propertyDictionary.SetValueForKey((NSNumber)boolProperty.value, (NSString)boolProperty.name);
                     }
                     else if (property is CustomEvent.Property<string[]> stringArrayProperty)
                     {
-                        uaEvent.SetStringArrayProperty(stringArrayProperty.value, stringArrayProperty.name);
+                        propertyDictionary.SetValueForKey(NSArray.FromObjects(stringArrayProperty.value), (NSString)stringArrayProperty.name);
                     }
+                }
+                if (propertyDictionary.Count > 0)
+                {
+                    uaEvent.Properties = propertyDictionary;
                 }
             }
 
@@ -462,6 +469,45 @@ namespace UrbanAirship.NETStandard
         {
             onDeepLinkReceived?.Invoke(this, new DeepLinkEventArgs(url.AbsoluteString));
             completionHandler();
+        }
+
+        public bool InAppAutomationEnabled
+        {
+            get
+            {
+                return UAInAppAutomation.Shared().Enabled;
+            }
+
+            set
+            {
+                UAInAppAutomation.Shared().Enabled = value;
+            }
+        }
+
+        public bool InAppAutomationPaused
+        {
+            get
+            {
+                return UAInAppAutomation.Shared().Paused;
+            }
+
+            set
+            {
+                UAInAppAutomation.Shared().Paused = value;
+            }
+        }
+
+        public TimeSpan InAppAutomationDisplayInterval
+        {
+            get
+            {
+                return TimeSpan.FromSeconds(UAInAppAutomation.Shared().InAppMessageManager.DisplayInterval);
+            }
+
+            set
+            {
+                UAInAppAutomation.Shared().InAppMessageManager.DisplayInterval = value.TotalSeconds;
+            }
         }
     }
 }

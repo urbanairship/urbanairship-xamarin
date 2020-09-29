@@ -53,24 +53,33 @@
     <Reference Include="System.Numerics.Vectors" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Xamarin.Essentials" Version="1.5.3.1" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.5.3.2" />
     <PackageReference Include="Xamarin.AndroidX.Lifecycle.LiveData">
-      <Version>2.2.0</Version>
+      <Version>2.2.0.3</Version>
     </PackageReference>
     <PackageReference Include="Xamarin.AndroidX.Browser">
-      <Version>1.2.0</Version>
+      <Version>1.2.0.2</Version>
     </PackageReference>
     <PackageReference Include="Xamarin.Google.Android.Material">
-      <Version>1.0.0</Version>
+      <Version>1.0.0.1</Version>
     </PackageReference>
     <PackageReference Include="Xamarin.AndroidX.Legacy.Support.V4">
-      <Version>1.0.0</Version>
+      <Version>1.0.0.5</Version>
     </PackageReference>
     <PackageReference Include="Xamarin.Forms">
-      <Version>4.6.0.726</Version>
+      <Version>4.8.0.1451</Version>
+    </PackageReference>
+    <PackageReference Include="urbanairship.android.messagecenter">
+      <Version>14.0.1</Version>
     </PackageReference>
     <PackageReference Include="urbanairship.android.fcm">
-      <Version>13.3.2</Version>
+      <Version>14.0.1</Version>
+    </PackageReference>
+    <PackageReference Include="urbanairship.android.core">
+      <Version>14.0.1</Version>
+    </PackageReference>
+    <PackageReference Include="urbanairship.android.automation">
+      <Version>14.0.1</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
@@ -141,6 +150,22 @@
       <Generator></Generator>
     </AndroidResource>
     <AndroidResource Include="Resources\drawable\inbox.xml">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-hdpi\ic_notification.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-mdpi\ic_notification.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_notification.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_notification.png">
       <SubType></SubType>
       <Generator></Generator>
     </AndroidResource>

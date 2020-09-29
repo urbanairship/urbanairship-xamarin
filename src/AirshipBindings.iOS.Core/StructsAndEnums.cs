@@ -8,6 +8,12 @@ using UIKit;
 namespace UrbanAirship {
 
     [Native]
+    public enum UAAPIClientError : long
+    {
+        InvalidURLResponse = 0
+    }
+
+    [Native]
     public enum UASituation : long
     {
         ManualInvocation = 0,
@@ -138,7 +144,8 @@ namespace UrbanAirship {
         NotDetermined = 0,
         Denied = 1,
         Authorized = 2,
-        Provisional = 3
+        Provisional = 3,
+        Ephemeral = 4
     }
 
     [Native]
@@ -149,7 +156,7 @@ namespace UrbanAirship {
     }
 
     [Native]
-    public enum UAWhitelistScope : ulong
+    public enum UAURLAllowListScope : ulong
     {
         JavaScriptInterface = 1 << 0,
         OpenURL = 1 << 1,
