@@ -28,6 +28,15 @@ namespace UrbanAirship.NETStandard
         }
     }
 
+    public class MessageCenterEventArgs : EventArgs
+    {
+        public string MessageId { get; internal set; }
+        public MessageCenterEventArgs(string messageId = null)
+        {
+            MessageId = messageId;
+        }
+    }
+
     public interface IAirship
     {
         bool UserNotificationsEnabled
@@ -66,6 +75,8 @@ namespace UrbanAirship.NETStandard
 
         event EventHandler<DeepLinkEventArgs> OnDeepLinkReceived;
 
+        event EventHandler<MessageCenterEventArgs> OnMessageCenterDisplay;
+
         Channel.TagEditor EditDeviceTags();
 
         void AddCustomEvent(Analytics.CustomEvent customEvent);
@@ -98,7 +109,7 @@ namespace UrbanAirship.NETStandard
         Attributes.AttributeEditor EditAttributes();
 
         event EventHandler OnMessageCenterUpdated;
-      
+
         Attributes.AttributeEditor EditChannelAttributes();
 
         Attributes.AttributeEditor EditNamedUserAttributes();

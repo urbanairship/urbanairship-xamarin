@@ -74,6 +74,8 @@ namespace UrbanAirship.NETStandard
         }
         public event EventHandler OnMessageCenterUpdated;
 
+        public event EventHandler<MessageCenterEventArgs> OnMessageCenterDisplay;
+
         public static Airship Instance
         {
             get
@@ -247,12 +249,27 @@ namespace UrbanAirship.NETStandard
 
         public void DisplayMessageCenter()
         {
-            UAMessageCenter.Shared().Display();
+            if (OnMessageCenterDisplay != null)
+            {
+                OnMessageCenterDisplay.Invoke(this, new MessageCenterEventArgs());
+            }
+            else
+            {
+                UAMessageCenter.Shared().Display();
+            }
+  
         }
 
         public void DisplayMessage(string messageId)
         {
-            UAMessageCenter.Shared().DisplayMessage(messageId);
+            if (OnMessageCenterDisplay != null)
+            {
+                OnMessageCenterDisplay.Invoke(this, new MessageCenterEventArgs(messageId));
+            }
+            else
+            {
+                UAMessageCenter.Shared().DisplayMessage(messageId);
+            }
         }
 
         public void MarkMessageRead(string messageId)

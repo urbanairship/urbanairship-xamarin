@@ -7,6 +7,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 using UrbanAirship.NETStandard;
+using System.Linq;
 
 namespace SampleApp
 {
@@ -23,6 +24,7 @@ namespace SampleApp
         {
             Airship.Instance.OnDeepLinkReceived += OnDeepLinkReceived;
             Airship.Instance.OnMessageCenterUpdated += OnMessageCenterUpdated;
+            Airship.Instance.OnMessageCenterDisplay += OnMessageCenterDisplay;
         }
 
         protected override void OnSleep()
@@ -41,6 +43,12 @@ namespace SampleApp
         static void OnMessageCenterUpdated(object sender, EventArgs e)
         {
             Console.WriteLine("onMessageCenterUpdated");
+        }
+        static void OnMessageCenterDisplay(object sender, EventArgs e)
+        {
+            TabbedPage originalRootPage = (TabbedPage)App.Current.MainPage.Navigation.NavigationStack.Last();
+
+            originalRootPage.CurrentPage = originalRootPage.Children[1];
         }
     }
 }

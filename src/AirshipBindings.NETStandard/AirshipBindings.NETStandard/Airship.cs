@@ -277,6 +277,23 @@ namespace UrbanAirship.NETStandard
         }
 
         /// <summary>
+        /// Add/remove the message center display event listener.
+        /// </summary>
+        /// <value>The message center display listener.</value>
+        public event EventHandler<MessageCenterEventArgs> OnMessageCenterDisplay
+        {
+            add
+            {
+                throw new NotImplementedException(BaitWithoutSwitchMessage);
+            }
+
+            remove
+            {
+                throw new NotImplementedException(BaitWithoutSwitchMessage);
+            }
+        }
+
+        /// <summary>
         /// Add/remove the channel creation event listener.
         /// </summary>
         /// <value>The channel creation event listener.</value>
