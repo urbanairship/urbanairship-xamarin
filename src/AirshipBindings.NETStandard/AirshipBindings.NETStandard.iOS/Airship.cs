@@ -541,7 +541,5 @@ namespace UrbanAirship.NETStandard
                 UAInAppAutomation.Shared().InAppMessageManager.DisplayInterval = value.TotalSeconds;
             }
         }
-
-        public IntPtr Handle => throw new NotImplementedException();
     }
 }
