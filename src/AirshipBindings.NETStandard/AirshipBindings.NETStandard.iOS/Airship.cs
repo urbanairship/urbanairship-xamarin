@@ -12,7 +12,7 @@ using UrbanAirship.NETStandard.Attributes;
 
 namespace UrbanAirship.NETStandard
 {
-    public class Airship : UADeepLinkDelegate, IAirship
+    public class Airship : UADeepLinkDelegate, IUAMessageCenterDisplayDelegate, IAirship
     {
         private static Lazy<Airship> sharedAirship = new Lazy<Airship>(() =>
         {
@@ -74,7 +74,24 @@ namespace UrbanAirship.NETStandard
         }
         public event EventHandler OnMessageCenterUpdated;
 
-        public event EventHandler<MessageCenterEventArgs> OnMessageCenterDisplay;
+        private EventHandler<MessageCenterEventArgs> onMessageCenterDisplay;
+        public event EventHandler<MessageCenterEventArgs> OnMessageCenterDisplay
+        {
+            add
+            {
+                onMessageCenterDisplay += value;
+                UAMessageCenter.Shared().WeakDisplayDelegate = this;
+            }
+            remove
+            {
+                onMessageCenterDisplay -= value;
+
+                if (onMessageCenterDisplay == null)
+                {
+                    UAMessageCenter.Shared().WeakDisplayDelegate = null;
+                }
+            }
+        }
 
         public static Airship Instance
         {
@@ -249,27 +266,12 @@ namespace UrbanAirship.NETStandard
 
         public void DisplayMessageCenter()
         {
-            if (OnMessageCenterDisplay != null)
-            {
-                OnMessageCenterDisplay.Invoke(this, new MessageCenterEventArgs());
-            }
-            else
-            {
-                UAMessageCenter.Shared().Display();
-            }
-  
+            UAMessageCenter.Shared().Display();
         }
 
         public void DisplayMessage(string messageId)
         {
-            if (OnMessageCenterDisplay != null)
-            {
-                OnMessageCenterDisplay.Invoke(this, new MessageCenterEventArgs(messageId));
-            }
-            else
-            {
-                UAMessageCenter.Shared().DisplayMessage(messageId);
-            }
+            UAMessageCenter.Shared().DisplayMessage(messageId);
         }
 
         public void MarkMessageRead(string messageId)
@@ -488,6 +490,19 @@ namespace UrbanAirship.NETStandard
             completionHandler();
         }
 
+        public void DisplayMessageCenter(string messageID, bool animated)
+        {
+            onMessageCenterDisplay?.Invoke(this, new MessageCenterEventArgs(messageID));
+        }
+
+        public void DisplayMessageCenterAnimated(bool animated)
+        {
+            onMessageCenterDisplay?.Invoke(this, new MessageCenterEventArgs());
+        }
+
+        public void DismissMessageCenterAnimated(bool animated)
+        { }
+
         public bool InAppAutomationEnabled
         {
             get
@@ -526,5 +541,7 @@ namespace UrbanAirship.NETStandard
                 UAInAppAutomation.Shared().InAppMessageManager.DisplayInterval = value.TotalSeconds;
             }
         }
+
+        public IntPtr Handle => throw new NotImplementedException();
     }
 }

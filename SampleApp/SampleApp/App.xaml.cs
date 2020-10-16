@@ -44,7 +44,7 @@ namespace SampleApp
         {
             Console.WriteLine("onMessageCenterUpdated");
         }
-        static void OnMessageCenterDisplay(object sender, EventArgs e)
+        static void OnMessageCenterDisplay(object sender, MessageCenterEventArgs e)
         {
             TabbedPage originalRootPage = (TabbedPage)App.Current.MainPage.Navigation.NavigationStack.Last();
 

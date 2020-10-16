@@ -14,7 +14,7 @@ using UrbanAirship.Automation;
 
 namespace UrbanAirship.NETStandard
 { 
-    public class Airship : Java.Lang.Object, IDeepLinkListener, IAirship, IInboxListener, UrbanAirship.Channel.IAirshipChannelListener
+    public class Airship : Java.Lang.Object, IDeepLinkListener, IAirship, IInboxListener, MessageCenterClass.IOnShowMessageCenterListener, UrbanAirship.Channel.IAirshipChannelListener
     {
         private static Lazy<Airship> sharedAirship = new Lazy<Airship>(() =>
         {
@@ -57,7 +57,25 @@ namespace UrbanAirship.NETStandard
 
         public event EventHandler OnMessageCenterUpdated;
 
-        public event EventHandler<MessageCenterEventArgs> OnMessageCenterDisplay;
+        private EventHandler<MessageCenterEventArgs> onMessageCenterDisplay;
+        public event EventHandler<MessageCenterEventArgs> OnMessageCenterDisplay
+        {
+            add
+            {
+                onMessageCenterDisplay += value;
+                MessageCenterClass.Shared().SetOnShowMessageCenterListener(this);
+            }
+
+            remove
+            {
+                onMessageCenterDisplay -= value;
+
+                if (onMessageCenterDisplay == null)
+                {
+                    MessageCenterClass.Shared().SetOnShowMessageCenterListener(null);
+                }
+            }
+        }
 
         public static Airship Instance
         {
@@ -213,26 +231,12 @@ namespace UrbanAirship.NETStandard
 
         public void DisplayMessageCenter()
         {
-            if (OnMessageCenterDisplay != null)
-            {
-                OnMessageCenterDisplay.Invoke(this, new MessageCenterEventArgs());
-            }
-            else
-            {
-                MessageCenterClass.Shared().ShowMessageCenter();
-            }
+            MessageCenterClass.Shared().ShowMessageCenter();
         }
 
         public void DisplayMessage(string messageId)
         {
-            if (OnMessageCenterDisplay != null)
-            {
-                OnMessageCenterDisplay.Invoke(this, new MessageCenterEventArgs(messageId));
-            }
-            else
-            {
-                MessageCenterClass.Shared().ShowMessageCenter(messageId);
-            }
+            MessageCenterClass.Shared().ShowMessageCenter(messageId);
         }
 
         public void MarkMessageRead(string messageId)
@@ -475,6 +479,17 @@ namespace UrbanAirship.NETStandard
         {
             if (onDeepLinkReceived != null) {
                 onDeepLinkReceived(this, new DeepLinkEventArgs(deepLink));
+                return true;
+            }
+
+            return false;
+        }
+
+        public bool OnShowMessageCenter(string messageId)
+        {
+            if (onMessageCenterDisplay != null)
+            {
+                onMessageCenterDisplay(this, new MessageCenterEventArgs(messageId));
                 return true;
             }
 
