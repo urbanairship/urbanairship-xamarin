@@ -2,7 +2,9 @@
 set -o pipefail
 set -e
 ROOT_PATH=`dirname "${0}"`/..
-XCODE_APPS=$(mdfind "kMDItemCFBundleIdentifier == 'com.apple.dt.Xcode'")
+XCODE_APPS_FINDER=$(mdfind "kMDItemCFBundleIdentifier == 'com.apple.dt.Xcode'")
+XCODE_APPS_FALLBACK=$(find /Applications -iname 'Xcode*.app' -maxdepth 1)
+XCODE_APPS=$(echo -e "$XCODE_APPS_FINDER\n$XCODE_APPS_FALLBACK" | sort | uniq)
 PLIST_BUDDY="/usr/libexec/PlistBuddy"
 function get_plist_value() {
   "$PLIST_BUDDY" -c "Print :$2" "$1/Contents/Info.plist"
