@@ -7,6 +7,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 using UrbanAirship.NETStandard;
+using UrbanAirship.NETStandard.MessageCenter;
 using System.Linq;
 
 namespace SampleApp
@@ -49,6 +50,13 @@ namespace SampleApp
             TabbedPage originalRootPage = (TabbedPage)App.Current.MainPage.Navigation.NavigationStack.Last();
 
             originalRootPage.CurrentPage = originalRootPage.Children[1];
+
+            if (e.MessageId != null)
+            {
+                var messagePage = new MessagePage();
+                messagePage.MessageId = e.MessageId;
+                originalRootPage.Navigation.PushAsync(messagePage);
+            }
         }
     }
 }
