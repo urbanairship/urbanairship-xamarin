@@ -12,7 +12,7 @@ using UrbanAirship.NETStandard.Attributes;
 
 namespace UrbanAirship.NETStandard
 {
-    public class Airship : UADeepLinkDelegate, IAirship
+    public class Airship : UADeepLinkDelegate, IUAMessageCenterDisplayDelegate, IAirship
     {
         private static Lazy<Airship> sharedAirship = new Lazy<Airship>(() =>
         {
@@ -73,6 +73,25 @@ namespace UrbanAirship.NETStandard
             }
         }
         public event EventHandler OnMessageCenterUpdated;
+
+        private EventHandler<MessageCenterEventArgs> onMessageCenterDisplay;
+        public event EventHandler<MessageCenterEventArgs> OnMessageCenterDisplay
+        {
+            add
+            {
+                onMessageCenterDisplay += value;
+                UAMessageCenter.Shared().WeakDisplayDelegate = this;
+            }
+            remove
+            {
+                onMessageCenterDisplay -= value;
+
+                if (onMessageCenterDisplay == null)
+                {
+                    UAMessageCenter.Shared().WeakDisplayDelegate = null;
+                }
+            }
+        }
 
         public static Airship Instance
         {
@@ -470,6 +489,19 @@ namespace UrbanAirship.NETStandard
             onDeepLinkReceived?.Invoke(this, new DeepLinkEventArgs(url.AbsoluteString));
             completionHandler();
         }
+
+        public void DisplayMessageCenter(string messageID, bool animated)
+        {
+            onMessageCenterDisplay?.Invoke(this, new MessageCenterEventArgs(messageID));
+        }
+
+        public void DisplayMessageCenterAnimated(bool animated)
+        {
+            onMessageCenterDisplay?.Invoke(this, new MessageCenterEventArgs());
+        }
+
+        public void DismissMessageCenterAnimated(bool animated)
+        { }
 
         public bool InAppAutomationEnabled
         {

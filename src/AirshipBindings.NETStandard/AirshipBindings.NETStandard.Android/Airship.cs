@@ -14,7 +14,7 @@ using UrbanAirship.Automation;
 
 namespace UrbanAirship.NETStandard
 { 
-    public class Airship : Java.Lang.Object, IDeepLinkListener, IAirship, IInboxListener, UrbanAirship.Channel.IAirshipChannelListener
+    public class Airship : Java.Lang.Object, IDeepLinkListener, IAirship, IInboxListener, MessageCenterClass.IOnShowMessageCenterListener, UrbanAirship.Channel.IAirshipChannelListener
     {
         private static Lazy<Airship> sharedAirship = new Lazy<Airship>(() =>
         {
@@ -56,6 +56,26 @@ namespace UrbanAirship.NETStandard
         }
 
         public event EventHandler OnMessageCenterUpdated;
+
+        private EventHandler<MessageCenterEventArgs> onMessageCenterDisplay;
+        public event EventHandler<MessageCenterEventArgs> OnMessageCenterDisplay
+        {
+            add
+            {
+                onMessageCenterDisplay += value;
+                MessageCenterClass.Shared().SetOnShowMessageCenterListener(this);
+            }
+
+            remove
+            {
+                onMessageCenterDisplay -= value;
+
+                if (onMessageCenterDisplay == null)
+                {
+                    MessageCenterClass.Shared().SetOnShowMessageCenterListener(null);
+                }
+            }
+        }
 
         public static Airship Instance
         {
@@ -459,6 +479,17 @@ namespace UrbanAirship.NETStandard
         {
             if (onDeepLinkReceived != null) {
                 onDeepLinkReceived(this, new DeepLinkEventArgs(deepLink));
+                return true;
+            }
+
+            return false;
+        }
+
+        public bool OnShowMessageCenter(string messageId)
+        {
+            if (onMessageCenterDisplay != null)
+            {
+                onMessageCenterDisplay(this, new MessageCenterEventArgs(messageId));
                 return true;
             }
 
