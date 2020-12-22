@@ -8,12 +8,6 @@ using UIKit;
 namespace UrbanAirship {
 
     [Native]
-    public enum UAAPIClientError : long
-    {
-        InvalidURLResponse = 0
-    }
-
-    [Native]
     public enum UASituation : long
     {
         ManualInvocation = 0,

@@ -18,7 +18,7 @@ task processIOSSDK {
         // get path to the module's header
         def moduleHeader = ""
         if ( iosSdkModuleName == "AirshipCore" ) {
-            moduleHeader = "${moduleSourcePath}/Common/${iosSdkModuleName}.h"
+            moduleHeader = "${moduleSourcePath}/Public/${iosSdkModuleName}.h"
         } else {
             moduleHeader ="${moduleSourcePath}/${iosSdkModuleName}.h"
         }

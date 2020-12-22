@@ -4516,76 +4516,79 @@ namespace AirshipBindings.NETStandard
 			public static int Toolbar = 2131427401;
 			
 			// aapt resource value: 0x7F0B004A
-			public static int ua_fragment_mc = 2131427402;
+			public static int ua_activity_wallet_loading = 2131427402;
 			
 			// aapt resource value: 0x7F0B004B
-			public static int ua_fragment_message = 2131427403;
+			public static int ua_fragment_mc = 2131427403;
 			
 			// aapt resource value: 0x7F0B004C
-			public static int ua_fragment_message_list = 2131427404;
+			public static int ua_fragment_message = 2131427404;
 			
 			// aapt resource value: 0x7F0B004D
-			public static int ua_fragment_no_message_selected = 2131427405;
+			public static int ua_fragment_message_list = 2131427405;
 			
 			// aapt resource value: 0x7F0B004E
-			public static int ua_iam_banner_bottom = 2131427406;
+			public static int ua_fragment_no_message_selected = 2131427406;
 			
 			// aapt resource value: 0x7F0B004F
-			public static int ua_iam_banner_button = 2131427407;
+			public static int ua_iam_banner_bottom = 2131427407;
 			
 			// aapt resource value: 0x7F0B0050
-			public static int ua_iam_banner_content_left_media = 2131427408;
+			public static int ua_iam_banner_button = 2131427408;
 			
 			// aapt resource value: 0x7F0B0051
-			public static int ua_iam_banner_content_right_media = 2131427409;
+			public static int ua_iam_banner_content_left_media = 2131427409;
 			
 			// aapt resource value: 0x7F0B0052
-			public static int ua_iam_banner_top = 2131427410;
+			public static int ua_iam_banner_content_right_media = 2131427410;
 			
 			// aapt resource value: 0x7F0B0053
-			public static int ua_iam_fullscreen_button = 2131427411;
+			public static int ua_iam_banner_top = 2131427411;
 			
 			// aapt resource value: 0x7F0B0054
-			public static int ua_iam_fullscreen_header_body_media = 2131427412;
+			public static int ua_iam_fullscreen_button = 2131427412;
 			
 			// aapt resource value: 0x7F0B0055
-			public static int ua_iam_fullscreen_header_media_body = 2131427413;
+			public static int ua_iam_fullscreen_header_body_media = 2131427413;
 			
 			// aapt resource value: 0x7F0B0056
-			public static int ua_iam_fullscreen_media_header_body = 2131427414;
+			public static int ua_iam_fullscreen_header_media_body = 2131427414;
 			
 			// aapt resource value: 0x7F0B0057
-			public static int ua_iam_html = 2131427415;
+			public static int ua_iam_fullscreen_media_header_body = 2131427415;
 			
 			// aapt resource value: 0x7F0B0058
-			public static int ua_iam_html_fullscreen = 2131427416;
+			public static int ua_iam_html = 2131427416;
 			
 			// aapt resource value: 0x7F0B0059
-			public static int ua_iam_modal = 2131427417;
+			public static int ua_iam_html_fullscreen = 2131427417;
 			
 			// aapt resource value: 0x7F0B005A
-			public static int ua_iam_modal_button = 2131427418;
+			public static int ua_iam_modal = 2131427418;
 			
 			// aapt resource value: 0x7F0B005B
-			public static int ua_iam_modal_fullscreen = 2131427419;
+			public static int ua_iam_modal_button = 2131427419;
 			
 			// aapt resource value: 0x7F0B005C
-			public static int ua_iam_modal_header_body_media = 2131427420;
+			public static int ua_iam_modal_fullscreen = 2131427420;
 			
 			// aapt resource value: 0x7F0B005D
-			public static int ua_iam_modal_header_media_body = 2131427421;
+			public static int ua_iam_modal_header_body_media = 2131427421;
 			
 			// aapt resource value: 0x7F0B005E
-			public static int ua_iam_modal_media_header_body = 2131427422;
+			public static int ua_iam_modal_header_media_body = 2131427422;
 			
 			// aapt resource value: 0x7F0B005F
-			public static int ua_item_mc = 2131427423;
+			public static int ua_iam_modal_media_header_body = 2131427423;
 			
 			// aapt resource value: 0x7F0B0060
-			public static int ua_item_mc_content = 2131427424;
+			public static int ua_item_mc = 2131427424;
 			
 			// aapt resource value: 0x7F0B0061
-			public static int ua_item_mc_icon_content = 2131427425;
+			public static int ua_item_mc_content = 2131427425;
+			
+			// aapt resource value: 0x7F0B0062
+			public static int ua_item_mc_icon_content = 2131427426;
 			
 			static Layout()
 			{
