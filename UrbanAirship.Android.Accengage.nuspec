@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
    <metadata>
       <id>urbanairship.android.accengage</id>
-      <version>14.1.0</version>
+      <version>14.1.1</version>
       <title>Airship Android SDK - Accengage</title>
       <authors>Urban Airship, Inc.</authors>
       <projectUrl>https://github.com/urbanairship/urbanairship-xamarin</projectUrl>
@@ -11,7 +11,7 @@
 
       <dependencies>
          <group targetFramework="MonoAndroid4.1">
-            <dependency id="urbanairship.android.core" version="14.1.0"/>  
+            <dependency id="urbanairship.android.core" version="14.1.1"/>  
          </group>
       </dependencies>
    </metadata>

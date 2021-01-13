@@ -70,13 +70,13 @@
       <Version>4.8.0.1451</Version>
     </PackageReference>
     <PackageReference Include="urbanairship.android.fcm">
-      <Version>14.1.0</Version>
+      <Version>14.1.1</Version>
     </PackageReference>
     <PackageReference Include="urbanairship.android.messagecenter">
-      <Version>14.1.0</Version>
+      <Version>14.1.1</Version>
     </PackageReference>
     <PackageReference Include="urbanairship.android.automation">
-      <Version>14.1.0</Version>
+      <Version>14.1.1</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>

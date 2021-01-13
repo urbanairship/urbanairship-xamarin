@@ -1,7 +1,7 @@
 # Airship Xamarin Changelog
 
-## Version 14.1.0 - December 29, 2020
-Minor release to support iOS SDK 14.2.0 and Android SDK 14.1.0.
+## Version 14.1.0 - January 14, 2021
+Minor release to support iOS SDK 14.2.1 and Android SDK 14.1.1.
 
 ### Changes
 - Added frequency limits support to IAA
