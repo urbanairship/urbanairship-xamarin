@@ -15,10 +15,6 @@ namespace UrbanAirship {
     [Static]
     partial interface Constants
     {
-        // extern NSString *const _Nonnull UAAPIClientErrorDomain
-        [Field("UAAPIClientErrorDomain", "__Internal")]
-        NSString UAAPIClientErrorDomain { get; }
-
         // extern NSString *const _Nonnull UAActionMetadataForegroundPresentationKey
         [Field("UAActionMetadataForegroundPresentationKey", "__Internal")]
         NSString UAActionMetadataForegroundPresentationKey { get; }
@@ -476,6 +472,14 @@ namespace UrbanAirship {
         [NullAllowed, Export("category")]
         string Category { get; set; }
 
+        // @property (nonatomic, copy, readwrite, nullable) NSString *userID;
+        [NullAllowed, Export("userID")]
+        string UserID { get; set; }
+
+        // @property (nonatomic, copy, readwrite, nullable) NSString *type;
+        [NullAllowed, Export("type")]
+        string Type { get; set; }
+
         // + (nonnull instancetype)registeredTemplate;
         [Static]
         [Export("registeredTemplate")]
@@ -490,6 +494,36 @@ namespace UrbanAirship {
         [Static]
         [Export("registeredTemplateWithValue:")]
         UAAccountEventTemplate RegisteredTemplate ([NullAllowed] NSNumber eventValue);
+
+        // + (nonnull instancetype)loggedInTemplate;
+        [Static]
+        [Export("loggedInTemplate")]
+        UAAccountEventTemplate LoggedInTemplate ();
+
+        // + (nonnull instancetype)loggedInTemplateWithValueFromString: (nullable NSString *)eventValue;
+        [Static]
+        [Export("loggedInTemplateWithValueFromString:")]
+        UAAccountEventTemplate LoggedInTemplate ([NullAllowed] string eventValue);
+
+        // + (nonnull instancetype)loggedInTemplateWithValue: (nullable NSNumber *)eventValue;
+        [Static]
+        [Export("loggedInTemplateWithValue:")]
+        UAAccountEventTemplate LoggedInTemplate ([NullAllowed] NSNumber eventValue);
+
+        // + (nonnull instancetype)loggedOutTemplate;
+        [Static]
+        [Export("loggedOutTemplate")]
+        UAAccountEventTemplate LoggedOutTemplate ();
+
+        // + (nonnull instancetype)loggedOutTemplateWithValueFromString: (nullable NSString *)eventValue;
+        [Static]
+        [Export("loggedOutTemplateWithValueFromString:")]
+        UAAccountEventTemplate LoggedOutTemplate ([NullAllowed] string eventValue);
+
+        // + (nonnull instancetype)loggedOutTemplateWithValue: (nullable NSNumber *)eventValue;
+        [Static]
+        [Export("loggedOutTemplateWithValue:")]
+        UAAccountEventTemplate LoggedOutTemplate ([NullAllowed] NSNumber eventValue);
 
         // - (nonnull UACustomEvent *)createEvent;
         [Export("createEvent")]
@@ -1809,6 +1843,12 @@ namespace UrbanAirship {
         void ApplyNamedUserTags (NSObject[] tags, string group);
     }
 
+    // @interface UANSArrayValueTransformer : NSValueTransformer @end
+    [BaseType(typeof(NSValueTransformer))]
+    interface UANSArrayValueTransformer
+    {
+    }
+
     // @interface UANSDictionaryValueTransformer : NSValueTransformer @end
     [BaseType(typeof(NSValueTransformer))]
     interface UANSDictionaryValueTransformer
@@ -1953,7 +1993,7 @@ namespace UrbanAirship {
         // + (nonnull instancetype)actionWithIdentifier:(nonnull NSString *)identifier title:(nonnull NSString *)title options: (UANotificationActionOptions)options;
         [Static]
         [Export("actionWithIdentifier:title:options:")]
-        UANotificationAction Action (string identifier, string title, UANotificationActionOptions options);
+        UANotificationAction Action(string identifier, string title, UANotificationActionOptions options);
 
         // - (nonnull UNNotificationAction *)asUNNotificationAction;
         [Export("asUNNotificationAction")]
@@ -2116,6 +2156,7 @@ namespace UrbanAirship {
         // + (nonnull instancetype)notificationWithUNNotification: (nonnull UNNotification *)notification;
         [Static]
         [Export("notificationWithUNNotification:")]
+
         UANotificationContent NotificationWithUNNotification(UNNotification notification);
     }
 
@@ -2537,12 +2578,6 @@ namespace UrbanAirship {
         UARemoveTagsAction Action ();
     }
 
-    // typedef void (^UARequestCompletionHandler)(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error)
-    delegate void UARequestCompletionHandler ([NullAllowed] NSData arg0, [NullAllowed] NSUrlResponse arg1, [NullAllowed] NSError arg2);
-
-    // typedef BOOL (^UARequestRetryBlock)(NSData * _Nullable data, NSURLResponse * _Nullable response)
-    delegate bool UARequestRetryBlock ([NullAllowed] NSData arg0, [NullAllowed] NSUrlResponse arg1);
-
     // @interface UARetailEventTemplate : NSObject
     [BaseType(typeof(NSObject))]
     interface UARetailEventTemplate
@@ -2665,6 +2700,16 @@ namespace UrbanAirship {
         [Export("sharedProductTemplateWithValue:withSource:withMedium:")]
         UARetailEventTemplate SharedProductTemplate ([NullAllowed] NSNumber eventValue, [NullAllowed] string source, [NullAllowed] string medium);
 
+        // + (nonnull instancetype)wishlistTemplate;
+        [Static]
+        [Export("wishlistTemplate")]
+        UARetailEventTemplate WishlistTemplate ();
+
+        // + (nonnull instancetype)wishlistTemplateWithName:(nullable NSString *)name wishlistID: (nullable NSString *)wishlistID;
+        [Static]
+        [Export("wishlistTemplateWithName:wishlistID:")]
+        UARetailEventTemplate WishlistTemplate ([NullAllowed] string name, [NullAllowed] string wishlistID);
+
         // - (nonnull UACustomEvent *)createEvent;
         [Export("createEvent")]
         UACustomEvent CreateEvent ();
@@ -2751,6 +2796,49 @@ namespace UrbanAirship {
         NSDictionary CustomConfig { get; }
     }
 
+    // @interface UASearchEventTemplate : NSObject
+    [BaseType(typeof(NSObject))]
+    interface UASearchEventTemplate
+    {
+        // @property (nonatomic, strong, readwrite, nullable) NSDecimalNumber *eventValue;
+        [NullAllowed, Export("eventValue", ArgumentSemantic.Strong)]
+        NSDecimalNumber EventValue { get; set; }
+
+        // @property (nonatomic, copy, readwrite, nullable) NSString *type;
+        [NullAllowed, Export("type")]
+        string Type { get; set; }
+
+        // @property (nonatomic, copy, readwrite, nullable) NSString *identifier;
+        [NullAllowed, Export("identifier")]
+        string Identifier { get; set; }
+
+        // @property (nonatomic, copy, readwrite, nullable) NSString *category;
+        [NullAllowed, Export("category")]
+        string Category { get; set; }
+
+        // @property (nonatomic, copy, readwrite, nullable) NSString *query;
+        [NullAllowed, Export("query")]
+        string Query { get; set; }
+
+        // @property (nonatomic, assign, unsafe_unretained, readwrite) NSInteger totalResults;
+        [Export("totalResults", ArgumentSemantic.Assign)]
+        nint TotalResults { get; set; }
+
+        // + (nonnull instancetype)template;
+        [Static]
+        [Export("template")]
+        UASearchEventTemplate Template ();
+
+        // + (nonnull instancetype)templateWithValue:(nullable NSNumber *)eventValue;
+        [Static]
+        [Export("templateWithValue:")]
+        UASearchEventTemplate Template ([NullAllowed] NSNumber eventValue);
+
+        // - (nonnull UACustomEvent *)createEvent;
+        [Export("createEvent")]
+        UACustomEvent CreateEvent ();
+    }
+
     // @interface UAShareAction : UAAction
     [BaseType(typeof(UAAction))]
     interface UAShareAction
@@ -2786,7 +2874,7 @@ namespace UrbanAirship {
         // + (nonnull instancetype)actionWithIdentifier:(nonnull NSString *)identifier title:(nonnull NSString *)title options: (UANotificationActionOptions)options;
         [Static]
         [Export("actionWithIdentifier:title:options:")]
-        UATextInputNotificationAction Action (string identifier, string title, UANotificationActionOptions options);
+        UATextInputNotificationAction Action(string identifier, string title, UANotificationActionOptions options);
 
         // - (nonnull instancetype) initWithIdentifier:(nonnull NSString *)identifier title:(nonnull NSString *)title textInputButtonTitle:(nonnull NSString *)textInputButtonTitle textInputPlaceholder:(nonnull NSString *)textInputPlaceholder options:(UANotificationActionOptions)options;
         [Export("initWithIdentifier:title:textInputButtonTitle:textInputPlaceholder:options:")]
@@ -2795,7 +2883,7 @@ namespace UrbanAirship {
         // + (nonnull instancetype) actionWithIdentifier:(nonnull NSString *)identifier title:(nonnull NSString *)title textInputButtonTitle:(nonnull NSString *)textInputButtonTitle textInputPlaceholder:(nonnull NSString *)textInputPlaceholder options:(UANotificationActionOptions)options;
         [Static]
         [Export("actionWithIdentifier:title:textInputButtonTitle:textInputPlaceholder:options:")]
-        UATextInputNotificationAction Action (string identifier, string title, string textInputButtonTitle, string textInputPlaceholder, UANotificationActionOptions options);
+        UATextInputNotificationAction Action(string identifier, string title, string textInputButtonTitle, string textInputPlaceholder, UANotificationActionOptions options);
     }
 
     // @protocol UAURLAllowListDelegate <NSObject>
@@ -3092,6 +3180,10 @@ namespace UrbanAirship {
         [NullAllowed]
         IUAJavaScriptCommandDelegate JavaScriptCommandDelegate { get; set; }
 
+        // @property (nonatomic, strong, readonly) UAChannelCapture *_Nonnull channelCapture;
+        [Export("channelCapture", ArgumentSemantic.Strong)]
+        UAChannelCapture ChannelCapture { get; }
+
         // @property (nonatomic, weak, readwrite, nullable) id<UADeepLinkDelegate> deepLinkDelegate;
         [NullAllowed, Export("deepLinkDelegate", ArgumentSemantic.Assign)]
         NSObject WeakDeepLinkDelegate { get; set; }
@@ -3103,10 +3195,6 @@ namespace UrbanAirship {
         // @property (nonatomic, strong, readonly) UAURLAllowList *_Nonnull URLAllowList;
         [Export("URLAllowList", ArgumentSemantic.Strong)]
         UAURLAllowList URLAllowList { get; }
-
-        // @property (nonatomic, strong, readonly) UAChannelCapture *_Nonnull channelCapture;
-        [Export("channelCapture", ArgumentSemantic.Strong)]
-        UAChannelCapture ChannelCapture { get; }
 
         // @property (nonatomic, strong, readonly) UALocaleManager *_Nonnull locale;
         [Export("locale", ArgumentSemantic.Strong)]

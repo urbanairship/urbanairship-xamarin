@@ -1,5 +1,16 @@
 # Airship Xamarin Changelog
 
+## Version 14.1.0 - January 14, 2021
+Minor release to support iOS SDK 14.2.1 and Android SDK 14.1.1.
+
+### Changes
+- Added frequency limits support to IAA
+- Added support for advanced IAA segmentation
+- Added a new search event template
+- Added wishlist options to retail event template
+- Added tel: sms: and mailto: to default allow list settings
+- IAA messages no longer redisplay if interrupted due to app termination
+
 ## Version 14.0.0 - Sept 28, 2020
 Major release to support iOS SDK 14.1.2 & Android SDK 14.0.1.
 

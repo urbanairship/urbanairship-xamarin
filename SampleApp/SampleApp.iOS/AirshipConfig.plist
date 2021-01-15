@@ -7,7 +7,7 @@
 	<key>developmentAppKey</key>
 	<string>Your development app key</string>
 	<key>developmentAppSecret</key>
-	<string>Yopur development app secret</string>
+	<string>Your development app secret</string>
 	<key>productionAppKey</key>
 	<string>Your production app key</string>
 	<key>productionAppSecret</key>
