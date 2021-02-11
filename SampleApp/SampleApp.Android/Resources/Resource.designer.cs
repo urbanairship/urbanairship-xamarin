@@ -615,6 +615,8 @@ namespace SampleApp.Droid
 			global::AirshipBindings.NETStandard.Resource.Color.abc_tint_switch_track = global::SampleApp.Droid.Resource.Color.abc_tint_switch_track;
 			global::AirshipBindings.NETStandard.Resource.Color.accent_material_dark = global::SampleApp.Droid.Resource.Color.accent_material_dark;
 			global::AirshipBindings.NETStandard.Resource.Color.accent_material_light = global::SampleApp.Droid.Resource.Color.accent_material_light;
+			global::AirshipBindings.NETStandard.Resource.Color.androidx_core_ripple_material_light = global::SampleApp.Droid.Resource.Color.androidx_core_ripple_material_light;
+			global::AirshipBindings.NETStandard.Resource.Color.androidx_core_secondary_text_default_material_light = global::SampleApp.Droid.Resource.Color.androidx_core_secondary_text_default_material_light;
 			global::AirshipBindings.NETStandard.Resource.Color.background_floating_material_dark = global::SampleApp.Droid.Resource.Color.background_floating_material_dark;
 			global::AirshipBindings.NETStandard.Resource.Color.background_floating_material_light = global::SampleApp.Droid.Resource.Color.background_floating_material_light;
 			global::AirshipBindings.NETStandard.Resource.Color.background_material_dark = global::SampleApp.Droid.Resource.Color.background_material_dark;
