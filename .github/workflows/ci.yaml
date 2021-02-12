@@ -29,3 +29,8 @@ jobs:
 
       - name: Build
         run: ./gradlew build pkg
+
+      - uses: actions/upload-artifact@v2
+        with:
+          name: build
+          path: build
