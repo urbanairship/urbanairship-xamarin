@@ -1,5 +1,13 @@
 # Airship Xamarin Changelog
 
+## Version 14.1.1 - February 12, 2021
+Minor release to latest Airship SDKs and to fix missing methods in the Android FCM bindings.
+
+### Changes
+- Updated iOS Airship SDK to 14.2.3
+- Updated Android Airship SDK to 14.1.3
+- Fixed Android binding issues
+
 ## Version 14.1.0 - January 14, 2021
 Minor release to support iOS SDK 14.2.1 and Android SDK 14.1.1.
 
@@ -21,13 +29,13 @@ Starting with SDK 14, all landing page and external urls are tested against a UR
 -  iOS: `URLAllowListScopeJavaScriptInterface`, Android: `urlAllowListScopeJavaScriptInterface`
 
 ## Version 13.1.0 - July 28, 2020
-Minor release adding Date and NamedUser attributes as well as 
+Minor release adding Date and NamedUser attributes as well as
 MessageCenter and Deep Link event support to the .NETStandard libraries,
 and providing a new Xamarin Forms based sample app.
 
 - Updated Android SDK to 13.3.2
 - Updated iOS SDK to 13.5.2
-- Added Message Center and Deep Link events to the .NETStandard library 
+- Added Message Center and Deep Link events to the .NETStandard library
 - Added Date and Named user attributes support to the .NETStandard library
 - New sample app written using Xamarin Forms.
 

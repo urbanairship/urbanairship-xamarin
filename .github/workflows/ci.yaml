@@ -3,7 +3,7 @@ name: CI
 on: [pull_request]
 
 env:
-  DEVELOPER_DIR: /Applications/Xcode_12.3.app
+  DEVELOPER_DIR: /Applications/Xcode_12.4.app
 
 jobs:
   ci:
@@ -29,3 +29,8 @@ jobs:
 
       - name: Build
         run: ./gradlew build pkg
+
+      - uses: actions/upload-artifact@v2
+        with:
+          name: build
+          path: build
