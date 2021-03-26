@@ -1,2 +1,2 @@
-PyYAML==5.3.1
+PyYAML==5.4
 -e git+ssh://git@github.com/urbanairship/xamboni.git#egg=Xamboni
