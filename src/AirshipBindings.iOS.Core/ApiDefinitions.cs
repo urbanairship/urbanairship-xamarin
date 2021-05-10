@@ -175,7 +175,7 @@ namespace UrbanAirship {
         [Field("UAAttributeZipCode", "__Internal")]
         NSString UAAttributeZipCode { get; }
 
-        // extern NSString *const UAChannelCreatedEvent
+        // extern const NSNotificationName _Nonnull UAChannelCreatedEvent
         [Field("UAChannelCreatedEvent", "__Internal")]
         NSString UAChannelCreatedEvent { get; }
 
@@ -303,6 +303,14 @@ namespace UrbanAirship {
         [Field("UAJSONValueMatcherErrorDomain", "__Internal")]
         NSString UAJSONValueMatcherErrorDomain { get; }
 
+        // extern NSString *const _Nonnull UAModifyAttributesActionDefaultRegistryAlias
+        [Field("UAModifyAttributesActionDefaultRegistryAlias", "__Internal")]
+        NSString UAModifyAttributesActionDefaultRegistryAlias { get; }
+
+        // extern NSString *const _Nonnull UAModifyAttributesActionDefaultRegistryName
+        [Field("UAModifyAttributesActionDefaultRegistryName", "__Internal")]
+        NSString UAModifyAttributesActionDefaultRegistryName { get; }
+
         // extern NSString *const _Nonnull UANativeBridgeUAirshipScheme
         [Field("UANativeBridgeUAirshipScheme", "__Internal")]
         NSString UANativeBridgeUAirshipScheme { get; }
@@ -394,18 +402,6 @@ namespace UrbanAirship {
         // extern NSString *const _Nonnull UARegionIDKey
         [Field("UARegionIDKey", "__Internal")]
         NSString UARegionIDKey { get; }
-
-        // extern NSString *const UARemoteDataMetadataCountryKey
-        [Field("UARemoteDataMetadataCountryKey", "__Internal")]
-        NSString UARemoteDataMetadataCountryKey { get; }
-
-        // extern NSString *const _Nonnull UARemoteDataMetadataLanguageKey
-        [Field("UARemoteDataMetadataLanguageKey", "__Internal")]
-        NSString UARemoteDataMetadataLanguageKey { get; }
-
-        // extern NSString *const UARemoteDataMetadataSDKVersionKey
-        [Field("UARemoteDataMetadataSDKVersionKey", "__Internal")]
-        NSString UARemoteDataMetadataSDKVersionKey { get; }
 
         // extern NSString *const UARemoveTagsActionDefaultRegistryAlias
         [Field("UARemoveTagsActionDefaultRegistryAlias", "__Internal")]
@@ -1268,6 +1264,10 @@ namespace UrbanAirship {
         [Export("URLAllowListScopeOpenURL", ArgumentSemantic.Copy)]
         string[] URLAllowListScopeOpenURL { get; set; }
 
+        // @property (nonatomic, assign, unsafe_unretained, readwrite) BOOL suppressAllowListError;
+        [Export("suppressAllowListError")]
+        bool SuppressAllowListError { get; set; }
+
         // @property (nonatomic, copy, readwrite) NSString *_Nonnull itunesID;
         [Export("itunesID")]
         string ItunesID { get; set; }
@@ -1311,6 +1311,18 @@ namespace UrbanAirship {
         // @property (nonatomic, assign, unsafe_unretained, readwrite) BOOL requestAuthorizationToUseNotifications;
         [Export("requestAuthorizationToUseNotifications")]
         bool RequestAuthorizationToUseNotifications { get; set; }
+
+        // @property (nonatomic, assign, unsafe_unretained, readwrite) BOOL requireInitialRemoteConfigEnabled;
+        [Export("requireInitialRemoteConfigEnabled")]
+        bool RequireInitialRemoteConfigEnabled { get; set; }
+
+        // @property (nonatomic, copy, readwrite, nullable) NSString *chatURL;
+        [NullAllowed, Export("chatURL")]
+        string ChatURL { get; set; }
+
+        // @property (nonatomic, copy, readwrite, nullable) NSString *chatWebSocketURL;
+        [NullAllowed, Export("chatWebSocketURL")]
+        string ChatWebSocketURL { get; set; }
 
         // @property (atomic, readonly, nonnull) NSString *appKey;
         [Export("appKey")]
@@ -1811,6 +1823,26 @@ namespace UrbanAirship {
         UACustomEvent CreateEvent ();
     }
 
+    // @interface UAModifyAttributesAction : UAAction
+    [BaseType(typeof(UAAction))]
+    interface UAModifyAttributesAction
+    {
+        // + (nonnull instancetype)action;
+        [Static]
+        [Export("action")]
+        UAModifyAttributesAction Action ();
+
+        // + (nonnull instancetype)actionWithBlock:(nonnull UAActionBlock)actionBlock acceptingArguments: (nullable UAActionPredicate)predicateBlock;
+        [Static]
+        [Export("actionWithBlock:acceptingArguments:")]
+        UAModifyAttributesAction Action (UAActionBlock actionBlock, [NullAllowed] UAActionPredicate predicateBlock);
+
+        // + (nonnull instancetype)actionWithBlock:(nonnull UAActionBlock)actionBlock;
+        [Static]
+        [Export("actionWithBlock:")]
+        UAModifyAttributesAction Action (UAActionBlock actionBlock);
+    }
+
     // @interface UAModifyTagsAction : UAAction
     [BaseType(typeof(UAAction))]
     interface UAModifyTagsAction
@@ -2156,7 +2188,6 @@ namespace UrbanAirship {
         // + (nonnull instancetype)notificationWithUNNotification: (nonnull UNNotification *)notification;
         [Static]
         [Export("notificationWithUNNotification:")]
-
         UANotificationContent NotificationWithUNNotification(UNNotification notification);
     }
 
@@ -2735,6 +2766,10 @@ namespace UrbanAirship {
         [Export("URLAllowListScopeOpenURL")]
         string[] URLAllowListScopeOpenURL { get; }
 
+        // @property (atomic, readonly) BOOL suppressAllowListError;
+        [Export("suppressAllowListError")]
+        bool SuppressAllowListError { get; }
+
         // @property (atomic, readonly, getter=isAnalyticsEnabled) BOOL analyticsEnabled;
         [Export("analyticsEnabled")]
         bool AnalyticsEnabled { [Bind("isAnalyticsEnabled")] get; }
@@ -2770,6 +2805,10 @@ namespace UrbanAirship {
         // @property (atomic, readonly) BOOL requestAuthorizationToUseNotifications;
         [Export("requestAuthorizationToUseNotifications")]
         bool RequestAuthorizationToUseNotifications { get; }
+
+        // @property (atomic, readonly) BOOL requireInitialRemoteConfigEnabled;
+        [Export("requireInitialRemoteConfigEnabled")]
+        bool RequireInitialRemoteConfigEnabled { get; }
 
         // @property (atomic, readonly, getter=isDataCollectionOptInEnabled) BOOL dataCollectionOptInEnabled;
         [Export("dataCollectionOptInEnabled")]

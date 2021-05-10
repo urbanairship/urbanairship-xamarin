@@ -86,7 +86,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <LibraryProjectZip Include="Jars\urbanairship-accengage-14.1.1.aar" />
+    <LibraryProjectZip Include="Jars\urbanairship-accengage-14.1.3.aar" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

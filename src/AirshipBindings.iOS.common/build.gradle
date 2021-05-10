@@ -4,7 +4,9 @@ ext {
 
 task clean(type: Delete) {
     doLast() {
+        project.delete fileTree("$rootDir/frameworks/")
         project.delete "$rootDir/Carthage"
+        project.delete "$rootDir/Cartfile.resolved"
     }
 }
 
@@ -18,28 +20,42 @@ task syncVersion  {
     }
 }
 
-task carthageUpdate {
+task downloadFrameworks {
     doLast() {
-        exec {
-            workingDir "$rootDir"
-            commandLine "./wcarthage",  "update", "--platform iOS"
+        def path = new File("${rootDir}/frameworks/Airship.zip")
+
+        if ( !path.exists() ) {
+            def url = new URL("https://github.com/urbanairship/ios-library/releases/download/${airshipProperties.iosVersion}/Airship.zip")
+            HttpURLConnection huc = (HttpURLConnection) url.openConnection()
+            huc.setRequestMethod("GET")
+            huc.connect();
+            if (huc.getResponseCode() / 100 != 2) {
+                println("Issue downloading version ${airshipProperties.ios}")
+            } else {
+                url.withInputStream{
+                    i -> path.withOutputStream{ it << i }
+                }
+
+                exec {
+                    workingDir "${rootDir}/frameworks"
+                    executable "unzip"
+                    args "-u", "Airship.zip"
+                }
+            }
         }
     }
 }
-
-carthageUpdate.dependsOn('syncVersion')
-
-task build {
-}
-
-build.dependsOn('carthageUpdate')
 
 task carthageCheckout {
     dependsOn 'syncVersion'
     doLast() {
         exec {
             workingDir "$rootDir"
-            commandLine "./wcarthage", "checkout"
+            commandLine "carthage", "update", "--no-build"
         }
     }
+}
+
+task build {
+    dependsOn 'downloadFrameworks'
 }

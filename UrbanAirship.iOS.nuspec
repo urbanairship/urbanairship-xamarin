@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
    <metadata>
       <id>urbanairship.ios</id>
-      <version>14.2.1</version>
+      <version>14.4.1</version>
       <title>Airship iOS SDK</title>
       <authors>Urban Airship, Inc.</authors>
       <projectUrl>https://github.com/urbanairship/urbanairship-xamarin</projectUrl>
@@ -11,10 +11,10 @@
 
       <dependencies>
          <group>
-            <dependency id="urbanairship.ios.core" version="14.2.1"/>
-            <dependency id="urbanairship.ios.automation" version="14.2.1"/>
-            <dependency id="urbanairship.ios.extendedactions" version="14.2.1"/>
-            <dependency id="urbanairship.ios.messagecenter" version="14.2.1"/>
+            <dependency id="urbanairship.ios.core" version="14.4.1"/>
+            <dependency id="urbanairship.ios.automation" version="14.4.1"/>
+            <dependency id="urbanairship.ios.extendedactions" version="14.4.1"/>
+            <dependency id="urbanairship.ios.messagecenter" version="14.4.1"/>
          </group>
       </dependencies>
    </metadata>

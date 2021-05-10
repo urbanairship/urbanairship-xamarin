@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
    <metadata>
       <id>urbanairship.ios.automation</id>
-      <version>14.2.1</version>
+      <version>14.4.1</version>
       <title>Airship iOS SDK - Automation</title>
       <authors>Urban Airship, Inc.</authors>
       <projectUrl>https://github.com/urbanairship/urbanairship-xamarin</projectUrl>
@@ -15,5 +15,7 @@
 
    <files>
      <file src="src/AirshipBindings.iOS.Automation/bin/release/AirshipBindings.iOS.Automation.dll" target="lib/Xamarin.iOS10" />
+     <file src="src/AirshipBindings.iOS.Automation/bin/Release/AirshipBindings.iOS.Automation.resources/**" target="content/AirshipBindings.iOS.Automation.resources" />
+     <file src="src/AirshipBindings.iOS.Automation/urbanairship.ios.automation.targets" target="build/urbanairship.ios.automation.targets" />
    </files>
 </package>

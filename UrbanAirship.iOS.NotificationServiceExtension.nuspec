@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
    <metadata>
       <id>urbanairship.ios.notificationserviceextension</id>
-      <version>14.2.1</version>
+      <version>14.4.1</version>
       <title>Airship iOS SDK - Notification Service Extension</title>
       <authors>Urban Airship, Inc.</authors>
       <projectUrl>https://github.com/urbanairship/urbanairship-xamarin</projectUrl>
@@ -15,5 +15,7 @@
 
    <files>
      <file src="src/AirshipBindings.iOS.NotificationServiceExtension/bin/Release/AirshipBindings.iOS.NotificationServiceExtension.dll" target="lib/Xamarin.iOS10" />
+     <file src="src/AirshipBindings.iOS.NotificationServiceExtension/bin/Release/AirshipBindings.iOS.NotificationServiceExtension.resources/**" target="content/AirshipBindings.iOS.NotificationServiceExtension.resources" />
+     <file src="src/AirshipBindings.iOS.NotificationServiceExtension/urbanairship.ios.notificationserviceextension.targets" target="build/urbanairship.ios.notificationserviceextension.targets" />
    </files>
 </package>

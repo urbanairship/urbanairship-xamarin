@@ -134,6 +134,19 @@ namespace UrbanAirship {
     }
 
     [Native]
+    public enum UAScheduleDeferredDataErrorCode : ulong
+    {
+        InvalidJSON = 0
+    }
+
+    [Native]
+    public enum UAScheduleDataDeferredType : ulong
+    {
+        Unknown = 0,
+        InAppMessage = 1
+    }
+
+    [Native]
     public enum UAScheduleDelayErrorCode : long
     {
         InvalidJSON = 0
