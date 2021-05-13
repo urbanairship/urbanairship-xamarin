@@ -22,9 +22,7 @@
   <attr path="/api/package[@name='com.urbanairship.webkit']" name="managedName">UrbanAirship.Webkit</attr>
 
   <remove-node path="/api/package[@name='com.urbanairship.http']" />
-  <remove-node path="/api/package[@name='com.urbanairship.job']/class[@name='Job']" />
   <remove-node path="/api/package[@name='com.urbanairship.job']/class[@name='JobDispatcher']" />
-  <remove-node path="/api/package[@name='com.urbanairship.job']/class[@name='AndroidJobScheduler']" />
   <remove-node path="/api/package[@name='com.urbanairship.channel']/class[@name='NamedUser']/method[@name='addNamedUserListener']" />
 
   <!-- Class naming conflicts with namespace -->

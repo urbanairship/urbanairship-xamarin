@@ -23,7 +23,6 @@ task syncVersionAndroid  {
             // create Jars directory
             jarDirectory.mkdirs()
         }
-
         def path = new File("$projectDir/Jars/$filename")
         if ( !path.exists() ) {
            // Download aar
@@ -46,4 +45,3 @@ task syncVersionAndroid  {
         }
     }
 }
-
