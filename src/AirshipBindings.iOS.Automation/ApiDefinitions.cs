@@ -470,15 +470,6 @@ namespace UrbanAirship {
     {
     }
 
-    // @interface UADeferredSchedule : UASchedule
-    [BaseType(typeof(UASchedule))]
-    interface UADeferredSchedule
-    {
-        // @property (nonatomic, readonly) UAScheduleDeferredData *_Nonnull deferredData;
-        [Export("deferredData")]
-        UAScheduleDeferredData DeferredData { get; }
-    }
-
     // @interface UAInAppAutomation : UAComponent
     [BaseType(typeof(UAComponent))]
     interface UAInAppAutomation
@@ -2166,43 +2157,6 @@ namespace UrbanAirship {
         [Export("audienceWithBuilderBlock:")]
         [return: NullAllowed]
         UAScheduleAudience Audience (Action<UAScheduleAudienceBuilder> builderBlock);
-    }
-
-    // @interface UAScheduleDeferredData : NSObject
-    [BaseType(typeof(NSObject))]
-    interface UAScheduleDeferredData
-    {
-        // @property (nonatomic, readonly) NSURL *_Nonnull URL;
-        [Export("URL")]
-        NSUrl URL { get; }
-
-        // @property (nonatomic, readonly, getter=isRetriableOnTimeout) BOOL retriableOnTimeout;
-        [Export("retriableOnTimeout")]
-        bool RetriableOnTimeout { [Bind("isRetriableOnTimeout")] get; }
-
-        // @property (nonatomic, readonly) UAScheduleDataDeferredType type;
-        [Export("type")]
-        UAScheduleDataDeferredType Type { get; }
-
-        // + (nonnull instancetype)deferredDataWithURL:(nonnull NSURL *)URL retriableOnTimeout:(BOOL)retriableOnTimeout;
-        [Static]
-        [Export("deferredDataWithURL:retriableOnTimeout:")]
-        UAScheduleDeferredData DeferredData (NSUrl URL, bool retriableOnTimeout);
-
-        // + (nonnull instancetype)deferredDataWithURL:(nonnull NSURL *)URL retriableOnTimeout:(BOOL)retriableOnTimeout type:(UAScheduleDataDeferredType)type;
-        [Static]
-        [Export("deferredDataWithURL:retriableOnTimeout:type:")]
-        UAScheduleDeferredData DeferredData (NSUrl URL, bool retriableOnTimeout, UAScheduleDataDeferredType type);
-
-        // + (nullable instancetype)deferredDataWithJSON:(nonnull id)json error:(NSError *_Nullable *_Nullable) error;
-        [Static]
-        [Export("deferredDataWithJSON:error:")]
-        [return: NullAllowed]
-        UAScheduleDeferredData DeferredData (NSObject json, [NullAllowed] out NSError error);
-
-        // - (nonnull NSDictionary *)toJSON;
-        [Export("toJSON")]
-        NSDictionary ToJSON ();
     }
 
     // @interface UAScheduleDelayBuilder : NSObject
