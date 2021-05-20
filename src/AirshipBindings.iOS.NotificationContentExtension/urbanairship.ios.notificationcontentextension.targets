@@ -1,0 +1,14 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <Target Name="AirshipNotificationContentExtensionBeforeCompile" AfterTargets="BeforeCompile">
+        <ItemGroup>
+            <BindingResources Include="$(MSBuildThisFileDirectory)../content/AirshipBindings.iOS.NotificationContentExtension.resources/**/*.*" />
+        </ItemGroup>
+        <Copy SourceFiles="@(BindingResources)" DestinationFolder="$(TargetDir)/AirshipBindings.iOS.NotificationContentExtension.resources/%(RecursiveDir)" ContinueOnError="false" />
+        <ItemGroup>
+            <NativeReference Include="$(TargetDir)/AirshipBindings.iOS.NotificationContentExtension.resources\AirshipNotificationContentExtension.xcframework">
+                <Kind>Framework</Kind>
+                <SmartLink>False</SmartLink>
+            </NativeReference>
+        </ItemGroup>
+    </Target>
+</Project>

@@ -444,6 +444,10 @@ namespace UrbanAirship {
         [Export("actions")]
         NSDictionary Actions { get; }
 
+        // @property (nonatomic, readonly) NSString *_Nonnull dataJSONString;
+        [Export("dataJSONString")]
+        string DataJSONString { get; }
+
         // + (nonnull instancetype) scheduleWithActions:(nonnull NSDictionary *)actions builderBlock: (nonnull void (^)(UAScheduleBuilder *_Nonnull))builderBlock;
         [Static]
         [Export("scheduleWithActions:builderBlock:")]
@@ -535,6 +539,10 @@ namespace UrbanAirship {
         // - (void)getMessageSchedules: (nonnull void (^)(NSArray<UAInAppMessageSchedule *> *_Nonnull)) completionHandler;
         [Export("getMessageSchedules:")]
         void GetMessageSchedules (UAInAppMessageSchedule[] completionHandler);
+
+        // - (void)getSchedules: (nonnull void (^)(NSArray<UASchedule *> *_Nonnull))completionHandler;
+        [Export("getSchedules:")]
+        void GetSchedules (UASchedule[] completionHandler);
 
         // - (void)editScheduleWithID:(nonnull NSString *)identifier edits:(nonnull UAScheduleEdits *)edits completionHandler:(nullable void (^)(BOOL))completionHandler;
         [Export("editScheduleWithID:edits:completionHandler:")]

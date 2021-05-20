@@ -101,4 +101,5 @@
     <Compile Include="NotificationService.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.AppExtension.CSharp.targets" />
+  <Import Project="..\..\packages\urbanairship.ios.notificationserviceextension.14.2.3\build\urbanairship.ios.notificationserviceextension.targets" Condition="Exists('..\..\packages\urbanairship.ios.notificationserviceextension.14.2.3\build\urbanairship.ios.notificationserviceextension.targets')" />
 </Project>

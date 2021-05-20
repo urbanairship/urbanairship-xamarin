@@ -63,6 +63,7 @@
     <MtouchArch>ARM64</MtouchArch>
     <CodesignKey>iPhone Developer</CodesignKey>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+    <MtouchLink>SdkOnly</MtouchLink>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Main.cs" />
@@ -86,13 +87,19 @@
   <ItemGroup>
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />
     <PackageReference Include="Xamarin.Essentials" Version="1.6.1" />
-    <PackageReference Include="urbanairship.ios.core">
+    <PackageReference Include="urbanairship.ios.messagecenter">
       <Version>14.2.3</Version>
     </PackageReference>
     <PackageReference Include="urbanairship.ios.automation">
       <Version>14.2.3</Version>
     </PackageReference>
-    <PackageReference Include="urbanairship.ios.messagecenter">
+    <PackageReference Include="urbanairship.ios.extendedactions">
+      <Version>14.2.3</Version>
+    </PackageReference>
+    <PackageReference Include="urbanairship.ios.chat">
+      <Version>14.2.3</Version>
+    </PackageReference>
+    <PackageReference Include="urbanairship.ios.core">
       <Version>14.2.3</Version>
     </PackageReference>
   </ItemGroup>

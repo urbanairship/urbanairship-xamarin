@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
    <metadata>
       <id>urbanairship.ios.core</id>
-      <version>14.2.1</version>
+      <version>14.4.1</version>
       <title>Airship iOS SDK - Core</title>
       <authors>Urban Airship, Inc.</authors>
       <projectUrl>https://github.com/urbanairship/urbanairship-xamarin</projectUrl>
@@ -15,5 +15,7 @@
 
    <files>
      <file src="src/AirshipBindings.iOS.Core/bin/release/AirshipBindings.iOS.Core.dll" target="lib/Xamarin.iOS10" />
+     <file src="src/AirshipBindings.iOS.Core/bin/Release/AirshipBindings.iOS.Core.resources/**" target="content/AirshipBindings.iOS.Core.resources" />
+     <file src="src/AirshipBindings.iOS.Core/urbanairship.ios.core.targets" target="build/urbanairship.ios.core.targets" />
    </files>
 </package>
