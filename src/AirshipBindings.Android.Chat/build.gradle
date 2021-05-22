@@ -5,14 +5,17 @@ ext {
 
 apply from: "../android-common-build.gradle"
 
-task syncVersion dependsOn syncVersionAndroid
+// TODO: uncomment to re-enable aar downloads
+// task syncVersion dependsOn syncVersionAndroid
+task syncVersion {}
 
 task clean {
     doLast() {
         project.delete "bin"
         project.delete "obj"
         project.delete "$buildDir"
-        project.delete "Jars"
+        // TODO: uncomment to re-enable jar directory cleaning
+        //project.delete "Jars"
     }
 }
 

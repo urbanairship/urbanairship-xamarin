@@ -220,7 +220,8 @@ docs/doxygen.tag
 local-nuget-feed/
 
 # UA native jars
-urbanairship*.aar
+# TODO: uncomment to continue ignoring aars
+# urbanairship*.aar
 
 # Google Services (e.g. APIs or Firebase)
 google-services.json

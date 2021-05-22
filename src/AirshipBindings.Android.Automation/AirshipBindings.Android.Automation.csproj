@@ -135,7 +135,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <LibraryProjectZip Include="Jars\urbanairship-automation-14.4.1.aar" />
+    <LibraryProjectZip Include="Jars\urbanairship-automation-14.4.3.aar" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

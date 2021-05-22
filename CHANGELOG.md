@@ -1,5 +1,13 @@
 # Airship Xamarin Changelog
 
+## Version 14.2.0 - May 21, 2021
+Minor release updating to latest Airship SDKs and adding support for live chat.
+
+### Changes
+- Updated iOS Airship SDK to 14.4.1
+- Updated Android Airship SDK to 14.4.3
+- Added urbanairship.ios.chat and urbanairship.android.chat packages
+
 ## Version 14.1.1 - February 12, 2021
 Minor release to latest Airship SDKs and to fix missing methods in the Android FCM bindings.
 
