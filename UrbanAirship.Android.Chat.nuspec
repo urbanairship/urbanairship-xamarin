@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
    <metadata>
-      <id>urbanairship.android.automation</id>
+      <id>urbanairship.android.chat</id>
       <version>14.4.3</version>
       <title>Airship Android SDK</title>
       <authors>Urban Airship, Inc.</authors>
@@ -12,13 +12,20 @@
       <dependencies>
          <group targetFramework="MonoAndroid4.1">
             <dependency id="urbanairship.android.core" version="14.4.3"/>
-            <dependency id="Xamarin.AndroidX.CustomView" version="1.1.0.4" />
+            <dependency id="Xamarin.Kotlin.StdLib" version="1.4.32.1" />
+            <dependency id="Xamarin.Kotlin.StdLib.Jdk8" version="1.4.32.1" />
+            <dependency id="Xamarin.KotlinX.Coroutines.Core" version="1.4.3.1" />
+            <dependency id="Xamarin.KotlinX.Coroutines.Android" version="1.4.3.1" />
+            <dependency id="Xamarin.AndroidX.ConstraintLayout" version="2.0.4.2" />
+            <dependency id="Xamarin.AndroidX.Paging.Runtime" version="2.1.2.7" />
             <dependency id="Xamarin.AndroidX.Room.Runtime" version="2.2.6"/>
+            <dependency id="Xamarin.AndroidX.Work.Runtime" version="2.5.0.1"/>
+            <dependency id="Square.OkHttp3" version="4.9.0"/>
          </group>
       </dependencies>
    </metadata>
 
    <files>
-     <file src="src/AirshipBindings.Android.Automation/bin/release/AirshipBindings.Android.Automation.dll" target="lib/MonoAndroid41" />
+     <file src="src/AirshipBindings.Android.Chat/bin/release/AirshipBindings.Android.Chat.dll" target="lib/MonoAndroid41" />
    </files>
 </package>

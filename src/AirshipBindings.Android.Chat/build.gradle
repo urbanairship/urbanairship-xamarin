@@ -1,0 +1,36 @@
+ext {
+    xamarinModuleName = "AirshipBindings.Android.Chat"
+    androidSdkModuleName = "urbanairship-chat"
+}
+
+apply from: "../android-common-build.gradle"
+
+// TODO: uncomment to re-enable aar downloads
+// task syncVersion dependsOn syncVersionAndroid
+task syncVersion {}
+
+task clean {
+    doLast() {
+        project.delete "bin"
+        project.delete "obj"
+        project.delete "$buildDir"
+        // TODO: uncomment to re-enable jar directory cleaning
+        //project.delete "Jars"
+    }
+}
+
+task build {
+    def BuildConfiguration=project.properties['build_configuration'] ?: "Release"
+    doLast() {
+        exec {
+            commandLine "mono", "$nugetExe", "restore", "AirshipBindings.Android.Chat.sln"
+        }
+
+        exec {
+            commandLine "${msbuild}", "/t:build", "/p:Configuration=${BuildConfiguration}", "AirshipBindings.Android.Chat.sln"
+        }
+    }
+}
+
+build.dependsOn('syncVersion',
+    ':src:AirshipBindings.Android.Core:build')
