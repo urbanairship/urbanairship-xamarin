@@ -2,6 +2,7 @@
  Copyright Airship and Contributors
 */
 
+using CoreGraphics;
 using System;
 using System.ComponentModel;
 using Foundation;
@@ -12,17 +13,20 @@ using Xamarin.Forms.Platform.iOS;
 
 namespace UrbanAirship.NETStandard.iOS
 {
-    public class MessagePageRenderer : PageRenderer, IWKNavigationDelegate, IUANativeBridgeDelegate
+    public class MessagePageRenderer : PageRenderer, IUANavigationDelegate, IUANativeBridgeDelegate
     {
-        private UAWebView webView;
+        private WKWebView webView;
         private UANativeBridge nativeBridge;
         private MessagePage messagePage;
         private string messageId;
 
         public MessagePageRenderer()
         {
-            webView = new UAWebView();
-            nativeBridge = UANativeBridge.NativeBridge();
+            CGRect frame = UIScreen.MainScreen.Bounds;
+            WKWebViewConfiguration configuration = new WKWebViewConfiguration();
+            webView = new WKWebView(frame, configuration);
+            webView.TranslatesAutoresizingMaskIntoConstraints = false;
+            nativeBridge = new UANativeBridge();
             webView.NavigationDelegate = nativeBridge;
             nativeBridge.ForwardNavigationDelegate = this;
         }
@@ -40,16 +44,16 @@ namespace UrbanAirship.NETStandard.iOS
 
         public void LoadMessage(string messageId)
         {
-            var message = UAMessageCenter.Shared().MessageList.Message(messageId);
+            var message = UAMessageCenter.Shared.MessageList.Message(messageId);
             if (message != null)
             {
                 LoadMessageBody(message);
             }
             else
             {
-                UAMessageCenter.Shared().MessageList.RetrieveMessageList(() =>
+                UAMessageCenter.Shared.MessageList.RetrieveMessageList(() =>
                 {
-                    message = UAMessageCenter.Shared().MessageList.Message(messageId);
+                    message = UAMessageCenter.Shared.MessageList.Message(messageId);
                     if (message != null && !message.IsExpired())
                     {
                         LoadMessageBody(message);
@@ -144,8 +148,13 @@ namespace UrbanAirship.NETStandard.iOS
         private void LoadMessageBody(UAInboxMessage message)
         {
             var request = new NSMutableUrlRequest(message.MessageBodyURL);
-            UAMessageCenter.Shared().User.GetUserData((UAUserData userData) =>
+            UAMessageCenter.Shared.User.GetUserData((UAUserData userData) =>
             {
+                if (userData == null)
+                {
+                    return;
+                }
+
                 var auth = UAUtils.AuthHeaderString(userData.Username, userData.Password);
 
                 NSMutableDictionary dict = new NSMutableDictionary();

@@ -17,7 +17,7 @@ task processIOSSDK {
 
         // get path to the module's header
         def moduleHeader = ""
-        if ( iosSdkModuleName == "AirshipCore" ) {
+        if ( iosSdkModuleName == "AirshipBasement" ) {
             moduleHeader = "${moduleSourcePath}/Public/${iosSdkModuleName}.h"
         } else {
             moduleHeader ="${moduleSourcePath}/${iosSdkModuleName}.h"
@@ -40,7 +40,8 @@ task processIOSSDK {
                        "objective-c",
                        "-isysroot", sdkPath,
                        "-I", "${carthageCheckoutPath}",
-                       "-I", "${carthageCheckoutPath}/Airship/AirshipCore/Source/Public",
+                       "-I", "${carthageCheckoutPath}/Airship/AirshipCore/Source/",
+                       "-I", "${carthageCheckoutPath}/Airship/AirshipBasement/Source/Public",
                        "-I", "${carthageCheckoutPath}/${moduleSourcePath}",
                        "-fmodules",
                        "-D", "UA_USE_MODULE_IMPORT=0" ]

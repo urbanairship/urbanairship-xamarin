@@ -39,13 +39,13 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="Xamarin.AndroidX.Annotation">
-      <HintPath>packages\Xamarin.AndroidX.Annotation.1.2.0\lib\monoandroid90\Xamarin.AndroidX.Annotation.dll</HintPath>
+      <HintPath>..\AirshipBindings.NETStandard\packages\Xamarin.AndroidX.Annotation.1.2.0.3\lib\monoandroid90\Xamarin.AndroidX.Annotation.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.AndroidX.SavedState">
       <HintPath>packages\Xamarin.AndroidX.SavedState.1.1.0.1\lib\monoandroid90\Xamarin.AndroidX.SavedState.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.AndroidX.Arch.Core.Common">
-      <HintPath>packages\Xamarin.AndroidX.Arch.Core.Common.2.1.0.8\lib\monoandroid90\Xamarin.AndroidX.Arch.Core.Common.dll</HintPath>
+      <HintPath>..\AirshipBindings.NETStandard\packages\Xamarin.AndroidX.Arch.Core.Common.2.1.0.11\lib\monoandroid90\Xamarin.AndroidX.Arch.Core.Common.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.AndroidX.Lifecycle.Common">
       <HintPath>packages\Xamarin.AndroidX.Lifecycle.Common.2.3.1\lib\monoandroid90\Xamarin.AndroidX.Lifecycle.Common.dll</HintPath>
@@ -70,7 +70,7 @@
       <HintPath>packages\Xamarin.AndroidX.Core.1.3.2.3\lib\monoandroid90\Xamarin.AndroidX.Core.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.AndroidX.Arch.Core.Runtime">
-      <HintPath>packages\Xamarin.AndroidX.Arch.Core.Runtime.2.1.0.8\lib\monoandroid90\Xamarin.AndroidX.Arch.Core.Runtime.dll</HintPath>
+      <HintPath>..\AirshipBindings.NETStandard\packages\Xamarin.AndroidX.Arch.Core.Runtime.2.1.0.11\lib\monoandroid90\Xamarin.AndroidX.Arch.Core.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.AndroidX.Lifecycle.LiveData.Core">
       <HintPath>packages\Xamarin.AndroidX.Lifecycle.LiveData.Core.2.3.1\lib\monoandroid90\Xamarin.AndroidX.Lifecycle.LiveData.Core.dll</HintPath>
@@ -101,7 +101,22 @@
       <HintPath>packages\Xamarin.AndroidX.SwipeRefreshLayout.1.1.0.2\lib\monoandroid90\Xamarin.AndroidX.SwipeRefreshLayout.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.AndroidX.Annotation.Experimental">
-      <HintPath>packages\Xamarin.AndroidX.Annotation.Experimental.1.1.0\lib\monoandroid90\Xamarin.AndroidX.Annotation.Experimental.dll</HintPath>
+      <HintPath>..\AirshipBindings.NETStandard\packages\Xamarin.AndroidX.Annotation.Experimental.1.1.0.3\lib\monoandroid90\Xamarin.AndroidX.Annotation.Experimental.dll</HintPath>
+    </Reference>
+    <Reference Include="mscorlib" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors" />
+    <Reference Include="Xamarin.AndroidX.Room.Common">
+      <HintPath>..\AirshipBindings.NETStandard\packages\Xamarin.AndroidX.Room.Common.2.3.0.4\lib\monoandroid90\Xamarin.AndroidX.Room.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.AndroidX.Sqlite">
+      <HintPath>..\AirshipBindings.NETStandard\packages\Xamarin.AndroidX.Sqlite.2.1.0.10\lib\monoandroid90\Xamarin.AndroidX.Sqlite.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.AndroidX.Sqlite.Framework">
+      <HintPath>..\AirshipBindings.NETStandard\packages\Xamarin.AndroidX.Sqlite.Framework.2.1.0.10\lib\monoandroid90\Xamarin.AndroidX.Sqlite.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.AndroidX.Room.Runtime">
+      <HintPath>..\AirshipBindings.NETStandard\packages\Xamarin.AndroidX.Room.Runtime.2.3.0.4\lib\monoandroid90\Xamarin.AndroidX.Room.Runtime.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -135,7 +150,7 @@
     <Folder Include="Jars\" />
   </ItemGroup>
   <ItemGroup>
-    <LibraryProjectZip Include="Jars\urbanairship-message-center-14.4.3.aar" />
+    <LibraryProjectZip Include="Jars\urbanairship-message-center-16.0.0.aar" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.Bindings.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
@@ -167,4 +182,12 @@
   <Import Project="packages\Xamarin.AndroidX.SwipeRefreshLayout.1.1.0.2\build\monoandroid9.0\Xamarin.AndroidX.SwipeRefreshLayout.targets" Condition="Exists('packages\Xamarin.AndroidX.SwipeRefreshLayout.1.1.0.2\build\monoandroid9.0\Xamarin.AndroidX.SwipeRefreshLayout.targets')" />
   <Import Project="packages\Xamarin.AndroidX.ViewPager.1.0.0.7\build\monoandroid9.0\Xamarin.AndroidX.ViewPager.targets" Condition="Exists('packages\Xamarin.AndroidX.ViewPager.1.0.0.7\build\monoandroid9.0\Xamarin.AndroidX.ViewPager.targets')" />
   <Import Project="packages\Xamarin.AndroidX.Fragment.1.3.3\build\monoandroid9.0\Xamarin.AndroidX.Fragment.targets" Condition="Exists('packages\Xamarin.AndroidX.Fragment.1.3.3\build\monoandroid9.0\Xamarin.AndroidX.Fragment.targets')" />
+  <Import Project="..\AirshipBindings.NETStandard\packages\Xamarin.AndroidX.Annotation.1.2.0.3\build\monoandroid90\Xamarin.AndroidX.Annotation.targets" Condition="Exists('..\AirshipBindings.NETStandard\packages\Xamarin.AndroidX.Annotation.1.2.0.3\build\monoandroid90\Xamarin.AndroidX.Annotation.targets')" />
+  <Import Project="..\AirshipBindings.NETStandard\packages\Xamarin.AndroidX.Room.Common.2.3.0.4\build\monoandroid90\Xamarin.AndroidX.Room.Common.targets" Condition="Exists('..\AirshipBindings.NETStandard\packages\Xamarin.AndroidX.Room.Common.2.3.0.4\build\monoandroid90\Xamarin.AndroidX.Room.Common.targets')" />
+  <Import Project="..\AirshipBindings.NETStandard\packages\Xamarin.AndroidX.Annotation.Experimental.1.1.0.3\build\monoandroid90\Xamarin.AndroidX.Annotation.Experimental.targets" Condition="Exists('..\AirshipBindings.NETStandard\packages\Xamarin.AndroidX.Annotation.Experimental.1.1.0.3\build\monoandroid90\Xamarin.AndroidX.Annotation.Experimental.targets')" />
+  <Import Project="..\AirshipBindings.NETStandard\packages\Xamarin.AndroidX.Arch.Core.Common.2.1.0.11\build\monoandroid90\Xamarin.AndroidX.Arch.Core.Common.targets" Condition="Exists('..\AirshipBindings.NETStandard\packages\Xamarin.AndroidX.Arch.Core.Common.2.1.0.11\build\monoandroid90\Xamarin.AndroidX.Arch.Core.Common.targets')" />
+  <Import Project="..\AirshipBindings.NETStandard\packages\Xamarin.AndroidX.Arch.Core.Runtime.2.1.0.11\build\monoandroid90\Xamarin.AndroidX.Arch.Core.Runtime.targets" Condition="Exists('..\AirshipBindings.NETStandard\packages\Xamarin.AndroidX.Arch.Core.Runtime.2.1.0.11\build\monoandroid90\Xamarin.AndroidX.Arch.Core.Runtime.targets')" />
+  <Import Project="..\AirshipBindings.NETStandard\packages\Xamarin.AndroidX.Sqlite.2.1.0.10\build\monoandroid90\Xamarin.AndroidX.Sqlite.targets" Condition="Exists('..\AirshipBindings.NETStandard\packages\Xamarin.AndroidX.Sqlite.2.1.0.10\build\monoandroid90\Xamarin.AndroidX.Sqlite.targets')" />
+  <Import Project="..\AirshipBindings.NETStandard\packages\Xamarin.AndroidX.Sqlite.Framework.2.1.0.10\build\monoandroid90\Xamarin.AndroidX.Sqlite.Framework.targets" Condition="Exists('..\AirshipBindings.NETStandard\packages\Xamarin.AndroidX.Sqlite.Framework.2.1.0.10\build\monoandroid90\Xamarin.AndroidX.Sqlite.Framework.targets')" />
+  <Import Project="..\AirshipBindings.NETStandard\packages\Xamarin.AndroidX.Room.Runtime.2.3.0.4\build\monoandroid90\Xamarin.AndroidX.Room.Runtime.targets" Condition="Exists('..\AirshipBindings.NETStandard\packages\Xamarin.AndroidX.Room.Runtime.2.3.0.4\build\monoandroid90\Xamarin.AndroidX.Room.Runtime.targets')" />
 </Project>

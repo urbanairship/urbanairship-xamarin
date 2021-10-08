@@ -91,6 +91,10 @@
       <Project>{AC22EEC5-DCA6-49D3-8B37-533B5565E2CF}</Project>
       <Name>AirshipBindings.iOS.MessageCenter</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\AirshipBindings.iOS.Basement\AirshipBindings.iOS.Basement.csproj">
+      <Project>{5E85A7FD-8C42-4DE6-B002-E3CC2DA529C7}</Project>
+      <Name>AirshipBindings.iOS.Basement</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
