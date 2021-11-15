@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+   <metadata>
+      <id>urbanairship.ios.preferencecenter</id>
+      <version>16.0.3</version>
+      <title>Airship iOS SDK - Preference Center</title>
+      <authors>Urban Airship, Inc.</authors>
+      <projectUrl>https://github.com/urbanairship/urbanairship-xamarin</projectUrl>
+      <requireLicenseAcceptance>false</requireLicenseAcceptance>
+      <description>Preference Center support for Airship SDK</description>
+      <dependencies>
+        <group targetFramework="Xamarin.iOS1.0" />
+      </dependencies>
+   </metadata>
+
+   <files>
+     <file src="src/AirshipBindings.iOS.PreferenceCenter/bin/release/AirshipBindings.iOS.PreferenceCenter.dll" target="lib/Xamarin.iOS10" />
+     <file src="src/AirshipBindings.iOS.PreferenceCenter/bin/Release/AirshipBindings.iOS.PreferenceCenter.resources/**" target="content/AirshipBindings.iOS.PreferenceCenter.resources" />
+     <file src="src/AirshipBindings.iOS.PreferenceCenter/urbanairship.ios.preferencecenter.targets" target="build/urbanairship.ios.preferencecenter.targets" />
+   </files>
+</package>

@@ -16,6 +16,7 @@
             <dependency id="urbanairship.ios.automation" version="16.0.3"/>
             <dependency id="urbanairship.ios.extendedactions" version="16.0.3"/>
             <dependency id="urbanairship.ios.messagecenter" version="16.0.3"/>
+            <dependency id="urbanairship.ios.preferencecenter" version="16.0.3"/>
          </group>
       </dependencies>
    </metadata>
