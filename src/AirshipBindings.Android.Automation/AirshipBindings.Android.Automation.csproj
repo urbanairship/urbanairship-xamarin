@@ -68,16 +68,16 @@
       <HintPath>packages\Xamarin.AndroidX.CustomView.1.1.0.9\lib\monoandroid90\Xamarin.AndroidX.CustomView.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.AndroidX.Room.Common">
-      <HintPath>packages\Xamarin.AndroidX.Room.Common.2.3.0\lib\monoandroid90\Xamarin.AndroidX.Room.Common.dll</HintPath>
+      <HintPath>packages\Xamarin.AndroidX.Room.Common.2.3.0.4\lib\monoandroid90\Xamarin.AndroidX.Room.Common.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.AndroidX.Sqlite">
-      <HintPath>packages\Xamarin.AndroidX.Sqlite.2.1.0.7\lib\monoandroid90\Xamarin.AndroidX.Sqlite.dll</HintPath>
+      <HintPath>packages\Xamarin.AndroidX.Sqlite.2.1.0.10\lib\monoandroid90\Xamarin.AndroidX.Sqlite.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.AndroidX.Sqlite.Framework">
-      <HintPath>packages\Xamarin.AndroidX.Sqlite.Framework.2.1.0.7\lib\monoandroid90\Xamarin.AndroidX.Sqlite.Framework.dll</HintPath>
+      <HintPath>packages\Xamarin.AndroidX.Sqlite.Framework.2.1.0.10\lib\monoandroid90\Xamarin.AndroidX.Sqlite.Framework.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.AndroidX.Room.Runtime">
-      <HintPath>packages\Xamarin.AndroidX.Room.Runtime.2.3.0\lib\monoandroid90\Xamarin.AndroidX.Room.Runtime.dll</HintPath>
+      <HintPath>packages\Xamarin.AndroidX.Room.Runtime.2.3.0.4\lib\monoandroid90\Xamarin.AndroidX.Room.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.AndroidX.Annotation.Experimental">
       <HintPath>packages\Xamarin.AndroidX.Annotation.Experimental.1.1.0.3\lib\monoandroid90\Xamarin.AndroidX.Annotation.Experimental.dll</HintPath>
@@ -201,4 +201,8 @@
   <Import Project="packages\Xamarin.AndroidX.ViewPager.1.0.0.10\build\monoandroid90\Xamarin.AndroidX.ViewPager.targets" Condition="Exists('packages\Xamarin.AndroidX.ViewPager.1.0.0.10\build\monoandroid90\Xamarin.AndroidX.ViewPager.targets')" />
   <Import Project="packages\Xamarin.AndroidX.Fragment.1.3.6.3\build\monoandroid90\Xamarin.AndroidX.Fragment.targets" Condition="Exists('packages\Xamarin.AndroidX.Fragment.1.3.6.3\build\monoandroid90\Xamarin.AndroidX.Fragment.targets')" />
   <Import Project="packages\Xamarin.AndroidX.MultiDex.2.0.1.10\build\monoandroid90\Xamarin.AndroidX.MultiDex.targets" Condition="Exists('packages\Xamarin.AndroidX.MultiDex.2.0.1.10\build\monoandroid90\Xamarin.AndroidX.MultiDex.targets')" />
+  <Import Project="packages\Xamarin.AndroidX.Room.Common.2.3.0.4\build\monoandroid90\Xamarin.AndroidX.Room.Common.targets" Condition="Exists('packages\Xamarin.AndroidX.Room.Common.2.3.0.4\build\monoandroid90\Xamarin.AndroidX.Room.Common.targets')" />
+  <Import Project="packages\Xamarin.AndroidX.Sqlite.2.1.0.10\build\monoandroid90\Xamarin.AndroidX.Sqlite.targets" Condition="Exists('packages\Xamarin.AndroidX.Sqlite.2.1.0.10\build\monoandroid90\Xamarin.AndroidX.Sqlite.targets')" />
+  <Import Project="packages\Xamarin.AndroidX.Sqlite.Framework.2.1.0.10\build\monoandroid90\Xamarin.AndroidX.Sqlite.Framework.targets" Condition="Exists('packages\Xamarin.AndroidX.Sqlite.Framework.2.1.0.10\build\monoandroid90\Xamarin.AndroidX.Sqlite.Framework.targets')" />
+  <Import Project="packages\Xamarin.AndroidX.Room.Runtime.2.3.0.4\build\monoandroid90\Xamarin.AndroidX.Room.Runtime.targets" Condition="Exists('packages\Xamarin.AndroidX.Room.Runtime.2.3.0.4\build\monoandroid90\Xamarin.AndroidX.Room.Runtime.targets')" />
  </Project>
