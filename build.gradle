@@ -33,6 +33,7 @@ task pkg {
                 "UrbanAirship.Android.Automation.nuspec",
                 "UrbanAirship.Android.Location.nuspec",
                 "UrbanAirship.Android.Chat.nuspec",
+                "UrbanAirship.Android.PreferenceCenter.nuspec",
                 "UrbanAirship.NETStandard.nuspec",
                 "UrbanAirship.iOS.nuspec",
                 "UrbanAirship.iOS.Basement.nuspec",
@@ -43,6 +44,7 @@ task pkg {
                 "UrbanAirship.iOS.MessageCenter.nuspec",
                 "UrbanAirship.iOS.Location.nuspec",
                 "UrbanAirship.iOS.Chat.nuspec",
+                "UrbanAirship.iOS.PreferenceCenter.nuspec",
                 "UrbanAirship.iOS.NotificationContentExtension.nuspec",
                 "UrbanAirship.iOS.NotificationServiceExtension.nuspec"
             ]
@@ -185,6 +187,7 @@ syncVersion.dependsOn(':src:AirshipBindings.Android.ADM:syncVersion',
     ':src:AirshipBindings.Android.Automation:syncVersion',
     ':src:AirshipBindings.Android.Location:syncVersion',
     ':src:AirshipBindings.Android.Chat:syncVersion',
+    ':src:AirshipBindings.Android.PreferenceCenter:syncVersion',
     ':src:AirshipBindings.iOS.common:syncVersion',
  )
 
@@ -254,6 +257,7 @@ clean.dependsOn(':src:AirshipBindings.Android.ADM:clean',
     ':src:AirshipBindings.Android.Automation:clean',
     ':src:AirshipBindings.Android.Location:clean',
     ':src:AirshipBindings.Android.Chat:clean',
+    ':src:AirshipBindings.Android.PreferenceCenter:clean',
     ':src:AirshipBindings.iOS.common:clean',
  )
 
@@ -278,6 +282,7 @@ build.dependsOn(':docs:build',
     ':src:AirshipBindings.Android.Automation:build',
     ':src:AirshipBindings.Android.Location:build',
     ':src:AirshipBindings.Android.Chat:build',
+    ':src:AirshipBindings.Android.PreferenceCenter:build',
     ':src:AirshipBindings.NETStandard:build',
     ':src:AirshipBindings.iOS.Basement:build',
     ':src:AirshipBindings.iOS.Core:build',
@@ -287,6 +292,7 @@ build.dependsOn(':docs:build',
     ':src:AirshipBindings.iOS.MessageCenter:build',
     ':src:AirshipBindings.iOS.Location:build',
     ':src:AirshipBindings.iOS.Chat:build',
+    ':src:AirshipBindings.iOS.PreferenceCenter:build',
     ':src:AirshipBindings.iOS.NotificationContentExtension:build',
     ':src:AirshipBindings.iOS.NotificationServiceExtension:build' )
 
