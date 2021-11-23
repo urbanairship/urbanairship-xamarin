@@ -37,6 +37,21 @@ namespace UrbanAirship.NETStandard
         }
     }
 
+    [Flags]
+    public enum Features
+    {
+        None = 0,
+        InAppAutomation = 1 << 0,
+        MessageCenter = 1 << 1,
+        Push = 1 << 2,
+        Chat = 1 << 3,
+        Analytics = 1 << 4,
+        TagsAndAttributes = 1 << 5,
+        Contacts = 1 << 6,
+        Location = 1 << 7,
+        All = InAppAutomation | MessageCenter | Push | Chat | Analytics | TagsAndAttributes | Contacts | Location
+    }
+
     public interface IAirship
     {
         bool UserNotificationsEnabled
@@ -44,15 +59,18 @@ namespace UrbanAirship.NETStandard
             get; set;
         }
 
-        bool DataCollectionEnabled
+        Features EnabledFeatures
         {
             get; set;
         }
 
-        bool PushTokenRegistrationEnabled
-        {
-            get; set;
-        }
+        void EnableFeatures(Features features);
+
+        void DisableFeatures(Features features);
+
+        bool IsFeatureEnabled(Features feature);
+
+        bool IsAnyFeatureEnabled();
 
         IEnumerable<string> Tags
         {
@@ -113,11 +131,6 @@ namespace UrbanAirship.NETStandard
         Attributes.AttributeEditor EditChannelAttributes();
 
         Attributes.AttributeEditor EditNamedUserAttributes();
-
-        bool InAppAutomationEnabled
-        {
-            get; set;
-        }
 
         bool InAppAutomationPaused
         {

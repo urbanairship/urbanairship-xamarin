@@ -1,14 +1,8 @@
 /*
  Copyright Airship and Contributors
 */
-using CoreFoundation;
-using CoreGraphics;
+
 using Foundation;
-using ObjCRuntime;
-using System;
-using UIKit;
-using UserNotifications;
-using WebKit;
 
 namespace UrbanAirship {
 
@@ -27,14 +21,6 @@ namespace UrbanAirship {
         [Field("UARateAppItunesIDKey", "__Internal")]
         NSString UARateAppItunesIDKey { get; }
 
-        // extern NSString *const UARateAppLinkPromptBodyKey
-        [Field("UARateAppLinkPromptBodyKey", "__Internal")]
-        NSString UARateAppLinkPromptBodyKey { get; }
-
-        // extern NSString *const UARateAppLinkPromptTitleKey
-        [Field("UARateAppLinkPromptTitleKey", "__Internal")]
-        NSString UARateAppLinkPromptTitleKey { get; }
-
         // extern NSString *const UARateAppShowLinkPromptKey
         [Field("UARateAppShowLinkPromptKey", "__Internal")]
         NSString UARateAppShowLinkPromptKey { get; }
@@ -50,16 +36,9 @@ namespace UrbanAirship {
         NSBundle Bundle ();
     }
 
-    // @interface UARateAppAction : UAAction
-    [BaseType(typeof(UAAction))]
-    interface UARateAppAction
+    // @interface UARateAppAction : NSObject <UAAction>
+    [BaseType(typeof(NSObject))]
+    interface UARateAppAction : IUAAction
     {
-        // - (NSArray *)rateAppLinkPromptTimestamps;
-        [Export("rateAppLinkPromptTimestamps")]
-        NSObject[] RateAppLinkPromptTimestamps ();
-
-        // - (NSArray *)rateAppPromptTimestamps;
-        [Export("rateAppPromptTimestamps")]
-        NSObject[] RateAppPromptTimestamps ();
     }
 }

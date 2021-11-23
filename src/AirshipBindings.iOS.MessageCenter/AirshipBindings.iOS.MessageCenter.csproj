@@ -66,6 +66,10 @@
       <Project>{7F49C0FA-F958-44CF-9246-8B8577748E6F}</Project>
       <Name>AirshipBindings.iOS.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\AirshipBindings.iOS.Basement\AirshipBindings.iOS.Basement.csproj">
+      <Project>{5E85A7FD-8C42-4DE6-B002-E3CC2DA529C7}</Project>
+      <Name>AirshipBindings.iOS.Basement</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.ObjCBinding.CSharp.targets" />
 </Project>

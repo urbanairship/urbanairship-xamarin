@@ -31,7 +31,7 @@ namespace UrbanAirship {
         [Field("UAMessageCenterMessageLoadErrorHTTPStatusKey", "__Internal")]
         NSString UAMessageCenterMessageLoadErrorHTTPStatusKey { get; }
 
-        // extern NSString *const UAMessageDataScheme
+        // extern NSString *const _Nonnull UAMessageDataScheme
         [Field("UAMessageDataScheme", "__Internal")]
         NSString UAMessageDataScheme { get; }
 
@@ -314,7 +314,7 @@ namespace UrbanAirship {
     [BaseType(typeof(NSObject))]
     interface UAMessageCenterDisplayDelegate
     {
-        // - (void)displayMessageCenterForMessageID:(NSString *)messageID animated:(BOOL)animated;
+        // - (void)displayMessageCenterForMessageID:(nonnull NSString *)messageID animated:(BOOL)animated;
         [Abstract]
         [Export("displayMessageCenterForMessageID:animated:")]
         void DisplayMessageCenter (string messageID, bool animated);
@@ -332,34 +332,34 @@ namespace UrbanAirship {
 
     interface IUAMessageCenterDisplayDelegate { }
 
-    // @interface UAMessageCenter : UAComponent
-    [BaseType(typeof(UAComponent))]
-    interface UAMessageCenter
+    // @interface UAMessageCenter : NSObject <UAComponent>
+    [BaseType(typeof(NSObject))]
+    interface UAMessageCenter : IUAComponent
     {
-        // @property (nonatomic, weak, readwrite) id<UAMessageCenterDisplayDelegate> displayDelegate;
-        [Export("displayDelegate", ArgumentSemantic.Assign)]
+        // @property (nonatomic, weak, readwrite) id<UAMessageCenterDisplayDelegate> _Nullable displayDelegate;
+        [NullAllowed, Export("displayDelegate", ArgumentSemantic.Assign)]
         NSObject WeakDisplayDelegate { get; set; }
 
         [Wrap("WeakDisplayDelegate")]
+        [NullAllowed]
         IUAMessageCenterDisplayDelegate DisplayDelegate { get; set; }
 
-        // @property (nonatomic, readonly) UADefaultMessageCenterUI *defaultUI;
+        // @property (nonatomic, readonly) UADefaultMessageCenterUI *_Nonnull defaultUI;
         [Export("defaultUI")]
         UADefaultMessageCenterUI DefaultUI { get; }
 
-        // @property (nonatomic, readonly) UAInboxMessageList *messageList;
+        // @property (nonatomic, readonly) UAInboxMessageList *_Nonnull messageList;
         [Export("messageList")]
         UAInboxMessageList MessageList { get; }
 
-        // @property (nonatomic, readonly) UAUser *user;
+        // @property (nonatomic, readonly) UAUser *_Nonnull user;
         [Export("user")]
         UAUser User { get; }
 
-        // + (null_unspecified instancetype)shared;
+        // @property (class, nonatomic, readonly, null_unspecified) UAMessageCenter *shared;
         [Static]
-        [New]
         [Export("shared")]
-        UAMessageCenter Shared();
+        UAMessageCenter Shared { get; }
 
         // - (void)display:(BOOL)animated;
         [Export("display:")]
@@ -369,11 +369,11 @@ namespace UrbanAirship {
         [Export("display")]
         void Display ();
 
-        // - (void)displayMessageForID:(NSString *)messageID animated:(BOOL)animated;
+        // - (void)displayMessageForID:(nonnull NSString *)messageID animated:(BOOL)animated;
         [Export("displayMessageForID:animated:")]
         void DisplayMessage (string messageID, bool animated);
 
-        // - (void)displayMessageForID:(NSString *)messageID;
+        // - (void)displayMessageForID:(nonnull NSString *)messageID;
         [Export("displayMessageForID:")]
         void DisplayMessage (string messageID);
 
@@ -386,9 +386,9 @@ namespace UrbanAirship {
         void Dismiss ();
     }
 
-    // @interface UAMessageCenterAction : UAAction
-    [BaseType(typeof(UAAction))]
-    interface UAMessageCenterAction
+    // @interface UAMessageCenterAction : NSObject <UAAction>
+    [BaseType(typeof(NSObject))]
+    interface UAMessageCenterAction : IUAAction
     {
     }
 
@@ -437,14 +437,12 @@ namespace UrbanAirship {
     interface UAMessageCenterListViewDelegate
     {
         // - (BOOL)shouldClearSelectionOnViewWillAppear;
-        [Abstract]
         [Export("shouldClearSelectionOnViewWillAppear")]
-        NSObject ShouldClearSelectionOnViewWillAppear ();
+        NSObject ShouldClearSelectionOnViewWillAppear();
 
         // - (void)didSelectMessageWithID:(nullable NSString *)messageID;
-        [Abstract]
         [Export("didSelectMessageWithID:")]
-        void DidSelectMessage (NSObject messageID);
+        void DidSelectMessage(NSObject messageID);
     }
 
     interface IUAMessageCenterListViewDelegate { }
@@ -573,6 +571,14 @@ namespace UrbanAirship {
         [Export("cellSeparatorColor", ArgumentSemantic.Strong)]
         UIColor CellSeparatorColor { get; set; }
 
+        // @property (nonatomic, assign, unsafe_unretained, readwrite) UIEdgeInsets cellSeparatorInset;
+        [Export("cellSeparatorInset", ArgumentSemantic.Assign)]
+        UIEdgeInsets CellSeparatorInset { get; set; }
+
+        // @property (nonatomic, assign, unsafe_unretained, readwrite) UITableViewCellSeparatorStyle cellSeparatorStyle;
+        [Export("cellSeparatorStyle", ArgumentSemantic.Assign)]
+        UITableViewCellSeparatorStyle CellSeparatorStyle { get; set; }
+
         // @property (nonatomic, strong, readwrite) UIColor *cellTintColor;
         [Export("cellTintColor", ArgumentSemantic.Strong)]
         UIColor CellTintColor { get; set; }
@@ -622,7 +628,7 @@ namespace UrbanAirship {
 
         // - (void)getUserData:(nonnull void (^)(UAUserData *_Nonnull))completionHandler;
         [Export("getUserData:")]
-        void GetUserData (Action<UAUserData> completionHandler);
+        void GetUserData(Action<UAUserData> completionHandler);
 
         // - (nullable UAUserData *)getUserDataSync;
         [Export("getUserDataSync")]

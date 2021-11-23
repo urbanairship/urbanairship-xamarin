@@ -1,0 +1,12 @@
+﻿<BindingAssembly>
+	<NativeReference Name="AirshipNotificationServiceExtension.xcframework">
+		<Kind>Framework</Kind>
+		<ForceLoad></ForceLoad>
+		<SmartLink>False</SmartLink>
+		<Frameworks></Frameworks>
+		<WeakFrameworks></WeakFrameworks>
+		<LinkerFlags></LinkerFlags>
+		<NeedsGccExceptionHandling></NeedsGccExceptionHandling>
+		<IsCxx></IsCxx>
+	</NativeReference>
+</BindingAssembly>

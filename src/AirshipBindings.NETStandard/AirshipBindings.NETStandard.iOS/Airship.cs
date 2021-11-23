@@ -27,15 +27,15 @@ namespace UrbanAirship.NETStandard
             AirshipAutomation.Init();
             AirshipExtendedActions.Init();
 
-            NSNotificationCenter.DefaultCenter.AddObserver(aName: (NSString)"com.urbanairship.channel.channel_created", (NSNotification notification) =>
+            NSNotificationCenter.DefaultCenter.AddObserver(aName: (NSString)UAChannel.ChannelCreatedEvent, (NSNotification notification) =>
             {
-                string channelID = notification.UserInfo["com.urbanairship.channel.identifier"].ToString();
+                string channelID = notification.UserInfo[UAChannel.ChannelIdentifierKey].ToString();
                 OnChannelCreation?.Invoke(this, new ChannelEventArgs(channelID));
             });
 
-            NSNotificationCenter.DefaultCenter.AddObserver(aName: (NSString)"com.urbanairship.channel.channel_updated", (NSNotification notification) =>
+            NSNotificationCenter.DefaultCenter.AddObserver(aName: (NSString)UAChannel.ChannelUpdatedEvent, (NSNotification notification) =>
             {
-                string channelID = notification.UserInfo["com.urbanairship.channel.identifier"].ToString();
+                string channelID = notification.UserInfo[UAChannel.ChannelIdentifierKey].ToString();
                 OnChannelUpdate?.Invoke(this, new ChannelEventArgs(channelID));
             });
 
@@ -60,7 +60,7 @@ namespace UrbanAirship.NETStandard
             add
             {
                 onDeepLinkReceived += value;
-                UAirship.Shared().WeakDeepLinkDelegate = this;
+                UAirship.Shared.WeakDeepLinkDelegate = this;
             }
             remove
             {
@@ -68,7 +68,7 @@ namespace UrbanAirship.NETStandard
 
                 if (onDeepLinkReceived == null)
                 {
-                    UAirship.Shared().WeakDeepLinkDelegate = null;
+                    UAirship.Shared.WeakDeepLinkDelegate = null;
                 }
             }
         }
@@ -80,7 +80,7 @@ namespace UrbanAirship.NETStandard
             add
             {
                 onMessageCenterDisplay += value;
-                UAMessageCenter.Shared().WeakDisplayDelegate = this;
+                UAMessageCenter.Shared.WeakDisplayDelegate = this;
             }
             remove
             {
@@ -88,7 +88,7 @@ namespace UrbanAirship.NETStandard
 
                 if (onMessageCenterDisplay == null)
                 {
-                    UAMessageCenter.Shared().WeakDisplayDelegate = null;
+                    UAMessageCenter.Shared.WeakDisplayDelegate = null;
                 }
             }
         }
@@ -105,46 +105,132 @@ namespace UrbanAirship.NETStandard
         {
             get
             {
-                return UAirship.Push().UserPushNotificationsEnabled;
+                return UAirship.Push.UserPushNotificationsEnabled;
             }
 
             set
             {
-                UAirship.Push().UserPushNotificationsEnabled = value;
+                UAirship.Push.UserPushNotificationsEnabled = value;
             }
         }
 
-        public bool DataCollectionEnabled
+        public Features EnabledFeatures
         {
             get
             {
-                return UAirship.Shared().DataCollectionEnabled;
+                return featuresFromUAFeatures(UAirship.Shared.PrivacyManager.EnabledFeatures);
             }
-
             set
             {
-                UAirship.Shared().DataCollectionEnabled = value;
+                UAirship.Shared.PrivacyManager.EnabledFeatures = uaFeaturesFromFeatures(value);
             }
         }
 
-        public bool PushTokenRegistrationEnabled
+        public void EnableFeatures(Features features)
         {
-            get
+            UAirship.Shared.PrivacyManager.EnableFeatures(uaFeaturesFromFeatures(features));
+        }
+
+        public void DisableFeatures(Features features)
+        {
+            UAirship.Shared.PrivacyManager.DisableFeatures(uaFeaturesFromFeatures(features));
+        }
+
+        public bool IsFeatureEnabled(Features feature)
+        {
+            return EnabledFeatures.HasFlag(feature);
+        }
+
+        public bool IsAnyFeatureEnabled()
+        {
+            return EnabledFeatures != Features.None;
+        }
+
+        private UAFeatures uaFeaturesFromFeatures(Features features)
+        {
+            UAFeatures uAFeatures = UAFeatures.None;
+
+            if (features.HasFlag(Features.InAppAutomation))
             {
-                return UAirship.Push().PushTokenRegistrationEnabled;
+                uAFeatures |= UAFeatures.InAppAutomation;
+            }
+            if (features.HasFlag(Features.MessageCenter))
+            {
+                uAFeatures |= UAFeatures.MessageCenter;
+            }
+            if (features.HasFlag(Features.Push))
+            {
+                uAFeatures |= UAFeatures.Push;
+            }
+            if (features.HasFlag(Features.Chat))
+            {
+                uAFeatures |= UAFeatures.Chat;
+            }
+            if (features.HasFlag(Features.Analytics))
+            {
+                uAFeatures |= UAFeatures.Analytics;
+            }
+            if (features.HasFlag(Features.TagsAndAttributes))
+            {
+                uAFeatures |= UAFeatures.TagsAndAttributes;
+            }
+            if (features.HasFlag(Features.Contacts))
+            {
+                uAFeatures |= UAFeatures.Contacts;
+            }
+            if (features.HasFlag(Features.Location))
+            {
+                uAFeatures |= UAFeatures.Location;
             }
 
-            set
+            return uAFeatures;
+        }
+
+        private Features featuresFromUAFeatures(UAFeatures uAFeatures)
+        {
+            Features features = Features.None;
+
+            if (uAFeatures.HasFlag(UAFeatures.InAppAutomation))
             {
-                UAirship.Push().PushTokenRegistrationEnabled = value;
+                features |= Features.InAppAutomation;
             }
+            if (uAFeatures.HasFlag(UAFeatures.MessageCenter))
+            {
+                features |= Features.MessageCenter;
+            }
+            if (uAFeatures.HasFlag(UAFeatures.Push))
+            {
+                features |= Features.Push;
+            }
+            if (uAFeatures.HasFlag(UAFeatures.Chat))
+            {
+                features |= Features.Chat;
+            }
+            if (uAFeatures.HasFlag(UAFeatures.Analytics))
+            {
+                features |= Features.Analytics;
+            }
+            if (uAFeatures.HasFlag(UAFeatures.TagsAndAttributes))
+            {
+                features |= Features.TagsAndAttributes;
+            }
+            if (uAFeatures.HasFlag(UAFeatures.Contacts))
+            {
+                features |= Features.Contacts;
+            }
+            if (uAFeatures.HasFlag(UAFeatures.Location))
+            {
+                features |= Features.Location;
+            }
+
+            return features;
         }
 
         public IEnumerable<string> Tags
         {
             get
             {
-                return UAirship.Channel().Tags;
+                return UAirship.Channel.Tags;
             }
         }
 
@@ -152,7 +238,7 @@ namespace UrbanAirship.NETStandard
         {
             get
             {
-                return UAirship.Channel().Identifier;
+                return UAirship.Channel.Identifier;
             }
         }
 
@@ -160,12 +246,12 @@ namespace UrbanAirship.NETStandard
         {
             get
             {
-                return UAirship.NamedUser().Identifier;
+                return UAirship.NamedUser.Identifier;
             }
 
             set
             {
-                UAirship.NamedUser().Identifier = value;
+                UAirship.NamedUser.Identifier = value;
             }
         }
 
@@ -178,12 +264,12 @@ namespace UrbanAirship.NETStandard
         {
             if (clear)
             {
-                UAirship.Channel().Tags = new string[] { };
+                UAirship.Channel.Tags = new string[] { };
             }
 
-            UAirship.Channel().AddTags(addTags);
-            UAirship.Channel().RemoveTags(removeTags);
-            UAirship.Push().UpdateRegistration();
+            UAirship.Channel.AddTags(addTags);
+            UAirship.Channel.RemoveTags(removeTags);
+            UAirship.Push.UpdateRegistration();
         }
 
         public void AddCustomEvent(CustomEvent customEvent)
@@ -218,7 +304,7 @@ namespace UrbanAirship.NETStandard
 
             if (customEvent.PropertyList != null)
             {
-                NSDictionary propertyDictionary = new NSDictionary();
+                NSDictionary<NSString, NSObject> propertyDictionary = new NSDictionary<NSString, NSObject>();
                 foreach (var property in customEvent.PropertyList)
                 {
                     if (string.IsNullOrEmpty(property.name))
@@ -249,50 +335,50 @@ namespace UrbanAirship.NETStandard
                 }
             }
 
-            UAirship.Analytics().AddEvent(uaEvent);
+            UAirship.Analytics.AddEvent(uaEvent);
         }
 
         public void TrackScreen(string screen)
         {
-            UAirship.Analytics().TrackScreen(screen);
+            UAirship.Analytics.TrackScreen(screen);
         }
 
         public void AssociateIdentifier(string key, string identifier)
         {
-            UAAssociatedIdentifiers identifiers = UAirship.Analytics().CurrentAssociatedDeviceIdentifiers();
+            UAAssociatedIdentifiers identifiers = UAirship.Analytics.CurrentAssociatedDeviceIdentifiers;
             identifiers.SetIdentifier(identifier, key);
-            UAirship.Analytics().AssociateDeviceIdentifiers(identifiers);
+            UAirship.Analytics.AssociateDeviceIdentifiers(identifiers);
         }
 
         public void DisplayMessageCenter()
         {
-            UAMessageCenter.Shared().Display();
+            UAMessageCenter.Shared.Display();
         }
 
         public void DisplayMessage(string messageId)
         {
-            UAMessageCenter.Shared().DisplayMessage(messageId);
+            UAMessageCenter.Shared.DisplayMessage(messageId);
         }
 
         public void MarkMessageRead(string messageId)
         {
             var toRead = new UAInboxMessage[1];
-            toRead[0] = UAMessageCenter.Shared().MessageList.Message(messageId);
-            UAMessageCenter.Shared().MessageList.MarkMessagesRead(toRead, null);
+            toRead[0] = UAMessageCenter.Shared.MessageList.Message(messageId);
+            UAMessageCenter.Shared.MessageList.MarkMessagesRead(toRead, null);
         }
 
         public void DeleteMessage(string messageId)
         {
             var toDelete = new UAInboxMessage[1];
-            toDelete[0] = UAMessageCenter.Shared().MessageList.Message(messageId);
-            UAMessageCenter.Shared().MessageList.MarkMessagesDeleted(toDelete, null);
+            toDelete[0] = UAMessageCenter.Shared.MessageList.Message(messageId);
+            UAMessageCenter.Shared.MessageList.MarkMessagesDeleted(toDelete, null);
         }
 
         public int MessageCenterUnreadCount
         {
             get
             {
-                return (int)UAMessageCenter.Shared().MessageList.UnreadCount;
+                return (int)UAMessageCenter.Shared.MessageList.UnreadCount;
             }
         }
 
@@ -300,7 +386,7 @@ namespace UrbanAirship.NETStandard
         {
             get
             {
-                return (int)UAMessageCenter.Shared().MessageList.MessageCount();
+                return (int)UAMessageCenter.Shared.MessageList.MessageCount();
             }
         }
 
@@ -309,7 +395,7 @@ namespace UrbanAirship.NETStandard
             get
             {
                 var messagesList = new List<MessageCenter.Message>();
-                var messages = UAMessageCenter.Shared().MessageList.Messages;
+                var messages = UAMessageCenter.Shared.MessageList.Messages;
                 foreach (var message in messages)
                 {
                     var extras = new Dictionary<string, string>();
@@ -374,7 +460,7 @@ namespace UrbanAirship.NETStandard
             return new Channel.TagGroupsEditor((List<Channel.TagGroupsEditor.TagOperation> payload) =>
             {
                 TagGroupHelper(payload, true);
-                UAirship.NamedUser().UpdateTags();
+                UAirship.NamedUser.UpdateTags();
             });
         }
 
@@ -383,7 +469,7 @@ namespace UrbanAirship.NETStandard
             return new Channel.TagGroupsEditor((List<Channel.TagGroupsEditor.TagOperation> payload) =>
             {
                 TagGroupHelper(payload, false);
-                UAirship.Push().UpdateRegistration();
+                UAirship.Push.UpdateRegistration();
             });
         }
 
@@ -396,9 +482,9 @@ namespace UrbanAirship.NETStandard
         {
             return new AttributeEditor((List<AttributeEditor.IAttributeOperation> operations) =>
             {
-                var mutations = UAAttributeMutations.Mutations();
+                var mutations = UAAttributeMutations.Mutations;
                 ApplyAttributesOperations(mutations, operations);
-                UAirship.Channel().ApplyAttributeMutations(mutations);
+                UAirship.Channel.ApplyAttributeMutations(mutations);
             });
         }
 
@@ -406,9 +492,9 @@ namespace UrbanAirship.NETStandard
         {
             return new AttributeEditor((List<AttributeEditor.IAttributeOperation> operations) =>
             {
-                var mutations = UAAttributeMutations.Mutations();
+                var mutations = UAAttributeMutations.Mutations;
                 ApplyAttributesOperations(mutations, operations);
-                UAirship.NamedUser().ApplyAttributeMutations(mutations);
+                UAirship.NamedUser.ApplyAttributeMutations(mutations);
             });
         }
 
@@ -458,15 +544,15 @@ namespace UrbanAirship.NETStandard
         {
             var namedUserActions = new Dictionary<Channel.TagGroupsEditor.OperationType, Action<string, string[]>>()
             {
-                { Channel.TagGroupsEditor.OperationType.ADD, (group, t) => UAirship.NamedUser().AddTags(t, group) },
-                { Channel.TagGroupsEditor.OperationType.REMOVE, (group, t) => UAirship.NamedUser().RemoveTags(t, group) },
-                { Channel.TagGroupsEditor.OperationType.SET, (group, t) => UAirship.NamedUser().SetTags(t, group) }
+                { Channel.TagGroupsEditor.OperationType.ADD, (group, t) => UAirship.NamedUser.AddTags(t, group) },
+                { Channel.TagGroupsEditor.OperationType.REMOVE, (group, t) => UAirship.NamedUser.RemoveTags(t, group) },
+                { Channel.TagGroupsEditor.OperationType.SET, (group, t) => UAirship.NamedUser.SetTags(t, group) }
             };
             var channelActions = new Dictionary<Channel.TagGroupsEditor.OperationType, Action<string, string[]>>()
             {
-                { Channel.TagGroupsEditor.OperationType.ADD, (group, t) => UAirship.Channel().AddTags(t, group) },
-                { Channel.TagGroupsEditor.OperationType.REMOVE, (group, t) => UAirship.Channel().RemoveTags(t, group) },
-                { Channel.TagGroupsEditor.OperationType.SET, (group, t) => UAirship.Channel().SetTags(t, group) }
+                { Channel.TagGroupsEditor.OperationType.ADD, (group, t) => UAirship.Channel.AddTags(t, group) },
+                { Channel.TagGroupsEditor.OperationType.REMOVE, (group, t) => UAirship.Channel.RemoveTags(t, group) },
+                { Channel.TagGroupsEditor.OperationType.SET, (group, t) => UAirship.Channel.SetTags(t, group) }
             };
 
             var actions = namedUser ? namedUserActions : channelActions;
@@ -503,29 +589,17 @@ namespace UrbanAirship.NETStandard
         public void DismissMessageCenterAnimated(bool animated)
         { }
 
-        public bool InAppAutomationEnabled
-        {
-            get
-            {
-                return UAInAppAutomation.Shared().Enabled;
-            }
-
-            set
-            {
-                UAInAppAutomation.Shared().Enabled = value;
-            }
-        }
 
         public bool InAppAutomationPaused
         {
             get
             {
-                return UAInAppAutomation.Shared().Paused;
+                return UAInAppAutomation.Shared.Paused;
             }
 
             set
             {
-                UAInAppAutomation.Shared().Paused = value;
+                UAInAppAutomation.Shared.Paused = value;
             }
         }
 
@@ -533,12 +607,12 @@ namespace UrbanAirship.NETStandard
         {
             get
             {
-                return TimeSpan.FromSeconds(UAInAppAutomation.Shared().InAppMessageManager.DisplayInterval);
+                return TimeSpan.FromSeconds(UAInAppAutomation.Shared.InAppMessageManager.DisplayInterval);
             }
 
             set
             {
-                UAInAppAutomation.Shared().InAppMessageManager.DisplayInterval = value.TotalSeconds;
+                UAInAppAutomation.Shared.InAppMessageManager.DisplayInterval = value.TotalSeconds;
             }
         }
     }

@@ -13,14 +13,14 @@ namespace Sample
 {
     public class PushHandler : UAPushNotificationDelegate
     {
-        public override void ReceivedBackgroundNotification(UANotificationContent notificationContent, Action<UIBackgroundFetchResult> completionHandler)
+        public override void ReceivedBackgroundNotification(NSDictionary userInfo, Action<UIBackgroundFetchResult> completionHandler)
         {
             Console.WriteLine("The application received a background notification");
 
             completionHandler(UIBackgroundFetchResult.NoData);
         }
 
-        public override void ReceivedForegroundNotification(UANotificationContent notificationContent, Action completionHandler)
+        public override void ReceivedForegroundNotification(NSDictionary userInfo, Action completionHandler)
         {
 
             // Application received a foreground notification
@@ -33,8 +33,24 @@ namespace Sample
                 return;
             }
 
-            UIAlertController alertController = UIAlertController.Create(title: notificationContent.AlertTitle,
-                                                                         message: notificationContent.AlertBody,
+            if (!userInfo.ContainsKey(new NSString("aps")))
+            {
+                return;
+            }
+
+            NSDictionary apsDict = (NSDictionary)userInfo.ValueForKey(new NSString("aps"));
+
+            if (!apsDict.ContainsKey(new NSString("alert")))
+            {
+                return;
+            }
+            NSDictionary alert = (NSDictionary)apsDict.ValueForKey(new NSString("alert"));
+
+            NSString title = (NSString)alert.ValueForKey(new NSString("title"));
+            NSString body = (NSString)alert.ValueForKey(new NSString("body"));
+
+            UIAlertController alertController = UIAlertController.Create(title: title,
+                                                                         message: body,
                                                                          preferredStyle: UIAlertControllerStyle.Alert);
 
             UIAlertAction okAction = UIAlertAction.Create(title: "OK", style: UIAlertActionStyle.Default, handler: (UIAlertAction action) =>
@@ -52,28 +68,33 @@ namespace Sample
             completionHandler();
         }
 
-        public override void ReceivedNotificationResponse(UANotificationResponse notificationResponse, Action completionHandler)
+        public override void ReceivedNotificationResponse(UNNotificationResponse notificationResponse, Action completionHandler)
         {
             Console.WriteLine("The user selected the following action identifier::{0}", notificationResponse.ActionIdentifier);
 
-            UANotificationContent notificationContent = notificationResponse.NotificationContent;
+            UNNotificationContent notificationContent = notificationResponse.Notification.Request.Content;
 
             String message = String.Format("Action Identifier:{0}", notificationResponse.ActionIdentifier);
-            String alertBody = notificationContent.AlertBody;
+            String alertBody = notificationContent.Body;
 
             if (alertBody.Length > 0)
             {
                 message += String.Format("\nAlert Body:\n{0}", alertBody);
             }
 
-            String responseText = notificationResponse.ResponseText;
-
-            if (responseText != null)
+            if (notificationResponse is UNTextInputNotificationResponse)
             {
-                message += String.Format("\nResponse:\n{0}", responseText);
+                String responseText = ((UNTextInputNotificationResponse) notificationResponse).UserText;
+
+                if (responseText != null)
+                {
+                    message += String.Format("\nResponse:\n{0}", responseText);
+                }
             }
 
-            UIAlertController alertController = UIAlertController.Create(title: notificationContent.AlertTitle,
+ 
+
+            UIAlertController alertController = UIAlertController.Create(title: notificationContent.Title,
                                                                          message: alertBody,
                                                                          preferredStyle: UIAlertControllerStyle.Alert);
 

@@ -98,31 +98,125 @@ namespace UrbanAirship.NETStandard
             }
         }
 
-        public bool DataCollectionEnabled
+        public Features EnabledFeatures
         {
             get
             {
-                return UAirship.Shared().DataCollectionEnabled;
+                return featuresFromUAFeatures(UAirship.Shared().PrivacyManager.EnabledFeatures);
             }
-
             set
             {
-                UAirship.Shared().DataCollectionEnabled = value;
+                UAirship.Shared().PrivacyManager.SetEnabledFeatures(uaFeaturesFromFeatures(value));
             }
         }
 
-        public bool PushTokenRegistrationEnabled
+        public void EnableFeatures(Features features)
         {
-            get
+            UAirship.Shared().PrivacyManager.Enable(uaFeaturesFromFeatures(features));
+        }
+
+        public void DisableFeatures(Features features)
+        {
+            UAirship.Shared().PrivacyManager.Disable(uaFeaturesFromFeatures(features));
+        }
+
+        public bool IsFeatureEnabled(Features feature)
+        {
+            return EnabledFeatures.HasFlag(feature);
+        }
+
+        public bool IsAnyFeatureEnabled()
+        {
+            return EnabledFeatures != Features.None;
+        }
+
+        private int[]  uaFeaturesFromFeatures(Features features)
+        {
+            List<int> uAFeatures = new List<int>();
+
+            if (features.HasFlag(Features.InAppAutomation))
             {
-                return UAirship.Shared().PushManager.PushTokenRegistrationEnabled;
+                uAFeatures.Add(PrivacyManager.FeatureInAppAutomation);
+            }
+            if (features.HasFlag(Features.MessageCenter))
+            {
+                uAFeatures.Add(PrivacyManager.FeatureMessageCenter);
+            }
+            if (features.HasFlag(Features.Push))
+            {
+                uAFeatures.Add(PrivacyManager.FeaturePush);
+            }
+            if (features.HasFlag(Features.Chat))
+            {
+                uAFeatures.Add(PrivacyManager.FeatureChat);
+            }
+            if (features.HasFlag(Features.Analytics))
+            {
+                uAFeatures.Add(PrivacyManager.FeatureAnalytics);
+            }
+            if (features.HasFlag(Features.TagsAndAttributes))
+            {
+                uAFeatures.Add(PrivacyManager.FeatureTagsAndAttributes);
+            }
+            if (features.HasFlag(Features.Contacts))
+            {
+                uAFeatures.Add(PrivacyManager.FeatureContacts);
+            }
+            if (features.HasFlag(Features.Location))
+            {
+                uAFeatures.Add(PrivacyManager.FeatureLocation);
             }
 
-            set
-            {
-                UAirship.Shared().PushManager.PushTokenRegistrationEnabled = value;
-            }
+            return uAFeatures.ToArray();
         }
+
+        private Features featuresFromUAFeatures(int uAFeatures)
+        {
+            Features features = Features.None;
+
+            if ((uAFeatures & PrivacyManager.FeatureInAppAutomation) == PrivacyManager.FeatureInAppAutomation)
+            {
+                features |= Features.InAppAutomation;
+            }
+
+            if ((uAFeatures & PrivacyManager.FeatureMessageCenter) == PrivacyManager.FeatureMessageCenter)
+            {
+                features |= Features.MessageCenter;
+            }
+
+            if ((uAFeatures & PrivacyManager.FeaturePush) == PrivacyManager.FeaturePush)
+            {
+                features |= Features.Push;
+            }
+
+            if ((uAFeatures & PrivacyManager.FeatureChat) == PrivacyManager.FeatureChat)
+            {
+                features |= Features.Chat;
+            }
+
+            if ((uAFeatures & PrivacyManager.FeatureAnalytics) == PrivacyManager.FeatureAnalytics)
+            {
+                features |= Features.Analytics;
+            }
+
+            if ((uAFeatures & PrivacyManager.FeatureTagsAndAttributes) == PrivacyManager.FeatureTagsAndAttributes)
+            {
+                features |= Features.TagsAndAttributes;
+            }
+
+            if ((uAFeatures & PrivacyManager.FeatureContacts) == PrivacyManager.FeatureContacts)
+            {
+                features |= Features.Contacts;
+            }
+
+            if ((uAFeatures & PrivacyManager.FeatureLocation) == PrivacyManager.FeatureLocation)
+            {
+                features |= Features.Location;
+            }
+
+            return features;
+        }
+
 
         public IEnumerable<string> Tags
         {

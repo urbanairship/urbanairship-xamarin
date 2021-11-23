@@ -28,7 +28,7 @@ namespace UrbanAirship.NETStandard
         }
 
         /// <summary>
-        /// Indicates whether notifications are enabled.
+        /// Indicates whether user notifications are enabled.
         /// </summary>
         /// <value><c>true</c> if notifications are enabled; otherwise, <c>false</c>.</value>
         public bool UserNotificationsEnabled
@@ -38,23 +38,54 @@ namespace UrbanAirship.NETStandard
         }
 
         /// <summary>
-        /// Indicates whether data collection is enabled.
+        /// Currently enabled features.
         /// </summary>
-        /// <value><c>true</c> if data collection is enabled; otherwise, <c>false</c>.</value>
-        public bool DataCollectionEnabled
+        /// <value>The currently enabled features</value>
+        public Features EnabledFeatures
         {
             get { throw new NotImplementedException(BaitWithoutSwitchMessage); }
             set { throw new NotImplementedException(BaitWithoutSwitchMessage); }
         }
 
         /// <summary>
-        /// Indicates whether push token registration is enabled.
+        /// Enables particular features.
         /// </summary>
-        /// <value><c>true</c> if push token registration is enabled; otherwise, <c>false</c>.</value>
-        public bool PushTokenRegistrationEnabled
+        /// <param name="features">The features.</param>
+        public void EnableFeatures(Features features)
         {
-            get { throw new NotImplementedException(BaitWithoutSwitchMessage); }
-            set { throw new NotImplementedException(BaitWithoutSwitchMessage); }
+            throw new NotImplementedException(BaitWithoutSwitchMessage);
+
+        }
+
+        /// <summary>
+        /// Disables particular features.
+        /// </summary>
+        /// <param name="features">The features.</param>
+        public void DisableFeatures(Features features)
+        {
+            throw new NotImplementedException(BaitWithoutSwitchMessage);
+
+        }
+
+        /// <summary>
+        /// Indicates whether particular features are enabled.
+        /// </summary>
+        /// <param name="features">The features.</param>
+        /// <value><c>true</c> if the features are enabled; otherwise, <c>false</c>.</value>
+        public bool IsFeatureEnabled(Features features)
+        {
+            throw new NotImplementedException(BaitWithoutSwitchMessage);
+
+        }
+
+        /// <summary>
+        /// Indicates whether any feature is enabled.
+        /// </summary>
+        /// <value><c>true</c> if any feature is enabled; otherwise, <c>false</c>.</value>
+        public bool IsAnyFeatureEnabled()
+        {
+            throw new NotImplementedException(BaitWithoutSwitchMessage);
+
         }
 
         /// <summary>

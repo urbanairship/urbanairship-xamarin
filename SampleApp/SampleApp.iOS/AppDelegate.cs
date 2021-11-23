@@ -10,6 +10,7 @@ using Foundation;
 using UIKit;
 using ObjCRuntime;
 using CoreFoundation;
+using UserNotifications;
 
 using Sample;
 
@@ -29,7 +30,7 @@ namespace SampleApp.iOS
         {
             // Set log level for debugging config loading (optional)
             // It will be set to the value in the loaded config upon takeOff
-            UAirship.SetLogLevel(UALogLevel.Trace);
+            UAirship.LogLevel = UALogLevel.Trace;
 
             // Populate AirshipConfig.plist with your app's info from https://go.urbanairship.com
             // or set runtime properties here.
@@ -44,28 +45,28 @@ namespace SampleApp.iOS
             WarnIfSimulator();
 
             // Bootstrap the Airship SDK
-            UAirship.TakeOff(config);
+            UAirship.TakeOff(config, (NSDictionary<NSString, NSObject>)options);
 
             Console.WriteLine("Config:{0}", config);
 
-            UAirship.Push().ResetBadge();
+            UAirship.Push.ResetBadge();
 
             pushHandler = new PushHandler();
-            UAirship.Push().PushNotificationDelegate = pushHandler;
+            UAirship.Push.PushNotificationDelegate = pushHandler;
 
-            UANotificationAction sampleAction = UANotificationAction.Action("sampleAction", title: "Sample Action Title", options: UANotificationActionOptions.Destructive);
+            UNNotificationAction sampleAction = UNNotificationAction.FromIdentifier("sampleAction", title: "Sample Action Title", options: UNNotificationActionOptions.Destructive);
 
-            var sampleActions = new UANotificationAction[] { sampleAction };
+            var sampleActions = new UNNotificationAction[] { sampleAction };
             var intentIdentifiers = new string[] { };
 
             // Create category for sample content extension
-            UANotificationCategory[] SampleCategoryArray = { UANotificationCategory.Category(identifier: "sample-extension-category", actions: sampleActions, intentIdentifiers: intentIdentifiers, options: UANotificationCategoryOptions.None) };
-            NSSet categories = NSSet.MakeNSObjectSet(SampleCategoryArray);
+            UNNotificationCategory[] SampleCategoryArray = { UNNotificationCategory.FromIdentifier("sample-extension-category", actions: sampleActions, intentIdentifiers: intentIdentifiers, options: UNNotificationCategoryOptions.None) };
+            NSSet<UNNotificationCategory> categories = new NSSet<UNNotificationCategory>(SampleCategoryArray);
 
             // Add sample content extension category to Airship custom categories
-            UAirship.Push().CustomCategories = categories;
+            UAirship.Push.CustomCategories = categories;
 
-            UAirship.Push().WeakRegistrationDelegate = this;
+            UAirship.Push.WeakRegistrationDelegate = this;
 
             NSNotificationCenter.DefaultCenter.AddObserver(new NSString("channelIDUpdated"), (notification) =>
             {
