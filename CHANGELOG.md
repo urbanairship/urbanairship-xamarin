@@ -1,5 +1,12 @@
 # Airship Xamarin Changelog
 
+##Version 15.0.0 - Nov 23, 2021
+
+Major release updating to latest Airship SDKs and adding support for Preference Center
+- Updated iOS Airship SDK to 16.1.0
+- Updated Android Airship SDK to 16.1.0
+- Added urbanairship.ios.preferencecenter and urbanairship.android.preferencecenter packages
+
 ## Version 14.2.0 - May 21, 2021
 Minor release updating to latest Airship SDKs and adding support for live chat.
 
