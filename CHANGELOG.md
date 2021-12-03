@@ -1,6 +1,6 @@
 # Airship Xamarin Changelog
 
-## Version 15.1.0 - Dec 2, 2021
+## Version 15.0.1 - Dec 3, 2021
 Minor release updating to latest iOS Airship SDK.
 
 ### Changes
