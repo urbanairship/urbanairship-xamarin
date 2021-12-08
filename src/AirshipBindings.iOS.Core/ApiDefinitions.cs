@@ -260,6 +260,12 @@ namespace UrbanAirship {
 		IntPtr Constructor(NSObject[] activityItems, [NullAllowed] UIActivity[] applicationActivities);
 	}
 
+    // @interface UABlockAction : NSObject <UAAction>
+    [BaseType(typeof(NSObject))]
+    interface UABlockAction : IUAAction
+    {
+    }
+    
 	// @interface UAAddCustomEventAction : NSObject <UAAction>
 	[BaseType(typeof(NSObject))]
 	interface UAAddCustomEventAction : IUAAction
