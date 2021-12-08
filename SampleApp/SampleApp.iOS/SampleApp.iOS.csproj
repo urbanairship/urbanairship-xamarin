@@ -89,25 +89,25 @@
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />
     <PackageReference Include="Xamarin.Essentials" Version="1.6.1" />
     <PackageReference Include="urbanairship.ios.messagecenter">
-      <Version>16.1.0</Version>
+      <Version>16.1.1</Version>
     </PackageReference>
     <PackageReference Include="urbanairship.ios.basement">
-      <Version>16.1.0</Version>
+      <Version>16.1.1</Version>
     </PackageReference>
     <PackageReference Include="urbanairship.ios.extendedactions">
-      <Version>16.1.0</Version>
+      <Version>16.1.1</Version>
     </PackageReference>
     <PackageReference Include="urbanairship.ios.chat">
-      <Version>16.1.0</Version>
+      <Version>16.1.1</Version>
     </PackageReference>
     <PackageReference Include="urbanairship.ios.automation">
-      <Version>16.1.0</Version>
+      <Version>16.1.1</Version>
     </PackageReference>
     <PackageReference Include="urbanairship.ios.core">
-      <Version>16.1.0</Version>
+      <Version>16.1.1</Version>
     </PackageReference>
     <PackageReference Include="urbanairship.ios.preferencecenter">
-      <Version>16.1.0</Version>
+      <Version>16.1.1</Version>
     </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
