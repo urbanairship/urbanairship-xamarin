@@ -259,12 +259,6 @@ namespace UrbanAirship {
 		[DesignatedInitializer]
 		IntPtr Constructor(NSObject[] activityItems, [NullAllowed] UIActivity[] applicationActivities);
 	}
-
-    // @interface UABlockAction : NSObject <UAAction>
-    [BaseType(typeof(NSObject))]
-    interface UABlockAction : IUAAction
-    {
-    }
     
 	// @interface UAAddCustomEventAction : NSObject <UAAction>
 	[BaseType(typeof(NSObject))]
@@ -902,6 +896,26 @@ namespace UrbanAirship {
 		[Export("hide")]
 		void Hide();
 	}
+
+	delegate bool IUAActionPredicate(UAActionArguments arg0);
+	delegate void IUAActionCompletionHandler(UAActionResult arg0);
+	delegate void IUAActionBlock(UAActionArguments arg0, IUAActionCompletionHandler arg1);
+
+
+	// @interface UABlockAction : NSObject <UAAction>
+	[BaseType(typeof(NSObject))]
+	[DisableDefaultCtor]
+	interface UABlockAction : IUAAction
+	{
+		// -(instancetype _Nonnull)initWithPredicate:(UAActionPredicate _Nullable)predicate block:(UAActionBlock _Nonnull)block __attribute__((objc_designated_initializer));
+		[Export("initWithPredicate:block:")]
+		[DesignatedInitializer]
+		IntPtr Constructor([NullAllowed] IUAActionPredicate predicate, IUAActionBlock block);
+
+        // -(instancetype _Nonnull)initWithBlock:(UAActionBlock _Nonnull)block;
+        [Export("initWithBlock:")]
+        IntPtr Constructor(IUAActionBlock block);
+    }
 
 	// @interface UAChannel : NSObject <UAComponent, UAChannelProtocol>
 	[BaseType(typeof(NSObject))]
