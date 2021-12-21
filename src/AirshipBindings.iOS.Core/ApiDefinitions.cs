@@ -899,8 +899,7 @@ namespace UrbanAirship {
 
 	delegate bool IUAActionPredicate(UAActionArguments arg0);
 	delegate void IUAActionCompletionHandler(UAActionResult arg0);
-	delegate void IUAActionBlock(UAActionArguments arg0, IUAActionCompletionHandler arg1);
-
+	delegate void IUAActionBlock(UAActionArguments arg0, [BlockCallback] IUAActionCompletionHandler arg1);
 
 	// @interface UABlockAction : NSObject <UAAction>
 	[BaseType(typeof(NSObject))]
