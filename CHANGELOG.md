@@ -9,7 +9,7 @@ Minor release updating to latest iOS Airship SDK.
 - Fixed running actions from a notification action button
 - Fixed channel registration causing extra attribute operations in the RTDS stream
 - Add BlockAction type.
-- Fix packages references conflits in the preference center nuspec.
+- Fix packages references conflicts in the preference center nuspec.
 
 ##Version 15.0.0 - Nov 23, 2021
 
