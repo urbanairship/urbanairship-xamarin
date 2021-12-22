@@ -27,4 +27,7 @@
       <DependentUpon>AppResources.resx</DependentUpon>
     </Compile>
   </ItemGroup>
+  <ItemGroup>
+    <None Remove="urbanairship.netstandard" />
+  </ItemGroup>
 </Project>
