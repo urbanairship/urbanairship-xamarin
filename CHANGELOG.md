@@ -1,5 +1,16 @@
 # Airship Xamarin Changelog
 
+## Version 15.0.1 - Dec 22, 2021
+Minor release updating to latest iOS Airship SDK.
+
+### Changes
+- Updated iOS SDK to 16.1.2
+- Fixed Message Center navigation style on iOS 15
+- Fixed running actions from a notification action button
+- Fixed channel registration causing extra attribute operations in the RTDS stream
+- Add BlockAction type.
+- Fix packages references conflicts in the preference center nuspec.
+
 ##Version 15.0.0 - Nov 23, 2021
 
 Major release updating to latest Airship SDKs and adding support for Preference Center

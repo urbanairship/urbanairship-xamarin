@@ -12,10 +12,10 @@
       <dependencies>
          <group targetFramework="MonoAndroid4.1">
             <dependency id="urbanairship.android.core" version="16.1.0"/>
-            <dependency id="Xamarin.Kotlin.StdLib" version="1.4.32.1" />
-            <dependency id="Xamarin.Kotlin.StdLib.Jdk8" version="1.4.32.1" />
-            <dependency id="Xamarin.KotlinX.Coroutines.Core" version="1.4.3.1" />
-            <dependency id="Xamarin.KotlinX.Coroutines.Android" version="1.4.3.1" />
+            <dependency id="Xamarin.Kotlin.StdLib" version="1.5.31.2" />
+            <dependency id="Xamarin.Kotlin.StdLib.Jdk8" version="1.5.31.2" />
+            <dependency id="Xamarin.KotlinX.Coroutines.Core" version="1.5.2.2" />
+            <dependency id="Xamarin.KotlinX.Coroutines.Android" version="1.5.2.2" />
             <dependency id="Xamarin.AndroidX.ConstraintLayout" version="2.1.1.2" />
             <dependency id="Xamarin.AndroidX.Paging.Runtime" version="2.1.2.7" />
             <dependency id="Xamarin.AndroidX.Room.Runtime" version="2.3.0.4"/>

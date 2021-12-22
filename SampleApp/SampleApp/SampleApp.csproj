@@ -14,7 +14,7 @@
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2244" />
     <PackageReference Include="Xamarin.Essentials" Version="1.6.1" />
     <PackageReference Include="Xamarin.Plugins.Clipboard" Version="2.3.0" />
-    <PackageReference Include="urbanairship.netstandard" Version="15.0.0" />
+    <PackageReference Include="urbanairship.netstandard" Version="15.0.1" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Update="AppResources.resx">
@@ -26,5 +26,8 @@
     <Compile Update="AppResources.Designer.cs">
       <DependentUpon>AppResources.resx</DependentUpon>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="urbanairship.netstandard" />
   </ItemGroup>
 </Project>
