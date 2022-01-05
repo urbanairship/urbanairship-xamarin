@@ -15,7 +15,7 @@
 
    <files>
      <file src="src/AirshipBindings.iOS.Accengage/bin/release/AirshipBindings.iOS.Accengage.dll" target="lib/Xamarin.iOS10" />
-     <file src="src/AirshipBindings.iOS.Accengage/bin/Release/AirshipBindings.iOS.Accengage.resources/**" target="content/AirshipBindings.iOS.Accengage.resources" />
+     <file src="src/AirshipBindings.iOS.Accengage/bin/Release/AirshipBindings.iOS.Accengage.resources/**" target="content/Accengage.resources" />
      <file src="src/AirshipBindings.iOS.Accengage/urbanairship.ios.accengage.targets" target="build/urbanairship.ios.accengage.targets" />
    </files>
 </package>

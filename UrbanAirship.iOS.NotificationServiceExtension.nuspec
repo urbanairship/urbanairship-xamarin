@@ -15,7 +15,7 @@
 
    <files>
      <file src="src/AirshipBindings.iOS.NotificationServiceExtension/bin/Release/AirshipBindings.iOS.NotificationServiceExtension.dll" target="lib/Xamarin.iOS10" />
-     <file src="src/AirshipBindings.iOS.NotificationServiceExtension/bin/Release/AirshipBindings.iOS.NotificationServiceExtension.resources/**" target="content/AirshipBindings.iOS.NotificationServiceExtension.resources" />
+     <file src="src/AirshipBindings.iOS.NotificationServiceExtension/bin/Release/AirshipBindings.iOS.NotificationServiceExtension.resources/**" target="content/NotificationServiceExtension.resources" />
      <file src="src/AirshipBindings.iOS.NotificationServiceExtension/urbanairship.ios.notificationserviceextension.targets" target="build/urbanairship.ios.notificationserviceextension.targets" />
    </files>
 </package>
