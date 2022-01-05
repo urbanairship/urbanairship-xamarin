@@ -86,7 +86,7 @@
     <Reference Include="System.Core" />
     <Reference Include="Xamarin.iOS" />
     <Reference Include="AirshipBindings.iOS.NotificationServiceExtension">
-      <HintPath>..\..\packages\urbanairship.ios.notificationserviceextension.16.1.0\lib\Xamarin.iOS10\AirshipBindings.iOS.NotificationServiceExtension.dll</HintPath>
+      <HintPath>..\..\packages\urbanairship.ios.notificationserviceextension.16.1.2\lib\Xamarin.iOS10\AirshipBindings.iOS.NotificationServiceExtension.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -95,44 +95,44 @@
   <ItemGroup>
     <None Include="Info.plist" />
     <None Include="Entitlements.plist" />
-    <None Include="AirshipBindings.iOS.NotificationServiceExtension.resources\manifest" />
-    <None Include="AirshipBindings.iOS.NotificationServiceExtension.resources\AirshipNotificationServiceExtension.xcframework\ios-arm64_x86_64-simulator\AirshipNotificationServiceExtension.framework\_CodeSignature\CodeResources" />
-    <None Include="AirshipBindings.iOS.NotificationServiceExtension.resources\AirshipNotificationServiceExtension.xcframework\ios-arm64_x86_64-simulator\AirshipNotificationServiceExtension.framework\Modules\module.modulemap" />
-    <None Include="AirshipBindings.iOS.NotificationServiceExtension.resources\AirshipNotificationServiceExtension.xcframework\ios-arm64_x86_64-simulator\AirshipNotificationServiceExtension.framework\Info.plist" />
-    <None Include="AirshipBindings.iOS.NotificationServiceExtension.resources\AirshipNotificationServiceExtension.xcframework\ios-arm64_x86_64-simulator\AirshipNotificationServiceExtension.framework\Headers\UANotificationServiceExtension.h" />
-    <None Include="AirshipBindings.iOS.NotificationServiceExtension.resources\AirshipNotificationServiceExtension.xcframework\ios-arm64_x86_64-simulator\AirshipNotificationServiceExtension.framework\Headers\UAMediaAttachmentPayload.h" />
-    <None Include="AirshipBindings.iOS.NotificationServiceExtension.resources\AirshipNotificationServiceExtension.xcframework\ios-arm64_x86_64-simulator\AirshipNotificationServiceExtension.framework\Headers\AirshipNotificationServiceExtension.h" />
-    <None Include="AirshipBindings.iOS.NotificationServiceExtension.resources\AirshipNotificationServiceExtension.xcframework\ios-arm64_x86_64-simulator\AirshipNotificationServiceExtension.framework\AirshipNotificationServiceExtension" />
-    <None Include="AirshipBindings.iOS.NotificationServiceExtension.resources\AirshipNotificationServiceExtension.xcframework\ios-arm64_x86_64-maccatalyst\AirshipNotificationServiceExtension.framework\Versions\Current\Resources\Info.plist" />
-    <None Include="AirshipBindings.iOS.NotificationServiceExtension.resources\AirshipNotificationServiceExtension.xcframework\ios-arm64_x86_64-maccatalyst\AirshipNotificationServiceExtension.framework\Versions\Current\Modules\module.modulemap" />
-    <None Include="AirshipBindings.iOS.NotificationServiceExtension.resources\AirshipNotificationServiceExtension.xcframework\ios-arm64_x86_64-maccatalyst\AirshipNotificationServiceExtension.framework\Versions\Current\Headers\UANotificationServiceExtension.h" />
-    <None Include="AirshipBindings.iOS.NotificationServiceExtension.resources\AirshipNotificationServiceExtension.xcframework\ios-arm64_x86_64-maccatalyst\AirshipNotificationServiceExtension.framework\Versions\Current\Headers\UAMediaAttachmentPayload.h" />
-    <None Include="AirshipBindings.iOS.NotificationServiceExtension.resources\AirshipNotificationServiceExtension.xcframework\ios-arm64_x86_64-maccatalyst\AirshipNotificationServiceExtension.framework\Versions\Current\Headers\AirshipNotificationServiceExtension.h" />
-    <None Include="AirshipBindings.iOS.NotificationServiceExtension.resources\AirshipNotificationServiceExtension.xcframework\ios-arm64_x86_64-maccatalyst\AirshipNotificationServiceExtension.framework\Versions\Current\AirshipNotificationServiceExtension" />
-    <None Include="AirshipBindings.iOS.NotificationServiceExtension.resources\AirshipNotificationServiceExtension.xcframework\ios-arm64_x86_64-maccatalyst\AirshipNotificationServiceExtension.framework\Versions\A\Resources\Info.plist" />
-    <None Include="AirshipBindings.iOS.NotificationServiceExtension.resources\AirshipNotificationServiceExtension.xcframework\ios-arm64_x86_64-maccatalyst\AirshipNotificationServiceExtension.framework\Versions\A\Modules\module.modulemap" />
-    <None Include="AirshipBindings.iOS.NotificationServiceExtension.resources\AirshipNotificationServiceExtension.xcframework\ios-arm64_x86_64-maccatalyst\AirshipNotificationServiceExtension.framework\Versions\A\Headers\UANotificationServiceExtension.h" />
-    <None Include="AirshipBindings.iOS.NotificationServiceExtension.resources\AirshipNotificationServiceExtension.xcframework\ios-arm64_x86_64-maccatalyst\AirshipNotificationServiceExtension.framework\Versions\A\Headers\UAMediaAttachmentPayload.h" />
-    <None Include="AirshipBindings.iOS.NotificationServiceExtension.resources\AirshipNotificationServiceExtension.xcframework\ios-arm64_x86_64-maccatalyst\AirshipNotificationServiceExtension.framework\Versions\A\Headers\AirshipNotificationServiceExtension.h" />
-    <None Include="AirshipBindings.iOS.NotificationServiceExtension.resources\AirshipNotificationServiceExtension.xcframework\ios-arm64_x86_64-maccatalyst\AirshipNotificationServiceExtension.framework\Versions\A\AirshipNotificationServiceExtension" />
-    <None Include="AirshipBindings.iOS.NotificationServiceExtension.resources\AirshipNotificationServiceExtension.xcframework\ios-arm64_x86_64-maccatalyst\AirshipNotificationServiceExtension.framework\Resources\Info.plist" />
-    <None Include="AirshipBindings.iOS.NotificationServiceExtension.resources\AirshipNotificationServiceExtension.xcframework\ios-arm64_x86_64-maccatalyst\AirshipNotificationServiceExtension.framework\Modules\module.modulemap" />
-    <None Include="AirshipBindings.iOS.NotificationServiceExtension.resources\AirshipNotificationServiceExtension.xcframework\ios-arm64_x86_64-maccatalyst\AirshipNotificationServiceExtension.framework\Headers\UANotificationServiceExtension.h" />
-    <None Include="AirshipBindings.iOS.NotificationServiceExtension.resources\AirshipNotificationServiceExtension.xcframework\ios-arm64_x86_64-maccatalyst\AirshipNotificationServiceExtension.framework\Headers\UAMediaAttachmentPayload.h" />
-    <None Include="AirshipBindings.iOS.NotificationServiceExtension.resources\AirshipNotificationServiceExtension.xcframework\ios-arm64_x86_64-maccatalyst\AirshipNotificationServiceExtension.framework\Headers\AirshipNotificationServiceExtension.h" />
-    <None Include="AirshipBindings.iOS.NotificationServiceExtension.resources\AirshipNotificationServiceExtension.xcframework\ios-arm64_x86_64-maccatalyst\AirshipNotificationServiceExtension.framework\AirshipNotificationServiceExtension" />
-    <None Include="AirshipBindings.iOS.NotificationServiceExtension.resources\AirshipNotificationServiceExtension.xcframework\ios-arm64\AirshipNotificationServiceExtension.framework\Modules\module.modulemap" />
-    <None Include="AirshipBindings.iOS.NotificationServiceExtension.resources\AirshipNotificationServiceExtension.xcframework\ios-arm64\AirshipNotificationServiceExtension.framework\Info.plist" />
-    <None Include="AirshipBindings.iOS.NotificationServiceExtension.resources\AirshipNotificationServiceExtension.xcframework\ios-arm64\AirshipNotificationServiceExtension.framework\Headers\UANotificationServiceExtension.h" />
-    <None Include="AirshipBindings.iOS.NotificationServiceExtension.resources\AirshipNotificationServiceExtension.xcframework\ios-arm64\AirshipNotificationServiceExtension.framework\Headers\UAMediaAttachmentPayload.h" />
-    <None Include="AirshipBindings.iOS.NotificationServiceExtension.resources\AirshipNotificationServiceExtension.xcframework\ios-arm64\AirshipNotificationServiceExtension.framework\Headers\AirshipNotificationServiceExtension.h" />
-    <None Include="AirshipBindings.iOS.NotificationServiceExtension.resources\AirshipNotificationServiceExtension.xcframework\ios-arm64\AirshipNotificationServiceExtension.framework\AirshipNotificationServiceExtension" />
-    <None Include="AirshipBindings.iOS.NotificationServiceExtension.resources\AirshipNotificationServiceExtension.xcframework\Info.plist" />
+    <None Include="NotificationServiceExtension.resources\manifest" />
+    <None Include="NotificationServiceExtension.resources\AirshipNotificationServiceExtension.xcframework\ios-arm64_x86_64-simulator\AirshipNotificationServiceExtension.framework\_CodeSignature\CodeResources" />
+    <None Include="NotificationServiceExtension.resources\AirshipNotificationServiceExtension.xcframework\ios-arm64_x86_64-simulator\AirshipNotificationServiceExtension.framework\Modules\module.modulemap" />
+    <None Include="NotificationServiceExtension.resources\AirshipNotificationServiceExtension.xcframework\ios-arm64_x86_64-simulator\AirshipNotificationServiceExtension.framework\Info.plist" />
+    <None Include="NotificationServiceExtension.resources\AirshipNotificationServiceExtension.xcframework\ios-arm64_x86_64-simulator\AirshipNotificationServiceExtension.framework\Headers\UANotificationServiceExtension.h" />
+    <None Include="NotificationServiceExtension.resources\AirshipNotificationServiceExtension.xcframework\ios-arm64_x86_64-simulator\AirshipNotificationServiceExtension.framework\Headers\UAMediaAttachmentPayload.h" />
+    <None Include="NotificationServiceExtension.resources\AirshipNotificationServiceExtension.xcframework\ios-arm64_x86_64-simulator\AirshipNotificationServiceExtension.framework\Headers\AirshipNotificationServiceExtension.h" />
+    <None Include="NotificationServiceExtension.resources\AirshipNotificationServiceExtension.xcframework\ios-arm64_x86_64-simulator\AirshipNotificationServiceExtension.framework\AirshipNotificationServiceExtension" />
+    <None Include="NotificationServiceExtension.resources\AirshipNotificationServiceExtension.xcframework\ios-arm64_x86_64-maccatalyst\AirshipNotificationServiceExtension.framework\Versions\Current\Resources\Info.plist" />
+    <None Include="NotificationServiceExtension.resources\AirshipNotificationServiceExtension.xcframework\ios-arm64_x86_64-maccatalyst\AirshipNotificationServiceExtension.framework\Versions\Current\Modules\module.modulemap" />
+    <None Include="NotificationServiceExtension.resources\AirshipNotificationServiceExtension.xcframework\ios-arm64_x86_64-maccatalyst\AirshipNotificationServiceExtension.framework\Versions\Current\Headers\UANotificationServiceExtension.h" />
+    <None Include="NotificationServiceExtension.resources\AirshipNotificationServiceExtension.xcframework\ios-arm64_x86_64-maccatalyst\AirshipNotificationServiceExtension.framework\Versions\Current\Headers\UAMediaAttachmentPayload.h" />
+    <None Include="NotificationServiceExtension.resources\AirshipNotificationServiceExtension.xcframework\ios-arm64_x86_64-maccatalyst\AirshipNotificationServiceExtension.framework\Versions\Current\Headers\AirshipNotificationServiceExtension.h" />
+    <None Include="NotificationServiceExtension.resources\AirshipNotificationServiceExtension.xcframework\ios-arm64_x86_64-maccatalyst\AirshipNotificationServiceExtension.framework\Versions\Current\AirshipNotificationServiceExtension" />
+    <None Include="NotificationServiceExtension.resources\AirshipNotificationServiceExtension.xcframework\ios-arm64_x86_64-maccatalyst\AirshipNotificationServiceExtension.framework\Versions\A\Resources\Info.plist" />
+    <None Include="NotificationServiceExtension.resources\AirshipNotificationServiceExtension.xcframework\ios-arm64_x86_64-maccatalyst\AirshipNotificationServiceExtension.framework\Versions\A\Modules\module.modulemap" />
+    <None Include="NotificationServiceExtension.resources\AirshipNotificationServiceExtension.xcframework\ios-arm64_x86_64-maccatalyst\AirshipNotificationServiceExtension.framework\Versions\A\Headers\UANotificationServiceExtension.h" />
+    <None Include="NotificationServiceExtension.resources\AirshipNotificationServiceExtension.xcframework\ios-arm64_x86_64-maccatalyst\AirshipNotificationServiceExtension.framework\Versions\A\Headers\UAMediaAttachmentPayload.h" />
+    <None Include="NotificationServiceExtension.resources\AirshipNotificationServiceExtension.xcframework\ios-arm64_x86_64-maccatalyst\AirshipNotificationServiceExtension.framework\Versions\A\Headers\AirshipNotificationServiceExtension.h" />
+    <None Include="NotificationServiceExtension.resources\AirshipNotificationServiceExtension.xcframework\ios-arm64_x86_64-maccatalyst\AirshipNotificationServiceExtension.framework\Versions\A\AirshipNotificationServiceExtension" />
+    <None Include="NotificationServiceExtension.resources\AirshipNotificationServiceExtension.xcframework\ios-arm64_x86_64-maccatalyst\AirshipNotificationServiceExtension.framework\Resources\Info.plist" />
+    <None Include="NotificationServiceExtension.resources\AirshipNotificationServiceExtension.xcframework\ios-arm64_x86_64-maccatalyst\AirshipNotificationServiceExtension.framework\Modules\module.modulemap" />
+    <None Include="NotificationServiceExtension.resources\AirshipNotificationServiceExtension.xcframework\ios-arm64_x86_64-maccatalyst\AirshipNotificationServiceExtension.framework\Headers\UANotificationServiceExtension.h" />
+    <None Include="NotificationServiceExtension.resources\AirshipNotificationServiceExtension.xcframework\ios-arm64_x86_64-maccatalyst\AirshipNotificationServiceExtension.framework\Headers\UAMediaAttachmentPayload.h" />
+    <None Include="NotificationServiceExtension.resources\AirshipNotificationServiceExtension.xcframework\ios-arm64_x86_64-maccatalyst\AirshipNotificationServiceExtension.framework\Headers\AirshipNotificationServiceExtension.h" />
+    <None Include="NotificationServiceExtension.resources\AirshipNotificationServiceExtension.xcframework\ios-arm64_x86_64-maccatalyst\AirshipNotificationServiceExtension.framework\AirshipNotificationServiceExtension" />
+    <None Include="NotificationServiceExtension.resources\AirshipNotificationServiceExtension.xcframework\ios-arm64\AirshipNotificationServiceExtension.framework\Modules\module.modulemap" />
+    <None Include="NotificationServiceExtension.resources\AirshipNotificationServiceExtension.xcframework\ios-arm64\AirshipNotificationServiceExtension.framework\Info.plist" />
+    <None Include="NotificationServiceExtension.resources\AirshipNotificationServiceExtension.xcframework\ios-arm64\AirshipNotificationServiceExtension.framework\Headers\UANotificationServiceExtension.h" />
+    <None Include="NotificationServiceExtension.resources\AirshipNotificationServiceExtension.xcframework\ios-arm64\AirshipNotificationServiceExtension.framework\Headers\UAMediaAttachmentPayload.h" />
+    <None Include="NotificationServiceExtension.resources\AirshipNotificationServiceExtension.xcframework\ios-arm64\AirshipNotificationServiceExtension.framework\Headers\AirshipNotificationServiceExtension.h" />
+    <None Include="NotificationServiceExtension.resources\AirshipNotificationServiceExtension.xcframework\ios-arm64\AirshipNotificationServiceExtension.framework\AirshipNotificationServiceExtension" />
+    <None Include="NotificationServiceExtension.resources\AirshipNotificationServiceExtension.xcframework\Info.plist" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="NotificationService.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.AppExtension.CSharp.targets" />
-  <Import Project="..\..\packages\urbanairship.ios.notificationserviceextension.16.1.0\build\urbanairship.ios.notificationserviceextension.targets" Condition="Exists('..\..\packages\urbanairship.ios.notificationserviceextension.16.1.0\build\urbanairship.ios.notificationserviceextension.targets')" />
+  <Import Project="..\..\packages\urbanairship.ios.notificationserviceextension.16.1.2\build\urbanairship.ios.notificationserviceextension.targets" Condition="Exists('..\..\packages\urbanairship.ios.notificationserviceextension.16.1.2\build\urbanairship.ios.notificationserviceextension.targets')" />
 </Project>
