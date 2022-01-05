@@ -1,7 +1,7 @@
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
     <Target Name="AirshipCoreBeforeCompile" AfterTargets="BeforeCompile">
         <ItemGroup>
-            <BindingResources Include="$(MSBuildThisFileDirectory)../content/Core.resources/**/*.*" />
+            <BindingResources Include="$(MSBuildThisFileDirectory)../content/UACore.resources/**/*.*" />
         </ItemGroup>
         <Copy SourceFiles="@(BindingResources)" DestinationFolder="$(TargetDir)/AirshipBindings.iOS.Core.resources/%(RecursiveDir)" ContinueOnError="false" />
         <ItemGroup>
