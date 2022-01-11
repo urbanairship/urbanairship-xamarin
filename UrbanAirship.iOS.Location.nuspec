@@ -15,7 +15,7 @@
 
    <files>
      <file src="src/AirshipBindings.iOS.Location/bin/release/AirshipBindings.iOS.Location.dll" target="lib/Xamarin.iOS10" />
-     <file src="src/AirshipBindings.iOS.Location/bin/Release/AirshipBindings.iOS.Location.resources/**" target="content/AirshipBindings.iOS.Location.resources" />
+     <file src="src/AirshipBindings.iOS.Location/bin/Release/AirshipBindings.iOS.Location.resources/**" target="content/UALocation.resources" />
      <file src="src/AirshipBindings.iOS.Location/urbanairship.ios.location.targets" target="build/urbanairship.ios.location.targets" />
    </files>
 </package>

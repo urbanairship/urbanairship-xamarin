@@ -1,7 +1,7 @@
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
     <Target Name="AirshipExtendedActionsBeforeCompile" AfterTargets="BeforeCompile">
         <ItemGroup>
-            <BindingResources Include="$(MSBuildThisFileDirectory)../content/AirshipBindings.iOS.ExtendedActions.resources/**/*.*" />
+            <BindingResources Include="$(MSBuildThisFileDirectory)../content/UAExtendedActions.resources/**/*.*" />
         </ItemGroup>
         <Copy SourceFiles="@(BindingResources)" DestinationFolder="$(TargetDir)/AirshipBindings.iOS.ExtendedActions.resources/%(RecursiveDir)" ContinueOnError="false" />
         <ItemGroup>
