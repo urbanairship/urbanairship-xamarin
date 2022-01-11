@@ -2,7 +2,7 @@
 
 
 ## Version 15.0.2 - January 12, 2022
-Minor release updating to latest Android Airship SDK and fixxing an issue with nuget package path length.
+Minor release updating to latest Android Airship SDK and fixing an issue with nuget package path length.
 
 ### Changes
 - Updated Android SDK to 16.1.1
