@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
    <metadata>
       <id>urbanairship.netstandard</id>
-      <version>15.0.2</version>
+      <version>15.0.3</version>
       <title>Airship SDK .NET Standard Library</title>
       <authors>Urban Airship, Inc.</authors>
       <projectUrl>https://github.com/urbanairship/urbanairship-xamarin</projectUrl>
@@ -20,10 +20,10 @@
          </group>
 
          <group targetFramework="Xamarin.iOS1.0">
-            <dependency id="urbanairship.ios.core" version="16.1.2"/>
-            <dependency id="urbanairship.ios.automation" version="16.1.2"/>
-            <dependency id="urbanairship.ios.extendedactions" version="16.1.2"/>
-            <dependency id="urbanairship.ios.messagecenter" version="16.1.2"/>
+            <dependency id="urbanairship.ios.core" version="16.1.2.1"/>
+            <dependency id="urbanairship.ios.automation" version="16.1.2.1"/>
+            <dependency id="urbanairship.ios.extendedactions" version="16.1.2.1"/>
+            <dependency id="urbanairship.ios.messagecenter" version="16.1.2.1"/>
          </group>
       </dependencies>
    </metadata>

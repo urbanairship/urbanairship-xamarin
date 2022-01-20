@@ -99,9 +99,9 @@ task syncRootVersion {
             androidNugetVersion = "${airshipProperties.androidVersion}.${airshipProperties.androidPackageVersion}"
         }
 
-        def iosNugetVersion = airshipProperties.iosVersion
+        def iosNugetVersion = airshipProperties.iosNugetVersion
         if (airshipProperties['iosPackageVersion']) {
-            iosNugetVersion = "${airshipProperties.iosVersion}.${airshipProperties.iosPackageVersion}"
+            iosNugetVersion = "${airshipProperties.iosNugetVersion}.${airshipProperties.iosPackageVersion}"
         }
 
         // Handle Android nuspec versions
@@ -162,7 +162,7 @@ task syncRootVersion {
         ant.replaceregexp(
             file: "$projectDir/src/SharedAssemblyInfo.iOS.cs",
             match: "AssemblyVersion (.*)]",
-            replace: "AssemblyVersion (\"$airshipProperties.iosVersion\")]"
+            replace: "AssemblyVersion (\"$airshipProperties.iosNugetVersion\")]"
         )
 
         ant.replaceregexp(
