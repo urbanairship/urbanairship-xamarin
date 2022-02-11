@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
    <metadata>
       <id>urbanairship.ios.basement</id>
-      <version>16.1.2.1</version>
+      <version>16.3.0</version>
       <title>Airship iOS SDK - Basement</title>
       <authors>Urban Airship, Inc.</authors>
       <projectUrl>https://github.com/urbanairship/urbanairship-xamarin</projectUrl>
@@ -15,7 +15,7 @@
 
    <files>
      <file src="src/AirshipBindings.iOS.Basement/bin/release/AirshipBindings.iOS.Basement.dll" target="lib/Xamarin.iOS10" />
-     <file src="src/AirshipBindings.iOS.Basement/bin/Release/AirshipBindings.iOS.Basement.resources/**" target="content/UABasement.resources" />
+     <file src="src/AirshipBindings.iOS.Basement/bin/Release/AirshipBindings.iOS.Basement.resources/**" target="content/ABasement.resources" />
      <file src="src/AirshipBindings.iOS.Basement/urbanairship.ios.basement.targets" target="build/urbanairship.ios.basement.targets" />
    </files>
 </package>

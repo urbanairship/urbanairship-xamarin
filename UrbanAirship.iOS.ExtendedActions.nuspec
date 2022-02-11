@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
    <metadata>
       <id>urbanairship.ios.extendedactions</id>
-      <version>16.1.2.1</version>
+      <version>16.3.0</version>
       <title>Airship iOS SDK - ExtendedActions</title>
       <authors>Urban Airship, Inc.</authors>
       <projectUrl>https://github.com/urbanairship/urbanairship-xamarin</projectUrl>
@@ -15,7 +15,7 @@
 
    <files>
      <file src="src/AirshipBindings.iOS.ExtendedActions/bin/release/AirshipBindings.iOS.ExtendedActions.dll" target="lib/Xamarin.iOS10" />
-     <file src="src/AirshipBindings.iOS.ExtendedActions/bin/Release/AirshipBindings.iOS.ExtendedActions.resources/**" target="content/UAExtendedActions.resources" />
+     <file src="src/AirshipBindings.iOS.ExtendedActions/bin/Release/AirshipBindings.iOS.ExtendedActions.resources/**" target="content/AEA.resources" />
      <file src="src/AirshipBindings.iOS.ExtendedActions/urbanairship.ios.extendedactions.targets" target="build/urbanairship.ios.extendedactions.targets" />
    </files>
 </package>

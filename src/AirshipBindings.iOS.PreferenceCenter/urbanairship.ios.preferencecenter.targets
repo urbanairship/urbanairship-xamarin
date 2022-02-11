@@ -1,7 +1,7 @@
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
     <Target Name="AirshipPreferenceCenterBeforeCompile" AfterTargets="BeforeCompile">
         <ItemGroup>
-            <BindingResources Include="$(MSBuildThisFileDirectory)../content/UAPreferenceCenter.resources/**/*.*" />
+            <BindingResources Include="$(MSBuildThisFileDirectory)../content/APC.resources/**/*.*" />
         </ItemGroup>
         <Copy SourceFiles="@(BindingResources)" DestinationFolder="$(TargetDir)/AirshipBindings.iOS.PreferenceCenter.resources/%(RecursiveDir)" ContinueOnError="false" />
         <ItemGroup>

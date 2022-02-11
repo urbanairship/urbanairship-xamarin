@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
    <metadata>
       <id>urbanairship.ios.messagecenter</id>
-      <version>16.1.2.1</version>
+      <version>16.3.0</version>
       <title>Airship iOS SDK - MessageCenter</title>
       <authors>Urban Airship, Inc.</authors>
       <projectUrl>https://github.com/urbanairship/urbanairship-xamarin</projectUrl>
@@ -15,7 +15,7 @@
 
    <files>
      <file src="src/AirshipBindings.iOS.MessageCenter/bin/release/AirshipBindings.iOS.MessageCenter.dll" target="lib/Xamarin.iOS10" />
-     <file src="src/AirshipBindings.iOS.MessageCenter/bin/Release/AirshipBindings.iOS.MessageCenter.resources/**" target="content/UAMessageCenter.resources" />
+     <file src="src/AirshipBindings.iOS.MessageCenter/bin/Release/AirshipBindings.iOS.MessageCenter.resources/**" target="content/AMC.resources" />
      <file src="src/AirshipBindings.iOS.MessageCenter/urbanairship.ios.messagecenter.targets" target="build/urbanairship.ios.messagecenter.targets" />
    </files>
 </package>
