@@ -24,29 +24,29 @@ task pkg {
             nuspecs = nuspec.split(',')
         } else {
             nuspecs = [
-                "UrbanAirship.Android.Core.nuspec",
-                "UrbanAirship.Android.ADM.nuspec",
-                "UrbanAirship.Android.FCM.nuspec",
-                "UrbanAirship.Android.Preference.nuspec",
-                "UrbanAirship.Android.Accengage.nuspec",
-                "UrbanAirship.Android.MessageCenter.nuspec",
-                "UrbanAirship.Android.Automation.nuspec",
-                "UrbanAirship.Android.Location.nuspec",
-                "UrbanAirship.Android.Chat.nuspec",
-                "UrbanAirship.Android.PreferenceCenter.nuspec",
-                "UrbanAirship.NETStandard.nuspec",
-                "UrbanAirship.iOS.nuspec",
-                "UrbanAirship.iOS.Basement.nuspec",
-                "UrbanAirship.iOS.Core.nuspec",
-                "UrbanAirship.iOS.Accengage.nuspec",
-                "UrbanAirship.iOS.Automation.nuspec",
-                "UrbanAirship.iOS.ExtendedActions.nuspec",
-                "UrbanAirship.iOS.MessageCenter.nuspec",
-                "UrbanAirship.iOS.Location.nuspec",
-                "UrbanAirship.iOS.Chat.nuspec",
-                "UrbanAirship.iOS.PreferenceCenter.nuspec",
-                "UrbanAirship.iOS.NotificationContentExtension.nuspec",
-                "UrbanAirship.iOS.NotificationServiceExtension.nuspec"
+                "Airship.Android.Core.nuspec",
+                "Airship.Android.ADM.nuspec",
+                "Airship.Android.FCM.nuspec",
+                "Airship.Android.Preference.nuspec",
+                "Airship.Android.Accengage.nuspec",
+                "Airship.Android.MessageCenter.nuspec",
+                "Airship.Android.Automation.nuspec",
+                "Airship.Android.Location.nuspec",
+                "Airship.Android.Chat.nuspec",
+                "Airship.Android.PreferenceCenter.nuspec",
+                "Airship.NETStandard.nuspec",
+                "Airship.iOS.nuspec",
+                "Airship.iOS.Basement.nuspec",
+                "Airship.iOS.Core.nuspec",
+                "Airship.iOS.Accengage.nuspec",
+                "Airship.iOS.Automation.nuspec",
+                "Airship.iOS.ExtendedActions.nuspec",
+                "Airship.iOS.MessageCenter.nuspec",
+                "Airship.iOS.Location.nuspec",
+                "Airship.iOS.Chat.nuspec",
+                "Airship.iOS.PreferenceCenter.nuspec",
+                "Airship.iOS.NotificationContentExtension.nuspec",
+                "Airship.iOS.NotificationServiceExtension.nuspec"
             ]
         }
 
@@ -109,7 +109,7 @@ task syncRootVersion {
             match: "<version>.*</version>",
             replace: "<version>$androidNugetVersion</version>"
         ) {
-            fileset(dir: "$projectDir", includes: "UrbanAirship.Android*.nuspec")
+            fileset(dir: "$projectDir", includes: "Airship.Android*.nuspec")
         }
 
         // Handle iOS nuspec versions
@@ -117,33 +117,33 @@ task syncRootVersion {
             match: "<version>.*</version>",
             replace: "<version>$iosNugetVersion</version>"
         ) {
-            fileset(dir: "$projectDir", includes: "UrbanAirship.iOS*.nuspec")
+            fileset(dir: "$projectDir", includes: "Airship.iOS*.nuspec")
         }
 
         // Handle .NET Standard versions
         ant.replaceregexp(
-            file: "$projectDir/UrbanAirship.NETStandard.nuspec",
+            file: "$projectDir/Airship.NETStandard.nuspec",
             match: "<version>.*</version>",
             replace: "<version>$airshipProperties.crossPlatformVersion</version>",
             flags: "g"
         )
 
-        // handle urbanairship.android.core dependencies
+        // handle airship.android.core dependencies
         ant.replaceregexp(
-            match: "<dependency id=\"urbanairship.android(.*)\" version=\".*\"/>",
-            replace: "<dependency id=\"urbanairship.android\\1\" version=\"$androidNugetVersion\"/>",
+            match: "<dependency id=\"airship.android(.*)\" version=\".*\"/>",
+            replace: "<dependency id=\"airship.android\\1\" version=\"$androidNugetVersion\"/>",
             flags: "g"
         ) {
-            fileset(dir: "$projectDir", includes: "UrbanAirship*.nuspec")
+            fileset(dir: "$projectDir", includes: "Airship*.nuspec")
         }
 
-        // handle urbanairship.ios dependencies
+        // handle airship.ios dependencies
         ant.replaceregexp(
-            match: "<dependency id=\"urbanairship.ios(.*)\" version=\".*\"/>",
-            replace: "<dependency id=\"urbanairship.ios\\1\" version=\"$iosNugetVersion\"/>",
+            match: "<dependency id=\"airship.ios(.*)\" version=\".*\"/>",
+            replace: "<dependency id=\"airship.ios\\1\" version=\"$iosNugetVersion\"/>",
             flags: "g"
         ) {
-            fileset(dir: "$projectDir", includes: "UrbanAirship*.nuspec")
+            fileset(dir: "$projectDir", includes: "Airship*.nuspec")
         }
 
         // Shared assembly info
