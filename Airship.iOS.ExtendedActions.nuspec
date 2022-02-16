@@ -15,7 +15,7 @@
 
    <files>
      <file src="src/AirshipBindings.iOS.ExtendedActions/bin/release/AirshipBindings.iOS.ExtendedActions.dll" target="lib/Xamarin.iOS10" />
-     <file src="src/AirshipBindings.iOS.ExtendedActions/bin/Release/AirshipBindings.iOS.ExtendedActions.resources/**" target="content/AEA.resources" />
+     <file src="src/AirshipBindings.iOS.ExtendedActions/bin/Release/AirshipBindings.iOS.ExtendedActions.resources/**" target="content/res" />
      <file src="src/AirshipBindings.iOS.ExtendedActions/urbanairship.ios.extendedactions.targets" target="build/airship.ios.extendedactions.targets" />
    </files>
 </package>

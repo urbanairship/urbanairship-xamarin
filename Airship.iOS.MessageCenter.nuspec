@@ -15,7 +15,7 @@
 
    <files>
      <file src="src/AirshipBindings.iOS.MessageCenter/bin/release/AirshipBindings.iOS.MessageCenter.dll" target="lib/Xamarin.iOS10" />
-     <file src="src/AirshipBindings.iOS.MessageCenter/bin/Release/AirshipBindings.iOS.MessageCenter.resources/**" target="content/AMC.resources" />
+     <file src="src/AirshipBindings.iOS.MessageCenter/bin/Release/AirshipBindings.iOS.MessageCenter.resources/**" target="content/res" />
      <file src="src/AirshipBindings.iOS.MessageCenter/urbanairship.ios.messagecenter.targets" target="build/airship.ios.messagecenter.targets" />
    </files>
 </package>

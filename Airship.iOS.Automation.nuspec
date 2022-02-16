@@ -15,7 +15,7 @@
 
    <files>
      <file src="src/AirshipBindings.iOS.Automation/bin/release/AirshipBindings.iOS.Automation.dll" target="lib/Xamarin.iOS10" />
-     <file src="src/AirshipBindings.iOS.Automation/bin/Release/AirshipBindings.iOS.Automation.resources/**" target="content/AAutomation.resources" />
+     <file src="src/AirshipBindings.iOS.Automation/bin/Release/AirshipBindings.iOS.Automation.resources/**" target="content/res" />
      <file src="src/AirshipBindings.iOS.Automation/urbanairship.ios.automation.targets" target="build/airship.ios.automation.targets" />
    </files>
 </package>

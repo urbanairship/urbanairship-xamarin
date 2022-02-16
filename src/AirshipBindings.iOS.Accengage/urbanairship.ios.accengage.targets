@@ -1,7 +1,7 @@
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
     <Target Name="AirshipAccengageBeforeCompile" AfterTargets="BeforeCompile">
         <ItemGroup>
-            <BindingResources Include="$(MSBuildThisFileDirectory)../content/AAccengage.resources/**/*.*" />
+            <BindingResources Include="$(MSBuildThisFileDirectory)../content/res/**/*.*" />
         </ItemGroup>
         <Copy SourceFiles="@(BindingResources)" DestinationFolder="$(TargetDir)/AirshipBindings.iOS.Accengage.resources/%(RecursiveDir)" ContinueOnError="false" />
         <ItemGroup>

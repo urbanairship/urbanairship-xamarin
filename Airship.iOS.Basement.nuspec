@@ -15,7 +15,7 @@
 
    <files>
      <file src="src/AirshipBindings.iOS.Basement/bin/release/AirshipBindings.iOS.Basement.dll" target="lib/Xamarin.iOS10" />
-     <file src="src/AirshipBindings.iOS.Basement/bin/Release/AirshipBindings.iOS.Basement.resources/**" target="content/ABasement.resources" />
+     <file src="src/AirshipBindings.iOS.Basement/bin/Release/AirshipBindings.iOS.Basement.resources/**" target="content/res" />
      <file src="src/AirshipBindings.iOS.Basement/urbanairship.ios.basement.targets" target="build/airship.ios.basement.targets" />
    </files>
 </package>

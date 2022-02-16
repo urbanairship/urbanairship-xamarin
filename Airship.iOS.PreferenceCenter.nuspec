@@ -15,7 +15,7 @@
 
    <files>
      <file src="src/AirshipBindings.iOS.PreferenceCenter/bin/release/AirshipBindings.iOS.PreferenceCenter.dll" target="lib/Xamarin.iOS10" />
-     <file src="src/AirshipBindings.iOS.PreferenceCenter/bin/Release/AirshipBindings.iOS.PreferenceCenter.resources/**" target="content/APC.resources" />
+     <file src="src/AirshipBindings.iOS.PreferenceCenter/bin/Release/AirshipBindings.iOS.PreferenceCenter.resources/**" target="content/res" />
      <file src="src/AirshipBindings.iOS.PreferenceCenter/urbanairship.ios.preferencecenter.targets" target="build/airship.ios.preferencecenter.targets" />
    </files>
 </package>
