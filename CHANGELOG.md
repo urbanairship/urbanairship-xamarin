@@ -1,5 +1,14 @@
 # Airship Xamarin Changelog
 
+## Version 16.0.0 - February 21, 2022
+Major release fixing an issue with nuget package path length.
+
+### Changes
+- Reduce nuget package path length.
+- Updated Android SDK to 16.3.1.
+- Updated iOS SDK to 16.3.1.
+- Use Airship intead of UrbanAirship for nuget package name.
+
 ## Version 15.0.3 - January 20, 2022
 Minor release fixing an issue with nuget package path length.
 
