@@ -18,4 +18,3 @@ using System.Reflection;
 // and "{Major}.{Minor}.{Build}.*" will update just the revision.
 
 [assembly: AssemblyVersion ("16.3.1")]
-
