@@ -50,6 +50,10 @@ Xamarin application.
     ```
         UAirship.Push().UserPushNotificationsEnabled = true;
     ```
+4. Because of some [Xamarin limitations](https://docs.microsoft.com/en-us/xamarin/xamarin-forms/xaml/hot-reload#known-limitations) related to XAML Hot Reload and Linker, you need to set some settings in the iOS Build from the project options: 
+
+    - Enable the Mono interpreter when debugging on a physical device. 
+    - Set the linker behavior to: "Don't Link".
 
 ### Android Setup
 
