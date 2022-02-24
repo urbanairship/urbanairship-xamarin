@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
    <metadata>
-      <id>urbanairship.netstandard</id>
+      <id>airship.netstandard</id>
       <version>15.0.3</version>
       <title>Airship SDK .NET Standard Library</title>
-      <authors>Urban Airship, Inc.</authors>
+      <authors>Airship, Inc.</authors>
       <projectUrl>https://github.com/urbanairship/urbanairship-xamarin</projectUrl>
       <requireLicenseAcceptance>false</requireLicenseAcceptance>
       <description>A .NET Standard Library for the Airship SDK.</description>
@@ -13,17 +13,17 @@
          <group targetFramework=".NETStandard2.0">
          </group>
          <group targetFramework="MonoAndroid4.1">
-            <dependency id="urbanairship.android.core" version="16.1.1"/>
-            <dependency id="urbanairship.android.messagecenter" version="16.1.1"/>
-            <dependency id="urbanairship.android.automation" version="16.1.1"/>
-            <dependency id="urbanairship.android.location" version="16.1.1"/>
+            <dependency id="airship.android.core" version="16.1.1"/>
+            <dependency id="airship.android.messagecenter" version="16.1.1"/>
+            <dependency id="airship.android.automation" version="16.1.1"/>
+            <dependency id="airship.android.location" version="16.1.1"/>
          </group>
 
          <group targetFramework="Xamarin.iOS1.0">
-            <dependency id="urbanairship.ios.core" version="16.1.2.1"/>
-            <dependency id="urbanairship.ios.automation" version="16.1.2.1"/>
-            <dependency id="urbanairship.ios.extendedactions" version="16.1.2.1"/>
-            <dependency id="urbanairship.ios.messagecenter" version="16.1.2.1"/>
+            <dependency id="airship.ios.core" version="16.1.2.1"/>
+            <dependency id="airship.ios.automation" version="16.1.2.1"/>
+            <dependency id="airship.ios.extendedactions" version="16.1.2.1"/>
+            <dependency id="airship.ios.messagecenter" version="16.1.2.1"/>
          </group>
       </dependencies>
    </metadata>

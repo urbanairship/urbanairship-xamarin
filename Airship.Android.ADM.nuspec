@@ -1,23 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
    <metadata>
-      <id>urbanairship.android.preference</id>
+      <id>airship.android.adm</id>
       <version>16.1.1</version>
-      <title>Airship Android SDK - Preference Module</title>
-      <authors>Urban Airship, Inc.</authors>
+      <title>Airship Android SDK - ADM Push Provider</title>
+      <authors>Airship, Inc.</authors>
       <projectUrl>https://github.com/urbanairship/urbanairship-xamarin</projectUrl>
       <requireLicenseAcceptance>false</requireLicenseAcceptance>
       <description>A full suite of mobile engagement tools for building next-generation apps</description>
-
       <dependencies>
          <group targetFramework="MonoAndroid4.1">
-            <dependency id="Xamarin.AndroidX.Preference" version="1.1.1.6"/>
-            <dependency id="urbanairship.android.core" version="16.1.1"/>
+            <dependency id="airship.android.core" version="16.1.1"/>
          </group>
       </dependencies>
    </metadata>
-
    <files>
-     <file src="src/AirshipBindings.Android.Preference/bin/release/AirshipBindings.Android.Preference.dll" target="lib/MonoAndroid41" />
+     <file src="src/AirshipBindings.Android.ADM/bin/release/AirshipBindings.Android.ADM.dll" target="lib/MonoAndroid41" />
    </files>
 </package>

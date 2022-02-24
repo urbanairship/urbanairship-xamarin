@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
    <metadata>
-      <id>urbanairship.android.preferencecenter</id>
+      <id>airship.android.preferencecenter</id>
       <version>16.1.1</version>
       <title>Airship Android SDK</title>
-      <authors>Urban Airship, Inc.</authors>
+      <authors>Airship, Inc.</authors>
       <projectUrl>https://github.com/urbanairship/urbanairship-xamarin</projectUrl>
       <requireLicenseAcceptance>false</requireLicenseAcceptance>
       <description>A full suite of mobile engagement tools for building next-generation apps</description>
 
       <dependencies>
          <group targetFramework="MonoAndroid4.1">
-            <dependency id="urbanairship.android.core" version="16.1.1"/>
+            <dependency id="airship.android.core" version="16.1.1"/>
             <dependency id="Xamarin.Kotlin.StdLib" version="1.5.31.2" />
             <dependency id="Xamarin.Kotlin.StdLib.Jdk8" version="1.5.31.2" />
             <dependency id="Xamarin.KotlinX.Coroutines.Core" version="1.5.2.2" />

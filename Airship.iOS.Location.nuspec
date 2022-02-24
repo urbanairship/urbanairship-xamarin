@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
    <metadata>
-      <id>urbanairship.ios.location</id>
+      <id>airship.ios.location</id>
       <version>16.1.2.1</version>
       <title>Airship iOS SDK - Location</title>
-      <authors>Urban Airship, Inc.</authors>
+      <authors>Airship, Inc.</authors>
       <projectUrl>https://github.com/urbanairship/urbanairship-xamarin</projectUrl>
       <requireLicenseAcceptance>false</requireLicenseAcceptance>
       <description>Location support for Airship SDK</description>
@@ -15,7 +15,7 @@
 
    <files>
      <file src="src/AirshipBindings.iOS.Location/bin/release/AirshipBindings.iOS.Location.dll" target="lib/Xamarin.iOS10" />
-     <file src="src/AirshipBindings.iOS.Location/bin/Release/AirshipBindings.iOS.Location.resources/**" target="content/UALocation.resources" />
-     <file src="src/AirshipBindings.iOS.Location/urbanairship.ios.location.targets" target="build/urbanairship.ios.location.targets" />
+     <file src="src/AirshipBindings.iOS.Location/bin/Release/AirshipBindings.iOS.Location.resources/**" target="content/res" />
+     <file src="src/AirshipBindings.iOS.Location/urbanairship.ios.location.targets" target="build/airship.ios.location.targets" />
    </files>
 </package>
