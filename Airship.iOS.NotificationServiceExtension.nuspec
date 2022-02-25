@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
    <metadata>
       <id>airship.ios.notificationserviceextension</id>
-      <version>16.3.1</version>
+      <version>16.4.0</version>
       <title>Airship iOS SDK - Notification Service Extension</title>
       <authors>Airship, Inc.</authors>
       <projectUrl>https://github.com/urbanairship/urbanairship-xamarin</projectUrl>

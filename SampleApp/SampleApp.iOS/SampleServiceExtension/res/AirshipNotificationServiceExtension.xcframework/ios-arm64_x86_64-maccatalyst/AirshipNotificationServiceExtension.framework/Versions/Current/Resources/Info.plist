@@ -3,17 +3,17 @@
 <plist version="1.0">
 <dict>
 	<key>BuildMachineOSBuild</key>
-	<string>20G415</string>
+	<string>20G417</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleExecutable</key>
-	<string>AirshipNotificationContentExtension</string>
+	<string>AirshipNotificationServiceExtension</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.urbanairship.AirshipNotificationContentExtension</string>
+	<string>com.urbanairship.AirshipNotificationServiceExtension</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>AirshipNotificationContentExtension</string>
+	<string>AirshipNotificationServiceExtension</string>
 	<key>CFBundlePackageType</key>
 	<string>FMWK</string>
 	<key>CFBundleShortVersionString</key>
