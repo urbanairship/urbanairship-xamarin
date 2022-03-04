@@ -1,25 +1,3 @@
 ﻿<metadata>
-
-    <!-- Manage return type-->
-    <attr path="/api/package[@name='com.urbanairship.android.layout.event']/class[@name='ButtonEvent.Actions']/method[@name='overrideState' and count(parameter)=1 and parameter[1][@type='com.urbanairship.android.layout.reporting.FormInfo']]" name="managedReturn">Com.Urbanairship.Android.Layout.Event.ButtonEvent</attr>
-    <attr path="/api/package[@name='com.urbanairship.android.layout.event']/class[@name='ButtonEvent.Actions']/method[@name='overrideState' and count(parameter)=1 and parameter[1][@type='com.urbanairship.android.layout.reporting.PagerData']]" name="managedReturn">Com.Urbanairship.Android.Layout.Event.ButtonEvent</attr>
-    <attr path="/api/package[@name='com.urbanairship.android.layout.event']/class[@name='ButtonEvent.Cancel']/method[@name='overrideState' and count(parameter)=1 and parameter[1][@type='com.urbanairship.android.layout.reporting.FormInfo']]" name="managedReturn">Com.Urbanairship.Android.Layout.Event.ButtonEvent</attr>
-    <attr path="/api/package[@name='com.urbanairship.android.layout.event']/class[@name='ButtonEvent.Cancel']/method[@name='overrideState' and count(parameter)=1 and parameter[1][@type='com.urbanairship.android.layout.reporting.PagerData']]" name="managedReturn">Com.Urbanairship.Android.Layout.Event.ButtonEvent</attr>
-    <attr path="/api/package[@name='com.urbanairship.android.layout.event']/class[@name='ButtonEvent.Dismiss']/method[@name='overrideState' and count(parameter)=1 and parameter[1][@type='com.urbanairship.android.layout.reporting.FormInfo']]" name="managedReturn">Com.Urbanairship.Android.Layout.Event.ButtonEvent</attr>
-    <attr path="/api/package[@name='com.urbanairship.android.layout.event']/class[@name='ButtonEvent.Dismiss']/method[@name='overrideState' and count(parameter)=1 and parameter[1][@type='com.urbanairship.android.layout.reporting.PagerData']]" name="managedReturn">Com.Urbanairship.Android.Layout.Event.ButtonEvent</attr>
-    <attr path="/api/package[@name='com.urbanairship.android.layout.event']/class[@name='ButtonEvent.FormSubmit']/method[@name='overrideState' and count(parameter)=1 and parameter[1][@type='com.urbanairship.android.layout.reporting.FormInfo']]" name="managedReturn">Com.Urbanairship.Android.Layout.Event.ButtonEvent</attr>
-    <attr path="/api/package[@name='com.urbanairship.android.layout.event']/class[@name='ButtonEvent.FormSubmit']/method[@name='overrideState' and count(parameter)=1 and parameter[1][@type='com.urbanairship.android.layout.reporting.PagerData']]" name="managedReturn">Com.Urbanairship.Android.Layout.Event.ButtonEvent</attr>
-    <attr path="/api/package[@name='com.urbanairship.android.layout.event']/class[@name='ButtonEvent.PagerNext']/method[@name='overrideState' and count(parameter)=1 and parameter[1][@type='com.urbanairship.android.layout.reporting.FormInfo']]" name="managedReturn">Com.Urbanairship.Android.Layout.Event.ButtonEvent</attr>
-    <attr path="/api/package[@name='com.urbanairship.android.layout.event']/class[@name='ButtonEvent.PagerNext']/method[@name='overrideState' and count(parameter)=1 and parameter[1][@type='com.urbanairship.android.layout.reporting.PagerData']]" name="managedReturn">Com.Urbanairship.Android.Layout.Event.ButtonEvent</attr>
-    <attr path="/api/package[@name='com.urbanairship.android.layout.event']/class[@name='ButtonEvent.PagerPrevious']/method[@name='overrideState' and count(parameter)=1 and parameter[1][@type='com.urbanairship.android.layout.reporting.FormInfo']]" name="managedReturn">Com.Urbanairship.Android.Layout.Event.ButtonEvent</attr>
-    <attr path="/api/package[@name='com.urbanairship.android.layout.event']/class[@name='ButtonEvent.PagerPrevious']/method[@name='overrideState' and count(parameter)=1 and parameter[1][@type='com.urbanairship.android.layout.reporting.PagerData']]" name="managedReturn">Com.Urbanairship.Android.Layout.Event.ButtonEvent</attr>
-    <attr path="/api/package[@name='com.urbanairship.android.layout.widget']/class[@name='PagerAdapter']/method[@name='onCreateViewHolder' and count(parameter)=2 and parameter[1][@type='android.view.ViewGroup'] and parameter[2][@type='int']]" name="managedReturn">AndroidX.RecyclerView.Widget.RecyclerView.ViewHolder</attr>
-
-    <!-- Manage parameter type-->
-    <attr path="/api/package[@name='com.urbanairship.android.layout.widget']/class[@name='PagerAdapter']/method[@name='onBindViewHolder' and count(parameter)=2 and parameter[1][@type='com.urbanairship.android.layout.widget.PagerAdapter.ViewHolder'] and parameter[2][@type='int']]/parameter[1]" name="managedType">AndroidX.RecyclerView.Widget.RecyclerView.ViewHolder</attr>
-    <attr path="/api/package[@name='com.urbanairship.android.layout.widget']/class[@name='PagerAdapter']/method[@name='onViewRecycled' and count(parameter)=1 and parameter[1][@type='com.urbanairship.android.layout.widget.PagerAdapter.ViewHolder']]/parameter[1]" name="managedType">AndroidX.RecyclerView.Widget.RecyclerView.ViewHolder</attr>
-
-    <!-- Manage method name -->
-    <attr path="/api/package[@name='com.urbanairship.android.layout']/interface[@name='ThomasListener']/method[@name='onDismiss' and count(parameter)=1 and parameter[1][@type='long']]" name="managedName">onDismissView</attr>
-
+    <remove-node path="/api/package[starts-with(@name, 'com.urbanairship.android.layout')]" />
 </metadata>
