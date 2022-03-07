@@ -102,6 +102,9 @@
     <PackageReference Include="airship.android.chat">
       <Version>16.3.1</Version>
     </PackageReference>
+    <PackageReference Include="airship.android.layout">
+      <Version>16.3.1</Version>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainActivity.cs" />
