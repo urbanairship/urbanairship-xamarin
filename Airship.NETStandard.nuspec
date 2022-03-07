@@ -13,10 +13,10 @@
          <group targetFramework=".NETStandard2.0">
          </group>
          <group targetFramework="MonoAndroid4.1">
-            <dependency id="airship.android.core" version="16.3.1"/>
-            <dependency id="airship.android.messagecenter" version="16.3.1"/>
-            <dependency id="airship.android.automation" version="16.3.1"/>
-            <dependency id="airship.android.location" version="16.3.1"/>
+            <dependency id="airship.android.core" version="16.3.3"/>
+            <dependency id="airship.android.messagecenter" version="16.3.3"/>
+            <dependency id="airship.android.automation" version="16.3.3"/>
+            <dependency id="airship.android.location" version="16.3.3"/>
          </group>
 
          <group targetFramework="Xamarin.iOS1.0">

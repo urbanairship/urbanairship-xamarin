@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
    <metadata>
       <id>airship.android.preference</id>
-      <version>16.3.1</version>
+      <version>16.3.3</version>
       <title>Airship Android SDK - Preference Module</title>
       <authors>Airship, Inc.</authors>
       <projectUrl>https://github.com/urbanairship/urbanairship-xamarin</projectUrl>
@@ -12,7 +12,7 @@
       <dependencies>
          <group targetFramework="MonoAndroid4.1">
             <dependency id="Xamarin.AndroidX.Preference" version="1.1.1.6"/>
-            <dependency id="airship.android.core" version="16.3.1"/>
+            <dependency id="airship.android.core" version="16.3.3"/>
          </group>
       </dependencies>
    </metadata>
