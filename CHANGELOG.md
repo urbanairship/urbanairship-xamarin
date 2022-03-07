@@ -4,10 +4,12 @@
 Major release fixing an issue with nuget package path length.
 
 ### Changes
-- Reduce nuget package path length.
-- Updated Android SDK to 16.3.1.
+- Updated Android SDK to 16.3.3.
 - Updated iOS SDK to 16.4.0.
-- Use Airship instead of UrbanAirship for the nuget package name.
+- Rename all nugets name from `urbanairship.x.x` to `airship.x.x`.
+- Reduce nuget package path length.
+- Add bindings for ios Preference center module.
+- Add a new package `airship.android.layout` to support the two new features: Scenes and Surveys.
 
 ## Version 15.0.3 - January 20, 2022
 Minor release fixing an issue with nuget package path length.
