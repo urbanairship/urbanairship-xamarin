@@ -98,4 +98,20 @@ namespace UrbanAirship
 		Replace = 1,
 		Append = 2
 	}
+
+	[Native]
+	public enum URLType : ulong
+	{
+		Web = 0,
+		Video = 1,
+		Image = 2
+	}
+
+	[Native]
+	public enum UrlTypes : ulong
+	{
+		Image = 0,
+		Video = 1,
+		Web = 2
+	}
 }

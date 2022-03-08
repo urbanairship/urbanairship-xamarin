@@ -1,6 +1,6 @@
 # Airship Xamarin Changelog
 
-## Version 16.0.0 - March 7, 2022
+## Version 16.0.0 - March 9, 2022
 Major release fixing an issue with nuget package path length.
 
 ### Changes
