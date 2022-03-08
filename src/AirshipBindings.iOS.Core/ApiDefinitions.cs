@@ -2230,6 +2230,28 @@ namespace UrbanAirship {
 		UAProximityRegion ProximityRegion(string proximityID, double major, double minor, double rssi, double latitude, double longitude);
 	}
 
+	// @interface UAChannelScopes : NSObject
+	[BaseType(typeof(NSObject))]
+	[DisableDefaultCtor]
+	interface UAChannelScopes
+	{
+		// @property (readonly, copy, nonatomic) NSArray<NSNumber *> * _Nonnull values;
+		[Export("values", ArgumentSemantic.Copy)]
+		NSNumber[] Values { get; }
+
+		// @property (readonly, copy, nonatomic) NSString * _Nonnull description;
+		[Export("description")]
+		string Description { get; }
+
+		// -(BOOL)isEqual:(id _Nullable)object __attribute__((warn_unused_result("")));
+		[Export("isEqual:")]
+		bool IsEqual([NullAllowed] NSObject @object);
+
+		// @property (readonly, nonatomic) NSUInteger hash;
+		[Export("hash")]
+		nuint Hash { get; }
+	}
+
 	// @interface UAPush : NSObject <UAComponent, UAPushProtocol>
 	[BaseType(typeof(NSObject))]
 	[DisableDefaultCtor]

@@ -23,6 +23,23 @@ namespace UrbanAirship
 	}
 
 	[Native]
+	public enum UAChannelScope : ulong
+	{
+		App = 0,
+		Web = 1,
+		Email = 2,
+		Sms = 3
+	}
+
+	[Native]
+	public enum UAChannelType : ulong
+	{
+		Email = 0,
+		Sms = 1,
+		Open = 2
+	}
+
+	[Native]
 	public enum UACloudSite : ulong
 	{
 		Us = 0,

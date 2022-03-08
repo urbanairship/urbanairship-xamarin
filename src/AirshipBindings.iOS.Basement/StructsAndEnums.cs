@@ -38,6 +38,14 @@ namespace UrbanAirship {
     }
 
     [Native]
+    public enum UAEventPriority : ulong
+    {
+        Low,
+        Normal,
+        High
+    }
+
+    [Native]
     public enum UAFeatures : ulong
     {
         None = 0,
@@ -55,7 +63,7 @@ namespace UrbanAirship {
     [Native]
     public enum UANotificationOptions : ulong
     {
-        UANotificationOptionNone = 0,
+        None = 0,
         Badge = (1 << 0),
         Sound = (1 << 1),
         Alert = (1 << 2),
@@ -63,10 +71,9 @@ namespace UrbanAirship {
         CriticalAlert = (1 << 4),
         ProvidesAppNotificationSettings = (1 << 5),
         Provisional = (1 << 6),
-        [Obsolete("Deprecated – to be removed in SDK version 16.0.")]
         Announcement = (1 << 7)
     }
-
+    
     [Native]
     public enum UAAuthorizedNotificationSettings : ulong
     {
