@@ -12,7 +12,7 @@ within shared codebases (e.g., a Xamarin Forms app).
  - [Getting started guide](http://docs.urbanairship.com/platform/xamarin.html)
 
 ## Setup
-Use NuGet to install the urbanairship.netstandard package.
+Use NuGet to install the airship.netstandard package.
 Detailed instructions can be found in the [Getting started guide](http://docs.urbanairship.com/platform/xamarin.html#installation).
 
 A cross-platform sample app is provided in the `SampleApp` directory on

@@ -585,10 +585,15 @@ namespace UrbanAirship {
 		[NullAllowed, Export("integrationDelegate", ArgumentSemantic.Strong)]
 		NSObject WeakIntegrationDelegate { get; set; }
 
-		// +(void)applicatin:(UIApplication * _Nonnull)application performFetchWithCompletionHandler:(void (^ _Nonnull)(UIBackgroundFetchResult))completionHandler;
+		// +(void)applicatin:(UIApplication * _Nonnull)application performFetchWithCompletionHandler:(void (^ _Nonnull)(UIBackgroundFetchResult))completionHandler __attribute__((deprecated("Use application(_:performFetchWithCompletionHandler:) instead")));
 		[Static]
 		[Export("applicatin:performFetchWithCompletionHandler:")]
 		void PerformFetch(UIApplication application, Action<UIBackgroundFetchResult> completionHandler);
+
+		// +(void)application:(UIApplication * _Nonnull)application performFetchWithCompletionHandler:(void (^ _Nonnull)(UIBackgroundFetchResult))completionHandler;
+		[Static]
+		[Export("application:performFetchWithCompletionHandler:")]
+		void Application(UIApplication application, Action<UIBackgroundFetchResult> completionHandler);
 
 		// +(void)application:(UIApplication * _Nonnull)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData * _Nonnull)deviceToken;
 		[Static]
@@ -605,15 +610,26 @@ namespace UrbanAirship {
 		[Export("application:didReceiveRemoteNotification:fetchCompletionHandler:")]
 		void DidReceiveRemoteNotification(UIApplication application, NSDictionary userInfo, Action<UIBackgroundFetchResult> completionHandler);
 
-		// +(void)userNotificationCenterWithCenter:(UNUserNotificationCenter * _Nonnull)center willPresentNotification:(UNNotification * _Nonnull)notification withCompletionHandler:(void (^ _Nonnull)(UNNotificationPresentationOptions))completionHandler;
+		// +(void)userNotificationCenterWithCenter:(UNUserNotificationCenter * _Nonnull)center willPresentNotification:(UNNotification * _Nonnull)notification withCompletionHandler:(void (^ _Nonnull)(UNNotificationPresentationOptions))completionHandler __attribute__((deprecated("Use userNotificationCenter(_:willPresent:withCompletionHandler:) instead")));
 		[Static]
 		[Export("userNotificationCenterWithCenter:willPresentNotification:withCompletionHandler:")]
 		void WillPresentNotification(UNUserNotificationCenter center, UNNotification notification, Action<UNNotificationPresentationOptions> completionHandler);
 
-		// +(void)userNotificationCenterWithCenter:(UNUserNotificationCenter * _Nonnull)center didReceiveNotificationResponse:(UNNotificationResponse * _Nonnull)response withCompletionHandler:(void (^ _Nonnull)(void))completionHandler;
+		// +(void)userNotificationCenter:(UNUserNotificationCenter * _Nonnull)center willPresentNotification:(UNNotification * _Nonnull)notification withCompletionHandler:(void (^ _Nonnull)(UNNotificationPresentationOptions))completionHandler;
+		[Static]
+		[Export("userNotificationCenter:willPresentNotification:withCompletionHandler:")]
+		void UserNotificationCenter(UNUserNotificationCenter center, UNNotification notification, Action<UNNotificationPresentationOptions> completionHandler);
+
+		// +(void)userNotificationCenterWithCenter:(UNUserNotificationCenter * _Nonnull)center didReceiveNotificationResponse:(UNNotificationResponse * _Nonnull)response withCompletionHandler:(void (^ _Nonnull)(void))completionHandler __attribute__((deprecated("Use userNotificationCenter(_:didReceive:withCompletionHandler:) instead")));
 		[Static]
 		[Export("userNotificationCenterWithCenter:didReceiveNotificationResponse:withCompletionHandler:")]
 		void DidReceiveNotificationResponse(UNUserNotificationCenter center, UNNotificationResponse response, Action completionHandler);
+
+		// +(void)userNotificationCenter:(UNUserNotificationCenter * _Nonnull)center didReceiveNotificationResponse:(UNNotificationResponse * _Nonnull)response withCompletionHandler:(void (^ _Nonnull)(void))completionHandler;
+		[Static]
+		[Export("userNotificationCenter:didReceiveNotificationResponse:withCompletionHandler:")]
+		void UserNotificationCenter(UNUserNotificationCenter center, UNNotificationResponse response, Action completionHandler);
+
 	}
 
 	// @interface UAApplicationMetrics : NSObject
@@ -2212,6 +2228,28 @@ namespace UrbanAirship {
 		[Export("proximityRegionWithID:major:minor:rssi:latitude:longitude:")]
 		[return: NullAllowed]
 		UAProximityRegion ProximityRegion(string proximityID, double major, double minor, double rssi, double latitude, double longitude);
+	}
+
+	// @interface UAChannelScopes : NSObject
+	[BaseType(typeof(NSObject))]
+	[DisableDefaultCtor]
+	interface UAChannelScopes
+	{
+		// @property (readonly, copy, nonatomic) NSArray<NSNumber *> * _Nonnull values;
+		[Export("values", ArgumentSemantic.Copy)]
+		NSNumber[] Values { get; }
+
+		// @property (readonly, copy, nonatomic) NSString * _Nonnull description;
+		[Export("description")]
+		string Description { get; }
+
+		// -(BOOL)isEqual:(id _Nullable)object __attribute__((warn_unused_result("")));
+		[Export("isEqual:")]
+		bool IsEqual([NullAllowed] NSObject @object);
+
+		// @property (readonly, nonatomic) NSUInteger hash;
+		[Export("hash")]
+		nuint Hash { get; }
 	}
 
 	// @interface UAPush : NSObject <UAComponent, UAPushProtocol>

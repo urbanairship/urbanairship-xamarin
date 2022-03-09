@@ -35,8 +35,11 @@
   <attr path="/api/package[@name='com.urbanairship.analytics']/class[@name='RetailEventTemplate']/field[@name='RETAIL_EVENT_TEMPLATE']" name="managedName">TemplateName</attr>
   <attr path="/api/package[@name='com.urbanairship.analytics']/class[@name='AccountEventTemplate']/field[@name='ACCOUNT_EVENT_TEMPLATE']" name="managedName">TemplateName</attr>
   <attr path="/api/package[@name='com.urbanairship.analytics']/class[@name='MediaEventTemplate']/field[@name='MEDIA_EVENT_TEMPLATE']" name="managedName">TemplateName</attr>
-  
-<!-- Remove remote config package to prevent public/protected conflicts-->
+
+  <!-- Fix classe does not implement interface member -->
+  <attr path="/api/package[@name='com.urbanairship']/class[@name='AirshipInitializer']/method[@name='create']" name="managedReturn">Java.Lang.Object</attr>
+
+  <!-- Remove remote config package to prevent public/protected conflicts-->
   <remove-node path="/api/package[@name='com.urbanairship.remoteconfig']" />
  
   <!-- Remove stuff that should be private-->
