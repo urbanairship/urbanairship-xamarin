@@ -1340,6 +1340,10 @@ namespace UrbanAirship {
         // @property (nonatomic, assign, unsafe_unretained, readwrite) BOOL hideDismissIcon;
         [Export("hideDismissIcon")]
         bool HideDismissIcon { get; set; }
+        
+        // @property (assign, nonatomic) BOOL extendFullScreenLargeDevice;
+        [Export ("extendFullScreenLargeDevice")]
+        bool ExtendFullScreenLargeDevice { get; set; }
     }
 
     // @interface UAInAppMessageImmediateDisplayCoordinator : NSObject <UAInAppMessageDisplayCoordinator>
@@ -1608,6 +1612,10 @@ namespace UrbanAirship {
         // @property (nonatomic, strong, readwrite, nullable) UAInAppMessageMediaStyle *mediaStyle;
         [NullAllowed, Export("mediaStyle", ArgumentSemantic.Strong)]
         UAInAppMessageMediaStyle MediaStyle { get; set; }
+        
+        // @property (assign, nonatomic) BOOL extendFullScreenLargeDevice;
+        [Export ("extendFullScreenLargeDevice")]
+        bool ExtendFullScreenLargeDevice { get; set; }
     }
 
     // @interface UAInAppMessageResolution : NSObject
