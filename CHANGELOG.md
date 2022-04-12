@@ -1,5 +1,11 @@
 # Airship Xamarin Changelog
 
+## Version 16.0.1 - April 12, 2022
+Minor release updating to latest iOS Airship SDK.
+
+### Changes
+- Updated iOS SDK to 16.5.1.
+
 ## Version 16.0.0 - March 9, 2022
 Major release fixing an issue with nuget package path length.
 
