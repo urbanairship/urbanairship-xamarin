@@ -1385,6 +1385,10 @@ namespace UrbanAirship {
         // - (nonnull UIWindowScene *)sceneForMessage:(nonnull UAInAppMessage *)message defaultScene: (nullable UIWindowScene *)defaultScene;
         [Export("sceneForMessage:defaultScene:")]
         UIWindowScene Scene (UAInAppMessage message, [NullAllowed] UIWindowScene defaultScene);
+
+        // @optional -(BOOL)isMessageReadyForDisplay:(UAInAppMessage * _Nonnull)message;
+        [Export("isMessageReadyForDisplay:")]
+        bool IsMessageReadyForDisplay(UAInAppMessage message);
     }
 
     interface IUAInAppMessagingDelegate { }
@@ -1412,6 +1416,10 @@ namespace UrbanAirship {
         // - (void)setFactoryBlock:(nonnull id<UAInAppMessageAdapterProtocol> _Nonnull (^)( UAInAppMessage *_Nonnull))factory forDisplayType:(UAInAppMessageDisplayType)displayType;
         [Export("setFactoryBlock:forDisplayType:")]
         void SetFactoryBlock (Action<UAInAppMessage> factory, UAInAppMessageDisplayType displayType);
+
+        // -(void)notifyDisplayConditionsChanged;
+        [Export("notifyDisplayConditionsChanged")]
+        void NotifyDisplayConditionsChanged();
     }
 
     // @interface UAInAppMessageMediaInfo : NSObject
