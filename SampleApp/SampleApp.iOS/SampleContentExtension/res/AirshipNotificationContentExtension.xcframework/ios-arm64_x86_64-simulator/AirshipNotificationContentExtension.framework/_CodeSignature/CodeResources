@@ -4,55 +4,44 @@
 <dict>
 	<key>files</key>
 	<dict>
-		<key>Headers/AirshipNotificationServiceExtension.h</key>
+		<key>Headers/AirshipNotificationContentExtension.h</key>
 		<data>
-		5zlcHsUwpBkdTuyToX2Ib8C8iKk=
+		RTrktIn4Eh3e1qn4HN1mnetcdw4=
 		</data>
-		<key>Headers/UAMediaAttachmentPayload.h</key>
+		<key>Headers/UAContentExtensionViewController.h</key>
 		<data>
-		JqSAvzFjUdMdZ0ms5aO9nmu4PBw=
-		</data>
-		<key>Headers/UANotificationServiceExtension.h</key>
-		<data>
-		1XvGRKefAxjJfPRzgiQdHqZkRCM=
+		eDEtnCfrzlvKLLK8LkGY9phoYo0=
 		</data>
 		<key>Info.plist</key>
 		<data>
-		2YjpbxHAiw9icTwIP+6AGWNDtG8=
+		GW9CbrRpB6fA9n22a3EOlUJ7M84=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
-		szDk6H0ruOWo+aWtp6WoAgUHDYY=
+		vMn3QG9EDti7oKtx+kV68fxMmcU=
 		</data>
 	</dict>
 	<key>files2</key>
 	<dict>
-		<key>Headers/AirshipNotificationServiceExtension.h</key>
+		<key>Headers/AirshipNotificationContentExtension.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			WRoTEVl8bTfJmtp0HMBVgEKvoFv0m4X5koR3aGaY1tM=
+			nFGkxfL+s9n0ax0Ddd6vUqk0yx726B0TNV4bDFoniMM=
 			</data>
 		</dict>
-		<key>Headers/UAMediaAttachmentPayload.h</key>
+		<key>Headers/UAContentExtensionViewController.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			Psz1569X5H4iwJnyNBGkfJxIBeDpMhwWBPP3bAEPMZk=
-			</data>
-		</dict>
-		<key>Headers/UANotificationServiceExtension.h</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			zjm/klzX7EjljgtdLBkW5vlFRMvd+vz+81K4BRrafrU=
+			oYSxx+I2OkSU34FEhSoTgbXWHTyTh8nuCe68gDQXCBY=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			GtrAQfVYhbfiOua6L+zAvcW4dqhc0JUibTDK9L9gMoA=
+			5xEsPZ/NdbGnDvIkHHI2sgW7lcrmwU/0r4HSZBW5As4=
 			</data>
 		</dict>
 	</dict>

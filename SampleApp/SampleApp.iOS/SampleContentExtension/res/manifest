@@ -1,5 +1,5 @@
 ﻿<BindingAssembly>
-	<NativeReference Name="AirshipNotificationServiceExtension.xcframework">
+	<NativeReference Name="AirshipNotificationContentExtension.xcframework">
 		<Kind>Framework</Kind>
 		<ForceLoad></ForceLoad>
 		<SmartLink>False</SmartLink>
