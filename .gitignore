@@ -220,8 +220,7 @@ docs/doxygen.tag
 local-nuget-feed/
 
 # UA native jars
-# TODO: uncomment to continue ignoring aars
-# urbanairship*.aar
+src/AirshipBindings.Android.*/Jars/urbanairship*.arr
 
 # Google Services (e.g. APIs or Firebase)
 google-services.json

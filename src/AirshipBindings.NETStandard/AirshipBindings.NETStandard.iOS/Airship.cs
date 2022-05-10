@@ -1,4 +1,4 @@
-﻿/*
+/*
  Copyright Airship and Contributors
 */
 
@@ -304,34 +304,35 @@ namespace UrbanAirship.NETStandard
 
             if (customEvent.PropertyList != null)
             {
-                NSDictionary<NSString, NSObject> propertyDictionary = new NSDictionary<NSString, NSObject>();
-                foreach (var property in customEvent.PropertyList)
+                NSMutableDictionary<NSString, NSObject> propertyDictionary = new NSMutableDictionary<NSString, NSObject>();
+                foreach (dynamic property in customEvent.PropertyList)
                 {
                     if (string.IsNullOrEmpty(property.name))
                     {
                         continue;
                     }
 
+                    NSString key = (NSString)property.name;
                     if (property is CustomEvent.Property<string> stringProperty)
                     {
-                        propertyDictionary.SetValueForKey((NSString)stringProperty.value, (NSString)stringProperty.name);
+                        propertyDictionary.SetValueForKey((NSString)stringProperty.value, key);
                     }
                     else if (property is CustomEvent.Property<double> doubleProperty)
                     {
-                        propertyDictionary.SetValueForKey((NSNumber)doubleProperty.value, (NSString)doubleProperty.name);
+                        propertyDictionary.SetValueForKey((NSNumber)doubleProperty.value, key);
                     }
                     else if (property is CustomEvent.Property<bool> boolProperty)
                     {
-                        propertyDictionary.SetValueForKey((NSNumber)boolProperty.value, (NSString)boolProperty.name);
+                        propertyDictionary.SetValueForKey((NSNumber)boolProperty.value, key);
                     }
                     else if (property is CustomEvent.Property<string[]> stringArrayProperty)
                     {
-                        propertyDictionary.SetValueForKey(NSArray.FromObjects(stringArrayProperty.value), (NSString)stringArrayProperty.name);
+                        propertyDictionary.SetValueForKey(NSArray.FromObjects(stringArrayProperty.value), key);
                     }
                 }
                 if (propertyDictionary.Count > 0)
                 {
-                    uaEvent.Properties = propertyDictionary;
+                    uaEvent.Properties = new NSDictionary<NSString, NSObject>(propertyDictionary.Keys, propertyDictionary.Values);
                 }
             }
 
