@@ -313,22 +313,18 @@ namespace UrbanAirship.NETStandard
                     }
 
                     NSString key = (NSString)property.name;
-                    if (property is CustomEvent.Property<string> stringProperty)
+                    NSObject value = NSObject.FromObject(property.value);
+
+                    if (property is CustomEvent.Property<string[]> stringArrayProperty)
                     {
-                        propertyDictionary.SetValueForKey((NSString)stringProperty.value, key);
+                        value = NSArray.FromObjects(stringArrayProperty.value);
+                        propertyDictionary.SetValueForKey(value, key);
                     }
-                    else if (property is CustomEvent.Property<double> doubleProperty)
+                    if (value != null)
                     {
-                        propertyDictionary.SetValueForKey((NSNumber)doubleProperty.value, key);
+                        propertyDictionary.SetValueForKey(value, key);
                     }
-                    else if (property is CustomEvent.Property<bool> boolProperty)
-                    {
-                        propertyDictionary.SetValueForKey((NSNumber)boolProperty.value, key);
-                    }
-                    else if (property is CustomEvent.Property<string[]> stringArrayProperty)
-                    {
-                        propertyDictionary.SetValueForKey(NSArray.FromObjects(stringArrayProperty.value), key);
-                    }
+                    
                 }
                 if (propertyDictionary.Count > 0)
                 {
