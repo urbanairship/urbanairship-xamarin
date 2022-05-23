@@ -225,7 +225,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <LibraryProjectZip Include="Jars\urbanairship-preference-center-16.4.0.aar" />
+    <LibraryProjectZip Include="Jars\urbanairship-preference-center-16.5.0.aar" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
