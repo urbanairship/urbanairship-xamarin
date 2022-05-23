@@ -241,9 +241,9 @@ namespace UrbanAirship
 		[Export("subscriptionID")]
 		string SubscriptionID { get; }
 
-		// @property (readonly, copy, nonatomic) NSArray<Component *> * _Nonnull components;
-		[Export("components", ArgumentSemantic.Copy)]
-		Component[] Components { get; }
+        // @property (readonly, copy, nonatomic) NSArray<UAPreferenceComponent *> * _Nonnull components;
+        [Export("components", ArgumentSemantic.Copy)]
+        UAPreferenceComponent[] Components { get; }
 
 		// @property (copy, nonatomic) NSArray<id<UAPreferenceConditions>> * _Nullable conditions;
 		[NullAllowed, Export("conditions", ArgumentSemantic.Copy)]
