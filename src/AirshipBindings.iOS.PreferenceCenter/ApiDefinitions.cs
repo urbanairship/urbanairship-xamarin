@@ -250,18 +250,18 @@ namespace UrbanAirship
 		IUAPreferenceConditions[] Conditions { get; set; }
 	}
 
-	// @interface Component : NSObject
-	[BaseType(typeof(NSObject), Name = "_TtCC23AirshipPreferenceCenter28ContactSubscriptionGroupItem9Component")]
-	interface Component
-	{
-		// @property (readonly, nonatomic, strong) UAChannelScopes * _Nonnull scopes;
-		[Export("scopes", ArgumentSemantic.Strong)]
-		UAChannelScopes Scopes { get; }
+    // @interface UAPreferenceComponent : NSObject
+    [BaseType(typeof(NSObject))]
+    interface UAPreferenceComponent
+    {
+        // @property (readonly, nonatomic, strong) UAChannelScopes * _Nonnull scopes;
+        [Export("scopes", ArgumentSemantic.Strong)]
+        UAChannelScopes Scopes { get; }
 
-		// @property (readonly, nonatomic, strong) UAPreferenceCommonDisplay * _Nonnull display;
-		[Export("display", ArgumentSemantic.Strong)]
-		UAPreferenceCommonDisplay Display { get; }
-	}
+        // @property (readonly, nonatomic, strong) UAPreferenceCommonDisplay * _Nonnull display;
+        [Export("display", ArgumentSemantic.Strong)]
+        UAPreferenceCommonDisplay Display { get; }
+    }
 
 	// @interface UAPreferenceContactSubscriptionItem : NSObject <UAPreferenceItem>
 	[BaseType(typeof(NSObject))]
