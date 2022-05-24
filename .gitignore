@@ -220,14 +220,19 @@ docs/doxygen.tag
 local-nuget-feed/
 
 # UA native jars
-# TODO: uncomment to continue ignoring aars
-# urbanairship*.aar
+src/AirshipBindings.Android.*/Jars/urbanairship*.arr
 
 # Google Services (e.g. APIs or Firebase)
-google-services.json
+#SampleApp/SampleApp.Android/Assets/google-services.json
 
 # Airship
-airship.properties
+#airship.properties
+
+# iOS AirshipConfig
+SampleApp/SampleApp.iOS/AirshipConfig.plist
+
+# Android airshipconfig
+SampleApp/SampleApp.Android/Assets/airshipconfig.properties
 
 # Xamboni
 src/xamboni/

@@ -241,27 +241,27 @@ namespace UrbanAirship
 		[Export("subscriptionID")]
 		string SubscriptionID { get; }
 
-		// @property (readonly, copy, nonatomic) NSArray<Component *> * _Nonnull components;
-		[Export("components", ArgumentSemantic.Copy)]
-		Component[] Components { get; }
+        // @property (readonly, copy, nonatomic) NSArray<UAPreferenceComponent *> * _Nonnull components;
+        [Export("components", ArgumentSemantic.Copy)]
+        UAPreferenceComponent[] Components { get; }
 
 		// @property (copy, nonatomic) NSArray<id<UAPreferenceConditions>> * _Nullable conditions;
 		[NullAllowed, Export("conditions", ArgumentSemantic.Copy)]
 		IUAPreferenceConditions[] Conditions { get; set; }
 	}
 
-	// @interface Component : NSObject
-	[BaseType(typeof(NSObject), Name = "_TtCC23AirshipPreferenceCenter28ContactSubscriptionGroupItem9Component")]
-	interface Component
-	{
-		// @property (readonly, nonatomic, strong) UAChannelScopes * _Nonnull scopes;
-		[Export("scopes", ArgumentSemantic.Strong)]
-		UAChannelScopes Scopes { get; }
+    // @interface UAPreferenceComponent : NSObject
+    [BaseType(typeof(NSObject))]
+    interface UAPreferenceComponent
+    {
+        // @property (readonly, nonatomic, strong) UAChannelScopes * _Nonnull scopes;
+        [Export("scopes", ArgumentSemantic.Strong)]
+        UAChannelScopes Scopes { get; }
 
-		// @property (readonly, nonatomic, strong) UAPreferenceCommonDisplay * _Nonnull display;
-		[Export("display", ArgumentSemantic.Strong)]
-		UAPreferenceCommonDisplay Display { get; }
-	}
+        // @property (readonly, nonatomic, strong) UAPreferenceCommonDisplay * _Nonnull display;
+        [Export("display", ArgumentSemantic.Strong)]
+        UAPreferenceCommonDisplay Display { get; }
+    }
 
 	// @interface UAPreferenceContactSubscriptionItem : NSObject <UAPreferenceItem>
 	[BaseType(typeof(NSObject))]

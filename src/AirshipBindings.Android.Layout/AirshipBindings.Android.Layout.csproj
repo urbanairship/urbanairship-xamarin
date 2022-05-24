@@ -61,7 +61,7 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <LibraryProjectZip Include="Jars\urbanairship-layout-16.3.3.aar" />
+    <LibraryProjectZip Include="Jars\urbanairship-layout-16.5.0.aar" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Additions\" />
