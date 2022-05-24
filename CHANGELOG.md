@@ -1,10 +1,10 @@
 # Airship Xamarin Changelog
 
-## Version 16.1.0 - May 23, 2022
-Minor release to support iOS SDK 16.7.0 and Android SDK 16.4.0 and fix a crash with custom event.
+## Version 16.1.0 - May 24, 2022
+Minor release to support iOS SDK 16.7.0 and Android SDK 16.5.0 and fix a crash with custom event.
 
 ### Changes
-- Updated Android SDK to 16.4.0
+- Updated Android SDK to 16.5.0
 - Updated iOS SDK to 16.7.0
 - Add Room runtime as a dependency on Android Core
 - Add InAppMessagingDelegate method and notifyDisplayConditionsChanged on iOS.
