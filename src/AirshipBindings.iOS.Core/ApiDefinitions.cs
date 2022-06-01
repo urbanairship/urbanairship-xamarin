@@ -432,12 +432,12 @@ namespace UrbanAirship {
 		// +(void)takeOffWithLaunchOptions:(NSDictionary<UIApplicationLaunchOptionsKey,id> * _Nullable)launchOptions;
 		[Static]
 		[Export("takeOffWithLaunchOptions:")]
-		void TakeOff([NullAllowed] NSDictionary<NSString, NSObject> launchOptions);
+		void TakeOff([NullAllowed] NSDictionary launchOptions);
 
 		// +(void)takeOff:(UAConfig * _Nullable)config launchOptions:(NSDictionary<UIApplicationLaunchOptionsKey,id> * _Nullable)launchOptions;
 		[Static]
 		[Export("takeOff:launchOptions:")]
-		void TakeOff([NullAllowed] UAConfig config, [NullAllowed] NSDictionary<NSString, NSObject> launchOptions);
+		void TakeOff([NullAllowed] UAConfig config, [NullAllowed] NSDictionary launchOptions);
 
 		// @property (nonatomic, class) enum UALogLevel logLevel;
 		[Static]
