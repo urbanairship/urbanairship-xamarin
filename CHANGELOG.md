@@ -1,5 +1,12 @@
 # Airship Xamarin Changelog
 
+## Version 16.1.1 - June 2, 2022
+Patch release that fixes a crash with casting launch options on iOS. Apps
+should no longer cast the launch options when calling takeOff.
+
+### Changes
+- Removed need to cast launch options on iOS.
+
 ## Version 16.1.0 - May 24, 2022
 Minor release to support iOS SDK 16.7.0 and Android SDK 16.5.0 and fix a crash with custom event.
 

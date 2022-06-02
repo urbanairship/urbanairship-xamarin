@@ -45,7 +45,7 @@ namespace SampleApp.iOS
             WarnIfSimulator();
 
             // Bootstrap the Airship SDK
-            UAirship.TakeOff(config, (NSDictionary<NSString, NSObject>)options);
+            UAirship.TakeOff(config, options);
 
             Console.WriteLine("Config:{0}", config);
 
