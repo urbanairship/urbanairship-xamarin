@@ -1,0 +1,50 @@
+﻿<metadata>
+
+  <attr path="/api/package[@name='com.urbanairship']" name="managedName">UrbanAirship</attr>
+  <attr path="/api/package[@name='com.urbanairship.actions']" name="managedName">UrbanAirship.Actions</attr>
+  <attr path="/api/package[@name='com.urbanairship.actions.tags']" name="managedName">UrbanAirship.Actions.Tags</attr>
+  <attr path="/api/package[@name='com.urbanairship.analytics']" name="managedName">UrbanAirship.Analytics</attr>
+  <attr path="/api/package[@name='com.urbanairship.app']" name="managedName">UrbanAirship.App</attr>
+  <attr path="/api/package[@name='com.urbanairship.channel']" name="managedName">UrbanAirship.Channel</attr>
+  <attr path="/api/package[@name='com.urbanairship.google']" name="managedName">UrbanAirship.Google</attr>
+  <attr path="/api/package[@name='com.urbanairship.images']" name="managedName">UrbanAirship.Images</attr>
+  <attr path="/api/package[@name='com.urbanairship.job']" name="managedName">UrbanAirship.Job</attr>
+  <attr path="/api/package[@name='com.urbanairship.json']" name="managedName">UrbanAirship.Json</attr>
+  <attr path="/api/package[@name='com.urbanairship.json.matchers']" name="managedName">UrbanAirship.Json.Matchers</attr>
+  <attr path="/api/package[@name='com.urbanairship.js']" name="managedName">UrbanAirship.Js</attr>
+  <attr path="/api/package[@name='com.urbanairship.locale']" name="managedName">UrbanAirship.Locale</attr>
+  <attr path="/api/package[@name='com.urbanairship.push']" name="managedName">UrbanAirship.Push</attr>
+  <attr path="/api/package[@name='com.urbanairship.push.notifications']" name="managedName">UrbanAirship.Push.Notifications</attr>
+  <attr path="/api/package[@name='com.urbanairship.reactive']" name="managedName">UrbanAirship.Reactive</attr>
+  <attr path="/api/package[@name='com.urbanairship.remotedata']" name="managedName">UrbanAirship.RemoteData</attr>
+  <attr path="/api/package[@name='com.urbanairship.util']" name="managedName">UrbanAirship.Util</attr>
+  <attr path="/api/package[@name='com.urbanairship.wallet']" name="managedName">UrbanAirship.Wallet</attr>
+  <attr path="/api/package[@name='com.urbanairship.webkit']" name="managedName">UrbanAirship.Webkit</attr>
+
+  <remove-node path="/api/package[@name='com.urbanairship.http']" />
+  <remove-node path="/api/package[@name='com.urbanairship.job']/class[@name='JobDispatcher']" />
+  <remove-node path="/api/package[@name='com.urbanairship.channel']/class[@name='NamedUser']/method[@name='addNamedUserListener']" />
+
+  <!-- Class naming conflicts with namespace -->
+  <attr path="/api/package[@name='com.urbanairship.analytics']/class[@name='Analytics']" name="managedName">AnalyticsClass</attr>
+   
+  <!--- Non public parent classes -->
+  <attr path="/api/package[@name='com.urbanairship.actions.tags']/class[@name='BaseTagsAction']" name="visibility">public</attr>
+
+  <!-- Fix field names have the same name as the class for the templates-->
+  <attr path="/api/package[@name='com.urbanairship.analytics']/class[@name='RetailEventTemplate']/field[@name='RETAIL_EVENT_TEMPLATE']" name="managedName">TemplateName</attr>
+  <attr path="/api/package[@name='com.urbanairship.analytics']/class[@name='AccountEventTemplate']/field[@name='ACCOUNT_EVENT_TEMPLATE']" name="managedName">TemplateName</attr>
+  <attr path="/api/package[@name='com.urbanairship.analytics']/class[@name='MediaEventTemplate']/field[@name='MEDIA_EVENT_TEMPLATE']" name="managedName">TemplateName</attr>
+
+  <!-- Fix classe does not implement interface member -->
+  <attr path="/api/package[@name='com.urbanairship']/class[@name='AirshipInitializer']/method[@name='create']" name="managedReturn">Java.Lang.Object</attr>
+
+  <!-- Remove remote config package to prevent public/protected conflicts-->
+  <remove-node path="/api/package[@name='com.urbanairship.remoteconfig']" />
+ 
+  <!-- Remove stuff that should be private-->
+  <remove-node path="/api/package[@name='com.urbanairship.analytics.data']" />
+  <remove-node path="/api/package[@name='com.urbanairship.modules']" />
+ 
+</metadata>
+
