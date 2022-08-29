@@ -38,6 +38,7 @@
 
   <!-- Fix classe does not implement interface member -->
   <attr path="/api/package[@name='com.urbanairship']/class[@name='AirshipInitializer']/method[@name='create']" name="managedReturn">Java.Lang.Object</attr>
+  <attr path="/api/package[@name='com.urbanairship']/class[@name='NoDependencyAirshipInitializer']/method[@name='create']" name="managedReturn">Java.Lang.Object</attr>
 
   <!-- Remove remote config package to prevent public/protected conflicts-->
   <remove-node path="/api/package[@name='com.urbanairship.remoteconfig']" />
