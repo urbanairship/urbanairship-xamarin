@@ -86,7 +86,7 @@
     <Reference Include="System.Core" />
     <Reference Include="Xamarin.iOS" />
     <Reference Include="AirshipBindings.iOS.NotificationContentExtension">
-      <HintPath>..\..\packages\airship.ios.notificationcontentextension.16.7.0\lib\Xamarin.iOS10\AirshipBindings.iOS.NotificationContentExtension.dll</HintPath>
+      <HintPath>..\..\packages\airship.ios.notificationcontentextension.16.9.2\lib\Xamarin.iOS10\AirshipBindings.iOS.NotificationContentExtension.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -136,5 +136,5 @@
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.AppExtension.CSharp.targets" />
   <Import Project="..\..\packages\urbanairship.ios.notificationcontentextension.16.1.2\build\urbanairship.ios.notificationcontentextension.targets" Condition="Exists('..\..\packages\urbanairship.ios.notificationcontentextension.16.1.2\build\urbanairship.ios.notificationcontentextension.targets')" />
-  <Import Project="..\..\packages\airship.ios.notificationcontentextension.16.7.0\build\airship.ios.notificationcontentextension.targets" Condition="Exists('..\..\packages\airship.ios.notificationcontentextension.16.7.0\build\airship.ios.notificationcontentextension.targets')" />
+  <Import Project="..\..\packages\airship.ios.notificationcontentextension.16.9.2\build\airship.ios.notificationcontentextension.targets" Condition="Exists('..\..\packages\airship.ios.notificationcontentextension.16.9.2\build\airship.ios.notificationcontentextension.targets')" />
 </Project>

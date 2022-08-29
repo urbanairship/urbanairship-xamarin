@@ -160,7 +160,7 @@
     <TransformFile Include="Transforms\EnumMethods.xml" />
   </ItemGroup>
   <ItemGroup>
-    <LibraryProjectZip Include="Jars\urbanairship-preference-16.5.0.aar" />
+    <LibraryProjectZip Include="Jars\urbanairship-preference-16.7.1.aar" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AirshipBindings.Android.Core\AirshipBindings.Android.Core.csproj">
