@@ -1,6 +1,6 @@
 ext {
     airshipProperties = new Properties()
-    airshipProperties.load(new FileInputStream("airship.properties"))
+    airshipProperties.load(new FileInputStream("$projectDir/airship.properties"))
     toolsDir = new File("$projectDir/.tools")
     if ( !toolsDir.exists() ) {
         toolsDir.mkdirs()
