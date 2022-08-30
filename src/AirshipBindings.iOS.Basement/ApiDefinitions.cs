@@ -35,10 +35,6 @@ namespace UrbanAirship {
         // extern NSString *const _Nonnull UAActionMetadataUserNotificationActionIDKey
         [Field("UAActionMetadataUserNotificationActionIDKey", "__Internal")]
         NSString UAActionMetadataUserNotificationActionIDKey { get; }
-
-        // extern NSInteger uaLogLevel
-        [Field("uaLogLevel", "__Internal")]
-        nint uaLogLevel { get; }
     }
 
     // typedef BOOL (^UAActionPredicate)(UAActionArguments *_Nonnull)

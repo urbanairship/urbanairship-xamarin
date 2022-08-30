@@ -480,12 +480,6 @@ namespace UrbanAirship {
 		NSError Error(string message);
 	}
 
-	// @interface UAAirshipLogger : NSObject
-	[BaseType(typeof(NSObject))]
-	interface UAAirshipLogger
-	{
-	}
-
 	// @interface UAirshipVersion : NSObject
 	[BaseType(typeof(NSObject))]
 	interface UAirshipVersion
@@ -648,25 +642,6 @@ namespace UrbanAirship {
 		// @property (readonly, copy, nonatomic) NSString * _Nullable currentAppVersion;
 		[NullAllowed, Export("currentAppVersion")]
 		string CurrentAppVersion { get; }
-	}
-
-	// @interface UAAssociateIdentifiersEvent : NSObject <UAEvent>
-	[BaseType(typeof(NSObject))]
-	[DisableDefaultCtor]
-	interface UAAssociateIdentifiersEvent : IUAEvent
-	{
-		// @property (readonly, copy, nonatomic) NSString * _Nonnull eventType;
-		[Export("eventType")]
-		string EventType { get; }
-
-		// @property (readonly, copy, nonatomic) NSDictionary * _Nonnull data;
-		[Export("data", ArgumentSemantic.Copy)]
-		NSDictionary Data { get; }
-
-		// -(instancetype _Nullable)initWithIdentifiers:(UAAssociatedIdentifiers * _Nullable)identifiers __attribute__((objc_designated_initializer));
-		[Export("initWithIdentifiers:")]
-		[DesignatedInitializer]
-		IntPtr Constructor([NullAllowed] UAAssociatedIdentifiers identifiers);
 	}
 
 	// @interface UAAssociatedIdentifiers : NSObject

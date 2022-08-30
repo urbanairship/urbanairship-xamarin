@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
    <metadata>
       <id>airship.android.messagecenter</id>
-      <version>16.5.0</version>
+      <version>16.7.1</version>
       <title>Airship Android SDK</title>
       <authors>Airship, Inc.</authors>
       <projectUrl>https://github.com/urbanairship/urbanairship-xamarin</projectUrl>
@@ -12,7 +12,7 @@
       <dependencies>
          <group targetFramework="MonoAndroid4.1">
             <dependency id="Xamarin.AndroidX.SwipeRefreshLayout" version="1.1.0.1" />
-            <dependency id="airship.android.core" version="16.5.0"/>
+            <dependency id="airship.android.core" version="16.7.1"/>
             <dependency id="Xamarin.AndroidX.Room.Runtime" version="2.3.0.4"/>
          </group>
       </dependencies>
