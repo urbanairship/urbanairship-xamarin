@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
    <metadata>
       <id>airship.ios.accengage</id>
-      <version>16.7.0.1</version>
+      <version>16.9.3</version>
       <title>Airship iOS SDK - Accengage</title>
       <authors>Airship, Inc.</authors>
       <projectUrl>https://github.com/urbanairship/urbanairship-xamarin</projectUrl>
