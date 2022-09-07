@@ -73,37 +73,37 @@
       <Version>1.3.1.3</Version>
     </PackageReference>
     <PackageReference Include="airship.android.fcm">
-      <Version>16.7.1</Version>
+      <Version>16.7.2</Version>
     </PackageReference>
     <PackageReference Include="airship.android.preference">
-      <Version>16.7.1</Version>
+      <Version>16.7.2</Version>
     </PackageReference>
     <PackageReference Include="airship.android.preferencecenter">
-      <Version>16.7.1</Version>
+      <Version>16.7.2</Version>
     </PackageReference>
     <PackageReference Include="airship.android.location">
-      <Version>16.7.1</Version>
+      <Version>16.7.2</Version>
     </PackageReference>
     <PackageReference Include="airship.android.core">
-      <Version>16.7.1</Version>
+      <Version>16.7.2</Version>
     </PackageReference>
     <PackageReference Include="airship.android.messagecenter">
-      <Version>16.7.1</Version>
+      <Version>16.7.2</Version>
     </PackageReference>
     <PackageReference Include="airship.android.adm">
-      <Version>16.7.1</Version>
+      <Version>16.7.2</Version>
     </PackageReference>
     <PackageReference Include="airship.android.automation">
-      <Version>16.7.1</Version>
+      <Version>16.7.2</Version>
     </PackageReference>
     <PackageReference Include="airship.android.accengage">
-      <Version>16.7.1</Version>
+      <Version>16.7.2</Version>
     </PackageReference>
     <PackageReference Include="airship.android.chat">
-      <Version>16.7.1</Version>
+      <Version>16.7.2</Version>
     </PackageReference>
     <PackageReference Include="airship.android.layout">
-      <Version>16.7.1</Version>
+      <Version>16.7.2</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
