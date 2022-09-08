@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="packages\Xamarin.AndroidX.Migration.1.0.8\build\monoandroid90\Xamarin.AndroidX.Migration.props" Condition="Exists('packages\Xamarin.AndroidX.Migration.1.0.8\build\monoandroid90\Xamarin.AndroidX.Migration.props')" />
+  <Import Project="packages\Xamarin.AndroidX.Migration.1.0.10\build\monoandroid120\Xamarin.AndroidX.Migration.props" Condition="Exists('packages\Xamarin.AndroidX.Migration.1.0.10\build\monoandroid120\Xamarin.AndroidX.Migration.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -42,17 +42,17 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="Xamarin.AndroidX.Annotation.Experimental">
-      <HintPath>packages\Xamarin.AndroidX.Annotation.Experimental.1.1.0\lib\monoandroid90\Xamarin.AndroidX.Annotation.Experimental.dll</HintPath>
+      <HintPath>packages\Xamarin.AndroidX.Annotation.Experimental.1.2.0.2\lib\monoandroid12.0\Xamarin.AndroidX.Annotation.Experimental.dll</HintPath>
     </Reference>
     <Reference Include="Java.Interop" />
     <Reference Include="Xamarin.AndroidX.MultiDex">
-      <HintPath>packages\Xamarin.AndroidX.MultiDex.2.0.1.5\lib\monoandroid90\Xamarin.AndroidX.MultiDex.dll</HintPath>
+      <HintPath>packages\Xamarin.AndroidX.MultiDex.2.0.1.13\lib\monoandroid12.0\Xamarin.AndroidX.MultiDex.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.AndroidX.Annotation">
-      <HintPath>packages\Xamarin.AndroidX.Annotation.1.2.0\lib\monoandroid90\Xamarin.AndroidX.Annotation.dll</HintPath>
+      <HintPath>packages\Xamarin.AndroidX.Annotation.1.4.0\lib\monoandroid12.0\Xamarin.AndroidX.Annotation.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.AndroidX.Arch.Core.Common">
-      <HintPath>packages\Xamarin.AndroidX.Arch.Core.Common.2.1.0.8\lib\monoandroid90\Xamarin.AndroidX.Arch.Core.Common.dll</HintPath>
+      <HintPath>packages\Xamarin.AndroidX.Arch.Core.Common.2.1.0.15\lib\monoandroid12.0\Xamarin.AndroidX.Arch.Core.Common.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.AndroidX.Collection">
       <HintPath>packages\Xamarin.AndroidX.Collection.1.1.0.7\lib\monoandroid90\Xamarin.AndroidX.Collection.dll</HintPath>
@@ -109,13 +109,13 @@
       <HintPath>packages\Xamarin.AndroidX.DataBinding.DataBindingAdapters.4.1.3\lib\monoandroid90\Xamarin.AndroidX.DataBinding.DataBindingAdapters.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.Jetbrains.Annotations">
-      <HintPath>packages\Xamarin.Jetbrains.Annotations.13.0.0.4\lib\monoandroid90\Xamarin.Jetbrains.Annotations.dll</HintPath>
+      <HintPath>packages\Xamarin.Jetbrains.Annotations.23.0.0.4\lib\monoandroid12.0\Xamarin.Jetbrains.Annotations.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.Kotlin.StdLib.Common">
-      <HintPath>packages\Xamarin.Kotlin.StdLib.Common.1.4.32.1\lib\monoandroid90\Xamarin.Kotlin.StdLib.Common.dll</HintPath>
+      <HintPath>packages\Xamarin.Kotlin.StdLib.Common.1.7.0\lib\monoandroid12.0\Xamarin.Kotlin.StdLib.Common.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.Kotlin.StdLib">
-      <HintPath>packages\Xamarin.Kotlin.StdLib.1.4.32.1\lib\monoandroid90\Xamarin.Kotlin.StdLib.dll</HintPath>
+      <HintPath>packages\Xamarin.Kotlin.StdLib.1.7.0\lib\monoandroid12.0\Xamarin.Kotlin.StdLib.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.KotlinX.Coroutines.Core.Jvm">
       <HintPath>packages\Xamarin.KotlinX.Coroutines.Core.Jvm.1.4.3.1\lib\monoandroid90\Xamarin.KotlinX.Coroutines.Core.Jvm.dll</HintPath>
@@ -157,7 +157,7 @@
       <HintPath>packages\Xamarin.AndroidX.ConstraintLayout.2.0.4.2\lib\monoandroid90\Xamarin.AndroidX.ConstraintLayout.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.AndroidX.Arch.Core.Runtime">
-      <HintPath>packages\Xamarin.AndroidX.Arch.Core.Runtime.2.1.0.8\lib\monoandroid90\Xamarin.AndroidX.Arch.Core.Runtime.dll</HintPath>
+      <HintPath>packages\Xamarin.AndroidX.Arch.Core.Runtime.2.1.0.15\lib\monoandroid12.0\Xamarin.AndroidX.Arch.Core.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.AndroidX.Lifecycle.LiveData">
       <HintPath>packages\Xamarin.AndroidX.Lifecycle.LiveData.2.3.0.1\lib\monoandroid90\Xamarin.AndroidX.Lifecycle.LiveData.dll</HintPath>
@@ -172,17 +172,21 @@
       <HintPath>packages\Xamarin.AndroidX.Paging.Runtime.2.1.2.7\lib\monoandroid90\Xamarin.AndroidX.Paging.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.AndroidX.Room.Common">
-      <HintPath>packages\Xamarin.AndroidX.Room.Common.2.3.0\lib\monoandroid90\Xamarin.AndroidX.Room.Common.dll</HintPath>
+      <HintPath>packages\Xamarin.AndroidX.Room.Common.2.4.3\lib\monoandroid12.0\Xamarin.AndroidX.Room.Common.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.AndroidX.Sqlite">
-      <HintPath>packages\Xamarin.AndroidX.Sqlite.2.1.0.7\lib\monoandroid90\Xamarin.AndroidX.Sqlite.dll</HintPath>
+      <HintPath>packages\Xamarin.AndroidX.Sqlite.2.2.0.2\lib\monoandroid12.0\Xamarin.AndroidX.Sqlite.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.AndroidX.Sqlite.Framework">
-      <HintPath>packages\Xamarin.AndroidX.Sqlite.Framework.2.1.0.7\lib\monoandroid90\Xamarin.AndroidX.Sqlite.Framework.dll</HintPath>
+      <HintPath>packages\Xamarin.AndroidX.Sqlite.Framework.2.2.0.2\lib\monoandroid12.0\Xamarin.AndroidX.Sqlite.Framework.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.AndroidX.Room.Runtime">
-      <HintPath>packages\Xamarin.AndroidX.Room.Runtime.2.3.0\lib\monoandroid90\Xamarin.AndroidX.Room.Runtime.dll</HintPath>
+      <HintPath>packages\Xamarin.AndroidX.Room.Runtime.2.4.3\lib\monoandroid12.0\Xamarin.AndroidX.Room.Runtime.dll</HintPath>
     </Reference>
+    <Reference Include="mscorlib" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <TransformFile Include="Transforms\Metadata.xml" />
@@ -222,11 +226,6 @@
   <Target Name="AfterBuild">
   </Target>
   -->
-  <Import Project="packages\Xamarin.AndroidX.Annotation.Experimental.1.1.0\build\monoandroid9.0\Xamarin.AndroidX.Annotation.Experimental.targets" Condition="Exists('packages\Xamarin.AndroidX.Annotation.Experimental.1.1.0\build\monoandroid9.0\Xamarin.AndroidX.Annotation.Experimental.targets')" />
-  <Import Project="packages\Xamarin.AndroidX.MultiDex.2.0.1.5\build\monoandroid90\Xamarin.AndroidX.MultiDex.targets" Condition="Exists('packages\Xamarin.AndroidX.MultiDex.2.0.1.5\build\monoandroid90\Xamarin.AndroidX.MultiDex.targets')" />
-  <Import Project="packages\Xamarin.AndroidX.Migration.1.0.8\build\monoandroid90\Xamarin.AndroidX.Migration.targets" Condition="Exists('packages\Xamarin.AndroidX.Migration.1.0.8\build\monoandroid90\Xamarin.AndroidX.Migration.targets')" />
-  <Import Project="packages\Xamarin.AndroidX.Annotation.1.2.0\build\monoandroid9.0\Xamarin.AndroidX.Annotation.targets" Condition="Exists('packages\Xamarin.AndroidX.Annotation.1.2.0\build\monoandroid9.0\Xamarin.AndroidX.Annotation.targets')" />
-  <Import Project="packages\Xamarin.AndroidX.Arch.Core.Common.2.1.0.8\build\monoandroid9.0\Xamarin.AndroidX.Arch.Core.Common.targets" Condition="Exists('packages\Xamarin.AndroidX.Arch.Core.Common.2.1.0.8\build\monoandroid9.0\Xamarin.AndroidX.Arch.Core.Common.targets')" />
   <Import Project="packages\Xamarin.AndroidX.Collection.1.1.0.7\build\monoandroid9.0\Xamarin.AndroidX.Collection.targets" Condition="Exists('packages\Xamarin.AndroidX.Collection.1.1.0.7\build\monoandroid9.0\Xamarin.AndroidX.Collection.targets')" />
   <Import Project="packages\Xamarin.AndroidX.Lifecycle.Common.2.3.1\build\monoandroid9.0\Xamarin.AndroidX.Lifecycle.Common.targets" Condition="Exists('packages\Xamarin.AndroidX.Lifecycle.Common.2.3.1\build\monoandroid9.0\Xamarin.AndroidX.Lifecycle.Common.targets')" />
   <Import Project="packages\Xamarin.AndroidX.Lifecycle.LiveData.Core.2.3.1\build\monoandroid9.0\Xamarin.AndroidX.Lifecycle.LiveData.Core.targets" Condition="Exists('packages\Xamarin.AndroidX.Lifecycle.LiveData.Core.2.3.1\build\monoandroid9.0\Xamarin.AndroidX.Lifecycle.LiveData.Core.targets')" />
@@ -254,13 +253,21 @@
   <Import Project="packages\Xamarin.AndroidX.AppCompat.AppCompatResources.1.2.0.7\build\monoandroid9.0\Xamarin.AndroidX.AppCompat.AppCompatResources.targets" Condition="Exists('packages\Xamarin.AndroidX.AppCompat.AppCompatResources.1.2.0.7\build\monoandroid9.0\Xamarin.AndroidX.AppCompat.AppCompatResources.targets')" />
   <Import Project="packages\Xamarin.AndroidX.AppCompat.1.2.0.7\build\monoandroid9.0\Xamarin.AndroidX.AppCompat.targets" Condition="Exists('packages\Xamarin.AndroidX.AppCompat.1.2.0.7\build\monoandroid9.0\Xamarin.AndroidX.AppCompat.targets')" />
   <Import Project="packages\Xamarin.AndroidX.ConstraintLayout.2.0.4.2\build\monoandroid9.0\Xamarin.AndroidX.ConstraintLayout.targets" Condition="Exists('packages\Xamarin.AndroidX.ConstraintLayout.2.0.4.2\build\monoandroid9.0\Xamarin.AndroidX.ConstraintLayout.targets')" />
-  <Import Project="packages\Xamarin.AndroidX.Arch.Core.Runtime.2.1.0.8\build\monoandroid9.0\Xamarin.AndroidX.Arch.Core.Runtime.targets" Condition="Exists('packages\Xamarin.AndroidX.Arch.Core.Runtime.2.1.0.8\build\monoandroid9.0\Xamarin.AndroidX.Arch.Core.Runtime.targets')" />
   <Import Project="packages\Xamarin.AndroidX.Lifecycle.LiveData.2.3.0.1\build\monoandroid9.0\Xamarin.AndroidX.Lifecycle.LiveData.targets" Condition="Exists('packages\Xamarin.AndroidX.Lifecycle.LiveData.2.3.0.1\build\monoandroid9.0\Xamarin.AndroidX.Lifecycle.LiveData.targets')" />
   <Import Project="packages\Xamarin.AndroidX.Paging.Common.2.1.2.7\build\monoandroid9.0\Xamarin.AndroidX.Paging.Common.targets" Condition="Exists('packages\Xamarin.AndroidX.Paging.Common.2.1.2.7\build\monoandroid9.0\Xamarin.AndroidX.Paging.Common.targets')" />
   <Import Project="packages\Xamarin.AndroidX.RecyclerView.1.1.0.8\build\monoandroid9.0\Xamarin.AndroidX.RecyclerView.targets" Condition="Exists('packages\Xamarin.AndroidX.RecyclerView.1.1.0.8\build\monoandroid9.0\Xamarin.AndroidX.RecyclerView.targets')" />
   <Import Project="packages\Xamarin.AndroidX.Paging.Runtime.2.1.2.7\build\monoandroid9.0\Xamarin.AndroidX.Paging.Runtime.targets" Condition="Exists('packages\Xamarin.AndroidX.Paging.Runtime.2.1.2.7\build\monoandroid9.0\Xamarin.AndroidX.Paging.Runtime.targets')" />
-  <Import Project="packages\Xamarin.AndroidX.Room.Common.2.3.0\build\monoandroid9.0\Xamarin.AndroidX.Room.Common.targets" Condition="Exists('packages\Xamarin.AndroidX.Room.Common.2.3.0\build\monoandroid9.0\Xamarin.AndroidX.Room.Common.targets')" />
-  <Import Project="packages\Xamarin.AndroidX.Sqlite.2.1.0.7\build\monoandroid9.0\Xamarin.AndroidX.Sqlite.targets" Condition="Exists('packages\Xamarin.AndroidX.Sqlite.2.1.0.7\build\monoandroid9.0\Xamarin.AndroidX.Sqlite.targets')" />
-  <Import Project="packages\Xamarin.AndroidX.Sqlite.Framework.2.1.0.7\build\monoandroid9.0\Xamarin.AndroidX.Sqlite.Framework.targets" Condition="Exists('packages\Xamarin.AndroidX.Sqlite.Framework.2.1.0.7\build\monoandroid9.0\Xamarin.AndroidX.Sqlite.Framework.targets')" />
-  <Import Project="packages\Xamarin.AndroidX.Room.Runtime.2.3.0\build\monoandroid9.0\Xamarin.AndroidX.Room.Runtime.targets" Condition="Exists('packages\Xamarin.AndroidX.Room.Runtime.2.3.0\build\monoandroid9.0\Xamarin.AndroidX.Room.Runtime.targets')" />
+  <Import Project="packages\Xamarin.AndroidX.Annotation.Experimental.1.2.0.2\build\monoandroid12.0\Xamarin.AndroidX.Annotation.Experimental.targets" Condition="Exists('packages\Xamarin.AndroidX.Annotation.Experimental.1.2.0.2\build\monoandroid12.0\Xamarin.AndroidX.Annotation.Experimental.targets')" />
+  <Import Project="packages\Xamarin.AndroidX.MultiDex.2.0.1.13\build\monoandroid12.0\Xamarin.AndroidX.MultiDex.targets" Condition="Exists('packages\Xamarin.AndroidX.MultiDex.2.0.1.13\build\monoandroid12.0\Xamarin.AndroidX.MultiDex.targets')" />
+  <Import Project="packages\Xamarin.AndroidX.Migration.1.0.10\build\monoandroid120\Xamarin.AndroidX.Migration.targets" Condition="Exists('packages\Xamarin.AndroidX.Migration.1.0.10\build\monoandroid120\Xamarin.AndroidX.Migration.targets')" />
+  <Import Project="packages\Xamarin.Jetbrains.Annotations.23.0.0.4\build\monoandroid12.0\Xamarin.Jetbrains.Annotations.targets" Condition="Exists('packages\Xamarin.Jetbrains.Annotations.23.0.0.4\build\monoandroid12.0\Xamarin.Jetbrains.Annotations.targets')" />
+  <Import Project="packages\Xamarin.Kotlin.StdLib.Common.1.7.0\build\monoandroid12.0\Xamarin.Kotlin.StdLib.Common.targets" Condition="Exists('packages\Xamarin.Kotlin.StdLib.Common.1.7.0\build\monoandroid12.0\Xamarin.Kotlin.StdLib.Common.targets')" />
+  <Import Project="packages\Xamarin.Kotlin.StdLib.1.7.0\build\monoandroid12.0\Xamarin.Kotlin.StdLib.targets" Condition="Exists('packages\Xamarin.Kotlin.StdLib.1.7.0\build\monoandroid12.0\Xamarin.Kotlin.StdLib.targets')" />
+  <Import Project="packages\Xamarin.AndroidX.Annotation.1.4.0\build\monoandroid12.0\Xamarin.AndroidX.Annotation.targets" Condition="Exists('packages\Xamarin.AndroidX.Annotation.1.4.0\build\monoandroid12.0\Xamarin.AndroidX.Annotation.targets')" />
+  <Import Project="packages\Xamarin.AndroidX.Arch.Core.Common.2.1.0.15\build\monoandroid12.0\Xamarin.AndroidX.Arch.Core.Common.targets" Condition="Exists('packages\Xamarin.AndroidX.Arch.Core.Common.2.1.0.15\build\monoandroid12.0\Xamarin.AndroidX.Arch.Core.Common.targets')" />
+  <Import Project="packages\Xamarin.AndroidX.Arch.Core.Runtime.2.1.0.15\build\monoandroid12.0\Xamarin.AndroidX.Arch.Core.Runtime.targets" Condition="Exists('packages\Xamarin.AndroidX.Arch.Core.Runtime.2.1.0.15\build\monoandroid12.0\Xamarin.AndroidX.Arch.Core.Runtime.targets')" />
+  <Import Project="packages\Xamarin.AndroidX.Room.Common.2.4.3\build\monoandroid12.0\Xamarin.AndroidX.Room.Common.targets" Condition="Exists('packages\Xamarin.AndroidX.Room.Common.2.4.3\build\monoandroid12.0\Xamarin.AndroidX.Room.Common.targets')" />
+  <Import Project="packages\Xamarin.AndroidX.Sqlite.2.2.0.2\build\monoandroid12.0\Xamarin.AndroidX.Sqlite.targets" Condition="Exists('packages\Xamarin.AndroidX.Sqlite.2.2.0.2\build\monoandroid12.0\Xamarin.AndroidX.Sqlite.targets')" />
+  <Import Project="packages\Xamarin.AndroidX.Sqlite.Framework.2.2.0.2\build\monoandroid12.0\Xamarin.AndroidX.Sqlite.Framework.targets" Condition="Exists('packages\Xamarin.AndroidX.Sqlite.Framework.2.2.0.2\build\monoandroid12.0\Xamarin.AndroidX.Sqlite.Framework.targets')" />
+  <Import Project="packages\Xamarin.AndroidX.Room.Runtime.2.4.3\build\monoandroid12.0\Xamarin.AndroidX.Room.Runtime.targets" Condition="Exists('packages\Xamarin.AndroidX.Room.Runtime.2.4.3\build\monoandroid12.0\Xamarin.AndroidX.Room.Runtime.targets')" />
 </Project>
