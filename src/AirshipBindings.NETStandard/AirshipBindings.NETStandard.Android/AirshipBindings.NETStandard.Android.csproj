@@ -10,7 +10,7 @@
     <OutputType>Library</OutputType>
     <RootNamespace>AirshipBindings.NETStandard</RootNamespace>
     <AssemblyName>AirshipBindings.NETStandard</AssemblyName>
-    <TargetFrameworkVersion>v10.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v12.0</TargetFrameworkVersion>
     <AndroidResgenFile>Resources\Resource.designer.cs</AndroidResgenFile>
     <AndroidResgenClass>Resource</AndroidResgenClass>
     <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
