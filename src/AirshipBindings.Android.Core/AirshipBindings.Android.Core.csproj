@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\AirshipBindings.Android.Automation\packages\Xamarin.AndroidX.Migration.1.0.10\build\monoandroid120\Xamarin.AndroidX.Migration.props" Condition="Exists('..\AirshipBindings.Android.Automation\packages\Xamarin.AndroidX.Migration.1.0.10\build\monoandroid120\Xamarin.AndroidX.Migration.props')" />
   <Import Project="packages\Xamarin.AndroidX.Migration.1.0.8\build\monoandroid90\Xamarin.AndroidX.Migration.props" Condition="Exists('packages\Xamarin.AndroidX.Migration.1.0.8\build\monoandroid90\Xamarin.AndroidX.Migration.props')" />
   <Import Project="packages\Xamarin.AndroidX.Migration.1.0.6\build\monoandroid90\Xamarin.AndroidX.Migration.props" Condition="Exists('packages\Xamarin.AndroidX.Migration.1.0.6\build\monoandroid90\Xamarin.AndroidX.Migration.props')" />
   <PropertyGroup>
@@ -12,7 +13,7 @@
     <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
     <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
     <AssemblyName>AirshipBindings.Android.Core</AssemblyName>
-    <TargetFrameworkVersion>v10.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v12.0</TargetFrameworkVersion>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <AndroidTlsProvider></AndroidTlsProvider>
@@ -44,13 +45,13 @@
     <Reference Include="System.Core" />
     <Reference Include="Mono.Android" />
     <Reference Include="Xamarin.AndroidX.Annotation">
-      <HintPath>packages\Xamarin.AndroidX.Annotation.1.2.0.3\lib\monoandroid90\Xamarin.AndroidX.Annotation.dll</HintPath>
+      <HintPath>..\AirshipBindings.Android.Automation\packages\Xamarin.AndroidX.Annotation.1.4.0\lib\monoandroid12.0\Xamarin.AndroidX.Annotation.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.AndroidX.Arch.Core.Common">
-      <HintPath>packages\Xamarin.AndroidX.Arch.Core.Common.2.1.0.11\lib\monoandroid90\Xamarin.AndroidX.Arch.Core.Common.dll</HintPath>
+      <HintPath>..\AirshipBindings.Android.Automation\packages\Xamarin.AndroidX.Arch.Core.Common.2.1.0.15\lib\monoandroid12.0\Xamarin.AndroidX.Arch.Core.Common.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.AndroidX.Arch.Core.Runtime">
-      <HintPath>packages\Xamarin.AndroidX.Arch.Core.Runtime.2.1.0.11\lib\monoandroid90\Xamarin.AndroidX.Arch.Core.Runtime.dll</HintPath>
+      <HintPath>..\AirshipBindings.Android.Automation\packages\Xamarin.AndroidX.Arch.Core.Runtime.2.1.0.15\lib\monoandroid12.0\Xamarin.AndroidX.Arch.Core.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.AndroidX.Collection">
       <HintPath>packages\Xamarin.AndroidX.Collection.1.1.0.10\lib\monoandroid90\Xamarin.AndroidX.Collection.dll</HintPath>
@@ -89,7 +90,7 @@
       <HintPath>packages\Xamarin.AndroidX.Interpolator.1.0.0.10\lib\monoandroid90\Xamarin.AndroidX.Interpolator.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.AndroidX.MultiDex">
-      <HintPath>packages\Xamarin.AndroidX.MultiDex.2.0.1.10\lib\monoandroid90\Xamarin.AndroidX.MultiDex.dll</HintPath>
+      <HintPath>..\AirshipBindings.Android.Automation\packages\Xamarin.AndroidX.MultiDex.2.0.1.13\lib\monoandroid12.0\Xamarin.AndroidX.MultiDex.dll</HintPath>
     </Reference>
     <Reference Include="Java.Interop" />
     <Reference Include="Xamarin.AndroidX.Lifecycle.ViewModelSavedState">
@@ -102,7 +103,7 @@
       <HintPath>packages\Xamarin.AndroidX.Fragment.1.3.6.3\lib\monoandroid90\Xamarin.AndroidX.Fragment.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.AndroidX.Annotation.Experimental">
-      <HintPath>packages\Xamarin.AndroidX.Annotation.Experimental.1.1.0.3\lib\monoandroid90\Xamarin.AndroidX.Annotation.Experimental.dll</HintPath>
+      <HintPath>..\AirshipBindings.Android.Automation\packages\Xamarin.AndroidX.Annotation.Experimental.1.2.0.2\lib\monoandroid12.0\Xamarin.AndroidX.Annotation.Experimental.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.AndroidX.Lifecycle.LiveData">
       <HintPath>packages\Xamarin.AndroidX.Lifecycle.LiveData.2.3.1.3\lib\monoandroid90\Xamarin.AndroidX.Lifecycle.LiveData.dll</HintPath>
@@ -111,16 +112,16 @@
       <HintPath>packages\Xamarin.AndroidX.Lifecycle.Service.2.3.1.3\lib\monoandroid90\Xamarin.AndroidX.Lifecycle.Service.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.AndroidX.Room.Common">
-      <HintPath>packages\Xamarin.AndroidX.Room.Common.2.3.0.4\lib\monoandroid90\Xamarin.AndroidX.Room.Common.dll</HintPath>
+      <HintPath>..\AirshipBindings.Android.Automation\packages\Xamarin.AndroidX.Room.Common.2.4.3\lib\monoandroid12.0\Xamarin.AndroidX.Room.Common.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.AndroidX.Sqlite">
-      <HintPath>packages\Xamarin.AndroidX.Sqlite.2.1.0.10\lib\monoandroid90\Xamarin.AndroidX.Sqlite.dll</HintPath>
+      <HintPath>..\AirshipBindings.Android.Automation\packages\Xamarin.AndroidX.Sqlite.2.2.0.2\lib\monoandroid12.0\Xamarin.AndroidX.Sqlite.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.AndroidX.Sqlite.Framework">
-      <HintPath>packages\Xamarin.AndroidX.Sqlite.Framework.2.1.0.10\lib\monoandroid90\Xamarin.AndroidX.Sqlite.Framework.dll</HintPath>
+      <HintPath>..\AirshipBindings.Android.Automation\packages\Xamarin.AndroidX.Sqlite.Framework.2.2.0.2\lib\monoandroid12.0\Xamarin.AndroidX.Sqlite.Framework.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.AndroidX.Room.Runtime">
-      <HintPath>packages\Xamarin.AndroidX.Room.Runtime.2.3.0.4\lib\monoandroid90\Xamarin.AndroidX.Room.Runtime.dll</HintPath>
+      <HintPath>..\AirshipBindings.Android.Automation\packages\Xamarin.AndroidX.Room.Runtime.2.4.3\lib\monoandroid12.0\Xamarin.AndroidX.Room.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.Google.Guava.ListenableFuture">
       <HintPath>packages\Xamarin.Google.Guava.ListenableFuture.1.0.0.4\lib\monoandroid90\Xamarin.Google.Guava.ListenableFuture.dll</HintPath>
@@ -139,6 +140,15 @@
     </Reference>
     <Reference Include="Xamarin.AndroidX.Startup.StartupRuntime">
       <HintPath>packages\Xamarin.AndroidX.Startup.StartupRuntime.1.1.0.2\lib\monoandroid90\Xamarin.AndroidX.Startup.StartupRuntime.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Jetbrains.Annotations">
+      <HintPath>..\AirshipBindings.Android.Automation\packages\Xamarin.Jetbrains.Annotations.23.0.0.4\lib\monoandroid12.0\Xamarin.Jetbrains.Annotations.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Kotlin.StdLib.Common">
+      <HintPath>..\AirshipBindings.Android.Automation\packages\Xamarin.Kotlin.StdLib.Common.1.7.0\lib\monoandroid12.0\Xamarin.Kotlin.StdLib.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Kotlin.StdLib">
+      <HintPath>..\AirshipBindings.Android.Automation\packages\Xamarin.Kotlin.StdLib.1.7.0\lib\monoandroid12.0\Xamarin.Kotlin.StdLib.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -170,7 +180,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <LibraryProjectZip Include="Jars\urbanairship-core-16.7.1.aar" />
+    <LibraryProjectZip Include="Jars\urbanairship-core-16.7.2.aar" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.Bindings.targets" />
   <Import Project="packages\Xamarin.AndroidX.Annotation.1.1.0\build\monoandroid90\Xamarin.AndroidX.Annotation.targets" Condition="Exists('packages\Xamarin.AndroidX.Annotation.1.1.0\build\monoandroid90\Xamarin.AndroidX.Annotation.targets')" />
@@ -257,4 +267,17 @@
   <Import Project="packages\Xamarin.AndroidX.Room.Runtime.2.3.0.4\build\monoandroid90\Xamarin.AndroidX.Room.Runtime.targets" Condition="Exists('packages\Xamarin.AndroidX.Room.Runtime.2.3.0.4\build\monoandroid90\Xamarin.AndroidX.Room.Runtime.targets')" />
   <Import Project="packages\Xamarin.AndroidX.Startup.StartupRuntime.1.1.0.2\build\monoandroid90\Xamarin.AndroidX.Startup.StartupRuntime.targets" Condition="Exists('packages\Xamarin.AndroidX.Startup.StartupRuntime.1.1.0.2\build\monoandroid90\Xamarin.AndroidX.Startup.StartupRuntime.targets')" />
   <Import Project="packages\Xamarin.AndroidX.Work.Runtime.2.7.0\build\monoandroid90\Xamarin.AndroidX.Work.Runtime.targets" Condition="Exists('packages\Xamarin.AndroidX.Work.Runtime.2.7.0\build\monoandroid90\Xamarin.AndroidX.Work.Runtime.targets')" />
+  <Import Project="..\AirshipBindings.Android.Automation\packages\Xamarin.AndroidX.Annotation.Experimental.1.2.0.2\build\monoandroid12.0\Xamarin.AndroidX.Annotation.Experimental.targets" Condition="Exists('..\AirshipBindings.Android.Automation\packages\Xamarin.AndroidX.Annotation.Experimental.1.2.0.2\build\monoandroid12.0\Xamarin.AndroidX.Annotation.Experimental.targets')" />
+  <Import Project="..\AirshipBindings.Android.Automation\packages\Xamarin.AndroidX.MultiDex.2.0.1.13\build\monoandroid12.0\Xamarin.AndroidX.MultiDex.targets" Condition="Exists('..\AirshipBindings.Android.Automation\packages\Xamarin.AndroidX.MultiDex.2.0.1.13\build\monoandroid12.0\Xamarin.AndroidX.MultiDex.targets')" />
+  <Import Project="..\AirshipBindings.Android.Automation\packages\Xamarin.AndroidX.Migration.1.0.10\build\monoandroid120\Xamarin.AndroidX.Migration.targets" Condition="Exists('..\AirshipBindings.Android.Automation\packages\Xamarin.AndroidX.Migration.1.0.10\build\monoandroid120\Xamarin.AndroidX.Migration.targets')" />
+  <Import Project="..\AirshipBindings.Android.Automation\packages\Xamarin.Jetbrains.Annotations.23.0.0.4\build\monoandroid12.0\Xamarin.Jetbrains.Annotations.targets" Condition="Exists('..\AirshipBindings.Android.Automation\packages\Xamarin.Jetbrains.Annotations.23.0.0.4\build\monoandroid12.0\Xamarin.Jetbrains.Annotations.targets')" />
+  <Import Project="..\AirshipBindings.Android.Automation\packages\Xamarin.Kotlin.StdLib.Common.1.7.0\build\monoandroid12.0\Xamarin.Kotlin.StdLib.Common.targets" Condition="Exists('..\AirshipBindings.Android.Automation\packages\Xamarin.Kotlin.StdLib.Common.1.7.0\build\monoandroid12.0\Xamarin.Kotlin.StdLib.Common.targets')" />
+  <Import Project="..\AirshipBindings.Android.Automation\packages\Xamarin.Kotlin.StdLib.1.7.0\build\monoandroid12.0\Xamarin.Kotlin.StdLib.targets" Condition="Exists('..\AirshipBindings.Android.Automation\packages\Xamarin.Kotlin.StdLib.1.7.0\build\monoandroid12.0\Xamarin.Kotlin.StdLib.targets')" />
+  <Import Project="..\AirshipBindings.Android.Automation\packages\Xamarin.AndroidX.Annotation.1.4.0\build\monoandroid12.0\Xamarin.AndroidX.Annotation.targets" Condition="Exists('..\AirshipBindings.Android.Automation\packages\Xamarin.AndroidX.Annotation.1.4.0\build\monoandroid12.0\Xamarin.AndroidX.Annotation.targets')" />
+  <Import Project="..\AirshipBindings.Android.Automation\packages\Xamarin.AndroidX.Arch.Core.Common.2.1.0.15\build\monoandroid12.0\Xamarin.AndroidX.Arch.Core.Common.targets" Condition="Exists('..\AirshipBindings.Android.Automation\packages\Xamarin.AndroidX.Arch.Core.Common.2.1.0.15\build\monoandroid12.0\Xamarin.AndroidX.Arch.Core.Common.targets')" />
+  <Import Project="..\AirshipBindings.Android.Automation\packages\Xamarin.AndroidX.Arch.Core.Runtime.2.1.0.15\build\monoandroid12.0\Xamarin.AndroidX.Arch.Core.Runtime.targets" Condition="Exists('..\AirshipBindings.Android.Automation\packages\Xamarin.AndroidX.Arch.Core.Runtime.2.1.0.15\build\monoandroid12.0\Xamarin.AndroidX.Arch.Core.Runtime.targets')" />
+  <Import Project="..\AirshipBindings.Android.Automation\packages\Xamarin.AndroidX.Room.Common.2.4.3\build\monoandroid12.0\Xamarin.AndroidX.Room.Common.targets" Condition="Exists('..\AirshipBindings.Android.Automation\packages\Xamarin.AndroidX.Room.Common.2.4.3\build\monoandroid12.0\Xamarin.AndroidX.Room.Common.targets')" />
+  <Import Project="..\AirshipBindings.Android.Automation\packages\Xamarin.AndroidX.Sqlite.2.2.0.2\build\monoandroid12.0\Xamarin.AndroidX.Sqlite.targets" Condition="Exists('..\AirshipBindings.Android.Automation\packages\Xamarin.AndroidX.Sqlite.2.2.0.2\build\monoandroid12.0\Xamarin.AndroidX.Sqlite.targets')" />
+  <Import Project="..\AirshipBindings.Android.Automation\packages\Xamarin.AndroidX.Sqlite.Framework.2.2.0.2\build\monoandroid12.0\Xamarin.AndroidX.Sqlite.Framework.targets" Condition="Exists('..\AirshipBindings.Android.Automation\packages\Xamarin.AndroidX.Sqlite.Framework.2.2.0.2\build\monoandroid12.0\Xamarin.AndroidX.Sqlite.Framework.targets')" />
+  <Import Project="..\AirshipBindings.Android.Automation\packages\Xamarin.AndroidX.Room.Runtime.2.4.3\build\monoandroid12.0\Xamarin.AndroidX.Room.Runtime.targets" Condition="Exists('..\AirshipBindings.Android.Automation\packages\Xamarin.AndroidX.Room.Runtime.2.4.3\build\monoandroid12.0\Xamarin.AndroidX.Room.Runtime.targets')" />
 </Project>

@@ -14,7 +14,7 @@
     <AssemblyName>AirshipBindings.Android.Layout</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <Deterministic>True</Deterministic>
-    <TargetFrameworkVersion>v11.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v12.0</TargetFrameworkVersion>
     <AndroidClassParser>class-parse</AndroidClassParser>
     <AndroidCodegenTarget>XAJavaInterop1</AndroidCodegenTarget>
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
@@ -61,7 +61,7 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <LibraryProjectZip Include="Jars\urbanairship-layout-16.7.1.aar" />
+    <LibraryProjectZip Include="Jars\urbanairship-layout-16.7.2.aar" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Additions\" />

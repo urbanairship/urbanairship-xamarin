@@ -1,13 +1,22 @@
 # Airship Xamarin Changelog
 
+## Version 16.2.1 - Sept 9, 2022
+Minor release to support iOS SDK 16.9.3 and Android SDK 16.7.2.
+
+### Changes
+- Updated Android SDK to 16.7.2
+- Updated iOS SDK to 16.9.3
+- Fixes a crashes due to Message Center database migrations for Android.
+- Fixes an IAA banner issue and renames an internal JSON enum to avoid conflicts for iOS.
+
 ## Version 16.2.0 - August 29, 2022
 Minor release that updates to the latest Airship SDKs. The Android SDK update fixes an issue with invalid schemas with Message Center. Applications updating from Android versions older than 15.1 should update directly to this version.
 
 ### Changes
 - Updated Android SDK to 16.7.1
-- Updated iOS SDK to 16.9.1
+- Updated iOS SDK to 16.9.2
 
-## Version 16.2.0 - June 2, 2022
+## Version 16.1.1 - June 2, 2022
 Patch release that fixes a crash with casting launch options on iOS. Apps
 should no longer cast the launch options when calling takeOff.
 
@@ -15,11 +24,11 @@ should no longer cast the launch options when calling takeOff.
 - Removed need to cast launch options on iOS.
 
 ## Version 16.1.0 - May 24, 2022
-Minor release to support iOS SDK 16.9.2 and Android SDK 16.7.1 and fix a crash with custom event.
+Minor release to support iOS SDK 16.7.0 and Android SDK 16.5.0 and fix a crash with custom event.
 
 ### Changes
-- Updated Android SDK to 16.7.1
-- Updated iOS SDK to 16.9.2
+- Updated Android SDK to 16.5.0
+- Updated iOS SDK to 16.7.0
 - Add Room runtime as a dependency on Android Core
 - Add InAppMessagingDelegate method and notifyDisplayConditionsChanged on iOS.
 - add binding for missing obj-c class prefix to the UAPreferenceCenterComponent class.
@@ -52,7 +61,7 @@ Minor release fixing an issue with nuget package path length.
 Minor release updating to latest Android Airship SDK.
 
 ### Changes
-- Updated Android SDK to 16.2.0
+- Updated Android SDK to 16.1.1
 
 ## Version 15.0.1 - Dec 22, 2021
 Minor release updating to latest iOS Airship SDK.
