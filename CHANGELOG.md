@@ -1,6 +1,6 @@
 # Airship Xamarin Changelog
 
-## Version 16.2.1 - Sept 7, 2022
+## Version 16.2.1 - Sept 9, 2022
 Minor release to support iOS SDK 16.9.3 and Android SDK 16.7.2.
 
 ### Changes
