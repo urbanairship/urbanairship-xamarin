@@ -33,6 +33,8 @@ jobs:
           NOTES="${NOTES//$'\n'/'%0A'}"
           NOTES="${NOTES//$'\r'/'%0D'}"
           echo ::set-output name=NOTES::"$NOTES"
+        env:
+          CLOUDSDK_PYTHON: python3
 
       - name: Setup GCP
         uses: google-github-actions/setup-gcloud@daadedc81d5f9d3c06d2c92f49202a3cc2b919ba # v0.2.1
