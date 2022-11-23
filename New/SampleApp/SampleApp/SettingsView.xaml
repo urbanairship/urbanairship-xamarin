@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SampleApp.SettingsView"
+             Title="SettingsView">
+    <VerticalStackLayout>
+        <TableView Intent="Menu">
+            <TableRoot>
+                <TableSection Title="CHANNEL">
+                    <TextCell Text="Channel ID"
+                              Detail="Not set" />
+                    <TextCell Text="Tags"
+                              Detail="" />
+                    <TextCell Text="Tags Groups"
+                              Detail="" />
+                    <TextCell Text="Attributes"
+                              Detail="" />
+                    <TextCell Text="Subscription lists"
+                              Detail="" />
+                </TableSection>
+                <TableSection Title="CONTACTS">
+                    <TextCell Text="Named User"
+                              Detail="Not set" />
+                    <TextCell Text="Tag Groups"
+                              Detail="" />
+                    <TextCell Text="Atributes"
+                              Detail="" />
+                    <TextCell Text="Subscription lists"
+                              Detail="" />
+                    <TextCell Text="Add Channel"
+                              Detail="" />
+                </TableSection>
+                <TableSection Title="PUSH">
+                    <SwitchCell Text="Notification Enabled" On="false" />
+                    <SwitchCell Text="Background Push Enabled" On="false" />
+                    <TextCell Text="Optin Status"
+                              Detail="Opted-Out" />
+                    <TextCell Text="Device Token"
+                              Detail="80f376477a89195b1c40fd051ee14875132f4e6c12a6576e964b4e205b9e840cb2c5809f250d4e9ad2f917fdcf80133d8f46d63b36342d6548d73eaa35a79cfd5330bd8c3f58f9ecff82e5671154bc36" />
+                    <TextCell Text="Received Push"
+                              Detail="" />
+                </TableSection>
+                <TableSection Title="ANALYTICS">
+                    <TextCell Text="Events"
+                              Detail="" />
+                    <TextCell Text="Add Custom Event"
+                              Detail="" />
+                    <TextCell Text="Associated Identifiers"
+                              Detail="" />
+                </TableSection>
+                <TableSection Title="IN-APP AUTOMATION">
+                    <TextCell Text="Automations"
+                              Detail="" />
+                    <TextCell Text="Display Interval"
+                              Detail="" />
+                </TableSection>
+                <TableSection Title="Preference center">
+                    <TextCell Text="Preference Centers"
+                              Detail="" />
+                    <TextCell Text="Display Interval"
+                              Detail="" />
+                </TableSection>
+                <TableSection Title="APP INFO">
+                    <TextCell Text="Airship SDK Version"
+                              Detail="" />
+                    <TextCell Text="App Version"
+                              Detail="" />
+                    <TextCell Text="Bundle ID"
+                              Detail="" />
+                    <TextCell Text="Time Zone"
+                              Detail="" />
+                    <TextCell Text="App Locale"
+                              Detail="" />
+                    <TextCell Text="Locale Override"
+                              Detail="" />
+                </TableSection>
+            </TableRoot>
+        </TableView>
+    </VerticalStackLayout>
+</ContentPage>

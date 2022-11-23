@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SampleApp.HomeView"
+             Title="HomeView">
+    <VerticalStackLayout Margin="20">
+        <ImageButton Source="settings"
+                     Clicked="openSettings"
+                     HeightRequest="30"
+                     WidthRequest="30"
+                     HorizontalOptions="End"/>
+        <VerticalStackLayout Margin="20"
+                         Spacing="40">
+            <Image Source="urbanairship_logo"
+                   HeightRequest="250"/>
+            <Button Text="Enable Push"
+                    Clicked="OnButtonClicked"
+                    x:Name="enablePushButton"/>
+            <TableView Intent="Menu">
+                <TableRoot>
+                    <TableSection>
+                        <TextCell Text="Channel ID"
+                                  Detail="Not set" />
+                        <TextCell Text="Named User"
+                                  Detail="Not set" />
+                    </TableSection>
+                </TableRoot>
+            </TableView>    
+        </VerticalStackLayout>
+    </VerticalStackLayout>
+</ContentPage>
