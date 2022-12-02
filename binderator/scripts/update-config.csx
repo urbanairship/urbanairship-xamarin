@@ -57,8 +57,19 @@ foreach (var art in config[0].Artifacts.Where (a => !a.DependencyOnly)) {
 	var package_name = $"{art.GroupId}.{art.ArtifactId}";
 	var current_version = art.Version;
 
-	// Update packages we are binding
-	if (NeedsUpdate (art, a))
+  // Update packages we are binding to the specified version
+  var versionArg = options.Version;
+  if (versionArg != "")
+  {
+    current_version = versionArg;
+    package_name = "* " + package_name;
+    if (options.Update) {
+      art.Version = versionArg;
+      art.NugetVersion = versionArg;
+    }
+  }
+  // Update packages we are binding to latest maven version
+  else if (NeedsUpdate (art, a))
 	{
 		package_name = "* " + package_name;
 
@@ -66,6 +77,7 @@ foreach (var art in config[0].Artifacts.Where (a => !a.DependencyOnly)) {
 		if (options.Update)
 		{
 			var new_version = GetLatestVersion (a)?.ToString ();
+      current_version = new_version;
 			var prefix = art.NugetVersion.StartsWith ("1" + art.Version + ".") ? "1" : string.Empty;
 
 			art.Version = new_version;
@@ -478,6 +490,8 @@ public class Options
   public bool Bump { get; }
   public bool Sort { get; }
   public bool Published { get; }
+  public bool Check { get; }
+  public string Version { get; }
   public List<string> DependencyConfigs { get; }
 
   public Options (IList<string> args)
@@ -489,8 +503,21 @@ public class Options
     Bump = args.Any (a => a.ToLowerInvariant () == "bump");
     Sort = args.Any (a => a.ToLowerInvariant () == "sort");
     Published = args.Any (a => a.ToLowerInvariant () == "published");
+    Check = args.Any (a => a.ToLowerInvariant () == "check");
 
     DependencyConfigs = args.Where (a => a.StartsWith ("-dep:")).Select (a => a.Substring (5)).ToList ();
+    Version = args.Where(a => a.StartsWith ("-v"))
+      .Select(a => a.Substring (2))
+      .DefaultIfEmpty("")
+      .First();
+
+    if (Update) {
+      if (Version != "")  {
+        System.Console.WriteLine ($"Updating to v{Version}.");
+      } else {
+        System.Console.WriteLine ($"Updating to latest maven central version.");
+      }
+    }
   }
 
   public bool ShouldWriteOutput => Update || Bump || Sort;
