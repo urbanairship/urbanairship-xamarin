@@ -38,14 +38,6 @@ Task("default")
 	.IsDependentOn("binderate")
 	.Does(() => {});
 
-Task("update-config")
-  .Does(() =>
-{
-  FilePath dotnet = Context.Tools.Resolve("dotnet");
-  Information($"dotnet tool: {dotnet}");
-  RunProcess(dotnet, "script scripts/update-config.csx --help");
-});
-
 Task("binderate")
 	.IsDependentOn("binderate-config-verify")
   .Does(() =>
@@ -144,7 +136,6 @@ Task("binderate-config-verify")
   }
 });
 
-
 Task("binderate-fix")
   .Does (() =>
 {
@@ -231,14 +222,46 @@ Task("build")
   DotNetMSBuild("./generated/airship-android.sln", settings);
 });
 
+
+Task("check-published")
+  .Does(() =>
+{
+  FilePath dotnet = Context.Tools.Resolve("dotnet");
+  RunProcess(dotnet, "script scripts/update-config.csx -- config.json published");
+});
+
+Task("update-config")
+  .Does(() =>
+{
+  FilePath dotnet = Context.Tools.Resolve("dotnet");
+  RunProcess(dotnet, "script scripts/update-config.csx -- config.json update");
+});
+
+Task("update-config-dependencies")
+  .Does(() =>
+{
+  FilePath dotnet = Context.Tools.Resolve("dotnet");
+  RunProcess(dotnet, "script scripts/update-config.csx -- config.json bump");
+});
+
+Task("sort-config")
+  .Does(() =>
+{
+  FilePath dotnet = Context.Tools.Resolve("dotnet");
+  RunProcess(dotnet, "script scripts/update-config.csx -- config.json sort");
+});
+
 Task("clean")
   .Does (() =>
 {
-    if (DirectoryExists("./externals"))
-        DeleteDirectory("./externals", new DeleteDirectorySettings { Recursive = true, Force = true });
+  if (DirectoryExists("./externals"))
+    DeleteDirectory("./externals", new DeleteDirectorySettings { Recursive = true, Force = true });
 
-    if (DirectoryExists("./generated"))
-		DeleteDirectory("./generated", new DeleteDirectorySettings { Recursive = true, Force = true });
+  if (DirectoryExists("./generated"))
+    DeleteDirectory("./generated", new DeleteDirectorySettings { Recursive = true, Force = true });
+
+  if (DirectoryExists("./output"))
+    DeleteDirectory("./output", new DeleteDirectorySettings { Recursive = true, Force = true });
 
 	CleanDirectories("./**/packages");
 	CleanDirectories("./**/bin");

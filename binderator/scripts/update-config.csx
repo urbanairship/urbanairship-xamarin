@@ -25,7 +25,12 @@ var options = new Options (Args);
 var config = await ParseConfigurationFile (options.ConfigFile);
 var external_deps = await GetExternalDependencies (options);
 
-var serializer_settings = new JsonSerializerSettings { DefaultValueHandling = DefaultValueHandling.Ignore };
+var serializer_settings = new JsonSerializerSettings
+{
+  NullValueHandling = NullValueHandling.Ignore,
+  DefaultValueHandling = DefaultValueHandling.Ignore
+};
+
 serializer_settings.Converters.Add (new Newtonsoft.Json.Converters.StringEnumConverter ());
 
 // Keep file sorted by dependency only, then by groupid then by artifactid
@@ -401,6 +406,18 @@ public class MyArray
 
 	[JsonProperty ("slnFile")]
 	public string SlnFile { get; set; }
+
+  [DefaultValue ("")]
+  [JsonProperty ("downloadExternalsWithFullName")]
+  public bool DownloadExternalsWithFullName { get; set; }
+
+  [DefaultValue ("")]
+  [JsonProperty ("downloadJavaDocJars")]
+  public bool DownloadJavaDocJars { get; set; }
+
+  [DefaultValue ("")]
+  [JsonProperty ("downloadJavaSourceJars")]
+  public bool DownloadJavaSourceJars { get; set; }
 
 	[JsonProperty ("strictRuntimeDependencies")]
 	public bool StrictRuntimeDependencies { get; set; }
