@@ -17,11 +17,7 @@ task build {
     def BuildConfiguration=project.properties['build_configuration'] ?: "Release"
     doLast() {
         exec {
-            commandLine "mono", "$nugetExe", "restore", "AirshipBindings.iOS.Chat.sln"
-        }
-
-        exec {
-            commandLine "${msbuild}", "/t:build", "/p:Configuration=${BuildConfiguration}", "AirshipBindings.iOS.Chat.sln"
+            commandLine "dotnet", "build", "--configuration=${BuildConfiguration}",  "AirshipBindings.iOS.Chat.sln"
         }
     }
 }
