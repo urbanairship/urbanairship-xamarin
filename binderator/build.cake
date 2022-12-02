@@ -222,22 +222,35 @@ Task("build")
   DotNetMSBuild("./generated/airship-android.sln", settings);
 });
 
+Task("check-maven-versions")
+  .Does(() =>
+{
+  FilePath dotnet = Context.Tools.Resolve("dotnet");
+  RunProcess(dotnet, "script scripts/update-config.csx -- config.json check");
+});
 
-Task("check-published")
+Task("check-published-nugets")
   .Does(() =>
 {
   FilePath dotnet = Context.Tools.Resolve("dotnet");
   RunProcess(dotnet, "script scripts/update-config.csx -- config.json published");
 });
 
-Task("update-config")
+Task("update-sdk-version")
   .Does(() =>
 {
+  var version = Argument<string>("sdk", "");
+
   FilePath dotnet = Context.Tools.Resolve("dotnet");
-  RunProcess(dotnet, "script scripts/update-config.csx -- config.json update");
+  var command = "script scripts/update-config.csx -- config.json update";
+  if (version != "")
+  {
+    command += $" -v{version}";
+  }
+  RunProcess(dotnet, command);
 });
 
-Task("update-config-dependencies")
+Task("update-dependencies")
   .Does(() =>
 {
   FilePath dotnet = Context.Tools.Resolve("dotnet");

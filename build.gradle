@@ -129,6 +129,11 @@ task syncRootVersion {
             flags: "g"
         )
 
+        // Update Android binderator config
+        exec {
+            commandLine "./binderator/build.sh", "-t=update-sdk-version", "--sdk=$androidNugetVersion"
+        }
+        
         // handle airship.android.core dependencies
         ant.replaceregexp(
             match: "<dependency id=\"airship.android(.*)\" version=\".*\"/>",
