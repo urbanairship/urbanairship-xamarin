@@ -236,3 +236,9 @@ SampleApp/SampleApp.Android/Assets/airshipconfig.properties
 
 # Xamboni
 src/xamboni/
+
+# Binderator
+binderator/tools
+binderator/generated
+binderator/externals
+binderator/output
