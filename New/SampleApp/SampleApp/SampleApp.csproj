@@ -33,6 +33,9 @@
 	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net6.0-ios|AnyCPU'">
 	  <CreatePackage>false</CreatePackage>
 	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net6.0-ios|AnyCPU'">
+	  <CreatePackage>false</CreatePackage>
+	</PropertyGroup>
 	<ItemGroup>
 		<!-- App Icon -->
 		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
@@ -68,5 +71,11 @@
 	  <None Remove="Resources\Images\preferences.png" />
 	  <None Remove="Resources\Images\settings.png" />
 	  <None Remove="Resources\Images\urbanairship_logo.png" />
+	  <None Remove="airship.netstandard" />
+	  <None Remove="airship.ios.core" />
+	  <None Remove="airship.ios.messagecenter" />
+	  <None Remove="airship.ios.automation" />
+	  <None Remove="airship.ios.basement" />
+	  <None Remove="airship.ios" />
 	</ItemGroup>
 </Project>

@@ -1,4 +1,10 @@
-﻿namespace SampleApp;
+﻿/*
+ Copyright Airship and Contributors
+*/
+
+//using UrbanAirship.NETStandard;
+
+namespace SampleApp;
 
 public partial class HomeView : ContentPage
 {
