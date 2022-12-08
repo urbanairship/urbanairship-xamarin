@@ -1,0 +1,7 @@
+task build {
+  doLast {
+    exec {
+      commandLine "./build.sh", "-t=pack"
+    }
+  }
+}

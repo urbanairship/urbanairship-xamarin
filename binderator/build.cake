@@ -16,8 +16,8 @@ using System.Xml.Linq;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
-var target = Argument("t", Argument("target", "default"));
-var configuration = Argument("c", Argument("configuration", "Release"));
+var TARGET = Argument("t", Argument("target", "default"));
+var CONFIGURATION = Argument("c", Argument("configuration", "Release"));
 
 string nuget_version_template = "xx.yy.zz-suffix";
 string nuget_version_suffix = "";
@@ -42,22 +42,21 @@ Task("binderate")
 	.IsDependentOn("binderate-config-verify")
   .Does(() =>
 {
-  Information($"Generating Android bindings (configuration: {configuration})...");
+  Information($"Generating Android bindings (configuration: {CONFIGURATION})...");
 
 	FilePath binderator = Context.Tools.Resolve("xamarin-android-binderator");
 	var config = MakeAbsolute(new FilePath("./config.json")).FullPath;
 	var basePath = MakeAbsolute(new DirectoryPath ("./")).FullPath;
 
-	// Run manually with:
-	// $ dotnet xamarin-android-binderator --config=config.json --basePath=.
+  // Run the binderator tool
 	RunProcess(binderator, $"--config=\"{config}\" --basepath=\"{basePath}\"");
 
-  // format the targets file so they are pretty in the package
-  var targetsFiles = GetFiles("generated/**/*.targets");
-  var xmlns = (XNamespace)"http://schemas.microsoft.com/developer/msbuild/2003";
+  // Format the csproj files to fix any weirdness from templating
+  var targetsFiles = GetFiles("generated/**/*.csproj");
   foreach (var targets in targetsFiles) {
-      var xdoc = XDocument.Load(targets.FullPath);
-      xdoc.Save(targets.FullPath);
+      XDocument
+        .Load(targets.FullPath)
+        .Save(targets.FullPath);
   }
 
   Information("Android bindings generated successfully!");
@@ -147,7 +146,7 @@ Task("binderate-fix")
       binderator_json_array = (JArray)JToken.ReadFrom(jtr);
   }
 
-  Warning("config.json fixing missing folder strucutre ...");
+  Warning("config.json fixing missing folder structure ...");
   foreach(JObject jo in binderator_json_array[0]["artifacts"])
   {
     string groupId = (string) jo["groupId"];
@@ -156,49 +155,42 @@ Task("binderate-fix")
     bool? dependency_only = (bool?) jo["dependencyOnly"];
     if ( dependency_only == true)
       continue;
-
-    Information($"Verifying files for:");
-    Information($"    group: {groupId}");
-    Information($"    artifact: {artifactId}");
+//
+//    Information($"Verifying files for:");
+//    Information($"    group: {groupId}");
+//    Information($"    artifact: {artifactId}");
 
     string dir_group = $"source/{groupId}";
-    if (!DirectoryExists(dir_group))
-    {
+    if (!DirectoryExists(dir_group)) {
         Warning($"Creating {dir_group}");
         CreateDirectory(dir_group);
     }
 
     string dir_artifact = $"{dir_group}/{artifactId}";
-    if (!DirectoryExists(dir_artifact))
-    {
+    if (!DirectoryExists(dir_artifact)) {
         Warning($"Creating artifact folder: {dir_artifact}");
         CreateDirectory(dir_artifact);
         CreateDirectory($"{dir_artifact}/Transforms/");
         CreateDirectory($"{dir_artifact}/Additions/");
-    }
-    else
-    {
+    } else {
       continue;
     }
 
-    if (!FileExists($"{dir_artifact}/Transforms/Metadata.xml"))
-    {
-      Warning($"Creating file: {dir_artifact}/Metadata.xml");
+    if (!FileExists($"{dir_artifact}/Transforms/Metadata.xml")) {
+      Warning($"Creating file: {dir_artifact}/Transforms/Metadata.xml");
       CopyFile(
         $"./source/templates/artifact/Transforms/Metadata.xml",
         $"{dir_artifact}/Transforms/Metadata.xml"
       );
     }
-    if (!FileExists($"{dir_artifact}/Transforms/EnumFields.xml"))
-    {
+    if (!FileExists($"{dir_artifact}/Transforms/EnumFields.xml")) {
       Warning($"Creating file: {dir_artifact}/EnumFields.xml");
       CopyFile(
         $"./source/templates/artifact/Transforms/EnumFields.xml",
         $"{dir_artifact}/Transforms/EnumFields.xml"
       );
     }
-    if (!FileExists($"{dir_artifact}/Transforms/EnumMethods.xml"))
-    {
+    if (!FileExists($"{dir_artifact}/Transforms/EnumMethods.xml")) {
       Warning($"Creating file: {dir_artifact}/EnumMethods.xml");
       CopyFile(
         $"./source/templates/artifact/Transforms/EnumMethods.xml",
@@ -212,15 +204,33 @@ Task("build")
   .IsDependentOn("binderate")
   .Does (() =>
 {
-  var outputPath = new DirectoryPath("./output");
-  var settings = new DotNetMSBuildSettings().SetConfiguration(configuration);
-  settings.Targets.Clear();
-  settings.Targets.Add("Build");
-  settings.Properties.Add("PackageOutputPath", new [] { MakeAbsolute(outputPath).FullPath });
+  var settings = new DotNetMSBuildSettings()
+    .SetConfiguration(CONFIGURATION)
+    .WithProperty("DesignTimeBuild", "false")
+    .WithTarget("Build");
 
-  DotNetRestore("./generated/airship-android.sln", new DotNetRestoreSettings { MSBuildSettings = settings });
-  DotNetMSBuild("./generated/airship-android.sln", settings);
+  var solution = "./generated/airship-android.sln";
+  DotNetRestore(solution, new DotNetRestoreSettings { MSBuildSettings = settings });
+  DotNetMSBuild(solution, settings);
 });
+
+Task("pack")
+  .IsDependentOn("build")
+  .Does (() =>
+{
+  var outputPath = new DirectoryPath("./nugets");
+
+  var settings = new DotNetMSBuildSettings()
+    .SetConfiguration(CONFIGURATION)
+    .SetMaxCpuCount(0)
+    .WithProperty("NoBuild", "true")
+    .WithProperty("PackageOutputPath", new [] { MakeAbsolute(outputPath).FullPath })
+    .WithTarget("Pack");
+
+    var solution = "./generated/airship-android.sln";
+    DotNetRestore(solution, new DotNetRestoreSettings { MSBuildSettings = settings });
+    DotNetMSBuild(solution, settings);
+  });
 
 Task("check-maven-versions")
   .Does(() =>
@@ -250,12 +260,14 @@ Task("update-sdk-version")
   RunProcess(dotnet, command);
 });
 
-Task("update-dependencies")
-  .Does(() =>
-{
-  FilePath dotnet = Context.Tools.Resolve("dotnet");
-  RunProcess(dotnet, "script scripts/update-config.csx -- config.json bump");
-});
+// TODO(maui): not sure if this one is very useful for us...
+//    it seems to just add .1 to everything?
+//Task("bump-dependencies")
+//  .Does(() =>
+//{
+//  FilePath dotnet = Context.Tools.Resolve("dotnet");
+//  RunProcess(dotnet, "script scripts/update-config.csx -- config.json bump");
+//});
 
 Task("sort-config")
   .Does(() =>
@@ -281,4 +293,4 @@ Task("clean")
 	CleanDirectories("./**/obj");
 });
 
-RunTarget(target);
+RunTarget(TARGET);

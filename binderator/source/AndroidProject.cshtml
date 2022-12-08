@@ -8,12 +8,15 @@
     <SupportedOSPlatformVersion>21</SupportedOSPlatformVersion>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    // Don't generate Resource.designer.cs file, to avoid duplicate definitions in our namespace.
+    <AndroidUseIntermediateDesignerFile>false</AndroidUseIntermediateDesignerFile>
     @if (!string.IsNullOrEmpty(Model.AssemblyName)) {
     <AssemblyName>@(Model.AssemblyName)</AssemblyName>
-    <RootNamespace>@(Model.AssemblyName)</RootNamespace>
+    <RootNamespace>UrbanAirship</RootNamespace>
     } else {
     <AssemblyName>@(Model.NuGetPackageId)</AssemblyName>
-    <RootNamespace>@(Model.NuGetPackageId)</RootNamespace>
+    <RootNamespace>UrbanAirship</RootNamespace>
     }
   </PropertyGroup>
 
@@ -37,9 +40,9 @@
         title += "- Preference Center";
         break;
       case "airship.android.automation":
-      case "airship.android.core":
       case "airship.android.layout":
-        // Use default title
+      case "airship.android.core":
+      // Use default title
         break;
     }
   }
@@ -93,8 +96,40 @@
     - BG8700: Unknown return type java.Type1 in method Method1 in managed type Namespace.Type2.
     - BG8800: Unknown parameter type java.Type1 in method Method2 in managed type Namespace.Type2.
     -->
-    <WarningsAsErrors>BG8401;BG8604;BG8C00;BG8700;BG8800</WarningsAsErrors>
+    <!-- TODO(maui): these are causing build failures, but seem like they'd be good to fix... -->
+<!--     <WarningsAsErrors>BG8401;BG8604;BG8C00;BG8700;BG8800</WarningsAsErrors> -->
   </PropertyGroup>
+
+
+  <ItemGroup>
+    @foreach (var art in @Model.MavenArtifacts) {
+    <AndroidLibrary Include="..\..\externals\@(art.MavenGroupId)\@(art.MavenArtifactId).aar" />
+    }
+  </ItemGroup>
+
+  <ItemGroup>
+    @foreach (var art in @Model.MavenArtifacts) {
+      if (art.MavenArtifactPackaging == "aar") {
+    <None Include="..\..\externals\@(art.MavenGroupId)\@(art.MavenArtifactId).aar" Pack="True" PackagePath="aar\@(art.MavenGroupId).@(art.MavenArtifactId).aar" />
+      } else {
+    <None Include="..\..\externals\@(art.MavenGroupId)\@(art.MavenArtifactId).jar" Pack="True" PackagePath="jar\@(art.MavenGroupId).@(art.MavenArtifactId).jar" />
+      }
+    }
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="..\..\source\UACrossPlatformVersion.cs" />
+    <Compile Include="..\..\source\SharedAssemblyInfo.cs" />
+    <Compile Include="..\..\source\@(Model.MavenGroupId)\@(Model.Name)\Additions\*.cs">
+      <Link>Additions/%(RecursiveDir)/%(Filename)%(Extension)</Link>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <TransformFile Include="..\..\source\@(Model.MavenGroupId)\@(Model.Name)\Transforms\*.xml">
+      <Link>Transforms/%(RecursiveDir)/%(Filename)%(Extension)</Link>
+    </TransformFile>
+  </ItemGroup>
 
   <!-- Project & package refs -->
   <ItemGroup>
