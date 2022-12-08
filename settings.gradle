@@ -1,3 +1,4 @@
+include ':binderator'
 include ':docs'
 include ':src:AirshipBindings.Android.Accengage'
 include ':src:AirshipBindings.Android.ADM'
