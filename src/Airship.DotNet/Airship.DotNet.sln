@@ -1,0 +1,79 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 25.0.1704.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Airship.DotNet", "Airship.DotNet.csproj", "{C2FE095E-B232-47C2-9766-303F5F21D32E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "airship.android.core", "..\..\binderator\generated\airship.android.core\airship.android.core.csproj", "{CD2BAC20-28F2-4641-975F-C646675A2077}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirshipBindings.iOS.Basement", "..\AirshipBindings.iOS.Basement\AirshipBindings.iOS.Basement.csproj", "{5E85A7FD-8C42-4DE6-B002-E3CC2DA529C7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirshipBindings.iOS.Core", "..\AirshipBindings.iOS.Core\AirshipBindings.iOS.Core.csproj", "{7F49C0FA-F958-44CF-9246-8B8577748E6F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "airship.android.messagecenter", "..\..\binderator\generated\airship.android.messagecenter\airship.android.messagecenter.csproj", "{8463DB87-180D-4929-8C7D-520ED145C76F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirshipBindings.iOS.MessageCenter", "..\AirshipBindings.iOS.MessageCenter\AirshipBindings.iOS.MessageCenter.csproj", "{AC22EEC5-DCA6-49D3-8B37-533B5565E2CF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "airship.android.automation", "..\..\binderator\generated\airship.android.automation\airship.android.automation.csproj", "{4D8BA01B-7113-495C-B91C-F21724B33E08}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "airship.android.layout", "..\..\binderator\generated\airship.android.layout\airship.android.layout.csproj", "{C2DED8DE-B533-4802-BB00-C151CABB3829}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirshipBindings.iOS.Automation", "..\AirshipBindings.iOS.Automation\AirshipBindings.iOS.Automation.csproj", "{70434FB5-A468-4777-9478-DD2AB80BE0E2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirshipBindings.iOS.ExtendedActions", "..\AirshipBindings.iOS.ExtendedActions\AirshipBindings.iOS.ExtendedActions.csproj", "{BFFFE653-04CD-4563-BF2D-B6F31349F30D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C2FE095E-B232-47C2-9766-303F5F21D32E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C2FE095E-B232-47C2-9766-303F5F21D32E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C2FE095E-B232-47C2-9766-303F5F21D32E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C2FE095E-B232-47C2-9766-303F5F21D32E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CD2BAC20-28F2-4641-975F-C646675A2077}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD2BAC20-28F2-4641-975F-C646675A2077}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CD2BAC20-28F2-4641-975F-C646675A2077}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CD2BAC20-28F2-4641-975F-C646675A2077}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E85A7FD-8C42-4DE6-B002-E3CC2DA529C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E85A7FD-8C42-4DE6-B002-E3CC2DA529C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E85A7FD-8C42-4DE6-B002-E3CC2DA529C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E85A7FD-8C42-4DE6-B002-E3CC2DA529C7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7F49C0FA-F958-44CF-9246-8B8577748E6F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F49C0FA-F958-44CF-9246-8B8577748E6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F49C0FA-F958-44CF-9246-8B8577748E6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F49C0FA-F958-44CF-9246-8B8577748E6F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8463DB87-180D-4929-8C7D-520ED145C76F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8463DB87-180D-4929-8C7D-520ED145C76F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8463DB87-180D-4929-8C7D-520ED145C76F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8463DB87-180D-4929-8C7D-520ED145C76F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC22EEC5-DCA6-49D3-8B37-533B5565E2CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC22EEC5-DCA6-49D3-8B37-533B5565E2CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC22EEC5-DCA6-49D3-8B37-533B5565E2CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC22EEC5-DCA6-49D3-8B37-533B5565E2CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4D8BA01B-7113-495C-B91C-F21724B33E08}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D8BA01B-7113-495C-B91C-F21724B33E08}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D8BA01B-7113-495C-B91C-F21724B33E08}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D8BA01B-7113-495C-B91C-F21724B33E08}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C2DED8DE-B533-4802-BB00-C151CABB3829}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C2DED8DE-B533-4802-BB00-C151CABB3829}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C2DED8DE-B533-4802-BB00-C151CABB3829}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C2DED8DE-B533-4802-BB00-C151CABB3829}.Release|Any CPU.Build.0 = Release|Any CPU
+		{70434FB5-A468-4777-9478-DD2AB80BE0E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{70434FB5-A468-4777-9478-DD2AB80BE0E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{70434FB5-A468-4777-9478-DD2AB80BE0E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{70434FB5-A468-4777-9478-DD2AB80BE0E2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BFFFE653-04CD-4563-BF2D-B6F31349F30D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BFFFE653-04CD-4563-BF2D-B6F31349F30D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BFFFE653-04CD-4563-BF2D-B6F31349F30D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BFFFE653-04CD-4563-BF2D-B6F31349F30D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {753D539E-0F07-4E2D-B864-1A80D2665992}
+	EndGlobalSection
+EndGlobal
