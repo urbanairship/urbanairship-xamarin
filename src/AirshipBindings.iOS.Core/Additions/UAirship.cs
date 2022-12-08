@@ -21,7 +21,8 @@ namespace UrbanAirship
                 if (crossPlatformVersions.Length >= 1)
                 {
                     UACrossPlatformVersionAttribute version = Assembly.GetExecutingAssembly().GetCustomAttributes(typeof(UACrossPlatformVersionAttribute), false)[0] as UACrossPlatformVersionAttribute;
-                    UAirship.Analytics.RegisterSDKExtension(UASDKExtension.Xamarin, version.Version.ToString());
+                    //TODO(maui): what do with this?
+                    //UAirship.Analytics.RegisterSDKExtension(UASDKExtension.Xamarin, version.Version.ToString());
                 }                
             });
         }
