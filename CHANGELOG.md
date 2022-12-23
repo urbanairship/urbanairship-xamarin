@@ -1,7 +1,15 @@
 # Airship Xamarin Changelog
 
-## Version 16.2.1 - Sept 9, 2022
-Minor release to support iOS SDK 16.9.3 and Android SDK 16.7.2.
+## Version 16.3.0 - December 23, 2022
+Minor release to support iOS SDK 16.10.6 and Android SDK 16.8.0 and fix an issue with the Message Center NativeBridge on iOS.
+
+### Changes
+- Updated Android SDK to 16.8.0
+- Updated iOS SDK to 16.10.6
+- Set `UAMessageCenterNativeBridgeExtension` delegate in the iOS NETStandard `MessagePageRenderer`, to provide access to message properties and user ID in the WebView JavaScript environment.
+
+## Version 16.2.1 - September 9, 2022
+Patch release to support iOS SDK 16.9.3 and Android SDK 16.7.2.
 
 ### Changes
 - Updated Android SDK to 16.7.2
