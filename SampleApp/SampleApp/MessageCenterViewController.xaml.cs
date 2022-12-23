@@ -46,6 +46,7 @@ namespace SampleApp
         private void onClosed(object sender, MessageClosedEventArgs e)
         {
             Console.WriteLine("onClosed was reached.");
+            Navigation.PopAsync();
         }
 
         private void onLoadFailed(object sender, MessageLoadFailedEventArgs e)
