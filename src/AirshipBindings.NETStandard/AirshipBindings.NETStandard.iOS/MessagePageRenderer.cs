@@ -17,6 +17,7 @@ namespace UrbanAirship.NETStandard.iOS
     {
         private WKWebView webView;
         private UANativeBridge nativeBridge;
+        private UAMessageCenterNativeBridgeExtension nativeBridgeExtension;
         private MessagePage messagePage;
         private string messageId;
 
@@ -29,6 +30,9 @@ namespace UrbanAirship.NETStandard.iOS
             nativeBridge = new UANativeBridge();
             webView.NavigationDelegate = nativeBridge;
             nativeBridge.ForwardNavigationDelegate = this;
+            nativeBridge.NativeBridgeDelegate = this;
+            nativeBridgeExtension = new UAMessageCenterNativeBridgeExtension();
+            nativeBridge.NativeBridgeExtensionDelegate = nativeBridgeExtension;
         }
 
         public override void ViewDidLoad()
