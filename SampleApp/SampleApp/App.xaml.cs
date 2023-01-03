@@ -55,8 +55,14 @@ namespace SampleApp
             {
                 var messagePage = new MessagePage();
                 messagePage.MessageId = e.MessageId;
+                messagePage.Closed += OnMessageClosed;
                 originalRootPage.Navigation.PushAsync(messagePage);
             }
+        }
+
+        static void OnMessageClosed(object sender, MessageClosedEventArgs e)
+        {
+            App.Current.MainPage.Navigation.PopAsync();
         }
     }
 }
