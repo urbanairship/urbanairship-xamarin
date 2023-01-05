@@ -220,7 +220,7 @@ docs/doxygen.tag
 local-nuget-feed/
 
 # UA native jars
-src/AirshipBindings.Android.*/Jars/urbanairship*.arr
+src/AirshipBindings.Android.*/Jars/urbanairship*.aar
 
 # Google Services (e.g. APIs or Firebase)
 #SampleApp/SampleApp.Android/Assets/google-services.json
@@ -242,3 +242,6 @@ binderator/tools
 binderator/generated
 binderator/externals
 binderator/output
+
+# Idea folder
+.idea
