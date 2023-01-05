@@ -204,7 +204,7 @@ FakesAssemblies/
 .tools
 
 # Xamarin.Android Resource.Designer.cs file
-Resources/Resource.designer.cs
+SampleApp/SampleApp.Android/Resources/Resource.designer.cs
 
 # Carthage
 Carthage/
@@ -224,9 +224,6 @@ src/AirshipBindings.Android.*/Jars/urbanairship*.aar
 
 # Google Services (e.g. APIs or Firebase)
 SampleApp/SampleApp.Android/Assets/google-services.json
-
-# Airship
-#airship.properties
 
 # iOS AirshipConfig
 SampleApp/SampleApp.iOS/AirshipConfig.plist
