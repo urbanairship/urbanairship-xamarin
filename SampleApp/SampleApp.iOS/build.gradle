@@ -9,14 +9,14 @@ task clean(type: Delete) {
     }
 }
 
-task build {
-    def BuildConfiguration=project.properties['build_configuration'] ?: "Release"
-    doLast() {
-        exec {
-            commandLine "${msbuild}", "/t:build", "/property:Configuration=${BuildConfiguration}", "SampleApp.iOS.csproj"
-        }
+task buildIosSample {
+  dependsOn(':pack', ':SampleApp:restore')
+
+  def BuildConfiguration=project.properties['build_configuration'] ?: "Release"
+  doLast() {
+    exec {
+      commandLine "dotnet", "build", "--configuration=${BuildConfiguration}", "SampleApp.iOS.csproj"
     }
+  }
 }
 
-build.dependsOn(':pkg')
-build.dependsOn(':SampleApp:restore')

@@ -62,7 +62,7 @@ jobs:
           echo "$GOOGLE_SERVICES_JSON" > SampleApp/SampleApp.Android/Assets/google-services.json
 
       - name: Build
-        run: ./gradlew build pkg
+        run: ./gradlew build pack
 
       - name: Publish Nuget
         env:
