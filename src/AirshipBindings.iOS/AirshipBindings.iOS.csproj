@@ -1,24 +1,17 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <NoBindingEmbedding>true</NoBindingEmbedding>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectTypeGuids>{8FFB629D-F513-41CE-95D2-7ECE97B6EEEC};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <ProjectGuid>{5E85A7FD-8C42-4DE6-B002-E3CC2DA529C7}</ProjectGuid>
-    <TemplateGuid>{b6f3ff35-79b2-4f25-a2fc-60a7cf61013b}</TemplateGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>AirshipBindings.iOS.Basement</RootNamespace>
-    <AssemblyName>airship.ios.basement</AssemblyName>
-    <AssemblyTitle>Airship iOS SDK - Basement</AssemblyTitle>
-    <Description>Basement module for Airship SDK</Description>
+    <RootNamespace>AirshipBindings.iOS</RootNamespace>
+    <AssemblyName>airship.ios</AssemblyName>
+    <AssemblyTitle>Airship iOS SDK</AssemblyTitle>
+    <Description>A full suite of mobile engagement tools for building next-generation apps</Description>
     <TargetFramework>net6.0-ios</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>true</ImplicitUsings>
-    <IsBindingProject>true</IsBindingProject>
-    <IsTrimmable>true</IsTrimmable>
     <AssemblyVersion>$(AirshipIosVersion)</AssemblyVersion>
     <PackageVersion>$(AirshipIosNugetVersion)</PackageVersion>
-    <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
+    <IsTrimmable>true</IsTrimmable>
+    <IncludeBuildOutput>false</IncludeBuildOutput>
     <SupportedOSPlatformVersion>13.0</SupportedOSPlatformVersion>
   </PropertyGroup>
 
@@ -45,14 +38,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ObjcBindingApiDefinition Include="ApiDefinitions.cs" />
-    <ObjcBindingCoreSource Include="StructsAndEnums.cs" />
+		<ProjectReference Include="..\AirshipBindings.iOS.Automation\AirshipBindings.iOS.Automation.csproj" />
+		<ProjectReference Include="..\AirshipBindings.iOS.Core\AirshipBindings.iOS.Core.csproj" />
+		<ProjectReference Include="..\AirshipBindings.iOS.Basement\AirshipBindings.iOS.Basement.csproj" />
+		<ProjectReference Include="..\AirshipBindings.iOS.ExtendedActions\AirshipBindings.iOS.ExtendedActions.csproj" />
+		<ProjectReference Include="..\AirshipBindings.iOS.MessageCenter\AirshipBindings.iOS.MessageCenter.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <NativeReference Include="..\..\frameworks\AirshipBasement.xcframework">
-      <Kind>Framework</Kind>
-      <SmartLink>False</SmartLink>
-    </NativeReference>
-  </ItemGroup>
 </Project>

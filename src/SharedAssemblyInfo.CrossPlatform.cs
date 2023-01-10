@@ -5,7 +5,7 @@ using System.Runtime.CompilerServices;
 // Change them to the values specific to your project.
 
 
-//[assembly: AssemblyCompany ("Urban Airship")]
+[assembly: AssemblyCompany ("Urban Airship")]
 [assembly: AssemblyCopyright ("Copyright Airship Inc. All rights reserved.")]
 
 // The assembly version has the format "{Major}.{Minor}.{Build}.{Revision}".
