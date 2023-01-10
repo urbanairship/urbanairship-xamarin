@@ -40,9 +40,11 @@
         title += "- Preference Center";
         break;
       case "airship.android.automation":
+        title += "- Automation";
+        break;
       case "airship.android.layout":
       case "airship.android.core":
-      // Use default title
+        // Use default title
         break;
     }
   }
@@ -52,21 +54,9 @@
     <Title>@(title)</Title>
     <Summary>.NET Bindings for Airship SDK</Summary>
     <Description>A full suite of mobile engagement tools for building next-generation apps</Description>
-    <PackageTags>airship, urbanairship, @(Model.Name)</PackageTags>
-    <Authors>Airship, Inc.</Authors>
-    <Owners>Airship, Inc.</Owners>
-    <Company>Airship, Inc.</Company>
-    <FileVersion>@(Model.NuGetVersion + "-" + DateTimeOffset.Now.ToUnixTimeSeconds())</FileVersion>
-    <InformationalVersion>@(Model.NuGetVersion)</InformationalVersion>
-    <AssemblyVersion>@(Model.NuGetVersion)</AssemblyVersion>
-    <Copyright>©Airship. All rights reserved.</Copyright>
-    <PackageProjectUrl>https://github.com/urbanairship/urbanairship-xamarin/</PackageProjectUrl>
-    <PackageLicenseUrl>https://github.com/urbanairship/urbanairship-xamarin/blob/main/COPYING</PackageLicenseUrl>
-    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-    <PackageIconUrl>https://avatars.githubusercontent.com/u/360059</PackageIconUrl>
-    <PackageVersion>@(Model.NuGetVersion)</PackageVersion>
-    <!-- Include symbol files (*.pdb) in the built .nupkg -->
-    <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
+    <AssemblyVersion>$(AirshipAndroidVersion)</AssemblyVersion>
+    <PackageVersion>$(AirshipAndroidNugetVersion)</PackageVersion>
+    <InformationalVersion>$(AirshipAndroidNugetVersion)</InformationalVersion>
   </PropertyGroup>
 
   <PropertyGroup>

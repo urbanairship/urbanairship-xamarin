@@ -1,4 +1,20 @@
+task clean {
+  doLast {
+    exec {
+      commandLine "./build.sh", "-t=clean"
+    }
+  }
+}
+
 task build {
+  doLast {
+    exec {
+      commandLine "./build.sh", "-t=build"
+    }
+  }
+}
+
+task pack {
   doLast {
     exec {
       commandLine "./build.sh", "-t=pack"

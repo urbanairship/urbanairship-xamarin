@@ -15,7 +15,6 @@
     ],
     "artifacts": [
       {
-        "assemblyName": "AirshipBindings.Android.Accengage",
         "groupId": "com.urbanairship.android",
         "artifactId": "urbanairship-accengage",
         "version": "16.7.2",
@@ -24,7 +23,6 @@
         "dependencyOnly": false
       },
       {
-        "assemblyName": "AirshipBindings.Android.ADM",
         "groupId": "com.urbanairship.android",
         "artifactId": "urbanairship-adm",
         "version": "16.7.2",
@@ -33,7 +31,6 @@
         "dependencyOnly": false
       },
       {
-        "assemblyName": "AirshipBindings.Android.Automation",
         "groupId": "com.urbanairship.android",
         "artifactId": "urbanairship-automation",
         "version": "16.7.2",
@@ -42,7 +39,6 @@
         "dependencyOnly": false
       },
       {
-        "assemblyName": "AirshipBindings.Android.Core",
         "groupId": "com.urbanairship.android",
         "artifactId": "urbanairship-core",
         "version": "16.7.2",
@@ -51,7 +47,6 @@
         "dependencyOnly": false
       },
       {
-        "assemblyName": "AirshipBindings.Android.FCM",
         "groupId": "com.urbanairship.android",
         "artifactId": "urbanairship-fcm",
         "version": "16.7.2",
@@ -60,7 +55,6 @@
         "dependencyOnly": false
       },
       {
-        "assemblyName": "AirshipBindings.Android.Layout",
         "groupId": "com.urbanairship.android",
         "artifactId": "urbanairship-layout",
         "version": "16.7.2",
@@ -69,7 +63,6 @@
         "dependencyOnly": false
       },
       {
-        "assemblyName": "AirshipBindings.Android.Location",
         "groupId": "com.urbanairship.android",
         "artifactId": "urbanairship-location",
         "version": "16.7.2",
@@ -78,7 +71,6 @@
         "dependencyOnly": false
       },
       {
-        "assemblyName": "AirshipBindings.Android.MessageCenter",
         "groupId": "com.urbanairship.android",
         "artifactId": "urbanairship-message-center",
         "version": "16.7.2",
@@ -87,7 +79,6 @@
         "dependencyOnly": false
       },
       {
-        "assemblyName": "AirshipBindings.Android.PreferenceCenter",
         "groupId": "com.urbanairship.android",
         "artifactId": "urbanairship-preference-center",
         "version": "16.7.2",

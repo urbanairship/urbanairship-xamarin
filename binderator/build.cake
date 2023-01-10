@@ -19,6 +19,8 @@ using Newtonsoft.Json.Linq;
 var TARGET = Argument("t", Argument("target", "default"));
 var CONFIGURATION = Argument("c", Argument("configuration", "Release"));
 
+var PACKAGE_OUTPUT_PATH = new DirectoryPath("../build");
+
 string nuget_version_template = "xx.yy.zz-suffix";
 string nuget_version_suffix = "";
 
@@ -117,9 +119,7 @@ Task("binderate-config-verify")
 
       if( ! nuget_version_new.Contains($"{nuget_version}") )
       {
-        // AndroidX version
-        // // pre AndroidX version
-        Error("check config.json for nuget id - pre AndroidX version");
+        Error("check config.json for nuget id");
         Error  ($"		groupId       = {jo["groupId"]}");
         Error  ($"		artifactId    = {jo["artifactId"]}");
         Error  ($"		version       = {version}");
@@ -146,7 +146,7 @@ Task("binderate-fix")
       binderator_json_array = (JArray)JToken.ReadFrom(jtr);
   }
 
-  Warning("config.json fixing missing folder structure ...");
+  //Warning("config.json fixing missing folder structure ...");
   foreach(JObject jo in binderator_json_array[0]["artifacts"])
   {
     string groupId = (string) jo["groupId"];
@@ -215,16 +215,13 @@ Task("build")
 });
 
 Task("pack")
-  .IsDependentOn("build")
   .Does (() =>
 {
-  var outputPath = new DirectoryPath("./nugets");
-
   var settings = new DotNetMSBuildSettings()
     .SetConfiguration(CONFIGURATION)
     .SetMaxCpuCount(0)
     .WithProperty("NoBuild", "true")
-    .WithProperty("PackageOutputPath", new [] { MakeAbsolute(outputPath).FullPath })
+    .WithProperty("PackageOutputPath", new [] { MakeAbsolute(PACKAGE_OUTPUT_PATH).FullPath })
     .WithTarget("Pack");
 
     var solution = "./generated/airship-android.sln";
@@ -252,22 +249,13 @@ Task("update-sdk-version")
   var version = Argument<string>("sdk", "");
 
   FilePath dotnet = Context.Tools.Resolve("dotnet");
-  var command = "script scripts/update-config.csx -- config.json update";
+  var command = "script --no-cache scripts/update-config.csx -- config.json update";
   if (version != "")
   {
     command += $" -v{version}";
   }
   RunProcess(dotnet, command);
 });
-
-// TODO(maui): not sure if this one is very useful for us...
-//    it seems to just add .1 to everything?
-//Task("bump-dependencies")
-//  .Does(() =>
-//{
-//  FilePath dotnet = Context.Tools.Resolve("dotnet");
-//  RunProcess(dotnet, "script scripts/update-config.csx -- config.json bump");
-//});
 
 Task("sort-config")
   .Does(() =>
