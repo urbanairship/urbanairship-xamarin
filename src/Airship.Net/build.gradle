@@ -1,0 +1,26 @@
+task clean(type: Delete) {
+    doLast() {
+        project.delete "bin"
+        project.delete "obj"
+    }
+}
+
+task build {
+    mustRunAfter(':binderator:build', ':src:AirshipBindings.iOS.common:build')
+  
+    def BuildConfiguration=project.properties['build_configuration'] ?: "Release"
+    doLast() {
+      exec {
+        commandLine "dotnet", "build", "--configuration=${BuildConfiguration}", "Airship.Net.csproj"
+      }
+    }
+}
+
+task pack {
+    // Pack Airship.Net library
+    doLast() {
+      exec {
+        commandLine "dotnet", "pack", "Airship.Net.csproj", "-o=${rootProject.buildDir}"
+      }
+    }
+}
