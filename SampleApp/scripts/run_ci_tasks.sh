@@ -60,7 +60,7 @@ fi
 
 TARGETS=""
 if [ "$PLUGIN" = "true" ]; then
-  TARGETS="build pkg"
+  TARGETS="build pack"
 fi
 if [ "$ANDROID" = "true" ]; then
   # build android samples and our android and iOS components

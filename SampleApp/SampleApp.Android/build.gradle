@@ -5,14 +5,13 @@ task clean(type: Delete) {
     }
 }
 
-task build {
+task buildAndroidSample {
+    dependsOn(':pack', ':SampleApp:restore')
+
     def BuildConfiguration=project.properties['build_configuration'] ?: "Release"
     doLast() {
         exec {
-            commandLine "${msbuild}", "/t:build", "/p:Configuration=${BuildConfiguration}", "SampleApp.Android.csproj"
+            commandLine "dotnet", "build", "--configuration=${BuildConfiguration}", "SampleApp.Android.csproj"
         }
     }
 }
-
-build.dependsOn(':pkg')
-build.dependsOn(':SampleApp:restore')

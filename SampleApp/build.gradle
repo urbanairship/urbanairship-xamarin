@@ -8,15 +8,15 @@ task clean(type: Delete) {
 }
 
 task restore {
-    dependsOn rootProject.pkg
+    dependsOn rootProject.pack
     doLast() {
         exec {
-            commandLine "mono", "$nugetExe", "restore", "SampleApp.sln"
+            commandLine "dotnet", "restore", "SampleApp.sln"
         }
     }
 }
 
-task build {
-    dependsOn ':SampleApp:SampleApp.iOS:build'
-    dependsOn ':SampleApp:SampleApp.Android:build'
+task buildSample {
+    dependsOn ':SampleApp:SampleApp.iOS:buildIosSample'
+    dependsOn ':SampleApp:SampleApp.Android:buildAndroidSample'
 }
