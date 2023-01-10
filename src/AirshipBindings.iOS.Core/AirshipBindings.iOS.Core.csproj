@@ -1,23 +1,23 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <NoBindingEmbedding>true</NoBindingEmbedding>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectTypeGuids>{8FFB629D-F513-41CE-95D2-7ECE97B6EEEC};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <ProjectGuid>{7F49C0FA-F958-44CF-9246-8B8577748E6F}</ProjectGuid>
-    <TemplateGuid>{b6f3ff35-79b2-4f25-a2fc-60a7cf61013b}</TemplateGuid>
     <OutputType>Library</OutputType>
     <RootNamespace>AirshipBindings.iOS.Core</RootNamespace>
-    <AssemblyName>AirshipBindings.iOS.Core</AssemblyName>
-    <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
-    <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
-    <ProductVersion>8.0.30703</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
+    <AssemblyName>airship.ios.core</AssemblyName>
+    <AssemblyTitle>Airship iOS SDK - Core</AssemblyTitle>
+    <Description>Core of Airship SDK</Description>
     <TargetFramework>net6.0-ios</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>true</ImplicitUsings>
     <IsBindingProject>true</IsBindingProject>
+    <IsTrimmable>true</IsTrimmable>
+    <AssemblyVersion>$(AirshipIosVersion)</AssemblyVersion>
+    <PackageVersion>$(AirshipIosNugetVersion)</PackageVersion>
+    <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
+    <SupportedOSPlatformVersion>13.0</SupportedOSPlatformVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -41,9 +41,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Include="..\SharedAssemblyInfo.iOS.cs">
-      <Link>Properties\SharedAssemblyInfo.iOS.cs</Link>
-    </Compile>
     <Compile Include="..\UACrossPlatformVersion.cs">
       <Link>Properties\UACrossPlatformVersion.cs</Link>
     </Compile>
@@ -72,6 +69,4 @@
     <ProjectReference Include="..\AirshipBindings.iOS.Basement\AirshipBindings.iOS.Basement.csproj">
     </ProjectReference>
   </ItemGroup>
-
-<!--  <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.ObjCBinding.CSharp.targets" />-->
 </Project>
