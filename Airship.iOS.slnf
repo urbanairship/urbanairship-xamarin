@@ -1,0 +1,15 @@
+{
+   "solution":{
+      "path":"airship.sln",
+      "projects":[
+         "src\\AirshipBindings.iOS.Basement\\AirshipBindings.iOS.Basement.csproj",
+         "src\\AirshipBindings.iOS.Core\\AirshipBindings.iOS.Core.csproj",
+         "src\\AirshipBindings.iOS.Automation\\AirshipBindings.iOS.Automation.csproj",
+         "src\\AirshipBindings.iOS.ExtendedActions\\AirshipBindings.iOS.ExtendedActions.csproj",
+         "src\\AirshipBindings.iOS.MessageCenter\\AirshipBindings.iOS.MessageCenter.csproj",
+         "src\\AirshipBindings.iOS.NotificationContentExtension\\AirshipBindings.iOS.NotificationContentExtension.csproj",
+         "src\\AirshipBindings.iOS.NotificationServiceExtension\\AirshipBindings.iOS.NotificationServiceExtension.csproj",
+         "src\\AirshipBindings.iOS.PreferenceCenter\\AirshipBindings.iOS.PreferenceCenter.csproj"
+      ]
+   }
+}

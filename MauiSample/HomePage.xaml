@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:local="clr-namespace:MauiSample"
+             x:Class="MauiSample.HomePage">
+
+    <ContentPage.BindingContext>
+        <local:HomePageViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Behaviors>
+        <toolkit:EventToCommandBehavior
+            EventName="Appearing"
+            Command="{Binding Refresh}" />
+    </ContentPage.Behaviors>
+
+    <ScrollView>
+        <VerticalStackLayout
+            Spacing="8"
+            Padding="16,0"
+            VerticalOptions="Fill">
+
+            <Label
+                Text="Channel ID"
+                FontSize="18"
+                Margin="0,108,0,0"
+                FontAttributes="Bold" />
+                          
+            <Label
+                HorizontalOptions="Center"
+                Margin="0,0,0,64"
+                Text="{Binding ChannelId, TargetNullValue='null'}"
+                FontFamily="RobotoMonoRegular"
+                TextColor="#212121">
+
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding OnChannelIdClicked}" CommandParameter="null"/>
+                </Label.GestureRecognizers>
+            </Label>
+
+            <Button
+                x:Name="EnablePushButton"
+                Text="Enable push"
+                IsVisible="{Binding ShowEnablePushButton}"
+                HorizontalOptions="Center"
+                Command="{Binding OnEnablePushButtonClicked}" />
+
+            <Button
+                x:Name="MessageCenterButton"
+                Text="Show Message Center"
+                HorizontalOptions="Center"
+                Command="{Binding OnMessageCenterButtonClicked}" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
+

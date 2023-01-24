@@ -45,7 +45,7 @@ namespace UrbanAirship.MessageCenter
 			return GetMessages (new Predicate (predicate));
 		}
 
-		internal class Listener : Java.Lang.Object, IInboxListener
+        internal class Listener : Java.Lang.Object, IInboxListener
 		{
 			Action listener;
 

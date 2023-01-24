@@ -1,6 +1,6 @@
 ﻿/* Copyright Airship and Contributors */
 
-namespace Airship.Net.Channel
+namespace AirshipDotNet.Channel
 {
     /// <summary>
     /// Interface used for modifying channel and named user tag groups.

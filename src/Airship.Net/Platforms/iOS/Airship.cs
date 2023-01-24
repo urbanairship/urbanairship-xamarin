@@ -2,10 +2,10 @@
 
 using Foundation;
 using UrbanAirship;
-using Airship.Net.Analytics;
-using Airship.Net.Attributes;
+using AirshipDotNet.Analytics;
+using AirshipDotNet.Attributes;
 
-namespace Airship.Net
+namespace AirshipDotNet
 {
     public class Airship : UADeepLinkDelegate, IAirship, IUAMessageCenterDisplayDelegate
     {

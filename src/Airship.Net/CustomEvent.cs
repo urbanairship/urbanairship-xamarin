@@ -1,6 +1,6 @@
 ﻿/* Copyright Airship and Contributors */
 
-namespace Airship.Net.Analytics
+namespace AirshipDotNet.Analytics
 {
     /// <summary>
     /// A Custom Event model object.

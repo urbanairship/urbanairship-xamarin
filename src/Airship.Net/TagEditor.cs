@@ -1,6 +1,6 @@
 ﻿/* Copyright Airship and Contributors */
 
-namespace Airship.Net.Channel
+namespace AirshipDotNet.Channel
 {
     /// <summary>
     /// Class used for modifying channel tags.

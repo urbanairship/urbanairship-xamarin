@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiSample.MessageCenterPage">
+
+    <!--ItemsSource="{Binding InboxMessages}"-->
+    <ListView x:Name="listView" RowHeight="72" ItemSelected="listView_ItemSelected">
+
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <ViewCell>
+                    <Grid Padding="16">
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+
+                        <BoxView
+                            Grid.RowSpan="2"
+                            x:Name="isReadIndicator"
+                            CornerRadius="7"
+                            HeightRequest="14"
+                            WidthRequest="14"
+                            VerticalOptions="Center"
+                            HorizontalOptions="Center">
+
+                            <BoxView.Triggers>
+                                <DataTrigger TargetType="BoxView" Binding="{Binding Unread}" Value="true">
+                                    <Setter Property="Color" Value="Green" />
+                                </DataTrigger>
+
+                                <DataTrigger TargetType="BoxView" Binding="{Binding Unread}" Value="false">
+                                    <Setter Property="Color" Value="Blue" />
+                                </DataTrigger>
+                            </BoxView.Triggers>
+                        </BoxView>
+
+                        <Label Grid.Column="1"
+                               Text="{Binding Title}"
+                               Margin="16,0,0,4" />
+
+                        <Label Grid.Row="1"
+                               Grid.Column="1"
+                               Text="{Binding SentDate, StringFormat='{0:MMMM dd, yyyy, hh:mm}'}"
+                               TextColor="Gray"
+                               Margin="16,0,0,0"
+                               VerticalOptions="End" />
+                    </Grid>
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
+</ContentPage>

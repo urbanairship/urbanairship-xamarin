@@ -1,0 +1,14 @@
+﻿{
+   "solution":{
+      "path":"airship.sln",
+      "projects":[
+         "binderator\\generated\\airship.android.core\\airship.android.core.csproj",
+         "binderator\\generated\\airship.android.adm\\airship.android.adm.csproj",
+         "binderator\\generated\\airship.android.layout\\airship.android.layout.csproj",
+         "binderator\\generated\\airship.android.automation\\airship.android.automation.csproj",
+         "binderator\\generated\\airship.android.fcm\\airship.android.fcm.csproj",
+         "binderator\\generated\\airship.android.messagecenter\\airship.android.messagecenter.csproj",
+         "binderator\\generated\\airship.android.preferencecenter\\airship.android.preferencecenter.csproj"
+      ]
+   }
+}
