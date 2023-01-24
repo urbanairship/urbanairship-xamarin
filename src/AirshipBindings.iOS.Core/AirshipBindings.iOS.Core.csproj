@@ -5,7 +5,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{7F49C0FA-F958-44CF-9246-8B8577748E6F}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>AirshipBindings.iOS.Core</RootNamespace>
+    <RootNamespace>UrbanAirship</RootNamespace>
     <AssemblyName>airship.ios.core</AssemblyName>
     <AssemblyTitle>Airship iOS SDK - Core</AssemblyTitle>
     <Description>Core of Airship SDK</Description>
@@ -51,6 +51,8 @@
 
   <ItemGroup>
     <ObjcBindingApiDefinition Include="ApiDefinitions.cs" />
+  </ItemGroup>
+  <ItemGroup>
     <ObjcBindingCoreSource Include="StructsAndEnums.cs" />
   </ItemGroup>
 

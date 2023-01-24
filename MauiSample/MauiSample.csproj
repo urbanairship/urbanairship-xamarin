@@ -1,0 +1,130 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFrameworks>net6.0-android;net6.0-ios</TargetFrameworks>
+		<OutputType>Exe</OutputType>
+		<RootNamespace>MauiSample</RootNamespace>
+		<UseMaui>true</UseMaui>
+		<SingleProject>true</SingleProject>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<EmbedAssembliesIntoApk>true</EmbedAssembliesIntoApk>
+
+		<!-- Display name -->
+		<ApplicationTitle>MauiSample</ApplicationTitle>
+
+		<!-- App Identifier -->
+		<ApplicationId Condition="'$(TargetFramework)' == 'net6.0-ios'">com.urbanairship.richpush</ApplicationId>
+		<ApplicationId Condition="'$(TargetFramework)' == 'net6.0-android'">com.urbanairship.sample</ApplicationId>
+		<ApplicationIdGuid>f6a79f57-dd45-4efa-9d46-98b431478fa1</ApplicationIdGuid>
+
+		<!-- Versions -->
+		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
+		<ApplicationVersion>1</ApplicationVersion>
+
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">14.2</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">21.0</SupportedOSPlatformVersion>
+
+		<!-- Required for C# Hot Reload -->
+		<UseInterpreter Condition="'$(Configuration)' == 'Debug'">True</UseInterpreter>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="$(TargetFramework.Contains('-ios'))">
+<!--    <RuntimeIdentifier>ios-arm64</RuntimeIdentifier>-->
+		<CreatePackage>false</CreatePackage>
+		<CodesignEntitlements>Platforms\iOS\Entitlements.plist</CodesignEntitlements>
+  </PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net6.0-ios|AnyCPU'">
+		<CodesignProvision>Automatic</CodesignProvision>
+		<CodesignKey>iPhone Developer</CodesignKey>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net6.0-ios|AnyCPU'">
+	    <CreatePackage>false</CreatePackage>
+		<CodesignEntitlements>Platforms\iOS\Entitlements.plist</CodesignEntitlements>
+	</PropertyGroup>
+
+	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+	  <WarningLevel>4</WarningLevel>
+	</PropertyGroup>
+
+	<ItemGroup Label="Common Dependencies">
+		<ProjectReference Include="..\src\Airship.Net\Airship.Net.csproj" />
+		<ProjectReference Include="..\src\Airship.Net.MessageCenter\Airship.Net.MessageCenter.csproj" />
+		<!--<PackageReference Include="airship.net" Version="17.0.0" />-->
+		<PackageReference Include="CommunityToolkit.Maui" Version="2.0.0" />
+	</ItemGroup>
+
+	<ItemGroup Label="iOS Dependencies" Condition="'$(TargetFramework)' == 'net6.0-ios'">
+		<ProjectReference Include="..\src\AirshipBindings.iOS.Basement\AirshipBindings.iOS.Basement.csproj" />
+		<ProjectReference Include="..\src\AirshipBindings.iOS.Core\AirshipBindings.iOS.Core.csproj" />
+		<ProjectReference Include="..\src\AirshipBindings.iOS.Automation\AirshipBindings.iOS.Automation.csproj" />
+		<ProjectReference Include="..\src\AirshipBindings.iOS.MessageCenter\AirshipBindings.iOS.MessageCenter.csproj" />
+		<ProjectReference Include="..\src\AirshipBindings.iOS.ExtendedActions\AirshipBindings.iOS.ExtendedActions.csproj" />
+		<!--
+		<PackageReference Include="airship.ios.basement" Version="16.9.3" />
+		<PackageReference Include="airship.ios.core" Version="16.9.3" />
+		<PackageReference Include="airship.ios.messagecenter" Version="16.9.3" />
+		<PackageReference Include="airship.ios.extendedactions" Version="16.9.3" />
+		<PackageReference Include="airship.ios.automation" Version="16.9.3" />
+		-->
+	</ItemGroup>
+
+	<ItemGroup Label="Android Dependencies" Condition="'$(TargetFramework)' == 'net6.0-android'">
+		<ProjectReference Include="..\binderator\generated\airship.android.core\airship.android.core.csproj" />
+		<ProjectReference Include="..\binderator\generated\airship.android.automation\airship.android.automation.csproj" />
+		<ProjectReference Include="..\binderator\generated\airship.android.layout\airship.android.layout.csproj" />
+		<ProjectReference Include="..\binderator\generated\airship.android.messagecenter\airship.android.messagecenter.csproj" />
+		<ProjectReference Include="..\binderator\generated\airship.android.fcm\airship.android.fcm.csproj" />
+		<!--
+		<PackageReference Include="airship.android.core" Version="16.7.2" />
+		<PackageReference Include="airship.android.messagecenter" Version="16.7.2" />
+		<PackageReference Include="airship.android.layout" Version="16.7.2" />
+		<PackageReference Include="airship.android.fcm" Version="16.7.2" />
+		<PackageReference Include="airship.android.automation" Version="16.7.2" />
+		-->
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Remove="Platforms\Android\Assets\google-services.json" />
+		<None Remove="Platforms\Android\Resources\*" />
+		<None Remove="Platforms\Android\Properties\" />
+		<None Remove="Resources\Images\icon_inbox.svg" />
+		<None Remove="Resources\Images\icon_settings.svg" />
+		<None Remove="Resources\Images\icon_home.svg" />
+		<None Remove="Platforms\iOS\AirshipConfig.plist" />
+	</ItemGroup>
+
+	<ItemGroup Label="iOS Resources" Condition="'$(TargetFramework)' == 'net6.0-ios'">
+		<BundleResource Include="Platforms\iOS\AirshipConfig.plist" Link="AirshipConfig.plist" />
+	</ItemGroup>
+
+	<ItemGroup Label="Android Resources" Condition="'$(TargetFramework)' == 'net6.0-android'">
+		<GoogleServicesJson Include="Platforms\Android\Assets\google-services.json" />
+		<MauiImage Include="Platforms\Android\Resources\Images\ic_notification.svg" BaseSize="24,24" />
+		<Folder Include="Platforms\Android\Properties\" />
+	</ItemGroup>
+
+	<ItemGroup Label="Shared Maui Resources">
+		<!-- App Icon -->
+		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
+
+		<!-- Splash Screen -->
+		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" />
+
+		<!-- Images -->
+		<MauiImage Include="Resources\Images\*" />
+		<MauiFont Include="Resources\Fonts\*" />
+
+		<!-- Raw Assets (also remove the "Resources\Raw" prefix) -->
+		<MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
+	</ItemGroup>
+	<ItemGroup>
+	  <BundleResource Include="Platforms\iOS\AirshipConfig.plist" />
+	</ItemGroup>
+	<ItemGroup>
+	  <MauiXaml Update="MessagePage.xaml">
+	    <SubType></SubType>
+	  </MauiXaml>
+	</ItemGroup>
+</Project>

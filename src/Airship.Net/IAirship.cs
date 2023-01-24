@@ -1,9 +1,9 @@
 ﻿/* Copyright Airship and Contributors */
 
-using Airship.Net.Attributes;
-using Airship.Net.Channel;
+using AirshipDotNet.Attributes;
+using AirshipDotNet.Channel;
 
-namespace Airship.Net
+namespace AirshipDotNet
 {
 
     public class ChannelEventArgs : EventArgs

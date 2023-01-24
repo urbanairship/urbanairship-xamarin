@@ -7,9 +7,9 @@ using UrbanAirship.Automation;
 using UrbanAirship.Actions;
 using UrbanAirship.Channel;
 using UrbanAirship.MessageCenter;
-using AttributeEditor = Airship.Net.Attributes.AttributeEditor;
+using AttributeEditor = AirshipDotNet.Attributes.AttributeEditor;
 
-namespace Airship.Net
+namespace AirshipDotNet
 { 
     public class Airship : Java.Lang.Object, IDeepLinkListener, IAirship, IInboxListener, MessageCenterClass.IOnShowMessageCenterListener, IAirshipChannelListener
     {

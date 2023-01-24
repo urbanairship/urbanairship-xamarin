@@ -1,6 +1,6 @@
 ﻿/* Copyright Airship and Contributors */
 
-namespace Airship.Net.Attributes
+namespace AirshipDotNet.Attributes
 {
     public class AttributeEditor
     {

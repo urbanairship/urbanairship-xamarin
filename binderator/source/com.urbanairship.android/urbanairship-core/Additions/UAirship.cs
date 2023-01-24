@@ -36,22 +36,22 @@ namespace UrbanAirship
 		}
 		public static void TakeOff(Application application, Action<UAirship> callback)
 		{
-			TakeOff (application, new AirshipReadyCallback (callback));
+			TakeOff(application, new AirshipReadyCallback (callback));
 		}
 
 		public static void TakeOff(Application application, AirshipConfigOptions configOptions, Action<UAirship> callback)
 		{
-			TakeOff (application, configOptions, new AirshipReadyCallback (callback));
+			TakeOff(application, configOptions, new AirshipReadyCallback (callback));
 		}
 
 		public static ICancelable Shared (Action<UAirship> callback, Looper looper)
 		{
-			return Shared (looper, new AirshipReadyCallback (callback));
+			return Shared(looper, new AirshipReadyCallback (callback));
 		}
 
 		public static ICancelable Shared (Action<UAirship> callback)
 		{
-			return Shared (new AirshipReadyCallback (callback));
+			return Shared(new AirshipReadyCallback (callback));
 		}
 
 		internal class AirshipReadyCallback : Java.Lang.Object, IOnReadyCallback
@@ -65,7 +65,7 @@ namespace UrbanAirship
 			public void OnAirshipReady (UAirship airship) {
 				if (callback != null)
 				{
-					callback.Invoke (airship);
+					callback.Invoke(airship);
 				}
 			}
 		}

@@ -7,7 +7,7 @@
     <ProjectGuid>{70434FB5-A468-4777-9478-DD2AB80BE0E2}</ProjectGuid>
     <TemplateGuid>{b6f3ff35-79b2-4f25-a2fc-60a7cf61013b}</TemplateGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>AirshipBindings.iOS.Automation</RootNamespace>
+    <RootNamespace>UrbanAirship</RootNamespace>
     <AssemblyName>airship.ios.automation</AssemblyName>
     <AssemblyTitle>Airship iOS SDK - Automation</AssemblyTitle>
     <Description>Automation support for Airship SDK</Description>
