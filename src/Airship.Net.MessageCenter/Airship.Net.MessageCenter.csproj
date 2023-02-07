@@ -50,4 +50,10 @@
 		<ProjectReference Condition="'$(TargetFramework)' == 'net6.0-ios'" Include="..\AirshipBindings.iOS.ExtendedActions\AirshipBindings.iOS.ExtendedActions.csproj" />
 		<ProjectReference Condition="'$(TargetFramework)' == 'net6.0-ios'" Include="..\AirshipBindings.iOS.MessageCenter\AirshipBindings.iOS.MessageCenter.csproj" />
     </ItemGroup>
+	<ItemGroup>
+	  <None Remove="Controls\" />
+	</ItemGroup>
+	<ItemGroup>
+	  <Folder Include="Controls\" />
+	</ItemGroup>
 </Project>

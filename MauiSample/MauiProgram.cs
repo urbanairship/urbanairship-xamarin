@@ -1,8 +1,8 @@
 ﻿using CommunityToolkit.Maui;
 using Microsoft.Maui.Controls.Compatibility.Hosting;
 
-using AirshipDotNet.MessageCenter;
-using AirshipDotNet;
+using AirshipDotNet.MessageCenter.Controls;
+using AirshipDotNet.MessageCenter.Handlers;
 
 namespace MauiSample;
 
@@ -20,10 +20,6 @@ public static class MauiProgram
 			{
 				handlers.AddHandler(typeof(MessageView), typeof(MessageViewHandler));
 			})
-			//.ConfigureMauiHandlers((handlers) =>
-			//{
-			//	handlers.AddCompatibilityRenderer(typeof(MessagePage), typeof(MessagePageRenderer));
-			//})
             .ConfigureFonts(fonts =>
 			{
 				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
