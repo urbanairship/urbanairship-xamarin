@@ -67,7 +67,7 @@ namespace MauiSample
       
         private void OnChannelEvent(object sender, EventArgs e) => Refresh();
             
-        private void Refresh()
+        public void Refresh()
         {
             ChannelId = Airship.Instance.ChannelId;
             ShowEnablePushButton = !Airship.Instance.UserNotificationsEnabled;

@@ -21,38 +21,34 @@
 		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
 		<ApplicationVersion>1</ApplicationVersion>
 
-		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">14.2</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">13.0</SupportedOSPlatformVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">21.0</SupportedOSPlatformVersion>
 
 		<!-- Required for C# Hot Reload -->
 		<UseInterpreter Condition="'$(Configuration)' == 'Debug'">True</UseInterpreter>
 	</PropertyGroup>
 
-	<PropertyGroup Condition="$(TargetFramework.Contains('-ios'))">
-<!--    <RuntimeIdentifier>ios-arm64</RuntimeIdentifier>-->
-		<CreatePackage>false</CreatePackage>
-		<CodesignEntitlements>Platforms\iOS\Entitlements.plist</CodesignEntitlements>
-  </PropertyGroup>
-
-	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net6.0-ios|AnyCPU'">
-		<CodesignProvision>Automatic</CodesignProvision>
-		<CodesignKey>iPhone Developer</CodesignKey>
-	</PropertyGroup>
-
-	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net6.0-ios|AnyCPU'">
-	    <CreatePackage>false</CreatePackage>
-		<CodesignEntitlements>Platforms\iOS\Entitlements.plist</CodesignEntitlements>
-	</PropertyGroup>
-
 	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
 	  <WarningLevel>4</WarningLevel>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)'=='Debug|net6.0-ios'">
+		<CodesignProvision>iOS Team Provisioning Profile: com.urbanairship.richpush</CodesignProvision>
+		<CodesignKey>iPhone Developer</CodesignKey>
+		<CodesignEntitlements>Platforms\iOS\Entitlements.plist</CodesignEntitlements>
+		<MtouchLink>None</MtouchLink>
+		<CreatePackage>false</CreatePackage>
+		<!-- Uncomment to build to physical devices. -->
+		<!--<RuntimeIdentifier>ios-arm64</RuntimeIdentifier>-->
 	</PropertyGroup>
 
 	<ItemGroup Label="Common Dependencies">
 		<ProjectReference Include="..\src\Airship.Net\Airship.Net.csproj" />
 		<ProjectReference Include="..\src\Airship.Net.MessageCenter\Airship.Net.MessageCenter.csproj" />
-		<!--<PackageReference Include="airship.net" Version="17.0.0" />-->
-		<PackageReference Include="CommunityToolkit.Maui" Version="2.0.0" />
+		<!--
+		PackageReference Include="airship.net" Version="17.0.0" />
+		<PackageReference Include="airship.net.messagecenter" Version="17.0.0" />
+		-->
 	</ItemGroup>
 
 	<ItemGroup Label="iOS Dependencies" Condition="'$(TargetFramework)' == 'net6.0-ios'">
@@ -119,12 +115,5 @@
 		<!-- Raw Assets (also remove the "Resources\Raw" prefix) -->
 		<MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
 	</ItemGroup>
-	<ItemGroup>
-	  <BundleResource Include="Platforms\iOS\AirshipConfig.plist" />
-	</ItemGroup>
-	<ItemGroup>
-	  <MauiXaml Update="MessagePage.xaml">
-	    <SubType></SubType>
-	  </MauiXaml>
-	</ItemGroup>
+
 </Project>

@@ -12,21 +12,15 @@ public partial class MessagePage : ContentPage
     public MessagePage()
     {
         InitializeComponent();
-
-        messageView.LoadStarted += MessageView_LoadStarted;
-        messageView.LoadFinished += MessageView_LoadFinished;
     }
-
-    private string _messageId = null;
 
     public string MessageId
     {
-        get => _messageId;
+        get => messageView.MessageId;
         set
         {
-            if (value != _messageId)
+            if (value != messageView.MessageId)
             {
-                _messageId = value;
                 messageView.MessageId = value;
             }
         }
