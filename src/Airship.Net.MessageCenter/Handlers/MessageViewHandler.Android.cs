@@ -22,7 +22,7 @@ public partial class MessageViewHandler : ViewHandler<IMessageView, MessageWebVi
         [nameof(IMessageView.MessageId)] = MapMessageId
     };
 
-    public MessageViewHandler() : base(MessageViewMapper)
+    public MessageViewHandler(): base(MessageViewMapper)
     {
     }
 

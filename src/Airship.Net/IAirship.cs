@@ -93,6 +93,8 @@ namespace AirshipDotNet
 
         List<MessageCenter.Message> InboxMessages { get; }
 
+        void FetchInboxMessages(Action<bool> onComplete);
+
         TagGroupsEditor EditNamedUserTagGroups();
 
         TagGroupsEditor EditChannelTagGroups();
