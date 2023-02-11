@@ -111,7 +111,6 @@ namespace AirshipDotNet.Attributes
         /// Interface representing an attribute editor operation.
         /// </summary>
         /// <returns>The attribute editor.</returns>
-        /// <param name="key">The attribute key.</param>
         public interface IAttributeOperation
         {
             OperationType OperationType { get; }

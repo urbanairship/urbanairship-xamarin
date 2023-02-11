@@ -7,15 +7,29 @@ namespace AirshipDotNet.Analytics
     /// </summary>
     public class CustomEvent
     {
-        // FIXME: should it be nullable or should we fix constructor?
         private string? eventValue;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="CustomEvent"/> class.
         /// </summary>
-        public CustomEvent()
+        /// <param name="name">The name of the event.</param>
+        /// <param name="value">The event value.</param>
+        public CustomEvent(string name)
         {
             PropertyList = new List<IProperty>();
+            EventName = name;
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CustomEvent"/> class.
+        /// </summary>
+        /// <param name="name">The name of the event.</param>
+        /// <param name="value">The event value.</param>
+        public CustomEvent(string name, double value)
+        {
+            PropertyList = new List<IProperty>();
+            EventName = name;
+            eventValue = value.ToString();
         }
 
         /// <summary>
@@ -28,29 +42,43 @@ namespace AirshipDotNet.Analytics
         /// Gets or sets the event value.
         /// </summary>
         /// <value>The event value.</value>
-        public double EventValue
+        public double? EventValue
         {
-            get => double.Parse(eventValue);
-            set => eventValue = value.ToString();
+            get
+            {
+                if (eventValue == null)
+                {
+                    return null;
+                }
+                else
+                {
+                    return double.Parse(eventValue);
+                }
+            }
+
+            set
+            {
+                eventValue = value?.ToString();
+            }
         }
 
         /// <summary>
         /// Gets or sets the transaction identifier.
         /// </summary>
         /// <value>The transaction identifier.</value>
-        public string TransactionId { get; set; }
+        public string? TransactionId { get; set; }
 
         /// <summary>
         /// Gets or sets the interaction type.
         /// </summary>
         /// <value>The interaction type.</value>
-        public string InteractionType { get; set; }
+        public string? InteractionType { get; set; }
 
         /// <summary>
         /// Gets or sets the interaction identifier.
         /// </summary>
         /// <value>The interaction identifier.</value>
-        public string InteractionId { get; set; }
+        public string? InteractionId { get; set; }
 
         /// <summary>
         /// Gets a list of properties.

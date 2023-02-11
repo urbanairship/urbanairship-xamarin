@@ -33,12 +33,12 @@ namespace UrbanAirship.MessageCenter
 
 		public ICancelable FetchMessages(Action<bool> callback)
 		{
-			return FetchMessages (new FetchMessagesCallback (callback));
+			return FetchMessages(new FetchMessagesCallback (callback));
 		}
 
 		public ICancelable FetchMessages(Action<bool> callback, Looper looper)
 		{
-			return FetchMessages (looper, new FetchMessagesCallback (callback));
+			return FetchMessages(looper, new FetchMessagesCallback (callback));
 		}
 
 		public IList<Message> GetMessages(Func<Message, bool> predicate) {

@@ -8,7 +8,7 @@ namespace UrbanAirship.MessageCenter
 	{
 		int Java.Lang.IComparable.CompareTo(Java.Lang.Object obj)
 		{
-			return CompareTo ((UrbanAirship.MessageCenter.Message) obj);
+			return CompareTo ((Message) obj);
 		}
 	}
 }

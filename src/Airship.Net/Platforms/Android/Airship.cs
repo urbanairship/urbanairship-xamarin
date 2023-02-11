@@ -199,7 +199,6 @@ namespace AirshipDotNet
                 }
                 else
                 {
-                    // TODO: do we want to do this?
                     UAirship.Shared().Contact.Reset();
                 }
             }
@@ -224,18 +223,22 @@ namespace AirshipDotNet
 
         public void AddCustomEvent(Analytics.CustomEvent customEvent)
         {
-            if (customEvent == null || customEvent.EventName == null)
+            if (customEvent == null || string.IsNullOrEmpty(customEvent.EventName))
             {
                 return;
             }
 
-            string eventName = customEvent.EventName;
-            double eventValue = customEvent.EventValue;
-            string transactionId = customEvent.TransactionId;
-            string interactionType = customEvent.InteractionType;
-            string interactionId = customEvent.InteractionId;
+            var eventName = customEvent.EventName;
+            var eventValue = customEvent.EventValue;
+            var transactionId = customEvent.TransactionId;
+            var interactionType = customEvent.InteractionType;
+            var interactionId = customEvent.InteractionId;
 
-            var builder = new UrbanAirship.Analytics.CustomEvent.Builder(eventName).SetEventValue(eventValue);
+            var builder = new UrbanAirship.Analytics.CustomEvent.Builder(eventName);
+
+            if (eventValue is not null) {
+                builder.SetEventValue((double)eventValue);
+            }
 
             if (!string.IsNullOrEmpty(transactionId))
             {
@@ -354,7 +357,6 @@ namespace AirshipDotNet
         public Channel.TagGroupsEditor EditNamedUserTagGroups() =>
             new((List<Channel.TagGroupsEditor.TagOperation> payload) =>
             {
-                // FIXME: avoid !
                 TagGroupsEditor editor = UAirship.Shared().Contact.EditTagGroups()!;
                 TagGroupHelper(payload, editor);
                 editor.Apply();
@@ -381,7 +383,6 @@ namespace AirshipDotNet
         public AttributeEditor EditNamedUserAttributes() =>
             new((List<AttributeEditor.IAttributeOperation> operations) =>
             {
-                // FIXME: avoid !
                 var editor = UAirship.Shared().Contact.EditAttributes()!;
                 ApplyAttributesOperations(editor, operations);
                 editor.Apply();
@@ -418,9 +419,8 @@ namespace AirshipDotNet
                     
                 if (operation is AttributeEditor.SetAttributeOperation<DateTime> dateOperation)
                 {
-                    // FIXME: avoid !
-                    Date date = FromDateTime(dateOperation.Value)!;
-                    editor.SetAttribute(dateOperation.Key, date);
+                    var date = FromDateTime(dateOperation.Value);
+                    editor.SetAttribute(dateOperation.Key, date!);
                 }
 
                 if (operation is AttributeEditor.RemoveAttributeOperation removeOperation)
@@ -452,14 +452,6 @@ namespace AirshipDotNet
             }
         }
 
-        // TODO: remove this?
-        [Obsolete("Use PrivacyManager")]
-        public bool InAppAutomationEnabled
-        {
-            get => InAppAutomation.Shared().Enabled;
-            set => InAppAutomation.Shared().Enabled = value;
-        }
-
         public bool InAppAutomationPaused
         {
             get => InAppAutomation.Shared().Paused;
@@ -468,7 +460,6 @@ namespace AirshipDotNet
 
         public TimeSpan InAppAutomationDisplayInterval
         {
-            // FIXME: avoid !
             get => TimeSpan.FromMilliseconds(InAppAutomation.Shared().InAppMessageManager!.DisplayInterval);
             set => InAppAutomation.Shared().InAppMessageManager!.SetDisplayInterval((long)value.TotalMilliseconds, TimeUnit.Milliseconds!);
         }

@@ -237,11 +237,11 @@ namespace AirshipDotNet
                 return;
             }
 
-            string eventName = customEvent.EventName;
-            double eventValue = customEvent.EventValue;
-            string transactionId = customEvent.TransactionId;
-            string interactionType = customEvent.InteractionType;
-            string interactionId = customEvent.InteractionId;
+            var eventName = customEvent.EventName;
+            var eventValue = customEvent.EventValue;
+            var transactionId = customEvent.TransactionId;
+            var interactionType = customEvent.InteractionType;
+            var interactionId = customEvent.InteractionId;
 
             UACustomEvent uaEvent = UACustomEvent.Event(eventName, eventValue);
 
@@ -469,8 +469,7 @@ namespace AirshipDotNet
 
                 if (operation is AttributeEditor.SetAttributeOperation<DateTime> dateOperation)
                 {
-                    // FIXME: avoid !
-                    NSDate date = FromDateTime(dateOperation.Value)!;
+                    var date = FromDateTime(dateOperation.Value);
                     mutations.SetDate(date, dateOperation.Key);
                 }
 
@@ -513,7 +512,6 @@ namespace AirshipDotNet
 
         override public void ReceivedDeepLink(NSUrl url, Action completionHandler)
         {
-            // FIXME: avoid ! (can we?)
             onDeepLinkReceived?.Invoke(this, new DeepLinkEventArgs(url.AbsoluteString!));
             completionHandler();
         }
@@ -525,8 +523,8 @@ namespace AirshipDotNet
         public void DisplayMessageCenterAnimated(bool animated) =>
             onMessageCenterDisplay?.Invoke(this, new MessageCenterEventArgs());
 
-        // TODO: implement or remove?
-        public void DismissMessageCenterAnimated(bool animated) { }
+        public void DismissMessageCenterAnimated(bool animated) {
+        }
 
         public bool InAppAutomationPaused
         {
