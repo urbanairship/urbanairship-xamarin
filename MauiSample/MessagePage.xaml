@@ -7,6 +7,9 @@
              x:Class="MauiSample.MessagePage"
              Title="Message">
 
-    <airship:MessageView x:Name="messageView"/>
-
+    <airship:MessageView x:Name="messageView"
+                         LoadStarted="MessageView_LoadStarted"
+                         LoadFailed="MessageView_LoadFailed"
+                         LoadFinished="MessageView_LoadFinished"
+                         Closed="MessageView_Closed"/>
 </ContentPage>

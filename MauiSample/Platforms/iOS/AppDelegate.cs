@@ -31,8 +31,6 @@ public class AppDelegate : MauiUIApplicationDelegate
         // Bootstrap the Airship SDK
         UAirship.TakeOff(config, launchOptions);
 
-        //UAMessageCenter.Shared.DisplayMessage("");
-
         Console.WriteLine("AirshipConfig: {0}", config);
 
         UAirship.Push.ResetBadge();
@@ -50,4 +48,3 @@ public class AppDelegate : MauiUIApplicationDelegate
         Console.WriteLine("WARNING: You will not be able to receive push notifications in the simulator.");
     }
 }
-

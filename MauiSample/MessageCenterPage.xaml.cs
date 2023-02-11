@@ -1,4 +1,5 @@
-﻿using AirshipDotNet;
+﻿using System.Windows.Input;
+using AirshipDotNet;
 using AirshipDotNet.MessageCenter;
 using AirshipDotNet.MessageCenter.Controls;
 
@@ -6,24 +7,41 @@ namespace MauiSample;
 
 public partial class MessageCenterPage : ContentPage
 {
-	public MessageCenterPage()
+    public ICommand RefreshCommand { private set; get; }
+
+    public MessageCenterPage()
 	{
 		InitializeComponent();
+
+    RefreshCommand = new Command(
+        execute: () => Refresh(),
+        canExecute: () => !refreshView.IsRefreshing
+    );
 	}
 
     protected override void OnAppearing()
     {
-        var messages = Airship.Instance.InboxMessages;
-        listView.ItemsSource = messages;
+        refreshView.BindingContext = this;
+        Refresh();
+    }
+
+    public void Refresh()
+    {
+        Airship.Instance.FetchInboxMessages(success =>
+        {
+            listView.ItemsSource = Airship.Instance.InboxMessages;
+            refreshView.IsRefreshing = false;
+        });
     }
 
     void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
     {
         var message = e.SelectedItem as Message;
-        Console.WriteLine("MessageCenterPage onSelected: '" + message.MessageId + "'");
 
-        var messagePage = new MessagePage();
-        messagePage.MessageId = message.MessageId;
+        var messagePage = new MessagePage
+        {
+            MessageId = message.MessageId
+        };
         messagePage.LoadStarted += onLoadStarted;
         messagePage.LoadFinished += onLoadFinished;
         messagePage.Closed += onClosed;
