@@ -326,6 +326,11 @@ namespace AirshipDotNet
             }
         }
 
+        public void FetchInboxMessages(Action<bool> onComplete)
+        {
+            MessageCenterClass.Shared().Inbox.FetchMessages(onComplete);
+        }
+
         private static Date? FromDateTime(DateTime? dateTime)
         {
             if (dateTime == null)

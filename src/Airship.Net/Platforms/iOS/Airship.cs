@@ -373,6 +373,14 @@ namespace AirshipDotNet
             }
         }
 
+        public void FetchInboxMessages(Action<bool> onComplete)
+        {
+            UAMessageCenter.Shared.MessageList.RetrieveMessageList(
+                () => onComplete.Invoke(true),
+                () => onComplete.Invoke(false)
+            );
+        }
+
         private static NSDate? FromDateTime(DateTime? dateTime)
         {
             if (dateTime is null)
