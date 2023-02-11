@@ -38,48 +38,61 @@
 		<CodesignEntitlements>Platforms\iOS\Entitlements.plist</CodesignEntitlements>
 		<MtouchLink>None</MtouchLink>
 		<CreatePackage>false</CreatePackage>
-		<!-- Uncomment to build to physical devices. -->
-		<!--<RuntimeIdentifier>ios-arm64</RuntimeIdentifier>-->
+		<RuntimeIdentifier>ios-arm64</RuntimeIdentifier>
 	</PropertyGroup>
 
-	<ItemGroup Label="Common Dependencies">
-		<ProjectReference Include="..\src\Airship.Net\Airship.Net.csproj" />
-		<ProjectReference Include="..\src\Airship.Net.MessageCenter\Airship.Net.MessageCenter.csproj" />
-		<!--
-		PackageReference Include="airship.net" Version="17.0.0" />
-		<PackageReference Include="airship.net.messagecenter" Version="17.0.0" />
-		-->
+	<PropertyGroup>
+		<!-- Controls whether to use project references or nuget packages for Airship dependencies. -->
+    <!-- While developing, switch to project references to allow all code to be editied. -->
+    <!-- Once finished, run the 'pack' and 'createLocalFeed' Gradle tasks and switch back to package refs. -->
+		<UseProjectReferences>false</UseProjectReferences>
+  </PropertyGroup>
+
+  <!-- Package dependencies -->
+
+  <ItemGroup Label="Common Package Dependencies" Condition="!$(UseProjectReferences)">
+		<PackageReference Include="airship.net" Version="$(AirshipCrossPlatformNugetVersion)" />
+		<PackageReference Include="airship.net.messagecenter" Version="$(AirshipCrossPlatformNugetVersion)" />
 	</ItemGroup>
 
-	<ItemGroup Label="iOS Dependencies" Condition="'$(TargetFramework)' == 'net6.0-ios'">
+	<ItemGroup Label="iOS Package Dependencies" Condition="'$(TargetFramework)' == 'net6.0-ios' And !$(UseProjectReferences)">
+		<PackageReference Include="airship.ios.basement" Version="$(AirshipIosNugetVersion)" />
+		<PackageReference Include="airship.ios.core" Version="$(AirshipIosNugetVersion)" />
+		<PackageReference Include="airship.ios.messagecenter" Version="$(AirshipIosNugetVersion)" />
+		<PackageReference Include="airship.ios.extendedactions" Version="$(AirshipIosNugetVersion)" />
+		<PackageReference Include="airship.ios.automation" Version="$(AirshipIosNugetVersion)" />
+	</ItemGroup>
+
+  <ItemGroup Label="Android Package Dependencies" Condition="'$(TargetFramework)' == 'net6.0-android' And !$(UseProjectReferences)">
+		<PackageReference Include="airship.android.core" Version="$(AirshipAndroidNugetVersion)" />
+		<PackageReference Include="airship.android.messagecenter" Version="$(AirshipAndroidNugetVersion)" />
+		<PackageReference Include="airship.android.layout" Version="$(AirshipAndroidNugetVersion)" />
+		<PackageReference Include="airship.android.fcm" Version="$(AirshipAndroidNugetVersion)" />
+		<PackageReference Include="airship.android.automation" Version="$(AirshipAndroidNugetVersion)" />
+	</ItemGroup>
+
+  <!-- Project dependencies -->
+
+	<ItemGroup Label="Common Project Dependencies" Condition="$(UseProjectReferences)">
+		<ProjectReference Condition="$(UseProjectReferences)" Include="..\src\Airship.Net\Airship.Net.csproj" />
+		<ProjectReference Condition="$(UseProjectReferences)" Include="..\src\Airship.Net.MessageCenter\Airship.Net.MessageCenter.csproj" />
+	</ItemGroup>
+
+	<ItemGroup Label="iOS Project Dependencies" Condition="'$(TargetFramework)' == 'net6.0-ios' And '$(UseProjectReferences)'">
 		<ProjectReference Include="..\src\AirshipBindings.iOS.Basement\AirshipBindings.iOS.Basement.csproj" />
 		<ProjectReference Include="..\src\AirshipBindings.iOS.Core\AirshipBindings.iOS.Core.csproj" />
 		<ProjectReference Include="..\src\AirshipBindings.iOS.Automation\AirshipBindings.iOS.Automation.csproj" />
 		<ProjectReference Include="..\src\AirshipBindings.iOS.MessageCenter\AirshipBindings.iOS.MessageCenter.csproj" />
 		<ProjectReference Include="..\src\AirshipBindings.iOS.ExtendedActions\AirshipBindings.iOS.ExtendedActions.csproj" />
-		<!--
-		<PackageReference Include="airship.ios.basement" Version="16.9.3" />
-		<PackageReference Include="airship.ios.core" Version="16.9.3" />
-		<PackageReference Include="airship.ios.messagecenter" Version="16.9.3" />
-		<PackageReference Include="airship.ios.extendedactions" Version="16.9.3" />
-		<PackageReference Include="airship.ios.automation" Version="16.9.3" />
-		-->
-	</ItemGroup>
+  </ItemGroup>
 
-	<ItemGroup Label="Android Dependencies" Condition="'$(TargetFramework)' == 'net6.0-android'">
+	<ItemGroup Label="Android Project Dependencies" Condition="'$(TargetFramework)' == 'net6.0-android' And $(UseProjectReferences)">
 		<ProjectReference Include="..\binderator\generated\airship.android.core\airship.android.core.csproj" />
 		<ProjectReference Include="..\binderator\generated\airship.android.automation\airship.android.automation.csproj" />
 		<ProjectReference Include="..\binderator\generated\airship.android.layout\airship.android.layout.csproj" />
 		<ProjectReference Include="..\binderator\generated\airship.android.messagecenter\airship.android.messagecenter.csproj" />
 		<ProjectReference Include="..\binderator\generated\airship.android.fcm\airship.android.fcm.csproj" />
-		<!--
-		<PackageReference Include="airship.android.core" Version="16.7.2" />
-		<PackageReference Include="airship.android.messagecenter" Version="16.7.2" />
-		<PackageReference Include="airship.android.layout" Version="16.7.2" />
-		<PackageReference Include="airship.android.fcm" Version="16.7.2" />
-		<PackageReference Include="airship.android.automation" Version="16.7.2" />
-		-->
-	</ItemGroup>
+  </ItemGroup>
 
 	<ItemGroup>
 		<None Remove="Platforms\Android\Assets\google-services.json" />
