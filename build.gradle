@@ -1,3 +1,5 @@
+import groovy.xml.*
+
 plugins {
     id 'org.barfuin.gradle.taskinfo' version '2.1.0'
 }
@@ -20,17 +22,21 @@ ext {
 }
 
 task pack {
+  dependsOn('build')
+
   // Pack all Android bindings generated via Binderator
   dependsOn(':binderator:pack')
   // Pack all iOS bindings
   dependsOn(':src:AirshipBindings.iOS.common:pack')
- // Pack .net common library
+  // Pack .net common libraries
   dependsOn(':src:Airship.Net:pack')
+  dependsOn(':src:Airship.Net.MessageCenter:pack')
 }
 
 // Create local nuget feed
 task createLocalFeed {
     dependsOn('pack')
+
     doLast() {
         // add doesn't have a "-force" option, so first remove all the nuget packages from the local feed
         File localNugetFeed = file("${rootDir}/local-nuget-feed")
@@ -61,34 +67,96 @@ task createLocalFeed {
 // Sync the nuspec and shared assembly versions with the version declared in the airship.properties file.
 task syncRootVersion {
     doLast() {
-        def androidNugetVersion = airshipProperties.androidVersion
-        if (airshipProperties['androidPackageVersion']) {
-            androidNugetVersion = "${airshipProperties.androidVersion}.${airshipProperties.androidPackageVersion}"
-        }
+        def androidVersion = airshipProperties.androidVersion
+        def androidRevision = airshipProperties.androidRevision
+        def androidNugetVersion = nugetVersion(androidVersion, androidRevision)
 
-        def iosNugetVersion = airshipProperties.iosNugetVersion
-        if (airshipProperties['iosPackageVersion']) {
-            iosNugetVersion = "${airshipProperties.iosNugetVersion}.${airshipProperties.iosPackageVersion}"
-        }
+        def iosVersion = airshipProperties.iosVersion
+        def iosRevision = airshipProperties.iosRevision
+        def iosNugetVersion = nugetVersion(iosVersion, iosRevision)
+
+        def crossPlatformVersion = airshipProperties.crossPlatformVersion
+        def crossPlatformRevision = airshipProperties.crossPlatformRevision
+        def crossPlatformNugetVersion = nugetVersion(crossPlatformVersion, crossPlatformRevision)
+
+        // Generate Directory.Build.props file for shared properties
+        generateDirectoryBuildProps(
+          androidVersion, androidNugetVersion,
+          iosVersion, iosNugetVersion,
+          crossPlatformVersion, crossPlatformNugetVersion
+        )
 
         // Update Android binderator config
         exec {
-            commandLine "./binderator/build.sh", "-t=update-sdk-version", "--sdk=$androidNugetVersion"
+            commandLine "./binderator/build.sh", "-t=update-sdk-version", "--sdk=$androidVersion"
         }
 
         // Shared assembly info
         ant.replaceregexp(
             file: "$projectDir/src/SharedAssemblyInfo.CrossPlatform.cs",
             match: "AssemblyVersion (.*)]",
-            replace: "AssemblyVersion (\"$airshipProperties.crossPlatformVersion\")]"
+            replace: "AssemblyVersion (\"$crossPlatformNugetVersion\")]"
         )
 
         ant.replaceregexp(
             file: "$projectDir/src/SharedAssemblyInfo.Common.cs",
             match: "UACrossPlatformVersion (.*)]",
-            replace: "UACrossPlatformVersion (\"$airshipProperties.crossPlatformVersion\")]"
+            replace: "UACrossPlatformVersion (\"$crossPlatformNugetVersion\")]"
         )
     }
+}
+
+def nugetVersion(version, revision) {
+  return (revision != null && revision != "0")
+      ? "${version}.${revision}"
+      : "${version}"
+}
+
+def generateDirectoryBuildProps(
+  androidVersion,
+  androidNugetVersion,
+  iosVersion,
+  iosNugetVersion,
+  crossPlatformVersion,
+  crossPlatformNugetVersion
+) {
+  file("Directory.Build.props").withWriter { writer ->
+    def xml = new MarkupBuilder(new IndentPrinter(writer, "  ", true))
+    xml.doubleQuotes = true
+    xml.mkp.yieldUnescaped("<!-- THIS FILE IS AUTO-GENERATED. DO NOT MODIFY. -->\n")
+    xml.mkp.yieldUnescaped("<!-- The `syncRootVersion` gradle task updates this file based on the contents of `airship.properties`. -->\n\n")
+
+    xml.Project() {
+      mkp.yieldUnescaped("\n  <!-- Versions -->")
+
+      PropertyGroup {
+        mkp.yieldUnescaped("\n    <!-- Airship native SDK versions -->")
+        AirshipAndroidVersion(androidVersion)
+        AirshipAndroidNugetVersion(androidNugetVersion)
+
+        mkp.yieldUnescaped("\n")
+        AirshipIosVersion(iosVersion)
+        AirshipIosNugetVersion(iosNugetVersion)
+
+        mkp.yieldUnescaped("\n\n    <!-- Airship.Net version -->")
+        AirshipCrossPlatformVersion(crossPlatformVersion)
+        AirshipCrossPlatformNugetVersion(crossPlatformNugetVersion)
+      }
+
+      mkp.yieldUnescaped("\n\n  <!-- Nuget packaging metadata -->")
+      PropertyGroup {
+        Owners('urbanairship')
+        Company('Airship, Inc.')
+        AssemblyCompany('Airship, Inc.')
+        PackageTags('airship, urbanairship')
+        Copyright('©Airship. All rights reserved.')
+        PackageProjectUrl('https://github.com/urbanairship/urbanairship-xamarin/')
+        PackageLicenseExpression('Apache-2.0')
+        PackageRequireLicenseAcceptance('false')
+        AllowedOutputExtensionsInPackageBuildOutputFolder('$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb')
+      }
+    }
+  }
 }
 
 // Sync subproject versions with the version declared in the airship.properties file.
@@ -152,8 +220,9 @@ task clean(type: Delete) {
     dependsOn(':binderator:clean')
     dependsOn(':src:AirshipBindings.iOS.common:clean')
     dependsOn(':src:Airship.Net:clean')
+    dependsOn(':src:Airship.Net.MessageCenter:clean')
     doLast() {
-        project.delete(files("$buildDir"))
+        project.delete fileTree("$buildDir").matching { include "*" }
     }
 }
 
@@ -166,10 +235,11 @@ task build() {
     ':docs:build',
     ':binderator:build',
     ':src:AirshipBindings.iOS.common:build',
-    ':src:Airship.Net:build'
+    ':src:Airship.Net:build',
+    ':src:Airship.Net.MessageCenter:build'
   )
 
-  doFirst() {
+ doFirst() {
     mkdir project.buildDir
   }
 }

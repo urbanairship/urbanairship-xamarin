@@ -1,20 +1,19 @@
+<!-- THIS FILE IS AUTO-GENERATED. DO NOT MODIFY. -->
+<!-- The `syncRootVersion` gradle task updates this file based on the contents of `airship.properties`. -->
+
 <Project>
   <!-- Versions -->
   <PropertyGroup>
-    <!-- Airship.Net version -->
-    <AirshipCrossPlatformVersion>17.0.0</AirshipCrossPlatformVersion>
-
     <!-- Airship native SDK versions -->
-    <AirshipIosVersion>16.9.3</AirshipIosVersion>
     <AirshipAndroidVersion>16.7.2</AirshipAndroidVersion>
+    <AirshipAndroidNugetVersion>16.7.2</AirshipAndroidNugetVersion>
 
-    <!--
-    Versions for Nuget packages built by this project.
-    Override if we ever need to ship a fix without bumping native SDK versions.
-    -->
-    <AirshipCrossPlatformNugetVersion>$(AirshipCrossPlatformVersion)</AirshipCrossPlatformNugetVersion>
-    <AirshipIosNugetVersion>$(AirshipIosVersion)</AirshipIosNugetVersion>
-    <AirshipAndroidNugetVersion>$(AirshipAndroidVersion)</AirshipAndroidNugetVersion>
+    <AirshipIosVersion>16.9.3</AirshipIosVersion>
+    <AirshipIosNugetVersion>16.9.3</AirshipIosNugetVersion>
+
+    <!-- Airship.Net version -->
+    <AirshipCrossPlatformVersion>16.2.1</AirshipCrossPlatformVersion>
+    <AirshipCrossPlatformNugetVersion>16.2.1</AirshipCrossPlatformNugetVersion>
   </PropertyGroup>
 
   <!-- Nuget packaging metadata -->
@@ -24,10 +23,9 @@
     <AssemblyCompany>Airship, Inc.</AssemblyCompany>
     <PackageTags>airship, urbanairship</PackageTags>
     <Copyright>©Airship. All rights reserved.</Copyright>
-		<PackageProjectUrl>https://github.com/urbanairship/urbanairship-xamarin/</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/urbanairship/urbanairship-xamarin/</PackageProjectUrl>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-    <!-- Include symbol files (*.pdb) in the built .nupkg -->
     <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
   </PropertyGroup>
 </Project>

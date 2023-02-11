@@ -1,0 +1,27 @@
+task clean(type: Delete) {
+  doLast() {
+    project.delete "bin"
+    project.delete "obj"
+  }
+}
+
+task build {
+  mustRunAfter(':src:Airship.Net:build')
+
+   def BuildConfiguration=project.properties['build_configuration'] ?: "Release"
+    doLast() {
+      exec {
+        commandLine "dotnet", "build", "--configuration=${BuildConfiguration}", "Airship.Net.MessageCenter.csproj"
+      }
+    }
+}
+
+
+task pack {
+    // Pack Airship.Net.MessageCenter library
+    doLast() {
+      exec {
+        commandLine "dotnet", "pack", "Airship.Net.MessageCenter.csproj", "-o=${rootProject.buildDir}"
+      }
+    }
+}

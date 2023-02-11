@@ -1,0 +1,22 @@
+// Build the sample apps
+
+task clean(type: Delete) {
+    doLast() {
+        project.delete "SampleApp/bin"
+        project.delete "SampleApp/obj"
+    }
+}
+
+task restore {
+    dependsOn rootProject.pack
+    doLast() {
+        exec {
+            commandLine "dotnet", "restore", "SampleApp.sln"
+        }
+    }
+}
+
+task buildSample {
+    dependsOn ':SampleApp:SampleApp.iOS:buildIosSample'
+    dependsOn ':SampleApp:SampleApp.Android:buildAndroidSample'
+}
