@@ -17,13 +17,12 @@ namespace UrbanAirship
         {
             NSNotificationCenter.DefaultCenter.AddObserver(new NSString("com.urbanairship.airship_ready"), (notification) =>
             {
-                // Register Airship Xamarin component
+                // Register Airship component
                 Object[] crossPlatformVersions = Assembly.GetExecutingAssembly().GetCustomAttributes(typeof(UACrossPlatformVersionAttribute), false);
                 if (crossPlatformVersions.Length >= 1)
                 {
                     UACrossPlatformVersionAttribute? version = Assembly.GetExecutingAssembly().GetCustomAttributes(typeof(UACrossPlatformVersionAttribute), false)[0] as UACrossPlatformVersionAttribute;
-                    //TODO(maui): what do with this?
-                    //UAirship.Analytics.RegisterSDKExtension(UASDKExtension.Xamarin, version.Version.ToString());
+                    UAirship.Analytics.RegisterSDKExtension(UASDKExtension.Xamarin, version!.Version.ToString());
                 }                
             });
         }
