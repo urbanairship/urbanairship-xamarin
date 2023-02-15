@@ -7,6 +7,9 @@ using AirshipDotNet.Attributes;
 
 namespace AirshipDotNet
 {
+    /// <summary>
+    /// Provides cross-platform access to a common subset of functionality between the iOS and Android SDKs
+    /// </summary>
     public class Airship : UADeepLinkDelegate, IAirship, IUAMessageCenterDisplayDelegate
     {
         private static readonly Lazy<Airship> sharedAirship = new(() =>
@@ -304,9 +307,9 @@ namespace AirshipDotNet
 
         public void DisplayMessageCenter() => UAMessageCenter.Shared.Display();
 
-        public static void DisplayMessage(string messageId) => UAMessageCenter.Shared.DisplayMessage(messageId);
+        public void DisplayMessage(string messageId) => UAMessageCenter.Shared.DisplayMessage(messageId);
 
-        public static void MarkMessageRead(string messageId)
+        public void MarkMessageRead(string messageId)
         {
             var message = UAMessageCenter.Shared.MessageList.Message(messageId);
             if (message is not null)
@@ -318,7 +321,7 @@ namespace AirshipDotNet
          
         }
 
-        public static void DeleteMessage(string messageId)
+        public void DeleteMessage(string messageId)
         {
             var message = UAMessageCenter.Shared.MessageList.Message(messageId);
             if (message is not null)

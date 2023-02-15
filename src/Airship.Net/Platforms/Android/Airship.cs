@@ -10,7 +10,10 @@ using UrbanAirship.MessageCenter;
 using AttributeEditor = AirshipDotNet.Attributes.AttributeEditor;
 
 namespace AirshipDotNet
-{ 
+{
+    /// <summary>
+    /// Provides cross-platform access to a common subset of functionality between the iOS and Android SDKs
+    /// </summary>
     public class Airship : Java.Lang.Object, IDeepLinkListener, IAirship, IInboxListener, MessageCenterClass.IOnShowMessageCenterListener, IAirshipChannelListener
     {
         private static readonly Lazy<Airship> sharedAirship = new(() =>
@@ -282,11 +285,11 @@ namespace AirshipDotNet
 
         public void DisplayMessageCenter() => MessageCenterClass.Shared().ShowMessageCenter();
 
-        public static void DisplayMessage(string messageId) => MessageCenterClass.Shared().ShowMessageCenter(messageId);
+        public void DisplayMessage(string messageId) => MessageCenterClass.Shared().ShowMessageCenter(messageId);
 
-        public static void MarkMessageRead(string messageId) => MessageCenterClass.Shared().Inbox.MarkMessagesRead(new List<String> { messageId });
+        public void MarkMessageRead(string messageId) => MessageCenterClass.Shared().Inbox.MarkMessagesRead(new List<String> { messageId });
 
-        public static void DeleteMessage(string messageId) => MessageCenterClass.Shared().Inbox.DeleteMessages(new List<String> { messageId });
+        public void DeleteMessage(string messageId) => MessageCenterClass.Shared().Inbox.DeleteMessages(new List<String> { messageId });
 
         public int MessageCenterUnreadCount => MessageCenterClass.Shared().Inbox.UnreadCount;
 

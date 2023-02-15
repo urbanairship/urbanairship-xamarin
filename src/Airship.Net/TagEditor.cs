@@ -3,7 +3,7 @@
 namespace AirshipDotNet.Channel
 {
     /// <summary>
-    /// Class used for modifying channel tags.
+    /// Editor for Channel and Named User tags.
     /// </summary>
     public partial class TagEditor
     {
