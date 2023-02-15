@@ -17,72 +17,72 @@
       {
         "groupId": "com.urbanairship.android",
         "artifactId": "urbanairship-accengage",
-        "version": "16.7.2",
-        "nugetVersion": "16.7.2",
+        "version": "16.8.1",
+        "nugetVersion": "16.8.1",
         "nugetId": "airship.android.accengage",
         "dependencyOnly": false
       },
       {
         "groupId": "com.urbanairship.android",
         "artifactId": "urbanairship-adm",
-        "version": "16.7.2",
-        "nugetVersion": "16.7.2",
+        "version": "16.8.1",
+        "nugetVersion": "16.8.1",
         "nugetId": "airship.android.adm",
         "dependencyOnly": false
       },
       {
         "groupId": "com.urbanairship.android",
         "artifactId": "urbanairship-automation",
-        "version": "16.7.2",
-        "nugetVersion": "16.7.2",
+        "version": "16.8.1",
+        "nugetVersion": "16.8.1",
         "nugetId": "airship.android.automation",
         "dependencyOnly": false
       },
       {
         "groupId": "com.urbanairship.android",
         "artifactId": "urbanairship-core",
-        "version": "16.7.2",
-        "nugetVersion": "16.7.2",
+        "version": "16.8.1",
+        "nugetVersion": "16.8.1",
         "nugetId": "airship.android.core",
         "dependencyOnly": false
       },
       {
         "groupId": "com.urbanairship.android",
         "artifactId": "urbanairship-fcm",
-        "version": "16.7.2",
-        "nugetVersion": "16.7.2",
+        "version": "16.8.1",
+        "nugetVersion": "16.8.1",
         "nugetId": "airship.android.fcm",
         "dependencyOnly": false
       },
       {
         "groupId": "com.urbanairship.android",
         "artifactId": "urbanairship-layout",
-        "version": "16.7.2",
-        "nugetVersion": "16.7.2",
+        "version": "16.8.1",
+        "nugetVersion": "16.8.1",
         "nugetId": "airship.android.layout",
         "dependencyOnly": false
       },
       {
         "groupId": "com.urbanairship.android",
         "artifactId": "urbanairship-location",
-        "version": "16.7.2",
-        "nugetVersion": "16.7.2",
+        "version": "16.8.1",
+        "nugetVersion": "16.8.1",
         "nugetId": "airship.android.location",
         "dependencyOnly": false
       },
       {
         "groupId": "com.urbanairship.android",
         "artifactId": "urbanairship-message-center",
-        "version": "16.7.2",
-        "nugetVersion": "16.7.2",
+        "version": "16.8.1",
+        "nugetVersion": "16.8.1",
         "nugetId": "airship.android.messagecenter",
         "dependencyOnly": false
       },
       {
         "groupId": "com.urbanairship.android",
         "artifactId": "urbanairship-preference-center",
-        "version": "16.7.2",
-        "nugetVersion": "16.7.2",
+        "version": "16.8.1",
+        "nugetVersion": "16.8.1",
         "nugetId": "airship.android.preferencecenter",
         "dependencyOnly": false
       },
