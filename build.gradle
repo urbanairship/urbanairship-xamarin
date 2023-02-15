@@ -194,8 +194,7 @@ class PublishTask extends DefaultTask {
         nupkgs.each { nupkg ->
             // publish the package
             getProject().exec {
-                ignoreExitValue true
-                commandLine "mono", "${nugetExec}", "push", "$nupkg", "-source", "${nugetRepoURL}", "-apikey", "${nugetApiKey}"
+                commandLine "nuget", "push", "$nupkg", "-Source", "${nugetRepoURL}", "-ApiKey", "${nugetApiKey}", "-SkipDuplicate", "-NonInteractive"
             }
         }
     }
