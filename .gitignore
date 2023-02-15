@@ -162,6 +162,7 @@ ClientBin/
 *.dbproj.schemaview
 *.pfx
 *.publishsettings
+*.swp
 node_modules/
 bower_components/
 
@@ -204,7 +205,7 @@ FakesAssemblies/
 .tools
 
 # Xamarin.Android Resource.Designer.cs file
-SampleApp/SampleApp.Android/Resources/Resource.designer.cs
+Resource.designer.cs
 
 # Carthage
 Carthage/
@@ -223,13 +224,13 @@ local-nuget-feed/
 src/AirshipBindings.Android.*/Jars/urbanairship*.aar
 
 # Google Services (e.g. APIs or Firebase)
-SampleApp/SampleApp.Android/Assets/google-services.json
+google-services.json
 
 # iOS AirshipConfig
-SampleApp/SampleApp.iOS/AirshipConfig.plist
+AirshipConfig.plist
 
 # Android airshipconfig
-SampleApp/SampleApp.Android/Assets/airshipconfig.properties
+airshipconfig.properties
 
 # Xamboni
 src/xamboni/
