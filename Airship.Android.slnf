@@ -1,6 +1,6 @@
 ﻿{
    "solution":{
-      "path":"airship.sln",
+      "path":"Airship.Net.sln",
       "projects":[
          "binderator\\generated\\airship.android.core\\airship.android.core.csproj",
          "binderator\\generated\\airship.android.adm\\airship.android.adm.csproj",

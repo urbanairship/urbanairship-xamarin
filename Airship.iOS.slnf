@@ -1,6 +1,6 @@
 {
    "solution":{
-      "path":"airship.sln",
+      "path":"Airship.Net.sln",
       "projects":[
          "src\\AirshipBindings.iOS.Basement\\AirshipBindings.iOS.Basement.csproj",
          "src\\AirshipBindings.iOS.Core\\AirshipBindings.iOS.Core.csproj",

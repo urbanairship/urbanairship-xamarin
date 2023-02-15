@@ -37,8 +37,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirshipBindings.iOS.Prefere
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F4B616B3-15BA-45DB-AA24-97270963158F}"
 	ProjectSection(SolutionItems) = preProject
-		airship-bindings-android.slnf = airship-bindings-android.slnf
-		airship-bindings-ios.slnf = airship-bindings-ios.slnf
+		Airship.iOS.slnf = Airship.iOS.slnf
+		Airship.Android.slnf = Airship.Android.slnf
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MauiSample", "MauiSample\MauiSample.csproj", "{9068F67C-A176-418D-9518-F754A5624FD0}"
