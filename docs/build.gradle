@@ -9,12 +9,6 @@ task build {
         exec {
             commandLine "doxygen", "Doxyfile"
         }
-
-        copy {
-            from "theme"
-            into "build/html"
-            include "doxy-boot.js", "header.html", "footer.html"
-        }
     }
     finalizedBy 'packageDocs'
 }

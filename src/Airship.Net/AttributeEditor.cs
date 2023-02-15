@@ -2,6 +2,9 @@
 
 namespace AirshipDotNet.Attributes
 {
+    /// <summary>
+    /// Editor for Channel and Named User attributes.
+    /// </summary>
     public class AttributeEditor
     {
         private readonly List<IAttributeOperation> operations = new();
