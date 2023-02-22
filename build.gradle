@@ -47,6 +47,10 @@ tasks.register('pack') {
     dependsOn(':src:Airship.Net.MessageCenter:pack')
 }
 
+tasks.register('buildSample') {
+    dependsOn(':MauiSample:buildSample')
+}
+
 // Create local nuget feed
 tasks.register('createLocalFeed') {
     dependsOn('pack')
