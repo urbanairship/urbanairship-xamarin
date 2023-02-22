@@ -73,6 +73,7 @@
     <None Include="Info.plist" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PushHandler.cs" />
+    <Compile Include="BackgroundDependency_iOS.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
@@ -88,23 +89,8 @@
   <ItemGroup>
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />
     <PackageReference Include="Xamarin.Essentials" Version="1.6.1" />
-    <PackageReference Include="airship.ios.basement">
-      <Version>16.9.3</Version>
-    </PackageReference>
-    <PackageReference Include="airship.ios.automation">
-      <Version>16.9.3</Version>
-    </PackageReference>
-    <PackageReference Include="airship.ios.preferencecenter">
-      <Version>16.9.3</Version>
-    </PackageReference>
-    <PackageReference Include="airship.ios.messagecenter">
-      <Version>16.9.3</Version>
-    </PackageReference>
-    <PackageReference Include="airship.ios.extendedactions">
-      <Version>16.9.3</Version>
-    </PackageReference>
-    <PackageReference Include="airship.ios.core">
-      <Version>16.9.3</Version>
+    <PackageReference Include="airship.ios">
+      <Version>16.10.7</Version>
     </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
