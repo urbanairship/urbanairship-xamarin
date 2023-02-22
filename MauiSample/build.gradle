@@ -9,7 +9,7 @@ tasks.register("restore", Exec) {
     commandLine "dotnet", "restore", "../MauiSample.sln"
 }
 
-tasks.register("build", Exec) {
+tasks.register("buildSample", Exec) {
     dependsOn restore
 
     mustRunAfter ':src:Airship.Net:build', ':src:Airship.Net.MessageCenter:build'

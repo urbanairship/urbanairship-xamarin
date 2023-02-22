@@ -41,8 +41,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		Airship.Android.slnf = Airship.Android.slnf
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MauiSample", "MauiSample\MauiSample.csproj", "{9068F67C-A176-418D-9518-F754A5624FD0}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Airship.Net.MessageCenter", "src\Airship.Net.MessageCenter\Airship.Net.MessageCenter.csproj", "{F429D476-7186-4C55-A5B6-60FA62215E78}"
 EndProject
 Global
