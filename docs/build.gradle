@@ -1,27 +1,26 @@
-task clean(type: Delete) {
-    doLast() {
-        project.delete "$buildDir"
-    }
+tasks.register('clean', Delete) {
+    delete buildDir
 }
 
-task build {
-    doLast() {
-        exec {
-            commandLine "doxygen", "Doxyfile"
-        }
-    }
-    finalizedBy 'packageDocs'
+tasks.register('generate', Exec) {
+    finalizedBy 'package'
+
+    def doxyfile = file('Doxyfile')
+    commandLine "doxygen", doxyfile
+
+    inputs.file(doxyfile)
+    outputs.dir('build/html')
 }
 
-task packageDocs(type: Tar, dependsOn: 'build') {
-    into ('./') {
+tasks.register('package', Tar) {
+    dependsOn 'generate'
+
+    into('./') {
         from 'build/html'
     }
 
-    archiveName = "${airshipProperties.crossPlatformVersion}.tar.gz"
-    compression = Compression.GZIP
-
-    destinationDir file('build')
-    extension 'tar.gz'
+    archiveFileName = "${airshipProperties.crossPlatformVersion}.tar.gz"
+    destinationDirectory = project.file('build')
+    archiveExtension = 'tar.gz'
     compression = Compression.GZIP
 }

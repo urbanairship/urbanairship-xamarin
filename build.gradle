@@ -1,4 +1,5 @@
 import groovy.xml.*
+import org.apache.tools.ant.taskdefs.optional.ReplaceRegExp
 
 plugins {
     id 'org.barfuin.gradle.taskinfo' version '2.1.0'
@@ -7,6 +8,19 @@ plugins {
 ext {
     airshipProperties = new Properties()
     airshipProperties.load(new FileInputStream("$projectDir/airship.properties"))
+
+    androidVersion = airshipProperties.androidVersion
+    androidRevision = airshipProperties.androidRevision
+    androidNugetVersion = nugetVersion(androidVersion, androidRevision)
+
+    iosVersion = airshipProperties.iosVersion
+    iosRevision = airshipProperties.iosRevision
+    iosNugetVersion = nugetVersion(iosVersion, iosRevision)
+
+    crossPlatformVersion = airshipProperties.crossPlatformVersion
+    crossPlatformRevision = airshipProperties.crossPlatformRevision
+    crossPlatformNugetVersion = nugetVersion(crossPlatformVersion, crossPlatformRevision)
+
     toolsDir = new File("$projectDir/.tools")
     if ( !toolsDir.exists() ) {
         toolsDir.mkdirs()
@@ -21,20 +35,20 @@ ext {
     msbuild = "/Library/Frameworks/Mono.framework/Commands/msbuild"
 }
 
-task pack {
-  dependsOn('build')
+tasks.register('pack') {
+    dependsOn('build')
 
-  // Pack all Android bindings generated via Binderator
-  dependsOn(':binderator:pack')
-  // Pack all iOS bindings
-  dependsOn(':src:AirshipBindings.iOS.common:pack')
-  // Pack .net common libraries
-  dependsOn(':src:Airship.Net:pack')
-  dependsOn(':src:Airship.Net.MessageCenter:pack')
+    // Pack all Android bindings generated via Binderator
+    dependsOn(':binderator:pack')
+    // Pack all iOS bindings
+    dependsOn(':src:AirshipBindings.iOS.common:pack')
+    // Pack .net common libraries
+    dependsOn(':src:Airship.Net:pack')
+    dependsOn(':src:Airship.Net.MessageCenter:pack')
 }
 
 // Create local nuget feed
-task createLocalFeed {
+tasks.register('createLocalFeed') {
     dependsOn('pack')
 
     doLast() {
@@ -44,7 +58,7 @@ task createLocalFeed {
 
         // get all the nuget packages from the build directory
         def nupkgs = buildDir.listFiles(new FilenameFilter() {
-            public boolean accept(File dir, String name) {
+            boolean accept(File dir, String name) {
                 return name.toLowerCase().endsWith(".nupkg");
             }
         })
@@ -65,32 +79,10 @@ task createLocalFeed {
 }
 
 // Sync the nuspec and shared assembly versions with the version declared in the airship.properties file.
-task syncRootVersion {
-    doLast() {
-        def androidVersion = airshipProperties.androidVersion
-        def androidRevision = airshipProperties.androidRevision
-        def androidNugetVersion = nugetVersion(androidVersion, androidRevision)
+tasks.register('syncRootVersion') {
+    dependsOn('syncDirectoryBuildProps')
 
-        def iosVersion = airshipProperties.iosVersion
-        def iosRevision = airshipProperties.iosRevision
-        def iosNugetVersion = nugetVersion(iosVersion, iosRevision)
-
-        def crossPlatformVersion = airshipProperties.crossPlatformVersion
-        def crossPlatformRevision = airshipProperties.crossPlatformRevision
-        def crossPlatformNugetVersion = nugetVersion(crossPlatformVersion, crossPlatformRevision)
-
-        // Generate Directory.Build.props file for shared properties
-        generateDirectoryBuildProps(
-          androidVersion, androidNugetVersion,
-          iosVersion, iosNugetVersion,
-          crossPlatformVersion, crossPlatformNugetVersion
-        )
-
-        // Update Android binderator config
-        exec {
-            commandLine "./binderator/build.sh", "-t=update-sdk-version", "--sdk=$androidVersion"
-        }
-
+    doFirst() {
         // Shared assembly info
         ant.replaceregexp(
             file: "$projectDir/src/SharedAssemblyInfo.CrossPlatform.cs",
@@ -106,80 +98,129 @@ task syncRootVersion {
     }
 }
 
-def nugetVersion(version, revision) {
-  return (revision != null && revision != "0")
-      ? "${version}.${revision}"
-      : "${version}"
-}
-
-def generateDirectoryBuildProps(
-  androidVersion,
-  androidNugetVersion,
-  iosVersion,
-  iosNugetVersion,
-  crossPlatformVersion,
-  crossPlatformNugetVersion
-) {
-  file("Directory.Build.props").withWriter { writer ->
-    def xml = new MarkupBuilder(new IndentPrinter(writer, "  ", true))
-    xml.doubleQuotes = true
-    xml.mkp.yieldUnescaped("<!-- THIS FILE IS AUTO-GENERATED. DO NOT MODIFY. -->\n")
-    xml.mkp.yieldUnescaped("<!-- The `syncRootVersion` gradle task updates this file based on the contents of `airship.properties`. -->\n\n")
-
-    xml.Project() {
-      mkp.yieldUnescaped("\n  <!-- Versions -->")
-
-      PropertyGroup {
-        mkp.yieldUnescaped("\n    <!-- Airship native SDK versions -->")
-        AirshipAndroidVersion(androidVersion)
-        AirshipAndroidNugetVersion(androidNugetVersion)
-
-        mkp.yieldUnescaped("\n")
-        AirshipIosVersion(iosVersion)
-        AirshipIosNugetVersion(iosNugetVersion)
-
-        mkp.yieldUnescaped("\n\n    <!-- Airship.Net version -->")
-        AirshipCrossPlatformVersion(crossPlatformVersion)
-        AirshipCrossPlatformNugetVersion(crossPlatformNugetVersion)
-      }
-
-      mkp.yieldUnescaped("\n\n  <!-- Nuget packaging metadata -->")
-      PropertyGroup {
-        Owners('urbanairship')
-        Company('Airship, Inc.')
-        AssemblyCompany('Airship, Inc.')
-        PackageTags('airship, urbanairship')
-        Copyright('©Airship. All rights reserved.')
-        PackageProjectUrl('https://github.com/urbanairship/urbanairship-xamarin/')
-        PackageLicenseExpression('Apache-2.0')
-        PackageRequireLicenseAcceptance('false')
-        AllowedOutputExtensionsInPackageBuildOutputFolder('$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb')
-      }
-    }
-  }
-}
-
 // Sync subproject versions with the version declared in the airship.properties file.
-task syncVersion() {
+tasks.register('syncVersion') {
     mustRunAfter('clean')
-    dependsOn('syncRootVersion')
-    dependsOn(':src:AirshipBindings.iOS.common:syncVersion')
+    dependsOn('syncRootVersion',
+            ':binderator:syncVersion',
+            ':src:AirshipBindings.iOS.common:syncVersion'
+    )
 }
+
+// Sync Directory.Build.props with the version declared in the airship.properties file.
+tasks.register('syncDirectoryBuildProps') {
+    def outputFile = file("Directory.Build.props")
+
+    inputs.property("androidVersion", androidVersion)
+    inputs.property("androidRevision", androidRevision)
+    inputs.property("iosVersion", iosVersion)
+    inputs.property("iosRevision", iosRevision)
+    inputs.property("crossPlatformVersion", crossPlatformVersion)
+    inputs.property("crossPlatformRevision", crossPlatformRevision)
+
+    outputs.file(outputFile)
+
+    doLast {
+        outputFile.withWriter { writer ->
+            def xml = new MarkupBuilder(new IndentPrinter(writer, "  ", true))
+            xml.doubleQuotes = true
+            xml.mkp.yieldUnescaped("<!-- THIS FILE IS AUTO-GENERATED. DO NOT MODIFY. -->\n")
+            xml.mkp.yieldUnescaped("<!-- The `syncRootVersion` gradle task updates this file based on the contents of `airship.properties`. -->\n\n")
+
+            xml.Project() {
+                mkp.yieldUnescaped("\n  <!-- Versions -->")
+
+                PropertyGroup {
+                    mkp.yieldUnescaped("\n    <!-- Airship native SDK versions -->")
+                    AirshipAndroidVersion(androidVersion)
+                    AirshipAndroidNugetVersion(androidNugetVersion)
+
+                    mkp.yieldUnescaped("\n")
+                    AirshipIosVersion(iosVersion)
+                    AirshipIosNugetVersion(iosNugetVersion)
+
+                    mkp.yieldUnescaped("\n\n    <!-- Airship.Net version -->")
+                    AirshipCrossPlatformVersion(crossPlatformVersion)
+                    AirshipCrossPlatformNugetVersion(crossPlatformNugetVersion)
+                }
+
+                mkp.yieldUnescaped("\n\n  <!-- Nuget packaging metadata -->")
+                PropertyGroup {
+                    Owners('urbanairship')
+                    Company('Airship, Inc.')
+                    AssemblyCompany('Airship, Inc.')
+                    PackageTags('airship, urbanairship')
+                    Copyright('©Airship. All rights reserved.')
+                    PackageProjectUrl('https://github.com/urbanairship/urbanairship-xamarin/')
+                    PackageLicenseExpression('Apache-2.0')
+                    PackageRequireLicenseAcceptance('false')
+                    AllowedOutputExtensionsInPackageBuildOutputFolder('$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb')
+                }
+            }
+        }
+    }
+}
+
+tasks.register('packageDocs') {
+    dependsOn('build', 'docs:package')
+}
+
+tasks.register('publishToStaging', PublishTask) {
+    dependsOn('pack')
+    nugetRepoURL = "https://int.nugettest.org/api/v2/package"
+    nugetApiKey = "$System.env.NUGET_STAGING_API_KEY"
+}
+
+tasks.register('publishToProduction', PublishTask) {
+    dependsOn('pack')
+    nugetRepoURL = "https://www.nuget.org/api/v2/package"
+    nugetApiKey = "$System.env.NUGET_PRODUCTION_API_KEY"
+}
+
+//--- GLOBAL TASKS ---//
+
+// Clean all
+tasks.register('clean', Delete) {
+    delete fileTree(buildDir).matching { include "*" }
+}
+
+// Build the plugin
+tasks.register('build') {
+    mustRunAfter('clean')
+
+    dependsOn('syncVersion',
+            ':binderator:build',
+            ':src:AirshipBindings.iOS.common:build',
+            ':src:Airship.Net:build',
+            ':src:Airship.Net.MessageCenter:build')
+
+    doFirst() {
+        mkdir project.buildDir
+    }
+}
+
+tasks.register('getVersion') {
+    doLast {
+        println crossPlatformNugetVersion
+    }
+}
+
+//--- CUSTOM TASKS ---//
 
 class PublishTask extends DefaultTask {
     @InputDirectory
     @Optional
-    def File nupkgDir = getProject().buildDir
+    File nupkgDir = getProject().buildDir
 
     @Input
     @Optional
-    def File nugetExec = getProject().nugetExe
+    File nugetExec = getProject().nugetExe
 
     @Input
-    def String nugetRepoURL
+    String nugetRepoURL
 
     @Input
-    def String nugetApiKey
+    String nugetApiKey
 
     @TaskAction
     def publish() {
@@ -200,51 +241,10 @@ class PublishTask extends DefaultTask {
     }
 }
 
-task publishToStaging(type:PublishTask) {
-    dependsOn('pack')
-    nugetRepoURL = "https://int.nugettest.org/api/v2/package"
-    nugetApiKey = "$System.env.NUGET_STAGING_API_KEY"
-}
+//--- HELPERS ---//
 
-task publishToProduction(type:PublishTask) {
-    dependsOn('pack')
-    nugetRepoURL = "https://www.nuget.org/api/v2/package"
-    nugetApiKey = "$System.env.NUGET_PRODUCTION_API_KEY"
-}
-
-//--- GLOBAL TASKS ---//
-
-// Clean all
-task clean(type: Delete) {
-    dependsOn(':binderator:clean')
-    dependsOn(':src:AirshipBindings.iOS.common:clean')
-    dependsOn(':src:Airship.Net:clean')
-    dependsOn(':src:Airship.Net.MessageCenter:clean')
-    doLast() {
-        project.delete fileTree("$buildDir").matching { include "*" }
-    }
-}
-
-// Build the plugin
-task build() {
-  mustRunAfter('clean', 'syncVersion')
-
-  dependsOn(
-    'syncVersion',
-    ':docs:build',
-    ':binderator:build',
-    ':src:AirshipBindings.iOS.common:build',
-    ':src:Airship.Net:build',
-    ':src:Airship.Net.MessageCenter:build'
-  )
-
- doFirst() {
-    mkdir project.buildDir
-  }
-}
-
-task getVersion() {
-    doLast {
-        println airshipProperties.crossPlatformVersion
-    }
+static def nugetVersion(version, revision) {
+    return (revision != null && revision != "0")
+            ? "${version}.${revision}"
+            : "${version}"
 }

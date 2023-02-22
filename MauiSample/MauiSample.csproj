@@ -1,132 +1,135 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-	<PropertyGroup>
-		<TargetFrameworks>net6.0-android;net6.0-ios</TargetFrameworks>
-		<OutputType>Exe</OutputType>
-		<RootNamespace>MauiSample</RootNamespace>
-		<UseMaui>true</UseMaui>
-		<SingleProject>true</SingleProject>
-		<ImplicitUsings>enable</ImplicitUsings>
-		<EmbedAssembliesIntoApk>true</EmbedAssembliesIntoApk>
+  <PropertyGroup>
+    <TargetFrameworks>net6.0-android;net6.0-ios</TargetFrameworks>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>MauiSample</RootNamespace>
+    <UseMaui>true</UseMaui>
+    <SingleProject>true</SingleProject>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <EmbedAssembliesIntoApk>true</EmbedAssembliesIntoApk>
+    <!-- Display name -->
+    <ApplicationTitle>MauiSample</ApplicationTitle>
+    <!-- App Identifier -->
+    <ApplicationId Condition="'$(TargetFramework)' == 'net6.0-ios'">com.urbanairship.richpush</ApplicationId>
+    <ApplicationId Condition="'$(TargetFramework)' == 'net6.0-android'">com.urbanairship.sample</ApplicationId>
+    <ApplicationIdGuid>f6a79f57-dd45-4efa-9d46-98b431478fa1</ApplicationIdGuid>
+    <!-- Versions -->
+    <ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
+    <ApplicationVersion>1</ApplicationVersion>
+    <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">13.0</SupportedOSPlatformVersion>
+    <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">21.0</SupportedOSPlatformVersion>
+    <!-- Required for C# Hot Reload -->
+    <UseInterpreter Condition="'$(Configuration)' == 'Debug'">True</UseInterpreter>
+  </PropertyGroup>
 
-		<!-- Display name -->
-		<ApplicationTitle>MauiSample</ApplicationTitle>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
 
-		<!-- App Identifier -->
-		<ApplicationId Condition="'$(TargetFramework)' == 'net6.0-ios'">com.urbanairship.richpush</ApplicationId>
-		<ApplicationId Condition="'$(TargetFramework)' == 'net6.0-android'">com.urbanairship.sample</ApplicationId>
-		<ApplicationIdGuid>f6a79f57-dd45-4efa-9d46-98b431478fa1</ApplicationIdGuid>
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)'=='Debug|net6.0-ios'">
+    <CodesignProvision>iOS Team Provisioning Profile: com.urbanairship.richpush</CodesignProvision>
+    <CodesignKey>iPhone Developer</CodesignKey>
+    <CodesignEntitlements>Platforms\iOS\Entitlements.plist</CodesignEntitlements>
+    <MtouchLink>None</MtouchLink>
+    <CreatePackage>false</CreatePackage>
+    <RuntimeIdentifier>ios-arm64</RuntimeIdentifier>
+  </PropertyGroup>
 
-		<!-- Versions -->
-		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
-		<ApplicationVersion>1</ApplicationVersion>
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)'=='Release|net6.0-ios'">
+    <CodesignKey>iPhone Developer</CodesignKey>
+    <CodesignEntitlements>Platforms\iOS\Entitlements.plist</CodesignEntitlements>
+    <MtouchLink>None</MtouchLink>
+    <CreatePackage>false</CreatePackage>
+    <CodesignProvision>Automatic</CodesignProvision>
+  </PropertyGroup>
 
-		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">13.0</SupportedOSPlatformVersion>
-		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">21.0</SupportedOSPlatformVersion>
-
-		<!-- Required for C# Hot Reload -->
-		<UseInterpreter Condition="'$(Configuration)' == 'Debug'">True</UseInterpreter>
-	</PropertyGroup>
-
-	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-	  <WarningLevel>4</WarningLevel>
-	</PropertyGroup>
-
-	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)'=='Debug|net6.0-ios'">
-		<CodesignProvision>iOS Team Provisioning Profile: com.urbanairship.richpush</CodesignProvision>
-		<CodesignKey>iPhone Developer</CodesignKey>
-		<CodesignEntitlements>Platforms\iOS\Entitlements.plist</CodesignEntitlements>
-		<MtouchLink>None</MtouchLink>
-		<CreatePackage>false</CreatePackage>
-		<RuntimeIdentifier>ios-arm64</RuntimeIdentifier>
-	</PropertyGroup>
-
-	<PropertyGroup>
-		<!-- Controls whether to use project references or nuget packages for Airship dependencies. -->
+  <PropertyGroup>
+    <!-- Controls whether to use project references or nuget packages for Airship dependencies. -->
     <!-- While developing, switch to project references to allow all code to be editied. -->
     <!-- Once finished, run the 'pack' and 'createLocalFeed' Gradle tasks and switch back to package refs. -->
-		<UseProjectReferences>false</UseProjectReferences>
+    <UseProjectReferences>false</UseProjectReferences>
   </PropertyGroup>
 
   <!-- Package dependencies -->
 
   <ItemGroup Label="Common Package Dependencies" Condition="!$(UseProjectReferences)">
-		<PackageReference Include="airship.net" Version="$(AirshipCrossPlatformNugetVersion)" />
-		<PackageReference Include="airship.net.messagecenter" Version="$(AirshipCrossPlatformNugetVersion)" />
-	</ItemGroup>
+    <PackageReference Include="airship.net" Version="$(AirshipCrossPlatformNugetVersion)" />
+    <PackageReference Include="airship.net.messagecenter" Version="$(AirshipCrossPlatformNugetVersion)" />
+  </ItemGroup>
 
-	<ItemGroup Label="iOS Package Dependencies" Condition="'$(TargetFramework)' == 'net6.0-ios' And !$(UseProjectReferences)">
-		<PackageReference Include="airship.ios.basement" Version="$(AirshipIosNugetVersion)" />
-		<PackageReference Include="airship.ios.core" Version="$(AirshipIosNugetVersion)" />
-		<PackageReference Include="airship.ios.messagecenter" Version="$(AirshipIosNugetVersion)" />
-		<PackageReference Include="airship.ios.extendedactions" Version="$(AirshipIosNugetVersion)" />
-		<PackageReference Include="airship.ios.automation" Version="$(AirshipIosNugetVersion)" />
-	</ItemGroup>
+  <ItemGroup Label="iOS Package Dependencies" Condition="'$(TargetFramework)' == 'net6.0-ios' And !$(UseProjectReferences)">
+    <PackageReference Include="airship.ios.basement" Version="$(AirshipIosNugetVersion)" />
+    <PackageReference Include="airship.ios.core" Version="$(AirshipIosNugetVersion)" />
+    <PackageReference Include="airship.ios.messagecenter" Version="$(AirshipIosNugetVersion)" />
+    <PackageReference Include="airship.ios.extendedactions" Version="$(AirshipIosNugetVersion)" />
+    <PackageReference Include="airship.ios.automation" Version="$(AirshipIosNugetVersion)" />
+  </ItemGroup>
 
   <ItemGroup Label="Android Package Dependencies" Condition="'$(TargetFramework)' == 'net6.0-android' And !$(UseProjectReferences)">
-		<PackageReference Include="airship.android.core" Version="$(AirshipAndroidNugetVersion)" />
-		<PackageReference Include="airship.android.messagecenter" Version="$(AirshipAndroidNugetVersion)" />
-		<PackageReference Include="airship.android.layout" Version="$(AirshipAndroidNugetVersion)" />
-		<PackageReference Include="airship.android.fcm" Version="$(AirshipAndroidNugetVersion)" />
-		<PackageReference Include="airship.android.automation" Version="$(AirshipAndroidNugetVersion)" />
-	</ItemGroup>
+    <PackageReference Include="airship.android.core" Version="$(AirshipAndroidNugetVersion)" />
+    <PackageReference Include="airship.android.messagecenter" Version="$(AirshipAndroidNugetVersion)" />
+    <PackageReference Include="airship.android.layout" Version="$(AirshipAndroidNugetVersion)" />
+    <PackageReference Include="airship.android.fcm" Version="$(AirshipAndroidNugetVersion)" />
+    <PackageReference Include="airship.android.automation" Version="$(AirshipAndroidNugetVersion)" />
+  </ItemGroup>
 
   <!-- Project dependencies -->
 
-	<ItemGroup Label="Common Project Dependencies" Condition="$(UseProjectReferences)">
-		<ProjectReference Condition="$(UseProjectReferences)" Include="..\src\Airship.Net\Airship.Net.csproj" />
-		<ProjectReference Condition="$(UseProjectReferences)" Include="..\src\Airship.Net.MessageCenter\Airship.Net.MessageCenter.csproj" />
-	</ItemGroup>
-
-	<ItemGroup Label="iOS Project Dependencies" Condition="'$(TargetFramework)' == 'net6.0-ios' And '$(UseProjectReferences)'">
-		<ProjectReference Include="..\src\AirshipBindings.iOS.Basement\AirshipBindings.iOS.Basement.csproj" />
-		<ProjectReference Include="..\src\AirshipBindings.iOS.Core\AirshipBindings.iOS.Core.csproj" />
-		<ProjectReference Include="..\src\AirshipBindings.iOS.Automation\AirshipBindings.iOS.Automation.csproj" />
-		<ProjectReference Include="..\src\AirshipBindings.iOS.MessageCenter\AirshipBindings.iOS.MessageCenter.csproj" />
-		<ProjectReference Include="..\src\AirshipBindings.iOS.ExtendedActions\AirshipBindings.iOS.ExtendedActions.csproj" />
+  <ItemGroup Label="Common Project Dependencies" Condition="$(UseProjectReferences)">
+    <ProjectReference Condition="$(UseProjectReferences)" Include="..\src\Airship.Net\Airship.Net.csproj" />
+    <ProjectReference Condition="$(UseProjectReferences)" Include="..\src\Airship.Net.MessageCenter\Airship.Net.MessageCenter.csproj" />
   </ItemGroup>
 
-	<ItemGroup Label="Android Project Dependencies" Condition="'$(TargetFramework)' == 'net6.0-android' And $(UseProjectReferences)">
-		<ProjectReference Include="..\binderator\generated\airship.android.core\airship.android.core.csproj" />
-		<ProjectReference Include="..\binderator\generated\airship.android.automation\airship.android.automation.csproj" />
-		<ProjectReference Include="..\binderator\generated\airship.android.layout\airship.android.layout.csproj" />
-		<ProjectReference Include="..\binderator\generated\airship.android.messagecenter\airship.android.messagecenter.csproj" />
-		<ProjectReference Include="..\binderator\generated\airship.android.fcm\airship.android.fcm.csproj" />
+  <ItemGroup Label="iOS Project Dependencies" Condition="'$(TargetFramework)' == 'net6.0-ios' And '$(UseProjectReferences)'">
+    <ProjectReference Include="..\src\AirshipBindings.iOS.Basement\AirshipBindings.iOS.Basement.csproj" />
+    <ProjectReference Include="..\src\AirshipBindings.iOS.Core\AirshipBindings.iOS.Core.csproj" />
+    <ProjectReference Include="..\src\AirshipBindings.iOS.Automation\AirshipBindings.iOS.Automation.csproj" />
+    <ProjectReference Include="..\src\AirshipBindings.iOS.MessageCenter\AirshipBindings.iOS.MessageCenter.csproj" />
+    <ProjectReference Include="..\src\AirshipBindings.iOS.ExtendedActions\AirshipBindings.iOS.ExtendedActions.csproj" />
   </ItemGroup>
 
-	<ItemGroup>
-		<None Remove="Platforms\Android\Assets\google-services.json" />
-		<None Remove="Platforms\Android\Resources\*" />
-		<None Remove="Platforms\Android\Properties\" />
-		<None Remove="Resources\Images\icon_inbox.svg" />
-		<None Remove="Resources\Images\icon_settings.svg" />
-		<None Remove="Resources\Images\icon_home.svg" />
-		<None Remove="Platforms\iOS\AirshipConfig.plist" />
-	</ItemGroup>
+  <ItemGroup Label="Android Project Dependencies" Condition="'$(TargetFramework)' == 'net6.0-android' And $(UseProjectReferences)">
+    <ProjectReference Include="..\binderator\generated\airship.android.core\airship.android.core.csproj" />
+    <ProjectReference Include="..\binderator\generated\airship.android.automation\airship.android.automation.csproj" />
+    <ProjectReference Include="..\binderator\generated\airship.android.layout\airship.android.layout.csproj" />
+    <ProjectReference Include="..\binderator\generated\airship.android.messagecenter\airship.android.messagecenter.csproj" />
+    <ProjectReference Include="..\binderator\generated\airship.android.fcm\airship.android.fcm.csproj" />
+  </ItemGroup>
 
-	<ItemGroup Label="iOS Resources" Condition="'$(TargetFramework)' == 'net6.0-ios'">
-		<BundleResource Include="Platforms\iOS\AirshipConfig.plist" Link="AirshipConfig.plist" />
-	</ItemGroup>
+  <!-- Removes -->
 
-	<ItemGroup Label="Android Resources" Condition="'$(TargetFramework)' == 'net6.0-android'">
-		<GoogleServicesJson Include="Platforms\Android\Assets\google-services.json" />
-		<MauiImage Include="Platforms\Android\Resources\Images\ic_notification.svg" BaseSize="24,24" />
-		<Folder Include="Platforms\Android\Properties\" />
-	</ItemGroup>
+  <ItemGroup>
+    <None Remove="Platforms\Android\Assets\google-services.json" />
+    <None Remove="Platforms\Android\Resources\*" />
+    <None Remove="Platforms\Android\Properties\" />
+    <None Remove="Resources\Images\icon_inbox.svg" />
+    <None Remove="Resources\Images\icon_settings.svg" />
+    <None Remove="Resources\Images\icon_home.svg" />
+    <None Remove="Platforms\iOS\AirshipConfig.plist" />
+  </ItemGroup>
 
-	<ItemGroup Label="Shared Maui Resources">
-		<!-- App Icon -->
-		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
+  <!-- Resources -->
 
-		<!-- Splash Screen -->
-		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" />
+  <ItemGroup Label="iOS Resources" Condition="'$(TargetFramework)' == 'net6.0-ios'">
+    <BundleResource Include="Platforms\iOS\AirshipConfig.plist" Link="AirshipConfig.plist" />
+  </ItemGroup>
 
-		<!-- Images -->
-		<MauiImage Include="Resources\Images\*" />
-		<MauiFont Include="Resources\Fonts\*" />
+  <ItemGroup Label="Android Resources" Condition="'$(TargetFramework)' == 'net6.0-android'">
+    <GoogleServicesJson Include="Platforms\Android\Assets\google-services.json" />
+    <MauiImage Include="Platforms\Android\Resources\Images\ic_notification.svg" BaseSize="24,24" />
+    <Folder Include="Platforms\Android\Properties\" />
+  </ItemGroup>
 
-		<!-- Raw Assets (also remove the "Resources\Raw" prefix) -->
-		<MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
-	</ItemGroup>
-
+  <ItemGroup Label="Shared Maui Resources">
+    <!-- App Icon -->
+    <MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
+    <!-- Splash Screen -->
+    <MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" />
+    <!-- Images -->
+    <MauiImage Include="Resources\Images\*" />
+    <MauiFont Include="Resources\Fonts\*" />
+    <!-- Raw Assets (also remove the "Resources\Raw" prefix) -->
+    <MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
+  </ItemGroup>
 </Project>

@@ -8,10 +8,10 @@
         "dotnet-script"
       ]
     },
-    "cake.tool": {
-      "version": "3.0.0",
+    "xamarin.androidbinderator.tool": {
+      "version": "0.5.4",
       "commands": [
-        "dotnet-cake"
+        "xamarin-android-binderator"
       ]
     }
   }

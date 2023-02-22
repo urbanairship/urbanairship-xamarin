@@ -4,8 +4,6 @@
 <dict>
 	<key>aps-environment</key>
 	<string>development</string>
-	<key>application-identifier</key>
-	<string>com.urbanairship.richpush</string>
 	<key>keychain-access-groups</key>
 	<array>
 		<string>com.urbanairship.richpush</string>
