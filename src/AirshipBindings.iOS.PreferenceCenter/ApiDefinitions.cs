@@ -72,7 +72,7 @@ namespace UrbanAirship
 	}
 
 	// @interface Button : NSObject
-	[BaseType(typeof(NSObject), Name = "_TtCC23AirshipPreferenceCenter9AlertItem6Button")]
+	[BaseType(typeof(NSObject))]
 	interface Button
 	{
 		// @property (readonly, copy, nonatomic) NSString * _Nonnull text;
@@ -435,7 +435,7 @@ namespace UrbanAirship
 	interface IUAPreferenceCenterOpenDelegate { };
 
 	// @interface PreferenceCenterResources : NSObject
-	[BaseType(typeof(NSObject), Name = "_TtC23AirshipPreferenceCenter25PreferenceCenterResources")]
+	[BaseType(typeof(NSObject))]
 	interface PreferenceCenterResources
 	{
 		// +(NSBundle * _Nullable)bundle __attribute__((warn_unused_result("")));
@@ -610,7 +610,7 @@ namespace UrbanAirship
 	}
 
 	// @interface PreferenceCenterViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
-	[BaseType(typeof(UIViewController), Name = "_TtC23AirshipPreferenceCenter30PreferenceCenterViewController")]
+	[BaseType(typeof(UIViewController))]
 	interface PreferenceCenterViewController : IUITableViewDataSource, IUITableViewDelegate
 	{
 		// @property (nonatomic, strong) UAPreferenceCenterStyle * _Nullable style;
