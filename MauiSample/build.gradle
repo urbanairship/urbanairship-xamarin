@@ -14,5 +14,5 @@ tasks.register("build", Exec) {
 
     mustRunAfter ':src:Airship.Net:build', ':src:Airship.Net.MessageCenter:build'
 
-    commandLine "dotnet", "build", "-c", "Release", "../MauiSample.sln"
+    commandLine "dotnet", "build", "-c", "Debug", "../MauiSample.sln"
 }

@@ -28,9 +28,9 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)'=='Debug|net6.0-ios'">
-    <CodesignProvision>iOS Team Provisioning Profile: com.urbanairship.richpush</CodesignProvision>
-    <CodesignKey>iPhone Developer</CodesignKey>
-    <CodesignEntitlements>Platforms\iOS\Entitlements.plist</CodesignEntitlements>
+<!--     <CodesignProvision>iOS Team Provisioning Profile: com.urbanairship.richpush</CodesignProvision> -->
+<!--     <CodesignKey>iPhone Developer</CodesignKey> -->
+<!--     <CodesignEntitlements>Automatic</CodesignEntitlements> -->
     <MtouchLink>None</MtouchLink>
     <CreatePackage>false</CreatePackage>
     <RuntimeIdentifier>ios-arm64</RuntimeIdentifier>
