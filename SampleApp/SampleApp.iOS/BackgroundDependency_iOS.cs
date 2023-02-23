@@ -14,7 +14,7 @@ namespace SampleApp.iOS
 		{
 		}
 
-        public void OpenPreferenceCenter()
+        public void OpenAirshipPreferenceCenter()
         {
             UAPreferenceCenter.Shared.OpenPreferenceCenter("neat");
         }

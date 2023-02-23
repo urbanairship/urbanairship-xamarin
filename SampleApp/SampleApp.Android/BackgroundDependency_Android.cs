@@ -10,7 +10,7 @@ namespace SampleApp.Droid
 {
     public class BackgroundDependency_Android : Java.Lang.Object, IBackgroundDependency
     {
-        public void OpenPreferenceCenter()
+        public void OpenAirshipPreferenceCenter()
         {
             PreferenceCenter.Shared().Open("neat");
         }

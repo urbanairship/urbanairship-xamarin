@@ -14,7 +14,7 @@ namespace SampleApp
 {
     public interface IBackgroundDependency
     {
-        void OpenPreferenceCenter();
+        void OpenAirshipPreferenceCenter();
     }
 
     public partial class HomeViewController : ContentPage
@@ -53,7 +53,7 @@ namespace SampleApp
 
         void PreferenceCenterBtnClicked(object sender, EventArgs e)
         {
-            DependencyService.Get<IBackgroundDependency>().OpenPreferenceCenter();
+            DependencyService.Get<IBackgroundDependency>().OpenAirshipPreferenceCenter();
         }
 
         void MessageCenterBtnClicked(object sender, EventArgs e)
