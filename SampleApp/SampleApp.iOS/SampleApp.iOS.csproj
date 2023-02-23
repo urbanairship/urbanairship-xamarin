@@ -92,9 +92,6 @@
     <PackageReference Include="airship.ios">
       <Version>16.10.7</Version>
     </PackageReference>
-    <PackageReference Include="airship.ios.preferencecenter">
-      <Version>16.10.7</Version>
-    </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
