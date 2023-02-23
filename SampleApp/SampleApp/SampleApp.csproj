@@ -30,9 +30,5 @@
   <ItemGroup>
     <None Remove="urbanairship.netstandard" />
     <None Remove="airship.netstandard" />
-    <None Remove="airship.ios.preferencecenter" />
-    <None Remove="airship.ios" />
-    <None Remove="airship.ios.core" />
-    <None Remove="airship.ios.basement" />
   </ItemGroup>
 </Project>
