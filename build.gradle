@@ -53,7 +53,7 @@ tasks.register('buildSample') {
 
 // Create local nuget feed
 tasks.register('createLocalFeed') {
-    dependsOn('pack')
+    mustRunAfter('pack')
 
     doLast() {
         // add doesn't have a "-force" option, so first remove all the nuget packages from the local feed

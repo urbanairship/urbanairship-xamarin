@@ -18,6 +18,8 @@ task build {
 
 
 task pack {
+    mustRunAfter(':src:Airship.Net:pack')
+
     // Pack Airship.Net.MessageCenter library
     doLast() {
       exec {

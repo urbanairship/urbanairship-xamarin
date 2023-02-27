@@ -17,6 +17,8 @@ task build {
 }
 
 task pack {
+    mustRunAfter(':binderator:pack', ':src:AirshipBindings.iOS.common:pack')
+    
     // Pack Airship.Net library
     doLast() {
       exec {
