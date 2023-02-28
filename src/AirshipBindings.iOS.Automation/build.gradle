@@ -20,13 +20,3 @@ task carthageUpdate {
         }
     }
 }
-//
-//task build {
-//    dependsOn(':src:AirshipBindings.iOS.common:build')
-//    def BuildConfiguration=project.properties['build_configuration'] ?: "Release"
-//    doLast() {
-//        exec {
-//            commandLine "dotnet", "build", "--configuration=${BuildConfiguration}",  "AirshipBindings.iOS.Automation.sln"
-//        }
-//    }
-//}
