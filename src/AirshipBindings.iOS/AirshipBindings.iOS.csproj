@@ -43,6 +43,7 @@
 		<ProjectReference Include="..\AirshipBindings.iOS.Basement\AirshipBindings.iOS.Basement.csproj" />
 		<ProjectReference Include="..\AirshipBindings.iOS.ExtendedActions\AirshipBindings.iOS.ExtendedActions.csproj" />
 		<ProjectReference Include="..\AirshipBindings.iOS.MessageCenter\AirshipBindings.iOS.MessageCenter.csproj" />
+		<ProjectReference Include="..\AirshipBindings.iOS.PreferenceCenter\AirshipBindings.iOS.PreferenceCenter.csproj" />
   </ItemGroup>
 
 </Project>
