@@ -33,7 +33,6 @@
     <CodesignEntitlements>Platforms\iOS\Entitlements.plist</CodesignEntitlements>
     <MtouchLink>None</MtouchLink>
     <CreatePackage>false</CreatePackage>
-    <RuntimeIdentifier>ios-arm64</RuntimeIdentifier>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)'=='Release|net6.0-ios'">
@@ -64,6 +63,7 @@
     <PackageReference Include="airship.ios.messagecenter" Version="$(AirshipIosNugetVersion)" />
     <PackageReference Include="airship.ios.extendedactions" Version="$(AirshipIosNugetVersion)" />
     <PackageReference Include="airship.ios.automation" Version="$(AirshipIosNugetVersion)" />
+    <PackageReference Include="airship.ios.preferencecenter" Version="$(AirshipIosNugetVersion)" />
   </ItemGroup>
 
   <ItemGroup Label="Android Package Dependencies" Condition="'$(TargetFramework)' == 'net6.0-android' And !$(UseProjectReferences)">
@@ -72,6 +72,7 @@
     <PackageReference Include="airship.android.layout" Version="$(AirshipAndroidNugetVersion)" />
     <PackageReference Include="airship.android.fcm" Version="$(AirshipAndroidNugetVersion)" />
     <PackageReference Include="airship.android.automation" Version="$(AirshipAndroidNugetVersion)" />
+    <PackageReference Include="airship.android.preferencecenter" Version="$(AirshipAndroidNugetVersion)" />
   </ItemGroup>
 
   <!-- Project dependencies -->
@@ -86,6 +87,7 @@
     <ProjectReference Include="..\src\AirshipBindings.iOS.Core\AirshipBindings.iOS.Core.csproj" />
     <ProjectReference Include="..\src\AirshipBindings.iOS.Automation\AirshipBindings.iOS.Automation.csproj" />
     <ProjectReference Include="..\src\AirshipBindings.iOS.MessageCenter\AirshipBindings.iOS.MessageCenter.csproj" />
+    <ProjectReference Include="..\src\AirshipBindings.iOS.PreferenceCenter\AirshipBindings.iOS.PreferenceCenter.csproj" />
     <ProjectReference Include="..\src\AirshipBindings.iOS.ExtendedActions\AirshipBindings.iOS.ExtendedActions.csproj" />
   </ItemGroup>
 
@@ -94,6 +96,7 @@
     <ProjectReference Include="..\binderator\generated\airship.android.automation\airship.android.automation.csproj" />
     <ProjectReference Include="..\binderator\generated\airship.android.layout\airship.android.layout.csproj" />
     <ProjectReference Include="..\binderator\generated\airship.android.messagecenter\airship.android.messagecenter.csproj" />
+    <ProjectReference Include="..\binderator\generated\airship.android.preferencecenter\airship.android.preferencecenter.csproj" />
     <ProjectReference Include="..\binderator\generated\airship.android.fcm\airship.android.fcm.csproj" />
   </ItemGroup>
 

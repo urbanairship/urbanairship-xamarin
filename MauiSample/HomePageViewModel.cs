@@ -3,6 +3,12 @@ using System.Runtime.CompilerServices;
 using AirshipDotNet;
 using System.Windows.Input;
 
+# if ANDROID
+using UrbanAirship.PreferenceCenter;
+#elif IOS
+using UrbanAirship;
+#endif
+
 namespace MauiSample
 {
     public class HomePageViewModel : INotifyPropertyChanged
@@ -16,6 +22,7 @@ namespace MauiSample
         public ICommand OnChannelIdClicked { get; }
         public ICommand OnEnablePushButtonClicked { get; }
         public ICommand OnMessageCenterButtonClicked { get; }
+        public ICommand OnPrefCenterButtonClicked { get; }
 
         // Properties
         public string ChannelId
@@ -52,6 +59,7 @@ namespace MauiSample
             OnChannelIdClicked = new Command(PerformOnChannelIdClicked);
             OnEnablePushButtonClicked = new Command(PerformOnEnablePushButtonClicked);
             OnMessageCenterButtonClicked = new Command(PerformOnMessageCenterButtonClicked);
+            OnPrefCenterButtonClicked = new Command(PerformOnPrefCenterButtonClicked);
 
             Airship.Instance.OnChannelCreation += OnChannelEvent;
             Airship.Instance.OnChannelUpdate += OnChannelEvent;
@@ -90,7 +98,21 @@ namespace MauiSample
             Airship.Instance.DisplayMessageCenter();
         }
 
+        private static void PerformOnPrefCenterButtonClicked()
+        {
+            OpenPreferenceCenter("app_default");
+        }
+
         private void OnPropertyChanged([CallerMemberName] string name = "") =>
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+
+        private static void OpenPreferenceCenter(string prefCenterId)
+        {
+#if ANDROID
+            PreferenceCenter.Shared().Open(prefCenterId);
+#elif IOS
+            UAPreferenceCenter.Shared.OpenPreferenceCenter(prefCenterId);
+#endif
+        }
     }
 }

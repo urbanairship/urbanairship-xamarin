@@ -25,6 +25,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirshipBindings.iOS.Message
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirshipBindings.iOS.ExtendedActions", "src\AirshipBindings.iOS.ExtendedActions\AirshipBindings.iOS.ExtendedActions.csproj", "{BFFFE653-04CD-4563-BF2D-B6F31349F30D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "airship.android.preferencecenter", "binderator\generated\airship.android.preferencecenter\airship.android.preferencecenter.csproj", "{D20DD1BB-7DF5-49C8-B8C1-E0905D273203}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirshipBindings.iOS.PreferenceCenter", "src\AirshipBindings.iOS.PreferenceCenter\AirshipBindings.iOS.PreferenceCenter.csproj", "{13E9ACF2-4FE5-4FA6-96C4-BDFB6FF7C3A0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -77,6 +81,14 @@ Global
 		{BFFFE653-04CD-4563-BF2D-B6F31349F30D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BFFFE653-04CD-4563-BF2D-B6F31349F30D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BFFFE653-04CD-4563-BF2D-B6F31349F30D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D20DD1BB-7DF5-49C8-B8C1-E0905D273203}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D20DD1BB-7DF5-49C8-B8C1-E0905D273203}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D20DD1BB-7DF5-49C8-B8C1-E0905D273203}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D20DD1BB-7DF5-49C8-B8C1-E0905D273203}.Release|Any CPU.Build.0 = Release|Any CPU
+		{13E9ACF2-4FE5-4FA6-96C4-BDFB6FF7C3A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13E9ACF2-4FE5-4FA6-96C4-BDFB6FF7C3A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13E9ACF2-4FE5-4FA6-96C4-BDFB6FF7C3A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13E9ACF2-4FE5-4FA6-96C4-BDFB6FF7C3A0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

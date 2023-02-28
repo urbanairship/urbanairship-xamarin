@@ -42,6 +42,12 @@
                 HorizontalOptions="Center"
                 Command="{Binding OnMessageCenterButtonClicked}" />
 
+            <Button
+                x:Name="PrefCenterButton"
+                Text="Show Preference Center"
+                HorizontalOptions="Center"
+                Command="{Binding OnPrefCenterButtonClicked}" />
+
         </VerticalStackLayout>
     </ScrollView>
 
