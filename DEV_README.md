@@ -41,9 +41,11 @@ Also, if you need to maintain multiple versions for native or other framework de
 1. Run `./gradlew MauiSample:restore` to pack all Airship dependencies, create a local NuGet feed, and run a restore on the Sample app.
 2. Open `MauiSample.sln` in VS for Mac.
 
+The sample app can also be built via Gradle with: `./gradlew buildSample`.
+
 ### Combined Workflow
 
-The sample app is also included in the main `Airship.Net` solution in order to aid development. `MauiSample.csproj` includes a `UseProjectReferences` property that can be used to switch between project references and NuGet packages (local or remote) for Airship bindings and .NET libraries. The default is `false` (to use NuGets) in order to allow the sample to be opened in isolation via `MauiSample.sln`.
+`MauiSample.csproj` includes a `UseProjectReferences` property that can be used to switch between project references and NuGet packages (local or remote) for Airship bindings and .NET libraries. The default is `false` (to use NuGets) in order to allow the sample to be opened in isolation via `MauiSample.sln`.
 
 While working on native bindings or at the .NET layer, `UseProjectReferences` can be set to `true` in order to allow all code in the project to be edited and built together. Once work is completed, `UseProjectReferences` should be set back to `false`, and the sample app should be tested using packed NuGets from the local feed.
 
