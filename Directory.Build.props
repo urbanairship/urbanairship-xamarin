@@ -1,0 +1,31 @@
+<!-- THIS FILE IS AUTO-GENERATED. DO NOT MODIFY. -->
+<!-- The `syncRootVersion` gradle task updates this file based on the contents of `airship.properties`. -->
+
+<Project>
+  <!-- Versions -->
+  <PropertyGroup>
+    <!-- Airship native SDK versions -->
+    <AirshipAndroidVersion>16.8.1</AirshipAndroidVersion>
+    <AirshipAndroidNugetVersion>16.8.1</AirshipAndroidNugetVersion>
+
+    <AirshipIosVersion>16.11.1</AirshipIosVersion>
+    <AirshipIosNugetVersion>16.11.1</AirshipIosNugetVersion>
+
+    <!-- Airship.Net version -->
+    <AirshipCrossPlatformVersion>17.0.0</AirshipCrossPlatformVersion>
+    <AirshipCrossPlatformNugetVersion>17.0.0</AirshipCrossPlatformNugetVersion>
+  </PropertyGroup>
+
+  <!-- Nuget packaging metadata -->
+  <PropertyGroup>
+    <Owners>urbanairship</Owners>
+    <Company>Airship, Inc.</Company>
+    <AssemblyCompany>Airship, Inc.</AssemblyCompany>
+    <PackageTags>airship, urbanairship</PackageTags>
+    <Copyright>©Airship. All rights reserved.</Copyright>
+    <PackageProjectUrl>https://github.com/urbanairship/urbanairship-xamarin/</PackageProjectUrl>
+    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
+  </PropertyGroup>
+</Project>

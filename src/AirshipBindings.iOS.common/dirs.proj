@@ -1,0 +1,7 @@
+<Project Sdk="Microsoft.Build.Traversal">
+  <ItemGroup>
+    <!-- Builds all iOS binding projects under the `src` directory. -->
+    <ProjectReference Include="../AirshipBindings.iOS.*\*.csproj" />
+    <ProjectReference Include="../AirshipBindings.iOS/AirshipBindings.iOS.csproj" />
+  </ItemGroup>
+</Project>

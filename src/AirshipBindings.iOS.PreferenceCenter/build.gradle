@@ -20,18 +20,3 @@ task carthageUpdate {
         }
     }
 }
-
-task build {
-    def BuildConfiguration=project.properties['build_configuration'] ?: "Release"
-    doLast() {
-        exec {
-            commandLine "mono", "$nugetExe", "restore", "AirshipBindings.iOS.PreferenceCenter.sln"
-        }
-
-        exec {
-            commandLine "${msbuild}", "/t:build", "/p:Configuration=${BuildConfiguration}", "AirshipBindings.iOS.PreferenceCenter.sln"
-        }
-    }
-}
-
-build.dependsOn(':src:AirshipBindings.iOS.common:build')

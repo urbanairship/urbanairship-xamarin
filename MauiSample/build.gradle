@@ -1,0 +1,18 @@
+tasks.register("clean", Delete) {
+    delete "bin"
+    delete "obj"
+}
+
+tasks.register("restore", Exec) {
+    dependsOn rootProject.createLocalFeed
+
+    commandLine "dotnet", "restore", "../MauiSample.sln"
+}
+
+tasks.register("buildSample", Exec) {
+    dependsOn restore
+
+    mustRunAfter ':src:Airship.Net:build', ':src:Airship.Net.MessageCenter:build'
+
+    commandLine "dotnet", "build", "-c", "Debug", "../MauiSample.sln"
+}

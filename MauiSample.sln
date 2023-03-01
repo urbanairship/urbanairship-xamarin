@@ -1,0 +1,99 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 17.0.31611.283
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MauiSample", "MauiSample\MauiSample.csproj", "{470DEC7C-2A77-4E92-8A30-DA52911D9FB2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "airship.android.core", "binderator\generated\airship.android.core\airship.android.core.csproj", "{F4969C3B-C442-4450-9A4D-D810B200573C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "airship.android.layout", "binderator\generated\airship.android.layout\airship.android.layout.csproj", "{6E7803D2-1629-41B6-A421-35EBEC66D783}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "airship.android.messagecenter", "binderator\generated\airship.android.messagecenter\airship.android.messagecenter.csproj", "{1646A5E9-629A-4981-B02D-66C8244F0B83}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "airship.android.automation", "binderator\generated\airship.android.automation\airship.android.automation.csproj", "{BE7E437B-53B3-4072-8ED3-1733A77968A4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "airship.android.fcm", "binderator\generated\airship.android.fcm\airship.android.fcm.csproj", "{1E429BBE-C098-4608-BE2E-5BCFBD50D6E5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirshipBindings.iOS.Basement", "src\AirshipBindings.iOS.Basement\AirshipBindings.iOS.Basement.csproj", "{5E85A7FD-8C42-4DE6-B002-E3CC2DA529C7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirshipBindings.iOS.Core", "src\AirshipBindings.iOS.Core\AirshipBindings.iOS.Core.csproj", "{7F49C0FA-F958-44CF-9246-8B8577748E6F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirshipBindings.iOS.Automation", "src\AirshipBindings.iOS.Automation\AirshipBindings.iOS.Automation.csproj", "{70434FB5-A468-4777-9478-DD2AB80BE0E2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirshipBindings.iOS.MessageCenter", "src\AirshipBindings.iOS.MessageCenter\AirshipBindings.iOS.MessageCenter.csproj", "{AC22EEC5-DCA6-49D3-8B37-533B5565E2CF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirshipBindings.iOS.ExtendedActions", "src\AirshipBindings.iOS.ExtendedActions\AirshipBindings.iOS.ExtendedActions.csproj", "{BFFFE653-04CD-4563-BF2D-B6F31349F30D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "airship.android.preferencecenter", "binderator\generated\airship.android.preferencecenter\airship.android.preferencecenter.csproj", "{D20DD1BB-7DF5-49C8-B8C1-E0905D273203}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirshipBindings.iOS.PreferenceCenter", "src\AirshipBindings.iOS.PreferenceCenter\AirshipBindings.iOS.PreferenceCenter.csproj", "{13E9ACF2-4FE5-4FA6-96C4-BDFB6FF7C3A0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{470DEC7C-2A77-4E92-8A30-DA52911D9FB2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{470DEC7C-2A77-4E92-8A30-DA52911D9FB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{470DEC7C-2A77-4E92-8A30-DA52911D9FB2}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{470DEC7C-2A77-4E92-8A30-DA52911D9FB2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{470DEC7C-2A77-4E92-8A30-DA52911D9FB2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{470DEC7C-2A77-4E92-8A30-DA52911D9FB2}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{F4969C3B-C442-4450-9A4D-D810B200573C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F4969C3B-C442-4450-9A4D-D810B200573C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F4969C3B-C442-4450-9A4D-D810B200573C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F4969C3B-C442-4450-9A4D-D810B200573C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6E7803D2-1629-41B6-A421-35EBEC66D783}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E7803D2-1629-41B6-A421-35EBEC66D783}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E7803D2-1629-41B6-A421-35EBEC66D783}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E7803D2-1629-41B6-A421-35EBEC66D783}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1646A5E9-629A-4981-B02D-66C8244F0B83}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1646A5E9-629A-4981-B02D-66C8244F0B83}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1646A5E9-629A-4981-B02D-66C8244F0B83}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1646A5E9-629A-4981-B02D-66C8244F0B83}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE7E437B-53B3-4072-8ED3-1733A77968A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE7E437B-53B3-4072-8ED3-1733A77968A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE7E437B-53B3-4072-8ED3-1733A77968A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE7E437B-53B3-4072-8ED3-1733A77968A4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1E429BBE-C098-4608-BE2E-5BCFBD50D6E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1E429BBE-C098-4608-BE2E-5BCFBD50D6E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1E429BBE-C098-4608-BE2E-5BCFBD50D6E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1E429BBE-C098-4608-BE2E-5BCFBD50D6E5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E85A7FD-8C42-4DE6-B002-E3CC2DA529C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E85A7FD-8C42-4DE6-B002-E3CC2DA529C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E85A7FD-8C42-4DE6-B002-E3CC2DA529C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E85A7FD-8C42-4DE6-B002-E3CC2DA529C7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7F49C0FA-F958-44CF-9246-8B8577748E6F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F49C0FA-F958-44CF-9246-8B8577748E6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F49C0FA-F958-44CF-9246-8B8577748E6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F49C0FA-F958-44CF-9246-8B8577748E6F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{70434FB5-A468-4777-9478-DD2AB80BE0E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{70434FB5-A468-4777-9478-DD2AB80BE0E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{70434FB5-A468-4777-9478-DD2AB80BE0E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{70434FB5-A468-4777-9478-DD2AB80BE0E2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC22EEC5-DCA6-49D3-8B37-533B5565E2CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC22EEC5-DCA6-49D3-8B37-533B5565E2CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC22EEC5-DCA6-49D3-8B37-533B5565E2CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC22EEC5-DCA6-49D3-8B37-533B5565E2CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BFFFE653-04CD-4563-BF2D-B6F31349F30D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BFFFE653-04CD-4563-BF2D-B6F31349F30D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BFFFE653-04CD-4563-BF2D-B6F31349F30D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BFFFE653-04CD-4563-BF2D-B6F31349F30D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D20DD1BB-7DF5-49C8-B8C1-E0905D273203}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D20DD1BB-7DF5-49C8-B8C1-E0905D273203}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D20DD1BB-7DF5-49C8-B8C1-E0905D273203}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D20DD1BB-7DF5-49C8-B8C1-E0905D273203}.Release|Any CPU.Build.0 = Release|Any CPU
+		{13E9ACF2-4FE5-4FA6-96C4-BDFB6FF7C3A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13E9ACF2-4FE5-4FA6-96C4-BDFB6FF7C3A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13E9ACF2-4FE5-4FA6-96C4-BDFB6FF7C3A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13E9ACF2-4FE5-4FA6-96C4-BDFB6FF7C3A0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {61F7FB11-1E47-470C-91E2-47F8143E1572}
+	EndGlobalSection
+EndGlobal

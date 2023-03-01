@@ -1,0 +1,135 @@
+@using System
+@using System.Linq
+@using System.Collections.Generic
+
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net6.0-android</TargetFramework>
+    <SupportedOSPlatformVersion>21</SupportedOSPlatformVersion>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <!-- Don't generate Resource.designer.cs file, to avoid duplicate definitions in our namespace. -->
+    <AndroidUseIntermediateDesignerFile>false</AndroidUseIntermediateDesignerFile>
+    @if (!string.IsNullOrEmpty(Model.AssemblyName)) {
+    <AssemblyName>@(Model.AssemblyName)</AssemblyName>
+    <RootNamespace>UrbanAirship</RootNamespace>
+    } else {
+    <AssemblyName>@(Model.NuGetPackageId)</AssemblyName>
+    <RootNamespace>UrbanAirship</RootNamespace>
+    }
+  </PropertyGroup>
+
+  @{
+    string title = "Airship Android SDK";
+    switch (Model.NuGetPackageId)
+    {
+      case "airship.android.accengage":
+        title += "- Accengage";
+        break;
+      case "airship.android.adm":
+        title += "- ADM Push Provider";
+        break;
+      case "airship.android.fcm":
+        title += "- FCM Push Provider";
+        break;
+      case "airship.android.messagecenter":
+        title += "- Message Center";
+        break;
+      case "airship.android.preferencecenter":
+        title += "- Preference Center";
+        break;
+      case "airship.android.automation":
+        title += "- Automation";
+        break;
+      case "airship.android.layout":
+      case "airship.android.core":
+        // Use default title
+        break;
+    }
+  }
+
+  <PropertyGroup>
+    <PackageId>@(Model.NuGetPackageId)</PackageId>
+    <Title>@(title)</Title>
+    <Summary>.NET Bindings for Airship SDK</Summary>
+    <Description>A full suite of mobile engagement tools for building next-generation apps</Description>
+    <AssemblyVersion>$(AirshipAndroidVersion)</AssemblyVersion>
+    <PackageVersion>$(AirshipAndroidNugetVersion)</PackageVersion>
+    <InformationalVersion>$(AirshipAndroidNugetVersion)</InformationalVersion>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <!--
+    No warnings for:
+    - CS0618: 'member' is obsolete: 'text'
+    - CS0109: The member 'member' does not hide an inherited member. The new keyword is not required
+    - CS0114: 'function1' hides inherited member 'function2'. To make the current method override that implementation, add the override keyword. Otherwise add the new keyword.
+    - CS0628: 'member' : new protected member declared in sealed class
+    - CS0108: 'member1' hides inherited member 'member2'. Use the new keyword if hiding was intended.
+    - CS0809: Obsolete member 'member' overrides non-obsolete member 'member'
+    - CS1572: XML comment has a param tag for '', but there is no parameter by that name
+    -->
+    <NoWarn>0618;0109;0114;0628;0108;0809;1572</NoWarn>
+    <!--
+    Ignoreable
+    Performance hit for builds
+    - BG8A04: <attr path="XPath" /> matched no nodes.
+    - BG8A00: <remove-node path="XPath" /> matched no nodes.
+    -->
+    <NoWarn>08A04;BG8A00;CS0109;CS0108;CS0114</NoWarn>
+    <!--
+    Harmful
+    - BG8401: Skipping managed_type, due to a duplicate field, method or nested type name. (Nested type) (Java type: java_type)
+    - BG8604: top ancestor Type1 not found for nested type Namespace.Type1.Type2
+    - BG8C00: For type Namespace.Type1, base interface java.Interface does not exist
+    - BG8700: Unknown return type java.Type1 in method Method1 in managed type Namespace.Type2.
+    - BG8800: Unknown parameter type java.Type1 in method Method2 in managed type Namespace.Type2.
+    -->
+    <!-- TODO(maui): these are causing build failures, but seem like they'd be good to fix... -->
+<!--     <WarningsAsErrors>BG8401;BG8604;BG8C00;BG8700;BG8800</WarningsAsErrors> -->
+  </PropertyGroup>
+
+
+  <ItemGroup>
+    @foreach (var art in @Model.MavenArtifacts) {
+    <AndroidLibrary Include="..\..\externals\@(art.MavenGroupId)\@(art.MavenArtifactId).aar" />
+    }
+  </ItemGroup>
+
+  <ItemGroup>
+    @foreach (var art in @Model.MavenArtifacts) {
+      if (art.MavenArtifactPackaging == "aar") {
+    <None Include="..\..\externals\@(art.MavenGroupId)\@(art.MavenArtifactId).aar" Pack="True" PackagePath="aar\@(art.MavenGroupId).@(art.MavenArtifactId).aar" />
+      } else {
+    <None Include="..\..\externals\@(art.MavenGroupId)\@(art.MavenArtifactId).jar" Pack="True" PackagePath="jar\@(art.MavenGroupId).@(art.MavenArtifactId).jar" />
+      }
+    }
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="..\..\source\UACrossPlatformVersion.cs" />
+    <Compile Include="..\..\source\SharedAssemblyInfo.cs" />
+    <Compile Include="..\..\source\@(Model.MavenGroupId)\@(Model.Name)\Additions\*.cs">
+      <Link>Additions/%(RecursiveDir)/%(Filename)%(Extension)</Link>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <TransformFile Include="..\..\source\@(Model.MavenGroupId)\@(Model.Name)\Transforms\*.xml">
+      <Link>Transforms/%(RecursiveDir)/%(Filename)%(Extension)</Link>
+    </TransformFile>
+  </ItemGroup>
+
+  <!-- Project & package refs -->
+  <ItemGroup>
+    @foreach (var dep in @Model.NuGetDependencies) {
+      if (dep.IsProjectReference) {
+    <ProjectReference Include="..\..\generated\@(dep.NuGetPackageId)\@(dep.NuGetPackageId).csproj" PrivateAssets="none" />
+      } else {
+    <PackageReference Include="@(dep.NuGetPackageId)" Version="@(dep.NuGetVersion)" PrivateAssets="none" />
+      }
+    }
+  </ItemGroup>
+
+</Project>

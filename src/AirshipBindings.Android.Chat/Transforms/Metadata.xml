@@ -1,8 +1,0 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
-<metadata>
-    <attr path="/api/package[@name='com.urbanairship.chat']" name="managedName">UrbanAirship.AirshipChat</attr>
-    <remove-node path="/api/package[@name='com.urbanairship.chat']/class[@name='Conversation.Companion']" />
-
-    <attr path="/api/package[@name='com.urbanairship.chat']/class[@name='Conversation']" name="managedName">ChatConversation</attr>
-
-</metadata>

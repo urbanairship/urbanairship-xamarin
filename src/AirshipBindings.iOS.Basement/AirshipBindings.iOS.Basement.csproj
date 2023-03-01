@@ -1,5 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <NoBindingEmbedding>true</NoBindingEmbedding>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -9,11 +8,20 @@
     <TemplateGuid>{b6f3ff35-79b2-4f25-a2fc-60a7cf61013b}</TemplateGuid>
     <OutputType>Library</OutputType>
     <RootNamespace>AirshipBindings.iOS.Basement</RootNamespace>
-    <AssemblyName>AirshipBindings.iOS.Basement</AssemblyName>
+    <AssemblyName>airship.ios.basement</AssemblyName>
+    <AssemblyTitle>Airship iOS SDK - Basement</AssemblyTitle>
+    <Description>Basement module for Airship SDK</Description>
+    <TargetFramework>net6.0-ios</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>true</ImplicitUsings>
+    <IsBindingProject>true</IsBindingProject>
+    <IsTrimmable>true</IsTrimmable>
+    <AssemblyVersion>$(AirshipIosVersion)</AssemblyVersion>
+    <PackageVersion>$(AirshipIosNugetVersion)</PackageVersion>
     <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
-    <ProductVersion>8.0.30703</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
+    <SupportedOSPlatformVersion>13.0</SupportedOSPlatformVersion>
   </PropertyGroup>
+
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
@@ -25,6 +33,7 @@
     <ConsolePause>false</ConsolePause>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
+
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>full</DebugType>
     <Optimize>true</Optimize>
@@ -34,33 +43,16 @@
     <ConsolePause>false</ConsolePause>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
-  <ItemGroup>
-    <None Include="urbanairship.ios.basement.targets">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="Xamarin.iOS" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="..\SharedAssemblyInfo.iOS.cs">
-      <Link>Properties\SharedAssemblyInfo.iOS.cs</Link>
-    </Compile>
-    <Compile Include="AirshipBasement.cs" />
-  </ItemGroup>
+
   <ItemGroup>
     <ObjcBindingApiDefinition Include="ApiDefinitions.cs" />
-  </ItemGroup>
-  <ItemGroup>
     <ObjcBindingCoreSource Include="StructsAndEnums.cs" />
   </ItemGroup>
+
   <ItemGroup>
     <NativeReference Include="..\..\frameworks\AirshipBasement.xcframework">
       <Kind>Framework</Kind>
       <SmartLink>False</SmartLink>
     </NativeReference>
   </ItemGroup>
-  <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.ObjCBinding.CSharp.targets" />
 </Project>
