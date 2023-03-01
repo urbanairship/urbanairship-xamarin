@@ -62,30 +62,9 @@ namespace UrbanAirship
 		[NullAllowed, Export("display", ArgumentSemantic.Strong)]
 		UAPreferenceCommonDisplay Display { get; }
 
-        // @property (readonly, nonatomic, strong) UAPreferenceAlertItemButton * _Nullable button;
-        [NullAllowed, Export("button", ArgumentSemantic.Strong)]
-        UAPreferenceAlertItemButton Button { get; }
-
 		// @property (copy, nonatomic) NSArray<id<UAPreferenceConditions>> * _Nullable conditions;
 		[NullAllowed, Export("conditions", ArgumentSemantic.Copy)]
 		IUAPreferenceConditions[] Conditions { get; set; }
-	}
-
-    // @interface UAPreferenceAlertItemButton : NSObject
-    [BaseType(typeof(NSObject))]
-    interface UAPreferenceAlertItemButton
-	{
-		// @property (readonly, copy, nonatomic) NSString * _Nonnull text;
-		[Export("text")]
-		string Text { get; }
-
-		// @property (readonly, copy, nonatomic) NSString * _Nullable contentDescription;
-		[NullAllowed, Export("contentDescription")]
-		string ContentDescription { get; }
-
-		// @property (readonly, nonatomic) id _Nullable actions;
-		[NullAllowed, Export("actions")]
-		NSObject Actions { get; }
 	}
 
 	// @interface UAPreferenceChannelSubscriptionItem : NSObject <UAPreferenceItem>
