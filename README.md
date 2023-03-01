@@ -1,10 +1,10 @@
-# Airship Xamarin Library
+# Airship .Net Library
 
 This library provides official bindings to the Airship SDK, as well as a [cross-platform sample application](SampleApp).
 
 ## Resources
 
-- [Xamarin Platform Doc](http://docs.urbanairship.com/platform/xamarin.html)
+- [Platform Documentation](http://docs.urbanairship.com/platform/xamarin.html)
 - [Getting Started](GettingStarted.md)
 - [CHANGELOG](CHANGELOG.md)
 - [Cross-platform sample application](SampleApp)
@@ -13,5 +13,3 @@ This library provides official bindings to the Airship SDK, as well as a [cross-
 
 To build all of the artifacts, run `./gradlew build` in the root of the repository.
 The build requires Carthage, which can be installed with `brew update && brew install carthage`.
-
-To install required Python scripts and dependencies, run `pip install -r requirements.txt`
