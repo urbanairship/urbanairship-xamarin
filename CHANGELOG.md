@@ -1,5 +1,17 @@
 # Airship Xamarin Changelog
 
+## Version 17.0.0 - February 28, 2023
+Major release to support MAUI. The Airship .NET SDK now targets .NET 6.0, and is compatible with
+Android 5.0 (API 21) or higher, and iOS 13 or higher, using the latest supported release of Xcode (currently 14.2).
+
+### Changes
+- Updated bindings and cross-platform libraries to target `net6.0`, `net6.0-android`, and `net6.0-ios`
+- Updated Android SDK to 16.8.1
+- Updated iOS SDK to 16.11.1
+- Renamed Airship.NETStandard to Airship.NET (`namespace AirshipDotNet`)
+- Added a new `airship.net.messagecenter` that provides a cross-platform control that can be used to display Message Center messages.
+- Created a new MAUI Sample App
+
 ## Version 16.3.0 - December 23, 2022
 Minor release to support iOS SDK 16.10.6 and Android SDK 16.8.0 and fix an issue with the Message Center NativeBridge on iOS.
 
