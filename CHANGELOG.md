@@ -1,7 +1,7 @@
 # Airship Xamarin Changelog
 
-## Version 16.3.1 - March 1, 2023
-Minor release to support iOS SDK 16.11.1 and Android SDK 16.8.1 and fix an issue with the Preference Center on iOS.
+## Version 16.3.1 - March 2, 2023
+Minor release that updates to the latest Airship SDKs. The iOS SDK update fixes an issue with the Preference Center on iOS.
 
 ### Changes
 - Updated iOS SDK to 16.11.1
