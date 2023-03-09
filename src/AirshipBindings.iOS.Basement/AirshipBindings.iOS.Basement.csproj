@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Xamarin.Legacy.Sdk">
   <PropertyGroup>
     <NoBindingEmbedding>true</NoBindingEmbedding>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -11,7 +11,8 @@
     <AssemblyName>airship.ios.basement</AssemblyName>
     <AssemblyTitle>Airship iOS SDK - Basement</AssemblyTitle>
     <Description>Basement module for Airship SDK</Description>
-    <TargetFramework>net6.0-ios</TargetFramework>
+    <TargetFrameworks>xamarin.ios10;net6.0-ios</TargetFrameworks>
+    <NoNFloatUsing Condition="'$(TargetFramework)' == 'xamarin.ios10'">true</NoNFloatUsing>
     <Nullable>enable</Nullable>
     <ImplicitUsings>true</ImplicitUsings>
     <IsBindingProject>true</IsBindingProject>
@@ -19,7 +20,8 @@
     <AssemblyVersion>$(AirshipIosVersion)</AssemblyVersion>
     <PackageVersion>$(AirshipIosNugetVersion)</PackageVersion>
     <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
-    <SupportedOSPlatformVersion>13.0</SupportedOSPlatformVersion>
+    <SupportedOSPlatformVersion>11.0</SupportedOSPlatformVersion>
+    <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -45,14 +47,42 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Folder Include="Resources\" />
+    <Folder Include="bin\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="AirshipBasement.targets" pack="True" PackagePath="build/Xamarin.Airship.iOS.Basement.targets" />
+    <None Include="AirshipBasement.targets" pack="True" PackagePath="buildTransitive/Xamarin.Airship.iOS.Basement.targets" />
+  </ItemGroup>
+
+  <!-- An iOS app project cannot find Xcframeworks within a NuGet if a TFM
+       previous than net6.0-ios is used.
+       https://github.com/xamarin/xamarin-macios/issues/13693
+       You must include the Xcframework's NativeReference tag into the iOS app
+       project so sidecar can work properly. -->
+  <!-- This workaround was designed like this to have the same
+       NativeReference tag for the iOS binding and for the .targets file -->
+  <Import Project="AirshipBasement.targets" />
+  <ItemGroup>
+    <_NativeReference Include="../../frameworks/AirshipBasement.xcframework">
+      <_Id>$(_AirshipBasementId)</_Id>
+    </_NativeReference>
+  </ItemGroup>
+  <!-- End of workaround -->
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'xamarin.ios10'">
+    <Compile Remove="ApiDefinition.cs" />
+    <Compile Remove="StructsAndEnums.cs" />
+
+    <Compile Include="AirshipBasement.cs" />
     <ObjcBindingApiDefinition Include="ApiDefinitions.cs" />
     <ObjcBindingCoreSource Include="StructsAndEnums.cs" />
   </ItemGroup>
 
+
+  <!-- TODO: pretty sure we don't need this... -->
   <ItemGroup>
-    <NativeReference Include="..\..\frameworks\AirshipBasement.xcframework">
-      <Kind>Framework</Kind>
-      <SmartLink>False</SmartLink>
-    </NativeReference>
+    <PackageReference Include="Xamarin.Build.Download" Version="0.11.0" PrivateAssets="None" />
   </ItemGroup>
 </Project>
