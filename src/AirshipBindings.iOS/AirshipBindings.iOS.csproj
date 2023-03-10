@@ -1,18 +1,21 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Xamarin.Legacy.Sdk">
   <PropertyGroup>
     <OutputType>Library</OutputType>
+    <DisableExtraReferences>true</DisableExtraReferences>
     <RootNamespace>AirshipBindings.iOS</RootNamespace>
     <AssemblyName>airship.ios</AssemblyName>
     <AssemblyTitle>Airship iOS SDK</AssemblyTitle>
     <Description>A full suite of mobile engagement tools for building next-generation apps</Description>
-    <TargetFramework>net6.0-ios</TargetFramework>
+    <TargetFrameworks>xamarin.ios10;net6.0-ios</TargetFrameworks>
+    <NoNFloatUsing Condition="'$(TargetFramework)' == 'xamarin.ios10'">true</NoNFloatUsing>
     <Nullable>enable</Nullable>
     <ImplicitUsings>true</ImplicitUsings>
     <AssemblyVersion>$(AirshipIosVersion)</AssemblyVersion>
     <PackageVersion>$(AirshipIosNugetVersion)</PackageVersion>
     <IsTrimmable>true</IsTrimmable>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <IncludeBuildOutput>false</IncludeBuildOutput>
-    <SupportedOSPlatformVersion>13.0</SupportedOSPlatformVersion>
+    <SupportedOSPlatformVersion>11.0</SupportedOSPlatformVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -24,7 +27,6 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -34,7 +36,6 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
 
   <ItemGroup>

@@ -1,6 +1,7 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Xamarin.Legacy.Sdk">
   <PropertyGroup>
     <NoBindingEmbedding>true</NoBindingEmbedding>
+    <DisableExtraReferences>true</DisableExtraReferences>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{13E9ACF2-4FE5-4FA6-96C4-BDFB6FF7C3A0}</ProjectGuid>
@@ -9,15 +10,17 @@
     <AssemblyName>airship.ios.preferencecenter</AssemblyName>
     <AssemblyTitle>Airship iOS SDK - Preference Center</AssemblyTitle>
     <Description>Preference Center support for Airship SDK</Description>
-    <TargetFramework>net6.0-ios</TargetFramework>
+    <TargetFrameworks>xamarin.ios10;net6.0-ios</TargetFrameworks>
+    <NoNFloatUsing Condition="'$(TargetFramework)' == 'xamarin.ios10'">true</NoNFloatUsing>
     <DisableExtraReferences>true</DisableExtraReferences>
     <Nullable>enable</Nullable>
     <ImplicitUsings>true</ImplicitUsings>
+    <IsBindingProject>true</IsBindingProject>
     <IsTrimmable>true</IsTrimmable>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <AssemblyVersion>$(AirshipIosVersion)</AssemblyVersion>
     <PackageVersion>$(AirshipIosNugetVersion)</PackageVersion>
-    <SupportedOSPlatformVersion>13.0</SupportedOSPlatformVersion>
-    <IsBindingProject>true</IsBindingProject>
+    <SupportedOSPlatformVersion>11.0</SupportedOSPlatformVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -29,7 +32,6 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -39,19 +41,35 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <ConsolePause>false</ConsolePause>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
 
   <ItemGroup>
-    <ObjcBindingApiDefinition Include="ApiDefinitions.cs" />
-    <ObjcBindingCoreSource Include="StructsAndEnums.cs" />
+    <None Include="AirshipBindings.iOS.PreferenceCenter.targets" Pack="True" PackagePath="build/AirshipBindings.iOS.PreferenceCenter.targets" />
+    <None Include="AirshipBindings.iOS.PreferenceCenter.targets" Pack="True" PackagePath="buildTransitive/AirshipBindings.iOS.PreferenceCenter.targets" />
   </ItemGroup>
 
+  <!-- An iOS app project cannot find Xcframeworks within a NuGet if a TFM
+       previous than net6.0-ios is used.
+       https://github.com/xamarin/xamarin-macios/issues/13693
+       You must include the Xcframework's NativeReference tag into the iOS app
+       project so sidecar can work properly. -->
+  <!-- This workaround was designed like this to have the same
+       NativeReference tag for the iOS binding and for the .targets file -->
+  <Import Project="AirshipBindings.iOS.PreferenceCenter.targets" />
   <ItemGroup>
-    <NativeReference Include="..\..\frameworks\AirshipPreferenceCenter.xcframework">
-      <Kind>Framework</Kind>
-      <SmartLink>False</SmartLink>
-    </NativeReference>
+    <_NativeReference Include="../../frameworks/AirshipPreferenceCenter.xcframework">
+        <_Id>$(_AirshipPreferenceCenterId)</_Id>
+    </_NativeReference>
+  </ItemGroup>
+  <!-- End of workaround -->
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'xamarin.ios10'">
+    <Compile Remove="ApiDefinitions.cs" />
+    <Compile Remove="StructsAndEnums.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ObjcBindingCoreSource Include="StructsAndEnums.cs" Condition=" '$(EnableDefaultCompileItems)' == 'true'" />
+    <ObjcBindingApiDefinition Include="ApiDefinitions.cs" Condition=" '$(EnableDefaultCompileItems)' == 'true'" />
   </ItemGroup>
 
   <ItemGroup>

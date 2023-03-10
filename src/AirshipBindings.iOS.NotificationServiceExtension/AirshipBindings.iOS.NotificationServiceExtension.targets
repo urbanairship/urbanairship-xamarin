@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<Project>
+  <PropertyGroup>
+    <_AirshipNotificationServiceExtensionId>AirshipNotificationServiceExtension</_AirshipNotificationServiceExtensionId>
+  </PropertyGroup>
+
+  <ItemGroup Condition="('$(OutputType)' != 'Library' OR '$(IsAppExtension)' == 'True') AND ('$(TargetFrameworks)' == '' AND '$(TargetFramework)' == '')">
+    <_NativeReference Include="$(MSBuildThisFileDirectory)..\lib\xamarinios10\AirshipNotificationServiceExtension.iOS.resources\AirshipNotificationServiceExtension.xcframework">
+        <_Id>$(_AirshipNotificationServiceExtensionId)</_Id>
+    </_NativeReference>
+  </ItemGroup>
+  <Target Name="_ResolveNativeReferencesForAirshipNotificationServiceExtensionBinding" 
+          BeforeTargets="ResolveNativeReferences"
+          Condition="('$(TargetFrameworks)' == '' AND '$(TargetFramework)' == '') OR '$(IsBindingProject)' == 'true'">
+    <ItemGroup>
+      <_NativeReference Update="@(_NativeReference)" Condition="'%(_NativeReference._Id)' == '$(_AirshipNotificationServiceExtensionId)'">
+        <Kind>Static</Kind>
+        <SmartLink>False</SmartLink>
+        <ForceLoad>True</ForceLoad>
+        <LinkerFlags>-ObjC</LinkerFlags>
+      </_NativeReference>
+      <NativeReference Include="@(_NativeReference)" />
+    </ItemGroup>
+  </Target>
+
+</Project>
+

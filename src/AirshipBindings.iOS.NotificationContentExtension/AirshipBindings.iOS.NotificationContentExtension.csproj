@@ -1,6 +1,7 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Xamarin.Legacy.Sdk">
   <PropertyGroup>
     <NoBindingEmbedding>true</NoBindingEmbedding>
+    <DisableExtraReferences>true</DisableExtraReferences>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{C9325C9E-B43A-4BE8-AD68-B7BF6942F9F8}</ProjectGuid>
@@ -9,15 +10,16 @@
     <AssemblyName>airship.ios.notificationcontentextension</AssemblyName>
     <AssemblyTitle>Airship iOS SDK - Notification Content Extension</AssemblyTitle>
     <Description>Notification content extension support for Airship SDK</Description>
-    <TargetFramework>net6.0-ios</TargetFramework>
-    <DisableExtraReferences>true</DisableExtraReferences>
+    <TargetFrameworks>xamarin.ios10;net6.0-ios</TargetFrameworks>
+    <NoNFloatUsing Condition="'$(TargetFramework)' == 'xamarin.ios10'">true</NoNFloatUsing>
     <Nullable>enable</Nullable>
     <IsTrimmable>true</IsTrimmable>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <AssemblyVersion>$(AirshipIosVersion)</AssemblyVersion>
     <PackageVersion>$(AirshipIosNugetVersion)</PackageVersion>
     <ImplicitUsings>true</ImplicitUsings>
     <IsBindingProject>true</IsBindingProject>
-    <SupportedOSPlatformVersion>13.0</SupportedOSPlatformVersion>
+    <SupportedOSPlatformVersion>11.0</SupportedOSPlatformVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -28,7 +30,6 @@
     <DefineConstants>DEBUG;</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -37,18 +38,34 @@
     <OutputPath>bin\Release</OutputPath>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
 
   <ItemGroup>
-    <ObjcBindingApiDefinition Include="ApiDefinitions.cs" />
-    <ObjcBindingCoreSource Include="StructsAndEnums.cs" />
+    <None Include="AirshipBindings.iOS.NotificationContentExtension.targets" Pack="True" PackagePath="build/AirshipBindings.iOS.NotificationContentExtension.targets" />
+    <None Include="AirshipBindings.iOS.NotificationContentExtension.targets" Pack="True" PackagePath="buildTransitive/AirshipBindings.iOS.NotificationContentExtension.targets" />
   </ItemGroup>
-  
+
+  <!-- An iOS app project cannot find Xcframeworks within a NuGet if a TFM
+       previous than net6.0-ios is used.
+       https://github.com/xamarin/xamarin-macios/issues/13693
+       You must include the Xcframework's NativeReference tag into the iOS app
+       project so sidecar can work properly. -->
+  <!-- This workaround was designed like this to have the same
+       NativeReference tag for the iOS binding and for the .targets file -->
+  <Import Project="AirshipBindings.iOS.NotificationContentExtension.targets" />
   <ItemGroup>
-    <NativeReference Include="..\..\frameworks\AirshipNotificationContentExtension.xcframework">
-      <Kind>Framework</Kind>
-      <SmartLink>False</SmartLink>
-    </NativeReference>
+    <_NativeReference Include="../../frameworks/AirshipNotificationContentExtension.xcframework">
+        <_Id>$(_AirshipNotificationContentExtensionId)</_Id>
+    </_NativeReference>
+  </ItemGroup>
+  <!-- End of workaround -->
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'xamarin.ios10'">
+    <Compile Remove="ApiDefinitions.cs" />
+    <Compile Remove="StructsAndEnums.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ObjcBindingCoreSource Include="StructsAndEnums.cs" Condition=" '$(EnableDefaultCompileItems)' == 'true'" />
+    <ObjcBindingApiDefinition Include="ApiDefinitions.cs" Condition=" '$(EnableDefaultCompileItems)' == 'true'" />
   </ItemGroup>
 </Project>

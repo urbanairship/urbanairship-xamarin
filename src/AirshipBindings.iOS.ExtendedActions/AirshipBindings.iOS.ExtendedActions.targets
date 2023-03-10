@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<Project>
+  <PropertyGroup>
+    <_AirshipExtendedActionsId>AirshipExtendedActions</_AirshipExtendedActionsId>
+  </PropertyGroup>
+
+  <ItemGroup Condition="('$(OutputType)' != 'Library' OR '$(IsAppExtension)' == 'True') AND ('$(TargetFrameworks)' == '' AND '$(TargetFramework)' == '')">
+    <_NativeReference Include="$(MSBuildThisFileDirectory)..\lib\xamarinios10\AirshipExtendedActions.iOS.resources\AirshipExtendedActions.xcframework">
+        <_Id>$(_AirshipExtendedActionsId)</_Id>
+    </_NativeReference>
+  </ItemGroup>
+  <Target Name="_ResolveNativeReferencesForAirshipExtendedActionsBinding" 
+          BeforeTargets="ResolveNativeReferences"
+          Condition="('$(TargetFrameworks)' == '' AND '$(TargetFramework)' == '') OR '$(IsBindingProject)' == 'true'">
+    <ItemGroup>
+      <_NativeReference Update="@(_NativeReference)" Condition="'%(_NativeReference._Id)' == '$(_AirshipExtendedActionsId)'">
+        <Kind>Static</Kind>
+        <SmartLink>False</SmartLink>
+        <ForceLoad>True</ForceLoad>
+        <LinkerFlags>-ObjC</LinkerFlags>
+      </_NativeReference>
+      <NativeReference Include="@(_NativeReference)" />
+    </ItemGroup>
+  </Target>
+
+</Project>
+
