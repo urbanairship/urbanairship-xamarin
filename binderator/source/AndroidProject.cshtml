@@ -2,9 +2,14 @@
 @using System.Linq
 @using System.Collections.Generic
 
-<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Xamarin.Legacy.Sdk">
   <PropertyGroup>
-    <TargetFramework>net6.0-android</TargetFramework>
+    <!-- TODO: want this to work -->
+    <!--<TargetFrameworks>MonoAndroid12.0;net6.0-android</TargetFrameworks>-->
+    <!-- This works! -->
+    <TargetFrameworks>net6.0-android</TargetFrameworks>
+    <!-- FIXME: fails to build due to stuff not being found in the namespace. it looks like the bindings aren't actually being build, somehow? -->
+    <!--<TargetFrameworks>MonoAndroid12.0</TargetFrameworks> -->
     <SupportedOSPlatformVersion>21</SupportedOSPlatformVersion>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
@@ -90,7 +95,6 @@
 <!--     <WarningsAsErrors>BG8401;BG8604;BG8C00;BG8700;BG8800</WarningsAsErrors> -->
   </PropertyGroup>
 
-
   <ItemGroup>
     @foreach (var art in @Model.MavenArtifacts) {
     <AndroidLibrary Include="..\..\externals\@(art.MavenGroupId)\@(art.MavenArtifactId).aar" />
@@ -131,5 +135,4 @@
       }
     }
   </ItemGroup>
-
 </Project>
