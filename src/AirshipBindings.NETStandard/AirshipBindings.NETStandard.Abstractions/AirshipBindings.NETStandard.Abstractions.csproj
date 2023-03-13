@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Xamarin.Legacy.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
@@ -6,12 +6,20 @@
 
   <PropertyGroup>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-  </PropertyGroup> 
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <AssemblyTitle>AirshipBindings.NETStandard.Abstractions</AssemblyTitle>
+    <AssemblyName>AirshipBindings.NETStandard.Abstractions</AssemblyName>
+  </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Channel\" />
-    <Folder Include="Analytics\" />
-    <Folder Include="Attributes\" />
+    <Compile Include="Channel\*" />
+    <Compile Include="Analytics\*" />
+    <Compile Include="Attributes\*" />
+    <Compile Include="MessageCenter\*" />
+    <Compile Include="IAirship.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="..\..\SharedAssemblyInfo.CrossPlatform.cs">
