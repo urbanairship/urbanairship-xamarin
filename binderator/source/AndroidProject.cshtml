@@ -4,12 +4,8 @@
 
 <Project Sdk="Xamarin.Legacy.Sdk">
   <PropertyGroup>
-    <!-- TODO: want this to work -->
-    <!--<TargetFrameworks>MonoAndroid12.0;net6.0-android</TargetFrameworks>-->
-    <!-- This works! -->
-    <TargetFrameworks>net6.0-android</TargetFrameworks>
-    <!-- FIXME: fails to build due to stuff not being found in the namespace. it looks like the bindings aren't actually being build, somehow? -->
-    <!--<TargetFrameworks>MonoAndroid12.0</TargetFrameworks> -->
+    <TargetFrameworks>MonoAndroid12.0;net6.0-android</TargetFrameworks>
+    <IsBindingProject>true</IsBindingProject>
     <SupportedOSPlatformVersion>21</SupportedOSPlatformVersion>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
@@ -97,17 +93,7 @@
 
   <ItemGroup>
     @foreach (var art in @Model.MavenArtifacts) {
-    <AndroidLibrary Include="..\..\externals\@(art.MavenGroupId)\@(art.MavenArtifactId).aar" />
-    }
-  </ItemGroup>
-
-  <ItemGroup>
-    @foreach (var art in @Model.MavenArtifacts) {
-      if (art.MavenArtifactPackaging == "aar") {
-    <None Include="..\..\externals\@(art.MavenGroupId)\@(art.MavenArtifactId).aar" Pack="True" PackagePath="aar\@(art.MavenGroupId).@(art.MavenArtifactId).aar" />
-      } else {
-    <None Include="..\..\externals\@(art.MavenGroupId)\@(art.MavenArtifactId).jar" Pack="True" PackagePath="jar\@(art.MavenGroupId).@(art.MavenArtifactId).jar" />
-      }
+    <LibraryProjectZip Include="..\..\externals\@(art.MavenGroupId)\@(art.MavenArtifactId).aar" />
     }
   </ItemGroup>
 
