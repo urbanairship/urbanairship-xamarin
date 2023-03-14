@@ -17,6 +17,17 @@
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
   </PropertyGroup>
 
+  <PropertyGroup>
+		<PackageId>airship.netstandard.android</PackageId>
+		<Title>Airship SDK</Title>
+		<Summary>Airship SDK .NET Standard Library</Summary>
+		<Description>A .NET Standard Library for the Airship SDK.</Description>
+		<AssemblyVersion>$(AirshipCrossPlatformVersion)</AssemblyVersion>
+		<PackageVersion>$(AirshipCrossPlatformNugetVersion)</PackageVersion>
+		<!-- Include symbol files (*.pdb) in the built .nupkg -->
+		<AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
+	</PropertyGroup>
+
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>

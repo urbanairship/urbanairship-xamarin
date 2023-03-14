@@ -45,6 +45,8 @@ tasks.register('pack') {
     // Pack .net common libraries
     dependsOn(':src:Airship.Net:pack')
     dependsOn(':src:Airship.Net.MessageCenter:pack')
+    // Pack .NETStandard
+    dependsOn(":src:AirshipBindings.NETStandard:pack")
 }
 
 tasks.register('buildSample') {
@@ -98,6 +100,28 @@ tasks.register('syncRootVersion') {
             file: "$projectDir/src/SharedAssemblyInfo.Common.cs",
             match: "UACrossPlatformVersion (.*)]",
             replace: "UACrossPlatformVersion (\"$crossPlatformNugetVersion\")]"
+        )
+
+        // .NET Standard nuspec cross platform versions
+        ant.replaceregexp(
+            file: "$projectDir/Airship.NETStandard.nuspec",
+            match: "<version>.*</version>",
+            replace: "<version>$airshipProperties.crossPlatformVersion</version>",
+            flags: "g"
+        )
+        // .NET Standard nuspec android versions
+        ant.replaceregexp(
+            file: "$projectDir/Airship.NETStandard.nuspec",
+            match: "<dependency id=\"airship.android(.*)\" version=\".*\"/>",
+            replace: "<dependency id=\"airship.android\\1\" version=\"$androidNugetVersion\"/>",
+            flags: "g"
+        )
+        // .NET Standard nuspec iOS versions
+        ant.replaceregexp(
+            file: "$projectDir/Airship.NETStandard.nuspec",
+            match: "<dependency id=\"airship.ios(.*)\" version=\".*\"/>",
+            replace: "<dependency id=\"airship.ios\\1\" version=\"$iosNugetVersion\"/>",
+            flags: "g"
         )
     }
 }
@@ -195,8 +219,10 @@ tasks.register('build') {
     dependsOn('syncVersion',
             ':binderator:build',
             ':src:AirshipBindings.iOS.common:build',
+            ':src:AirshipBindings.NETStandard:build',
             ':src:Airship.Net:build',
-            ':src:Airship.Net.MessageCenter:build')
+            ':src:Airship.Net.MessageCenter:build'
+    )
 
     doFirst() {
         mkdir project.buildDir

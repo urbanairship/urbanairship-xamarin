@@ -9,6 +9,7 @@ include ':src:AirshipBindings.iOS.MessageCenter'
 include ':src:AirshipBindings.iOS.PreferenceCenter'
 include ':src:AirshipBindings.iOS.NotificationContentExtension'
 include ':src:AirshipBindings.iOS.NotificationServiceExtension'
+include ':src:AirshipBindings.NETStandard'
 include ':src:Airship.Net'
 include ':src:Airship.Net.MessageCenter'
 

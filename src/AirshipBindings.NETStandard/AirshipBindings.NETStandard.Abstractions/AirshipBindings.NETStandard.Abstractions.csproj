@@ -2,17 +2,22 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-  </PropertyGroup>
-
-  <PropertyGroup>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
-  </PropertyGroup>
-
-  <PropertyGroup>
     <AssemblyTitle>AirshipBindings.NETStandard.Abstractions</AssemblyTitle>
     <AssemblyName>AirshipBindings.NETStandard.Abstractions</AssemblyName>
   </PropertyGroup>
+
+  <PropertyGroup>
+		<PackageId>airship.netstandard.abstractions</PackageId>
+		<Title>Airship SDK</Title>
+		<Summary>Airship SDK .NET Standard Library</Summary>
+		<Description>A .NET Standard Library for the Airship SDK.</Description>
+		<AssemblyVersion>$(AirshipCrossPlatformVersion)</AssemblyVersion>
+		<PackageVersion>$(AirshipCrossPlatformNugetVersion)</PackageVersion>
+		<!-- Include symbol files (*.pdb) in the built .nupkg -->
+		<AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
+	</PropertyGroup>
 
   <ItemGroup>
     <Compile Include="Channel\*" />

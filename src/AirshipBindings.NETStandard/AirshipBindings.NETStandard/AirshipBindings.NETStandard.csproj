@@ -2,17 +2,22 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-  </PropertyGroup>
-
-  <PropertyGroup>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
-  </PropertyGroup> 
+    <AssemblyTitle>AirshipBindings.NETStandard</AssemblyTitle>
+    <AssemblyName>AirshipBindings.NETStandard</AssemblyName>
+  </PropertyGroup>
 
   <PropertyGroup>
-      <AssemblyTitle>AirshipBindings.NETStandard.Common</AssemblyTitle>
-      <AssemblyName>AirshipBindings.NETStandard.Common</AssemblyName>
-  </PropertyGroup>
+		<PackageId>airship.netstandard</PackageId>
+		<Title>Airship SDK</Title>
+		<Summary>Airship SDK .NET Standard Library</Summary>
+		<Description>A .NET Standard Library for the Airship SDK.</Description>
+		<AssemblyVersion>$(AirshipCrossPlatformVersion)</AssemblyVersion>
+		<PackageVersion>$(AirshipCrossPlatformNugetVersion)</PackageVersion>
+		<!-- Include symbol files (*.pdb) in the built .nupkg -->
+		<AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
+	</PropertyGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\AirshipBindings.NETStandard.Abstractions\AirshipBindings.NETStandard.Abstractions.csproj" />
@@ -22,6 +27,7 @@
     <Compile Include="..\..\SharedAssemblyInfo.CrossPlatform.cs">
       <Link>Properties\SharedAssemblyInfo.CrossPlatform.cs</Link>
     </Compile>
+    <Compile Include="Airship.cs" />
   </ItemGroup>
 
   <ItemGroup>

@@ -10,12 +10,20 @@
     <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
     <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
     <GenerateAssemblyInto>false</GenerateAssemblyInto>
-  </PropertyGroup>
-
-  <PropertyGroup>
     <AssemblyTitle>AirshipBindings.NETStandard.iOS</AssemblyTitle>
     <AssemblyName>AirshipBindings.NETStandard.iOS</AssemblyName>
   </PropertyGroup>
+
+  <PropertyGroup>
+		<PackageId>airship.netstandard.ios</PackageId>
+		<Title>Airship SDK</Title>
+		<Summary>Airship SDK .NET Standard Library</Summary>
+		<Description>A .NET Standard Library for the Airship SDK.</Description>
+		<AssemblyVersion>$(AirshipCrossPlatformVersion)</AssemblyVersion>
+		<PackageVersion>$(AirshipCrossPlatformNugetVersion)</PackageVersion>
+		<!-- Include symbol files (*.pdb) in the built .nupkg -->
+		<AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
+	</PropertyGroup>
 
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
