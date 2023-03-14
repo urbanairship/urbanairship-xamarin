@@ -112,7 +112,7 @@ tasks.register('syncRootVersion') {
         ant.replaceregexp(
             file: "$projectDir/Airship.NETStandard.nuspec",
             match: "<version>.*</version>",
-            replace: "<version>$airshipProperties.crossPlatformVersion</version>",
+            replace: "<version>$crossPlatformNugetVersion</version>",
             flags: "g"
         )
         // .NET Standard nuspec android versions

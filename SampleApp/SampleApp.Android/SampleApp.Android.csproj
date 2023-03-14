@@ -72,24 +72,10 @@
     <PackageReference Include="Xamarin.AndroidX.AppCompat">
       <Version>1.5.1.1</Version>
     </PackageReference>
-    <PackageReference Include="airship.android.fcm">
-      <Version>16.8.1</Version>
-    </PackageReference>
-    <PackageReference Include="airship.android.preferencecenter">
-      <Version>16.8.1</Version>
-    </PackageReference>
-    <PackageReference Include="airship.android.core">
-      <Version>16.8.1</Version>
-    </PackageReference>
-    <PackageReference Include="airship.android.messagecenter">
-      <Version>16.8.1</Version>
-    </PackageReference>
-    <PackageReference Include="airship.android.adm">
-      <Version>16.8.1</Version>
-    </PackageReference>
-    <PackageReference Include="airship.android.automation">
-      <Version>16.8.1</Version>
-    </PackageReference>
+    <PackageReference Include="airship.android.fcm" Version="$(AirshipAndroidNugetVersion)" />
+    <PackageReference Include="airship.android.automation" Version="$(AirshipAndroidNugetVersion)" />
+    <PackageReference Include="airship.android.preferencecenter" Version="$(AirshipAndroidNugetVersion)" />
+    <PackageReference Include="airship.android.messagecenter" Version="$(AirshipAndroidNugetVersion)" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainActivity.cs" />
@@ -197,4 +183,7 @@
     <AndroidAsset Include="Assets\airshipconfig.properties" />
   </ItemGroup>
  <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
+ <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup />
+  </Target>
 </Project>

@@ -10,8 +10,8 @@
     <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
     <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
     <GenerateAssemblyInto>false</GenerateAssemblyInto>
-    <AssemblyTitle>AirshipBindings.NETStandard.iOS</AssemblyTitle>
-    <AssemblyName>AirshipBindings.NETStandard.iOS</AssemblyName>
+    <AssemblyTitle>AirshipBindings.NETStandard</AssemblyTitle>
+    <AssemblyName>AirshipBindings.NETStandard</AssemblyName>
   </PropertyGroup>
 
   <PropertyGroup>

@@ -54,6 +54,7 @@
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <MtouchLink>None</MtouchLink>
     <MtouchInterpreter>-all</MtouchInterpreter>
+    <CodesignProvision>Automatic</CodesignProvision>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
     <DebugType>none</DebugType>
@@ -89,9 +90,29 @@
   <ItemGroup>
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />
     <PackageReference Include="Xamarin.Essentials" Version="1.6.1" />
-    <PackageReference Include="airship.ios" Version="16.11.1" />
+    <PackageReference Include="airship.ios.automation">
+      <Version>16.11.1.1</Version>
+    </PackageReference>
+    <PackageReference Include="airship.ios.basement">
+      <Version>16.11.1.1</Version>
+    </PackageReference>
+    <PackageReference Include="airship.ios.core">
+      <Version>16.11.1.1</Version>
+    </PackageReference>
+    <PackageReference Include="airship.ios.messagecenter">
+      <Version>16.11.1.1</Version>
+    </PackageReference>
+    <PackageReference Include="airship.ios.extendedactions">
+      <Version>16.11.1.1</Version>
+    </PackageReference>
+    <PackageReference Include="airship.ios.preferencecenter">
+      <Version>16.11.1.1</Version>
+    </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup />
+  </Target>
   <ItemGroup>
     <ProjectReference Include="..\SampleApp\SampleApp.csproj">
       <Project>{9592AA2B-EE95-4A58-B697-D5B52CF15675}</Project>
