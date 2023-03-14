@@ -9,7 +9,8 @@ task clean(type: Delete) {
     }
 }
 
-task build {
+task buildSample {
+    dependsOn(':SampleApp:restore')
     def BuildConfiguration=project.properties['build_configuration'] ?: "Release"
     doLast() {
         exec {
@@ -17,6 +18,3 @@ task build {
         }
     }
 }
-
-build.dependsOn(':pkg')
-build.dependsOn(':SampleApp:restore')

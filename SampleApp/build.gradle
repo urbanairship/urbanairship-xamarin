@@ -8,7 +8,7 @@ task clean(type: Delete) {
 }
 
 task restore {
-    dependsOn rootProject.pkg
+    dependsOn rootProject.createLocalFeed
     doLast() {
         exec {
             commandLine "mono", "$nugetExe", "restore", "SampleApp.sln"
@@ -16,7 +16,7 @@ task restore {
     }
 }
 
-task build {
-    dependsOn ':SampleApp:SampleApp.iOS:build'
-    dependsOn ':SampleApp:SampleApp.Android:build'
+task buildSample {
+    dependsOn ':SampleApp:SampleApp.iOS:buildSample'
+    dependsOn ':SampleApp:SampleApp.Android:buildSample'
 }

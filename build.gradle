@@ -49,8 +49,14 @@ tasks.register('pack') {
     dependsOn(":src:AirshipBindings.NETStandard:pack")
 }
 
-tasks.register('buildSample') {
+tasks.register('buildMauiSample') {
+    dependsOn('pack', 'createLocalFeed')
     dependsOn(':MauiSample:buildSample')
+}
+
+tasks.register('buildXamarinSample') {
+    dependsOn('pack', 'createLocalFeed')
+    dependsOn(':SampleApp:buildSample')
 }
 
 // Create local nuget feed

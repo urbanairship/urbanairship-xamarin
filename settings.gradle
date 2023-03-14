@@ -14,3 +14,6 @@ include ':src:Airship.Net'
 include ':src:Airship.Net.MessageCenter'
 
 include ':MauiSample'
+include ':SampleApp'
+include ':SampleApp:SampleApp.iOS'
+include ':SampleApp:SampleApp.Android'

@@ -85,9 +85,9 @@
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="Xamarin.iOS" />
-    <Reference Include="AirshipBindings.iOS.NotificationServiceExtension">
-      <HintPath>..\..\packages\airship.ios.notificationserviceextension.16.11.1\lib\Xamarin.iOS10\AirshipBindings.iOS.NotificationServiceExtension.dll</HintPath>
-    </Reference>
+  </ItemGroup>
+    <ItemGroup>
+      <PackageReference Include="airship.ios.notificationserviceextension" Version="16.11.1" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
@@ -128,7 +128,7 @@
     <None Include="res\AirshipNotificationServiceExtension.xcframework\ios-arm64\AirshipNotificationServiceExtension.framework\Headers\AirshipNotificationServiceExtension.h" />
     <None Include="res\AirshipNotificationServiceExtension.xcframework\ios-arm64\AirshipNotificationServiceExtension.framework\AirshipNotificationServiceExtension" />
     <None Include="res\AirshipNotificationServiceExtension.xcframework\Info.plist" />
-    <None Include="packages.config" />
+    <!--<None Include="packages.config" />-->
   </ItemGroup>
   <ItemGroup>
     <Compile Include="NotificationService.cs" />
