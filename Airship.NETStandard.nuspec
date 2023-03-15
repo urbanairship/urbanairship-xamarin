@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
    <metadata>
       <id>airship.netstandard</id>
-      <version>18.0.0.2</version>
+      <version>18.0.0.4</version>
       <title>Airship SDK .NET Standard Library</title>
       <authors>Airship, Inc.</authors>
       <projectUrl>https://github.com/urbanairship/urbanairship-xamarin</projectUrl>
@@ -13,16 +13,16 @@
          <group targetFramework=".NETStandard2.0">
          </group>
          <group targetFramework="MonoAndroid12.0">
-            <dependency id="airship.android.core" version="16.8.1.2"/>
-            <dependency id="airship.android.messagecenter" version="16.8.1.2"/>
-            <dependency id="airship.android.automation" version="16.8.1.2"/>
+            <dependency id="airship.android.core" version="16.8.1.4"/>
+            <dependency id="airship.android.messagecenter" version="16.8.1.4"/>
+            <dependency id="airship.android.automation" version="16.8.1.4"/>
          </group>
 
          <group targetFramework="Xamarin.iOS10">
-            <dependency id="airship.ios.core" version="16.11.1.2"/>
-            <dependency id="airship.ios.automation" version="16.11.1.2"/>
-            <dependency id="airship.ios.extendedactions" version="16.11.1.2"/>
-            <dependency id="airship.ios.messagecenter" version="16.11.1.2"/>
+            <dependency id="airship.ios.core" version="16.11.1.4"/>
+            <dependency id="airship.ios.automation" version="16.11.1.4"/>
+            <dependency id="airship.ios.extendedactions" version="16.11.1.4"/>
+            <dependency id="airship.ios.messagecenter" version="16.11.1.4"/>
          </group>
       </dependencies>
    </metadata>

@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup Condition="('$(OutputType)' != 'Library' OR '$(IsAppExtension)' == 'True') AND ('$(TargetFrameworks)' == '' AND '$(TargetFramework)' == '')">
-    <_NativeReference Include="$(MSBuildThisFileDirectory)..\lib\xamarinios10\AirshipAutomation.iOS.resources\AirshipAutomation.xcframework">
+    <_NativeReference Include="$(MSBuildThisFileDirectory)..\lib\xamarinios10\airship.ios.automation.resources\AirshipAutomation.xcframework">
         <_Id>$(_AirshipAutomationId)</_Id>
     </_NativeReference>
   </ItemGroup>

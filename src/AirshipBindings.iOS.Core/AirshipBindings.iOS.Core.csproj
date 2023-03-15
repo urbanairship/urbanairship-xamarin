@@ -74,17 +74,16 @@
     <Compile Remove="ApiDefinitions.cs" />
     <Compile Remove="StructsAndEnums.cs" />
   </ItemGroup>
-  <ItemGroup>
+  <!-- <ItemGroup>
     <ObjcBindingCoreSource Include="StructsAndEnums.cs" Condition=" '$(EnableDefaultCompileItems)' == 'true'" />
     <ObjcBindingApiDefinition Include="ApiDefinitions.cs" Condition=" '$(EnableDefaultCompileItems)' == 'true'" />
-  </ItemGroup>
-<!--   
+  </ItemGroup> -->
   <ItemGroup>
     <ObjcBindingApiDefinition Include="ApiDefinitions.cs" />
   </ItemGroup>
   <ItemGroup>
     <ObjcBindingCoreSource Include="StructsAndEnums.cs" />
-  </ItemGroup> -->
+  </ItemGroup>
 <!-- 
   <ItemGroup>
     <NativeReference Include="..\..\frameworks\AirshipCore.xcframework">

@@ -6,14 +6,14 @@
   <PropertyGroup>
     <!-- Airship native SDK versions -->
     <AirshipAndroidVersion>16.8.1</AirshipAndroidVersion>
-    <AirshipAndroidNugetVersion>16.8.1.2</AirshipAndroidNugetVersion>
+    <AirshipAndroidNugetVersion>16.8.1.4</AirshipAndroidNugetVersion>
 
     <AirshipIosVersion>16.11.1</AirshipIosVersion>
-    <AirshipIosNugetVersion>16.11.1.2</AirshipIosNugetVersion>
+    <AirshipIosNugetVersion>16.11.1.4</AirshipIosNugetVersion>
 
     <!-- Airship.Net version -->
     <AirshipCrossPlatformVersion>18.0.0</AirshipCrossPlatformVersion>
-    <AirshipCrossPlatformNugetVersion>18.0.0.2</AirshipCrossPlatformNugetVersion>
+    <AirshipCrossPlatformNugetVersion>18.0.0.4</AirshipCrossPlatformNugetVersion>
   </PropertyGroup>
 
   <!-- Nuget packaging metadata -->

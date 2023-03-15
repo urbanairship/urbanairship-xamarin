@@ -6,11 +6,12 @@
   </PropertyGroup>
 
   <ItemGroup Condition="('$(OutputType)' != 'Library' OR '$(IsAppExtension)' == 'True') AND ('$(TargetFrameworks)' == '' AND '$(TargetFramework)' == '')">
-    <_NativeReference Include="$(MSBuildThisFileDirectory)..\lib\xamarinios10\AirshipBasement.iOS.resources\AirshipBasement.xcframework">
+    <_NativeReference Include="$(MSBuildThisFileDirectory)..\lib\xamarinios10\airship.ios.basement.resources\AirshipBasement.xcframework">
         <_Id>$(_AirshipBasementId)</_Id>
     </_NativeReference>
   </ItemGroup>
-  <Target Name="_ResolveNativeReferencesForAirshipBasementBinding" 
+
+  <Target Name="_ResolveNativeReferencesForAirshipBasementBinding"
           BeforeTargets="ResolveNativeReferences"
           Condition="('$(TargetFrameworks)' == '' AND '$(TargetFramework)' == '') OR '$(IsBindingProject)' == 'true'">
     <ItemGroup>
@@ -25,4 +26,3 @@
   </Target>
 
 </Project>
-

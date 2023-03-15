@@ -72,7 +72,7 @@
     <Compile Remove="StructsAndEnums.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ObjcBindingCoreSource Include="StructsAndEnums.cs" Condition=" '$(EnableDefaultCompileItems)' == 'true'" />
-    <ObjcBindingApiDefinition Include="ApiDefinitions.cs" Condition=" '$(EnableDefaultCompileItems)' == 'true'" />
+    <ObjcBindingCoreSource Include="StructsAndEnums.cs" /> <!-- Condition=" '$(EnableDefaultCompileItems)' == 'true'" /> -->
+    <ObjcBindingApiDefinition Include="ApiDefinitions.cs" /> <!-- Condition=" '$(EnableDefaultCompileItems)' == 'true'" /> -->
   </ItemGroup>
 </Project>
