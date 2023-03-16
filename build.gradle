@@ -216,7 +216,7 @@ class PublishTask extends DefaultTask {
     @Optional
     File nupkgDir = getProject().buildDir
 
-    @InputFile
+    @Input
     @Optional
     File nugetExec = getProject().nugetExe
 
