@@ -1,33 +1,19 @@
-# Airship .NET
+# AirshipBindings .NET Standard Library
 
-The Airship .NET SDK exposes a common subset of functionality between
-the iOS and Android SDKs. This library is built against .NET 6.0, and can be used
-within shared codebases (e.g., a MAUI app).
+The AirshipBindings .NET Standard library exposes a common subset of functionality between
+the iOS and Android SDKs. This library is built against .NET 2.0, and can be used
+within shared codebases (e.g., a Xamarin Forms app).
 
-## Compatibility
+## Requirements
+ - Xamarin.iOS and Xamarin.Android
+ - NetStandard 2.0 requires a minimum of Xamarin.iOS 10.14 and Xamarin.Android 8.0, respectively
 
-The Airship .NET SDK targets the following platforms:
-- `net6.0`
-- `net6.0-android`
-- `net6.0-ios`
-
-The Airship .NET SDK is compatible with:
-- Android 5.0 (API 21) or higher.
-- iOS 13 or higher, using the latest supported release of Xcode.
-
-## Resources
-- [Getting started guide](https://docs.airship.com/platform/mobile/setup/sdk/xamarin/)
-- [Mobile platform documentation](https://docs.airship.com/platform/mobile/)
+## Resources:
+ - [Getting started guide](http://docs.urbanairship.com/platform/xamarin.html)
 
 ## Setup
+Use NuGet to install the airship.netstandard package.
+Detailed instructions can be found in the [Getting started guide](http://docs.urbanairship.com/platform/xamarin.html#installation).
 
-Use NuGet to install the `airship.net` package.
-
-### Optional Feature Packages
-
-* `airship.net.messagecenter` - Provides a cross-platform control that can be used to display Message Center messages.
-
-Detailed instructions can be found in the [Getting started guide](https://docs.airship.com/platform/mobile/setup/sdk/xamarin/).
-
-A cross-platform sample app is provided in the `MauiSample` directory on
-[Github](https://github.com/urbanairship/urbanairship-xamarin/tree/main/MauiSample).
+A cross-platform sample app is provided in the `SampleApp` directory on
+[Github](https://github.com/urbanairship/urbanairship-xamarin/tree/main/SampleApp).

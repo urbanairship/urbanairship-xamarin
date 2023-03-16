@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="GradleSettings">
+    <option name="linkedExternalProjectsSettings">
+      <GradleProjectSettings>
+        <option name="testRunner" value="GRADLE" />
+        <option name="distributionType" value="DEFAULT_WRAPPED" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="gradleHome" value="/usr/local/Cellar/gradle/6.2.1/libexec" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/SampleApp" />
+            <option value="$PROJECT_DIR$/SampleApp/SampleApp.Android" />
+            <option value="$PROJECT_DIR$/SampleApp/SampleApp.iOS" />
+            <option value="$PROJECT_DIR$/docs" />
+            <option value="$PROJECT_DIR$/src" />
+            <option value="$PROJECT_DIR$/src/AirshipBindings.Android.ADM" />
+            <option value="$PROJECT_DIR$/src/AirshipBindings.Android.Accengage" />
+            <option value="$PROJECT_DIR$/src/AirshipBindings.Android.Automation" />
+            <option value="$PROJECT_DIR$/src/AirshipBindings.Android.Chat" />
+            <option value="$PROJECT_DIR$/src/AirshipBindings.Android.Core" />
+            <option value="$PROJECT_DIR$/src/AirshipBindings.Android.FCM" />
+            <option value="$PROJECT_DIR$/src/AirshipBindings.Android.Location" />
+            <option value="$PROJECT_DIR$/src/AirshipBindings.Android.MessageCenter" />
+            <option value="$PROJECT_DIR$/src/AirshipBindings.Android.Preference" />
+            <option value="$PROJECT_DIR$/src/AirshipBindings.Android.PreferenceCenter" />
+            <option value="$PROJECT_DIR$/src/AirshipBindings.NETStandard" />
+            <option value="$PROJECT_DIR$/src/AirshipBindings.iOS.Accengage" />
+            <option value="$PROJECT_DIR$/src/AirshipBindings.iOS.Automation" />
+            <option value="$PROJECT_DIR$/src/AirshipBindings.iOS.Basement" />
+            <option value="$PROJECT_DIR$/src/AirshipBindings.iOS.Chat" />
+            <option value="$PROJECT_DIR$/src/AirshipBindings.iOS.Core" />
+            <option value="$PROJECT_DIR$/src/AirshipBindings.iOS.ExtendedActions" />
+            <option value="$PROJECT_DIR$/src/AirshipBindings.iOS.Location" />
+            <option value="$PROJECT_DIR$/src/AirshipBindings.iOS.MessageCenter" />
+            <option value="$PROJECT_DIR$/src/AirshipBindings.iOS.NotificationContentExtension" />
+            <option value="$PROJECT_DIR$/src/AirshipBindings.iOS.NotificationServiceExtension" />
+            <option value="$PROJECT_DIR$/src/AirshipBindings.iOS.PreferenceCenter" />
+            <option value="$PROJECT_DIR$/src/AirshipBindings.iOS.common" />
+            <option value="$PROJECT_DIR$/src/SharedAssemblyInfo.Android.cs" />
+            <option value="$PROJECT_DIR$/src/SharedAssemblyInfo.CrossPlatform.cs" />
+            <option value="$PROJECT_DIR$/src/SharedAssemblyInfo.iOS.cs" />
+          </set>
+        </option>
+        <option name="resolveModulePerSourceSet" value="false" />
+      </GradleProjectSettings>
+    </option>
+  </component>
+</project>

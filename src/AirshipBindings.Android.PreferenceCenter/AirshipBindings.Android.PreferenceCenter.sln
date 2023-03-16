@@ -1,0 +1,23 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirshipBindings.Android.PreferenceCenter", "AirshipBindings.Android.PreferenceCenter.csproj", "{5D5C8FF3-09AF-4BB4-8953-C1F3856AAD47}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirshipBindings.Android.Core", "..\AirshipBindings.Android.Core\AirshipBindings.Android.Core.csproj", "{98DC9E01-745C-4CEA-93A9-6546B349B8EE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5D5C8FF3-09AF-4BB4-8953-C1F3856AAD47}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D5C8FF3-09AF-4BB4-8953-C1F3856AAD47}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D5C8FF3-09AF-4BB4-8953-C1F3856AAD47}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D5C8FF3-09AF-4BB4-8953-C1F3856AAD47}.Release|Any CPU.Build.0 = Release|Any CPU
+		{98DC9E01-745C-4CEA-93A9-6546B349B8EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{98DC9E01-745C-4CEA-93A9-6546B349B8EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{98DC9E01-745C-4CEA-93A9-6546B349B8EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{98DC9E01-745C-4CEA-93A9-6546B349B8EE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

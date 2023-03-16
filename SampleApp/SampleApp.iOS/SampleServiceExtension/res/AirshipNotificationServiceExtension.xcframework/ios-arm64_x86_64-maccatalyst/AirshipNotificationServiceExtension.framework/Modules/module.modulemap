@@ -1,0 +1,6 @@
+framework module AirshipNotificationServiceExtension {
+  umbrella header "AirshipNotificationServiceExtension.h"
+
+  export *
+  module * { export * }
+}

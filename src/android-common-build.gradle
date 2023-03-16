@@ -1,0 +1,47 @@
+def updateCsproj(xamarinModuleName, androidSdkModuleName) {
+    def csprojFile = "$projectDir/${xamarinModuleName}.csproj"
+
+    def fileName = ""
+    new File("$projectDir/Jars").eachFileRecurse {
+        fileName += it.name
+    }
+
+    ant.replaceregexp(file: csprojFile, match: "${androidSdkModuleName}-.*aar", replace: fileName)
+}
+
+task syncVersionAndroid  {
+    doLast() {
+        def filename = "${androidSdkModuleName}-${airshipProperties.androidVersion}.aar"
+        def jarDirectory = new File("$projectDir/Jars")
+        if ( jarDirectory.exists() ) {
+            // Remove aar files that aren't the correct version
+            project.delete fileTree("$projectDir/Jars") {
+                include '*.aar'
+                exclude filename
+            }
+        } else {
+            // create Jars directory
+            jarDirectory.mkdirs()
+        }
+        def path = new File("$projectDir/Jars/$filename")
+        if ( !path.exists() ) {
+           // Download aar
+            def url = new URL("https://repo1.maven.org/maven2/com/urbanairship/android/${androidSdkModuleName}/${airshipProperties.androidVersion}/$filename")
+            HttpURLConnection huc = (HttpURLConnection) url.openConnection()
+            huc.setRequestMethod("GET")
+            huc.connect();
+            if (huc.getResponseCode() / 100 != 2) {
+                println("Issue downloading version ${airshipProperties.androidVersion}. Maintaining previous version.")
+            } else {
+                url.withInputStream{
+                    i -> path.withOutputStream{ it << i }
+                }
+                // Edit the csproj file to reflect this version
+                updateCsproj(xamarinModuleName, androidSdkModuleName)
+            }
+        } else {
+            // Edit the csproj file to reflect this version
+            updateCsproj(xamarinModuleName, androidSdkModuleName)
+        }
+    }
+}

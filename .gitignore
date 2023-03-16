@@ -162,7 +162,6 @@ ClientBin/
 *.dbproj.schemaview
 *.pfx
 *.publishsettings
-*.swp
 node_modules/
 bower_components/
 
@@ -205,7 +204,7 @@ FakesAssemblies/
 .tools
 
 # Xamarin.Android Resource.Designer.cs file
-Resource.designer.cs
+Resources/Resource.designer.cs
 
 # Carthage
 Carthage/
@@ -221,25 +220,19 @@ docs/doxygen.tag
 local-nuget-feed/
 
 # UA native jars
-src/AirshipBindings.Android.*/Jars/urbanairship*.aar
+src/AirshipBindings.Android.*/Jars/urbanairship*.arr
 
 # Google Services (e.g. APIs or Firebase)
-google-services.json
+#SampleApp/SampleApp.Android/Assets/google-services.json
+
+# Airship
+#airship.properties
 
 # iOS AirshipConfig
-AirshipConfig.plist
+SampleApp/SampleApp.iOS/AirshipConfig.plist
 
 # Android airshipconfig
-airshipconfig.properties
+SampleApp/SampleApp.Android/Assets/airshipconfig.properties
 
 # Xamboni
 src/xamboni/
-
-# Binderator
-binderator/tools
-binderator/generated
-binderator/externals
-binderator/output
-
-# Idea folder
-.idea

@@ -77,15 +77,6 @@ task processIOSSDK {
             standardOutput new FileOutputStream(skParse)
         }
 
-        try {
-            exec {
-                executable "which"
-                args "dotnet"
-            }
-        } catch(Exception e) {
-            throw new GradleException("ERROR: You must have dotnet cli installed!")
-        }
-
         processIOSSDK.ext.skParse = skParse
     }
 }
