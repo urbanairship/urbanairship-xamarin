@@ -1,13 +1,13 @@
 # Airship .Net Library
 
-This library provides official bindings to the Airship SDK, as well as a [cross-platform sample application](MauiSample).
+This library provides official bindings to the Airship SDK, as well as a [cross-platform sample application](SampleApp).
 
 ## Resources
 
-- [Platform Documentation](https://docs.airship.com/platform/mobile/)
-- [Getting Started](https://docs.airship.com/platform/mobile/setup/sdk/maui/)
+- [Platform Documentation](http://docs.urbanairship.com/platform/xamarin.html)
+- [Getting Started](GettingStarted.md)
 - [CHANGELOG](CHANGELOG.md)
-- [Cross-platform sample application](MauiSample)
+- [Cross-platform sample application](SampleApp)
 
 ### Building
 
