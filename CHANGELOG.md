@@ -1,5 +1,25 @@
 # Airship Xamarin Changelog
 
+## Version 17.0.1 - March 17, 2023
+Minor release that fixes compatibility issues with v17.0.0. Maui support has been moved to a separate [repository](https://github.com/urbanairship/airship-dotnet) and artifacts under the `Airship.Net.*` package ID.
+
+### Changes
+- Updated iOS SDK to 16.11.2
+- Updated Android SDK to 16.9.0
+- Restored binding library compatibility with Xamarin projects.
+
+## Version 17.0.0 - February 28, 2023
+This version contained native bindings incompatible with Xamarin projects.
+Apps upgrading from previous versions should update to the 17.0.1 release or later.
+
+## Version 16.3.1 - March 2, 2023
+Minor release that updates to the latest Airship SDKs. The iOS SDK update fixes an issue with the Preference Center on iOS.
+
+### Changes
+- Updated iOS SDK to 16.11.1
+- Updated Android SDK to 16.8.1
+- Fix a binding issue with preference center on iOS.
+
 ## Version 16.3.0 - December 23, 2022
 Minor release to support iOS SDK 16.10.6 and Android SDK 16.8.0 and fix an issue with the Message Center NativeBridge on iOS.
 

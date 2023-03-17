@@ -12,6 +12,11 @@ using UrbanAirship.NETStandard;
 
 namespace SampleApp
 {
+    public interface IBackgroundDependency
+    {
+        void OpenAirshipPreferenceCenter();
+    }
+
     public partial class HomeViewController : ContentPage
     {
         public HomeViewController()
@@ -44,6 +49,11 @@ namespace SampleApp
                 CrossClipboard.Current.SetText(Airship.Instance.ChannelId);
                 DisplayAlert(AppResources.alert_title, AppResources.alert_copied_channel_id, AppResources.ok);
             }
+        }
+
+        void PreferenceCenterBtnClicked(object sender, EventArgs e)
+        {
+            DependencyService.Get<IBackgroundDependency>().OpenAirshipPreferenceCenter();
         }
 
         void MessageCenterBtnClicked(object sender, EventArgs e)
