@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+   <metadata>
+      <id>airship.android.chat</id>
+      <version>16.8.0</version>
+      <title>Airship Android SDK</title>
+      <authors>Airship, Inc.</authors>
+      <projectUrl>https://github.com/urbanairship/urbanairship-xamarin</projectUrl>
+      <requireLicenseAcceptance>false</requireLicenseAcceptance>
+      <description>A full suite of mobile engagement tools for building next-generation apps</description>
+
+      <dependencies>
+         <group targetFramework="MonoAndroid4.1">
+            <dependency id="airship.android.core" version="16.8.0"/>
+            <dependency id="Xamarin.Kotlin.StdLib" version="1.5.31.2" />
+            <dependency id="Xamarin.Kotlin.StdLib.Jdk8" version="1.5.31.2" />
+            <dependency id="Xamarin.KotlinX.Coroutines.Core" version="1.5.2.2" />
+            <dependency id="Xamarin.KotlinX.Coroutines.Android" version="1.5.2.2" />
+            <dependency id="Xamarin.AndroidX.ConstraintLayout" version="2.1.1.2" />
+            <dependency id="Xamarin.AndroidX.Paging.Runtime" version="2.1.2.7" />
+            <dependency id="Xamarin.AndroidX.Room.Runtime" version="2.4.3"/>
+            <dependency id="Xamarin.AndroidX.Work.Runtime" version="2.7.0"/>
+            <dependency id="Xamarin.AndroidX.AppCompat" version="1.3.1.3" />
+            <dependency id="Xamarin.Google.Android.Material" version="1.4.0.4" />
+            <dependency id="Square.OkHttp3" version="4.9.2"/>
+         </group>
+      </dependencies>
+   </metadata>
+
+   <files>
+     <file src="src/AirshipBindings.Android.Chat/bin/release/AirshipBindings.Android.Chat.dll" target="lib/MonoAndroid41" />
+   </files>
+</package>

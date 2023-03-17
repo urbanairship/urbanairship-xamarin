@@ -1,0 +1,32 @@
+ext {
+    xamarinModuleName = "AirshipBindings.Android.Core"
+    androidSdkModuleName = "urbanairship-core"
+}
+
+apply from: "../android-common-build.gradle"
+
+task syncVersion dependsOn syncVersionAndroid
+
+task clean {
+    doLast() {
+        project.delete "bin"
+        project.delete "obj"
+        project.delete "$buildDir"
+        project.delete "Jars"
+    }
+}
+
+task build {
+    def BuildConfiguration=project.properties['build_configuration'] ?: "Release"
+    doLast() {
+        exec {
+            commandLine "mono", "$nugetExe", "restore", "AirshipBindings.Android.Core.sln"
+        }
+
+        exec {
+            commandLine "${msbuild}", "/t:build", "/p:Configuration=${BuildConfiguration}", "AirshipBindings.Android.Core.sln"
+        }
+    }
+}
+
+build.dependsOn('syncVersion')

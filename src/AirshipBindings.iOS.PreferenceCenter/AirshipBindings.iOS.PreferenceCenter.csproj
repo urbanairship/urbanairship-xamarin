@@ -1,25 +1,19 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <NoBindingEmbedding>true</NoBindingEmbedding>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectTypeGuids>{8FFB629D-F513-41CE-95D2-7ECE97B6EEEC};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <ProjectGuid>{13E9ACF2-4FE5-4FA6-96C4-BDFB6FF7C3A0}</ProjectGuid>
+    <TemplateGuid>{b6f3ff35-79b2-4f25-a2fc-60a7cf61013b}</TemplateGuid>
     <OutputType>Library</OutputType>
     <RootNamespace>AirshipBindings.iOS.PreferenceCenter</RootNamespace>
-    <AssemblyName>airship.ios.preferencecenter</AssemblyName>
-    <AssemblyTitle>Airship iOS SDK - Preference Center</AssemblyTitle>
-    <Description>Preference Center support for Airship SDK</Description>
-    <TargetFramework>net6.0-ios</TargetFramework>
-    <DisableExtraReferences>true</DisableExtraReferences>
-    <Nullable>enable</Nullable>
-    <ImplicitUsings>true</ImplicitUsings>
-    <IsTrimmable>true</IsTrimmable>
-    <AssemblyVersion>$(AirshipIosVersion)</AssemblyVersion>
-    <PackageVersion>$(AirshipIosNugetVersion)</PackageVersion>
-    <SupportedOSPlatformVersion>13.0</SupportedOSPlatformVersion>
-    <IsBindingProject>true</IsBindingProject>
+    <AssemblyName>AirshipBindings.iOS.PreferenceCenter</AssemblyName>
+    <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
   </PropertyGroup>
-
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
@@ -31,7 +25,6 @@
     <ConsolePause>false</ConsolePause>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
-
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>full</DebugType>
     <Optimize>true</Optimize>
@@ -41,23 +34,43 @@
     <ConsolePause>false</ConsolePause>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
-
+  <ItemGroup>
+    <None Include="urbanairship.ios.preferencecenter.targets">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="Xamarin.iOS" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="..\SharedAssemblyInfo.iOS.cs">
+      <Link>Properties\SharedAssemblyInfo.iOS.cs</Link>
+    </Compile>
+    <Compile Include="AirshipPreferenceCenter.cs" />
+  </ItemGroup>
   <ItemGroup>
     <ObjcBindingApiDefinition Include="ApiDefinitions.cs" />
+  </ItemGroup>
+  <ItemGroup>
     <ObjcBindingCoreSource Include="StructsAndEnums.cs" />
   </ItemGroup>
-
   <ItemGroup>
     <NativeReference Include="..\..\frameworks\AirshipPreferenceCenter.xcframework">
       <Kind>Framework</Kind>
       <SmartLink>False</SmartLink>
     </NativeReference>
   </ItemGroup>
-
   <ItemGroup>
     <ProjectReference Include="..\AirshipBindings.iOS.Core\AirshipBindings.iOS.Core.csproj">
+      <Project>{7F49C0FA-F958-44CF-9246-8B8577748E6F}</Project>
+      <Name>AirshipBindings.iOS.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\AirshipBindings.iOS.Basement\AirshipBindings.iOS.Basement.csproj">
+      <Project>{5E85A7FD-8C42-4DE6-B002-E3CC2DA529C7}</Project>
+      <Name>AirshipBindings.iOS.Basement</Name>
     </ProjectReference>
   </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.ObjCBinding.CSharp.targets" />
 </Project>

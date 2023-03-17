@@ -1,4 +1,0 @@
-﻿<metadata>
-    <remove-node path="/api/package[starts-with(@name, 'com.urbanairship.android.layout')]" />
-</metadata>
-

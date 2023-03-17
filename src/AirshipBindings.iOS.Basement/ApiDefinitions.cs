@@ -70,7 +70,7 @@ namespace UrbanAirship {
         void DidPerform (UAActionArguments arguments, UAActionResult result);
     }
 
-    partial interface IUAAction { }
+    interface IUAAction { }
 
     // @interface UAActionArguments : NSObject
     [BaseType(typeof(NSObject))]
@@ -110,7 +110,7 @@ namespace UrbanAirship {
         bool ApplyActionArguments (UAActionArguments args);
     }
 
-    partial interface IUAActionPredicateProtocol { }
+    interface IUAActionPredicateProtocol { }
 
     // @interface UAActionResult : NSObject
     [BaseType(typeof(NSObject))]
@@ -178,7 +178,7 @@ namespace UrbanAirship {
         bool DeepLink (NSUrl deepLink);
     }
 
-    partial interface IUAComponent { }
+    interface IUAComponent { }
 
     // @interface UADisposable : NSObject
     [BaseType(typeof(NSObject))]
@@ -204,7 +204,7 @@ namespace UrbanAirship {
         bool IsValid ();
     }
 
-    partial interface IUAEvent { }
+    interface IUAEvent { }
 
     // @interface UAJavaScriptCommand : NSObject
     [BaseType(typeof(NSObject))]
@@ -247,7 +247,7 @@ namespace UrbanAirship {
         bool PerformCommand (UAJavaScriptCommand command, WKWebView webView);
     }
 
-    partial interface IUAJavaScriptCommandDelegate { }
+    interface IUAJavaScriptCommandDelegate { }
 
     // @protocol UAJavaScriptEnvironmentProtocol <NSObject> /** * Adds a getter to the `UAirship` JavaScript instance. * @param methodName The getter's name. * @param value The getter's value. */ - (void)addStringGetter:(NSString *)methodName value:(nullable NSString *)value NS_SWIFT_NAME(add(_:string:)); /** * Adds a getter to the `UAirship` JavaScript instance. * @param methodName The getter's name. * @param value The getter's value. A nil value will return `-1` in the JavaScript environment. */ - (void)addNumberGetter:(NSString *)methodName value:(nullable NSNumber *)value NS_SWIFT_NAME(add(_:number:)); /** * Adds a getter to the `UAirship` JavaScript instance. * @param methodName The getter's name. * @param value The getter's value. */ - (void)addDictionaryGetter:(NSString *)methodName value:(nullable NSDictionary *)value NS_SWIFT_NAME(add(_:dictionary:)); /** * Builds the script that can be injected into a web view. * @return The script. */ - (NSString *)build; @end
     [Protocol, Model]
@@ -275,7 +275,7 @@ namespace UrbanAirship {
         string Build ();
     }
 
-    partial interface IUAJavaScriptEnvironmentProtocol { }
+    interface IUAJavaScriptEnvironmentProtocol { }
 
     // @protocol UANativeBridgeExtensionDelegate <NSObject>
     [Protocol, Model]
@@ -291,7 +291,7 @@ namespace UrbanAirship {
         void ExtendJavaScriptEnvironment(IUAJavaScriptEnvironmentProtocol js, WKWebView webView);
     }
 
-    partial interface IUANativeBridgeExtensionDelegate { }
+    interface IUANativeBridgeExtensionDelegate { }
 
     // @interface UAPadding : NSObject
     [BaseType(typeof(NSObject))]

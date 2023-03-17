@@ -4,4 +4,4 @@
 
 using System.Reflection;
 
-//[assembly: AssemblyTitle("AirshipBindings.iOS.Automation")]
+[assembly: AssemblyTitle("AirshipBindings.iOS.Automation")]

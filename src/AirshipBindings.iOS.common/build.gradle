@@ -7,8 +7,6 @@ task clean(type: Delete) {
         project.delete fileTree("$rootDir/frameworks/")
         project.delete "$rootDir/Carthage"
         project.delete "$rootDir/Cartfile.resolved"
-        project.delete fileTree("$rootDir/src/bin")
-        project.delete fileTree("$rootDir/src/obj")
     }
 }
 
@@ -59,22 +57,5 @@ task carthageCheckout {
 }
 
 task build {
-  dependsOn 'downloadFrameworks'
-
-  def BuildConfiguration=project.properties['build_configuration'] ?: "Release"
-  doLast() {
-    exec {
-      commandLine "dotnet", "build", "--configuration=${BuildConfiguration}", "dirs.proj"
-    }
-  }
-}
-
-task pack {
-  mustRunAfter 'build'
-
-  doLast() {
-    exec {
-      commandLine "dotnet", "pack", "dirs.proj", "-o=${rootProject.buildDir}"
-    }
-  }
+    dependsOn 'downloadFrameworks'
 }

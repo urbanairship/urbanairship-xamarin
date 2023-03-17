@@ -1,0 +1,33 @@
+ext {
+    xamarinModuleName = "AirshipBindings.Android.MessageCenter"
+    androidSdkModuleName = "urbanairship-message-center"
+}
+
+apply from: "../android-common-build.gradle"
+
+task syncVersion dependsOn syncVersionAndroid
+
+task clean {
+    doLast() {
+        project.delete "bin"
+        project.delete "obj"
+        project.delete "$buildDir"
+        project.delete "Jars"
+    }
+}
+
+task build {
+    def BuildConfiguration=project.properties['build_configuration'] ?: "Release"
+    doLast() {
+        exec {
+            commandLine "mono", "$nugetExe", "restore", "AirshipBindings.Android.MessageCenter.sln"
+        }
+
+        exec {
+            commandLine "${msbuild}", "/t:build", "/p:Configuration=${BuildConfiguration}", "AirshipBindings.Android.MessageCenter.sln"
+        }
+    }
+}
+
+build.dependsOn('syncVersion',
+    ':src:AirshipBindings.Android.Core:build')
