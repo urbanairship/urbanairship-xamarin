@@ -1,7 +1,16 @@
 # Airship Xamarin Changelog
 
+## Version 17.0.2 - March 29, 2023
+Patch release that fixes Contact update merging order, improves Scene/Survey accessibility and reporting.
+
+### Changes
+- Updated iOS SDK to 16.11.3
+- Updated Android SDK to 16.9.1
+- Fixed Contact update merge order, resolving a Preference Center bug that could lead to unexpected subscription states in some circumstances.
+- Improved Scene/Survey accessibility and fixed a reporting bug related to form display events.
+
 ## Version 17.0.1 - March 17, 2023
-Minor release that fixes compatibility issues with v17.0.0. Maui support has been moved to a separate [repository](https://github.com/urbanairship/airship-dotnet) and artifacts under the `Airship.Net.*` package ID.
+Patch release that fixes compatibility issues with v17.0.0. Maui support has been moved to a separate [repository](https://github.com/urbanairship/airship-dotnet) and artifacts under the `Airship.Net.*` package ID.
 
 ### Changes
 - Updated iOS SDK to 16.11.2
@@ -13,7 +22,7 @@ This version contained native bindings incompatible with Xamarin projects.
 Apps upgrading from previous versions should update to the 17.0.1 release or later.
 
 ## Version 16.3.1 - March 2, 2023
-Minor release that updates to the latest Airship SDKs. The iOS SDK update fixes an issue with the Preference Center on iOS.
+Patch release that updates to the latest Airship SDKs. The iOS SDK update fixes an issue with the Preference Center on iOS.
 
 ### Changes
 - Updated iOS SDK to 16.11.1
