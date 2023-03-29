@@ -220,7 +220,7 @@ docs/doxygen.tag
 local-nuget-feed/
 
 # UA native jars
-src/AirshipBindings.Android.*/Jars/urbanairship*.arr
+src/**/Jars/
 
 # Google Services (e.g. APIs or Firebase)
 #SampleApp/SampleApp.Android/Assets/google-services.json
