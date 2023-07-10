@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 
 using Xamarin.Forms;
 
@@ -18,10 +17,22 @@ namespace SampleApp
         protected override void OnAppearing()
         {
             var messages = Airship.Instance.InboxMessages;
+
+            Console.WriteLine("Inbox Messages:");
+
+            foreach (Message message in messages)
+            {
+                Console.WriteLine("---");
+                Console.WriteLine(message.Title);
+                Console.WriteLine(message.Unread);
+                Console.WriteLine(message.SentDate);
+            }
+            Console.WriteLine("---");
+
             listView.ItemsSource = messages;
         }
 
-        void listView_ItemSelected(System.Object sender, Xamarin.Forms.SelectedItemChangedEventArgs e)
+        void listView_ItemSelected(Object sender, SelectedItemChangedEventArgs e)
         {
             var message = e.SelectedItem as Message;
             var messagePage = new MessagePage();

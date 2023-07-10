@@ -11,7 +11,7 @@ using System.Reflection;
 // When the attribute is present, the linker—if enabled—will process the assembly
 // even if you’re using the “Link SDK assemblies only” option, which is the default for device builds.
 
-[assembly: LinkerSafe]
+//[assembly: LinkerSafe]
 
 // The assembly version has the format "{Major}.{Minor}.{Build}.{Revision}".
 // The form "{Major}.{Minor}.*" will automatically update the build and revision,

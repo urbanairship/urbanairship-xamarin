@@ -8,11 +8,13 @@ using Xamarin.Forms;
 using SampleApp.iOS;
 
 using UrbanAirship;
+using Foundation;
 
 [assembly: Dependency(typeof(BackgroundDependency_iOS))]
 namespace SampleApp.iOS
 {
-	public class BackgroundDependency_iOS: IBackgroundDependency
+    [Preserve(AllMembers = true)]
+    public class BackgroundDependency_iOS: NSObject, IBackgroundDependency
     {
 		public BackgroundDependency_iOS()
 		{

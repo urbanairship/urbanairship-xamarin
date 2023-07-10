@@ -4,12 +4,14 @@
 
 using System;
 using System.Collections.Generic;
+using AirshipBindings.NETStandard.Abstractions;
 
 namespace UrbanAirship.NETStandard.MessageCenter
 {
     /// <summary>
     /// A Message model object.
     /// </summary>
+    [Preserve(AllMembers = true)]
     public partial class Message
     {
         /// <summary>

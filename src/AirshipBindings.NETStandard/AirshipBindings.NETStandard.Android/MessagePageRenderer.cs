@@ -12,6 +12,7 @@ using UrbanAirship.NETStandard.MessageCenter;
 
 namespace UrbanAirship.NETStandard.Android
 {
+    [Preserve(AllMembers = true)]
     public class MessagePageRenderer : PageRenderer, Inbox.IFetchMessagesCallback
     {
         private class WebViewClient : MessageWebViewClient
