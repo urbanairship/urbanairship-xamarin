@@ -1,6 +1,6 @@
 # Airship Xamarin Changelog
 
-## Version 17.1.0 - June 29, 2023
+## Version 17.1.0 - July 10, 2023
 Minor release that updates to the latest Airship SDKs. Apps that make use of Message Center, Preference Center, and Scenes/Surveys should update to this version.
 
 ### Changes
