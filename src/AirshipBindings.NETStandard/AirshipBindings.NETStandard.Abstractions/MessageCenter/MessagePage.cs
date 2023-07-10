@@ -3,7 +3,7 @@
 */
 
 using System;
-
+using AirshipBindings.NETStandard.Abstractions;
 using Xamarin.Forms;
 
 namespace UrbanAirship.NETStandard.MessageCenter
@@ -11,6 +11,7 @@ namespace UrbanAirship.NETStandard.MessageCenter
     /// <summary>
     /// ContentPage used for displaying Message Center Messages.
     /// </summary>
+    [Preserve(AllMembers = true)]
     public partial class MessagePage : ContentPage
     {
         private string messageId;
@@ -83,6 +84,7 @@ namespace UrbanAirship.NETStandard.MessageCenter
     /// <summary>
     /// Event handler invoked when the message is closed.
     /// </summary>
+    [Preserve(AllMembers = true)]
     public enum MessageFailureStatus
     {
         /// <summary>
@@ -104,6 +106,7 @@ namespace UrbanAirship.NETStandard.MessageCenter
     /// <summary>
     /// Arguments for the LoadStarted event.
     /// </summary>
+    [Preserve(AllMembers = true)]
     public class MessageLoadStartedEventArgs : EventArgs
     {
         /// <summary>
@@ -123,6 +126,7 @@ namespace UrbanAirship.NETStandard.MessageCenter
     /// <summary>
     /// Arguments for the LoadFailed event.
     /// </summary>
+    [Preserve(AllMembers = true)]
     public class MessageLoadFailedEventArgs : EventArgs
     {
         /// <summary>
@@ -156,6 +160,7 @@ namespace UrbanAirship.NETStandard.MessageCenter
     /// <summary>
     /// Arguments for the Loaded event.
     /// </summary>
+    [Preserve(AllMembers = true)]
     public class MessageLoadedEventArgs : EventArgs
     {
         /// <summary>
@@ -175,6 +180,7 @@ namespace UrbanAirship.NETStandard.MessageCenter
     /// <summary>
     /// Arguments for the Closed event.
     /// </summary>
+    [Preserve(AllMembers = true)]
     public class MessageClosedEventArgs : EventArgs
     {
         /// <summary>

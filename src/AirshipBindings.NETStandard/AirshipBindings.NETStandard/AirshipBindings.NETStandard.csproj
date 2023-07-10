@@ -6,6 +6,7 @@
 
   <PropertyGroup>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <IsTrimmable>false</IsTrimmable>
   </PropertyGroup> 
   
   <ItemGroup>

@@ -1,5 +1,19 @@
 # Airship Xamarin Changelog
 
+## Version 17.1.0 - June 29, 2023
+Minor release that updates to the latest Airship SDKs. Apps that make use of Message Center, Preference Center, and Scenes/Surveys should update to this version.
+
+### Changes
+- Updated iOS SDK to 16.12.2
+- Updated Android SDK to 16.11.1
+- Added a new config option, `autoPauseInAppAutomationOnLaunch` (default: `false`), to pause IAA during app init and allow it to be enabled later.
+- Deeplinks that use the `uairship://` scheme but are not handled by Airship directly will now be delivered to the DeepLink delegate or listener.
+- Fixed a channel registration issue on iOS that could lead to registration updates not being synced with Airship until the next foreground if the channel's metadata changes while an update task is in flight.
+- Fixed an Android bug in Preference Center that could cause locally cached subscription list state to become incorrect when switching named users.
+- Fixed an Android Preference Center contact subscription chips to avoid duplicated views when scrolling a long Preference Center.
+- Fixed handling of `sms:`, `tel:` and `mailto:` links in Android Message Center, when using custom HTML and `<a>` tags.
+- Fixed an Android issue with window resizing in Scenes and Surveys, to prevent the keyboard from covering the input field.
+
 ## Version 17.0.2 - March 29, 2023
 Patch release that fixes Contact update merging order, improves Scene/Survey accessibility and reporting.
 

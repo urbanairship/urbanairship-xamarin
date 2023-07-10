@@ -13,6 +13,7 @@ using Xamarin.Forms.Platform.iOS;
 
 namespace UrbanAirship.NETStandard.iOS
 {
+    [Preserve(AllMembers = true)]
     public class MessagePageRenderer : PageRenderer, IUANavigationDelegate, IUANativeBridgeDelegate
     {
         private WKWebView webView;
