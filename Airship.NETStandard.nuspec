@@ -16,7 +16,6 @@
             <dependency id="airship.android.core" version="16.11.1"/>
             <dependency id="airship.android.messagecenter" version="16.11.1"/>
             <dependency id="airship.android.automation" version="16.11.1"/>
-            <dependency id="airship.android.location" version="16.11.1"/>
          </group>
 
          <group targetFramework="Xamarin.iOS1.0">
