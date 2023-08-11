@@ -146,10 +146,6 @@ namespace UrbanAirship.NETStandard
             {
                 uAFeatures.Add(PrivacyManager.FeaturePush);
             }
-            if (features.HasFlag(Features.Chat))
-            {
-                uAFeatures.Add(PrivacyManager.FeatureChat);
-            }
             if (features.HasFlag(Features.Analytics))
             {
                 uAFeatures.Add(PrivacyManager.FeatureAnalytics);
@@ -161,10 +157,6 @@ namespace UrbanAirship.NETStandard
             if (features.HasFlag(Features.Contacts))
             {
                 uAFeatures.Add(PrivacyManager.FeatureContacts);
-            }
-            if (features.HasFlag(Features.Location))
-            {
-                uAFeatures.Add(PrivacyManager.FeatureLocation);
             }
 
             return uAFeatures.ToArray();
@@ -189,11 +181,6 @@ namespace UrbanAirship.NETStandard
                 features |= Features.Push;
             }
 
-            if ((uAFeatures & PrivacyManager.FeatureChat) == PrivacyManager.FeatureChat)
-            {
-                features |= Features.Chat;
-            }
-
             if ((uAFeatures & PrivacyManager.FeatureAnalytics) == PrivacyManager.FeatureAnalytics)
             {
                 features |= Features.Analytics;
@@ -207,11 +194,6 @@ namespace UrbanAirship.NETStandard
             if ((uAFeatures & PrivacyManager.FeatureContacts) == PrivacyManager.FeatureContacts)
             {
                 features |= Features.Contacts;
-            }
-
-            if ((uAFeatures & PrivacyManager.FeatureLocation) == PrivacyManager.FeatureLocation)
-            {
-                features |= Features.Location;
             }
 
             return features;
@@ -238,12 +220,18 @@ namespace UrbanAirship.NETStandard
         {
             get
             {
-                return UAirship.Shared().NamedUser.Id;
+                return UAirship.Shared().Contact.NamedUserId;
             }
 
             set
             {
-                UAirship.Shared().NamedUser.Id = value;
+                if (value == null)
+                {
+                    UAirship.Shared().Contact.Reset();
+                } else
+                {
+                    UAirship.Shared().Contact.Identify(value);
+                }
             }
         }
 
@@ -264,7 +252,7 @@ namespace UrbanAirship.NETStandard
             editor.AddTags(addTags).RemoveTags(removeTags).Apply();
         }
 
-        public void AddCustomEvent(NETStandard.Analytics.CustomEvent customEvent)
+        public void AddCustomEvent(Analytics.CustomEvent customEvent)
         {
             if (customEvent == null || customEvent.EventName == null)
             {
@@ -425,7 +413,7 @@ namespace UrbanAirship.NETStandard
         {
             return new Channel.TagGroupsEditor((List<Channel.TagGroupsEditor.TagOperation> payload) =>
             {
-                var editor = UAirship.Shared().NamedUser.EditTagGroups();
+                var editor = UAirship.Shared().Contact.EditTagGroups();
                 TagGroupHelper(payload, editor);
                 editor.Apply();
             });
@@ -456,11 +444,12 @@ namespace UrbanAirship.NETStandard
             });
         }
 
+        /// <summary>
         public AttributeEditor EditNamedUserAttributes()
         {
             return new AttributeEditor((List<AttributeEditor.IAttributeOperation> operations) =>
             {
-                var editor = UAirship.Shared().NamedUser.EditAttributes();
+                var editor = UAirship.Shared().Contact.EditAttributes();
                 ApplyAttributesOperations(editor, operations);
                 editor.Apply();
             });
@@ -530,6 +519,7 @@ namespace UrbanAirship.NETStandard
             }
         }
 
+        [Obsolete]
         public bool InAppAutomationEnabled
         {
             get
