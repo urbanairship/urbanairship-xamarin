@@ -11,10 +11,11 @@ using System;
 using UrbanAirship;
 using UrbanAirship.MessageCenter;
 using UrbanAirship.Automation;
+using UrbanAirship.Push;
 
 namespace UrbanAirship.NETStandard
 { 
-    public class Airship : Java.Lang.Object, IDeepLinkListener, IAirship, IInboxListener, MessageCenterClass.IOnShowMessageCenterListener, UrbanAirship.Channel.IAirshipChannelListener
+    public class Airship : Java.Lang.Object, IDeepLinkListener, IAirship, IInboxListener, MessageCenterClass.IOnShowMessageCenterListener, UrbanAirship.Channel.IAirshipChannelListener, IPushNotificationStatusListener
     {
         private static Lazy<Airship> sharedAirship = new Lazy<Airship>(() =>
         {
@@ -31,11 +32,21 @@ namespace UrbanAirship.NETStandard
             MessageCenterClass.Shared().Inbox.AddListener(this);
         }
 
+        /// <summary>
+        /// Add/remove the channel creation listener.
+        /// </summary>
         public event EventHandler<ChannelEventArgs> OnChannelCreation;
 
-        public event EventHandler<ChannelEventArgs> OnChannelUpdate;
+        /// <summary>
+        /// Add/remove the push notification status listener.
+        /// </summary>
+        public event EventHandler<PushNotificationStatusEventArgs> OnPushNotificationStatusUpdate;
 
         private EventHandler<DeepLinkEventArgs> onDeepLinkReceived;
+
+        /// <summary>
+        /// Add/remove the deep link listener.
+        /// </summary>
         public event EventHandler<DeepLinkEventArgs> OnDeepLinkReceived
         {
             add
@@ -55,9 +66,16 @@ namespace UrbanAirship.NETStandard
             }
         }
 
+        /// <summary>
+        /// Add/remove the Message Center updated listener.
+        /// </summary>
         public event EventHandler OnMessageCenterUpdated;
 
         private EventHandler<MessageCenterEventArgs> onMessageCenterDisplay;
+
+        /// <summary>
+        /// Add/remove the Message Center display listener.
+        /// </summary>
         public event EventHandler<MessageCenterEventArgs> OnMessageCenterDisplay
         {
             add
@@ -519,7 +537,6 @@ namespace UrbanAirship.NETStandard
             }
         }
 
-        [Obsolete]
         public bool InAppAutomationEnabled
         {
             get
@@ -591,9 +608,14 @@ namespace UrbanAirship.NETStandard
             OnChannelCreation?.Invoke(this, new ChannelEventArgs(channelId));
         }
 
-        public void OnChannelUpdated(string channelId)
-        {
-            OnChannelUpdate?.Invoke(this, new ChannelEventArgs(channelId));
-        }
+        public void OnChange(PushNotificationStatus status) => OnPushNotificationStatusUpdate?.Invoke(this,
+            new PushNotificationStatusEventArgs(
+                status.IsUserNotificationsEnabled,
+                status.AreNotificationsAllowed,
+                status.IsPushPrivacyFeatureEnabled,
+                status.IsPushTokenRegistered,
+                status.IsUserOptedIn,
+                status.IsOptIn)
+            );
     }
 }

@@ -33,11 +33,7 @@ namespace UrbanAirship.NETStandard
                 OnChannelCreation?.Invoke(this, new ChannelEventArgs(channelID));
             });
 
-            NSNotificationCenter.DefaultCenter.AddObserver(aName: (NSString)UAChannel.ChannelUpdatedEvent, (NSNotification notification) =>
-            {
-                string channelID = notification.UserInfo[UAChannel.ChannelIdentifierKey].ToString();
-                OnChannelUpdate?.Invoke(this, new ChannelEventArgs(channelID));
-            });
+            // TODO(18.0.0): Wire up the push notfication status listener, once the iOS SDK bindings have been bumped to 17.x
 
             //Adding Inbox updated Listener
             NSNotificationCenter.DefaultCenter.AddObserver(aName: (NSString)"com.urbanairship.notification.message_list_updated", (notification) =>
@@ -50,11 +46,21 @@ namespace UrbanAirship.NETStandard
             });
         }
 
+        /// <summary>
+        /// Add/remove the channel creation listener.
+        /// </summary>
         public event EventHandler<ChannelEventArgs> OnChannelCreation;
 
-        public event EventHandler<ChannelEventArgs> OnChannelUpdate;
+        /// <summary>
+        /// Add/remove the push notification status listener.
+        /// </summary>
+        public event EventHandler<PushNotificationStatusEventArgs> OnPushNotificationStatusUpdate;
 
         private EventHandler<DeepLinkEventArgs> onDeepLinkReceived;
+
+        /// <summary>
+        /// Add/remove the deep link listener.
+        /// </summary>
         public event EventHandler<DeepLinkEventArgs> OnDeepLinkReceived
         {
             add
@@ -72,9 +78,17 @@ namespace UrbanAirship.NETStandard
                 }
             }
         }
-        public event EventHandler OnMessageCenterUpdated;
 
+        /// <summary>
+        /// Add/remove the Message Center updated listener.
+        /// </summary>
+        public event EventHandler OnMessageCenterUpdated;
+   
         private EventHandler<MessageCenterEventArgs> onMessageCenterDisplay;
+
+        /// <summary>
+        /// Add/remove the Message Center display listener.
+        /// </summary>
         public event EventHandler<MessageCenterEventArgs> OnMessageCenterDisplay
         {
             add
@@ -162,10 +176,6 @@ namespace UrbanAirship.NETStandard
             {
                 uAFeatures |= UAFeatures.Push;
             }
-            if (features.HasFlag(Features.Chat))
-            {
-                uAFeatures |= UAFeatures.Chat;
-            }
             if (features.HasFlag(Features.Analytics))
             {
                 uAFeatures |= UAFeatures.Analytics;
@@ -177,10 +187,6 @@ namespace UrbanAirship.NETStandard
             if (features.HasFlag(Features.Contacts))
             {
                 uAFeatures |= UAFeatures.Contacts;
-            }
-            if (features.HasFlag(Features.Location))
-            {
-                uAFeatures |= UAFeatures.Location;
             }
 
             return uAFeatures;
@@ -202,10 +208,6 @@ namespace UrbanAirship.NETStandard
             {
                 features |= Features.Push;
             }
-            if (uAFeatures.HasFlag(UAFeatures.Chat))
-            {
-                features |= Features.Chat;
-            }
             if (uAFeatures.HasFlag(UAFeatures.Analytics))
             {
                 features |= Features.Analytics;
@@ -217,10 +219,6 @@ namespace UrbanAirship.NETStandard
             if (uAFeatures.HasFlag(UAFeatures.Contacts))
             {
                 features |= Features.Contacts;
-            }
-            if (uAFeatures.HasFlag(UAFeatures.Location))
-            {
-                features |= Features.Location;
             }
 
             return features;

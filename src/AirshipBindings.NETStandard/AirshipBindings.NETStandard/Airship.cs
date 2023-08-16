@@ -342,10 +342,10 @@ namespace UrbanAirship.NETStandard
         }
 
         /// <summary>
-        /// Add/remove the channel update event listener.
+        /// Add/remote the push notification status listener.
         /// </summary>
-        /// <value>The channel update event listener.</value>
-        public event EventHandler<ChannelEventArgs> OnChannelUpdate
+        /// <value>The push notification status update event listener.</value>
+        public event EventHandler<PushNotificationStatusEventArgs> OnPushNotificationStatusUpdate
         {
             add
             {
