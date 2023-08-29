@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
    <metadata>
       <id>airship.netstandard</id>
-      <version>18.0.0</version>
+      <version>18.1.0</version>
       <title>Airship SDK .NET Standard Library</title>
       <authors>Airship, Inc.</authors>
       <projectUrl>https://github.com/urbanairship/urbanairship-xamarin</projectUrl>
@@ -19,10 +19,9 @@
          </group>
 
          <group targetFramework="Xamarin.iOS1.0">
-            <dependency id="airship.ios.core" version="16.12.2"/>
-            <dependency id="airship.ios.automation" version="16.12.2"/>
-            <dependency id="airship.ios.extendedactions" version="16.12.2"/>
-            <dependency id="airship.ios.messagecenter" version="16.12.2"/>
+            <dependency id="airship.ios.core" version="17.2.0"/>
+            <dependency id="airship.ios.automation" version="17.2.0"/>
+            <dependency id="airship.ios.messagecenter" version="17.2.0"/>
          </group>
       </dependencies>
    </metadata>
