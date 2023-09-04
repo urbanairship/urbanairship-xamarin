@@ -27,6 +27,9 @@ namespace UrbanAirship.NETStandard
         private void Init()
         {
             UAirship.Shared().Channel.AddChannelListener(this);
+
+            //Adding Push notification status listener
+            UAirship.Shared().PushManager.AddNotificationStatusListener(this);
             
             //Adding Inbox updated listener
             MessageCenterClass.Shared().Inbox.AddListener(this);

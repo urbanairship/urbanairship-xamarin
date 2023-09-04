@@ -27,7 +27,16 @@ namespace SampleApp
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            refreshView();
+            Airship.Instance.OnChannelCreation += OnChannelEvent;
+            Airship.Instance.OnPushNotificationStatusUpdate += OnPushNotificationStatusEvent;
+            Refresh();
+        }
+
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+            Airship.Instance.OnChannelCreation -= OnChannelEvent;
+            Airship.Instance.OnPushNotificationStatusUpdate += OnPushNotificationStatusEvent;
         }
 
         void OnButtonClicked(object sender, EventArgs e)
@@ -35,19 +44,10 @@ namespace SampleApp
             if (!Airship.Instance.UserNotificationsEnabled)
             {
                 Airship.Instance.UserNotificationsEnabled = true;
-                //FIXME: Need to be improved
-                do
-                {
-                } while (Airship.Instance.ChannelId == null);
-                refreshView();
-
-                return;
             }
-
-            if (Airship.Instance.ChannelId != null)
+            else if (Airship.Instance.ChannelId != null)
             {
                 CrossClipboard.Current.SetText(Airship.Instance.ChannelId);
-                DisplayAlert(AppResources.alert_title, AppResources.alert_copied_channel_id, AppResources.ok);
             }
         }
 
@@ -61,12 +61,20 @@ namespace SampleApp
             Airship.Instance.DisplayMessageCenter();
         }
 
-        void refreshView()
+        void Refresh()
         {
-            if (Airship.Instance.UserNotificationsEnabled &&  Airship.Instance.ChannelId != null)
+            if (!Airship.Instance.UserNotificationsEnabled)
+            {
+                enablePushButton.Text = AppResources.enable_push;
+            }
+            else if (Airship.Instance.ChannelId != null)
             {
                 enablePushButton.Text = Airship.Instance.ChannelId;
             }
         }
+
+        private void OnChannelEvent(object sender, ChannelEventArgs e) => Refresh();
+        
+        private void OnPushNotificationStatusEvent(object sender, PushNotificationStatusEventArgs e) => Refresh();
     }
 }
