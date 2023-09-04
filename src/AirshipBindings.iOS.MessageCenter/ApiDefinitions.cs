@@ -20,11 +20,11 @@ namespace UrbanAirship {
         [Wrap ("WeakDisplayDelegate")]
         [NullAllowed]
         IUAMessageCenterDisplayDelegate DisplayDelegate { get; set; }
-        
-        // @property (nonatomic, strong) id<UAMessageCenterDisplayDelegate> _Nullable displayDelegate;
-        [NullAllowed, Export ("displayDelegate", ArgumentSemantic.Strong)]
+
+        // @property (nonatomic, weak, readwrite) id<UAMessageCenterDisplayDelegate> _Nullable displayDelegate;
+        [NullAllowed, Export("displayDelegate", ArgumentSemantic.Assign)]
         NSObject WeakDisplayDelegate { get; set; }
-        
+
         // @property (nonatomic, strong) UAMessageCenterInbox * _Nonnull inbox;
         [Export ("inbox", ArgumentSemantic.Strong)]
         UAMessageCenterInbox Inbox { get; set; }
@@ -32,19 +32,19 @@ namespace UrbanAirship {
         // -(void)setThemeFromPlist:(NSString * _Nonnull)plist error:(NSError * _Nonnull)error;
         [Export ("setThemeFromPlist:error:")]
         void SetThemeFromPlist (string plist, NSError error);
-        
-        // @property (readonly, nonatomic, strong, class) UAMessageCenter * _Nonnull shared;
+
+        // @property (class, nonatomic, readonly, null_unspecified) UAMessageCenter *shared;
         [Static]
-        [Export ("shared", ArgumentSemantic.Strong)]
+        [Export("shared")]
         UAMessageCenter Shared { get; }
-        
+
         // -(void)display;
         [Export ("display")]
         void Display ();
         
         // -(void)displayWithMessageID:(NSString * _Nonnull)messageID;
         [Export ("displayWithMessageID:")]
-        void DisplayWithMessageID (string messageID);
+        void DisplayMessage (string messageID);
         
         // -(void)dismiss;
         [Export ("dismiss")]
@@ -69,7 +69,7 @@ namespace UrbanAirship {
         // @required -(void)displayMessageCenterForMessageID:(NSString * _Nonnull)messageID;
         [Abstract]
         [Export ("displayMessageCenterForMessageID:")]
-        void DisplayMessageCenterForMessageID (string messageID);
+        void DisplayMessage(string messageID);
         
         // @required -(void)displayMessageCenter;
         [Abstract]
@@ -91,19 +91,19 @@ namespace UrbanAirship {
     {
         // -(void)getMessagesWithCompletionHandler:(void (^ _Nonnull)(int))completionHandler;
         [Export ("getMessagesWithCompletionHandler:")]
-        void GetMessagesWithCompletionHandler (Action<UAMessageCenterMessage[]> completionHandler);
+        void GetMessages (Action<UAMessageCenterMessage[]> completionHandler);
         
         // -(void)getUserWithCompletionHandler:(void (^ _Nonnull)(UAMessageCenterUser * _Nullable))completionHandler;
         [Export ("getUserWithCompletionHandler:")]
-        void GetUserWithCompletionHandler (Action<UAMessageCenterUser> completionHandler);
+        void GetUser (Action<UAMessageCenterUser> completionHandler);
         
         // -(void)getUnreadCountWithCompletionHandler:(id)completionHandler;
         [Export ("getUnreadCountWithCompletionHandler:")]
-        void GetUnreadCountWithCompletionHandler (Action<int> completionHandler);
+        void GetUnreadCount (Action<int> completionHandler);
         
         // -(void)refreshMessagesWithCompletionHandler:(Bool)completionHandler;
         [Export ("refreshMessagesWithCompletionHandler:")]
-        void RefreshMessagesWithCompletionHandler (Action<bool> completionHandler);
+        void RefreshMessages (Action<bool> completionHandler);
 
         // -(void)markReadWithMessages:(nonnull NSArray *)messages completionHandler:(void (^ _Nonnull)(void))completionHandler;
         [Export ("markReadWithMessages:completionHandler:")]
@@ -138,42 +138,42 @@ namespace UrbanAirship {
         // @required -(void)getMessagesWithCompletionHandler:(void (^ _Nonnull)(int))completionHandler;
         [Abstract]
         [Export ("getMessagesWithCompletionHandler:")]
-        void GetMessagesWithCompletionHandler (Action<UAMessageCenterMessage[]> completionHandler);
+        void GetMessages (Action<UAMessageCenterMessage[]> completionHandler);
         
         // @required -(void)getUserWithCompletionHandler:(void (^ _Nonnull)(UAMessageCenterUser * _Nullable))completionHandler;
         [Abstract]
         [Export ("getUserWithCompletionHandler:")]
-        void GetUserWithCompletionHandler (Action<UAMessageCenterUser> completionHandler);
+        void GetUser (Action<UAMessageCenterUser> completionHandler);
         
         // @required -(void)getUnreadCountWithCompletionHandler:(id)completionHandler;
         [Abstract]
         [Export ("getUnreadCountWithCompletionHandler:")]
-        void GetUnreadCountWithCompletionHandler (Action<int> completionHandler);
+        void GetUnreadCount (Action<int> completionHandler);
         
         // @required -(void)refreshMessagesWithCompletionHandler:(Bool)completionHandler;
         [Abstract]
         [Export ("refreshMessagesWithCompletionHandler:")]
-        void RefreshMessagesWithCompletionHandler (Action<bool> completionHandler);
+        void RefreshMessages (Action<bool> completionHandler);
 
         // @required -(void)markReadWithMessages:(nonnull NSArray *)messages completionHandler:(void (^ _Nonnull)(void))completionHandler;
         [Abstract]
         [Export ("markReadWithMessages:completionHandler:")]
-        void MarkReadWithMessages (UAMessageCenterMessage[] messages, Action completionHandler);
+        void MarkRead (UAMessageCenterMessage[] messages, Action completionHandler);
 
         // @required -(void)markReadWithMessageIDs:(nonnull NSArray *)messageIDs completionHandler:(void (^ _Nonnull)(void))completionHandler;
         [Abstract]
         [Export ("markReadWithMessageIDs:completionHandler:")]
-        void MarkReadWithMessageIDs (string[] messageIDs, Action completionHandler);
+        void MarkRead (string[] messageIDs, Action completionHandler);
 
         // @required -(void)deleteWithMessages:(nonnull NSArray *)messages completionHandler:(void (^ _Nonnull)(void))completionHandler;
         [Abstract]
         [Export ("deleteWithMessages:completionHandler:")]
-        void DeleteWithMessages (UAMessageCenterMessage[] messages, Action completionHandler);
+        void Delete (UAMessageCenterMessage[] messages, Action completionHandler);
 
         // @required -(void)deleteWithMessageIDs:(nonnull NSArray *)messageIDs completionHandler:(void (^ _Nonnull)(void))completionHandler;
         [Abstract]
         [Export ("deleteWithMessageIDs:completionHandler:")]
-        void DeleteWithMessageIDs (string[] messageIDs, Action completionHandler);
+        void Delete (string[] messageIDs, Action completionHandler);
         
         // @required -(void)messageForBodyURL:(NSURL * _Nonnull)bodyURL completionHandler:(void (^ _Nonnull)(UAMessageCenterMessage * _Nullable))completionHandler;
         [Abstract]

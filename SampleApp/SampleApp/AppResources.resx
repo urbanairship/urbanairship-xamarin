@@ -51,7 +51,7 @@
     <data name="alert_copied_channel_id" xml:space="preserve">
         <value>Channel ID copied to clipboard!</value>
     </data>
-    <data name="channel_id_cell_placeholder" xml:space="preserve">
+    <data name="named_user_cell_placeholder" xml:space="preserve">
         <value>add your named user</value>
     </data>
     <data name="alert_named_user_added_successuflully" xml:space="preserve">

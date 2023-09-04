@@ -9,11 +9,6 @@ using WebKit;
 
 namespace UrbanAirship {
 
-    [Static]
-    partial interface Constants
-    {
-    }
-
     // @protocol UAComponent <NSObject>
     [Protocol, Model]
     [BaseType(typeof(NSObject))]
