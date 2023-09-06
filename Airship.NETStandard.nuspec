@@ -19,9 +19,9 @@
          </group>
 
          <group targetFramework="Xamarin.iOS1.0">
-            <dependency id="airship.ios.core" version="17.2.2"/>
-            <dependency id="airship.ios.automation" version="17.2.2"/>
-            <dependency id="airship.ios.messagecenter" version="17.2.2"/>
+            <dependency id="airship.ios.core" version="17.2.0"/>
+            <dependency id="airship.ios.automation" version="17.2.0"/>
+            <dependency id="airship.ios.messagecenter" version="17.2.0"/>
          </group>
       </dependencies>
    </metadata>

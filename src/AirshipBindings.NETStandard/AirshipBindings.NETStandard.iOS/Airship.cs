@@ -25,6 +25,7 @@ namespace UrbanAirship.NETStandard
         {
             // Load unreferenced modules
             AirshipAutomation.Init();
+            AirshipExtendedActions.Init();
 
             NSNotificationCenter.DefaultCenter.AddObserver(aName: (NSString)UAChannel.ChannelCreatedEvent, (NSNotification notification) =>
             {
@@ -33,11 +34,6 @@ namespace UrbanAirship.NETStandard
             });
 
             // TODO(18.0.0): Wire up the push notfication status listener, once the iOS SDK bindings have been bumped to 17.x
-            //NSNotificationCenter.DefaultCenter.AddObserver((aName: (NSString)UAPush.Push, (NSNotification notification) =>
-            //{
-                //AirshipNotificationStatus status = notification.UserInfo[UAPush.ChannelIdentifierKey].ToString();
-                //OnPushNotificationStatusUpdate?.Invoke(this, new PushNotificationStatusEventArgs(status))
-            //});
 
             //Adding Inbox updated Listener
             NSNotificationCenter.DefaultCenter.AddObserver(aName: (NSString)"com.urbanairship.notification.message_list_updated", (notification) =>
@@ -248,17 +244,12 @@ namespace UrbanAirship.NETStandard
         {
             get
             {
-                string namedUser = "";
-                UAirship.Contact.GetNamedUserID(delegate (string user)
-                {
-                    namedUser = user;
-                });
-                return namedUser;
+                return UAirship.NamedUser.Identifier;
             }
 
             set
             {
-                UAirship.Contact.Identify(value);
+                UAirship.NamedUser.Identifier = value;
             }
         }
 
@@ -335,8 +326,7 @@ namespace UrbanAirship.NETStandard
                 }
                 if (propertyDictionary.Count > 0)
                 {
-                    //TODO: 
-                    //uaEvent.Properties = new NSDictionary<NSString, NSObject>(propertyDictionary.Keys, propertyDictionary.Values);
+                    uaEvent.Properties = new NSDictionary<NSString, NSObject>(propertyDictionary.Keys, propertyDictionary.Values);
                 }
             }
 
@@ -350,7 +340,7 @@ namespace UrbanAirship.NETStandard
 
         public void AssociateIdentifier(string key, string identifier)
         {
-            UAAssociatedIdentifiers identifiers = UAirship.Analytics.CurrentAssociatedDeviceIdentifiers();
+            UAAssociatedIdentifiers identifiers = UAirship.Analytics.CurrentAssociatedDeviceIdentifiers;
             identifiers.SetIdentifier(identifier, key);
             UAirship.Analytics.AssociateDeviceIdentifiers(identifiers);
         }
@@ -365,32 +355,25 @@ namespace UrbanAirship.NETStandard
             UAMessageCenter.Shared.DisplayMessage(messageId);
         }
 
-        public void DismissMessageCenter()
-        {
-        }
-
         public void MarkMessageRead(string messageId)
         {
-            string[] toRead = { messageId };
-            UAMessageCenter.Shared.Inbox.MarkReadWithMessageIDs(toRead, null);
+            var toRead = new UAInboxMessage[1];
+            toRead[0] = UAMessageCenter.Shared.MessageList.Message(messageId);
+            UAMessageCenter.Shared.MessageList.MarkMessagesRead(toRead, null);
         }
 
         public void DeleteMessage(string messageId)
         {
-            string[] toDelete = { messageId };
-            UAMessageCenter.Shared.Inbox.DeleteWithMessageIDs(toDelete, null);
+            var toDelete = new UAInboxMessage[1];
+            toDelete[0] = UAMessageCenter.Shared.MessageList.Message(messageId);
+            UAMessageCenter.Shared.MessageList.MarkMessagesDeleted(toDelete, null);
         }
 
         public int MessageCenterUnreadCount
         {
             get
             {
-                int count = 0;
-                UAMessageCenter.Shared.Inbox.GetUnreadCount(delegate (int messageCount)
-                {
-                    count = messageCount;
-                });
-                return count;
+                return (int)UAMessageCenter.Shared.MessageList.UnreadCount;
             }
         }
 
@@ -398,12 +381,7 @@ namespace UrbanAirship.NETStandard
         {
             get
             {
-                int count = 0;
-                UAMessageCenter.Shared.Inbox.GetMessages(delegate (UAMessageCenterMessage[] messages)
-                {
-                    count = messages.Length;
-                });
-                return count;
+                return (int)UAMessageCenter.Shared.MessageList.MessageCount();
             }
         }
 
@@ -412,33 +390,36 @@ namespace UrbanAirship.NETStandard
             get
             {
                 var messagesList = new List<MessageCenter.Message>();
-                UAMessageCenter.Shared.Inbox.GetMessages(delegate (UAMessageCenterMessage[] messages)
+                var messages = UAMessageCenter.Shared.MessageList.Messages;
+                foreach (var message in messages)
                 {
-                    foreach (var message in messages)
+                    var extras = new Dictionary<string, string>();
+                    foreach (var key in message.Extra.Keys)
                     {
-                        var extras = new Dictionary<string, string>();
-                        foreach (var key in message.Extra.Keys)
-                        {
-                            extras.Add(key.ToString(), message.Extra[key].ToString());
-                        }
-
-                        DateTime? sentDate = FromNSDate(message.SentDate);
-                        DateTime? expirationDate = FromNSDate(message.ExpirationDate);
-
-                        string iconUrl = message.ListIcon;
-
-                        var inboxMessage = new MessageCenter.Message(
-                            message.Id,
-                            message.Title,
-                            sentDate,
-                            expirationDate,
-                            message.Unread,
-                            iconUrl,
-                            extras);
-
-                        messagesList.Add(inboxMessage);
+                        extras.Add(key.ToString(), message.Extra[key].ToString());
                     }
-                });
+
+                    DateTime? sentDate = FromNSDate(message.MessageSent);
+                    DateTime? expirationDate = FromNSDate(message.MessageExpiration);
+
+                    string iconUrl = null;
+                    var icons = (NSDictionary)message.RawMessageObject.ValueForKey(new NSString("icons"));
+                    if (icons != null)
+                    {
+                        iconUrl = icons.ValueForKey(new NSString("list_icon")).ToString();
+                    }
+
+                    var inboxMessage = new MessageCenter.Message(
+                        message.MessageID,
+                        message.Title,
+                        sentDate,
+                        expirationDate,
+                        message.Unread,
+                        iconUrl,
+                        extras);
+
+                    messagesList.Add(inboxMessage);
+                }
 
                 return messagesList;
             }
@@ -474,6 +455,7 @@ namespace UrbanAirship.NETStandard
             return new Channel.TagGroupsEditor((List<Channel.TagGroupsEditor.TagOperation> payload) =>
             {
                 TagGroupHelper(payload, true);
+                UAirship.NamedUser.UpdateTags();
             });
         }
 
@@ -495,8 +477,9 @@ namespace UrbanAirship.NETStandard
         {
             return new AttributeEditor((List<AttributeEditor.IAttributeOperation> operations) =>
             {
-                UAAttributeMutations mutations = UAAttributeMutations.Mutations();
+                var mutations = UAAttributeMutations.Mutations;
                 ApplyAttributesOperations(mutations, operations);
+                UAirship.Channel.ApplyAttributeMutations(mutations);
             });
         }
 
@@ -504,8 +487,9 @@ namespace UrbanAirship.NETStandard
         {
             return new AttributeEditor((List<AttributeEditor.IAttributeOperation> operations) =>
             {
-                UAAttributeMutations mutations = UAAttributeMutations.Mutations();
+                var mutations = UAAttributeMutations.Mutations;
                 ApplyAttributesOperations(mutations, operations);
+                UAirship.NamedUser.ApplyAttributeMutations(mutations);
             });
         }
 
@@ -553,40 +537,32 @@ namespace UrbanAirship.NETStandard
 
         private void TagGroupHelper(List<Channel.TagGroupsEditor.TagOperation> operations, bool namedUser)
         {
-
-            UAirship.Contact.EditTagGroups(delegate (UATagGroupsEditor editor)
+            var namedUserActions = new Dictionary<Channel.TagGroupsEditor.OperationType, Action<string, string[]>>()
             {
-                var contactActions = new Dictionary<Channel.TagGroupsEditor.OperationType, Action<string, string[]>>()
+                { Channel.TagGroupsEditor.OperationType.ADD, (group, t) => UAirship.NamedUser.AddTags(t, group) },
+                { Channel.TagGroupsEditor.OperationType.REMOVE, (group, t) => UAirship.NamedUser.RemoveTags(t, group) },
+                { Channel.TagGroupsEditor.OperationType.SET, (group, t) => UAirship.NamedUser.SetTags(t, group) }
+            };
+            var channelActions = new Dictionary<Channel.TagGroupsEditor.OperationType, Action<string, string[]>>()
+            {
+                { Channel.TagGroupsEditor.OperationType.ADD, (group, t) => UAirship.Channel.AddTags(t, group) },
+                { Channel.TagGroupsEditor.OperationType.REMOVE, (group, t) => UAirship.Channel.RemoveTags(t, group) },
+                { Channel.TagGroupsEditor.OperationType.SET, (group, t) => UAirship.Channel.SetTags(t, group) }
+            };
+
+            var actions = namedUser ? namedUserActions : channelActions;
+
+            foreach (Channel.TagGroupsEditor.TagOperation operation in operations)
+            {
+                if (!Enum.IsDefined(typeof(Channel.TagGroupsEditor.OperationType), operation.operationType))
                 {
-                    { Channel.TagGroupsEditor.OperationType.ADD, (group, t) => editor.AddTags(t, group) },
-                    { Channel.TagGroupsEditor.OperationType.REMOVE, (group, t) => editor.RemoveTags(t, group) },
-                    { Channel.TagGroupsEditor.OperationType.SET, (group, t) => editor.SetTags(t, group) }
-                };
-
-
-                var channelActions = new Dictionary<Channel.TagGroupsEditor.OperationType, Action<string, string[]>>()
-                {
-                    { Channel.TagGroupsEditor.OperationType.ADD, (group, t) => UAirship.Channel.AddTags(t, group) },
-                    { Channel.TagGroupsEditor.OperationType.REMOVE, (group, t) => UAirship.Channel.RemoveTags(t, group) },
-                    { Channel.TagGroupsEditor.OperationType.SET, (group, t) => UAirship.Channel.SetTags(t, group) }
-                };
-
-
-                var actions = namedUser ? contactActions : channelActions;
-
-                foreach (Channel.TagGroupsEditor.TagOperation operation in operations)
-                {
-                    if (!Enum.IsDefined(typeof(Channel.TagGroupsEditor.OperationType), operation.operationType))
-                    {
-                        continue;
-                    }
-
-                    string[] tagArray = new string[operation.tags.Count];
-                    operation.tags.CopyTo(tagArray, 0);
-                    actions[operation.operationType](operation.group, tagArray);
+                    continue;
                 }
-            });
 
+                string[] tagArray = new string[operation.tags.Count];
+                operation.tags.CopyTo(tagArray, 0);
+                actions[operation.operationType](operation.group, tagArray);
+            }
         }
 
         override public void ReceivedDeepLink(NSUrl url, Action completionHandler)

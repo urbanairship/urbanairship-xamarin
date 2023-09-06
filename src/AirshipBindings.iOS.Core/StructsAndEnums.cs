@@ -2,7 +2,6 @@
  Copyright Airship and Contributors
 */
 
-using System;
 using ObjCRuntime;
 
 namespace UrbanAirship
@@ -14,6 +13,13 @@ namespace UrbanAirship
 		Active = 0,
 		Inactive = 1,
 		Background = 2
+	}
+
+	[Native]
+	public enum UAAttributeUpdateType : ulong
+	{
+		Remove = 0,
+		Set = 1
 	}
 
 	[Native]
@@ -41,6 +47,13 @@ namespace UrbanAirship
 	}
 
 	[Native]
+	public enum UADispatcherTimeBase : ulong
+	{
+		Wall = 0,
+		System = 1
+	}
+
+	[Native]
 	public enum UALogLevel : long
 	{
 		Undefined = -1,
@@ -63,6 +76,14 @@ namespace UrbanAirship
         Titanium = 5
     }
 
+    [Native]
+	public enum UATagGroupUpdateType : ulong
+	{
+		Add = 0,
+		Remove = 1,
+		Set = 2
+	}
+
 	[Native]
 	public enum UABoundaryEvent : ulong
 	{
@@ -70,34 +91,27 @@ namespace UrbanAirship
 		Exit = 2
 	}
 
-    [Native]
-    public enum URLType : ulong
-    {
+	[Native]
+	public enum UATaskConflictPolicy : ulong
+	{
+		Keep = 0,
+		Replace = 1,
+		Append = 2
+	}
+
+	[Native]
+	public enum URLType : ulong
+	{
 		Web = 0,
 		Video = 1,
 		Image = 2
 	}
 
-    [Native]
-    public enum UrlTypes : ulong
-    {
+	[Native]
+	public enum UrlTypes : ulong
+	{
 		Image = 0,
 		Video = 1,
 		Web = 2
-	}
-
-    [Native]
-    public enum UAPermissionStatus : ulong
-    {
-		notDetermined = 0,
-		granted = 1,
-		denied = 2
-	}
-
-    [Native]
-    public enum UAPermission : ulong
-    {
-        displayNotifications = 0,
-        location = 1
 	}
 }

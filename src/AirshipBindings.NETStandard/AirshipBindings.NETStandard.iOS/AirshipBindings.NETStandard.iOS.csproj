@@ -86,6 +86,10 @@
       <Project>{7F49C0FA-F958-44CF-9246-8B8577748E6F}</Project>
       <Name>AirshipBindings.iOS.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\AirshipBindings.iOS.ExtendedActions\AirshipBindings.iOS.ExtendedActions.csproj">
+      <Project>{BFFFE653-04CD-4563-BF2D-B6F31349F30D}</Project>
+      <Name>AirshipBindings.iOS.ExtendedActions</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\AirshipBindings.iOS.MessageCenter\AirshipBindings.iOS.MessageCenter.csproj">
       <Project>{AC22EEC5-DCA6-49D3-8B37-533B5565E2CF}</Project>
       <Name>AirshipBindings.iOS.MessageCenter</Name>

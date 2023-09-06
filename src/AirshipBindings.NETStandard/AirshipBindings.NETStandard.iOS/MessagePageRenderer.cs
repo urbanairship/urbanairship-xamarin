@@ -32,9 +32,7 @@ namespace UrbanAirship.NETStandard.iOS
             webView.NavigationDelegate = nativeBridge;
             nativeBridge.ForwardNavigationDelegate = this;
             nativeBridge.NativeBridgeDelegate = this;
-            UAMessageCenterMessage message = retrieveMessage(messageId);
-            UAMessageCenterUser user = retrieveUser();
-            nativeBridgeExtension = new UAMessageCenterNativeBridgeExtension(message, user);
+            nativeBridgeExtension = new UAMessageCenterNativeBridgeExtension();
             nativeBridge.NativeBridgeExtensionDelegate = nativeBridgeExtension;
         }
 
@@ -49,54 +47,29 @@ namespace UrbanAirship.NETStandard.iOS
             View.AddSubview(webView);
         }
 
-        private UAMessageCenterUser retrieveUser()
-        {
-            UAMessageCenterUser user = null;
-            UAMessageCenter.Shared.Inbox.GetUser(delegate (UAMessageCenterUser currentUser)
-            {
-                user = currentUser;
-            });
-            return user;
-        }
-
-        private UAMessageCenterMessage retrieveMessage(string messageId)
-        {
-            UAMessageCenterMessage message = null;
-            UAMessageCenter.Shared.Inbox.MessageForID(messageId, delegate (UAMessageCenterMessage newMessage)
-            {
-                message = newMessage;
-            });
-            return message;
-        }
-
         public void LoadMessage(string messageId)
         {
-            var message = retrieveMessage(messageId);
+            var message = UAMessageCenter.Shared.MessageList.Message(messageId);
             if (message != null)
             {
                 LoadMessageBody(message);
             }
             else
             {
-                UAMessageCenter.Shared.Inbox.RefreshMessages(delegate (bool result)
+                UAMessageCenter.Shared.MessageList.RetrieveMessageList(() =>
                 {
-                    if (result == true)
+                    message = UAMessageCenter.Shared.MessageList.Message(messageId);
+                    if (message != null && !message.IsExpired())
                     {
-                        message = retrieveMessage(messageId);
-                        if (message != null && !message.IsExpired)
-                        {
-                            LoadMessageBody(message);
-                        }
-                        else
-                        {
-                            messagePage.OnRendererLoadFailed(messageId, false, MessageFailureStatus.Unavailable);
-                        }
+                        LoadMessageBody(message);
                     }
                     else
                     {
-                        messagePage.OnRendererLoadFailed(messageId, false, MessageFailureStatus.FetchFailed);
+                        messagePage.OnRendererLoadFailed(messageId, false, MessageFailureStatus.Unavailable);
                     }
-
+                }, () =>
+                {
+                    messagePage.OnRendererLoadFailed(messageId, false, MessageFailureStatus.FetchFailed);
                 });
             }
         }
@@ -177,24 +150,26 @@ namespace UrbanAirship.NETStandard.iOS
            }
         }
 
-        private void LoadMessageBody(UAMessageCenterMessage message)
+        private void LoadMessageBody(UAInboxMessage message)
         {
-            var request = new NSMutableUrlRequest(message.BodyURL);
-            var user = retrieveUser();
-            if (user == null)
+            var request = new NSMutableUrlRequest(message.MessageBodyURL);
+            UAMessageCenter.Shared.User.GetUserData((UAUserData userData) =>
             {
-                return;
-            }
+                if (userData == null)
+                {
+                    return;
+                }
 
-            var auth = UAUtils.AuthHeaderString(user.Username, user.Password);
+                var auth = UAUtils.AuthHeaderString(userData.Username, userData.Password);
 
-            NSMutableDictionary dict = new NSMutableDictionary();
-            dict.Add(new NSString("Authorization"), new NSString(auth));
-            request.Headers = dict;
+                NSMutableDictionary dict = new NSMutableDictionary();
+                dict.Add(new NSString("Authorization"), new NSString(auth));
+                request.Headers = dict;
 
-            webView.LoadRequest(request);
+                webView.LoadRequest(request);
 
-            messagePage.OnRendererLoadStarted(messageId);
+                messagePage.OnRendererLoadStarted(messageId);
+            });
         }
     }
 }
