@@ -1,4 +1,4 @@
-﻿/*
+/*
  Copyright Airship and Contributors
 */
 
@@ -86,7 +86,7 @@ namespace UrbanAirship.NETStandard
     /// <summary>
     /// Arguments for deep link events.
     /// </summary>
-    public class DeepLinkEventArgs: EventArgs
+    public class DeepLinkEventArgs : EventArgs
     {
         public string DeepLink { get; internal set; }
         public DeepLinkEventArgs(string deepLink)
@@ -155,9 +155,11 @@ namespace UrbanAirship.NETStandard
             get;
         }
 
+        void GetNamedUser(Action<string> namedUser);
+        
         string NamedUser
         {
-            get; set;
+            set;
         }
 
         /// <summary>
@@ -190,15 +192,9 @@ namespace UrbanAirship.NETStandard
 
         void DisplayMessageCenter();
 
-        int MessageCenterUnreadCount
-        {
-            get;
-        }
+        void MessageCenterUnreadCount(Action<int> unreadMessageCount);
 
-        int MessageCenterCount
-        {
-            get;
-        }
+        void MessageCenterCount(Action<int> messageCount);
 
         List<MessageCenter.Message> InboxMessages
         {
@@ -208,7 +204,7 @@ namespace UrbanAirship.NETStandard
         Channel.TagGroupsEditor EditNamedUserTagGroups();
 
         Channel.TagGroupsEditor EditChannelTagGroups();
-        
+
         Attributes.AttributeEditor EditAttributes();
 
         event EventHandler OnMessageCenterUpdated;

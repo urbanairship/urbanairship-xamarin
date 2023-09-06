@@ -244,21 +244,23 @@ namespace UrbanAirship.NETStandard
             }
         }
 
+        public void GetNamedUser(Action<string> namedUser)
+        {
+            UAirship.Contact.GetNamedUserID(namedUser);
+        }
+
         public string NamedUser
         {
-            get
-            {
-                string namedUser = "";
-                UAirship.Contact.GetNamedUserID(delegate (string user)
-                {
-                    namedUser = user;
-                });
-                return namedUser;
-            }
-
             set
             {
-                UAirship.Contact.Identify(value);
+                if (value == null)
+                {
+                    UAirship.Contact.Reset();
+                }
+                else
+                {
+                    UAirship.Contact.Identify(value);
+                }
             }
         }
 
@@ -381,30 +383,17 @@ namespace UrbanAirship.NETStandard
             UAMessageCenter.Shared.Inbox.DeleteWithMessageIDs(toDelete, null);
         }
 
-        public int MessageCenterUnreadCount
+        public void MessageCenterUnreadCount(Action<int> messageCount)
         {
-            get
-            {
-                int count = 0;
-                UAMessageCenter.Shared.Inbox.GetUnreadCount(delegate (int messageCount)
-                {
-                    count = messageCount;
-                });
-                return count;
-            }
+            UAMessageCenter.Shared.Inbox.GetUnreadCount(messageCount);
         }
 
-        public int MessageCenterCount
+        public void MessageCenterCount(Action<int> messageCount)
         {
-            get
+            UAMessageCenter.Shared.Inbox.GetMessages(messages =>
             {
-                int count = 0;
-                UAMessageCenter.Shared.Inbox.GetMessages(delegate (UAMessageCenterMessage[] messages)
-                {
-                    count = messages.Length;
-                });
-                return count;
-            }
+                messageCount(messages.Length);
+            });
         }
 
         public List<MessageCenter.Message> InboxMessages
@@ -412,7 +401,7 @@ namespace UrbanAirship.NETStandard
             get
             {
                 var messagesList = new List<MessageCenter.Message>();
-                UAMessageCenter.Shared.Inbox.GetMessages(delegate (UAMessageCenterMessage[] messages)
+                UAMessageCenter.Shared.Inbox.GetMessages(messages =>
                 {
                     foreach (var message in messages)
                     {
@@ -497,6 +486,8 @@ namespace UrbanAirship.NETStandard
             {
                 UAAttributeMutations mutations = UAAttributeMutations.Mutations();
                 ApplyAttributesOperations(mutations, operations);
+                //FIXME: TO verify
+                //UAirship.Channel.ApplyAttributeMutations(mutations);
             });
         }
 
@@ -506,6 +497,8 @@ namespace UrbanAirship.NETStandard
             {
                 UAAttributeMutations mutations = UAAttributeMutations.Mutations();
                 ApplyAttributesOperations(mutations, operations);
+                //FIXME: To verify
+                //UAirship.Contact.ApplyAttributeMutations(mutations);
             });
         }
 

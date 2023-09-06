@@ -1042,10 +1042,6 @@ namespace UrbanAirship {
         [Static]
         [Export("shared", ArgumentSemantic.Strong)]
         UAContact Shared { get; }
-
-        // -(void)airshipReady;
-        [Export("airshipReady")]
-        void AirshipReady();
         
         // -(void)identify:(NSString * _Nonnull)namedUserID;
         [Export("identify:")]
@@ -2617,97 +2613,6 @@ namespace UrbanAirship {
         }
 
         interface IUAPushableComponent { };
-
-        // @protocol UAContactProtocol
-        [Protocol, Model]
-        [BaseType(typeof(NSObject))]
-        interface UAContactProtocol
-        {
-            // @required @property (readonly, nonatomic, class) int contactConflictEvent;
-            [Static, Abstract]
-            [Export("contactConflictEvent")]
-            int ContactConflictEvent { get; }
-
-            // @required @property (readonly, copy, nonatomic, class) NSString * _Nonnull contactConflictEventKey;
-            [Static, Abstract]
-            [Export("contactConflictEventKey")]
-            string ContactConflictEventKey { get; }
-
-            // @required @property (readonly, nonatomic, class) int maxNamedUserIDLength;
-            [Static, Abstract]
-            [Export("maxNamedUserIDLength")]
-            int MaxNamedUserIDLength { get; }
-
-            // @required -(void)getNamedUserIDWithCompletionHandler:(void (^ _Nonnull)(NSString * _Nullable))completionHandler;
-            [Abstract]
-            [Export("getNamedUserIDWithCompletionHandler:")]
-            void GetNamedUserID(Action<string> completionHandler);
-
-            // @required -(void)identify:(NSString * _Nonnull)namedUserID;
-            [Abstract]
-            [Export("identify:")]
-            void Identify(string namedUserID);
-
-            // @required -(void)reset;
-            [Abstract]
-            [Export("reset")]
-            void Reset();
-
-            // @required -(UATagGroupsEditor * _Nonnull)editTagGroups __attribute__((warn_unused_result("")));
-            [Abstract]
-            [Export("editTagGroups")]
-            UATagGroupsEditor EditTagGroups();
-
-            // @required -(void)editTagGroups:(void (^ _Nonnull)(UATagGroupsEditor * _Nonnull))editorBlock;
-            [Abstract]
-            [Export("editTagGroups:")]
-            void EditTagGroups(Action<UATagGroupsEditor> editorBlock);
-
-            // @required -(UAAttributesEditor * _Nonnull)editAttributes __attribute__((warn_unused_result("")));
-            [Abstract]
-            [Export("editAttributes")]
-            UAAttributesEditor EditAttributes();
-
-            // @required -(void)editAttributes:(void (^ _Nonnull)(UAAttributesEditor * _Nonnull))editorBlock;
-            [Abstract]
-            [Export("editAttributes:")]
-            void EditAttributes(Action<UAAttributesEditor> editorBlock);
-
-            // @required -(void)registerEmail:(NSString * _Nonnull)address options:(UAEmailRegistrationOptions * _Nonnull)options;
-            [Abstract]
-            [Export("registerEmail:options:")]
-            void RegisterEmail(string address, UAEmailRegistrationOptions options);
-
-            // @required -(void)registerSMS:(NSString * _Nonnull)msisdn options:(UASMSRegistrationOptions * _Nonnull)options;
-            [Abstract]
-            [Export("registerSMS:options:")]
-            void RegisterSMS(string msisdn, UASMSRegistrationOptions options);
-
-            // @required -(void)registerOpen:(NSString * _Nonnull)address options:(UAOpenRegistrationOptions * _Nonnull)options;
-            [Abstract]
-            [Export("registerOpen:options:")]
-            void RegisterOpen(string address, UAOpenRegistrationOptions options);
-
-            // @required -(void)associateChannel:(NSString * _Nonnull)channelID type:(enum UAChannelType)type;
-            [Abstract]
-            [Export("associateChannel:type:")]
-            void AssociateChannel(string channelID, UAChannelType type);
-
-            // @required -(UAScopedSubscriptionListEditor * _Nonnull)editSubscriptionLists __attribute__((warn_unused_result("")));
-            [Abstract]
-            [Export("editSubscriptionLists")]
-            UAScopedSubscriptionListEditor EditSubscriptionLists();
-
-            // @required -(void)editSubscriptionLists:(void (^ _Nonnull)(UAScopedSubscriptionListEditor * _Nonnull))editorBlock;
-            [Abstract]
-            [Export("editSubscriptionLists:")]
-            void EditSubscriptionLists(Action<UAScopedSubscriptionListEditor> editorBlock);
-
-            // @required -(void)fetchSubscriptionListsWithCompletionHandler:(void (^ _Nonnull)(int))completionHandler;
-            [Abstract]
-            [Export("fetchSubscriptionListsWithCompletionHandler:")]
-            void FetchSubscriptionLists(Action<int> completionHandler);
-        }
 
         // @protocol UAirshipLogHandler
         [Protocol, Model]

@@ -1,4 +1,4 @@
-﻿/*
+/*
  Copyright Airship and Contributors
 */
 
@@ -237,13 +237,14 @@ namespace UrbanAirship.NETStandard
             }
         }
 
+        public void GetNamedUser(Action<string> namedUser)
+        {
+            string NamedUserId = UAirship.Shared().Contact.NamedUserId;
+            namedUser(NamedUserId);
+        }
+
         public string NamedUser
         {
-            get
-            {
-                return UAirship.Shared().Contact.NamedUserId;
-            }
-
             set
             {
                 if (value == null)
@@ -360,20 +361,16 @@ namespace UrbanAirship.NETStandard
             MessageCenterClass.Shared().Inbox.DeleteMessages(toDelete);
         }
 
-        public int MessageCenterUnreadCount
+        public void MessageCenterUnreadCount(Action<int> messageCount)
         {
-            get
-            {
-                return MessageCenterClass.Shared().Inbox.UnreadCount;
-            }
+            int count = MessageCenterClass.Shared().Inbox.UnreadCount;
+            messageCount(count);
         }
 
-        public int MessageCenterCount
+        public void MessageCenterCount(Action<int> messageCount)
         {
-            get
-            {
-                return MessageCenterClass.Shared().Inbox.Count;
-            }
+           int count = MessageCenterClass.Shared().Inbox.Count;
+            messageCount(count);
         }
 
         public List<MessageCenter.Message> InboxMessages

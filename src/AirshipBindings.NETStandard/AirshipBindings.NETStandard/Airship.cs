@@ -1,4 +1,4 @@
-﻿/*
+/*
  Copyright Airship and Contributors
 */
 
@@ -107,12 +107,20 @@ namespace UrbanAirship.NETStandard
         }
 
         /// <summary>
+        /// Gets the named user.
+        /// </summary>
+        /// <value>Returns the named user.</value>
+        public void GetNamedUser(Action<string> namedUser)
+        {
+            throw new NotImplementedException(BaitWithoutSwitchMessage);
+        }
+
+        /// <summary>
         /// Gets or sets the named user ID.
         /// </summary>
         /// <value>The named user ID.</value>
         public string NamedUser
         {
-            get { throw new NotImplementedException(BaitWithoutSwitchMessage); }
             set { throw new NotImplementedException(BaitWithoutSwitchMessage); }
         }
 
@@ -195,21 +203,19 @@ namespace UrbanAirship.NETStandard
         /// <summary>
         /// Get the message center unread count.
         /// </summary>
-        /// <value>The message center unread count.</value>
-        public int MessageCenterUnreadCount
+        /// <value>Returns the message center unread count.</value>
+        public void MessageCenterUnreadCount(Action<int> count)
         {
-            get { throw new NotImplementedException(BaitWithoutSwitchMessage); }
-            private set { throw new NotImplementedException(BaitWithoutSwitchMessage); }
+            throw new NotImplementedException(BaitWithoutSwitchMessage);
         }
 
         /// <summary>
         /// Get the total count of message center messages.
         /// </summary>
-        /// <value>The message center count.</value>
-        public int MessageCenterCount
+        /// <value>Returns the message center count.</value>
+        public void MessageCenterCount(Action<int> count)
         {
-            get { throw new NotImplementedException(BaitWithoutSwitchMessage); }
-            private set { throw new NotImplementedException(BaitWithoutSwitchMessage); }
+            throw new NotImplementedException(BaitWithoutSwitchMessage);
         }
 
         /// <summary>

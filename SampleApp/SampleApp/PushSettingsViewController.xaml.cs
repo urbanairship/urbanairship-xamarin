@@ -10,11 +10,46 @@ using Plugin.Clipboard;
 using Xamarin.Forms;
 
 using UrbanAirship.NETStandard;
+using SampleApp;
+using System.ComponentModel;
+
+public class SettingsViewModel : INotifyPropertyChanged
+{
+    string namedUserValue;
+
+    public event PropertyChangedEventHandler PropertyChanged;
+
+    public void UpdateNamedUser()
+    {
+        Airship.Instance.GetNamedUser(namedUser =>
+        {
+            bool userNull = (namedUser == null);
+            bool userEmpty = (namedUser.Length == 0);
+            bool isEmpty = (userNull || userEmpty);
+            this.namedUserValue = !isEmpty ? namedUser : AppResources.named_user_cell_placeholder;
+            OnPropertyChanged("NamedUserValue");
+        });
+    }
+
+    public string NamedUserValue
+    {
+        get
+        {
+            return namedUserValue;
+        }
+    }
+
+    protected virtual void OnPropertyChanged(string propertyName)
+    {
+        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+}
 
 namespace SampleApp
 {
     public partial class PushSettingsViewController : ContentPage
     {
+        SettingsViewModel model = new SettingsViewModel();
         public PushSettingsViewController()
         {
             InitializeComponent();
@@ -25,7 +60,8 @@ namespace SampleApp
             base.OnAppearing();
             enabledPushSwitch.On = Airship.Instance.UserNotificationsEnabled;
             channelId.Detail = Airship.Instance.ChannelId != null ? Airship.Instance.ChannelId : AppResources.none;
-            namedUser.Placeholder = Airship.Instance.NamedUser != null ? Airship.Instance.NamedUser : AppResources.named_user_cell_placeholder;
+            UpdateNamedUserEntryCell();
+            this.BindingContext = model;
         }
 
         void SwitchCell_OnChanged(object sender, EventArgs e)
@@ -44,9 +80,15 @@ namespace SampleApp
 
         void AddNamedUser(object sender, EventArgs e)
         {
-            Airship.Instance.NamedUser = namedUser.Text;
-            namedUser.Placeholder = namedUser.Text;
+            Airship.Instance.NamedUser = namedUserLabel.Text;
+            UpdateNamedUserEntryCell();
             DisplayAlert(AppResources.alert_title, AppResources.alert_named_user_added_successuflully, AppResources.ok);
+        }
+
+        void UpdateNamedUserEntryCell()
+        {
+            namedUserLabel.Text = "";
+            model.UpdateNamedUser();
         }
     }
 }
