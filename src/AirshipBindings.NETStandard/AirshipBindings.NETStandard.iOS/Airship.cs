@@ -547,7 +547,7 @@ namespace UrbanAirship.NETStandard
         private void TagGroupHelper(List<Channel.TagGroupsEditor.TagOperation> operations, bool namedUser)
         {
 
-            UAirship.Contact.EditTagGroups(delegate (UATagGroupsEditor editor)
+            UAirship.Contact.EditTagGroups( editor =>
             {
                 var contactActions = new Dictionary<Channel.TagGroupsEditor.OperationType, Action<string, string[]>>()
                 {

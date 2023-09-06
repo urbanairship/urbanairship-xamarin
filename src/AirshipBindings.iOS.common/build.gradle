@@ -38,7 +38,7 @@ task downloadFrameworks {
 
                 exec {
                     workingDir "${rootDir}/frameworks"
-                    executable "unzip"
+                    executable "unzip -y | --symlinks"
                     args "-u", "Airship.zip"
                 }
             }

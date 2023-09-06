@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns:resources="clr-namespace:SampleApp"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="SampleApp.FeaturesViewController">
+    <ContentPage.Content>
+        <TableView Intent="Settings">
+            <TableRoot>
+                <TableSection Title="{x:Static resources:AppResources.push_settings_features_title}">
+                    <SwitchCell Text="{x:Static resources:AppResources.push_feature_title}" OnChanged="enablePushFeature_OnChanged" x:Name="enabledPushFeatureSwitch" Tapped="enablePushFeature_OnChanged"/>
+                    <SwitchCell Text="{x:Static resources:AppResources.message_center_feature_title}" OnChanged="enableMessageCenterFeature_OnChanged" x:Name="enableMessageCenterFeatureSwitch" Tapped="enableMessageCenterFeature_OnChanged"/>
+                    <SwitchCell Text="{x:Static resources:AppResources.in_app_automation_feature_title}" OnChanged="enableInAppAutomationFeature_OnChanged" x:Name="enableInAppAutomationFeatureSwitch" Tapped="enableInAppAutomationFeature_OnChanged"/>
+                    <SwitchCell Text="{x:Static resources:AppResources.analytics_feature_title}" OnChanged="enableAnalyticsFeature_OnChanged" x:Name="EnableAnalyticsFeatureSwitch" Tapped="enableAnalyticsFeature_OnChanged"/>
+                    <SwitchCell Text="{x:Static resources:AppResources.tags_and_attributes_feature_title}" OnChanged="enableTagsAndAttributesFeature_OnChanged" x:Name="enableTagsAndAttributesFeatureSwitch" Tapped="enableTagsAndAttributesFeature_OnChanged"/>
+                    <SwitchCell Text="{x:Static resources:AppResources.contacts_feature_title}" OnChanged="enableContactsFeature_OnChanged" x:Name="enableContactsFeatureSwitch" Tapped="enableContactsFeature_OnChanged"/>
+                </TableSection>
+            </TableRoot>
+        </TableView>
+    </ContentPage.Content>
+</ContentPage>
+

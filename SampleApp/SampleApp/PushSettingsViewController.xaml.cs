@@ -23,10 +23,7 @@ public class SettingsViewModel : INotifyPropertyChanged
     {
         Airship.Instance.GetNamedUser(namedUser =>
         {
-            bool userNull = (namedUser == null);
-            bool userEmpty = (namedUser.Length == 0);
-            bool isEmpty = (userNull || userEmpty);
-            this.namedUserValue = !isEmpty ? namedUser : AppResources.named_user_cell_placeholder;
+            this.namedUserValue = namedUser != null ? namedUser : AppResources.named_user_cell_placeholder;
             OnPropertyChanged("NamedUserValue");
         });
     }
@@ -50,6 +47,7 @@ namespace SampleApp
     public partial class PushSettingsViewController : ContentPage
     {
         SettingsViewModel model = new SettingsViewModel();
+
         public PushSettingsViewController()
         {
             InitializeComponent();
@@ -58,13 +56,18 @@ namespace SampleApp
         protected override void OnAppearing()
         {
             base.OnAppearing();
+            this.BindingContext = model;
             enabledPushSwitch.On = Airship.Instance.UserNotificationsEnabled;
             channelId.Detail = Airship.Instance.ChannelId != null ? Airship.Instance.ChannelId : AppResources.none;
             UpdateNamedUserEntryCell();
-            this.BindingContext = model;
         }
 
-        void SwitchCell_OnChanged(object sender, EventArgs e)
+        void displayFeatures(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new FeaturesViewController());
+        }
+
+        void enablePush_OnChanged(object sender, EventArgs e)
         {
             Airship.Instance.UserNotificationsEnabled = enabledPushSwitch.On;
         }
@@ -83,6 +86,16 @@ namespace SampleApp
             Airship.Instance.NamedUser = namedUserLabel.Text;
             UpdateNamedUserEntryCell();
             DisplayAlert(AppResources.alert_title, AppResources.alert_named_user_added_successuflully, AppResources.ok);
+        }
+
+        void AddTag(object sender, EventArgs e)
+        {
+            string tag = tagLabel.Text;
+            Airship.Instance.EditDeviceTags()
+                    .AddTags(new string[] { tag })
+                    .Apply();
+            IEnumerable<string> tags = Airship.Instance.Tags;
+            Console.Write("tags: {ø}", tags);
         }
 
         void UpdateNamedUserEntryCell()

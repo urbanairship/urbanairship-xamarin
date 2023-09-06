@@ -85,6 +85,15 @@ namespace SampleApp {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Analytics.
+        /// </summary>
+        internal static string analytics_feature_title {
+            get {
+                return ResourceManager.GetString("analytics_feature_title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Channel ID.
         /// </summary>
         internal static string channel_id_cell_title {
@@ -94,11 +103,29 @@ namespace SampleApp {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Contacts.
+        /// </summary>
+        internal static string contacts_feature_title {
+            get {
+                return ResourceManager.GetString("contacts_feature_title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to DEVICE SETTINGS.
         /// </summary>
         internal static string device_settings_category_title {
             get {
                 return ResourceManager.GetString("device_settings_category_title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TAGS.
+        /// </summary>
+        internal static string device_settings_tags_title {
+            get {
+                return ResourceManager.GetString("device_settings_tags_title", resourceCulture);
             }
         }
         
@@ -135,6 +162,24 @@ namespace SampleApp {
         internal static string home_title {
             get {
                 return ResourceManager.GetString("home_title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to InApp automation.
+        /// </summary>
+        internal static string in_app_automation_feature_title {
+            get {
+                return ResourceManager.GetString("in_app_automation_feature_title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Message center.
+        /// </summary>
+        internal static string message_center_feature_title {
+            get {
+                return ResourceManager.GetString("message_center_feature_title", resourceCulture);
             }
         }
         
@@ -193,6 +238,15 @@ namespace SampleApp {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Push.
+        /// </summary>
+        internal static string push_feature_title {
+            get {
+                return ResourceManager.GetString("push_feature_title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to PUSH SETTINGS.
         /// </summary>
         internal static string push_settings_category_title {
@@ -202,11 +256,38 @@ namespace SampleApp {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to FEATURES.
+        /// </summary>
+        internal static string push_settings_features_title {
+            get {
+                return ResourceManager.GetString("push_settings_features_title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to SETTINGS.
         /// </summary>
         internal static string settings_title {
             get {
                 return ResourceManager.GetString("settings_title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tags.
+        /// </summary>
+        internal static string tag_cell_title {
+            get {
+                return ResourceManager.GetString("tag_cell_title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tags and attributes.
+        /// </summary>
+        internal static string tags_and_attributes_feature_title {
+            get {
+                return ResourceManager.GetString("tags_and_attributes_feature_title", resourceCulture);
             }
         }
     }
