@@ -1,0 +1,14 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <Target Name="AirshipLocationBeforeCompile" AfterTargets="BeforeCompile">
+        <ItemGroup>
+            <BindingResources Include="$(MSBuildThisFileDirectory)../content/res/**/*.*" />
+        </ItemGroup>
+        <Copy SourceFiles="@(BindingResources)" DestinationFolder="$(TargetDir)/AirshipBindings.iOS.Location.resources/%(RecursiveDir)" ContinueOnError="false" />
+        <ItemGroup>
+            <NativeReference Include="$(TargetDir)/AirshipBindings.iOS.Location.resources\AirshipLocation.xcframework">
+                <Kind>Framework</Kind>
+                <SmartLink>False</SmartLink>
+            </NativeReference>
+        </ItemGroup>
+    </Target>
+</Project>
