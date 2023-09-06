@@ -25,7 +25,7 @@ namespace SampleApp
             base.OnAppearing();
             enabledPushSwitch.On = Airship.Instance.UserNotificationsEnabled;
             channelId.Detail = Airship.Instance.ChannelId != null ? Airship.Instance.ChannelId : AppResources.none;
-            namedUser.Placeholder = Airship.Instance.NamedUser != null ? Airship.Instance.NamedUser : AppResources.named_user_cell_placeholder;
+            namedUser.Placeholder = Airship.Instance.NamedUser != null ? Airship.Instance.NamedUser : AppResources.channel_id_cell_placeholder;
         }
 
         void SwitchCell_OnChanged(object sender, EventArgs e)
