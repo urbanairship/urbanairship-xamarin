@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirshipBindings.iOS.Automat
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirshipBindings.iOS.Core", "..\AirshipBindings.iOS.Core\AirshipBindings.iOS.Core.csproj", "{7F49C0FA-F958-44CF-9246-8B8577748E6F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirshipBindings.iOS.ExtendedActions", "..\AirshipBindings.iOS.ExtendedActions\AirshipBindings.iOS.ExtendedActions.csproj", "{BFFFE653-04CD-4563-BF2D-B6F31349F30D}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirshipBindings.iOS.MessageCenter", "..\AirshipBindings.iOS.MessageCenter\AirshipBindings.iOS.MessageCenter.csproj", "{AC22EEC5-DCA6-49D3-8B37-533B5565E2CF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirshipBindings.Android.Automation", "..\AirshipBindings.Android.Automation\AirshipBindings.Android.Automation.csproj", "{7EC93B05-E253-4363-9A42-2A4942F6410C}"
