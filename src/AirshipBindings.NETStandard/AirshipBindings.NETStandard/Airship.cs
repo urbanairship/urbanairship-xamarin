@@ -222,11 +222,10 @@ namespace UrbanAirship.NETStandard
         /// Get the list of messages contained in the messages center.
         /// </summary>
         /// <value>The list of message.</value>
-        public List<MessageCenter.Message> InboxMessages
+        public void InboxMessages(Action<List<MessageCenter.Message>> messages)
         {
-            get { throw new NotImplementedException(BaitWithoutSwitchMessage); }
+            throw new NotImplementedException(BaitWithoutSwitchMessage);
         }
-
         /// <summary>
         /// Edit channel attributes.
         /// Deprecated : use <see cref="EditChannelAttributes">EditChannelAttributes()</see> instead.

@@ -13,41 +13,10 @@ using UrbanAirship.NETStandard;
 using SampleApp;
 using System.ComponentModel;
 
-public class SettingsViewModel : INotifyPropertyChanged
-{
-    string namedUserValue;
-
-    public event PropertyChangedEventHandler PropertyChanged;
-
-    public void UpdateNamedUser()
-    {
-        Airship.Instance.GetNamedUser(namedUser =>
-        {
-            this.namedUserValue = namedUser != null ? namedUser : AppResources.named_user_cell_placeholder;
-            OnPropertyChanged("NamedUserValue");
-        });
-    }
-
-    public string NamedUserValue
-    {
-        get
-        {
-            return namedUserValue;
-        }
-    }
-
-    protected virtual void OnPropertyChanged(string propertyName)
-    {
-        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    }
-}
-
 namespace SampleApp
 {
     public partial class PushSettingsViewController : ContentPage
     {
-        SettingsViewModel model = new SettingsViewModel();
-
         public PushSettingsViewController()
         {
             InitializeComponent();
@@ -56,10 +25,10 @@ namespace SampleApp
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            this.BindingContext = model;
             enabledPushSwitch.On = Airship.Instance.UserNotificationsEnabled;
             channelId.Detail = Airship.Instance.ChannelId != null ? Airship.Instance.ChannelId : AppResources.none;
-            UpdateNamedUserEntryCell();
+            UpdateNamedUser();
+            UpdateTagsCell();
         }
 
         void displayFeatures(object sender, EventArgs e)
@@ -84,24 +53,41 @@ namespace SampleApp
         void AddNamedUser(object sender, EventArgs e)
         {
             Airship.Instance.NamedUser = namedUserLabel.Text;
-            UpdateNamedUserEntryCell();
+            UpdateNamedUser();
             DisplayAlert(AppResources.alert_title, AppResources.alert_named_user_added_successuflully, AppResources.ok);
         }
 
         void AddTag(object sender, EventArgs e)
         {
-            string tag = tagLabel.Text;
+            string tagToAdd = tagLabel.Text;
             Airship.Instance.EditDeviceTags()
-                    .AddTags(new string[] { tag })
+                    .AddTags(new string[] { tagToAdd })
                     .Apply();
-            IEnumerable<string> tags = Airship.Instance.Tags;
-            Console.Write("tags: {ø}", tags);
+            UpdateTagsCell();
         }
 
-        void UpdateNamedUserEntryCell()
+        void UpdateTagsCell()
+        {
+            tagLabel.Text = "";
+            IEnumerable<string> tags = Airship.Instance.Tags;
+
+            string str = "";
+            foreach (string tag in tags)
+            {
+                str = str + tag + "\n";
+            }
+            tagsList.Text = str;
+        }
+
+        void UpdateNamedUser()
         {
             namedUserLabel.Text = "";
-            model.UpdateNamedUser();
+            Airship.Instance.GetNamedUser(namedUser =>
+            {
+                Device.BeginInvokeOnMainThread(() => {
+                    namedUserLabel.Placeholder = namedUser != null ? namedUser : AppResources.named_user_cell_placeholder;
+                });
+            });
         }
     }
 }

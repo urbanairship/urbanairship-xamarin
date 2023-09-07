@@ -14,7 +14,7 @@
                 </TableSection>
                 <TableSection Title="{x:Static resources:AppResources.device_settings_category_title}">
                     <TextCell Text="{x:Static resources:AppResources.channel_id_cell_title}" x:Name="channelId" Tapped="CopyChannelID"/>
-                    <EntryCell Label="{x:Static resources:AppResources.named_user_cell_title}" Completed="AddNamedUser" x:Name="namedUserLabel" Placeholder="{Binding NamedUserValue}" >
+                    <EntryCell Label="{x:Static resources:AppResources.named_user_cell_title}" Completed="AddNamedUser" x:Name="namedUserLabel">
                         <EntryCell.Keyboard>
                             <Keyboard x:FactoryMethod="Create">
                                 <x:Arguments>
@@ -34,6 +34,12 @@
                             </Keyboard>
                         </EntryCell.Keyboard>
                     </EntryCell>
+                    <ViewCell>
+                        <StackLayout Padding="20,0,0,0"
+                        Orientation="Vertical">
+                            <Label Text="" x:Name="tagsList"/>
+                        </StackLayout>
+                    </ViewCell>
                 </TableSection>
             </TableRoot>
         </TableView>

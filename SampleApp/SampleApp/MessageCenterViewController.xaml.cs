@@ -4,6 +4,11 @@ using Xamarin.Forms;
 
 using UrbanAirship.NETStandard;
 using UrbanAirship.NETStandard.MessageCenter;
+using System.Collections.ObjectModel;
+using Xamarin.Essentials;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using AirshipBindings.NETStandard.Abstractions;
 
 namespace SampleApp
 {
@@ -12,27 +17,32 @@ namespace SampleApp
         public MessageCenterViewController()
         {
             InitializeComponent();
+            this.BindingContext = this;
         }
 
         protected override void OnAppearing()
         {
-            var messages = Airship.Instance.InboxMessages;
-
-            Console.WriteLine("Inbox Messages:");
-
-            foreach (Message message in messages)
+            Airship.Instance.InboxMessages(messages =>
             {
-                Console.WriteLine("---");
-                Console.WriteLine(message.Title);
-                Console.WriteLine(message.Unread);
-                Console.WriteLine(message.SentDate);
-            }
-            Console.WriteLine("---");
+                Console.WriteLine("Inbox Messages:");
 
-            listView.ItemsSource = messages;
+                foreach (Message message in messages)
+                {
+                    Console.WriteLine("---");
+                    Console.WriteLine(message.Title);
+                    Console.WriteLine(message.Unread);
+                    Console.WriteLine(message.SentDate);
+                }
+                Console.WriteLine("---");
+
+                Device.BeginInvokeOnMainThread(() =>
+                {
+                    listView.ItemsSource = messages;
+                });
+            });
         }
 
-        void listView_ItemSelected(Object sender, SelectedItemChangedEventArgs e)
+        private async void listView_ItemSelected(Object sender, SelectedItemChangedEventArgs e)
         {
             var message = e.SelectedItem as Message;
             var messagePage = new MessagePage();
@@ -41,7 +51,7 @@ namespace SampleApp
             messagePage.Loaded += onLoaded;
             messagePage.Closed += onClosed;
             messagePage.LoadFailed += onLoadFailed;
-            Navigation.PushAsync(messagePage);
+            await Navigation.PushAsync(messagePage);
         }
 
         private void onLoadStarted(object sender, MessageLoadStartedEventArgs e)

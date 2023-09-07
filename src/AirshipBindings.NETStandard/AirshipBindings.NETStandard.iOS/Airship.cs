@@ -396,41 +396,38 @@ namespace UrbanAirship.NETStandard
             });
         }
 
-        public List<MessageCenter.Message> InboxMessages
+        public void InboxMessages(Action<List<MessageCenter.Message>> listMessages)
         {
-            get
+            var messagesList = new List<MessageCenter.Message>();
+            UAMessageCenter.Shared.Inbox.GetMessages(messages =>
             {
-                var messagesList = new List<MessageCenter.Message>();
-                UAMessageCenter.Shared.Inbox.GetMessages(messages =>
+                foreach (var message in messages)
                 {
-                    foreach (var message in messages)
+                    var extras = new Dictionary<string, string>();
+                    foreach (var key in message.Extra.Keys)
                     {
-                        var extras = new Dictionary<string, string>();
-                        foreach (var key in message.Extra.Keys)
-                        {
-                            extras.Add(key.ToString(), message.Extra[key].ToString());
-                        }
-
-                        DateTime? sentDate = FromNSDate(message.SentDate);
-                        DateTime? expirationDate = FromNSDate(message.ExpirationDate);
-
-                        string iconUrl = message.ListIcon;
-
-                        var inboxMessage = new MessageCenter.Message(
-                            message.Id,
-                            message.Title,
-                            sentDate,
-                            expirationDate,
-                            message.Unread,
-                            iconUrl,
-                            extras);
-
-                        messagesList.Add(inboxMessage);
+                        extras.Add(key.ToString(), message.Extra[key].ToString());
                     }
-                });
 
-                return messagesList;
-            }
+                    DateTime? sentDate = FromNSDate(message.SentDate);
+                    DateTime? expirationDate = FromNSDate(message.ExpirationDate);
+
+                    string iconUrl = message.ListIcon;
+
+                    var inboxMessage = new MessageCenter.Message(
+                        message.Id,
+                        message.Title,
+                        sentDate,
+                        expirationDate,
+                        message.Unread,
+                        iconUrl,
+                        extras);
+
+                    messagesList.Add(inboxMessage);
+                }
+
+                listMessages(messagesList);
+            });
         }
 
         private NSDate FromDateTime(DateTime dateTime)
@@ -588,18 +585,19 @@ namespace UrbanAirship.NETStandard
             completionHandler();
         }
 
-        public void DisplayMessageCenter(string messageID, bool animated)
+        public void OnDisplayMessageCenter(string messageID)
         {
             onMessageCenterDisplay?.Invoke(this, new MessageCenterEventArgs(messageID));
         }
 
-        public void DisplayMessageCenterAnimated(bool animated)
+        public void OnDisplayMessageCenter()
         {
             onMessageCenterDisplay?.Invoke(this, new MessageCenterEventArgs());
         }
 
-        public void DismissMessageCenterAnimated(bool animated)
-        { }
+        public void OnDismissMessageCenter()
+        {
+        }
 
 
         public bool InAppAutomationPaused

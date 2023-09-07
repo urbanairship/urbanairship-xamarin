@@ -69,17 +69,17 @@ namespace UrbanAirship {
         // @required -(void)displayMessageCenterForMessageID:(NSString * _Nonnull)messageID;
         [Abstract]
         [Export ("displayMessageCenterForMessageID:")]
-        void DisplayMessage(string messageID);
+        void OnDisplayMessageCenter (string messageID);
         
         // @required -(void)displayMessageCenter;
         [Abstract]
         [Export ("displayMessageCenter")]
-        void DisplayMessageCenter ();
+        void OnDisplayMessageCenter ();
         
         // @required -(void)dismissMessageCenter;
         [Abstract]
         [Export ("dismissMessageCenter")]
-        void DismissMessageCenter ();
+        void OnDismissMessageCenter ();
     }
     
     interface IUAMessageCenterDisplayDelegate { }

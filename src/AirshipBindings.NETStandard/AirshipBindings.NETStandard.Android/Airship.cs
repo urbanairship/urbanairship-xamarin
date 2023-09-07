@@ -373,37 +373,34 @@ namespace UrbanAirship.NETStandard
             messageCount(count);
         }
 
-        public List<MessageCenter.Message> InboxMessages
+        public void InboxMessages(Action<List<MessageCenter.Message>> listMessages)
         {
-            get
+            var messagesList = new List<MessageCenter.Message>();
+            var messages = MessageCenterClass.Shared().Inbox.Messages;
+            foreach (var message in messages)
             {
-                var messagesList = new List<MessageCenter.Message>();
-                var messages = MessageCenterClass.Shared().Inbox.Messages;
-                foreach (var message in messages)
+                var extras = new Dictionary<string, string>();
+                foreach (var key in message.Extras.KeySet())
                 {
-                    var extras = new Dictionary<string, string>();
-                    foreach (var key in message.Extras.KeySet())
-                    {
-                        extras.Add(key, message.Extras.Get(key).ToString());
-                    }
-
-                    DateTime? sentDate = FromDate(message.SentDate);
-                    DateTime? expirationDate = FromDate(message.ExpirationDate);
-
-                    var inboxMessage = new MessageCenter.Message(
-                        message.MessageId,
-                        message.Title,
-                        sentDate,
-                        expirationDate,
-                        message.IsRead,
-                        message.ListIconUrl,
-                        extras);
-
-                    messagesList.Add(inboxMessage);
+                    extras.Add(key, message.Extras.Get(key).ToString());
                 }
 
-                return messagesList;
+                DateTime? sentDate = FromDate(message.SentDate);
+                DateTime? expirationDate = FromDate(message.ExpirationDate);
+
+                var inboxMessage = new MessageCenter.Message(
+                    message.MessageId,
+                    message.Title,
+                    sentDate,
+                    expirationDate,
+                    message.IsRead,
+                    message.ListIconUrl,
+                    extras);
+
+                messagesList.Add(inboxMessage);
             }
+
+            listMessages(messagesList);
         }
 
         private Date FromDateTime(DateTime dateTime)

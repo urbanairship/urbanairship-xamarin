@@ -196,10 +196,7 @@ namespace UrbanAirship.NETStandard
 
         void MessageCenterCount(Action<int> messageCount);
 
-        List<MessageCenter.Message> InboxMessages
-        {
-            get;
-        }
+        void InboxMessages(Action<List<MessageCenter.Message>> messages);
 
         Channel.TagGroupsEditor EditNamedUserTagGroups();
 
