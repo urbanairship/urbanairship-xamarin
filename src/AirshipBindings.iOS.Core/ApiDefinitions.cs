@@ -3024,10 +3024,10 @@ namespace UrbanAirship {
         [BaseType(typeof(NSObject))]
         interface UANativeBridgeExtensionDelegate
         {
-            // @required -(id)actionsMetadataForCommand:(UAJavaScriptCommand * _Nonnull)command webView:(WKWebView * _Nonnull)webView __attribute__((warn_unused_result("")));
-            [Abstract]
+			// @required -(NSDictionary<NSString *,NSString *> *)actionsMetadataForCommand:(UAJavaScriptCommand * _Nonnull)command webView:(WKWebView * _Nonnull)webView __attribute__((warn_unused_result("")));
+			[Abstract]
             [Export("actionsMetadataForCommand:webView:")]
-            NSObject ActionsMetadataForCommand(UAJavaScriptCommand command, WKWebView webView);
+			NSDictionary<NSString, NSString> ActionsMetadataForCommand(UAJavaScriptCommand command, WKWebView webView);
 
             // @required -(void)extendJavaScriptEnvironment:(id<UAJavaScriptEnvironmentProtocol> _Nonnull)js webView:(WKWebView * _Nonnull)webView completionHandler:(void (^ _Nonnull)(void))completionHandler;
             [Abstract]

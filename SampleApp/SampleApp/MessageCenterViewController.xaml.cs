@@ -17,7 +17,6 @@ namespace SampleApp
         public MessageCenterViewController()
         {
             InitializeComponent();
-            this.BindingContext = this;
         }
 
         protected override void OnAppearing()

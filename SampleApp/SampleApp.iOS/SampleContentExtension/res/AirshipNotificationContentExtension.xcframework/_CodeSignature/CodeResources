@@ -18,7 +18,7 @@
 		</data>
 		<key>ios-arm64/AirshipNotificationContentExtension.framework/Info.plist</key>
 		<data>
-		6RrpkjpKgXDnutTIw7eeYLsbdtA=
+		43fjkgK93gy3G9HBvTQKrxCryS0=
 		</data>
 		<key>ios-arm64/AirshipNotificationContentExtension.framework/Modules/module.modulemap</key>
 		<data>
@@ -42,11 +42,11 @@
 		</data>
 		<key>ios-arm64_x86_64-maccatalyst/AirshipNotificationContentExtension.framework/Versions/A/Resources/Info.plist</key>
 		<data>
-		GDjhWOYCmqAGFkhMggPLOeqQMOs=
+		YKJDwopUAevXPGlnr/+RKwF9g98=
 		</data>
 		<key>ios-arm64_x86_64-simulator/AirshipNotificationContentExtension.framework/AirshipNotificationContentExtension</key>
 		<data>
-		kKOraHcNjgIYTu8FFthnhVlPBs4=
+		5SpvPa4q06dWIl7vfbGPbf0or5A=
 		</data>
 		<key>ios-arm64_x86_64-simulator/AirshipNotificationContentExtension.framework/Headers/AirshipNotificationContentExtension.h</key>
 		<data>
@@ -58,7 +58,7 @@
 		</data>
 		<key>ios-arm64_x86_64-simulator/AirshipNotificationContentExtension.framework/Info.plist</key>
 		<data>
-		wxL40nEGs3h6EXmWp5ZdJPh/BDw=
+		W5YTxuk+Hm82bSmUxZN2qcYWTPU=
 		</data>
 		<key>ios-arm64_x86_64-simulator/AirshipNotificationContentExtension.framework/Modules/module.modulemap</key>
 		<data>
@@ -66,7 +66,7 @@
 		</data>
 		<key>ios-arm64_x86_64-simulator/AirshipNotificationContentExtension.framework/_CodeSignature/CodeResources</key>
 		<data>
-		jnTdN1PgmFPgGxbP7LMPktXvoF4=
+		cjr33Xr480SprYkon0izaXMxP2k=
 		</data>
 	</dict>
 	<key>files2</key>
@@ -108,11 +108,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			6RrpkjpKgXDnutTIw7eeYLsbdtA=
+			43fjkgK93gy3G9HBvTQKrxCryS0=
 			</data>
 			<key>hash2</key>
 			<data>
-			A6YrCeAggaxS4auGG8LAOaE+beG+WY/Ckq5tv4NjkzI=
+			D5/ivxCEwC2REmPegSCPfoSHi740Xb59l+i8WEUNKEU=
 			</data>
 		</dict>
 		<key>ios-arm64/AirshipNotificationContentExtension.framework/Modules/module.modulemap</key>
@@ -194,11 +194,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			GDjhWOYCmqAGFkhMggPLOeqQMOs=
+			YKJDwopUAevXPGlnr/+RKwF9g98=
 			</data>
 			<key>hash2</key>
 			<data>
-			d3rX4iwLQUE8KRHjHiRvnFwnsNH2efMY75l5gm3PsSU=
+			xqvLip0ujJwikTeBNY5sPxJ8vUSSMkKw7nQ9nStoH1E=
 			</data>
 		</dict>
 		<key>ios-arm64_x86_64-maccatalyst/AirshipNotificationContentExtension.framework/Versions/Current</key>
@@ -210,11 +210,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			kKOraHcNjgIYTu8FFthnhVlPBs4=
+			5SpvPa4q06dWIl7vfbGPbf0or5A=
 			</data>
 			<key>hash2</key>
 			<data>
-			KY+naVDgiRLztIzWdqAbQEjpbPNuXh0rtbBH5H0N6jc=
+			Q2/S01B+XVmRGajTe69XLsPk28W6t/Sw5I8S5Hst9H4=
 			</data>
 		</dict>
 		<key>ios-arm64_x86_64-simulator/AirshipNotificationContentExtension.framework/Headers/AirshipNotificationContentExtension.h</key>
@@ -243,11 +243,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			wxL40nEGs3h6EXmWp5ZdJPh/BDw=
+			W5YTxuk+Hm82bSmUxZN2qcYWTPU=
 			</data>
 			<key>hash2</key>
 			<data>
-			RuDvCADl3IHk67xzZTbFXGz5QHId1/nygPBfkfO2mtU=
+			7G9kE2kfapWYzRLMzJmhqrhdVq4oGPdyvUp/iA0fXgs=
 			</data>
 		</dict>
 		<key>ios-arm64_x86_64-simulator/AirshipNotificationContentExtension.framework/Modules/module.modulemap</key>
@@ -265,11 +265,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			jnTdN1PgmFPgGxbP7LMPktXvoF4=
+			cjr33Xr480SprYkon0izaXMxP2k=
 			</data>
 			<key>hash2</key>
 			<data>
-			uHLOqMI4mTqsVHWk0yur9zPtMqGtXl6ekZVwHtNGh4U=
+			guXiarCoTYTefjMNavYNMwKvZR9tG6kiWlxovYpfkA8=
 			</data>
 		</dict>
 	</dict>
