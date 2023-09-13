@@ -512,10 +512,6 @@ namespace UrbanAirship {
 		[Static]
 		[Export("mutations")]
 		UAAttributeMutations Mutations();
-
-		// -(void)applyMutationsWithEditor:(UAAttributesEditor * _Nonnull)editor;
-		[Export("applyMutationsWithEditor:")]
-		void ApplyMutations(UAAttributesEditor editor);
 	}
 
 	// @interface UAAttributes : NSObject
@@ -742,7 +738,7 @@ namespace UrbanAirship {
 
         // -(void)editAttributes:(void (^ _Nonnull)(UAAttributesEditor * _Nonnull))editorBlock;
         [Export("editAttributes:")]
-        void EditAttributesAsync(Action<UAAttributesEditor> editorBlock);
+        void EditAttributes(Action<UAAttributesEditor> editorBlock);
 
         // -(void)addTag:(NSString * _Nonnull)tag __attribute__((deprecated("Use editTags instead.")));
         [Export("addTag:")]

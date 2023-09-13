@@ -9,6 +9,7 @@ using UrbanAirship;
 using UrbanAirship.NETStandard;
 using UrbanAirship.NETStandard.Analytics;
 using UrbanAirship.NETStandard.Attributes;
+using Xamarin.Forms;
 
 namespace UrbanAirship.NETStandard
 {
@@ -33,10 +34,10 @@ namespace UrbanAirship.NETStandard
             });
 
             // TODO(18.0.0): Wire up the push notfication status listener, once the iOS SDK bindings have been bumped to 17.x
-            //NSNotificationCenter.DefaultCenter.AddObserver((aName: (NSString)UAPush.Push, (NSNotification notification) =>
+            //NSNotificationCenter.DefaultCenter.AddObserver((aName: (NSString)UAPush.PushNotificationStatusEvent, (NSNotification notification) =>
             //{
-                //AirshipNotificationStatus status = notification.UserInfo[UAPush.ChannelIdentifierKey].ToString();
-                //OnPushNotificationStatusUpdate?.Invoke(this, new PushNotificationStatusEventArgs(status))
+            //    AirshipNotificationStatus status = notification.UserInfo[UAPush.ChannelIdentifierKey].ToString();
+            //    OnPushNotificationStatusUpdate?.Invoke(this, new PushNotificationStatusEventArgs(status));
             //});
 
             //Adding Inbox updated Listener
@@ -87,7 +88,7 @@ namespace UrbanAirship.NETStandard
         /// Add/remove the Message Center updated listener.
         /// </summary>
         public event EventHandler OnMessageCenterUpdated;
-   
+
         private EventHandler<MessageCenterEventArgs> onMessageCenterDisplay;
 
         /// <summary>
@@ -333,7 +334,7 @@ namespace UrbanAirship.NETStandard
                     {
                         propertyDictionary.SetValueForKey(value, key);
                     }
-                    
+
                 }
                 if (propertyDictionary.Count > 0)
                 {
@@ -459,7 +460,7 @@ namespace UrbanAirship.NETStandard
         {
             return new Channel.TagGroupsEditor((List<Channel.TagGroupsEditor.TagOperation> payload) =>
             {
-                TagGroupHelper(payload, true);
+                ContactTagGroupHelper(payload);
             });
         }
 
@@ -467,8 +468,11 @@ namespace UrbanAirship.NETStandard
         {
             return new Channel.TagGroupsEditor((List<Channel.TagGroupsEditor.TagOperation> payload) =>
             {
-                TagGroupHelper(payload, false);
-                UAirship.Push.UpdateRegistration();
+                Console.WriteLine("Mouna EditChannelTagGroups payload {0}", payload);
+                ChannelTagGroupHelper(payload, () =>
+                {
+                    UAirship.Push.UpdateRegistration();
+                });
             });
         }
 
@@ -481,10 +485,7 @@ namespace UrbanAirship.NETStandard
         {
             return new AttributeEditor((List<AttributeEditor.IAttributeOperation> operations) =>
             {
-                UAAttributeMutations mutations = UAAttributeMutations.Mutations();
-                ApplyAttributesOperations(mutations, operations);
-                //FIXME: TO verify
-                //UAirship.Channel.ApplyAttributeMutations(mutations);
+                ApplyChannelAttributesOperations(operations);
             });
         }
 
@@ -492,58 +493,106 @@ namespace UrbanAirship.NETStandard
         {
             return new AttributeEditor((List<AttributeEditor.IAttributeOperation> operations) =>
             {
-                UAAttributeMutations mutations = UAAttributeMutations.Mutations();
-                ApplyAttributesOperations(mutations, operations);
-                //FIXME: To verify
-                //UAirship.Contact.ApplyAttributeMutations(mutations);
+                ApplyContactAttributesOperations(operations);
             });
         }
 
-        private void ApplyAttributesOperations(UAAttributeMutations mutations, List<AttributeEditor.IAttributeOperation> operations)
+        private void ApplyChannelAttributesOperations(List<AttributeEditor.IAttributeOperation> operations)
         {
-            foreach (var operation in operations)
+            UAirship.Channel.EditAttributes( editor =>
             {
-                if (operation is AttributeEditor.SetAttributeOperation<string> stringOperation)
+                foreach (var operation in operations)
                 {
-                    mutations.SetString(stringOperation.value, stringOperation.key);
-                }
+                    if (operation is AttributeEditor.SetAttributeOperation<string> stringOperation)
+                    {
+                        editor.SetString(stringOperation.value, stringOperation.key);
+                    }
 
-                if (operation is AttributeEditor.SetAttributeOperation<int> intOperation)
-                {
-                    mutations.SetNumber(intOperation.value, intOperation.key);
-                }
+                    if (operation is AttributeEditor.SetAttributeOperation<int> intOperation)
+                    {
+                        editor.SetNumber(intOperation.value, intOperation.key);
+                    }
 
-                if (operation is AttributeEditor.SetAttributeOperation<long> longOperation)
-                {
-                    mutations.SetNumber(longOperation.value, longOperation.key);
-                }
+                    if (operation is AttributeEditor.SetAttributeOperation<long> longOperation)
+                    {
+                        editor.SetNumber(longOperation.value, longOperation.key);
+                    }
 
-                if (operation is AttributeEditor.SetAttributeOperation<float> floatOperation)
-                {
-                    mutations.SetNumber(floatOperation.value, floatOperation.key);
-                }
+                    if (operation is AttributeEditor.SetAttributeOperation<float> floatOperation)
+                    {
+                        editor.SetNumber(floatOperation.value, floatOperation.key);
+                    }
 
-                if (operation is AttributeEditor.SetAttributeOperation<double> doubleOperation)
-                {
-                    mutations.SetNumber(doubleOperation.value, doubleOperation.key);
-                }
+                    if (operation is AttributeEditor.SetAttributeOperation<double> doubleOperation)
+                    {
+                        editor.SetNumber(doubleOperation.value, doubleOperation.key);
+                    }
 
-                if (operation is AttributeEditor.SetAttributeOperation<DateTime> dateOperation)
-                {
-                    NSDate date = FromDateTime(dateOperation.value);
-                    mutations.SetDate(date, dateOperation.key);
-                }
+                    if (operation is AttributeEditor.SetAttributeOperation<DateTime> dateOperation)
+                    {
+                        NSDate date = FromDateTime(dateOperation.value);
+                        editor.SetDate(date, dateOperation.key);
+                    }
 
-                if (operation is AttributeEditor.RemoveAttributeOperation removeOperation)
-                {
-                    mutations.RemoveAttribute(removeOperation.key);
+                    if (operation is AttributeEditor.RemoveAttributeOperation removeOperation)
+                    {
+                        editor.RemoveAttribute(removeOperation.key);
+                    }
                 }
-            }
+                editor.Apply();
+            });
+
         }
 
-        private void TagGroupHelper(List<Channel.TagGroupsEditor.TagOperation> operations, bool namedUser)
+        private void ApplyContactAttributesOperations(List<AttributeEditor.IAttributeOperation> operations)
         {
+            UAirship.Contact.EditAttributes( editor =>
+            {
+                foreach (var operation in operations)
+                {
+                    if (operation is AttributeEditor.SetAttributeOperation<string> stringOperation)
+                    {
+                        editor.SetString(stringOperation.value, stringOperation.key);
+                    }
 
+                    if (operation is AttributeEditor.SetAttributeOperation<int> intOperation)
+                    {
+                        editor.SetNumber(intOperation.value, intOperation.key);
+                    }
+
+                    if (operation is AttributeEditor.SetAttributeOperation<long> longOperation)
+                    {
+                        editor.SetNumber(longOperation.value, longOperation.key);
+                    }
+
+                    if (operation is AttributeEditor.SetAttributeOperation<float> floatOperation)
+                    {
+                        editor.SetNumber(floatOperation.value, floatOperation.key);
+                    }
+
+                    if (operation is AttributeEditor.SetAttributeOperation<double> doubleOperation)
+                    {
+                        editor.SetNumber(doubleOperation.value, doubleOperation.key);
+                    }
+
+                    if (operation is AttributeEditor.SetAttributeOperation<DateTime> dateOperation)
+                    {
+                        NSDate date = FromDateTime(dateOperation.value);
+                        editor.SetDate(date, dateOperation.key);
+                    }
+
+                    if (operation is AttributeEditor.RemoveAttributeOperation removeOperation)
+                    {
+                        editor.RemoveAttribute(removeOperation.key);
+                    }
+                }
+                editor.Apply();
+            });
+
+        }
+
+        private void ContactTagGroupHelper(List<Channel.TagGroupsEditor.TagOperation> operations)
+        {
             UAirship.Contact.EditTagGroups( editor =>
             {
                 var contactActions = new Dictionary<Channel.TagGroupsEditor.OperationType, Action<string, string[]>>()
@@ -552,17 +601,6 @@ namespace UrbanAirship.NETStandard
                     { Channel.TagGroupsEditor.OperationType.REMOVE, (group, t) => editor.RemoveTags(t, group) },
                     { Channel.TagGroupsEditor.OperationType.SET, (group, t) => editor.SetTags(t, group) }
                 };
-
-
-                var channelActions = new Dictionary<Channel.TagGroupsEditor.OperationType, Action<string, string[]>>()
-                {
-                    { Channel.TagGroupsEditor.OperationType.ADD, (group, t) => UAirship.Channel.AddTags(t, group) },
-                    { Channel.TagGroupsEditor.OperationType.REMOVE, (group, t) => UAirship.Channel.RemoveTags(t, group) },
-                    { Channel.TagGroupsEditor.OperationType.SET, (group, t) => UAirship.Channel.SetTags(t, group) }
-                };
-
-
-                var actions = namedUser ? contactActions : channelActions;
 
                 foreach (Channel.TagGroupsEditor.TagOperation operation in operations)
                 {
@@ -573,10 +611,39 @@ namespace UrbanAirship.NETStandard
 
                     string[] tagArray = new string[operation.tags.Count];
                     operation.tags.CopyTo(tagArray, 0);
-                    actions[operation.operationType](operation.group, tagArray);
+                    contactActions[operation.operationType](operation.group, tagArray);
                 }
-            });
 
+                editor.Apply();
+            });
+        }
+
+        private void ChannelTagGroupHelper(List<Channel.TagGroupsEditor.TagOperation> operations, Action finished)
+        {
+            UAirship.Channel.EditTagGroups(editor =>
+            {
+                var channelActions = new Dictionary<Channel.TagGroupsEditor.OperationType, Action<string, string[]>>()
+                {
+                    { Channel.TagGroupsEditor.OperationType.ADD, (group, t) => editor.AddTags(t, group) },
+                    { Channel.TagGroupsEditor.OperationType.REMOVE, (group, t) => editor.RemoveTags(t, group) },
+                    { Channel.TagGroupsEditor.OperationType.SET, (group, t) => editor.SetTags(t, group) }
+                };
+
+                foreach (Channel.TagGroupsEditor.TagOperation operation in operations)
+                {
+                    if (!Enum.IsDefined(typeof(Channel.TagGroupsEditor.OperationType), operation.operationType))
+                    {
+                        continue;
+                    }
+
+                    string[] tagArray = new string[operation.tags.Count];
+                    operation.tags.CopyTo(tagArray, 0);
+                    channelActions[operation.operationType](operation.group, tagArray);
+                }
+
+                editor.Apply();
+                finished();
+            });
         }
 
         override public void ReceivedDeepLink(NSUrl url, Action completionHandler)
