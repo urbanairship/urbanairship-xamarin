@@ -6,6 +6,7 @@ using CoreGraphics;
 using Foundation;
 using ObjCRuntime;
 using System;
+using System.Collections.Generic;
 using UIKit;
 using UserNotifications;
 using WebKit;
@@ -730,7 +731,7 @@ namespace UrbanAirship {
 
         // -(void)fetchSubscriptionListsWithCompletionHandler:(void (^ _Nonnull)(NSArray<NSString *> * _Nullable, NSError * _Nullable))completionHandler;
         [Export("fetchSubscriptionListsWithCompletionHandler:")]
-        void FetchSubscriptionLists(Action<NSArray<NSString>> completionHandler);
+        void FetchSubscriptionLists(Action<string[]> completionHandler);
 
         // -(UAAttributesEditor * _Nonnull)editAttributes __attribute__((warn_unused_result("")));
         [Export("editAttributes")]
@@ -1087,9 +1088,9 @@ namespace UrbanAirship {
         [Export("editSubscriptionLists:")]
         void EditSubscriptionLists(Action<UAScopedSubscriptionListEditor> editorBlock);
 
-        // -(void)fetchSubscriptionListsWithCompletionHandler:(void (^ _Nonnull)(int))completionHandler;
+        // -(void)fetchSubscriptionListsWithCompletionHandler:(void (^ _Nonnull)(NSDictionary *))completionHandler;
         [Export("fetchSubscriptionListsWithCompletionHandler:")]
-        void FetchSubscriptionLists(Action<int> completionHandler);
+        void FetchSubscriptionLists(Action< NSDictionary> completionHandler);
     }
 
 	// @interface UACustomEvent : NSObject <UAEvent>
@@ -2772,10 +2773,10 @@ namespace UrbanAirship {
             [Export("editSubscriptionLists:")]
             void EditSubscriptionLists(Action<UASubscriptionListEditor> editorBlock);
 
-            // @required -(void)fetchSubscriptionListsWithCompletionHandler:(void (^ _Nonnull)(int))completionHandler;
+            // @required -(void)fetchSubscriptionListsWithCompletionHandler:(void (^ _Nonnull)(NSArray *))completionHandler;
             [Abstract]
             [Export("fetchSubscriptionListsWithCompletionHandler:")]
-            void FetchSubscriptionLists(Action<int> completionHandler);
+            void FetchSubscriptionLists(Action<string[]> completionHandler);
 
             // @required -(UAAttributesEditor * _Nonnull)editAttributes __attribute__((warn_unused_result("")));
             [Abstract]
@@ -3010,7 +3011,7 @@ namespace UrbanAirship {
             // @required -(void)buildWithCompletionHandler:(void (^ _Nonnull)(NSString * _Nonnull))completionHandler;
             [Abstract]
             [Export("buildWithCompletionHandler:")]
-            void Build(Action<NSString> completionHandler);
+            void Build(Action<string> completionHandler);
         }
 
         interface IUAJavaScriptEnvironmentProtocol { }

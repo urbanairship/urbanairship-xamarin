@@ -8,7 +8,6 @@ using System.Collections.Generic;
 
 namespace UrbanAirship.NETStandard
 {
-
     /// <summary>
     /// Arguments for Channel creation events.
     /// </summary>
@@ -156,11 +155,10 @@ namespace UrbanAirship.NETStandard
         }
 
         void GetNamedUser(Action<string> namedUser);
-        
-        string NamedUser
-        {
-            set;
-        }
+
+        void ResetContact();
+
+        void IdentifyContact(string namedUserId);
 
         /// <summary>
         /// Add/remove the channel creation listener.
@@ -198,7 +196,7 @@ namespace UrbanAirship.NETStandard
 
         void InboxMessages(Action<List<MessageCenter.Message>> messages);
 
-        Channel.TagGroupsEditor EditNamedUserTagGroups();
+        Channel.TagGroupsEditor EditContactTagGroups();
 
         Channel.TagGroupsEditor EditChannelTagGroups();
 
@@ -208,7 +206,11 @@ namespace UrbanAirship.NETStandard
 
         Attributes.AttributeEditor EditChannelAttributes();
 
-        Attributes.AttributeEditor EditNamedUserAttributes();
+        Attributes.AttributeEditor EditContactAttributes();
+
+        Channel.SubscriptionListEditor EditChannelSubscriptionLists();
+
+        Contact.SubscriptionListEditor EditContactSubscriptionLists();
 
         bool InAppAutomationPaused
         {

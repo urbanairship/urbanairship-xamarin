@@ -52,7 +52,14 @@ namespace SampleApp
 
         void AddNamedUser(object sender, EventArgs e)
         {
-            Airship.Instance.NamedUser = namedUserLabel.Text;
+            if (namedUserLabel.Text == null)
+            {
+                Airship.Instance.ResetContact();
+            }
+            else
+            {
+                Airship.Instance.IdentifyContact(namedUserLabel.Text);
+            }
             UpdateNamedUser();
             DisplayAlert(AppResources.alert_title, AppResources.alert_named_user_added_successuflully, AppResources.ok);
         }

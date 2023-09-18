@@ -4,6 +4,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Foundation;
 using UrbanAirship;
 using UrbanAirship.NETStandard;
@@ -33,12 +34,20 @@ namespace UrbanAirship.NETStandard
                 OnChannelCreation?.Invoke(this, new ChannelEventArgs(channelID));
             });
 
-            // TODO(18.0.0): Wire up the push notfication status listener, once the iOS SDK bindings have been bumped to 17.x
-            //NSNotificationCenter.DefaultCenter.AddObserver((aName: (NSString)UAPush.PushNotificationStatusEvent, (NSNotification notification) =>
-            //{
-            //    AirshipNotificationStatus status = notification.UserInfo[UAPush.ChannelIdentifierKey].ToString();
-            //    OnPushNotificationStatusUpdate?.Invoke(this, new PushNotificationStatusEventArgs(status));
-            //});
+            //FIXME: Use UAPush.NotificationStatusUpdateEvent once it's available
+            NSNotificationCenter.DefaultCenter.AddObserver(aName: (NSString)"com.urbanairship.notification.status.update", (notification) =>
+            {
+                OnPushNotificationStatusUpdate?.Invoke(this,
+                    new PushNotificationStatusEventArgs(
+                        Convert.ToBoolean(notification.UserInfo["isUserNotificationsEnabled"]),
+                        Convert.ToBoolean(notification.UserInfo["areNotificationsAllowed"]),
+                        Convert.ToBoolean(notification.UserInfo["isPushPrivacyFeatureEnabled"]),
+                        Convert.ToBoolean(notification.UserInfo["isPushTokenRegistered"]),
+                        Convert.ToBoolean(notification.UserInfo["isUserOptedIn"]),
+                        Convert.ToBoolean(notification.UserInfo["isOptIn"])
+                    )
+                );
+            });
 
             //Adding Inbox updated Listener
             NSNotificationCenter.DefaultCenter.AddObserver(aName: (NSString)"com.urbanairship.notification.message_list_updated", (notification) =>
@@ -250,19 +259,14 @@ namespace UrbanAirship.NETStandard
             UAirship.Contact.GetNamedUserID(namedUser);
         }
 
-        public string NamedUser
+        public void ResetContact()
         {
-            set
-            {
-                if (value == null)
-                {
-                    UAirship.Contact.Reset();
-                }
-                else
-                {
-                    UAirship.Contact.Identify(value);
-                }
-            }
+            UAirship.Contact.Reset();
+        }
+
+        public void IdentifyContact(string namedUserId)
+        {
+            UAirship.Contact.Identify(namedUserId);
         }
 
         public Channel.TagEditor EditDeviceTags()
@@ -456,7 +460,19 @@ namespace UrbanAirship.NETStandard
             return epoch.AddSeconds(date.SecondsSince1970);
         }
 
-        public Channel.TagGroupsEditor EditNamedUserTagGroups()
+
+        public Channel.TagGroupsEditor EditChannelTagGroups()
+        {
+            return new Channel.TagGroupsEditor((List<Channel.TagGroupsEditor.TagOperation> payload) =>
+            {
+                ChannelTagGroupHelper(payload, () =>
+                {
+                    UAirship.Push.UpdateRegistration();
+                });
+            });
+        }
+
+        public Channel.TagGroupsEditor EditContactTagGroups()
         {
             return new Channel.TagGroupsEditor((List<Channel.TagGroupsEditor.TagOperation> payload) =>
             {
@@ -464,17 +480,6 @@ namespace UrbanAirship.NETStandard
             });
         }
 
-        public Channel.TagGroupsEditor EditChannelTagGroups()
-        {
-            return new Channel.TagGroupsEditor((List<Channel.TagGroupsEditor.TagOperation> payload) =>
-            {
-                Console.WriteLine("Mouna EditChannelTagGroups payload {0}", payload);
-                ChannelTagGroupHelper(payload, () =>
-                {
-                    UAirship.Push.UpdateRegistration();
-                });
-            });
-        }
 
         public AttributeEditor EditAttributes()
         {
@@ -489,11 +494,28 @@ namespace UrbanAirship.NETStandard
             });
         }
 
-        public AttributeEditor EditNamedUserAttributes()
+        public AttributeEditor EditContactAttributes()
         {
             return new AttributeEditor((List<AttributeEditor.IAttributeOperation> operations) =>
             {
                 ApplyContactAttributesOperations(operations);
+            });
+        }
+
+
+        public Channel.SubscriptionListEditor EditChannelSubscriptionLists()
+        {
+            return new Channel.SubscriptionListEditor((List<Channel.SubscriptionListEditor.SubscriptionListOperation> payload) =>
+            {
+                ApplyChannelSubscriptionListHelper(payload);
+            });
+        }
+
+        public Contact.SubscriptionListEditor EditContactSubscriptionLists()
+        {
+            return new Contact.SubscriptionListEditor((List<Contact.SubscriptionListEditor.SubscriptionListOperation> payload) =>
+            {
+                ApplyContactSubscriptionListHelper(payload);
             });
         }
 
@@ -643,6 +665,82 @@ namespace UrbanAirship.NETStandard
 
                 editor.Apply();
                 finished();
+            });
+        }
+
+        private void ApplyChannelSubscriptionListHelper(List<Channel.SubscriptionListEditor.SubscriptionListOperation> operations)
+        {
+            UAirship.Channel.EditSubscriptionLists( editor =>
+            {
+                foreach (Channel.SubscriptionListEditor.SubscriptionListOperation operation in operations)
+                {
+                    if (!Enum.IsDefined(typeof(Channel.SubscriptionListEditor.SubscriptionListOperation), operation.operationType))
+                    {
+                        continue;
+                    }
+
+                    switch (operation.operationType)
+                    {
+                        case Channel.SubscriptionListEditor.OperationType.SUBSCRIBE:
+                            editor.Subscribe(operation.list);
+                            break;
+                        case Channel.SubscriptionListEditor.OperationType.UNSUBSCRIBE:
+                            editor.Unsubscribe(operation.list);
+                            break;
+                    }
+                }
+
+                editor.Apply();
+            });
+        }
+
+        private void ApplyContactSubscriptionListHelper(List<Contact.SubscriptionListEditor.SubscriptionListOperation> operations)
+        {
+            UAirship.Contact.EditSubscriptionLists( editor =>
+            {
+
+                foreach (Contact.SubscriptionListEditor.SubscriptionListOperation operation in operations)
+                {
+                    if (!Enum.IsDefined(typeof(Contact.SubscriptionListEditor.SubscriptionListOperation), operation.operationType))
+                    {
+                        continue;
+                    }
+
+                    string scope = operation.scope;
+                    string[] scopes = { "app", "web", "email", "sms" };
+                    if (scopes.Any(scope.Contains))
+                    {
+                        UAChannelScope channelScope = UAChannelScope.App;
+                        if (operation.scope == "app")
+                        {
+                            channelScope = UAChannelScope.App;
+                        }
+                        else if (operation.scope == "web")
+                        {
+                            channelScope = UAChannelScope.Web;
+                        }
+                        else if (operation.scope == "email")
+                        {
+                            channelScope = UAChannelScope.Email;
+                        }
+                        else if (operation.scope == "sms")
+                        {
+                            channelScope = UAChannelScope.Sms;
+                        }
+
+                        switch (operation.operationType)
+                        {
+                            case Contact.SubscriptionListEditor.OperationType.SUBSCRIBE:
+                                editor.Subscribe(operation.list, channelScope);
+                                break;
+                            case Contact.SubscriptionListEditor.OperationType.UNSUBSCRIBE:
+                                editor.Unsubscribe(operation.list, channelScope);
+                                break;
+                        }
+                    }
+                }
+
+                editor.Apply();
             });
         }
 
