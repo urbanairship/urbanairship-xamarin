@@ -42,6 +42,9 @@
     <data name="device_settings_tags_title" xml:space="preserve">
         <value>TAGS</value>
     </data>
+    <data name="feature_enabled_cell_title" xml:space="preserve">
+        <value>Enable Features</value>
+    </data>
     <data name="push_enabled_cell_title" xml:space="preserve">
         <value>Push Enabled</value>
     </data>

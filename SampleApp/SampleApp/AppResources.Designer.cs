@@ -157,6 +157,15 @@ namespace SampleApp {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Enable Features.
+        /// </summary>
+        internal static string feature_enabled_cell_title {
+            get {
+                return ResourceManager.GetString("feature_enabled_cell_title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to HOME.
         /// </summary>
         internal static string home_title {

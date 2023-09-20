@@ -7,7 +7,7 @@
         <TableView Intent="Settings">
             <TableRoot>
                 <TableSection Title="{x:Static resources:AppResources.push_settings_features_title}">
-                    <TextCell Text="{x:Static resources:AppResources.push_enabled_cell_title}" x:Name="displayFeaturesView" Tapped="displayFeatures"/>
+                    <TextCell Text="{x:Static resources:AppResources.feature_enabled_cell_title}" x:Name="displayFeaturesView" Tapped="displayFeatures"/>
                 </TableSection>
                 <TableSection Title="{x:Static resources:AppResources.push_settings_category_title}">
                     <SwitchCell Text="{x:Static resources:AppResources.push_enabled_cell_title}" OnChanged="enablePush_OnChanged" x:Name="enabledPushSwitch" Tapped="enablePush_OnChanged"/>
