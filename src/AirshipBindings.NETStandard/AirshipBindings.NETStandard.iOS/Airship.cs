@@ -674,7 +674,7 @@ namespace UrbanAirship.NETStandard
             {
                 foreach (Channel.SubscriptionListEditor.SubscriptionListOperation operation in operations)
                 {
-                    if (!Enum.IsDefined(typeof(Channel.SubscriptionListEditor.SubscriptionListOperation), operation.operationType))
+                    if (!Enum.IsDefined(typeof(Channel.SubscriptionListEditor.OperationType), operation.operationType))
                     {
                         continue;
                     }
@@ -701,7 +701,7 @@ namespace UrbanAirship.NETStandard
 
                 foreach (Contact.SubscriptionListEditor.SubscriptionListOperation operation in operations)
                 {
-                    if (!Enum.IsDefined(typeof(Contact.SubscriptionListEditor.SubscriptionListOperation), operation.operationType))
+                    if (!Enum.IsDefined(typeof(Contact.SubscriptionListEditor.OperationType), operation.operationType))
                     {
                         continue;
                     }
