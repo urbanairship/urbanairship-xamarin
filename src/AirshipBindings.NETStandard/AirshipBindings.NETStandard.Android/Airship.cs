@@ -1,4 +1,4 @@
-﻿/*
+/*
  Copyright Airship and Contributors
 */
 
@@ -12,6 +12,10 @@ using UrbanAirship;
 using UrbanAirship.MessageCenter;
 using UrbanAirship.Automation;
 using UrbanAirship.Push;
+using static Android.Renderscripts.Sampler;
+using System.Linq;
+using UrbanAirship.NETStandard.Contact;
+using Com.Urbanairship.Contacts;
 
 namespace UrbanAirship.NETStandard
 { 
@@ -237,23 +241,19 @@ namespace UrbanAirship.NETStandard
             }
         }
 
-        public string NamedUser
+        public void GetNamedUser(Action<string> namedUser)
         {
-            get
-            {
-                return UAirship.Shared().Contact.NamedUserId;
-            }
+            namedUser(UAirship.Shared().Contact.NamedUserId);
+        }
 
-            set
-            {
-                if (value == null)
-                {
-                    UAirship.Shared().Contact.Reset();
-                } else
-                {
-                    UAirship.Shared().Contact.Identify(value);
-                }
-            }
+        public void ResetContact()
+        {
+            UAirship.Shared().Contact.Reset();
+        }
+
+        public void IdentifyContact(string namedUserId)
+        {
+            UAirship.Shared().Contact.Identify(namedUserId);
         }
 
         public Channel.TagEditor EditDeviceTags()
@@ -360,53 +360,46 @@ namespace UrbanAirship.NETStandard
             MessageCenterClass.Shared().Inbox.DeleteMessages(toDelete);
         }
 
-        public int MessageCenterUnreadCount
+        public void MessageCenterUnreadCount(Action<int> messageCount)
         {
-            get
-            {
-                return MessageCenterClass.Shared().Inbox.UnreadCount;
-            }
+            int count = MessageCenterClass.Shared().Inbox.UnreadCount;
+            messageCount(count);
         }
 
-        public int MessageCenterCount
+        public void MessageCenterCount(Action<int> messageCount)
         {
-            get
-            {
-                return MessageCenterClass.Shared().Inbox.Count;
-            }
+           int count = MessageCenterClass.Shared().Inbox.Count;
+            messageCount(count);
         }
 
-        public List<MessageCenter.Message> InboxMessages
+        public void InboxMessages(Action<List<MessageCenter.Message>> listMessages)
         {
-            get
+            var messagesList = new List<MessageCenter.Message>();
+            var messages = MessageCenterClass.Shared().Inbox.Messages;
+            foreach (var message in messages)
             {
-                var messagesList = new List<MessageCenter.Message>();
-                var messages = MessageCenterClass.Shared().Inbox.Messages;
-                foreach (var message in messages)
+                var extras = new Dictionary<string, string>();
+                foreach (var key in message.Extras.KeySet())
                 {
-                    var extras = new Dictionary<string, string>();
-                    foreach (var key in message.Extras.KeySet())
-                    {
-                        extras.Add(key, message.Extras.Get(key).ToString());
-                    }
-
-                    DateTime? sentDate = FromDate(message.SentDate);
-                    DateTime? expirationDate = FromDate(message.ExpirationDate);
-
-                    var inboxMessage = new MessageCenter.Message(
-                        message.MessageId,
-                        message.Title,
-                        sentDate,
-                        expirationDate,
-                        message.IsRead,
-                        message.ListIconUrl,
-                        extras);
-
-                    messagesList.Add(inboxMessage);
+                    extras.Add(key, message.Extras.Get(key).ToString());
                 }
 
-                return messagesList;
+                DateTime? sentDate = FromDate(message.SentDate);
+                DateTime? expirationDate = FromDate(message.ExpirationDate);
+
+                var inboxMessage = new MessageCenter.Message(
+                    message.MessageId,
+                    message.Title,
+                    sentDate,
+                    expirationDate,
+                    message.IsRead,
+                    message.ListIconUrl,
+                    extras);
+
+                messagesList.Add(inboxMessage);
             }
+
+            listMessages(messagesList);
         }
 
         private Date FromDateTime(DateTime dateTime)
@@ -430,7 +423,7 @@ namespace UrbanAirship.NETStandard
             return epoch.AddMilliseconds(date.Time);
         }
 
-        public Channel.TagGroupsEditor EditNamedUserTagGroups()
+        public Channel.TagGroupsEditor EditContactTagGroups()
         {
             return new Channel.TagGroupsEditor((List<Channel.TagGroupsEditor.TagOperation> payload) =>
             {
@@ -466,12 +459,32 @@ namespace UrbanAirship.NETStandard
         }
 
         /// <summary>
-        public AttributeEditor EditNamedUserAttributes()
+        public AttributeEditor EditContactAttributes()
         {
             return new AttributeEditor((List<AttributeEditor.IAttributeOperation> operations) =>
             {
                 var editor = UAirship.Shared().Contact.EditAttributes();
                 ApplyAttributesOperations(editor, operations);
+                editor.Apply();
+            });
+        }
+
+        public Channel.SubscriptionListEditor EditChannelSubscriptionLists()
+        {
+            return new Channel.SubscriptionListEditor((List<Channel.SubscriptionListEditor.SubscriptionListOperation> payload) =>
+            {
+                var editor = UAirship.Shared().Channel.EditSubscriptionLists();
+                ApplyChannelSubscriptionListHelper(payload, editor);
+                editor.Apply();
+            });
+        }
+
+        public Contact.SubscriptionListEditor EditContactSubscriptionLists()
+        {
+            return new Contact.SubscriptionListEditor((List<Contact.SubscriptionListEditor.SubscriptionListOperation> payload) =>
+            {
+                var editor = UAirship.Shared().Contact.EditSubscriptionLists();
+                ApplyContactSubscriptionListHelper(payload, editor);
                 editor.Apply();
             });
         }
@@ -536,6 +549,72 @@ namespace UrbanAirship.NETStandard
                         break;
                     default:
                         break;
+                }
+            }
+        }
+
+        private void ApplyChannelSubscriptionListHelper(List<Channel.SubscriptionListEditor.SubscriptionListOperation> operations, UrbanAirship.Channel.SubscriptionListEditor editor)
+        {
+            foreach (Channel.SubscriptionListEditor.SubscriptionListOperation operation in operations)
+            {
+                if (!Enum.IsDefined(typeof(Channel.SubscriptionListEditor.OperationType), operation.operationType))
+                {
+                    continue;
+                }
+
+                switch (operation.operationType)
+                {
+                    case Channel.SubscriptionListEditor.OperationType.SUBSCRIBE:
+                        editor.Subscribe(operation.list);
+                        break;
+                    case Channel.SubscriptionListEditor.OperationType.UNSUBSCRIBE:
+                        editor.Unsubscribe(operation.list);
+                        break;
+                }
+            }
+        }
+
+        private void ApplyContactSubscriptionListHelper(List<Contact.SubscriptionListEditor.SubscriptionListOperation> operations, ScopedSubscriptionListEditor editor)
+        {
+
+            foreach (Contact.SubscriptionListEditor.SubscriptionListOperation operation in operations)
+            {
+                if (!Enum.IsDefined(typeof(Contact.SubscriptionListEditor.OperationType), operation.operationType))
+                {
+                    continue;
+                }
+
+                string scope = operation.scope;
+                string[] scopes = { "app", "web", "email", "sms" };
+                if (scopes.Any(scope.Contains))
+                {
+                    Scope channelScope = Scope.App;
+                    if (operation.scope == "app")
+                    {
+                        channelScope = Scope.App;
+                    }
+                    else if (operation.scope == "web")
+                    {
+                        channelScope = Scope.Web;
+                    }
+                    else if (operation.scope == "email")
+                    {
+                        channelScope = Scope.Email;
+                    }
+                    else if (operation.scope == "sms")
+                    {
+                        channelScope = Scope.Sms;
+                    }
+
+                    switch (operation.operationType)
+                    {
+                        case Contact.SubscriptionListEditor.OperationType.SUBSCRIBE:
+                            editor.Subscribe(operation.list, channelScope);
+                            break;
+                        case Contact.SubscriptionListEditor.OperationType.UNSUBSCRIBE:
+                            editor.Unsubscribe(operation.list, channelScope);
+                            break;
+                    }
                 }
             }
         }

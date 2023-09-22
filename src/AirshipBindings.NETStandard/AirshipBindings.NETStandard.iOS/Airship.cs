@@ -4,11 +4,13 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Foundation;
 using UrbanAirship;
 using UrbanAirship.NETStandard;
 using UrbanAirship.NETStandard.Analytics;
 using UrbanAirship.NETStandard.Attributes;
+using Xamarin.Forms;
 
 namespace UrbanAirship.NETStandard
 {
@@ -25,7 +27,6 @@ namespace UrbanAirship.NETStandard
         {
             // Load unreferenced modules
             AirshipAutomation.Init();
-            AirshipExtendedActions.Init();
 
             NSNotificationCenter.DefaultCenter.AddObserver(aName: (NSString)UAChannel.ChannelCreatedEvent, (NSNotification notification) =>
             {
@@ -33,7 +34,20 @@ namespace UrbanAirship.NETStandard
                 OnChannelCreation?.Invoke(this, new ChannelEventArgs(channelID));
             });
 
-            // TODO(18.0.0): Wire up the push notfication status listener, once the iOS SDK bindings have been bumped to 17.x
+            //FIXME: Use UAPush.NotificationStatusUpdateEvent once it's available
+            NSNotificationCenter.DefaultCenter.AddObserver(aName: (NSString)"com.urbanairship.notification.status.update", (notification) =>
+            {
+                OnPushNotificationStatusUpdate?.Invoke(this,
+                    new PushNotificationStatusEventArgs(
+                        Convert.ToBoolean(notification.UserInfo["isUserNotificationsEnabled"]),
+                        Convert.ToBoolean(notification.UserInfo["areNotificationsAllowed"]),
+                        Convert.ToBoolean(notification.UserInfo["isPushPrivacyFeatureEnabled"]),
+                        Convert.ToBoolean(notification.UserInfo["isPushTokenRegistered"]),
+                        Convert.ToBoolean(notification.UserInfo["isUserOptedIn"]),
+                        Convert.ToBoolean(notification.UserInfo["isOptIn"])
+                    )
+                );
+            });
 
             //Adding Inbox updated Listener
             NSNotificationCenter.DefaultCenter.AddObserver(aName: (NSString)"com.urbanairship.notification.message_list_updated", (notification) =>
@@ -83,7 +97,7 @@ namespace UrbanAirship.NETStandard
         /// Add/remove the Message Center updated listener.
         /// </summary>
         public event EventHandler OnMessageCenterUpdated;
-   
+
         private EventHandler<MessageCenterEventArgs> onMessageCenterDisplay;
 
         /// <summary>
@@ -240,17 +254,19 @@ namespace UrbanAirship.NETStandard
             }
         }
 
-        public string NamedUser
+        public void GetNamedUser(Action<string> namedUser)
         {
-            get
-            {
-                return UAirship.NamedUser.Identifier;
-            }
+            UAirship.Contact.GetNamedUserID(namedUser);
+        }
 
-            set
-            {
-                UAirship.NamedUser.Identifier = value;
-            }
+        public void ResetContact()
+        {
+            UAirship.Contact.Reset();
+        }
+
+        public void IdentifyContact(string namedUserId)
+        {
+            UAirship.Contact.Identify(namedUserId);
         }
 
         public Channel.TagEditor EditDeviceTags()
@@ -322,11 +338,12 @@ namespace UrbanAirship.NETStandard
                     {
                         propertyDictionary.SetValueForKey(value, key);
                     }
-                    
+
                 }
                 if (propertyDictionary.Count > 0)
                 {
-                    uaEvent.Properties = new NSDictionary<NSString, NSObject>(propertyDictionary.Keys, propertyDictionary.Values);
+                    //TODO: 
+                    //uaEvent.Properties = new NSDictionary<NSString, NSObject>(propertyDictionary.Keys, propertyDictionary.Values);
                 }
             }
 
@@ -340,7 +357,7 @@ namespace UrbanAirship.NETStandard
 
         public void AssociateIdentifier(string key, string identifier)
         {
-            UAAssociatedIdentifiers identifiers = UAirship.Analytics.CurrentAssociatedDeviceIdentifiers;
+            UAAssociatedIdentifiers identifiers = UAirship.Analytics.CurrentAssociatedDeviceIdentifiers();
             identifiers.SetIdentifier(identifier, key);
             UAirship.Analytics.AssociateDeviceIdentifiers(identifiers);
         }
@@ -355,42 +372,40 @@ namespace UrbanAirship.NETStandard
             UAMessageCenter.Shared.DisplayMessage(messageId);
         }
 
+        public void DismissMessageCenter()
+        {
+        }
+
         public void MarkMessageRead(string messageId)
         {
-            var toRead = new UAInboxMessage[1];
-            toRead[0] = UAMessageCenter.Shared.MessageList.Message(messageId);
-            UAMessageCenter.Shared.MessageList.MarkMessagesRead(toRead, null);
+            string[] toRead = { messageId };
+            UAMessageCenter.Shared.Inbox.MarkReadWithMessageIDs(toRead, null);
         }
 
         public void DeleteMessage(string messageId)
         {
-            var toDelete = new UAInboxMessage[1];
-            toDelete[0] = UAMessageCenter.Shared.MessageList.Message(messageId);
-            UAMessageCenter.Shared.MessageList.MarkMessagesDeleted(toDelete, null);
+            string[] toDelete = { messageId };
+            UAMessageCenter.Shared.Inbox.DeleteWithMessageIDs(toDelete, null);
         }
 
-        public int MessageCenterUnreadCount
+        public void MessageCenterUnreadCount(Action<int> messageCount)
         {
-            get
-            {
-                return (int)UAMessageCenter.Shared.MessageList.UnreadCount;
-            }
+            UAMessageCenter.Shared.Inbox.GetUnreadCount(messageCount);
         }
 
-        public int MessageCenterCount
+        public void MessageCenterCount(Action<int> messageCount)
         {
-            get
+            UAMessageCenter.Shared.Inbox.GetMessages(messages =>
             {
-                return (int)UAMessageCenter.Shared.MessageList.MessageCount();
-            }
+                messageCount(messages.Length);
+            });
         }
 
-        public List<MessageCenter.Message> InboxMessages
+        public void InboxMessages(Action<List<MessageCenter.Message>> listMessages)
         {
-            get
+            var messagesList = new List<MessageCenter.Message>();
+            UAMessageCenter.Shared.Inbox.GetMessages(messages =>
             {
-                var messagesList = new List<MessageCenter.Message>();
-                var messages = UAMessageCenter.Shared.MessageList.Messages;
                 foreach (var message in messages)
                 {
                     var extras = new Dictionary<string, string>();
@@ -399,18 +414,13 @@ namespace UrbanAirship.NETStandard
                         extras.Add(key.ToString(), message.Extra[key].ToString());
                     }
 
-                    DateTime? sentDate = FromNSDate(message.MessageSent);
-                    DateTime? expirationDate = FromNSDate(message.MessageExpiration);
+                    DateTime? sentDate = FromNSDate(message.SentDate);
+                    DateTime? expirationDate = FromNSDate(message.ExpirationDate);
 
-                    string iconUrl = null;
-                    var icons = (NSDictionary)message.RawMessageObject.ValueForKey(new NSString("icons"));
-                    if (icons != null)
-                    {
-                        iconUrl = icons.ValueForKey(new NSString("list_icon")).ToString();
-                    }
+                    string iconUrl = message.ListIcon;
 
                     var inboxMessage = new MessageCenter.Message(
-                        message.MessageID,
+                        message.Id,
                         message.Title,
                         sentDate,
                         expirationDate,
@@ -421,8 +431,8 @@ namespace UrbanAirship.NETStandard
                     messagesList.Add(inboxMessage);
                 }
 
-                return messagesList;
-            }
+                listMessages(messagesList);
+            });
         }
 
         private NSDate FromDateTime(DateTime dateTime)
@@ -450,23 +460,26 @@ namespace UrbanAirship.NETStandard
             return epoch.AddSeconds(date.SecondsSince1970);
         }
 
-        public Channel.TagGroupsEditor EditNamedUserTagGroups()
-        {
-            return new Channel.TagGroupsEditor((List<Channel.TagGroupsEditor.TagOperation> payload) =>
-            {
-                TagGroupHelper(payload, true);
-                UAirship.NamedUser.UpdateTags();
-            });
-        }
 
         public Channel.TagGroupsEditor EditChannelTagGroups()
         {
             return new Channel.TagGroupsEditor((List<Channel.TagGroupsEditor.TagOperation> payload) =>
             {
-                TagGroupHelper(payload, false);
-                UAirship.Push.UpdateRegistration();
+                ChannelTagGroupHelper(payload, () =>
+                {
+                    UAirship.Push.UpdateRegistration();
+                });
             });
         }
+
+        public Channel.TagGroupsEditor EditContactTagGroups()
+        {
+            return new Channel.TagGroupsEditor((List<Channel.TagGroupsEditor.TagOperation> payload) =>
+            {
+                ContactTagGroupHelper(payload);
+            });
+        }
+
 
         public AttributeEditor EditAttributes()
         {
@@ -477,92 +490,258 @@ namespace UrbanAirship.NETStandard
         {
             return new AttributeEditor((List<AttributeEditor.IAttributeOperation> operations) =>
             {
-                var mutations = UAAttributeMutations.Mutations;
-                ApplyAttributesOperations(mutations, operations);
-                UAirship.Channel.ApplyAttributeMutations(mutations);
+                ApplyChannelAttributesOperations(operations);
             });
         }
 
-        public AttributeEditor EditNamedUserAttributes()
+        public AttributeEditor EditContactAttributes()
         {
             return new AttributeEditor((List<AttributeEditor.IAttributeOperation> operations) =>
             {
-                var mutations = UAAttributeMutations.Mutations;
-                ApplyAttributesOperations(mutations, operations);
-                UAirship.NamedUser.ApplyAttributeMutations(mutations);
+                ApplyContactAttributesOperations(operations);
             });
         }
 
-        private void ApplyAttributesOperations(UAAttributeMutations mutations, List<AttributeEditor.IAttributeOperation> operations)
+
+        public Channel.SubscriptionListEditor EditChannelSubscriptionLists()
         {
-            foreach (var operation in operations)
+            return new Channel.SubscriptionListEditor((List<Channel.SubscriptionListEditor.SubscriptionListOperation> payload) =>
             {
-                if (operation is AttributeEditor.SetAttributeOperation<string> stringOperation)
-                {
-                    mutations.SetString(stringOperation.value, stringOperation.key);
-                }
-
-                if (operation is AttributeEditor.SetAttributeOperation<int> intOperation)
-                {
-                    mutations.SetNumber(intOperation.value, intOperation.key);
-                }
-
-                if (operation is AttributeEditor.SetAttributeOperation<long> longOperation)
-                {
-                    mutations.SetNumber(longOperation.value, longOperation.key);
-                }
-
-                if (operation is AttributeEditor.SetAttributeOperation<float> floatOperation)
-                {
-                    mutations.SetNumber(floatOperation.value, floatOperation.key);
-                }
-
-                if (operation is AttributeEditor.SetAttributeOperation<double> doubleOperation)
-                {
-                    mutations.SetNumber(doubleOperation.value, doubleOperation.key);
-                }
-
-                if (operation is AttributeEditor.SetAttributeOperation<DateTime> dateOperation)
-                {
-                    NSDate date = FromDateTime(dateOperation.value);
-                    mutations.SetDate(date, dateOperation.key);
-                }
-
-                if (operation is AttributeEditor.RemoveAttributeOperation removeOperation)
-                {
-                    mutations.RemoveAttribute(removeOperation.key);
-                }
-            }
+                ApplyChannelSubscriptionListHelper(payload);
+            });
         }
 
-        private void TagGroupHelper(List<Channel.TagGroupsEditor.TagOperation> operations, bool namedUser)
+        public Contact.SubscriptionListEditor EditContactSubscriptionLists()
         {
-            var namedUserActions = new Dictionary<Channel.TagGroupsEditor.OperationType, Action<string, string[]>>()
+            return new Contact.SubscriptionListEditor((List<Contact.SubscriptionListEditor.SubscriptionListOperation> payload) =>
             {
-                { Channel.TagGroupsEditor.OperationType.ADD, (group, t) => UAirship.NamedUser.AddTags(t, group) },
-                { Channel.TagGroupsEditor.OperationType.REMOVE, (group, t) => UAirship.NamedUser.RemoveTags(t, group) },
-                { Channel.TagGroupsEditor.OperationType.SET, (group, t) => UAirship.NamedUser.SetTags(t, group) }
-            };
-            var channelActions = new Dictionary<Channel.TagGroupsEditor.OperationType, Action<string, string[]>>()
-            {
-                { Channel.TagGroupsEditor.OperationType.ADD, (group, t) => UAirship.Channel.AddTags(t, group) },
-                { Channel.TagGroupsEditor.OperationType.REMOVE, (group, t) => UAirship.Channel.RemoveTags(t, group) },
-                { Channel.TagGroupsEditor.OperationType.SET, (group, t) => UAirship.Channel.SetTags(t, group) }
-            };
+                ApplyContactSubscriptionListHelper(payload);
+            });
+        }
 
-            var actions = namedUser ? namedUserActions : channelActions;
-
-            foreach (Channel.TagGroupsEditor.TagOperation operation in operations)
+        private void ApplyChannelAttributesOperations(List<AttributeEditor.IAttributeOperation> operations)
+        {
+            UAirship.Channel.EditAttributes( editor =>
             {
-                if (!Enum.IsDefined(typeof(Channel.TagGroupsEditor.OperationType), operation.operationType))
+                foreach (var operation in operations)
                 {
-                    continue;
+                    if (operation is AttributeEditor.SetAttributeOperation<string> stringOperation)
+                    {
+                        editor.SetString(stringOperation.value, stringOperation.key);
+                    }
+
+                    if (operation is AttributeEditor.SetAttributeOperation<int> intOperation)
+                    {
+                        editor.SetNumber(intOperation.value, intOperation.key);
+                    }
+
+                    if (operation is AttributeEditor.SetAttributeOperation<long> longOperation)
+                    {
+                        editor.SetNumber(longOperation.value, longOperation.key);
+                    }
+
+                    if (operation is AttributeEditor.SetAttributeOperation<float> floatOperation)
+                    {
+                        editor.SetNumber(floatOperation.value, floatOperation.key);
+                    }
+
+                    if (operation is AttributeEditor.SetAttributeOperation<double> doubleOperation)
+                    {
+                        editor.SetNumber(doubleOperation.value, doubleOperation.key);
+                    }
+
+                    if (operation is AttributeEditor.SetAttributeOperation<DateTime> dateOperation)
+                    {
+                        NSDate date = FromDateTime(dateOperation.value);
+                        editor.SetDate(date, dateOperation.key);
+                    }
+
+                    if (operation is AttributeEditor.RemoveAttributeOperation removeOperation)
+                    {
+                        editor.RemoveAttribute(removeOperation.key);
+                    }
+                }
+                editor.Apply();
+            });
+
+        }
+
+        private void ApplyContactAttributesOperations(List<AttributeEditor.IAttributeOperation> operations)
+        {
+            UAirship.Contact.EditAttributes( editor =>
+            {
+                foreach (var operation in operations)
+                {
+                    if (operation is AttributeEditor.SetAttributeOperation<string> stringOperation)
+                    {
+                        editor.SetString(stringOperation.value, stringOperation.key);
+                    }
+
+                    if (operation is AttributeEditor.SetAttributeOperation<int> intOperation)
+                    {
+                        editor.SetNumber(intOperation.value, intOperation.key);
+                    }
+
+                    if (operation is AttributeEditor.SetAttributeOperation<long> longOperation)
+                    {
+                        editor.SetNumber(longOperation.value, longOperation.key);
+                    }
+
+                    if (operation is AttributeEditor.SetAttributeOperation<float> floatOperation)
+                    {
+                        editor.SetNumber(floatOperation.value, floatOperation.key);
+                    }
+
+                    if (operation is AttributeEditor.SetAttributeOperation<double> doubleOperation)
+                    {
+                        editor.SetNumber(doubleOperation.value, doubleOperation.key);
+                    }
+
+                    if (operation is AttributeEditor.SetAttributeOperation<DateTime> dateOperation)
+                    {
+                        NSDate date = FromDateTime(dateOperation.value);
+                        editor.SetDate(date, dateOperation.key);
+                    }
+
+                    if (operation is AttributeEditor.RemoveAttributeOperation removeOperation)
+                    {
+                        editor.RemoveAttribute(removeOperation.key);
+                    }
+                }
+                editor.Apply();
+            });
+
+        }
+
+        private void ContactTagGroupHelper(List<Channel.TagGroupsEditor.TagOperation> operations)
+        {
+            UAirship.Contact.EditTagGroups( editor =>
+            {
+                var contactActions = new Dictionary<Channel.TagGroupsEditor.OperationType, Action<string, string[]>>()
+                {
+                    { Channel.TagGroupsEditor.OperationType.ADD, (group, t) => editor.AddTags(t, group) },
+                    { Channel.TagGroupsEditor.OperationType.REMOVE, (group, t) => editor.RemoveTags(t, group) },
+                    { Channel.TagGroupsEditor.OperationType.SET, (group, t) => editor.SetTags(t, group) }
+                };
+
+                foreach (Channel.TagGroupsEditor.TagOperation operation in operations)
+                {
+                    if (!Enum.IsDefined(typeof(Channel.TagGroupsEditor.OperationType), operation.operationType))
+                    {
+                        continue;
+                    }
+
+                    string[] tagArray = new string[operation.tags.Count];
+                    operation.tags.CopyTo(tagArray, 0);
+                    contactActions[operation.operationType](operation.group, tagArray);
                 }
 
-                string[] tagArray = new string[operation.tags.Count];
-                operation.tags.CopyTo(tagArray, 0);
-                actions[operation.operationType](operation.group, tagArray);
-            }
+                editor.Apply();
+            });
+        }
+
+        private void ChannelTagGroupHelper(List<Channel.TagGroupsEditor.TagOperation> operations, Action finished)
+        {
+            UAirship.Channel.EditTagGroups(editor =>
+            {
+                var channelActions = new Dictionary<Channel.TagGroupsEditor.OperationType, Action<string, string[]>>()
+                {
+                    { Channel.TagGroupsEditor.OperationType.ADD, (group, t) => editor.AddTags(t, group) },
+                    { Channel.TagGroupsEditor.OperationType.REMOVE, (group, t) => editor.RemoveTags(t, group) },
+                    { Channel.TagGroupsEditor.OperationType.SET, (group, t) => editor.SetTags(t, group) }
+                };
+
+                foreach (Channel.TagGroupsEditor.TagOperation operation in operations)
+                {
+                    if (!Enum.IsDefined(typeof(Channel.TagGroupsEditor.OperationType), operation.operationType))
+                    {
+                        continue;
+                    }
+
+                    string[] tagArray = new string[operation.tags.Count];
+                    operation.tags.CopyTo(tagArray, 0);
+                    channelActions[operation.operationType](operation.group, tagArray);
+                }
+
+                editor.Apply();
+                finished();
+            });
+        }
+
+        private void ApplyChannelSubscriptionListHelper(List<Channel.SubscriptionListEditor.SubscriptionListOperation> operations)
+        {
+            UAirship.Channel.EditSubscriptionLists( editor =>
+            {
+                foreach (Channel.SubscriptionListEditor.SubscriptionListOperation operation in operations)
+                {
+                    if (!Enum.IsDefined(typeof(Channel.SubscriptionListEditor.OperationType), operation.operationType))
+                    {
+                        continue;
+                    }
+
+                    switch (operation.operationType)
+                    {
+                        case Channel.SubscriptionListEditor.OperationType.SUBSCRIBE:
+                            editor.Subscribe(operation.list);
+                            break;
+                        case Channel.SubscriptionListEditor.OperationType.UNSUBSCRIBE:
+                            editor.Unsubscribe(operation.list);
+                            break;
+                    }
+                }
+
+                editor.Apply();
+            });
+        }
+
+        private void ApplyContactSubscriptionListHelper(List<Contact.SubscriptionListEditor.SubscriptionListOperation> operations)
+        {
+            UAirship.Contact.EditSubscriptionLists( editor =>
+            {
+
+                foreach (Contact.SubscriptionListEditor.SubscriptionListOperation operation in operations)
+                {
+                    if (!Enum.IsDefined(typeof(Contact.SubscriptionListEditor.OperationType), operation.operationType))
+                    {
+                        continue;
+                    }
+
+                    string scope = operation.scope;
+                    string[] scopes = { "app", "web", "email", "sms" };
+                    if (scopes.Any(scope.Contains))
+                    {
+                        UAChannelScope channelScope = UAChannelScope.App;
+                        if (operation.scope == "app")
+                        {
+                            channelScope = UAChannelScope.App;
+                        }
+                        else if (operation.scope == "web")
+                        {
+                            channelScope = UAChannelScope.Web;
+                        }
+                        else if (operation.scope == "email")
+                        {
+                            channelScope = UAChannelScope.Email;
+                        }
+                        else if (operation.scope == "sms")
+                        {
+                            channelScope = UAChannelScope.Sms;
+                        }
+
+                        switch (operation.operationType)
+                        {
+                            case Contact.SubscriptionListEditor.OperationType.SUBSCRIBE:
+                                editor.Subscribe(operation.list, channelScope);
+                                break;
+                            case Contact.SubscriptionListEditor.OperationType.UNSUBSCRIBE:
+                                editor.Unsubscribe(operation.list, channelScope);
+                                break;
+                        }
+                    }
+                }
+
+                editor.Apply();
+            });
         }
 
         override public void ReceivedDeepLink(NSUrl url, Action completionHandler)
@@ -571,18 +750,19 @@ namespace UrbanAirship.NETStandard
             completionHandler();
         }
 
-        public void DisplayMessageCenter(string messageID, bool animated)
+        public void OnDisplayMessageCenter(string messageID)
         {
             onMessageCenterDisplay?.Invoke(this, new MessageCenterEventArgs(messageID));
         }
 
-        public void DisplayMessageCenterAnimated(bool animated)
+        public void OnDisplayMessageCenter()
         {
             onMessageCenterDisplay?.Invoke(this, new MessageCenterEventArgs());
         }
 
-        public void DismissMessageCenterAnimated(bool animated)
-        { }
+        public void OnDismissMessageCenter()
+        {
+        }
 
 
         public bool InAppAutomationPaused

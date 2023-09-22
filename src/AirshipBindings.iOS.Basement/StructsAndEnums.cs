@@ -8,7 +8,7 @@ using UIKit;
 namespace UrbanAirship {
 
     [Native]
-    public enum UASituation : long
+    public enum UAActionSituation : long
     {
         ManualInvocation = 0,
         LaunchedFromPush = 1,

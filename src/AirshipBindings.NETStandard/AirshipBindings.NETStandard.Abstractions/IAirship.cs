@@ -1,4 +1,4 @@
-﻿/*
+/*
  Copyright Airship and Contributors
 */
 
@@ -8,7 +8,6 @@ using System.Collections.Generic;
 
 namespace UrbanAirship.NETStandard
 {
-
     /// <summary>
     /// Arguments for Channel creation events.
     /// </summary>
@@ -86,7 +85,7 @@ namespace UrbanAirship.NETStandard
     /// <summary>
     /// Arguments for deep link events.
     /// </summary>
-    public class DeepLinkEventArgs: EventArgs
+    public class DeepLinkEventArgs : EventArgs
     {
         public string DeepLink { get; internal set; }
         public DeepLinkEventArgs(string deepLink)
@@ -155,10 +154,11 @@ namespace UrbanAirship.NETStandard
             get;
         }
 
-        string NamedUser
-        {
-            get; set;
-        }
+        void GetNamedUser(Action<string> namedUser);
+
+        void ResetContact();
+
+        void IdentifyContact(string namedUserId);
 
         /// <summary>
         /// Add/remove the channel creation listener.
@@ -190,32 +190,27 @@ namespace UrbanAirship.NETStandard
 
         void DisplayMessageCenter();
 
-        int MessageCenterUnreadCount
-        {
-            get;
-        }
+        void MessageCenterUnreadCount(Action<int> unreadMessageCount);
 
-        int MessageCenterCount
-        {
-            get;
-        }
+        void MessageCenterCount(Action<int> messageCount);
 
-        List<MessageCenter.Message> InboxMessages
-        {
-            get;
-        }
+        void InboxMessages(Action<List<MessageCenter.Message>> messages);
 
-        Channel.TagGroupsEditor EditNamedUserTagGroups();
+        Channel.TagGroupsEditor EditContactTagGroups();
 
         Channel.TagGroupsEditor EditChannelTagGroups();
-        
+
         Attributes.AttributeEditor EditAttributes();
 
         event EventHandler OnMessageCenterUpdated;
 
         Attributes.AttributeEditor EditChannelAttributes();
 
-        Attributes.AttributeEditor EditNamedUserAttributes();
+        Attributes.AttributeEditor EditContactAttributes();
+
+        Channel.SubscriptionListEditor EditChannelSubscriptionLists();
+
+        Contact.SubscriptionListEditor EditContactSubscriptionLists();
 
         bool InAppAutomationPaused
         {

@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <BuildWithMSBuildOnMono>true</BuildWithMSBuildOnMono>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -13,6 +14,7 @@
     <Folder Include="Channel\" />
     <Folder Include="Analytics\" />
     <Folder Include="Attributes\" />
+    <Folder Include="SubscriptionList\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="..\..\SharedAssemblyInfo.CrossPlatform.cs">
@@ -22,5 +24,8 @@
   
   <ItemGroup>
     <PackageReference Include="Xamarin.Forms" Version="4.6.0.800" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="SubscriptionList\" />
   </ItemGroup>
 </Project>
