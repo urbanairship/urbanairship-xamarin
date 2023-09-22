@@ -28,7 +28,8 @@ namespace UrbanAirship.NETStandard.MessageCenter
         /// Gets and sets the message ID.
         /// </summary>
         /// <value>The message ID.</value>
-        public string MessageId {
+        public string MessageId
+        {
             get { return (string)GetValue(MessageIdProperty); }
             set { SetValue(MessageIdProperty, value); }
         }

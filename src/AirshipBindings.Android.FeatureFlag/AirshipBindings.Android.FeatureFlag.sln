@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 25.0.1706.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirshipBindings.Android.FeatureFlag", "AirshipBindings.Android.FeatureFlag.csproj", "{F2B58B9A-3BE8-4C09-B91A-884F7BFA5716}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F2B58B9A-3BE8-4C09-B91A-884F7BFA5716}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F2B58B9A-3BE8-4C09-B91A-884F7BFA5716}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F2B58B9A-3BE8-4C09-B91A-884F7BFA5716}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F2B58B9A-3BE8-4C09-B91A-884F7BFA5716}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D8DB8FB8-6674-48CE-AD94-F85D9B4F6709}
+	EndGlobalSection
+EndGlobal

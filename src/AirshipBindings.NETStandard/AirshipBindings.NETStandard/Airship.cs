@@ -1,4 +1,4 @@
-﻿/*
+/*
  Copyright Airship and Contributors
 */
 
@@ -107,13 +107,28 @@ namespace UrbanAirship.NETStandard
         }
 
         /// <summary>
-        /// Gets or sets the named user ID.
+        /// Gets the named user.
         /// </summary>
-        /// <value>The named user ID.</value>
-        public string NamedUser
+        /// <value>Returns the named user.</value>
+        public void GetNamedUser(Action<string> namedUser)
         {
-            get { throw new NotImplementedException(BaitWithoutSwitchMessage); }
-            set { throw new NotImplementedException(BaitWithoutSwitchMessage); }
+            throw new NotImplementedException(BaitWithoutSwitchMessage);
+        }
+
+        /// <summary>
+        /// Reset the named user.
+        /// </summary>
+        public void ResetContact()
+        {
+            throw new NotImplementedException(BaitWithoutSwitchMessage);
+        }
+
+        /// <summary>
+        /// Identifiy the named user.
+        /// </summary>
+        public void IdentifyContact(string namedUserId)
+        {
+            throw new NotImplementedException(BaitWithoutSwitchMessage);
         }
 
         /// <summary>
@@ -195,32 +210,29 @@ namespace UrbanAirship.NETStandard
         /// <summary>
         /// Get the message center unread count.
         /// </summary>
-        /// <value>The message center unread count.</value>
-        public int MessageCenterUnreadCount
+        /// <value>Returns the message center unread count.</value>
+        public void MessageCenterUnreadCount(Action<int> count)
         {
-            get { throw new NotImplementedException(BaitWithoutSwitchMessage); }
-            private set { throw new NotImplementedException(BaitWithoutSwitchMessage); }
+            throw new NotImplementedException(BaitWithoutSwitchMessage);
         }
 
         /// <summary>
         /// Get the total count of message center messages.
         /// </summary>
-        /// <value>The message center count.</value>
-        public int MessageCenterCount
+        /// <value>Returns the message center count.</value>
+        public void MessageCenterCount(Action<int> count)
         {
-            get { throw new NotImplementedException(BaitWithoutSwitchMessage); }
-            private set { throw new NotImplementedException(BaitWithoutSwitchMessage); }
+            throw new NotImplementedException(BaitWithoutSwitchMessage);
         }
 
         /// <summary>
         /// Get the list of messages contained in the messages center.
         /// </summary>
         /// <value>The list of message.</value>
-        public List<MessageCenter.Message> InboxMessages
+        public void InboxMessages(Action<List<MessageCenter.Message>> messages)
         {
-            get { throw new NotImplementedException(BaitWithoutSwitchMessage); }
+            throw new NotImplementedException(BaitWithoutSwitchMessage);
         }
-
         /// <summary>
         /// Edit channel attributes.
         /// Deprecated : use <see cref="EditChannelAttributes">EditChannelAttributes()</see> instead.
@@ -248,7 +260,7 @@ namespace UrbanAirship.NETStandard
         /// </summary>
         /// <returns>An <see cref="UrbanAirship.NETStandard.Attributes.AttributeEditor">AttributeEditor</see>
         /// for named user attributes.</returns>
-        public Attributes.AttributeEditor EditNamedUserAttributes()
+        public Attributes.AttributeEditor EditContactAttributes()
         {
             throw new NotImplementedException(BaitWithoutSwitchMessage);
         }
@@ -258,7 +270,7 @@ namespace UrbanAirship.NETStandard
         /// </summary>
         /// <returns>A <see cref="UrbanAirship.NETStandard.Channel.TagGroupsEditor">TagGroupsEditor</see>
         /// for named user tag groups.</returns>
-        public Channel.TagGroupsEditor EditNamedUserTagGroups()
+        public Channel.TagGroupsEditor EditContactTagGroups()
         {
             throw new NotImplementedException(BaitWithoutSwitchMessage);
         }
@@ -269,6 +281,26 @@ namespace UrbanAirship.NETStandard
         /// <returns>A <see cref="UrbanAirship.NETStandard.Channel.TagGroupsEditor">TagGroupsEditor</see>
         /// for channel tag groups.</returns>
         public Channel.TagGroupsEditor EditChannelTagGroups()
+        {
+            throw new NotImplementedException(BaitWithoutSwitchMessage);
+        }
+
+        /// <summary>
+        /// Returns an editor for channel subscription lists.
+        /// </summary>
+        /// <returns>A <see cref="UrbanAirship.NETStandard.Channel.SubscriptionListEditor">SubscriptionListEditor</see>
+        /// for channel subscription lists.</returns>
+        public Channel.SubscriptionListEditor EditChannelSubscriptionLists()
+        {
+            throw new NotImplementedException(BaitWithoutSwitchMessage);
+        }
+
+        /// <summary>
+        /// Returns an editor for contact subscription lists.
+        /// </summary>
+        /// <returns>A <see cref="UrbanAirship.NETStandard.Channel.SubscriptionListEditor">SubscriptionListEditor</see>
+        /// for channel subscription lists.</returns>
+        public Contact.SubscriptionListEditor EditContactSubscriptionLists()
         {
             throw new NotImplementedException(BaitWithoutSwitchMessage);
         }
@@ -342,10 +374,10 @@ namespace UrbanAirship.NETStandard
         }
 
         /// <summary>
-        /// Add/remove the channel update event listener.
+        /// Add/remote the push notification status listener.
         /// </summary>
-        /// <value>The channel update event listener.</value>
-        public event EventHandler<ChannelEventArgs> OnChannelUpdate
+        /// <value>The push notification status update event listener.</value>
+        public event EventHandler<PushNotificationStatusEventArgs> OnPushNotificationStatusUpdate
         {
             add
             {

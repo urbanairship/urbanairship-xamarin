@@ -466,7 +466,7 @@ namespace UrbanAirship {
 
     // @interface UACancelSchedulesAction : NSObject <UAAction>
     [BaseType(typeof(NSObject))]
-    interface UACancelSchedulesAction : IUAAction
+    interface UACancelSchedulesAction
     {
     }
 
@@ -1846,7 +1846,7 @@ namespace UrbanAirship {
 
     // @interface UALandingPageAction : NSObject <UAAction>
     [BaseType(typeof(NSObject))]
-    interface UALandingPageAction : IUAAction
+    interface UALandingPageAction
     {
         // @property (nonatomic, assign, unsafe_unretained, readwrite, nullable) NSNumber *borderRadiusPoints;
         [NullAllowed, Export("borderRadiusPoints", ArgumentSemantic.Assign)]
@@ -2108,7 +2108,7 @@ namespace UrbanAirship {
 
     // @interface UAScheduleAction : NSObject <UAAction>
     [BaseType(typeof(NSObject))]
-    interface UAScheduleAction : IUAAction
+    interface UAScheduleAction
     {
     }
 
@@ -2476,4 +2476,40 @@ namespace UrbanAirship {
         [Export("apply:")]
         bool Apply (string[] tags);
     }
+
+    // @interface UAPadding : NSObject
+    [BaseType(typeof(NSObject))]
+    interface UAPadding
+    {
+        // @property (nonatomic, strong, readwrite, nullable) NSNumber *top;
+        [NullAllowed, Export("top", ArgumentSemantic.Strong)]
+        NSNumber Top { get; set; }
+
+        // @property (nonatomic, strong, readwrite, nullable) NSNumber *bottom;
+        [NullAllowed, Export("bottom", ArgumentSemantic.Strong)]
+        NSNumber Bottom { get; set; }
+
+        // @property (nonatomic, strong, readwrite, nullable) NSNumber *trailing;
+        [NullAllowed, Export("trailing", ArgumentSemantic.Strong)]
+        NSNumber Trailing { get; set; }
+
+        // @property (nonatomic, strong, readwrite, nullable) NSNumber *leading;
+        [NullAllowed, Export("leading", ArgumentSemantic.Strong)]
+        NSNumber Leading { get; set; }
+
+        // - (nonnull instancetype)initWithTop:(nullable NSNumber *)top bottom:(nullable NSNumber *)bottom leading:(nullable NSNumber *)leading trailing:(nullable NSNumber *)trailing;
+        [Export("initWithTop:bottom:leading:trailing:")]
+        IntPtr Constructor([NullAllowed] NSNumber top, [NullAllowed] NSNumber bottom, [NullAllowed] NSNumber leading, [NullAllowed] NSNumber trailing);
+
+        // + (nonnull instancetype)paddingWithTop:(nullable NSNumber *)top bottom:(nullable NSNumber *)bottom leading:(nullable NSNumber *)leading trailing:(nullable NSNumber *)trailing;
+        [Static]
+        [Export("paddingWithTop:bottom:leading:trailing:")]
+        UAPadding Padding([NullAllowed] NSNumber top, [NullAllowed] NSNumber bottom, [NullAllowed] NSNumber leading, [NullAllowed] NSNumber trailing);
+
+        // + (nonnull instancetype)paddingWithDictionary: (nullable NSDictionary *)paddingDict;
+        [Static]
+        [Export("paddingWithDictionary:")]
+        UAPadding Padding([NullAllowed] NSDictionary paddingDict);
+    }
+
 }

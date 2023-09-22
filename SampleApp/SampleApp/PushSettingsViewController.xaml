@@ -6,12 +6,15 @@
     <ContentPage.Content>
         <TableView Intent="Settings">
             <TableRoot>
+                <TableSection Title="{x:Static resources:AppResources.push_settings_features_title}">
+                    <TextCell Text="{x:Static resources:AppResources.feature_enabled_cell_title}" x:Name="displayFeaturesView" Tapped="displayFeatures"/>
+                </TableSection>
                 <TableSection Title="{x:Static resources:AppResources.push_settings_category_title}">
-                    <SwitchCell Text="{x:Static resources:AppResources.push_enabled_cell_title}" OnChanged="SwitchCell_OnChanged" x:Name="enabledPushSwitch" Tapped="SwitchCell_OnChanged"/>
+                    <SwitchCell Text="{x:Static resources:AppResources.push_enabled_cell_title}" OnChanged="enablePush_OnChanged" x:Name="enabledPushSwitch" Tapped="enablePush_OnChanged"/>
                 </TableSection>
                 <TableSection Title="{x:Static resources:AppResources.device_settings_category_title}">
                     <TextCell Text="{x:Static resources:AppResources.channel_id_cell_title}" x:Name="channelId" Tapped="CopyChannelID"/>
-                    <EntryCell Label="{x:Static resources:AppResources.named_user_cell_title}" Completed="AddNamedUser" x:Name="namedUser">
+                    <EntryCell Label="{x:Static resources:AppResources.named_user_cell_title}" Completed="AddNamedUser" x:Name="namedUserLabel">
                         <EntryCell.Keyboard>
                             <Keyboard x:FactoryMethod="Create">
                                 <x:Arguments>
@@ -20,6 +23,23 @@
                             </Keyboard>
                         </EntryCell.Keyboard>
                     </EntryCell>
+                </TableSection>
+                <TableSection Title="{x:Static resources:AppResources.device_settings_tags_title}">
+                    <EntryCell Label="{x:Static resources:AppResources.tag_cell_title}" Completed="AddTag" x:Name="tagLabel" Placeholder="Add new tag" >
+                        <EntryCell.Keyboard>
+                            <Keyboard x:FactoryMethod="Create">
+                                <x:Arguments>
+                                    <KeyboardFlags>CapitalizeNone</KeyboardFlags>
+                                </x:Arguments>
+                            </Keyboard>
+                        </EntryCell.Keyboard>
+                    </EntryCell>
+                    <ViewCell>
+                        <StackLayout Padding="20,0,0,0"
+                        Orientation="Vertical">
+                            <Label Text="" x:Name="tagsList"/>
+                        </StackLayout>
+                    </ViewCell>
                 </TableSection>
             </TableRoot>
         </TableView>
