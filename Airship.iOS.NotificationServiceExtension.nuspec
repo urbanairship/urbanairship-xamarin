@@ -10,6 +10,7 @@
       <description>Notification service extension support for iOS</description>
       <dependencies>
         <group targetFramework="Xamarin.iOS1.0" />
+        <dependency id="airship.ios.core" version="16.12.2"/>
       </dependencies>
    </metadata>
 

@@ -10,6 +10,7 @@
       <description>Core of Airship SDK</description>
       <dependencies>
         <group targetFramework="Xamarin.iOS1.0" />
+        <dependency id="airship.ios.basement" version="16.12.2"/>
       </dependencies>
    </metadata>
 

@@ -11,10 +11,10 @@
 
       <dependencies>
          <group targetFramework="MonoAndroid4.1">
-            <dependency id="Xamarin.Firebase.Messaging" version="122.0.0.1" />
-            <dependency id="Xamarin.GooglePlayServices.Base" version="117.6.0.1" />
-            <dependency id="Xamarin.Google.Dagger" version="2.37.0" />
             <dependency id="airship.android.core" version="16.11.1"/>
+            <dependency id="Xamarin.Firebase.Messaging" version="122.0.0.1" />
+            <dependency id="Xamarin.Google.Dagger" version="2.37.0" />
+            <dependency id="Xamarin.GooglePlayServices.Base" version="117.6.0.1" />
          </group>
       </dependencies>
    </metadata>
