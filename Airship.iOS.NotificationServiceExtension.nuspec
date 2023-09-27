@@ -2,14 +2,16 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
    <metadata>
       <id>airship.ios.notificationserviceextension</id>
-      <version>16.12.2</version>
+      <version>16.12.4</version>
       <title>Airship iOS SDK - Notification Service Extension</title>
       <authors>Airship, Inc.</authors>
       <projectUrl>https://github.com/urbanairship/urbanairship-xamarin</projectUrl>
       <requireLicenseAcceptance>false</requireLicenseAcceptance>
       <description>Notification service extension support for iOS</description>
       <dependencies>
-        <group targetFramework="Xamarin.iOS1.0" />
+        <group targetFramework="Xamarin.iOS1.0">
+          <dependency id="airship.ios.core" version="16.12.4"/>
+        </group>
       </dependencies>
    </metadata>
 

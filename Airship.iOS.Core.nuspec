@@ -2,14 +2,16 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
    <metadata>
       <id>airship.ios.core</id>
-      <version>16.12.2</version>
+      <version>16.12.4</version>
       <title>Airship iOS SDK - Core</title>
       <authors>Airship, Inc.</authors>
       <projectUrl>https://github.com/urbanairship/urbanairship-xamarin</projectUrl>
       <requireLicenseAcceptance>false</requireLicenseAcceptance>
       <description>Core of Airship SDK</description>
       <dependencies>
-        <group targetFramework="Xamarin.iOS1.0" />
+        <group targetFramework="Xamarin.iOS1.0">
+          <dependency id="airship.ios.basement" version="16.12.4"/>
+        </group>
       </dependencies>
    </metadata>
 
