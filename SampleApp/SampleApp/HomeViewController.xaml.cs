@@ -36,7 +36,7 @@ namespace SampleApp
         {
             base.OnDisappearing();
             Airship.Instance.OnChannelCreation -= OnChannelEvent;
-            Airship.Instance.OnPushNotificationStatusUpdate += OnPushNotificationStatusEvent;
+            Airship.Instance.OnPushNotificationStatusUpdate -= OnPushNotificationStatusEvent;
         }
 
         void OnButtonClicked(object sender, EventArgs e)
