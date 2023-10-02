@@ -28,23 +28,22 @@ namespace UrbanAirship.NETStandard
             // Load unreferenced modules
             AirshipAutomation.Init();
 
-            NSNotificationCenter.DefaultCenter.AddObserver(aName: (NSString)UAChannel.ChannelCreatedEvent, (NSNotification notification) =>
+            NSNotificationCenter.DefaultCenter.AddObserver(aName: (NSString)UAChannel.ChannelCreatedEvent, (notification) =>
             {
                 string channelID = notification.UserInfo[UAChannel.ChannelIdentifierKey].ToString();
                 OnChannelCreation?.Invoke(this, new ChannelEventArgs(channelID));
             });
 
-            //FIXME: Use UAPush.NotificationStatusUpdateEvent once it's available
-            NSNotificationCenter.DefaultCenter.AddObserver(aName: (NSString)"com.urbanairship.notification.status.update", (notification) =>
+            NSNotificationCenter.DefaultCenter.AddObserver(aName: (NSString)UAPush.NotificationStatusUpdateEvent, (notification) =>
             {
                 OnPushNotificationStatusUpdate?.Invoke(this,
                     new PushNotificationStatusEventArgs(
-                        Convert.ToBoolean(notification.UserInfo["isUserNotificationsEnabled"]),
-                        Convert.ToBoolean(notification.UserInfo["areNotificationsAllowed"]),
-                        Convert.ToBoolean(notification.UserInfo["isPushPrivacyFeatureEnabled"]),
-                        Convert.ToBoolean(notification.UserInfo["isPushTokenRegistered"]),
-                        Convert.ToBoolean(notification.UserInfo["isUserOptedIn"]),
-                        Convert.ToBoolean(notification.UserInfo["isOptIn"])
+                        notification.UserInfo[UAPush.IsUserNotificationsEnabled].Equals((NSNumber)1),
+                        notification.UserInfo[UAPush.AreNotificationsAllowed].Equals((NSNumber)1),
+                        notification.UserInfo[UAPush.IsPushPrivacyFeatureEnabled].Equals((NSNumber)1),
+                        notification.UserInfo[UAPush.IsPushTokenRegistered].Equals((NSNumber)1),
+                        notification.UserInfo[UAPush.IsUserOptedIn].Equals((NSNumber)1),
+                        notification.UserInfo[UAPush.IsOptedIn].Equals((NSNumber)1)
                     )
                 );
             });
