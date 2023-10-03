@@ -9,7 +9,9 @@
       <requireLicenseAcceptance>false</requireLicenseAcceptance>
       <description>Message center support for Airship SDK</description>
       <dependencies>
-        <group targetFramework="Xamarin.iOS1.0" />
+        <group targetFramework="Xamarin.iOS1.0">
+          <dependency id="airship.ios.core" version="16.12.4"/>
+        </group>
       </dependencies>
    </metadata>
 

@@ -1,5 +1,12 @@
 # Airship Xamarin Changelog
 
+## Version 17.1.1 - September 27, 2023
+Minor release that updates to the latest Airship SDKs and fixes missing dependencies in the Android and iOS binding NuSpecs.
+
+### Changes
+- Updated iOS SDK to 16.12.4
+- Fixed missing dependencies in the Android and iOS binding NuSpecs.
+
 ## Version 17.1.0 - July 10, 2023
 Minor release that updates to the latest Airship SDKs. Apps that make use of Message Center, Preference Center, and Scenes/Surveys should update to this version.
 
