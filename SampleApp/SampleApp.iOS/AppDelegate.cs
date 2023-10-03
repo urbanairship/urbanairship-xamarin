@@ -68,11 +68,6 @@ namespace SampleApp.iOS
 
             UAirship.Push.WeakRegistrationDelegate = this;
 
-            NSNotificationCenter.DefaultCenter.AddObserver(new NSString("channelIDUpdated"), (notification) =>
-            {
-                //FIXME: Find a way to call the refreshView from the HomeViewController
-            });
-
             InitFormsApp();
 
             return base.FinishedLaunching(app, options);

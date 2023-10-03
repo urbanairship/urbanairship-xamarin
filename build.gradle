@@ -18,6 +18,7 @@ ext {
 // Build nuget pkgs -- can pass in parameters (nuspec files) to specify which
 // nupkg files to build
 task pkg {
+    dependsOn 'build'
     doLast() {
         def nuspecs = []
         if (project.hasProperty('nuspec')) {
@@ -27,21 +28,21 @@ task pkg {
                 "Airship.Android.Core.nuspec",
                 "Airship.Android.ADM.nuspec",
                 "Airship.Android.FCM.nuspec",
-                "Airship.Android.FeatureFlag.nuspec",
+                // "Airship.Android.FeatureFlag.nuspec",
                 "Airship.Android.MessageCenter.nuspec",
-                "Airship.Android.Automation.nuspec",
                 "Airship.Android.Layout.nuspec",
+                "Airship.Android.Automation.nuspec",
                 "Airship.Android.LiveUpdate.nuspec",
                 "Airship.Android.PreferenceCenter.nuspec",
-                "Airship.NETStandard.nuspec",
-                "Airship.iOS.nuspec",
                 "Airship.iOS.Basement.nuspec",
                 "Airship.iOS.Core.nuspec",
                 "Airship.iOS.Automation.nuspec",
                 "Airship.iOS.MessageCenter.nuspec",
                 "Airship.iOS.PreferenceCenter.nuspec",
                 "Airship.iOS.NotificationContentExtension.nuspec",
-                "Airship.iOS.NotificationServiceExtension.nuspec"
+                "Airship.iOS.NotificationServiceExtension.nuspec",
+                "Airship.iOS.nuspec",
+                "Airship.NETStandard.nuspec",
             ]
         }
 
@@ -52,7 +53,6 @@ task pkg {
         }
     }
 }
-pkg.dependsOn('build')
 
 // Create local nuget feed
 task createLocalFeed {

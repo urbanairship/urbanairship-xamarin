@@ -54,7 +54,7 @@
     <TransformFile Include="Transforms\EnumMethods.xml" />
   </ItemGroup>
   <ItemGroup>
-    <LibraryProjectZip Include="Jars\urbanairship-live-update-17.1.0.aar" />
+    <LibraryProjectZip Include="Jars\urbanairship-live-update-17.3.0.aar" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Xamarin.KotlinX.Coroutines.Android" Version="1.6.4.2" PrivateAssets="none" />

@@ -1708,6 +1708,11 @@ namespace UrbanAirship {
 	[DisableDefaultCtor]
 	interface UAPush : IUAComponent
 	{
+		// @property (readonly, nonatomic, class) NSNotificationName _Nonnull notificationStatusUpdateEvent;
+		[Static]
+		[Export ("notificationStatusUpdateEvent")]
+		string NotificationStatusUpdateEvent { get; }
+		
         // @property (readonly, nonatomic, strong, class) UAPush * _Nonnull shared;
         [Static]
         [Export("shared", ArgumentSemantic.Strong)]
@@ -1742,6 +1747,36 @@ namespace UrbanAirship {
         [Static]
         [Export("quietTimeEndKey")]
         string QuietTimeEndKey { get; }
+        
+        // @property (readonly, copy, nonatomic, class) NSString * _Nonnull areNotificationsAllowed;
+        [Static]
+        [Export ("areNotificationsAllowed")]
+        string AreNotificationsAllowed { get; }
+
+        // @property (readonly, copy, nonatomic, class) NSString * _Nonnull isOptedIn;
+        [Static]
+        [Export ("isOptedIn")]
+        string IsOptedIn { get; }
+
+        // @property (readonly, copy, nonatomic, class) NSString * _Nonnull isPushPrivacyFeatureEnabled;
+        [Static]
+        [Export ("isPushPrivacyFeatureEnabled")]
+        string IsPushPrivacyFeatureEnabled { get; }
+
+        // @property (readonly, copy, nonatomic, class) NSString * _Nonnull isPushTokenRegistered;
+        [Static]
+        [Export ("isPushTokenRegistered")]
+        string IsPushTokenRegistered { get; }
+
+        // @property (readonly, copy, nonatomic, class) NSString * _Nonnull isUserNotificationsEnabled;
+        [Static]
+        [Export ("isUserNotificationsEnabled")]
+        string IsUserNotificationsEnabled { get; }
+
+        // @property (readonly, copy, nonatomic, class) NSString * _Nonnull isUserOptedIn;
+        [Static]
+        [Export ("isUserOptedIn")]
+        string IsUserOptedIn { get; }
 
         // @property (getter = isComponentEnabled, nonatomic) BOOL componentEnabled;
         [Export("componentEnabled")]
