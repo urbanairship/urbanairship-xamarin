@@ -1,5 +1,16 @@
 # Airship Xamarin Changelog
 
+## Version 18.0.0 - October 4, 2024
+Major release that updates to Airship SDK 17.x. This release adds support for Stories, In-App experiences downstream of a sequence in Journeys, and improves SDK auth. The Airship SDK now requires iOS 14+ as the minimum deployment version and Xcode 14.3+.
+
+## Changes
+- Updated iOS SDK to 17.4.0
+- Updated Android SDK to 17.3.0
+- Added the ability to update Channel and Contact subscriptions to the .NETStandard library
+- Removed Channel update listener in favor of a new notification status listener.
+
+See the [Migration Guide](https://github.com/urbanairship/urbanairship-xamarin/tree/main/MIGRATION.md) for further details.
+
 ## Version 17.1.1 - September 27, 2023
 Minor release that updates to the latest Airship SDKs and fixes missing dependencies in the Android and iOS binding NuSpecs.
 
