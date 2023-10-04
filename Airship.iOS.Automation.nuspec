@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
    <metadata>
       <id>airship.ios.automation</id>
-      <version>16.12.4</version>
+      <version>17.4.0</version>
       <title>Airship iOS SDK - Automation</title>
       <authors>Airship, Inc.</authors>
       <projectUrl>https://github.com/urbanairship/urbanairship-xamarin</projectUrl>
@@ -10,7 +10,7 @@
       <description>Automation support for Airship SDK</description>
       <dependencies>
         <group targetFramework="Xamarin.iOS1.0">
-          <dependency id="airship.ios.core" version="16.12.4"/>
+          <dependency id="airship.ios.core" version="17.4.0"/>
         </group>
       </dependencies>
    </metadata>

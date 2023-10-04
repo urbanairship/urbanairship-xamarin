@@ -18,6 +18,7 @@ ext {
 // Build nuget pkgs -- can pass in parameters (nuspec files) to specify which
 // nupkg files to build
 task pkg {
+    dependsOn 'build'
     doLast() {
         def nuspecs = []
         if (project.hasProperty('nuspec')) {
@@ -27,27 +28,21 @@ task pkg {
                 "Airship.Android.Core.nuspec",
                 "Airship.Android.ADM.nuspec",
                 "Airship.Android.FCM.nuspec",
-                "Airship.Android.Preference.nuspec",
-                "Airship.Android.Accengage.nuspec",
+                // "Airship.Android.FeatureFlag.nuspec",
                 "Airship.Android.MessageCenter.nuspec",
-                "Airship.Android.Automation.nuspec",
                 "Airship.Android.Layout.nuspec",
-                "Airship.Android.Location.nuspec",
-                "Airship.Android.Chat.nuspec",
+                "Airship.Android.Automation.nuspec",
+                "Airship.Android.LiveUpdate.nuspec",
                 "Airship.Android.PreferenceCenter.nuspec",
-                "Airship.NETStandard.nuspec",
-                "Airship.iOS.nuspec",
                 "Airship.iOS.Basement.nuspec",
                 "Airship.iOS.Core.nuspec",
-                "Airship.iOS.Accengage.nuspec",
                 "Airship.iOS.Automation.nuspec",
-                "Airship.iOS.ExtendedActions.nuspec",
                 "Airship.iOS.MessageCenter.nuspec",
-                "Airship.iOS.Location.nuspec",
-                "Airship.iOS.Chat.nuspec",
                 "Airship.iOS.PreferenceCenter.nuspec",
                 "Airship.iOS.NotificationContentExtension.nuspec",
-                "Airship.iOS.NotificationServiceExtension.nuspec"
+                "Airship.iOS.NotificationServiceExtension.nuspec",
+                "Airship.iOS.nuspec",
+                "Airship.NETStandard.nuspec",
             ]
         }
 
@@ -58,7 +53,6 @@ task pkg {
         }
     }
 }
-pkg.dependsOn('build')
 
 // Create local nuget feed
 task createLocalFeed {
@@ -182,13 +176,11 @@ syncVersion.dependsOn(':src:AirshipBindings.Android.ADM:syncVersion',
     ':src:AirshipBindings.Android.ADM:syncVersion',
     ':src:AirshipBindings.Android.Core:syncVersion',
     ':src:AirshipBindings.Android.FCM:syncVersion',
-    ':src:AirshipBindings.Android.Preference:syncVersion',
-    ':src:AirshipBindings.Android.Accengage:syncVersion',
+    ':src:AirshipBindings.Android.FeatureFlag:syncVersion',
     ':src:AirshipBindings.Android.MessageCenter:syncVersion',
     ':src:AirshipBindings.Android.Automation:syncVersion',
     ':src:AirshipBindings.Android.Layout:syncVersion',
-    ':src:AirshipBindings.Android.Location:syncVersion',
-    ':src:AirshipBindings.Android.Chat:syncVersion',
+    ':src:AirshipBindings.Android.LiveUpdate:syncVersion',
     ':src:AirshipBindings.Android.PreferenceCenter:syncVersion',
     ':src:AirshipBindings.iOS.common:syncVersion',
  )
@@ -253,13 +245,11 @@ clean.dependsOn(':src:AirshipBindings.Android.ADM:clean',
     ':src:AirshipBindings.Android.ADM:clean',
     ':src:AirshipBindings.Android.Core:clean',
     ':src:AirshipBindings.Android.FCM:clean',
-    ':src:AirshipBindings.Android.Preference:clean',
-    ':src:AirshipBindings.Android.Accengage:clean',
+    ':src:AirshipBindings.Android.FeatureFlag:clean',
     ':src:AirshipBindings.Android.MessageCenter:clean',
     ':src:AirshipBindings.Android.Automation:clean',
     ':src:AirshipBindings.Android.Layout:clean',
-    ':src:AirshipBindings.Android.Location:clean',
-    ':src:AirshipBindings.Android.Chat:clean',
+    ':src:AirshipBindings.Android.LiveUpdate:clean',
     ':src:AirshipBindings.Android.PreferenceCenter:clean',
     ':src:AirshipBindings.iOS.common:clean',
  )
@@ -279,23 +269,17 @@ build.dependsOn(':docs:build',
     ':src:AirshipBindings.Android.ADM:build',
     ':src:AirshipBindings.Android.Core:build',
     ':src:AirshipBindings.Android.FCM:build',
-    ':src:AirshipBindings.Android.Preference:build',
-    ':src:AirshipBindings.Android.Accengage:build',
+    ':src:AirshipBindings.Android.FeatureFlag:build',
     ':src:AirshipBindings.Android.MessageCenter:build',
     ':src:AirshipBindings.Android.Automation:build',
     ':src:AirshipBindings.Android.Layout:build',
-    ':src:AirshipBindings.Android.Location:build',
-    ':src:AirshipBindings.Android.Chat:build',
+    ':src:AirshipBindings.Android.LiveUpdate:build',
     ':src:AirshipBindings.Android.PreferenceCenter:build',
     ':src:AirshipBindings.NETStandard:build',
     ':src:AirshipBindings.iOS.Basement:build',
     ':src:AirshipBindings.iOS.Core:build',
-    ':src:AirshipBindings.iOS.Accengage:build',
     ':src:AirshipBindings.iOS.Automation:build',
-    ':src:AirshipBindings.iOS.ExtendedActions:build',
     ':src:AirshipBindings.iOS.MessageCenter:build',
-    ':src:AirshipBindings.iOS.Location:build',
-    ':src:AirshipBindings.iOS.Chat:build',
     ':src:AirshipBindings.iOS.PreferenceCenter:build',
     ':src:AirshipBindings.iOS.NotificationContentExtension:build',
     ':src:AirshipBindings.iOS.NotificationServiceExtension:build' )

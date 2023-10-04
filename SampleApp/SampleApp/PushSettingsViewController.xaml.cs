@@ -10,6 +10,8 @@ using Plugin.Clipboard;
 using Xamarin.Forms;
 
 using UrbanAirship.NETStandard;
+using SampleApp;
+using System.ComponentModel;
 
 namespace SampleApp
 {
@@ -25,10 +27,16 @@ namespace SampleApp
             base.OnAppearing();
             enabledPushSwitch.On = Airship.Instance.UserNotificationsEnabled;
             channelId.Detail = Airship.Instance.ChannelId != null ? Airship.Instance.ChannelId : AppResources.none;
-            namedUser.Placeholder = Airship.Instance.NamedUser != null ? Airship.Instance.NamedUser : AppResources.channel_id_cell_placeholder;
+            UpdateNamedUser();
+            UpdateTagsCell();
         }
 
-        void SwitchCell_OnChanged(object sender, EventArgs e)
+        void displayFeatures(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new FeaturesViewController());
+        }
+
+        void enablePush_OnChanged(object sender, EventArgs e)
         {
             Airship.Instance.UserNotificationsEnabled = enabledPushSwitch.On;
         }
@@ -44,9 +52,49 @@ namespace SampleApp
 
         void AddNamedUser(object sender, EventArgs e)
         {
-            Airship.Instance.NamedUser = namedUser.Text;
-            namedUser.Placeholder = namedUser.Text;
+            if (namedUserLabel.Text == null)
+            {
+                Airship.Instance.ResetContact();
+            }
+            else
+            {
+                Airship.Instance.IdentifyContact(namedUserLabel.Text);
+            }
+            UpdateNamedUser();
             DisplayAlert(AppResources.alert_title, AppResources.alert_named_user_added_successuflully, AppResources.ok);
+        }
+
+        void AddTag(object sender, EventArgs e)
+        {
+            string tagToAdd = tagLabel.Text;
+            Airship.Instance.EditDeviceTags()
+                    .AddTags(new string[] { tagToAdd })
+                    .Apply();
+            UpdateTagsCell();
+        }
+
+        void UpdateTagsCell()
+        {
+            tagLabel.Text = "";
+            IEnumerable<string> tags = Airship.Instance.Tags;
+
+            string str = "";
+            foreach (string tag in tags)
+            {
+                str = str + tag + "\n";
+            }
+            tagsList.Text = str;
+        }
+
+        void UpdateNamedUser()
+        {
+            namedUserLabel.Text = "";
+            Airship.Instance.GetNamedUser(namedUser =>
+            {
+                Device.BeginInvokeOnMainThread(() => {
+                    namedUserLabel.Placeholder = namedUser != null ? namedUser : AppResources.named_user_cell_placeholder;
+                });
+            });
         }
     }
 }
