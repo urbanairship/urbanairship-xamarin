@@ -3,8 +3,6 @@ ext {
     iosSdkModuleName = 'AirshipAutomation'
 }
 
-apply from: "../ios-common-build.gradle"
-
 task clean(type: Delete) {
     doLast() {
         project.delete "bin"
@@ -22,7 +20,7 @@ task carthageUpdate {
 }
 
 task build {
-    def BuildConfiguration=project.properties['build_configuration'] ?: "Release"
+    def BuildConfiguration = project.properties['build_configuration'] ?: "Release"
     doLast() {
         exec {
             commandLine "mono", "$nugetExe", "restore", "AirshipBindings.iOS.Automation.sln"
