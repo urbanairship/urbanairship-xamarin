@@ -341,8 +341,7 @@ namespace UrbanAirship.NETStandard
                 }
                 if (propertyDictionary.Count > 0)
                 {
-                    //TODO: 
-                    //uaEvent.Properties = new NSDictionary<NSString, NSObject>(propertyDictionary.Keys, propertyDictionary.Values);
+                    uaEvent.Properties = new NSDictionary<NSString, NSObject>(propertyDictionary.Keys, propertyDictionary.Values);
                 }
             }
 
