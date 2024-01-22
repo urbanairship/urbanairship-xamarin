@@ -1,9 +1,19 @@
 # Airship Xamarin Changelog
 
-## Version 18.0.0 - October 4, 2024
+## Version 18.1.0 - January 22, 2024
+
+Minor release that updates to Airship SDK 17.7.1 and fixes an iOS custom event properties reporting issue. Apps that target iOS and make use of custom events should update.
+
+### Changes
+- Updated iOS SDK to 17.7.1
+- Updated Android SDK to 17.7.1
+- Fixed a bug that prevented custom event properties from being reported on iOS
+- Deprecated iOS `Trace` log level and add the replacement `Verbose` log level.
+
+## Version 18.0.0 - October 4, 2023
 Major release that updates to Airship SDK 17.x. This release adds support for Stories, In-App experiences downstream of a sequence in Journeys, and improves SDK auth. The Airship SDK now requires iOS 14+ as the minimum deployment version and Xcode 14.3+.
 
-## Changes
+### Changes
 - Updated iOS SDK to 17.4.0
 - Updated Android SDK to 17.3.0
 - Added the ability to update Channel and Contact subscriptions to the .NETStandard library

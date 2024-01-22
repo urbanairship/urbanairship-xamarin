@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
    <metadata>
       <id>airship.ios.preferencecenter</id>
-      <version>17.4.0</version>
+      <version>17.7.1</version>
       <title>Airship iOS SDK - Preference Center</title>
       <authors>Airship, Inc.</authors>
       <projectUrl>https://github.com/urbanairship/urbanairship-xamarin</projectUrl>
@@ -10,7 +10,7 @@
       <description>Preference Center support for Airship SDK</description>
       <dependencies>
         <group targetFramework="Xamarin.iOS1.0">
-          <dependency id="airship.ios.core" version="17.4.0"/>
+          <dependency id="airship.ios.core" version="17.7.1"/>
         </group>
       </dependencies>
    </metadata>

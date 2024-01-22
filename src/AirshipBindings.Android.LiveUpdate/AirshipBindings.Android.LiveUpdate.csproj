@@ -54,7 +54,7 @@
     <TransformFile Include="Transforms\EnumMethods.xml" />
   </ItemGroup>
   <ItemGroup>
-    <LibraryProjectZip Include="Jars\urbanairship-live-update-17.3.0.aar" />
+    <LibraryProjectZip Include="Jars\urbanairship-live-update-17.7.1.aar" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Xamarin.KotlinX.Coroutines.Android" Version="1.6.4.2" PrivateAssets="none" />
@@ -63,6 +63,9 @@
       <Project>{98DC9E01-745C-4CEA-93A9-6546B349B8EE}</Project>
       <Name>AirshipBindings.Android.Core</Name>
     </ProjectReference>
+    <PackageReference Include="Xamarin.AndroidX.Core">
+      <Version>1.6.0.3</Version>
+    </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.Bindings.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
