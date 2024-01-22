@@ -54,7 +54,7 @@
     <TransformFile Include="Transforms\EnumMethods.xml" />
   </ItemGroup>
   <ItemGroup>
-    <LibraryProjectZip Include="Jars\urbanairship-feature-flag-17.3.0.aar" />
+    <LibraryProjectZip Include="Jars\urbanairship-feature-flag-17.7.1.aar" />
   </ItemGroup>
    <ItemGroup>
     <PackageReference Include="Xamarin.KotlinX.Coroutines.Android" Version="1.6.4.2" PrivateAssets="none" />

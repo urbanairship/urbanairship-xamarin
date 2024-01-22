@@ -145,13 +145,28 @@
       <HintPath>..\AirshipBindings.Android.Automation\packages\Xamarin.Jetbrains.Annotations.23.0.0.4\lib\monoandroid12.0\Xamarin.Jetbrains.Annotations.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.Kotlin.StdLib.Common">
-      <HintPath>..\AirshipBindings.Android.Automation\packages\Xamarin.Kotlin.StdLib.Common.1.7.0\lib\monoandroid12.0\Xamarin.Kotlin.StdLib.Common.dll</HintPath>
+      <HintPath>..\AirshipBindings.NETStandard\packages\Xamarin.Kotlin.StdLib.Common.1.7.10\lib\monoandroid12.0\Xamarin.Kotlin.StdLib.Common.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.Kotlin.StdLib">
-      <HintPath>..\AirshipBindings.Android.Automation\packages\Xamarin.Kotlin.StdLib.1.7.0\lib\monoandroid12.0\Xamarin.Kotlin.StdLib.dll</HintPath>
+      <HintPath>..\AirshipBindings.NETStandard\packages\Xamarin.Kotlin.StdLib.1.7.10\lib\monoandroid12.0\Xamarin.Kotlin.StdLib.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.AndroidX.WebKit">
       <HintPath>packages\Xamarin.AndroidX.WebKit.1.3.0\lib\monoandroid90\Xamarin.AndroidX.WebKit.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Kotlin.StdLib.Jdk7">
+      <HintPath>..\AirshipBindings.NETStandard\packages\Xamarin.Kotlin.StdLib.Jdk7.1.7.10\lib\monoandroid12.0\Xamarin.Kotlin.StdLib.Jdk7.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Kotlin.StdLib.Jdk8">
+      <HintPath>..\AirshipBindings.NETStandard\packages\Xamarin.Kotlin.StdLib.Jdk8.1.7.10\lib\monoandroid12.0\Xamarin.Kotlin.StdLib.Jdk8.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.KotlinX.Coroutines.Core.Jvm">
+      <HintPath>..\AirshipBindings.NETStandard\packages\Xamarin.KotlinX.Coroutines.Core.Jvm.1.6.4\lib\monoandroid12.0\Xamarin.KotlinX.Coroutines.Core.Jvm.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.KotlinX.Coroutines.Android">
+      <HintPath>..\AirshipBindings.NETStandard\packages\Xamarin.KotlinX.Coroutines.Android.1.6.4\lib\monoandroid12.0\Xamarin.KotlinX.Coroutines.Android.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.AndroidX.Room.Room.Ktx">
+      <HintPath>..\AirshipBindings.NETStandard\packages\Xamarin.AndroidX.Room.Room.Ktx.2.4.3\lib\monoandroid12.0\Xamarin.AndroidX.Room.Room.Ktx.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -183,7 +198,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <LibraryProjectZip Include="Jars\urbanairship-core-17.3.0.aar" />
+    <LibraryProjectZip Include="Jars\urbanairship-core-17.7.1.aar" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.Bindings.targets" />
   <Import Project="packages\Xamarin.AndroidX.Annotation.1.1.0\build\monoandroid90\Xamarin.AndroidX.Annotation.targets" Condition="Exists('packages\Xamarin.AndroidX.Annotation.1.1.0\build\monoandroid90\Xamarin.AndroidX.Annotation.targets')" />
@@ -285,4 +300,11 @@
   <Import Project="..\AirshipBindings.Android.Automation\packages\Xamarin.AndroidX.Room.Runtime.2.4.3\build\monoandroid12.0\Xamarin.AndroidX.Room.Runtime.targets" Condition="Exists('..\AirshipBindings.Android.Automation\packages\Xamarin.AndroidX.Room.Runtime.2.4.3\build\monoandroid12.0\Xamarin.AndroidX.Room.Runtime.targets')" />
   <Import Project="..\AirshipBindings.NETStandard\packages\Xamarin.AndroidX.WebKit.1.3.0\build\monoandroid90\Xamarin.AndroidX.WebKit.targets" Condition="Exists('..\AirshipBindings.NETStandard\packages\Xamarin.AndroidX.WebKit.1.3.0\build\monoandroid90\Xamarin.AndroidX.WebKit.targets')" />
   <Import Project="packages\Xamarin.AndroidX.WebKit.1.3.0\build\monoandroid90\Xamarin.AndroidX.WebKit.targets" Condition="Exists('packages\Xamarin.AndroidX.WebKit.1.3.0\build\monoandroid90\Xamarin.AndroidX.WebKit.targets')" />
+  <Import Project="..\AirshipBindings.NETStandard\packages\Xamarin.Kotlin.StdLib.Common.1.7.10\build\monoandroid12.0\Xamarin.Kotlin.StdLib.Common.targets" Condition="Exists('..\AirshipBindings.NETStandard\packages\Xamarin.Kotlin.StdLib.Common.1.7.10\build\monoandroid12.0\Xamarin.Kotlin.StdLib.Common.targets')" />
+  <Import Project="..\AirshipBindings.NETStandard\packages\Xamarin.Kotlin.StdLib.1.7.10\build\monoandroid12.0\Xamarin.Kotlin.StdLib.targets" Condition="Exists('..\AirshipBindings.NETStandard\packages\Xamarin.Kotlin.StdLib.1.7.10\build\monoandroid12.0\Xamarin.Kotlin.StdLib.targets')" />
+  <Import Project="..\AirshipBindings.NETStandard\packages\Xamarin.Kotlin.StdLib.Jdk7.1.7.10\build\monoandroid12.0\Xamarin.Kotlin.StdLib.Jdk7.targets" Condition="Exists('..\AirshipBindings.NETStandard\packages\Xamarin.Kotlin.StdLib.Jdk7.1.7.10\build\monoandroid12.0\Xamarin.Kotlin.StdLib.Jdk7.targets')" />
+  <Import Project="..\AirshipBindings.NETStandard\packages\Xamarin.Kotlin.StdLib.Jdk8.1.7.10\build\monoandroid12.0\Xamarin.Kotlin.StdLib.Jdk8.targets" Condition="Exists('..\AirshipBindings.NETStandard\packages\Xamarin.Kotlin.StdLib.Jdk8.1.7.10\build\monoandroid12.0\Xamarin.Kotlin.StdLib.Jdk8.targets')" />
+  <Import Project="..\AirshipBindings.NETStandard\packages\Xamarin.KotlinX.Coroutines.Core.Jvm.1.6.4\build\monoandroid12.0\Xamarin.KotlinX.Coroutines.Core.Jvm.targets" Condition="Exists('..\AirshipBindings.NETStandard\packages\Xamarin.KotlinX.Coroutines.Core.Jvm.1.6.4\build\monoandroid12.0\Xamarin.KotlinX.Coroutines.Core.Jvm.targets')" />
+  <Import Project="..\AirshipBindings.NETStandard\packages\Xamarin.KotlinX.Coroutines.Android.1.6.4\build\monoandroid12.0\Xamarin.KotlinX.Coroutines.Android.targets" Condition="Exists('..\AirshipBindings.NETStandard\packages\Xamarin.KotlinX.Coroutines.Android.1.6.4\build\monoandroid12.0\Xamarin.KotlinX.Coroutines.Android.targets')" />
+  <Import Project="..\AirshipBindings.NETStandard\packages\Xamarin.AndroidX.Room.Room.Ktx.2.4.3\build\monoandroid12.0\Xamarin.AndroidX.Room.Room.Ktx.targets" Condition="Exists('..\AirshipBindings.NETStandard\packages\Xamarin.AndroidX.Room.Room.Ktx.2.4.3\build\monoandroid12.0\Xamarin.AndroidX.Room.Room.Ktx.targets')" />
 </Project>
