@@ -377,13 +377,13 @@ namespace UrbanAirship.NETStandard
         public void MarkMessageRead(string messageId)
         {
             string[] toRead = { messageId };
-            UAMessageCenter.Shared.Inbox.MarkReadWithMessageIDs(toRead, null);
+            UAMessageCenter.Shared.Inbox.MarkReadWithMessageIDs(toRead, () => { });
         }
 
         public void DeleteMessage(string messageId)
         {
             string[] toDelete = { messageId };
-            UAMessageCenter.Shared.Inbox.DeleteWithMessageIDs(toDelete, null);
+            UAMessageCenter.Shared.Inbox.DeleteWithMessageIDs(toDelete, () => { });
         }
 
         public void MessageCenterUnreadCount(Action<int> messageCount)
