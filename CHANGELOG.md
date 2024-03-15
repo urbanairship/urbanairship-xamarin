@@ -1,7 +1,15 @@
 # Airship Xamarin Changelog
 
-## Version 18.1.0 - January 22, 2024
+## Version 18.2.0 - March 15, 2024
+Minor release that updates the Airship SDK to iOS 17.9.0 and Android 17.7.3, expands plist theming options available for Message Center, and fixes the cross-platform `MarkMessageRead` and `DeleteMessage` methods.
 
+### Changes
+- Updated iOS SDK to 17.9.0
+- Updated Android SDK to 17.7.3
+- Support for dark mode and extended theming options for Message Center plist
+- Fixed an iOS bug in the Message Center message delete and mark read methods in Airship.Net
+
+## Version 18.1.0 - January 22, 2024
 Minor release that updates to Airship SDK 17.7.1 and fixes an iOS custom event properties reporting issue. Apps that target iOS and make use of custom events should update.
 
 ### Changes
