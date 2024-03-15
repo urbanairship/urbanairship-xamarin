@@ -13,6 +13,8 @@
   <attr path="/api/package[@name='com.urbanairship.iam.tags']" name="managedName">UrbanAirship.Iam.Tags</attr>
   <attr path="/api/package[@name='com.urbanairship.iam.view']" name="managedName">UrbanAirship.Iam.View</attr>
   
+  <attr path="/api/package[@name='com.urbanairship.automation.limits.storage']/class[@name='OccurrenceEntity.Comparator']/method[@name='compare']/parameter[@type='com.urbanairship.automation.limits.storage.OccurrenceEntity']" name="type">java.lang.Object</attr>
+
   <!-- Remove ActionScheduleEdits and ActionScheduleInfo data getters-->
   <remove-node path="/api/package[@name='com.urbanairship.automation']/interface[@name='ScheduleEdits']/method[@name='getData']" />
   <remove-node path="/api/package[@name='com.urbanairship.automation']/interface[@name='ScheduleInfo']/method[@name='getData']" />
