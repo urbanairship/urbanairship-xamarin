@@ -114,6 +114,7 @@
   <ItemGroup>
     <BundleResource Include="Resources\urban-airship-pacific.png" />
     <BundleResource Include="AirshipConfig.plist" />
+    <BundleResource Include="MessageCenterTheme.plist" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Assets.xcassets\LaunchImage.imageset\" />
