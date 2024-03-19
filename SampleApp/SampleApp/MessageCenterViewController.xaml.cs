@@ -61,6 +61,8 @@ namespace SampleApp
         private void onLoaded(object sender, MessageLoadedEventArgs e)
         {
             Console.WriteLine("onLoaded was reached.");
+            
+            Airship.Instance.MarkMessageRead(e.MessageId);
         }
 
         private void onClosed(object sender, MessageClosedEventArgs e)

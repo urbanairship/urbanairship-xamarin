@@ -25,7 +25,7 @@
         <value>ENABLE PUSH</value>
     </data>
     <data name="display_message_center" xml:space="preserve">
-        <value>DISPLAY MESSAGE CENTER</value>
+        <value>DISPLAY DEFAULT MESSAGE CENTER</value>
     </data>
     <data name="display_preference_center" xml:space="preserve">
         <value>DISPLAY PREFERENCE CENTER</value>

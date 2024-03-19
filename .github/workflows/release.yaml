@@ -10,9 +10,11 @@ env:
 
 jobs:
   release:
+    permissions:
+      contents: write
     runs-on: macOS-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
 
       - name: Get Version
         id: get_version
@@ -77,12 +79,11 @@ jobs:
           gsutil cp docs/build/$VERSION.tar.gz gs://ua-web-ci-prod-docs-transfer/libraries/xamarin/$VERSION.tar.gz
           
       - name: Create Github Release
-        uses: actions/create-release@v1.0.1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        uses: softprops/action-gh-release@v1
         with:
           tag_name: ${{ steps.get_version.outputs.VERSION }}
-          release_name: ${{ steps.get_version.outputs.VERSION }}
+          name: ${{ steps.get_version.outputs.VERSION }}
           body: ${{ steps.get_release_notes.outputs.NOTES }}
           draft: false
           prerelease: false
+          make_latest: true

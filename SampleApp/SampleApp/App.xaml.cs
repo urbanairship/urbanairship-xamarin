@@ -25,7 +25,6 @@ namespace SampleApp
         {
             Airship.Instance.OnDeepLinkReceived += OnDeepLinkReceived;
             Airship.Instance.OnMessageCenterUpdated += OnMessageCenterUpdated;
-            Airship.Instance.OnMessageCenterDisplay += OnMessageCenterDisplay;
         }
 
         protected override void OnSleep()
@@ -44,20 +43,6 @@ namespace SampleApp
         static void OnMessageCenterUpdated(object sender, EventArgs e)
         {
             Console.WriteLine("onMessageCenterUpdated");
-        }
-        static void OnMessageCenterDisplay(object sender, MessageCenterEventArgs e)
-        {
-            TabbedPage originalRootPage = (TabbedPage)App.Current.MainPage.Navigation.NavigationStack.Last();
-
-            originalRootPage.CurrentPage = originalRootPage.Children[1];
-
-            if (e.MessageId != null)
-            {
-                var messagePage = new MessagePage();
-                messagePage.MessageId = e.MessageId;
-                messagePage.Closed += OnMessageClosed;
-                originalRootPage.Navigation.PushAsync(messagePage);
-            }
         }
 
         static void OnMessageClosed(object sender, MessageClosedEventArgs e)

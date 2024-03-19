@@ -198,7 +198,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <LibraryProjectZip Include="Jars\urbanairship-core-17.7.1.aar" />
+    <LibraryProjectZip Include="Jars\urbanairship-core-17.7.3.aar" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.Bindings.targets" />
   <Import Project="packages\Xamarin.AndroidX.Annotation.1.1.0\build\monoandroid90\Xamarin.AndroidX.Annotation.targets" Condition="Exists('packages\Xamarin.AndroidX.Annotation.1.1.0\build\monoandroid90\Xamarin.AndroidX.Annotation.targets')" />
