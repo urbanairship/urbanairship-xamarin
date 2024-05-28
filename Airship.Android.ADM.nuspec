@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
    <metadata>
       <id>airship.android.adm</id>
-      <version>17.7.3</version>
+      <version>17.8.1</version>
       <title>Airship Android SDK - ADM Push Provider</title>
       <authors>Airship, Inc.</authors>
       <projectUrl>https://github.com/urbanairship/urbanairship-xamarin</projectUrl>
@@ -10,7 +10,7 @@
       <description>A full suite of mobile engagement tools for building next-generation apps</description>
       <dependencies>
          <group targetFramework="MonoAndroid4.1">
-            <dependency id="airship.android.core" version="17.7.3"/>
+            <dependency id="airship.android.core" version="17.8.1"/>
          </group>
       </dependencies>
    </metadata>

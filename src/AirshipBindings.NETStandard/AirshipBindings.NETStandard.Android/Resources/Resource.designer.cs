@@ -14,7 +14,7 @@ namespace AirshipBindings.NETStandard
 {
 	
 	
-	[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Android.Build.Tasks", "13.2.0.99")]
+	[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Xamarin.Android.Build.Tasks", "13.2.2.120")]
 	public partial class Resource
 	{
 		
@@ -7752,6 +7752,9 @@ namespace AirshipBindings.NETStandard
 			
 			// aapt resource value: 0x7F09001D
 			public static int ua_iam_banner_animation_duration = 2131296285;
+			
+			// aapt resource value: 0x7F09001E
+			public static int ua_iam_button_stroke_width_dps = 2131296286;
 			
 			static Integer()
 			{
