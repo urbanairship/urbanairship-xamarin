@@ -1,6 +1,6 @@
 # Airship Xamarin Changelog
 
-## Version 18.3.0 - May 28, 2024
+## Version 18.3.0 - May 29, 2024
 Minor release that updates the Airship SDK to iOS 17.10.1 and Android 17.8.1.
 
 ### Changes
