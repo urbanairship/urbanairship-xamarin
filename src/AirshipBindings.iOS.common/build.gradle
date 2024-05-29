@@ -22,15 +22,15 @@ task syncVersion  {
 
 task downloadFrameworks {
     doLast() {
-        def path = new File("${rootDir}/frameworks/Airship.zip")
+        def path = new File("${rootDir}/frameworks/Airship-Xcode15.zip")
 
         if ( !path.exists() ) {
-            def url = new URL("https://github.com/urbanairship/ios-library/releases/download/${airshipProperties.iosVersion}/Airship.zip")
+            def url = new URL("https://github.com/urbanairship/ios-library/releases/download/${airshipProperties.iosVersion}/Airship-Xcode15.zip")
             HttpURLConnection huc = (HttpURLConnection) url.openConnection()
             huc.setRequestMethod("GET")
             huc.connect();
             if (huc.getResponseCode() / 100 != 2) {
-                println("Issue downloading version ${airshipProperties.ios}")
+                println("Issue downloading version ${airshipProperties.iosVersion}")
             } else {
                 url.withInputStream{
                     i -> path.withOutputStream{ it << i }
@@ -39,7 +39,7 @@ task downloadFrameworks {
                 exec {
                     workingDir "${rootDir}/frameworks"
                     executable "unzip"
-                    args "-u", "Airship.zip"
+                    args "-u", "Airship-Xcode15.zip"
                 }
             }
         }
